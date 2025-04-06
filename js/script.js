@@ -17,8 +17,8 @@ const kmlFiles = [
 
 // Постоянный слой
 const permanentLayerData = {
-    name: "25.03.25",
-    path: "kml/file3.kml"
+    name: "24.02.22",
+    path: "kml/Line_24_02_22.kml"
 };
 
 // Список городов с координатами
