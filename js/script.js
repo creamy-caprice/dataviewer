@@ -9,6 +9,7 @@ const kmlFiles = [
     { name: "01.01.25", path: "kml/Line_01_01_25.kml" }, 
     { name: "01.02.25", path: "kml/Line_01_02_25.kml" },
     { name: "01.03.25", path: "kml/Line_01_03_25.kml" },
+    { name: "03.04.25", path: "kml/Line_03_04_25.kml" },
     { name: "20.03.25", path: "kml/file2.kml" },
     { name: "01.04.25", path: "kml/file4.kml" },
     { name: "05.04.25", path: "kml/file5.kml" },
