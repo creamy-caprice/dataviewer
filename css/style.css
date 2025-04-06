@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.date-navigator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.date-selector {
+    width: 120px; /* Фиксированная ширина для календаря */
+    flex-shrink: 0;
+}
+
+#date-picker {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.nav-btn {
+    padding: 10px 12px; /* Уменьшенный padding */
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    flex-shrink: 0;
+    min-width: 40px; /* Минимальная ширина кнопок */
+    text-align: center;
+}
+
+.nav-btn:hover {
+    background: #e0e0e0;
+}
+
+.nav-btn:disabled {
+    background: #f8f8f8;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 600px) {
+    .date-navigator {
+        gap: 3px;
+    }
+    
+    .date-selector {
+        width: 100px;
+    }
+    
+    .nav-btn {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
+/* Стили для постоянного KML-слоя */
+:root {
+    --permanent-layer-color: #FF0000;
+    --permanent-layer-weight: 3;
+    --permanent-layer-opacity: 0.7;
+    --permanent-layer-fill: #FF9999;
+    --permanent-layer-fill-opacity: 0.3;
+}
+
+/* Стиль для постоянного слоя (доступен в JS через window.permanentLayerStyle) */
+.permanent-layer-style {
+    color: var(--permanent-layer-color);
+    weight: var(--permanent-layer-weight);
+    opacity: var(--permanent-layer-opacity);
+    fillColor: var(--permanent-layer-fill);
+    fillOpacity: var(--permanent-layer-fill-opacity);
+}
+
+/* Стили для календаря */
+.flatpickr-day {
+    transition: all 0.2s;
+}
+
+.flatpickr-day.available {
+    background-color: #e6f7ff;
+    font-weight: bold;
+}
+
+.flatpickr-day.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Стили для блока поиска по координатам */
+.coordinates-search {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.coord-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px; 
+}
+
+#cities-dropdown {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px;
+}
+
+.current-center {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+#current-center-coords {
+    font-family: monospace;
+    background: #f5f5f5;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+#copy-coords-btn {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#copy-coords-btn:hover {
+    background: #f0f0f0;
+}
+
+#copy-coords-btn:active {
+    background: #e0e0e0;
+}
+
+/* стили для переключателя языков */
+.language-switcher {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    gap: 5px;
+}
+
+.lang-btn {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.2s;
+}
+
+.lang-btn:hover {
+    background: #f0f0f0;
+}
+
+.lang-btn.active {
+    background: #e0e0e0;
+    border-color: #999;
+}
