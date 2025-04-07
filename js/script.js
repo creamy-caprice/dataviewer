@@ -23,13 +23,13 @@ const permanentLayerData = {
 
 // Список городов с координатами
 const cities = [
-    { name: "Суджа", lat: 51.19055, lng: 35.27082 },
-    { name: "Волчанск", lat: 50.288107, lng: 36.946217 },
-    { name: "Купянск", lat: 49.706396, lng: 37.616586 },
-    { name: "Боровая", lat: 49.38417, lng: 37.62086 },
-    { name: "Северск", lat: 48.868709, lng: 38.106425 },
-    { name: "Часов Яр", lat: 48.591656, lng: 37.820354 },
-    { name: "Дзержинск", lat: 48.398329, lng:  37.836634 }
+    { name: { ru: "Суджа",     en: "Sudzha"     }, lat: 51.19055,  lng: 35.27082   },
+    { name: { ru: "Волчанск",  en: "Volchansk"  }, lat: 50.288107, lng: 36.946217  },
+    { name: { ru: "Купянск",   en: "Kupyansk"   }, lat: 49.706396, lng: 37.616586  },
+    { name: { ru: "Боровая",   en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
+    { name: { ru: "Северск",   en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
+    { name: { ru: "Часов Яр",  en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
+    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng:  37.836634 }
 ];
 
 let currentLayer = null;
@@ -38,6 +38,8 @@ let currentIndex = kmlFiles.length - 1;
 let preserveZoom = false;
 
 let lastSelectedCity = null;
+const citiesDropdown = document.getElementById('cities-dropdown');
+const coordsInput = document.getElementById('coords-input');
 let currentCenterCoordsElement = document.getElementById('current-center-coords');
 let copyCoordsBtn = document.getElementById('copy-coords-btn');
 
@@ -51,34 +53,48 @@ function parseCustomDate(dateStr) {
 }
 
 // Инициализация календаря с ограничением доступных дат
-const datePicker = flatpickr("#date-picker", {
-    dateFormat: "d.m.y",
-    allowInput: true,
-    locale: "ru",
-    defaultDate: kmlFiles[kmlFiles.length - 1].name,
-    enable: [
-        // Разрешаем только даты, которые есть в kmlFiles
-        function(date) {
-            const dateStr = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth()+1).toString().padStart(2, '0')}.${date.getFullYear().toString().slice(-2)}`;
-            return availableDates.includes(dateStr);
+let datePicker;
+function initDatePicker() {
+    datePicker = flatpickr("#date-picker", {
+		locale: currentLang === 'ru' ? 'ru' : 'default',
+        dateFormat: "d.m.y",
+        allowInput: true,
+        locale: currentLang, // Используем текущий язык
+        defaultDate: kmlFiles[kmlFiles.length - 1].name,
+        enable: [
+            function(date) {
+                const dateStr = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth()+1).toString().padStart(2, '0')}.${date.getFullYear().toString().slice(-2)}`;
+                return availableDates.includes(dateStr);
+            }
+        ],
+        onChange: function(selectedDates, dateStr) {
+            const index = kmlFiles.findIndex(file => file.name === dateStr);
+            if (index !== -1) {
+                navigateTo(index);
+            }
+        },
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            const today = new Date();
+            const isToday = dayElem.dateObj.getDate() === today.getDate() && 
+                           dayElem.dateObj.getMonth() === today.getMonth() && 
+                           dayElem.dateObj.getFullYear() === today.getFullYear();
+            
+            if (isToday) {
+                dayElem.classList.add('today');
+            }
+            
+            const dateStr = `${dayElem.dateObj.getDate().toString().padStart(2, '0')}.${(dayElem.dateObj.getMonth()+1).toString().padStart(2, '0')}.${dayElem.dateObj.getFullYear().toString().slice(-2)}`;
+            
+            if (availableDates.includes(dateStr)) {
+                dayElem.classList.add('available');
+                
+                if (dateStr === kmlFiles[currentIndex].name) {
+                    dayElem.classList.add('selected');
+                }
+            }
         }
-    ],
-    onChange: function(selectedDates, dateStr) {
-        const index = kmlFiles.findIndex(file => file.name === dateStr);
-        if (index !== -1) {
-            navigateTo(index);
-        }
-    },
-    onDayCreate: function(dObj, dStr, fp, dayElem) {
-        // Подсвечиваем доступные даты
-        const dateStr = `${dayElem.dateObj.getDate().toString().padStart(2, '0')}.${(dayElem.dateObj.getMonth()+1).toString().padStart(2, '0')}.${dayElem.dateObj.getFullYear().toString().slice(-2)}`;
-        
-        if (availableDates.includes(dateStr)) {
-            dayElem.style.backgroundColor = '#e6f7ff';
-            dayElem.style.fontWeight = 'bold';
-        }
-    }
-});
+    });
+}
 
 // Функция для проверки валидности координат
 function isValidCoordinate(value, isLatitude) {
@@ -112,6 +128,21 @@ copyCoordsBtn.addEventListener('click', function() {
     }
 });
 
+// функция заполнения списка городов
+function populateCitiesDropdown() {
+    // Очищаем список, кроме первого элемента
+    while (citiesDropdown.options.length > 1) {
+        citiesDropdown.remove(1);
+    }
+    
+    // Добавляем города на текущем языке
+    cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city.name.ru; // Сохраняем русское название как значение
+        option.textContent = city.name[currentLang];
+        citiesDropdown.appendChild(option);
+    });
+}
 
 // Функция центрирования карты по координатам
 function centerMap(lat, lng) {
@@ -203,8 +234,6 @@ document.getElementById('last-btn').addEventListener('click', () => {
 });
 
 
-const coordsInput = document.getElementById('coords-input');
-
 // Обработчик ввода координат
 coordsInput.addEventListener('change', function() {
     const coords = this.value.split(',').map(coord => coord.trim());
@@ -224,12 +253,17 @@ coordsInput.addEventListener('change', function() {
 
 
 // Заполнение выпадающего списка городов
-const citiesDropdown = document.getElementById('cities-dropdown');
-cities.forEach(city => {
-    const option = document.createElement('option');
-    option.value = city.name;
-    option.textContent = city.name;
-    citiesDropdown.appendChild(option);
+document.getElementById('cities-dropdown').addEventListener('change', function() {
+    const selectedCityName = this.value;
+    if (!selectedCityName) return;
+    
+    // Ищем город по русскому названию (которое в value)
+    const city = cities.find(c => c.name.ru === selectedCityName);
+    if (city) {
+        document.getElementById('coords-input').value = `${city.lat}, ${city.lng}`;
+        centerMap(city.lat, city.lng);
+        this.value = "";
+    }
 });
 
 // Обработчик выбора города
@@ -314,7 +348,7 @@ function setLanguage(lang) {
     
     // Обновляем текст элементов
     document.getElementById('page-title').textContent = t.title;
-    document.getElementById('main-title').textContent = t.title;
+    // document.getElementById('main-title').textContent = t.title;
     document.getElementById('center-label').textContent = t.centerLabel;
     document.getElementById('coords-input').placeholder = t.coordsPlaceholder;
     document.getElementById('select-city-default').textContent = t.selectCity;
@@ -334,6 +368,15 @@ function setLanguage(lang) {
     // Обновляем классы активности
     document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
     document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+    
+    // Обновляем список городов
+    populateCitiesDropdown();
+	    
+    // Пересоздаем календарь с новым языком
+    if (datePicker) {
+        datePicker.destroy();
+    }
+    initDatePicker();
     
     // Если координаты не определены, обновляем текст
     if (document.getElementById('current-center-coords').textContent === 'не определен' || 
@@ -356,6 +399,9 @@ document.getElementById('lang-en').addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Загружаем постоянный слой
     loadPermanentKml();
+		
+    // Инициализируем календарь
+    initDatePicker();
     
     // Загружаем последний файл по умолчанию
     preserveZoom = false; // true - Всегда сохранять масштаб (если нужно полностью отключить автоматическое масштабирование)
