@@ -33,7 +33,7 @@ const cities = [
     { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.26194,  lng: 37.18388 },
     { name: { ru: "Великая Новосёлка", en: "Velikaya Novoselka" }, lat: 47.85361,  lng: 36.82555 },
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.65277,  lng: 36.27777   },
-    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 48.398329, lng: 37.836634  },
+    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.55333, lng: 35.78555  },
     { name: { ru: "Алёшки",    en: "Aleshki"    }, lat: 46.62166,  lng: 32.72527   }
 ];
 
