@@ -29,7 +29,8 @@ const cities = [
     { name: { ru: "Боровая",   en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
     { name: { ru: "Северск",   en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
     { name: { ru: "Часов Яр",  en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
-    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng:  37.836634 }
+    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng: 37.836634 },
+    { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.26194,  lng: 37.18388 }
 ];
 
 let currentLayer = null;
