@@ -7,6 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Основные KML-файлы
 const kmlFiles = [
     { name: "22.02.24", path: "kml/Line_22_02_24.kml" },
+    { name: "01.10.24", path: "kml/Line_24_10_01.kml" },
     { name: "01.11.24", path: "kml/Line_24_11_01.kml" },
     { name: "01.12.24", path: "kml/Line_24_12_01.kml" },
     { name: "01.01.25", path: "kml/Line_25_01_01.kml" }, 
