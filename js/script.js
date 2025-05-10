@@ -5,7 +5,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Основные KML-файлы
-const kmlFiles = [
+window.kmlFiles = [
     { name: "22.02.24", path: "kml/Line_22_02_24.kml" },
     { name: "01.07.24", path: "kml/Line_24_07_01.kml" },
     { name: "01.08.24", path: "kml/Line_24_08_01.kml" },
@@ -154,54 +154,229 @@ function populateCitiesDropdown() {
 }
 
 // Функция центрирования карты по координатам
+// async function centerMap(lat, lng) {
+    // const currentZoom = map.getZoom();
+    // map.setView([lat, lng], currentZoom);
+    
+    // // Обновляем поле ввода, если координаты изменились
+    // if (document.getElementById('coords-input').value !== `${lat}, ${lng}`) {
+        // document.getElementById('coords-input').value = `${lat}, ${lng}`;
+    // }
+// }
 function centerMap(lat, lng) {
     const currentZoom = map.getZoom();
     map.setView([lat, lng], currentZoom);
-    
-    // Обновляем поле ввода, если координаты изменились
-    if (coordsInput.value !== `${lat}, ${lng}`) {
-        coordsInput.value = `${lat}, ${lng}`;
-    }
+    document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+												 
+												 
+											 
+	 
 }
 
 // Загрузка постоянного KML-слоя
-function loadPermanentKml() {
-    permanentLayer = omnivore.kml(permanentLayerData.path)
-        .on('ready', function() {
-            permanentLayer.eachLayer(function(layer) {
-                if (layer.setStyle) {
-                    layer.setStyle(window.permanentLayerStyle);
-                }
-            });
-        })
-        .addTo(map);
+async function loadPermanentKml() {
+    try {
+        const layer = await omnivore.kml(permanentLayerData.path);
+								 
+        layer.eachLayer(function(featureLayer) {
+            if (featureLayer.setStyle) {
+                featureLayer.setStyle(window.permanentLayerStyle);
+            }
+        });
+        
+        permanentLayer = layer;
+        permanentLayer.addTo(map);
+    } catch (error) {
+        console.error("Ошибка загрузки постоянного KML:", error);
+    }
 }
 
-// Функция загрузки KML (сохраняет текущий масштаб)
-function loadKmlFile(file) {
+// Функция загрузки основного KML (с сохранением оригинальных стилей)
+async function loadKmlFile(file) {
     if (currentLayer) {
         map.removeLayer(currentLayer);
     }
-    
-    // Сохраняем текущий центр и зум перед загрузкой
+
+											  
     const currentCenter = map.getCenter();
     const currentZoom = map.getZoom();
-    
-    currentLayer = omnivore.kml(file.path)
-        .on('ready', () => {
-            if (!preserveZoom) {
-                map.fitBounds(currentLayer.getBounds());
-            } else {
-                // Восстанавливаем предыдущий центр и зум
-                map.setView(currentCenter, currentZoom);
-            }
-            preserveZoom = true; // После первой загрузки сохраняем масштаб
-        })
-        .addTo(map);
+
+    try {
+        const response = await fetch(file.path);
+        const kmlText = await response.text();
+        const parser = new DOMParser();
+        const kmlDoc = parser.parseFromString(kmlText, "text/xml");
+
+        const layerGroup = L.layerGroup().addTo(map);
+        currentLayer = layerGroup;
+
+        // Парсим все стили (включая StyleMap)
+        const styles = {};
+        const styleMaps = {};
+
+        // Обрабатываем обычные стили
+        kmlDoc.querySelectorAll('Style').forEach(style => {
+            const id = style.getAttribute('id');
+            styles[id] = {
+                line: parseLineStyle(style),
+                poly: parsePolyStyle(style)
+            };
+        });
+
+        // Обрабатываем StyleMap
+        kmlDoc.querySelectorAll('StyleMap').forEach(styleMap => {
+            const id = styleMap.getAttribute('id');
+            const pairs = {};
+            styleMap.querySelectorAll('Pair').forEach(pair => {
+                const key = pair.querySelector('key').textContent;
+                const styleUrl = pair.querySelector('styleUrl').textContent.replace('#', '');
+                pairs[key] = styleUrl;
+            });
+            styleMaps[id] = pairs;
+        });
+
+        let bounds = L.latLngBounds(); // Инициализация пустыми границами
+		// let bounds = null;
+
+		kmlDoc.querySelectorAll('Placemark').forEach(placemark => {
+			// Получаем стиль для Placemark
+			const styleUrl = placemark.querySelector('styleUrl')?.textContent.replace('#', '');
+			let style = { line: {}, poly: {} };
+			
+			if (styleUrl) {
+				// Проверяем StyleMap
+				if (styleMaps[styleUrl]) {
+					const normalStyleId = styleMaps[styleUrl].normal;
+					style = Object.assign(
+						{}, 
+						styles[normalStyleId]?.line || {},
+						styles[normalStyleId]?.poly || {}
+					);
+				} 
+				// Проверяем обычный стиль
+				else if (styles[styleUrl]) {
+					style = Object.assign(
+						{}, 
+						styles[styleUrl].line || {},
+						styles[styleUrl].poly || {}
+					);
+				}
+			}
+
+			// Обработка LineString
+			const lineString = placemark.querySelector('LineString');
+			if (lineString) {
+				const coords = parseCoordinates(lineString);
+				if (coords.length < 2) return;
+
+				const polyline = L.polyline(coords, {
+					color: style.color || '#3388ff',
+					weight: style.weight || 3,
+					opacity: style.opacity || 1
+				}).addTo(layerGroup);
+
+				if (polyline.getBounds().isValid()) {
+					bounds.extend(polyline.getBounds());
+				}
+			}
+
+			// Обработка Polygon
+			const polygon = placemark.querySelector('Polygon');
+			if (polygon) {
+				const coords = parseCoordinates(polygon.querySelector('LinearRing'));
+				if (coords.length < 3) return;
+
+				const poly = L.polygon(coords, {
+					color: style.color || '#3388ff',
+					weight: style.weight || 3,
+					fillColor: style.fillColor || '#3388ff',
+					fillOpacity: style.fillOpacity || 0.5
+				}).addTo(layerGroup);
+
+				if (poly.getBounds().isValid()) {
+					bounds.extend(poly.getBounds());
+				}
+			}
+		});
+
+		if (bounds.isValid()) {
+			const sw = bounds.getSouthWest();
+			const ne = bounds.getNorthEast();
+			const isNotPoint = sw.lat !== ne.lat || sw.lng !== ne.lng;
+			
+			if (!preserveZoom && isNotPoint) {
+				map.fitBounds(bounds);
+			} else {
+				map.setView(currentCenter, currentZoom);
+			}
+		} else {
+			map.setView(currentCenter, currentZoom);
+		}
+		preserveZoom = true;
+    } catch (error) {
+        console.error("Ошибка загрузки KML:", error);
+    }
+
+    // Вспомогательные функции
+    function parseLineStyle(style) {
+        const lineStyle = style.querySelector('LineStyle');
+        if (!lineStyle) return null;
+        
+        return {
+            color: parseColor(lineStyle.querySelector('color')?.textContent || '#3388ff'),
+            weight: parseFloat(lineStyle.querySelector('width')?.textContent || '3'),
+            opacity: parseOpacity(lineStyle.querySelector('color')?.textContent)
+        };
+    }
+
+    function parsePolyStyle(style) {
+        const polyStyle = style.querySelector('PolyStyle');
+        if (!polyStyle) return null;
+
+        return {
+            fillColor: parseColor(polyStyle.querySelector('color')?.textContent || '#3388ff'),
+            fillOpacity: parseOpacity(polyStyle.querySelector('color')?.textContent)
+        };
+    }
+
+    function parseCoordinates(element) {
+        const coordinates = element?.querySelector('coordinates')?.textContent;
+        if (!coordinates) return [];
+        
+        return coordinates
+            .trim()
+            .split(/\s+/)
+            .map(coord => {
+                const [lng, lat] = coord.split(',').map(Number);
+                return [lat, lng];
+            });
+    }
+
+    function parseColor(kmlColor) {
+        if (!kmlColor) return '#3388ff';
+        // Конвертация ABGR в RGBA (пример: ff0000ff -> #ff0000)
+        const a = kmlColor.substr(0, 2);
+        const b = kmlColor.substr(2, 2);
+        const g = kmlColor.substr(4, 2);
+        const r = kmlColor.substr(6, 2);
+        return `#${r}${g}${b}`;
+    }
+
+    function parseOpacity(kmlColor) {
+        if (!kmlColor) return 1;
+        const alpha = parseInt(kmlColor.substr(0, 2), 16) / 255;
+        return alpha.toFixed(2);
+    }
+
+    function updateBounds(layer) {
+        if (layer.getBounds) {
+            bounds = bounds ? bounds.extend(layer.getBounds()) : layer.getBounds();
+        }
+    }
 }
 
 // Навигация к определенному индексу
-function navigateTo(index) {
+async function navigateTo(index) {
     if (index < 0 || index >= kmlFiles.length) return;
     
     currentIndex = index;
@@ -211,7 +386,7 @@ function navigateTo(index) {
     datePicker.setDate(file.name, false);
     
     // Загружаем файл
-    loadKmlFile(file);
+    await loadKmlFile(file);
     
     // Обновляем состояние кнопок
     updateButtons();
@@ -225,21 +400,21 @@ function updateButtons() {
     document.getElementById('last-btn').disabled = currentIndex === kmlFiles.length - 1;
 }
 
-// Обработчики кнопок
-document.getElementById('first-btn').addEventListener('click', () => {
-    navigateTo(0);
+// Обработчики кнопок навигации
+document.getElementById('first-btn').addEventListener('click', async () => {
+    await navigateTo(0).catch(console.error);
 });
 
-document.getElementById('prev-btn').addEventListener('click', () => {
-    navigateTo(currentIndex - 1);
+document.getElementById('prev-btn').addEventListener('click', async () => {
+    await navigateTo(currentIndex - 1).catch(console.error);
 });
 
-document.getElementById('next-btn').addEventListener('click', () => {
-    navigateTo(currentIndex + 1);
+document.getElementById('next-btn').addEventListener('click', async () => {
+    await navigateTo(currentIndex + 1).catch(console.error);
 });
 
-document.getElementById('last-btn').addEventListener('click', () => {
-    navigateTo(kmlFiles.length - 1);
+document.getElementById('last-btn').addEventListener('click', async () => {
+    await navigateTo(kmlFiles.length - 1).catch(console.error);
 });
 
 
@@ -262,11 +437,12 @@ coordsInput.addEventListener('change', function() {
 
 
 // Заполнение выпадающего списка городов
-document.getElementById('cities-dropdown').addEventListener('change', function() {
+// Обработчик выбора города
+document.getElementById('cities-dropdown').addEventListener('change', async function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
     
-    // Ищем город по русскому названию (которое в value)
+											  
     const city = cities.find(c => c.name.ru === selectedCityName);
     if (city) {
         document.getElementById('coords-input').value = `${city.lat}, ${city.lng}`;
@@ -403,22 +579,30 @@ document.getElementById('lang-en').addEventListener('click', () => {
     if (currentLang !== 'en') setLanguage('en');
 });
 
+async function init() {
+    try {
+        // Инициализируем календарь
+        initDatePicker();
+		
+        // Загружаем постоянный слой
+        await loadPermanentKml();
+        
+        // Загружаем последний файл по умолчанию
+        preserveZoom = false;
+        await navigateTo(kmlFiles.length - 1);        
+        
+        // Устанавливаем русский язык по умолчанию
+        setLanguage('ru');
+    } catch (error) {
+        console.error("Ошибка инициализации:", error);
+    }
+}
 
 // Инициализация при загрузке
-document.addEventListener('DOMContentLoaded', () => {
-    // Загружаем постоянный слой
-    loadPermanentKml();
-		
-    // Инициализируем календарь
-    initDatePicker();
-    
-    // Загружаем последний файл по умолчанию
-    preserveZoom = false; // true - Всегда сохранять масштаб (если нужно полностью отключить автоматическое масштабирование)
-    navigateTo(kmlFiles.length - 1);
-	
-    // Инициализируем отображение центра
-    updateCurrentCenterDisplay();    
-	
-	// Устанавливаем русский язык по умолчанию
-    setLanguage('ru');
-});
+// document.addEventListener('DOMContentLoaded', () => {
+    // init();
+					   
+  
+// });
+document.addEventListener('DOMContentLoaded', init);					   
+				
