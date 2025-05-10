@@ -163,14 +163,60 @@ function populateCitiesDropdown() {
         // document.getElementById('coords-input').value = `${lat}, ${lng}`;
     // }
 // }
+let highlightMarker = null;
+let highlightTimeout = null;
+let highlightAnimationInterval = null;
+
 function centerMap(lat, lng) {
     const currentZoom = map.getZoom();
     map.setView([lat, lng], currentZoom);
     document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-												 
-												 
-											 
-	 
+
+    // Очищаем предыдущие элементы анимации
+    if (highlightMarker) {
+        map.removeLayer(highlightMarker);
+        highlightMarker = null;
+    }
+    if (highlightAnimationInterval) {
+        clearInterval(highlightAnimationInterval);
+    }
+    if (highlightTimeout) {
+        clearTimeout(highlightTimeout);
+    }
+
+    // Параметры анимации
+    const startRadius = 10000; // Начальный радиус 10 км
+    const endRadius = 200;    // Конечный радиус 200 м
+    const duration = 2500;    // Длительность анимации 2,5 секунды
+    const steps = 100;         // Количество шагов анимации
+
+    // Создаем временный маркер
+    highlightMarker = L.circle([lat, lng], {
+        color: '#ff4444',
+        fillColor: '#ff7777',
+        fillOpacity: 0.3,
+        radius: startRadius
+    }).addTo(map);
+
+    // Анимация уменьшения
+    let currentStep = 0;
+    highlightAnimationInterval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const currentRadius = startRadius - (startRadius - endRadius) * progress;
+        
+        highlightMarker.setRadius(currentRadius);
+        
+        if (currentStep >= steps) {
+            clearInterval(highlightAnimationInterval);
+        }
+    }, duration / steps);
+
+    // Удаление через 5 секунд
+    highlightTimeout = setTimeout(() => {
+        map.removeLayer(highlightMarker);
+        highlightMarker = null;
+    }, 5000);
 }
 
 // Загрузка постоянного KML-слоя
