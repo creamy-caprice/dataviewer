@@ -2,74 +2,126 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>Polygon</name>
-    <Style id="poly-0000FF-1-53-normal">
+    <Style id="poly-0000FF-1-23-normal">
       <LineStyle>
         <color>ffff0000</color>
         <width>0.001</width>
       </LineStyle>
       <PolyStyle>
-        <color>15ff0000</color>
+        <color>17ff0000</color>
         <fill>1</fill>
         <outline>1</outline>
       </PolyStyle>
     </Style>
-    <Style id="poly-0000FF-1-53-highlight">
+    <Style id="poly-0000FF-1-23-highlight">
       <LineStyle>
         <color>ffff0000</color>
         <width>0.0015</width>
       </LineStyle>
       <PolyStyle>
-        <color>15ff0000</color>
+        <color>17ff0000</color>
         <fill>1</fill>
         <outline>1</outline>
       </PolyStyle>
     </Style>
-    <StyleMap id="poly-0000FF-1-53">
+    <StyleMap id="poly-0000FF-1-23">
       <Pair>
         <key>normal</key>
-        <styleUrl>#poly-0000FF-1-53-normal</styleUrl>
+        <styleUrl>#poly-0000FF-1-23-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#poly-0000FF-1-53-highlight</styleUrl>
+        <styleUrl>#poly-0000FF-1-23-highlight</styleUrl>
       </Pair>
     </StyleMap>
-    <Style id="poly-FF0000-1-64-normal">
+    <Style id="poly-254902-2000-128-normal">
+      <LineStyle>
+        <color>ff024925</color>
+        <width>2</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>80024925</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-254902-2000-128-highlight">
+      <LineStyle>
+        <color>ff024925</color>
+        <width>3</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>80024925</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-254902-2000-128">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-254902-2000-128-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-254902-2000-128-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-FF0000-1-15-normal">
       <LineStyle>
         <color>ff0000ff</color>
         <width>0.001</width>
       </LineStyle>
       <PolyStyle>
-        <color>400000ff</color>
+        <color>0f0000ff</color>
         <fill>1</fill>
         <outline>1</outline>
       </PolyStyle>
     </Style>
-    <Style id="poly-FF0000-1-64-highlight">
+    <Style id="poly-FF0000-1-15-highlight">
       <LineStyle>
         <color>ff0000ff</color>
         <width>0.0015</width>
       </LineStyle>
       <PolyStyle>
-        <color>400000ff</color>
+        <color>0f0000ff</color>
         <fill>1</fill>
         <outline>1</outline>
       </PolyStyle>
     </Style>
-    <StyleMap id="poly-FF0000-1-64">
+    <StyleMap id="poly-FF0000-1-15">
       <Pair>
         <key>normal</key>
-        <styleUrl>#poly-FF0000-1-64-normal</styleUrl>
+        <styleUrl>#poly-FF0000-1-15-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#poly-FF0000-1-64-highlight</styleUrl>
+        <styleUrl>#poly-FF0000-1-15-highlight</styleUrl>
       </Pair>
     </StyleMap>
     <Placemark>
+      <name>Union Polygon_3</name>
+      <description>Area: 76 572,508 m², no description</description>
+      <styleUrl>#poly-254902-2000-128</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              27.523268,51.603199,0
+              27.524845,51.605064,0
+              27.526546,51.607244,0
+              27.522383,51.607148,0
+              27.521591,51.607119,0
+              27.523268,51.603199,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
       <name>Union Polygon_0_0_0_0</name>
       <description>Area: 509 242 767 167,917 m², no description</description>
-      <styleUrl>#poly-FF0000-1-64</styleUrl>
+      <styleUrl>#poly-FF0000-1-15</styleUrl>
       <Polygon>
         <outerBoundaryIs>
           <LinearRing>
@@ -5084,7 +5136,7 @@
     <Placemark>
       <name>Union Polygon_0_0_0_1</name>
       <description>Area: 492 599 185 359,805 m², no description</description>
-      <styleUrl>#poly-0000FF-1-53</styleUrl>
+      <styleUrl>#poly-0000FF-1-23</styleUrl>
       <Polygon>
         <outerBoundaryIs>
           <LinearRing>
