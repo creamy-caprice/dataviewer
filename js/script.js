@@ -17,8 +17,8 @@ window.kmlFiles = [
     { name: "01.01.25", path: "kml/Line_25_01_01.kml" }, 
     { name: "01.02.25", path: "kml/Line_25_02_01.kml" },
     { name: "01.03.25", path: "kml/Line_25_03_01.kml" },
-    { name: "03.04.25", path: "kml/Line_25_04_03.kml" }
-    
+    { name: "03.04.25", path: "kml/Line_25_04_03.kml" },
+	{ name: "01.05.25", path: "kml/Conrol_25_05_01.kml" }    
 ];
 
 // Постоянный слой
