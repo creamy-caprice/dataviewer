@@ -2,37 +2,37 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>Линия фронта / раздела</name>
-    <Style id="line-F57C00-2356-nodesc-normal">
+    <Style id="line-FF5252-3000-nodesc-normal">
       <LineStyle>
-        <color>ffff0000</color>
-        <width>2.356</width>
+        <color>ff5252ff</color>
+        <width>3</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="line-F57C00-2356-nodesc-highlight">
+    <Style id="line-FF5252-3000-nodesc-highlight">
       <LineStyle>
-        <color>ffff0000</color>
-        <width>3.534</width>
+        <color>ff5252ff</color>
+        <width>4.5</width>
       </LineStyle>
       <BalloonStyle>
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <StyleMap id="line-F57C00-2356-nodesc">
+    <StyleMap id="line-FF5252-3000-nodesc">
       <Pair>
         <key>normal</key>
-        <styleUrl>#line-F57C00-2356-nodesc-normal</styleUrl>
+        <styleUrl>#line-FF5252-3000-nodesc-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#line-F57C00-2356-nodesc-highlight</styleUrl>
+        <styleUrl>#line-FF5252-3000-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
     <Placemark>
       <name>до 24.02.2022 г.</name>
-      <styleUrl>#line-F57C00-2356-nodesc</styleUrl>
+      <styleUrl>#line-FF5252-3000-nodesc</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
         <coordinates>
