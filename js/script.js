@@ -6,17 +6,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Основные KML-файлы
 window.kmlFiles = [
-    { name: "01.02.25", path: "kml/Control_25_02_01.kml" },
-    { name: "01.03.25", path: "kml/Control_25_03_01.kml" },
-    { name: "01.04.25", path: "kml/Control_25_04_01.kml" },
-    { name: "01.05.25", path: "kml/Control_25_05_01.kml" },
-	{ name: "02.05.25", path: "kml/Control_25_05_02.kml" },
-	{ name: "06.05.25", path: "kml/Control_25_05_06.kml" },
-	{ name: "10.05.25", path: "kml/Control_25_05_10.kml" },
-	{ name: "14.05.25", path: "kml/Control_25_05_14.kml" },
-	{ name: "18.05.25", path: "kml/Control_25_05_18.kml" },
-	{ name: "22.05.25", path: "kml/Control_25_05_22.kml" },
-	{ name: "26.05.25", path: "kml/Control_25_05_26.kml" }
+    { name: "01.10.24", path: "kml/Line_24_10_01.kml" },
+    { name: "01.11.24", path: "kml/Line_24_11_01.kml" },
+    { name: "01.12.24", path: "kml/Line_24_12_01.kml" },
+    { name: "01.01.25", path: "kml/Line_25_01_01.kml" }, 
+    { name: "01.02.25", path: "kml/Line_25_02_01.kml" },
+    { name: "01.03.25", path: "kml/Line_25_03_01.kml" },
+    { name: "03.04.25", path: "kml/Line_25_04_03.kml" }
+    
 ];
 
 // Постоянный слой
@@ -32,12 +29,7 @@ const cities = [
     { name: { ru: "Боровая",   en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
     { name: { ru: "Северск",   en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
     { name: { ru: "Часов Яр",  en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
-    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng: 37.836634  },
-    { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.26194,  lng: 37.18388 },
-    { name: { ru: "Великая Новосёлка", en: "Velikaya Novoselka" }, lat: 47.85361,  lng: 36.82555 },
-    { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.65277,  lng: 36.27777   },
-    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.55333,  lng: 35.78555   },
-    { name: { ru: "Алёшки",    en: "Aleshki"    }, lat: 46.62166,  lng: 32.72527   }
+    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng:  37.836634 }
 ];
 
 let currentLayer = null;
@@ -162,6 +154,7 @@ function populateCitiesDropdown() {
         // document.getElementById('coords-input').value = `${lat}, ${lng}`;
     // }
 // }
+
 let highlightMarker = null;
 let highlightTimeout = null;
 let highlightAnimationInterval = null;
@@ -184,9 +177,9 @@ function centerMap(lat, lng) {
     }
 
     // Параметры анимации
-    const startRadius = 10000; // Начальный радиус 10 км
+    const startRadius = 10000; // Начальный радиус 2 км
     const endRadius = 200;    // Конечный радиус 200 м
-    const duration = 2500;    // Длительность анимации 2,5 секунды
+    const duration = 2500;    // Длительность анимации 2 секунды
     const steps = 100;         // Количество шагов анимации
 
     // Создаем временный маркер
@@ -222,7 +215,6 @@ function centerMap(lat, lng) {
 async function loadPermanentKml() {
     try {
         const layer = await omnivore.kml(permanentLayerData.path);
-								 
         layer.eachLayer(function(featureLayer) {
             if (featureLayer.setStyle) {
                 featureLayer.setStyle(window.permanentLayerStyle);
@@ -242,7 +234,6 @@ async function loadKmlFile(file) {
         map.removeLayer(currentLayer);
     }
 
-											  
     const currentCenter = map.getCenter();
     const currentZoom = map.getZoom();
 
@@ -487,7 +478,6 @@ document.getElementById('cities-dropdown').addEventListener('change', async func
     const selectedCityName = this.value;
     if (!selectedCityName) return;
     
-											  
     const city = cities.find(c => c.name.ru === selectedCityName);
     if (city) {
         document.getElementById('coords-input').value = `${city.lat}, ${city.lng}`;
@@ -542,7 +532,7 @@ map.on('moveend', function() {
 // Добавьте объект с переводами
 const translations = {
     ru: {
-        title: "Сливочный каприз dataviewer",
+        title: "  dataviewer",
         centerLabel: "Центрировать на:",
         coordsPlaceholder: "Широта, Долгота (например: 55.7558, 37.6173)",
         selectCity: "Выберите город",
@@ -555,7 +545,7 @@ const translations = {
         lastBtnTitle: "Последний"
     },
     en: {
-        title: "Creamy caprice dataviewer",
+        title: "  dataviewer",
         centerLabel: "Center on:",
         coordsPlaceholder: "Latitude, Longitude (e.g.: 55.7558, 37.6173)",
         selectCity: "Select city",
@@ -646,8 +636,46 @@ async function init() {
 // Инициализация при загрузке
 // document.addEventListener('DOMContentLoaded', () => {
     // init();
-					   
-  
 // });
-document.addEventListener('DOMContentLoaded', init);					   
-				
+document.addEventListener('DOMContentLoaded', init);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mapBtn = document.getElementById('map-btn');
+    const stats1Btn = document.getElementById('stats1-btn');
+    const stats2Btn = document.getElementById('stats2-btn');
+    
+    const mapContainer = document.getElementById('map-container');
+    const stats1Container = document.getElementById('stats1-container');
+    const stats2Container = document.getElementById('stats2-container');
+    
+    function switchView(activeBtn, activeContainer) {
+        // Сбрасываем активное состояние у всех кнопок и контейнеров
+        [mapBtn, stats1Btn, stats2Btn].forEach(btn => btn.classList.remove('active'));
+        [mapContainer, stats1Container, stats2Container].forEach(container => {
+            container.classList.remove('active');
+            container.style.display = 'none'; // Явное скрытие
+        });
+        
+        // Устанавливаем активное состояние
+        activeBtn.classList.add('active');
+        activeContainer.classList.add('active');
+        activeContainer.style.display = 'block';
+        
+        // Для контейнера карты используем flex-раскладку
+        if (activeContainer === mapContainer) {
+            activeContainer.style.display = 'flex';
+        }
+        
+        // Перерисовываем карту при возвращении на вкладку
+        if (activeContainer === mapContainer && window.map) {
+            setTimeout(() => {
+                window.map.invalidateSize();
+            }, 100);
+        }
+    }
+    
+    // Обработчики кнопок
+    mapBtn.addEventListener('click', () => switchView(mapBtn, mapContainer));
+    stats1Btn.addEventListener('click', () => switchView(stats1Btn, stats1Container));
+    stats2Btn.addEventListener('click', () => switchView(stats2Btn, stats2Container));
+});
