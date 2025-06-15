@@ -532,7 +532,7 @@ map.on('moveend', function() {
 // Добавьте объект с переводами
 const translations = {
     ru: {
-        title: "  dataviewer",
+        title: "Сливочный каприз dataviewer",
         centerLabel: "Центрировать на:",
         coordsPlaceholder: "Широта, Долгота (например: 55.7558, 37.6173)",
         selectCity: "Выберите город",
@@ -545,7 +545,7 @@ const translations = {
         lastBtnTitle: "Последний"
     },
     en: {
-        title: "  dataviewer",
+        title: "Creamy caprice dataviewer",
         centerLabel: "Center on:",
         coordsPlaceholder: "Latitude, Longitude (e.g.: 55.7558, 37.6173)",
         selectCity: "Select city",
