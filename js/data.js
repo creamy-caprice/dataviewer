@@ -1,9 +1,9 @@
 // Основные KML-файлы
 window.kmlFiles = [
 	{ name: "01.02.25", path: "kml/Control_25_02_01.kml" },
-    { name: "01.03.25", path: "kml/Control_25_03_01.kml" },
+    	{ name: "01.03.25", path: "kml/Control_25_03_01.kml" },
    	{ name: "01.04.25", path: "kml/Control_25_04_01.kml" },
-    { name: "01.05.25", path: "kml/Control_25_05_01.kml" },
+    	{ name: "01.05.25", path: "kml/Control_25_05_01.kml" },
 	{ name: "02.05.25", path: "kml/Control_25_05_02.kml" },
 	{ name: "06.05.25", path: "kml/Control_25_05_06.kml" },
 	{ name: "10.05.25", path: "kml/Control_25_05_10.kml" },
