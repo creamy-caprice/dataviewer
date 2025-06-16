@@ -7,9 +7,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Основные KML-файлы
 window.kmlFiles = [
 	{ name: "01.02.25", path: "kml/Control_25_02_01.kml" },
-    	{ name: "01.03.25", path: "kml/Control_25_03_01.kml" },
+    { name: "01.03.25", path: "kml/Control_25_03_01.kml" },
    	{ name: "01.04.25", path: "kml/Control_25_04_01.kml" },
-    	{ name: "01.05.25", path: "kml/Control_25_05_01.kml" },
+    { name: "01.05.25", path: "kml/Control_25_05_01.kml" },
 	{ name: "02.05.25", path: "kml/Control_25_05_02.kml" },
 	{ name: "06.05.25", path: "kml/Control_25_05_06.kml" },
 	{ name: "10.05.25", path: "kml/Control_25_05_10.kml" },
@@ -17,7 +17,7 @@ window.kmlFiles = [
 	{ name: "18.05.25", path: "kml/Control_25_05_18.kml" },
 	{ name: "22.05.25", path: "kml/Control_25_05_22.kml" },
 	{ name: "26.05.25", path: "kml/Control_25_05_26.kml" }  
-	];
+];
 
 // Постоянный слой
 const permanentLayerData = {
@@ -545,7 +545,10 @@ const translations = {
         firstBtnTitle: "Первый",
         prevBtnTitle: "Предыдущий",
         nextBtnTitle: "Следующий",
-        lastBtnTitle: "Последний"
+        lastBtnTitle: "Последний",
+        viewSwitchMap: "Карта",
+        viewSwitchSt1: "Статистика1",
+        viewSwitchSt2: "Статистика2"
     },
     en: {
         title: "Creamy caprice dataviewer",
@@ -558,7 +561,10 @@ const translations = {
         firstBtnTitle: "First",
         prevBtnTitle: "Previous",
         nextBtnTitle: "Next",
-        lastBtnTitle: "Last"
+        lastBtnTitle: "Last",
+        viewSwitchMap: "Map",
+        viewSwitchSt1: "Statistics1",
+        viewSwitchSt2: "Statistics2"
     }
 };
 
@@ -577,6 +583,10 @@ function setLanguage(lang) {
     document.getElementById('select-city-default').textContent = t.selectCity;
     document.getElementById('current-center-label').textContent = t.currentCenter;
     document.getElementById('copy-coords-btn').title = t.copyTooltip;
+	
+    document.getElementById('map-btn').textContent = t.viewSwitchMap;
+    document.getElementById('stats1-btn').textContent = t.viewSwitchSt1;
+    document.getElementById('stats2-btn').textContent = t.viewSwitchSt2;
     
     // Обновляем кнопки навигации
     document.getElementById('first-btn').title = t.firstBtnTitle;
