@@ -13,7 +13,7 @@ const translations = {
         nextBtnTitle: "Следующий",
         lastBtnTitle: "Последний",
         viewSwitchMap: "Карта",
-        viewSwitchSt1: "Статистика1",
+        viewSwitchSt1: "Статистика",
         viewSwitchSt2: "Потери ВСУ"
     },
     en: {
@@ -28,8 +28,8 @@ const translations = {
         prevBtnTitle: "Previous",
         nextBtnTitle: "Next",
         lastBtnTitle: "Last",
-        viewSwitchMap: "Map",
-        viewSwitchSt1: "Statistics1",
+        viewSwitchMap: " Map ",
+        viewSwitchSt1: "Statistics",
         viewSwitchSt2: "Ua losses"
     }
 };
