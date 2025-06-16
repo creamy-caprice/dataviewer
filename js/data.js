@@ -14,9 +14,11 @@ window.kmlFiles = [
 ];
 
 // Постоянный слой
-const permanentLayerData = {
-    name: "24.02.22", path: "kml/LDPR.kml"
-};
+const permanentLayerData = [
+	{name: "24.02.22", path: "kml/LDPR.kml"},
+	{name: "23.02.22", path: "kml/FrontLine_25_02_01.kml"}
+	
+];
 
 // Список городов с координатами
 const cities = [
