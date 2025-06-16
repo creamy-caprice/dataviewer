@@ -30,7 +30,7 @@ const translations = {
         lastBtnTitle: "Last",
         viewSwitchMap: "Map",
         viewSwitchSt1: "Statistics1",
-        viewSwitchSt2: "Statistics2"
+        viewSwitchSt2: "Ua losses"
     }
 };
 
