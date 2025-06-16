@@ -14,7 +14,7 @@ const translations = {
         lastBtnTitle: "Последний",
         viewSwitchMap: "Карта",
         viewSwitchSt1: "Статистика1",
-        viewSwitchSt2: "Статистика2"
+        viewSwitchSt2: "Потери ВСУ"
     },
     en: {
         title: "  dataviewer",
