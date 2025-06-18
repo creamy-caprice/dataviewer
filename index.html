@@ -6,6 +6,7 @@
     <title id="page-title">Creamy caprice dataviewer</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<link rel="icon" href="data:,"> <!-- Пустая favicon для избежания 404 -->
     <!-- Разделенные CSS-файлы -->
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/map.css">
@@ -90,23 +91,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/l10n/ru.min.js"></script>
     <!-- Для английского -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.9/dist/l10n/default.min.js"></script>
-    
-    <script>
-        // Делаем стиль permanent доступным в JavaScript
-        window.permanentLayerStyle = {
-            color: getComputedStyle(document.documentElement)
-                .getPropertyValue('--permanent-layer-color').trim(),
-            weight: parseInt(getComputedStyle(document.documentElement)
-                .getPropertyValue('--permanent-layer-weight').trim()),
-            opacity: parseFloat(getComputedStyle(document.documentElement)
-                .getPropertyValue('--permanent-layer-opacity').trim()),
-            fillColor: getComputedStyle(document.documentElement)
-                .getPropertyValue('--permanent-layer-fill').trim(),
-            fillOpacity: parseFloat(getComputedStyle(document.documentElement)
-                .getPropertyValue('--permanent-layer-fill-opacity').trim())
-        };
-    </script>
-    
+        
     <script src="js/data.js"></script>
     <script src="js/language.js"></script>
     <script src="js/script.js"></script>
