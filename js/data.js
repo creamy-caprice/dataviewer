@@ -35,5 +35,9 @@ window.cities = [
     { name: { ru: "Боровая",   en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
     { name: { ru: "Северск",   en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
     { name: { ru: "Часов Яр",  en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
-    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng:  37.836634 }
+    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng: 37.836634  },
+    { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.28566, lng:  37.17605 },
+    { name: { ru: "Великая Новосёлка", en: "Velikaya Novoselka" }, lat: 47.83857, lng:  36.83697 },
+    { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
+    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  }
 ];
