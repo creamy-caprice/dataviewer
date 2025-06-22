@@ -23,7 +23,7 @@ window.kmlFiles = [
 // Постоянные слои
 window.permanentLayers = [
     { name: "24.02.23", path: "kml/PermanentObjects/LDPR.kml" },
-    { name: "24.02.24", path: "kml/FrontLine_25_06_15.kml" }
+    { name: "24.02.24", path: "kml/PermanentObjects/RuUaBorder.kml" }
        
 ];
 
