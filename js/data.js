@@ -16,7 +16,7 @@ window.kmlFiles = [
     { name: "03.06.25", path: "kml/Control_25_06_03.kml" },
     { name: "07.06.25", path: "kml/Control_25_06_07.kml" },
     { name: "11.06.25", path: "kml/Control_25_06_11.kml" },
-    { name: "15.06.25", path: "kml/Control_25_06_15.kml" },
+    { name: "15.06.25", path: "kml/ControlZones/Control_25_06_15.kml" },
     { name: "19.06.25", path: "kml/ControlZones/Control_25_06_19.kml" },
     { name: "23.06.25", path: "kml/ControlZones/Control_25_06_23.kml" }
 ];
