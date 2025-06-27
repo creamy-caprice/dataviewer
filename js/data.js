@@ -18,7 +18,8 @@ window.kmlFiles = [
     { name: "11.06.25", path: "kml/ControlZones/Control_25_06_11.kml" },
     { name: "15.06.25", path: "kml/ControlZones/Control_25_06_15.kml" },
     { name: "19.06.25", path: "kml/ControlZones/Control_25_06_19.kml" },
-    { name: "23.06.25", path: "kml/ControlZones/Control_25_06_23.kml" }
+    { name: "23.06.25", path: "kml/ControlZones/Control_25_06_23.kml" },
+    { name: "27.06.25", path: "kml/ControlZones/Control_25_06_27.kml" }
 ];
 
 // Постоянные слои
