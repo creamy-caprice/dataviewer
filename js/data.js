@@ -27,9 +27,9 @@ window.kmlFiles = [
 
 // Постоянные слои
 window.permanentLayers = [
-    { name: "24.02.23", path: "kml/PermanentObjects/LDPR.kml" },
-    { name: "24.02.24", path: "kml/PermanentObjects/RuUaBorder.kml" }
-       
+    { name: "LDPR", path: "kml/PermanentObjects/LDPR.kml" },
+    { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" }
+    
 ];
 
 // Список городов с координатами

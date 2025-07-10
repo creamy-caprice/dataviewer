@@ -1,21 +1,58 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  margin: 0; /* Убираем все отступы */
+  padding: 0; /* Убираем все внутренние отступы */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
 
 .header-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 15px;
+    width: 100%;
+    padding: 5px 10px;
+    /* gap: 10px; */
+    /* height: 60px; */
+}
+
+/* Для всех непосредственных детей header-container */
+.header-container > :not(.mobile-top-row) {
+    display: flex;
+    align-items: center; /* Центрируем содержимое каждого элемента */
+    min-height: 40px; /* Минимальная высота для выравнивания */
 }
 
 .title-section {
     display: flex;
     align-items: center;
-    gap: 15px;
+	margin-right: 20px;
+	flex-shrink: 0;
+}
+
+.title-section h1 {
+  font-family: 'Wallpoet', monospace;
+  color: #F51F0F;
+  font-size: 2.0rem;
+  letter-spacing: 1px;
+  margin: 0;
+  margin-right: 0px;
+}
+
+.mobile-title {
+    display: none;
+}
+
+/* Новый контейнер для навигации */
+.nav-wrapper {
+    flex: 1;
+    flex-grow: 1;
+    min-width: 0; /* Важно для правильного сжатия */
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
 }
 
 .content-section {
@@ -26,36 +63,412 @@ body {
     display: block;
 }
 
+#map-container {
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  flex-grow: 1; /* Занимает все доступное пространство */
+  display: flex;
+  flex-direction: column;
+}
+
 #map-container.active {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 120px);
 }
 
+
 #stats1-container,
 #stats2-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    height: calc(100vh - 120px);
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  flex-grow: 1; /* Занимает все доступное пространство */
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 #stats1-container iframe,
 #stats2-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 #map-container:not(.active),
 #stats1-container:not(.active),
 #stats2-container:not(.active) {
     display: none !important;
+}
+
+/* Общие стили верхней панели */
+.top-bar {
+  background: #dadada; /* серый цвет */
+  padding: 8px 15px;
+  margin: 0; /* внешние отступы */
+  display: flex;
+  align-items: center;
+  min-height: 60px; /* Фиксированная минимальная высота */
+  position: relative;
+  z-index: 1001; /* наложение */
+  /* flex-wrap: nowrap; */
+}
+
+
+/* Стили для кнопок */
+.view-btn, .nav-btn, .lang-btn {
+  padding: 0 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+  height: 40px;
+  width: auto; /* Важно - автоширина */
+}
+
+/* Стили для полей ввода */
+.date-selector input, .coord-input, #cities-dropdown {
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  width: auto;
+}
+
+/* Специально для поля координат */
+.coord-input {
+  width: 150px; /* Уже чем было */
+}
+
+/* Для выпадающего списка городов */
+#cities-dropdown {
+  width: 150px; /* Уже чем было */
+}
+
+/* Специальные стили для кнопок */
+.view-btn, .nav-btn, .lang-btn {
+  padding: 0 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.view-btn:hover, .nav-btn:hover, .lang-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.view-btn.active {
+  font-weight: bold;
+  background: rgba(0,0,0,0.1);
+}
+
+/* Стили для навигационной панели */
+.date-navigator {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    /* flex-grow: 1; */
+    /* Выравнивание по базовой линии для контейнера */
+    /* align-self: center; */
+}
+
+.language-switcher {
+    margin-left: auto;
+    flex-shrink: 0;
+    /* Убираем верхний отступ, если есть */
+    margin-top: 0;
+}
+
+/* Стили для полей ввода */
+.date-selector input, .coord-input, #cities-dropdown {
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.city-coord-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.current-center {
+  background: #f5f5f5;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+#copy-coords-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+/* Адаптивные стили */
+/* Когда перестаёт помещаться в одну строку */
+
+/* Стили для двухстрочного макета */
+.mobile-top-row {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1px;
+    margin: 0;
+}
+
+@media (max-width: 825px) {
+    .header-container {
+        flex-direction: column;
+        /* gap: 10px; */
+    }
+    
+    .mobile-top-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        /* margin-bottom: 10px; */
+    }
+    
+    /* Скрываем оригинальные элементы */
+    .view-menu-container:not(.mobile),
+    .title-section:not(.mobile),
+    .language-switcher:not(.mobile) {
+        display: none !important;
+    }
+    
+    /* Отображаем элементы в мобильной строке */
+    .mobile-top-row > .view-menu-container,
+    .mobile-top-row > .title-section,
+    .mobile-top-row > .language-switcher {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+/*
+    .mobile-top-row > .title-section {
+        flex-grow: 1;
+        justify-content: center;
+        margin: 0 10px;
+    }
+*/
+    
+/*
+    .view-menu-container, 
+    .title-section, 
+    .language-switcher {
+        flex-shrink: 0;
+    }
+*/
+    
+    .title-section h1 {
+        display: none;
+    }
+    
+    .mobile-title {
+        display: inline !important;
+        font-size: 1.5rem;
+        
+        font-family: 'Wallpoet', monospace;
+        color: #F51F0F;
+        letter-spacing: 1px;
+        margin: 0;
+        margin-right: 0;
+    }
+    
+    .nav-wrapper {
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  flex-grow: 1; /* Занимает все доступное пространство */
+  /* width:100%; */
+        flex-wrap: nowrap; /* Запрещаем перенос элементов */
+    }
+    
+    .date-navigator {
+    display: content;
+    align-items: center;
+    gap: 0;
+    
+    
+        flex-wrap: nowrap; /* Запрещаем перенос элементов */
+
+
+
+    
+    }
+	
+	.top-bar{
+  margin: 0; /* Убираем внешние отступы */
+  padding: 0; /* Убираем внутренние отступы */
+  flex-grow: 1; /* Занимает все доступное пространство */
+  width:100%;
+		
+	}
+	
+    
+    /* .date-navigator > * { */
+        /* flex-shrink: 0; /* Запрещаем сжатие элементов */ */
+  /* margin: 0; */
+    /* } */
+}
+
+
+/* Стили для широких экранов - показываем оригинальные элементы */
+@media (min-width: 826px) {    
+    .mobile-title {
+        display: none !important;
+    }
+    
+    .title-section h1 {
+        display: block !important;
+    }
+    
+    .mobile-top-row {
+        display: none !important;
+    }
+    
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+    
+    .view-menu-container.desktop-visible,
+    .title-section.desktop-visible,
+    .language-switcher.desktop-visible {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+    .view-menu-container.desktop-visible {
+        margin-right: 15px;
+    }
+    
+    .title-section.desktop-visible {
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+    
+    .nav-wrapper {
+        flex-grow: 1;
+        min-width: 0; /* Важно для правильной работы flex */
+        margin: 0 15px;
+    }
+    
+    .language-switcher.desktop-visible {
+        margin-left: 15px;
+        flex-shrink: 0;
+    }
+    
+    /* Скрываем мобильный заголовок на десктопе */
+    .mobile-title {
+        display: none !important;
+    }
+}
+
+
+/* Гамбургер с переключателем видов */
+
+.view-menu-container {
+    position: relative;
+    display: flex !important;
+    flex-shrink: 0; /* Предотвращаем сжатие */
+    align-items: center;
+    margin-right: 10px;
+    z-index: 1002; /* Выше верхней панели */
+}
+
+.view-menu-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex !important; /* Всегда показываем кнопку */
+    align-items: center;
+    z-index: 1001;
+}
+
+.view-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    z-index: 2000; /* Значительно выше элементов карты */
+    min-width: 180px;
+    flex-direction: column;
+    padding: 5px 0;
+    border: 1px solid #ddd;
+}
+
+.view-menu-container.active .view-dropdown {
+    display: flex;    
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.view-menu-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.view-dropdown .view-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.view-dropdown .view-btn:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.view-dropdown .view-btn.active {
+    font-weight: bold;
+    background: rgba(0,0,0,0.1);
+}
+
+/* Навигация по дате */
+
+.date-navigator-wrapper {
+    display: block;
+    width: 100%;
+    order: 3; /* Располагаем после заголовка и кнопок */
+    margin-top: 0;
+}
+
+
+.link-icon[rel="icon"] {
+    border-radius: 4px; /* Слегка скруглить углы */
+    background-color: #ffffff; /* Белый фон для прозрачных иконок */
+    padding: 2px; /* Небольшой отступ */
 }

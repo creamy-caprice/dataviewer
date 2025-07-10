@@ -1,65 +1,125 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <title>Creamy caprice dataviewer - визуализация данных</title>
+    <meta name="description" content="Интерактивная карта и статистика от Creamy caprice">
+<!--    <meta property="og:image" content="img/logo.png">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Creamy caprice dataviewer</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<link rel="icon" href="data:,"> <!-- Пустая favicon для избежания 404 -->
+    <link rel="icon" href="img/logo.png" type="image/png">
     <!-- Разделенные CSS-файлы -->
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/map.css">
     <link rel="stylesheet" href="css/calendar.css">
     <link rel="stylesheet" href="css/language.css">
     <link rel="stylesheet" href="css/view-switcher.css">
+    <link rel="stylesheet" href="css/info.css">
 </head>
 <body>
-    <div class="header-container">
-        <div class="title-section">
-            <h1>Creamy caprice dataviewer</h1>
-            <div class="view-switcher">
-                <button id="map-btn" class="view-btn active">Карта</button>
+    <div class="top-bar">
+		<div class="header-container">
+        <!-- Мобильная строка (остается только для мобильных) -->
+        <div class="mobile-top-row">
+			<!-- Переключатель видов в гамбургере -->
+            <div class="view-menu-container mobile">
+                <button class="view-menu-btn">☰</button>
+                <div class="view-dropdown">
+                    <button id="map-btn" class="view-btn active">Карта</button>
                 <button id="stats1-btn" class="view-btn">Статистика</button>
                 <button id="stats2-btn" class="view-btn">Потери ВСУ</button>
+                    
+                    <button id="tlg-btn" class="view-btn tlg-btn">Гугл-карта</button>
+                    <button id="donate-btn" class="view-btn donate-btn">Сбор на СВО</button>
+                    <button id="info-btn" class="view-btn info-btn">Инфо</button>
+                </div>
+            </div>
+            
+			<!-- Заголовок -->
+			<div class="title-section mobile">
+                <span class="mobile-title">Creamy</span>
+			</div>
+
+            <!-- Переключатель языка -->
+			<div class="language-switcher mobile">
+				<button id="lang-ru" class="lang-btn" title="Переключить на Русский">🇷🇺</button>
+				<button id="lang-en" class="lang-btn" title="Switch to English">🇬🇧</button>
+			</div>
+            
+        </div> <!-- mobile-top-row -->
+			
+        <!-- Десктопные элементы -->
+        <div class="view-menu-container desktop-visible">
+            <button class="view-menu-btn">☰</button>
+            <div class="view-dropdown">
+                <button id="map-btn-desktop" class="view-btn active">Карта</button>
+                <button id="stats1-btn-desktop" class="view-btn">Статистика</button>
+                <button id="stats2-btn-desktop" class="view-btn">Потери ВСУ</button>
+                
+                <button id="tlg-btn-desktop" class="view-btn tlg-btn">Гугл-карта</button>
+                <button id="donate-btn-desktop" class="view-btn donate-btn">Сбор на СВО</button>
+                <button id="info-btn-desktop" class="view-btn info-btn">Инфо</button>
             </div>
         </div>
         
-        <div class="language-switcher">
-            <button id="lang-ru" class="lang-btn" title="Переключить на Русский">🇷🇺</button>
-            <button id="lang-en" class="lang-btn" title="Switch to English">🇬🇧</button>
+        <div class="title-section desktop-visible">
+            <h1 id="page-title">My dataviewer</h1>
         </div>
-    </div>
+        
+			<!-- Навигация по дате -->
+            <div class="nav-wrapper">
+                <div class="date-navigator-wrapper">
+                    <div class="date-navigator">
+                        <!-- Кнопки навигации по дате -->
+                        <button id="first-btn" class="nav-btn" title="Первый">❮❮</button>
+                        <button id="prev-btn" class="nav-btn" title="Предыдущий">❮</button>
+                        <div class="date-selector">
+                            <input type="text" id="date-picker" placeholder="DD.MM.YY">
+                        </div>
+                        <button id="next-btn" class="nav-btn" title="Следующий">❯</button>
+                        <button id="last-btn" class="nav-btn" title="Последний">❯❯</button>
+
+                        <!-- Элементы для скрытия (с классом hideable-nav-item) -->
+                        <label id="centerOn-label" class="hideable-nav-item" data-translate="centerLabel">Центрировать на:</label>
+                        <input type="text" id="coords-input" placeholder="Широта, Долгота (например: 55.7558, 37.6173)" class="hideable-nav-item coord-input">
+
+                        <div class="city-coord-group hideable-nav-item">
+                            <select id="cities-dropdown">
+                                <option value="" selected disabled id="select-city-default">Выберите город</option>
+                            </select>
+                            <div class="current-center">
+                                <label id="currentCenter-label" data-translate="currentCenter">Текущий центр:</label>
+                                <span id="current-center-coords" class="current-coords-display"></span>
+                                <button id="copy-coords-btn" class="copy-coords-btn" title="Копировать координаты" aria-label="Копировать координаты">⎘</button>
+                            </div>
+                        </div>
+
+                        <!-- Кнопка для открытия меню -->
+						<div style="position: relative; display: inline-block;" class="dart-menu-container">
+							<button id="nav-menu-toggle" class="nav-menu-toggle"> 🎯</button>
+						</div>
+
+                        <!-- Контейнер для скрытых элементов -->
+                        <div id="nav-dropdown" class="nav-dropdown"></div>
+                    </div> <!-- date-navigator -->
+                </div>
+			</div>
+			
+        <div class="language-switcher desktop-visible">
+            <button id="lang-ru-desktop" class="lang-btn" title="Переключить на Русский">🇷🇺</button>
+            <button id="lang-en-desktop" class="lang-btn" title="Switch to English">🇬🇧</button>
+        </div>
+            
+			
+		</div> <!-- header-container -->
+	</div>
     
-    <!-- Только один активный раздел будет виден -->
     <div id="map-container" class="content-section active">
-        <!-- ... содержимое карты ... -->
-        <div class="date-navigator">
-            <button id="first-btn" class="nav-btn" title="Первый">❮❮</button>
-            <button id="prev-btn" class="nav-btn" title="Предыдущий">❮</button>
-            
-            <div class="date-selector">
-                <input type="text" id="date-picker" placeholder="DD.MM.YY">
-            </div>
-            
-            <button id="next-btn" class="nav-btn" title="Следующий">❯</button>
-            <button id="last-btn" class="nav-btn" title="Последний">❯❯</button>
-        <!-- </div> -->
-        
-        <!-- <div class="coordinates-search"> -->
-            <label id="center-label">Центрировать на:</label>
-            <input type="text" id="coords-input" placeholder="Широта, Долгота (например: 55.7558, 37.6173)" class="coord-input">
-            <select id="cities-dropdown">
-                <option value="" selected disabled id="select-city-default">Выберите город</option>
-                <!-- Города будут добавлены через JS -->
-            </select>
-            <div class="current-center">
-                <span id="current-center-label">Текущий центр: </span>
-                <span id="current-center-coords">не определен</span>
-                <button id="copy-coords-btn" title="Копировать координаты">⎘</button>
-            </div>
-        </div>
-        
         <div id="map"></div>
     </div>
     
@@ -74,15 +134,20 @@
         <iframe width="724" height="449" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRkt2S9rNVpj1C9C_6ZiTmdHu0vbZdoIQeBl3kBz0k4e0o6n16BbeF19APb8lFjEBJxvHb9uwRkLssS/pubchart?oid=1357114866&amp;format=interactive"></iframe>
         <iframe width="724" height="380" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRkt2S9rNVpj1C9C_6ZiTmdHu0vbZdoIQeBl3kBz0k4e0o6n16BbeF19APb8lFjEBJxvHb9uwRkLssS/pubchart?oid=1053948350&amp;format=interactive"></iframe>
         <iframe width="859" height="567" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRkt2S9rNVpj1C9C_6ZiTmdHu0vbZdoIQeBl3kBz0k4e0o6n16BbeF19APb8lFjEBJxvHb9uwRkLssS/pubchart?oid=828460283&amp;format=interactive"></iframe>
-        
-    </div>
+            </div>
     
     <div id="stats2-container" class="content-section">
         <!-- ... графики статистики2 ... -->
-        <iframe frameborder="0" src="https://datalens.yandex/t8or7ozcm6jeh?_no_controls=1"></iframe>
+        <iframe width="100%" height="100%" frameborder="0" src="https://datalens.yandex/t8or7ozcm6jeh?_no_controls=1"></iframe>
     </div>
     
     <!-- ... остальной код ... -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="info-content"></div>
+        </div>
+    </div>
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
@@ -98,46 +163,6 @@
     <script>
         // Делаем доступные даты глобально доступными
         window.availableDates = kmlFiles.map(file => file.name);
-        
-        // Добавляем функционал переключения видов
-        document.addEventListener('DOMContentLoaded', function() {
-            const mapBtn = document.getElementById('map-btn');
-            const stats1Btn = document.getElementById('stats1-btn');
-            const stats2Btn = document.getElementById('stats2-btn');
-            
-            const mapContainer = document.getElementById('map-container');
-            const stats1Container = document.getElementById('stats1-container');
-            const stats2Container = document.getElementById('stats2-container');
-            
-            // Функция переключения активного вида
-            function switchView(activeBtn, activeContainer) {
-                // Убираем активные классы у всех
-                mapBtn.classList.remove('active');
-                stats1Btn.classList.remove('active');
-                stats2Btn.classList.remove('active');
-                
-                mapContainer.classList.remove('active');
-                stats1Container.classList.remove('active');
-                stats2Container.classList.remove('active');
-                
-                // Добавляем активный класс выбранному
-                activeBtn.classList.add('active');
-                activeContainer.classList.add('active');
-            }
-            
-            // Обработчики кнопок
-            mapBtn.addEventListener('click', function() {
-                switchView(this, mapContainer);
-            });
-            
-            stats1Btn.addEventListener('click', function() {
-                switchView(this, stats1Container);
-            });
-            
-            stats2Btn.addEventListener('click', function() {
-                switchView(this, stats2Container);
-            });
-        });
     </script>
 </body>
 </html>
