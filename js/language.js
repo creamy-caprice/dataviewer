@@ -21,7 +21,7 @@ const translations = {
         
         viewSwitchMap: "Карта",
         viewSwitchSt1: "Статистика",
-        viewSwitchSt2: "Потери ВСУ"
+        viewSwitchSt2: "Потери ВСУ",
         
         viewSwitchTlg:  "Гугл-карта",
         viewSwitchDon:  "Сбор на СВО",
@@ -49,7 +49,7 @@ const translations = {
         
         viewSwitchMap: "Map",
         viewSwitchSt1: "Statistics",
-        viewSwitchSt2: "UA Losses"
+        viewSwitchSt2: "UA Losses",
         
         viewSwitchTlg:  "Google-map",
         viewSwitchDon:  "Donate",
