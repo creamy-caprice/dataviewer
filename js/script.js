@@ -1394,7 +1394,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.closest('.view-menu-container').classList.remove('active');
             
             // Открываем ссылку в новом окне
-            window.open('https://ru.wikipedia.org/wiki/Telegram', '_blank');
+            window.open('https://goo.gl/maps/4eum5C9giNDebgXf7', '_blank');
         });
     });
 });
@@ -1408,7 +1408,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.closest('.view-menu-container').classList.remove('active');
             
             // Открываем ссылку в новом окне
-            window.open('https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BD%D0%B0%D1%82%D0%B5%D0%BB%D0%BB%D0%BE', '_blank');
+            window.open('https://t.me/creamy_caprice/9549', '_blank');
         });
     });
 });
