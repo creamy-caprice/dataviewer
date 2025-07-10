@@ -213,7 +213,7 @@
 }
 
 /* Для мобильной адаптации */
-@media (max-width: 1799px) { /* Когда схлопываем в дартс-меню */
+@media (max-width: 1837px) { /* Когда схлопываем в дартс-меню */
     #nav-menu-toggle {
         display: flex !important;
     }
@@ -232,7 +232,7 @@
     }
 }
 
-@media (min-width: 1800px) {
+@media (min-width: 1838px) {
     #nav-menu-toggle {
         display: none !important;
     }
@@ -240,7 +240,7 @@
 
 
 
-@media (max-width: 825px) {
+@media (max-width: 901px) {
 	.date-selector {
 		width: 85px;
 		flex-shrink: 0;

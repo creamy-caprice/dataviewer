@@ -233,7 +233,7 @@ body {
     margin: 0;
 }
 
-@media (max-width: 825px) {
+@media (max-width: 901px) {
     .header-container {
         flex-direction: column;
         /* gap: 10px; */
@@ -331,7 +331,7 @@ body {
 
 
 /* Стили для широких экранов - показываем оригинальные элементы */
-@media (min-width: 826px) {    
+@media (min-width: 902px) {    
     .mobile-title {
         display: none !important;
     }
