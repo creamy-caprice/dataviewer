@@ -1334,6 +1334,8 @@ function setupDropdownListeners() {
                 const lng = parseFloat(coords[1]);
                 if (!isNaN(lat) && !isNaN(lng)) {
                     centerMap(lat, lng);
+                    // Закрываем меню после центрирования
+                    navDropdown.classList.remove('active');
                 }
             }
         });
@@ -1341,6 +1343,8 @@ function setupDropdownListeners() {
         coordsClone.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 this.dispatchEvent(new Event('change'));
+                // Дополнительно закрываем меню
+                navDropdown.classList.remove('active');
             }
         });
     }
@@ -1366,6 +1370,8 @@ function setupDropdownListeners() {
                 if (coordsClone) coordsClone.value = `${city.lat}, ${city.lng}`;
                 
                 centerMap(city.lat, city.lng);
+                // Закрываем меню после выбора города
+                navDropdown.classList.remove('active');
                 this.value = "";
             }
         });
@@ -1399,26 +1405,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Обработчик кнопки Поддержать donate-btn
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.donate-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Закрываем меню
-            this.closest('.view-menu-container').classList.remove('active');
-            
-            // Открываем ссылку в новом окне
-            window.open('https://t.me/creamy_caprice/9549', '_blank');
-        });
-    });
-});
-
-// Обработчик кнопки Инфо info-btn
-
 // Функция загрузки контента для модального окна
-function loadInfoContent() {
-    const infoFile = currentLang === 'ru' ? 'info_ru.html' : 'info_en.html';
-    fetch(infoFile)
+function loadInfoContent(filename) {
+    fetch(filename)
         .then(response => response.text())
         .then(html => {
             document.getElementById('info-content').innerHTML = html;
@@ -1432,6 +1421,8 @@ function loadInfoContent() {
         });
 }
 
+// Обработчик кнопки Инфо info-btn и Поддержать donate-btn
+
 document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById('info-modal');
   const closeBtn = modal.querySelector('.close-modal');
@@ -1441,12 +1432,23 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.style.display = 'none';
   });
 
-  // Обработчики для кнопок "Инфо"
+  // Обработчики для кнопки "Инфо"
   document.querySelectorAll('.info-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       this.closest('.view-menu-container')?.classList.remove('active');
       modal.style.display = 'block';
-      loadInfoContent(); // Загружаем контент при открытии
+      const infoFile = currentLang === 'ru' ? 'content/info_ru.html' : 'content/info_en.html';
+      loadInfoContent(infoFile); // Загружаем контент при открытии
+    });
+  });
+
+  // Обработчики для кнопки "Поддержать"
+  document.querySelectorAll('.donate-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.closest('.view-menu-container')?.classList.remove('active');
+      modal.style.display = 'block';
+      const infoFile = currentLang === 'ru' ? 'content/donate_smo_ru.html' : 'content/donate_smo_en.html';
+      loadInfoContent(infoFile); // Загружаем контент при открытии
     });
   });
 

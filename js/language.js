@@ -2,7 +2,7 @@ const translations = {
     ru: {
         title: "Сливочный каприз dataviewer",
         centerLabel: "Центрировать на:",
-        coordsPlaceholder: "Широта, Долгота (например: 55.7558, 37.6173)",
+        coordsPlaceholder: "Координаты",
         selectCity: "Выберите город",
         currentCenter: "Текущий центр: ",
         undefinedCoords: "не определен",
@@ -30,7 +30,7 @@ const translations = {
     en: {
         title: "Creamy caprice dataviewer",
         centerLabel: "Center on:",
-        coordsPlaceholder: "Latitude, Longitude (e.g.: 55.7558, 37.6173)",
+        coordsPlaceholder: "Coordinates",
         selectCity: "Select city",
         currentCenter: "Current center: ",
         undefinedCoords: "undefined",

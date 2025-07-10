@@ -244,6 +244,10 @@
     #nav-menu-toggle {
         display: none !important;
     }
+
+    #centerOn-label {
+        display: none !important;
+    }
 }
 
 
