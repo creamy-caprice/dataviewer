@@ -180,11 +180,11 @@ function centerMap(lat, lng) {
         }
     }, duration / steps);
 
-    // Удаление через 5 секунд
+    // Удаление через 15 секунд
     highlightTimeout = setTimeout(() => {
         map.removeLayer(highlightMarker);
         highlightMarker = null;
-    }, 10000);
+    }, 15000);
 	
 	
 	// Явно обновляем лейблы текущих координат
