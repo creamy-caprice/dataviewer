@@ -184,7 +184,7 @@ function centerMap(lat, lng) {
     highlightTimeout = setTimeout(() => {
         map.removeLayer(highlightMarker);
         highlightMarker = null;
-    }, 5000);
+    }, 10000);
 	
 	
 	// Явно обновляем лейблы текущих координат
