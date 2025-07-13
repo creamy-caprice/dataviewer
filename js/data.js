@@ -4,6 +4,13 @@ window.kmlFiles = [
     { name: "06.10.23", path: "kml/ControlZones/Control_23_10_06.kml" },
     { name: "01.11.23", path: "kml/ControlZones/Control_23_11_01.kml" },
     { name: "01.12.23", path: "kml/ControlZones/Control_23_12_01.kml" },
+
+    { name: "01.01.24", path: "kml/ControlZones/Control_24_01_01.kml" },
+    { name: "01.02.24", path: "kml/ControlZones/Control_24_02_01.kml" },
+    { name: "01.03.24", path: "kml/ControlZones/Control_24_03_01.kml" },
+    { name: "01.04.24", path: "kml/ControlZones/Control_24_04_01.kml" },
+    { name: "01.05.24", path: "kml/ControlZones/Control_24_05_01.kml" },
+    { name: "01.06.24", path: "kml/ControlZones/Control_24_06_01.kml" },
     
     { name: "01.02.25", path: "kml/ControlZones/Control_25_02_01.kml" },
     { name: "01.03.25", path: "kml/ControlZones/Control_25_03_01.kml" },
