@@ -11,10 +11,18 @@ window.kmlFiles = [
     { name: "01.04.24", path: "kml/ControlZones/Control_24_04_01.kml" },
     { name: "01.05.24", path: "kml/ControlZones/Control_24_05_01.kml" },
     { name: "01.06.24", path: "kml/ControlZones/Control_24_06_01.kml" },
-    
+    { name: "01.07.24", path: "kml/ControlZones/Control_24_07_01.kml" },
+    { name: "01.08.24", path: "kml/ControlZones/Control_24_08_01.kml" },
+    { name: "01.09.24", path: "kml/ControlZones/Control_24_09_01.kml" },
+    { name: "01.10.24", path: "kml/ControlZones/Control_24_10_01.kml" },
+    { name: "01.11.24", path: "kml/ControlZones/Control_24_11_01.kml" },
+    { name: "01.12.24", path: "kml/ControlZones/Control_24_12_01.kml" },
+
+    { name: "01.01.25", path: "kml/ControlZones/Control_25_01_01.kml" },    
     { name: "01.02.25", path: "kml/ControlZones/Control_25_02_01.kml" },
     { name: "01.03.25", path: "kml/ControlZones/Control_25_03_01.kml" },
     { name: "01.04.25", path: "kml/ControlZones/Control_25_04_01.kml" },
+    
     { name: "01.05.25", path: "kml/ControlZones/Control_25_05_01.kml" },
     { name: "02.05.25", path: "kml/ControlZones/Control_25_05_02.kml" },
     { name: "06.05.25", path: "kml/ControlZones/Control_25_05_06.kml" },
