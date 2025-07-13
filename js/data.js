@@ -1,5 +1,10 @@
 // Основные KML-файлы
 window.kmlFiles = [
+    { name: "03.09.23", path: "kml/ControlZones/Control_23_09_03.kml" },
+    { name: "06.10.23", path: "kml/ControlZones/Control_23_10_06.kml" },
+    { name: "01.11.23", path: "kml/ControlZones/Control_23_11_01.kml" },
+    { name: "01.12.23", path: "kml/ControlZones/Control_23_12_01.kml" },
+    
     { name: "01.02.25", path: "kml/ControlZones/Control_25_02_01.kml" },
     { name: "01.03.25", path: "kml/ControlZones/Control_25_03_01.kml" },
     { name: "01.04.25", path: "kml/ControlZones/Control_25_04_01.kml" },
