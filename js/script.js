@@ -1,6 +1,6 @@
 // Инициализация карты
 const map = L.map('map').setView([55.751244, 37.618423], 5);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 25,
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18,
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
