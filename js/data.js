@@ -51,7 +51,7 @@ window.kmlFiles = [
 // Постоянные слои
 window.permanentLayers = [
     { name: "LDPR", path: "kml/PermanentObjects/LDPR.kml" },
-    { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" }
+    { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" },
     { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" }
 ];
 
