@@ -4,7 +4,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-map.setZoom(15);
+map.setZoom(10);
 
 map.whenReady(function() {
     // Изменение SVG-флага в атрибуции
