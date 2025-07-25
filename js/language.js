@@ -19,6 +19,8 @@ const translations = {
         ruBtnTitle: "Текущий язык: Русский",
         enBtnTitle: "Переключить на Английский",
         
+        layersToggleTitle: "Слои карты",
+        
         viewSwitchMap: "Карта",
         viewSwitchSt1: "Статистика",
         viewSwitchSt2: "Потери ВСУ",
@@ -29,6 +31,7 @@ const translations = {
     },
     en: {
         title: "Creamy caprice dataviewer",
+        //logoAlt: "dataviewer - data visualization",
         centerLabel: "Center on:",
         coordsPlaceholder: "Coordinates",
         selectCity: "Select city",
@@ -46,6 +49,8 @@ const translations = {
         
         ruBtnTitle: "Switch to Russian",
         enBtnTitle: "Current language: English",
+        
+        layersToggleTitle: "Map layers",
         
         viewSwitchMap: "Map",
         viewSwitchSt1: "Statistics",
@@ -114,6 +119,12 @@ function setLanguage(lang) {
     document.getElementById('prev-btn').title = t.prevBtnTitle;
     document.getElementById('next-btn').title = t.nextBtnTitle;
     document.getElementById('last-btn').title = t.lastBtnTitle;
+    
+    // Обновляем title кнопки переключения слоев
+    const layersToggleLink = document.querySelector('.leaflet-control-layers-toggle a');
+    if (layersToggleLink) {
+        layersToggleLink.title = t.layersToggleTitle;
+    }
     
     // Обновляем кнопки языка
     document.getElementById('lang-ru').title = lang === 'ru' ? "Уже Русский" : "Переключить на Русский";

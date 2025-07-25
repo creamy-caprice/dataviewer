@@ -1,28 +1,3 @@
-// Инициализация карты
-const map = L.map('map').setView([55.751244, 37.618423], 5);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap'
-}).addTo(map);
-
-// map.setView([55.733973, 37.564487], 15);
-
-map.whenReady(function() {
-    // Изменение SVG-флага в атрибуции
-    const newSvgString = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6" width="12" height="8"><rect fill="#fff" width="9" height="3"/><rect fill="#d52b1e" y="3" width="9" height="3"/><rect fill="#0039a6" y="2" width="9" height="2"/></svg>';
-
-    const linkElement = document.querySelector('.leaflet-control-attribution a');
-
-    if (linkElement) {
-      const oldSvgElement = linkElement.querySelector('svg');
-      if (oldSvgElement) {
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = newSvgString;
-        const newSvgElement = tempDiv.firstChild;
-        linkElement.replaceChild(newSvgElement, oldSvgElement);
-      }
-    }
-});
-
 let currentLayer = null;
 let permanentLayer = null;
 let currentIndex = kmlFiles.length - 1;
@@ -875,7 +850,15 @@ async function init() {
     setTimeout(() => {
       if (map) map.invalidateSize();
       updateCurrentCenterDisplay();
+      // replaceAttributionFlag();
     }, 50);
+    
+    const flagInterval = setInterval(() => {
+    if (document.querySelector('.leaflet-control-attribution')) {
+        replaceAttributionFlag();
+        clearInterval(flagInterval);
+        }
+    }, 500);
 	
 	//
 	// Настройка кнопки после инициализации элементов
@@ -885,6 +868,32 @@ async function init() {
     
     // Инициализация дартс-меню
     initDartMenu(); 
+	
+	// Для выпадающего списка слоёв (подложек)
+	// таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
+	setTimeout(() => {
+		if (map) map.invalidateSize();
+		updateCurrentCenterDisplay();
+		
+		// Явно инициализируем обработчик после создания элементов
+		const toggleBtn = document.querySelector('.leaflet-control-layers-toggle');
+		if (toggleBtn) {
+			toggleBtn.addEventListener('click', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				
+				const isVisible = layerControlContainer.style.display === 'block';
+				layerControlContainer.style.display = isVisible ? 'none' : 'block';
+				layerControlContainer.classList.toggle('leaflet-control-layers-expanded', !isVisible);
+			});
+		}
+	}, 300);
+	
+	window.initialLayerSet = false;
+	map.on('load', function() {
+		window.osm.addTo(map); // Активируйте OSM слой
+		window.initialLayerSet = true;
+	});
     
   } catch (error) {
     console.error('Ошибка инициализации:', error);
