@@ -57,7 +57,8 @@ window.permanentLayers = [
     { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
     { name: "Current_frontline", path: "kml/FrontLine/FrontLine_25_07_25.kml" },
-    { name: "Offensive_23_10_10", path: "kml/PermanentObjects/тест2-101023.kml" }
+    { name: "Offensive_23_10_10", path: "kml/PermanentObjects/тест2-101023.kml" },
+    { name: "Offensive_23_10_10_add", path: "kml/PermanentObjects/тест3_101023_add.kml" 
 ];
 
 // Список городов с координатами
@@ -72,5 +73,5 @@ window.cities = [
     { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.28566, lng:  37.17605 },
     { name: { ru: "Великая Новосёлка", en: "Velikaya Novoselka" }, lat: 47.83857, lng:  36.83697 },
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
-    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  }
+    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
 ];
