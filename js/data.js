@@ -56,7 +56,7 @@ window.permanentLayers = [
     { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
     { name: "Current_frontline", path: "kml/FrontLine/FrontLine_25_07_25.kml" },
-    { name: "Offensive_23_10_10", path: "kml/PermanentObjects/test101023.kml" }
+    { name: "Offensive_23_10_10", path: "kml/PermanentObjects/тест2-101023.kml" }
 ];
 
 // Список городов с координатами
