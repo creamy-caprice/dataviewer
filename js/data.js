@@ -46,7 +46,8 @@ window.kmlFiles = [
     { name: "13.07.25", path: "kml/ControlZones/Control_25_07_13.kml" },
     { name: "17.07.25", path: "kml/ControlZones/Control_25_07_17.kml" },
     { name: "21.07.25", path: "kml/ControlZones/Control_25_07_21.kml" },
-    { name: "25.07.25", path: "kml/ControlZones/Control_25_07_25.kml" }
+    { name: "25.07.25", path: "kml/ControlZones/Control_25_07_25.kml" },
+    { name: "29.07.25", path: "kml/ControlZones/Control_25_07_29.kml" }
 ];
 
 // Постоянные слои
@@ -54,7 +55,7 @@ window.permanentLayers = [
     { name: "LDPR", path: "kml/PermanentObjects/LDPR.kml" },
     { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
-    { name: "Current_frontline", path: "kml/FrontLine/FrontLine_25_07_21.kml" },
+    { name: "Current_frontline", path: "kml/FrontLine/FrontLine_25_07_25.kml" },
     { name: "Offensive_23_10_10", path: "kml/PermanentObjects/test101023.kml" }
 ];
 
