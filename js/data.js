@@ -54,15 +54,17 @@ window.kmlFiles = [
 window.permanentLayers = [
     // { name: "LDPR", path: "kml/PermanentObjects/LDPR.kml" },
     // граница ЛДНР без ростовской области
-    { name: "LDPR", path: "kml/PermanentObjects/LDPR_line3.kml" },
+    { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_line3.kml" },
     //конституционная граница РФ
-    { name: "RuUaBorder", path: "kml/PermanentObjects/RuUaBorder.kml" },
+    { name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
     // Текущая ЛБС
-    { name: "Current_frontline", path: "kml/FrontLine/FrontLine_25_07_25.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_07_25.kml" },
     // Составная линия на 10.10.23
-    { name: "Offensive_23_10_10", path: "kml/PermanentObjects/тест2-101023.kml" },
-    { name: "Offensive_23_10_10_add", path: "kml/PermanentObjects/тест3_101023_add.kml" }
+    { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/тест2-101023.kml" },
+    { name: "Offensive_23_10_10_add", path: "kml/PermanentObjects/тест3_101023_add.kml" },
+    //Линия максимального продвижения ВСУ в Курской области.
+    { name: "AFU_advance_Kursk2024",  path: "kml/PermanentObjects/AFU_advance_Kursk2024.kml" }
 ];
 
 // Список городов с координатами
