@@ -1,13 +1,14 @@
 const translations = {
     ru: {
         title: "Сливочный каприз dataviewer",
+        //logoAlt: "dataviewer - просмотр данных",
         centerLabel: "Центрировать на:",
         coordsPlaceholder: "Координаты",
         selectCity: "Выберите город",
         currentCenter: "Текущий центр: ",
         undefinedCoords: "не определен",
         copyTooltip: "Копировать координаты",
-        copiedText: "Скопировано!",
+        copiedText: "✓",
         copyFallback: "Скопируйте координаты вручную",
         copyError: "Ошибка копирования",
         
@@ -20,6 +21,24 @@ const translations = {
         enBtnTitle: "Переключить на Английский",
         
         layersToggleTitle: "Слои карты",
+        
+        rulerToggleTitle: "Измерить расстояние",
+        measureControlTitleOn: "Включить линейку",
+        measureControlTitleOff: "Выключить линейку",
+        clearControlTitle: "Очистить измерения",
+        unitControlTitle: { // Title texts to show on the Unit Control
+            text: 'Изменить единицы',
+            kilometres: 'километры',
+            landmiles: "мили",
+            nauticalmiles: 'морские мили'
+        },
+        units: {
+            meters: "Метры",
+            kilometres: "Километры",
+            landmiles: "Мили",
+            nauticalmiles: "Морские мили",
+            feet: "Футы"
+        },
         
         viewSwitchMap: "Карта",
         viewSwitchSt1: "Статистика",
@@ -38,7 +57,7 @@ const translations = {
         currentCenter: "Current center: ",
         undefinedCoords: "undefined",
         copyTooltip: "Copy coordinates",
-        copiedText: "Copied!",
+        copiedText: "✓",
         copyFallback: "Copy coordinates manually",
         copyError: "Copy error",
         
@@ -52,6 +71,24 @@ const translations = {
         
         layersToggleTitle: "Map layers",
         
+        rulerToggleTitle: "Measure distance",
+        measureControlTitleOn: "Turn on measuring tool",
+        measureControlTitleOff: "Turn off measuring tool",
+        clearControlTitle: "Clear measurements",
+        unitControlTitle: { // Title texts to show on the Unit Control
+            text: 'Change Units',
+            kilometres: 'kilometres',
+            landmiles: "miles",
+            nauticalmiles: 'nautical miles'
+        },
+        units: {
+            meters: "Meters",
+            kilometres: "Kilometres",
+            landmiles: "Miles",
+            nauticalmiles: "Nautical miles",
+            feet: "Feet"
+        },
+        
         viewSwitchMap: "Map",
         viewSwitchSt1: "Statistics",
         viewSwitchSt2: "UA Losses",
@@ -63,6 +100,60 @@ const translations = {
 };
 
 let currentLang = localStorage.getItem('preferredLang') || 'ru'; // По умолчанию русский
+
+// Функция для обновления текстов линейки при смене языка
+function updateMeasureControlLanguage(lang) {
+    const t = translations[lang];
+    
+    // Гарантируем инициализацию контрола перед обновлением
+    if (!window.measureControl && typeof initMeasureControl === 'function') {
+        initMeasureControl();
+    }
+    
+    if (window.measureControl) {
+        const container = window.measureControl.getContainer();
+        
+        // Если контейнер не найден, добавляем контрол на карту
+        if (!container) {
+            window.measureControl.addTo(map);
+        } else {
+            // Обновление кнопки измерения
+            const measureButton = container.querySelector('#polyline-measure-control');
+            if (measureButton) {
+                const isActive = measureButton.classList.contains('active');
+                measureButton.title = isActive ? t.measureControlTitleOff : t.measureControlTitleOn;
+            }
+            
+            // Обновление кнопки очистки
+            const clearButton = container.querySelector('.polyline-measure-clearControl');
+            if (clearButton) {
+                clearButton.title = t.clearControlTitle;
+            }
+            
+            // Обновление кнопки единиц измерения
+            const unitButton = container.querySelector('#unitControlId');
+            if (unitButton) {
+                // unitButton.title = t.unitControlTitle;
+                // Получаем текущую единицу измерения
+                const currentUnit = window.measureControl._unit || 'kilometres';
+                
+                // Формируем строку вида "Текст [Единица]"
+                let titleText = t.unitControlTitle.text;
+                if (t.unitControlTitle[currentUnit]) {
+                    titleText += ` [${t.unitControlTitle[currentUnit]}]`;
+                }
+                
+                unitButton.title = titleText;
+            }
+        }
+    }
+    
+    // Обновляем title нашей кастомной кнопки
+    if (rulerToggle) {
+        const link = rulerToggle.getContainer().querySelector('a');
+        if (link) link.title = t.rulerToggleTitle;
+    }
+}
 
 // Функция переключения языка
 function setLanguage(lang) {
@@ -125,6 +216,8 @@ function setLanguage(lang) {
     if (layersToggleLink) {
         layersToggleLink.title = t.layersToggleTitle;
     }
+    
+    updateMeasureControlLanguage(lang); // Обновляем тексты линейки
     
     // Обновляем кнопки языка
     document.getElementById('lang-ru').title = lang === 'ru' ? "Уже Русский" : "Переключить на Русский";

@@ -429,9 +429,9 @@ async function loadPermanentKmlLayers() {
                 window.permanentLayerGroups.push(layerGroup);
                 
                 // Применяем границы только если они валидны
-                if (bounds.isValid()) {
-                    map.fitBounds(bounds);
-                }
+//                if (bounds.isValid()) {
+//                    map.fitBounds(bounds);
+//                }
             } catch (error) {
                 console.error(`Ошибка обработки слоя ${layerData.path}:`, error);
             }
@@ -612,11 +612,11 @@ async function loadKmlFile(file) {
             const ne = bounds.getNorthEast();
             const isNotPoint = sw.lat !== ne.lat || sw.lng !== ne.lng;
             
-            if (!preserveZoom && isNotPoint) {
-                map.fitBounds(bounds);
-            } else {
+//            if (!preserveZoom && isNotPoint) {
+//                map.fitBounds(bounds);
+//            } else {
                 map.setView(currentCenter, currentZoom);
-            }
+//            }
         } else {
             map.setView(currentCenter, currentZoom);
         }
@@ -638,6 +638,9 @@ async function navigateTo(index) {
     if (index < 0 || index >= kmlFiles.length) return;
     
     try {
+        // Сохраняем состояние линейки
+        const wasActive = window.measureControl && window.measureControl._measuring;
+        
         currentIndex = index;
         const file = kmlFiles[currentIndex];
         selectedDate = file.name; // Сохраняем выбранную дату
@@ -648,6 +651,16 @@ async function navigateTo(index) {
         }
         
         await loadKmlFile(file);
+        
+        // Костыль
+        // Восстанавливаем состояние линейки
+        if (wasActive) {
+            setTimeout(() => {
+                if (window.measureControl) {
+                    window.measureControl.start();
+                }
+            }, 100);
+        }        
     } catch (error) {
         console.error("Ошибка навигации:", error);
     } finally {
@@ -782,7 +795,7 @@ function setupCopyCoordsButton() {
             document.body.removeChild(textArea);
             
             // Визуальная обратная связь
-            button.textContent = t ? t.copiedText : '✓ Скопировано!';
+            button.textContent = t ? t.copiedText : '✓';
             button.classList.add('copied');
             
             setTimeout(() => {
@@ -894,7 +907,7 @@ async function init() {
 		window.osm.addTo(map); // Активируйте OSM слой
 		window.initialLayerSet = true;
 	});
-    
+        
   } catch (error) {
     console.error('Ошибка инициализации:', error);
   }
@@ -1494,4 +1507,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
 

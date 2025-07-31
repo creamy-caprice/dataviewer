@@ -82,7 +82,7 @@ window.goo = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
 
 
 // Инициализация карты
-const map = L.map('map').setView([55.751244, 37.618423], 5);
+const map = L.map('map').setView([48.257381, 37.134785], 11);
 // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // attribution: '© OpenStreetMap'
 // }).addTo(map);
@@ -372,4 +372,115 @@ layerControlContainer.addEventListener('click', function(e) {
 	// window.initialLayerSet = true;
 // }
 // });
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////
+// Линейка
+let rulerToggle;
+function initRulerControl() {
+  // Создаем кнопку переключения как стандартный контрол Leaflet
+  rulerToggle = L.control({ position: 'topleft' });
+  
+  rulerToggle.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-ruler-toggle');
+    const link = L.DomUtil.create('a', 'leaflet-control-ruler-toggle-btn', this._div);
+    link.href = '#';
+    link.title = translations[currentLang].rulerToggleTitle;
+    link.innerHTML = '📏'; // Или использовать SVG
+    return this._div;
+  };
+  
+  rulerToggle.addTo(map);
+
+  // Обработчик клика по кнопке
+  rulerToggle.getContainer().querySelector('a').addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleRulerPanel();
+  });
+}
+
+function toggleRulerPanel() {
+  const isActive = rulerToggle.getContainer().classList.contains('active');
+  
+  if (isActive) {
+    hideRulerPanel();
+  } else {
+    showRulerPanel();
+  }
+}
+
+function showRulerPanel() {
+    if (rulerToggle && rulerToggle.getContainer) {
+        rulerToggle.getContainer().classList.add('active');
+    }
+    
+    const measureContainer = window.measureControl && window.measureControl.getContainer();
+    if (measureContainer) {
+        measureContainer.style.display = 'block';
+    }
+}
+
+function hideRulerPanel() {
+    if (rulerToggle && rulerToggle.getContainer) {
+        rulerToggle.getContainer().classList.remove('active');
+    }
+    
+    const measureContainer = window.measureControl && window.measureControl.getContainer();
+    if (measureContainer) {
+        measureContainer.style.display = 'none';
+    }
+}
+
+
+
+// функция для инициализации контрола измерения
+function initMeasureControl() {
+    const currentLang = localStorage.getItem('preferredLang') || 'ru';
+    const t = translations[currentLang];
+    
+    const options = {
+        position: 'topleft',
+        unit: 'kilometres',
+        clearMeasurementsOnStop: false,
+        showUnitControl: true,
+        backgroundColor: '#f8f8f8',
+        cursor: 'crosshair',
+        showClearControl: true,
+        clearControlLabel: '&times;',
+        popupFormat: { number: 2 },
+        measureControlTitleOn: t.measureControlTitleOn,
+        measureControlTitleOff: t.measureControlTitleOff,
+        clearControlTitle: t.clearControlTitle,
+        unitControlTitle: t.unitControlTitle,
+        bearingText: currentLang === 'ru' ? 'Азимут' : 'Bearing',
+        units: t.units
+    };
+
+
+    // Удаляем старый контрол если существует
+    //if (window.measureControl) {
+        //window.measureControl.remove();
+        //window.measureControl = null;
+    //}
+
+    // Создаем контрол только если его еще нет
+    if (!window.measureControl) {
+        window.measureControl = L.control.polylineMeasure(options);
+        window.measureControl.addTo(map);
+    }
+}
+
+// Инициализация после создания карты
+document.addEventListener('DOMContentLoaded', function() {
+    initRulerControl();
+    initMeasureControl(); // Инициализация линейки
+    hideRulerPanel();
+});
 
