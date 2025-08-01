@@ -81,7 +81,7 @@ window.goo = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
 //    attribution: yandexAttrib,
 //    noWrap: true,
 //    name: 'yandex'
-});
+// });
 
 
 
