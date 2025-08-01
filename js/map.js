@@ -75,12 +75,12 @@ window.goo = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
     // r: Некоторый тип схемы (Altered roadmap)
 
 // Яндекс Карты (схема)
-const yandexUrl = 'https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU';
-const yandexAttrib = 'Яндекс';
-window.yandex = L.tileLayer(yandexUrl, {
-    attribution: yandexAttrib,
-    noWrap: true,
-    name: 'yandex'
+// const yandexUrl = 'https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU';
+// const yandexAttrib = 'Яндекс';
+// window.yandex = L.tileLayer(yandexUrl, {
+//    attribution: yandexAttrib,
+//    noWrap: true,
+//    name: 'yandex'
 });
 
 
