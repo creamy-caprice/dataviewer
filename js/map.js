@@ -162,7 +162,7 @@ const baseLayers = {
     // "CartoDB Voyager": carto,
     // "RU Army": ru,
     "Google Maps": goo,
-    "Yandex Maps": yandex
+    // "Yandex Maps": yandex
 };
 
 // Создаем кастомный контрол слоев
