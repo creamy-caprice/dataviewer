@@ -47,7 +47,8 @@ window.kmlFiles = [
     { name: "17.07.25", path: "kml/ControlZones/Control_25_07_17.kml" },
     { name: "21.07.25", path: "kml/ControlZones/Control_25_07_21.kml" },
     { name: "25.07.25", path: "kml/ControlZones/Control_25_07_25.kml" },
-    { name: "29.07.25", path: "kml/ControlZones/Control_25_07_29.kml" }
+    { name: "29.07.25", path: "kml/ControlZones/Control_25_07_29.kml" },
+    { name: "02.08.25", path: "kml/ControlZones/Control_25_08_02.kml" }
 ];
 
 // Постоянные слои
@@ -59,7 +60,7 @@ window.permanentLayers = [
     { name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_07_25.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_07_29.kml" },
     // Составная линия на 10.10.23
     { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/тест2-101023.kml" },
     { name: "Offensive_23_10_10_add", path: "kml/PermanentObjects/тест3_101023_add.kml" },
@@ -81,3 +82,4 @@ window.cities = [
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
     { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
 ];
+
