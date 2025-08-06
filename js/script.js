@@ -124,6 +124,82 @@ function populateCitiesDropdown() {
     });
 }
 
+function parseCoordinateString(str) {
+    if (!str) return null;
+
+    // Нормализуем строку: убираем мусор, приводим к верхнему регистру
+    let cleaned = str
+        .trim()
+        .toUpperCase()
+        .replace(/[‘'′]/g, "'")
+        .replace(/[“”″]/g, '"')
+        .replace(/[°º˚]/g, '°')
+        .replace(/\s+/g, ' ')
+        .replace(/С(\.|\s)?Ш(\.)?/g, 'N')
+        .replace(/Ю(\.|\s)?Ш(\.)?/g, 'S')
+        .replace(/З(\.|\s)?Д(\.)?/g, 'W')
+        .replace(/В(\.|\s)?Д(\.)?/g, 'E')
+        .replace(/[^0-9A-Z°'" .,;\-]/g, '')
+        .trim();
+
+    let match;
+
+    // Поддержка дробей с запятой: 47,574318,35,412388
+    // Заменим все запятые на точки, но только если есть ровно 2
+    const numCommas = (str.match(/,/g) || []).length;
+    if (numCommas === 2 && str.indexOf('.') === -1) {
+        cleaned = str.replace(/,/g, '.').replace(/\s+/g, ' ');
+    }
+
+    // Попробуем распарсить как два десятичных числа с любым разделителем
+    const decimalRegex = /^(-?\d{1,2}(?:[.,]\d+))\s*[,;\s]\s*(-?\d{1,3}(?:[.,]\d+))$/;
+    if ((match = cleaned.match(decimalRegex))) {
+        const lat = parseFloat(match[1].replace(',', '.'));
+        const lon = parseFloat(match[2].replace(',', '.'));
+        return [lat, lon];
+    }
+
+    // Десятичные координаты с полушариями (47.574318° N 35.412388° E)
+    const hemisphericalDecimalRegex = /^(\d{1,2}(?:[.,]\d+)?)°?\s*([NS])\s+(\d{1,3}(?:[.,]\d+)?)°?\s*([EW])$/;
+    if ((match = cleaned.match(hemisphericalDecimalRegex))) {
+        const lat = parseFloat(match[1].replace(',', '.')) * (match[2] === 'S' ? -1 : 1);
+        const lon = parseFloat(match[3].replace(',', '.')) * (match[4] === 'W' ? -1 : 1);
+        return [lat, lon];
+    }
+
+    // DMS координаты (47°56'53"N 36°33'13"E)
+    const dmsRegex = /([NS])?\s*(\d{1,2})°\s*(\d{1,2})'?\s*(\d{1,2}(?:[.,]\d+)?)?"?\s*([NS])?\s*([EW])?\s*(\d{1,3})°\s*(\d{1,2})'?\s*(\d{1,2}(?:[.,]\d+)?)?"?\s*([EW])?/;
+    if ((match = cleaned.match(dmsRegex))) {
+        const latDir = match[1] || match[5] || 'N';
+        const lonDir = match[6] || match[10] || 'E';
+
+        const latDeg = parseFloat(match[2]);
+        const latMin = parseFloat(match[3]);
+        const latSec = parseFloat(match[4].replace(',', '.'));
+
+        const lonDeg = parseFloat(match[7]);
+        const lonMin = parseFloat(match[8]);
+        const lonSec = parseFloat(match[9].replace(',', '.'));
+
+        const lat = (latDeg + latMin / 60 + latSec / 3600) * (latDir === 'S' ? -1 : 1);
+        const lon = (lonDeg + lonMin / 60 + lonSec / 3600) * (lonDir === 'W' ? -1 : 1);
+
+        return [lat, lon];
+    }
+
+    // Русские десятичные координаты (N 47,574318 E 35,412388)
+    const russianDecimalRegex = /^(\d{1,2}(?:[.,]\d+)?)°?\s*N\s+(\d{1,3}(?:[.,]\d+)?)°?\s*E$/;
+    if ((match = cleaned.match(russianDecimalRegex))) {
+        const lat = parseFloat(match[1].replace(',', '.'));
+        const lon = parseFloat(match[2].replace(',', '.'));
+        return [lat, lon];
+    }
+
+    return null;
+}
+
+
+
 // Функция центрирования карты по координатам
 let highlightMarker = null;
 let highlightTimeout = null;
@@ -234,7 +310,7 @@ function parsePolyStyle(style) {
     };
 }
 
-function parseCoordinates(element) {
+function parseCoordinates(element, crs) {
     const coordinates = element?.querySelector('coordinates')?.textContent;
     if (!coordinates) return [];
     
@@ -366,12 +442,13 @@ async function loadPermanentKmlLayers() {
                     // Обработка LineString
                     const lineString = placemark.querySelector('LineString');
                     if (lineString) {
-                        const coords = parseCoordinates(lineString);
+                        const coords = parseCoordinates(lineString, map.options.crs);
                         if (coords.length >= 2) {
                             const polyline = L.polyline(coords, {
                                 color: style.line.color || '#3388ff',
                                 weight: style.line.weight || 3,
-                                opacity: style.line.opacity || 1
+                                opacity: style.line.opacity || 1,
+								interactive: false
                             }).addTo(layerGroup);
                             
                             // Обновляем границы СРАЗУ ПОСЛЕ СОЗДАНИЯ
@@ -391,7 +468,7 @@ async function loadPermanentKmlLayers() {
                     // Обработка Polygon
                     const polygon = placemark.querySelector('Polygon');
                     if (polygon) {
-                        const coords = parseCoordinates(polygon.querySelector('LinearRing'));
+                        const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
                         if (coords.length >= 3) {
                             const poly = L.polygon(coords, {
                                 color: style.line.color || '#3388ff',
@@ -443,7 +520,7 @@ async function loadPermanentKmlLayers() {
 }
 
 // Функция загрузки основного KML (с сохранением оригинальных стилей)
-async function loadKmlFile(file) {
+async function loadKmlFile(file, targetCRS) {
     if (currentLayer) {
         map.removeLayer(currentLayer);
     }
@@ -541,7 +618,7 @@ async function loadKmlFile(file) {
             // Обработка LineString
             const lineString = placemark.querySelector('LineString');
             if (lineString) {
-                const coords = parseCoordinates(lineString);
+                const coords = parseCoordinates(lineString, map.options.crs);
                 if (coords.length < 2) {
                     if (LOG_TEMPORARY_STYLES) console.groupEnd(); // Закрываем группу Placemark
                     return;
@@ -550,7 +627,8 @@ async function loadKmlFile(file) {
                 const polyline = L.polyline(coords, {
                     color: style.color || '#3388ff',
                     weight: style.weight || 3,
-                    opacity: style.opacity || 1
+                    opacity: style.opacity || 1,
+                    interactive: false
                 }).addTo(layerGroup);
 
                 // Логирование информации о линии
@@ -570,7 +648,7 @@ async function loadKmlFile(file) {
             // Обработка Polygon
             const polygon = placemark.querySelector('Polygon');
             if (polygon) {
-                const coords = parseCoordinates(polygon.querySelector('LinearRing'));
+                const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
                 if (coords.length < 3) {
                     if (LOG_TEMPORARY_STYLES) console.groupEnd(); // Закрываем группу Placemark
                     return;
@@ -635,14 +713,34 @@ async function loadKmlFile(file) {
     }
 }
 
+async function reloadKmlForCRS(center, zoom) {
+    await loadPermanentKmlLayers();
+    if (currentLayer){        
+        const file = kmlFiles[currentIndex];
+        try {
+            map.removeLayer(currentLayer);
+            await loadKmlFile(file);
+        } catch (error) {
+            console.error("Ошибка перезагрузки KML:", error);
+        }
+    }
+        
+    // Восстанавливаем позицию с проверкой валидности
+    if (center && zoom && center.lat !== 0 && center.lng !== 0) {
+        map.setView(center, zoom);
+    } else {
+        // Используем центр по умолчанию, если текущий невалиден
+        map.setView([48.257381, 37.134785], 10);
+    }
+    
+    map.invalidateSize();
+}
+
 // Навигация к определенному индексу
 async function navigateTo(index) {
     if (index < 0 || index >= kmlFiles.length) return;
     
-    try {
-        // Сохраняем состояние линейки
-        //const wasActive = window.measureControl && window.measureControl._measuring;
-        
+    try {        
         currentIndex = index;
         const file = kmlFiles[currentIndex];
         selectedDate = file.name; // Сохраняем выбранную дату
@@ -652,17 +750,10 @@ async function navigateTo(index) {
             datePicker.setDate(selectedDate, false);
         }
         
+		// Определяем текущую CRS
+		const currentCRS = map.options.crs;
         await loadKmlFile(file);
         
-        // Костыль
-        // Восстанавливаем состояние линейки
-        //if (wasActive) {
-        //    setTimeout(() => {
-        //        if (window.measureControl) {
-        //            window.measureControl.start();
-        //        }
-         //   }, 100);
-        // }        
     } catch (error) {
         console.error("Ошибка навигации:", error);
     } finally {
@@ -867,6 +958,8 @@ async function init() {
       updateCurrentCenterDisplay();
       // replaceAttributionFlag();
     }, 50);
+	
+	map.options.crs = L.CRS.EPSG3857;
     
     const flagInterval = setInterval(() => {
     if (document.querySelector('.leaflet-control-attribution')) {
@@ -1056,21 +1149,27 @@ map.whenReady(function() {
 
 // Обработчик для поля ввода координат
 coordsInput.addEventListener('change', function() {
-    const coords = this.value.split(',').map(coord => coord.trim());
-    if (coords.length === 2) {
-        const lat = parseFloat(coords[0]);
-        const lng = parseFloat(coords[1]);
-        if (!isNaN(lat) && !isNaN(lng)) {
-            centerMap(lat, lng);
-            
-            // Синхронизируем значение во всех клонах
-            document.querySelectorAll('#coords-input').forEach(input => {
-                if (input !== this) {
-                    input.value = this.value;
-                }
-            });
-        }
-    }
+    const coords = parseCoordinateString(this.value);
+    
+	if ( !coords ){
+        alert(translations[currentLang].invalidCoords);
+        return;
+    }	
+	
+	const [lat, lng] = coords;
+    
+    // Проверяем валидность координат
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+        alert(translations[currentLang].invalidCoords);
+        return;
+    } 
+    
+    centerMap(lat, lng);
+    
+    // Синхронизация между основным полем и полем в меню
+    document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input => {
+        if (input !== this) input.value = this.value;
+    });
 });
 
 // обработчик для нажатия Enter в поле ввода

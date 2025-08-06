@@ -75,13 +75,17 @@ window.goo = L.tileLayer('http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
     // r: Некоторый тип схемы (Altered roadmap)
 
 // Яндекс Карты (схема)
- const yandexUrl = 'https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU';
- const yandexAttrib = 'Яндекс';
- window.yandex = L.tileLayer(yandexUrl, {
+const yandexUrl = 'https://core-renderer-tiles.maps.yandex.net/tiles?l=map&x={x}&y={y}&z={z}&scale=1&lang=ru_RU';
+const yandexAttrib = '<a http="https://yandex.ru" target="_blank">Yandex</a>';
+window.yandex = L.tileLayer(yandexUrl, {
     attribution: yandexAttrib,
+    subdomains: ['01','02','03','04'],
     noWrap: true,
-    name: 'yandex'
- });
+    name: 'yandex',
+    minZoom: 12
+	// crs: L.CRS.EPSG3395,
+    //zoomOffset: 0
+});
 
 
 
@@ -95,6 +99,12 @@ const map = L.map('map').setView([48.257381, 37.134785], 10);
     // attribution: '© OpenStreetMap'
 // }).addTo(map);
 window.osm.addTo(map);
+
+
+// Добавляем обработчик изменения масштаба
+map.on('zoomend', function() {
+    console.log('Текущий масштаб карты:', map.getZoom());
+});
 
 
 function replaceAttributionFlag() {
@@ -153,6 +163,16 @@ L.Control.Attribution.prototype.addAttribution = function(text) {
 map.whenReady(replaceAttributionFlag);
 map.on('baselayerchange', replaceAttributionFlag);
 
+// map.on('baselayerchange', layer => {
+    // const center = map.getCenter();
+    // if (layer.name.includes('Yandex')) {
+      // map.options.crs = L.CRS.EPSG3395;
+    // } else {
+      // map.options.crs = L.CRS.EPSG3857;
+    // }
+    // map.setView(center);
+  // });
+
 // Управление слоями карты
 const baseLayers = {
     "OpenStreetMap": osm,
@@ -162,7 +182,7 @@ const baseLayers = {
     // "CartoDB Voyager": carto,
     // "RU Army": ru,
     "Google Maps": goo,
-    // "Yandex Maps": yandex
+    "Yandex Maps": yandex
 };
 
 // Создаем кастомный контрол слоев
@@ -358,10 +378,27 @@ document.addEventListener('click', function(e) {
 });
 // Для RU слоя ограничиваем зум
 map.on('baselayerchange', function(e) {
-    if (e.name === "RU Army") {
-        if (map.getZoom() < 10) map.setZoom(10);
-        if (map.getZoom() > 13) map.setZoom(13);
+    const center = map.getCenter();
+    const zoom = map.getZoom();
+    
+    // Сохраняем текущий CRS перед проверкой
+    const oldCRS = map.options.crs;
+    
+    // Определяем новый CRS
+    let newCRS;
+    if (e.name.includes("Yandex")) {
+        newCRS = L.CRS.EPSG3395;
+    } else {
+        newCRS = L.CRS.EPSG3857;
     }
+    
+    // Сравниваем CRS и меняем только при необходимости
+    if (oldCRS !== newCRS) {
+        map.options.crs = newCRS;
+        // Перезагружаем KML только если CRS изменился
+        reloadKmlForCRS(center, zoom);
+    }
+    map.invalidateSize();
 });
 
 // Обработчик для выбора слоя (радио-кнопки)
