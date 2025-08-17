@@ -61,7 +61,7 @@ window.permanentLayers = [
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_line3.kml" },
     //конституционная граница РФ
     //{ name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
-    { name: "RuUaBorder",             path: "kml/PermanentObjects/граница 3.kml" },
+    { name: "RuUaBorder",             path: "kml/PermanentObjects/5.kml" },
     // { name: "Offensive_23_10_10", path: "kml/PermanentObjects/FrontLine_23_10_06.kml" },
     // Текущая ЛБС
     { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_08_10.kml" },
@@ -88,6 +88,7 @@ window.cities = [
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
     { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
 ];
+
 
 
 
