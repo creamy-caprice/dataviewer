@@ -311,34 +311,16 @@ function parsePolyStyle(style) {
 }
 
 function parseCoordinates(element, crs) {
-      let coordinates;
-
-  if (typeof element === "string") {
-    // Строка из поля ввода
-    const tuple = typeof parseCoordinateString === 'function'
-      ? parseCoordinateString(element.trim())
-      : null;
-    if (!tuple) return null; // невалидная строка
-    // Вернём объект (как для KML-ветки), чтобы контракт был единым
-    return { lat: tuple[0], lng: tuple[1] };
-  } else {
-    // DOM-элемент KML
-    coordinates = element?.querySelector("coordinates")?.textContent?.trim();
-    if (!coordinates) return null;
-
-    // ваш текущий разбор KML-координат:
-    const parts = coordinates.split(/[,\s]+/).map(Number);
-    if (parts.length < 2 || parts.some(isNaN)) return null;
-
-    // вернём объект в том же стиле
-    if (crs === "EPSG:4326") {
-      return { lat: parts[1], lng: parts[0] };
-    } else {
-      // если у вас дальше используется x/y — оставьте как было,
-      // но для консистентности лучше тоже дать lat/lng
-      return { lat: parts[1], lng: parts[0] };
-    }
-  }
+    const coordinates = element?.querySelector('coordinates')?.textContent;
+    if (!coordinates) return [];
+    
+    return coordinates
+        .trim()
+        .split(/\s+/)
+        .map(coord => {
+            const [lng, lat] = coord.split(',').map(Number);
+            return [lat, lng];
+        });
 }
 
 function parseColor(kmlColor) {
@@ -1166,103 +1148,73 @@ map.whenReady(function() {
 
 
 // Обработчик для поля ввода координат
-function showCoordsError(input, message) {
-    // убираем старый
-    let old = input.parentNode.querySelector('.coords-error-bubble');
-    if (old) old.remove();
+document.addEventListener('change', function(event) {
+    const input = event.target;
+    if (!input.matches('#coords-input, #coords-input-clone')) return;
 
-    const bubble = document.createElement('div');
-    bubble.className = 'coords-error-bubble';
-    bubble.textContent = message;
-    input.parentNode.appendChild(bubble);
+    const coords = parseCoordinateString(input.value);
 
-    setTimeout(() => bubble.remove(), 2500);
-}
-
-function hideCoordsError(input) {
-    let old = input.parentNode.querySelector('.coords-error-bubble');
-    if (old) old.remove();
-}
-
-function normalizeToTuple(coords) {
-  if (!coords) return null;
-  if (Array.isArray(coords) && coords.length >= 2) {
-    return [coords[0], coords[1]];
-  }
-  if (typeof coords === 'object') {
-    if ('lat' in coords && ('lng' in coords || 'lon' in coords)) {
-      return [coords.lat, coords.lng ?? coords.lon];
+    if (!coords) {
+        alert(translations[currentLang].invalidCoords);
+        return;
     }
-    if ('y' in coords && 'x' in coords) {
-      // иногда приходят как x/y
-      return [coords.y, coords.x];
-    }
-  }
-  return null;
-}
 
-function centerMapFromInput(input, showAlert = false) {
-  const raw = parseCoordinates(input.value.trim());
-  const coords = normalizeToTuple(raw);
-
-  if (coords) {
     const [lat, lng] = coords;
+
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+        alert(translations[currentLang].invalidCoords);
+        return;
+    }
+
     centerMap(lat, lng);
-    if (typeof hideCoordsError === 'function') hideCoordsError(input);
-  } else if (showAlert) {
-    if (typeof showCoordsError === 'function') {
-      showCoordsError(input, translations[currentLang].invalidCoords);
-    } else {
-      alert(translations[currentLang].invalidCoords);
-    }
-  }
-}
 
-function setupInputWithClear(inputEl, clearBtn) {
-    function toggleClearButton() {
-        if (inputEl.value.trim() !== "") {
-            clearBtn.style.display = "inline-flex";
-        } else {
-            clearBtn.style.display = "none";
-        }
-    }
-
-    // следим за вводом, вставкой и изменениями
-    inputEl.addEventListener("input", toggleClearButton);
-    inputEl.addEventListener("change", toggleClearButton);
-
-    clearBtn.addEventListener("click", () => {
-        inputEl.value = "";
-        toggleClearButton();
-        hideErrorBubble(inputEl);
-    });
-
-    // начальная инициализация
-    toggleClearButton();
- }
-
-// Обработчик для ввода
-document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input => {
-    // Автоматическое центрирование при вставке (без ошибок)
-    input.addEventListener('input', function() {
-        centerMapFromInput(this, false);
-    });
-    
-    // Обработка Enter с показом ошибок
-    input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            centerMapFromInput(this, true);
-        }
+    // Синхронизация значений между полями
+    document.querySelectorAll('#coords-input, #coords-input-clone').forEach(el => {
+        if (el !== input) el.value = input.value;
     });
 });
 
 // обработчик для нажатия Enter в поле ввода
-// coordsInput.addEventListener('keypress', function(e) {
-	// if (e.key === 'Enter') {
-		// this.dispatchEvent(new Event('change'));
-    // }
-// });
+coordsInput.addEventListener('keypress', function(e) {
 
+	if (e.key === 'Enter') {
+		this.dispatchEvent(new Event('change'));
+    }
+});
+
+// Гамбургер переключатель видов
+
+//document.addEventListener('DOMContentLoaded', function() {
+    //const viewMenuBtn = document.querySelector('.view-menu-btn');
+    //const viewMenuContainer = document.querySelector('.view-menu-container');
+    
+    //if (viewMenuBtn && viewMenuContainer) {
+        //// Обработчик открытия/закрытия меню видов
+        //viewMenuBtn.addEventListener('click', function(e) {
+            //e.stopPropagation();
+            //viewMenuContainer.classList.toggle('active');
+        //});
+        
+        //// Закрытие меню при клике вне его
+        //document.addEventListener('click', function(e) {
+            //if (!viewMenuContainer.contains(e.target)) {
+                //viewMenuContainer.classList.remove('active');
+            //}
+        //});
+        
+        //// Закрытие меню при выборе вида
+        //document.querySelectorAll('.view-dropdown .view-btn').forEach(btn => {
+            //btn.addEventListener('click', function() {
+                //viewMenuContainer.classList.remove('active');
+                
+                //// Перерисовываем карту при необходимости
+                //if (map && this.id === 'map-btn') {
+                    //setTimeout(() => map.invalidateSize(), 100);
+                //}
+            //});
+        //});
+    //}
+//});
 document.querySelectorAll('.view-menu-container').forEach(container => {
     const viewMenuBtn = container.querySelector('.view-menu-btn');
     
@@ -1510,17 +1462,24 @@ function setupDropdownListeners() {
     // Обработчик для поля ввода координат в меню
     const coordsClone = document.getElementById('coords-input-clone');
     if (coordsClone) {
-        // Автоматическое центрирование при вставке
-        coordsClone.addEventListener('input', function() {
-            centerMapFromInput(this, false);
-        });
-        
-        // Обработка Enter с показом ошибок и закрытием меню
-        coordsClone.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                if (centerMapFromInput(this, true)) {
+        coordsClone.addEventListener('change', function() {
+            const coords = this.value.split(',').map(coord => coord.trim());
+            if (coords.length === 2) {
+                const lat = parseFloat(coords[0]);
+                const lng = parseFloat(coords[1]);
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    centerMap(lat, lng);
+                    // Закрываем меню после центрирования
                     navDropdown.classList.remove('active');
                 }
+            }
+        });
+        
+        coordsClone.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                this.dispatchEvent(new Event('change'));
+                // Дополнительно закрываем меню
+                navDropdown.classList.remove('active');
             }
         });
     }
@@ -1643,203 +1602,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-// === Inline error bubble for coords input ===
-(function(){
-  function ensureCoordsErrorStyle() {
-    if (document.getElementById('coords-error-style')) return;
-    const style = document.createElement('style');
-    style.id = 'coords-error-style';
-    style.textContent = `
-      .coords-error-bubble{
-        position:absolute;
-        left:0;
-        top:calc(100% + 4px);
-        padding:4px 8px;
-        background:#ffeaea;
-        color:#b00020;
-        border:1px solid #f3b2b2;
-        border-radius:4px;
-        font-size:12px;
-        line-height:1.2;
-        white-space:nowrap;
-        pointer-events:none;
-        box-shadow:0 1px 2px rgba(0,0,0,.05);
-        z-index:10;
-      }
-    `;
-    document.head.appendChild(style);
-  }
-  window._coordsError = {
-    show(input, message){
-      ensureCoordsErrorStyle();
-      if (!input) return;
-      let wrapper = input.closest('.input-with-clear');
-      if (!wrapper) {
-        const w = document.createElement('div');
-        w.className = 'input-with-clear';
-        input.parentNode.insertBefore(w, input);
-        w.appendChild(input);
-        wrapper = w;
-      }
-      let bubble = wrapper.querySelector('.coords-error-bubble');
-      if (!bubble) {
-        bubble = document.createElement('div');
-        bubble.className = 'coords-error-bubble';
-        wrapper.appendChild(bubble);
-      }
-      bubble.textContent = message;
-      bubble.style.display = 'block';
-      if (bubble._timer) clearTimeout(bubble._timer);
-      bubble._timer = setTimeout(()=>{ bubble.style.display='none'; }, 2500);
-      const hide = ()=>{ bubble.style.display='none'; };
-      input.addEventListener('input', hide, { once:true });
-      input.addEventListener('focus', hide, { once:true });
-    },
-    hide(input){
-      if (!input) return;
-      const wrapper = input.closest('.input-with-clear');
-      const bubble = wrapper && wrapper.querySelector('.coords-error-bubble');
-      if (bubble) {
-        bubble.style.display = 'none';
-        if (bubble._timer) clearTimeout(bubble._timer);
-      }
-    }
-  };
-})();
-
-// === Ensure clear button is visible whenever coords input is non-empty (minimal, non-intrusive) ===
-(function () {
-  const IDS = ['coords-input', 'coords-input-clone'];
-  const SEL = '#coords-input, #coords-input-clone';
-
-  function ensureWrappedAndButton(input) {
-    if (!input) return;
-    // Обёртка с позиционированием (нужна и для баббла, и для кнопки)
-    if (!input.parentElement.classList.contains('input-with-clear')) {
-      const wrap = document.createElement('span');
-      wrap.className = 'input-with-clear';
-      input.parentNode.insertBefore(wrap, input);
-      wrap.appendChild(input);
-    }
-    // Кнопка очистки, если ещё нет
-    let btn = input.parentElement.querySelector('.clear-input-btn');
-    if (!btn) {
-      btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'clear-input-btn';
-      btn.setAttribute('aria-label', 'Очистить');
-      btn.title = 'Очистить';
-      btn.textContent = '✕';
-      input.parentElement.appendChild(btn);
-
-      btn.addEventListener('click', () => {
-        input.value = '';
-        toggle(input);
-        // если у вас есть мягкий баббл — спрячем
-        if (typeof hideCoordsError === 'function') hideCoordsError(input);
-        // синхронизируем второе поле, если оно есть
-        IDS.forEach(id => {
-          const other = document.getElementById(id);
-          if (other && other !== input) {
-            other.value = '';
-            toggle(other);
-          }
-        });
-        // Сгенерируем change (без алертов) и вернём фокус
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-        input.focus();
-      });
-    }
-  }
-
-  function toggle(input) {
-    if (!input) return;
-    ensureWrappedAndButton(input);
-    const btn = input.parentElement.querySelector('.clear-input-btn');
-    if (!btn) return;
-    btn.style.display = (input.value && input.value.trim()) ? 'inline-flex' : 'none';
-  }
-
-  function refreshAll() {
-    IDS.forEach(id => toggle(document.getElementById(id)));
-  }
-
-  // Инициализация
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', refreshAll, { once: true });
-  } else {
-    refreshAll();
-  }
-
-  // Обновляем видимость на любые текстовые изменения в полях
-  ['input', 'change', 'keyup', 'paste'].forEach(evt => {
-    document.addEventListener(evt, (e) => {
-      const t = e.target;
-      if (!t || !t.matches || !t.matches(SEL)) return;
-      // задержка для paste, чтобы успело вставиться значение
-      if (evt === 'paste') {
-        requestAnimationFrame(() => toggle(t));
-      } else {
-        toggle(t);
-      }
-      // синхронизируем второй инпут, если он есть
-      IDS.forEach(id => {
-        const other = document.getElementById(id);
-        if (other && other !== t) {
-          other.value = t.value;
-          toggle(other);
-        }
-      });
-    }, false);
-  });
-
-  // При смене ширины/ориентации может появиться/исчезнуть клон → пересчёт
-  window.addEventListener('resize', refreshAll);
-  window.addEventListener('orientationchange', refreshAll);
-
-  // Если есть «баббл»-функции, оборачиваем их, чтобы после показа/скрытия пересчитывать кнопку
-  if (typeof window.showCoordsError === 'function') {
-    const _show = window.showCoordsError;
-    window.showCoordsError = function (input, msg) {
-      const r = _show.call(this, input, msg);
-      refreshAll();
-      return r;
-    };
-  }
-  if (typeof window.hideCoordsError === 'function') {
-    const _hide = window.hideCoordsError;
-    window.hideCoordsError = function (input) {
-      const r = _hide.call(this, input);
-      refreshAll();
-      return r;
-    };
-  }
-
-  // На случай динамического создания/перемещения мобильного поля — наблюдатель
-  const mo = new MutationObserver(refreshAll);
-  mo.observe(document.documentElement, { childList: true, subtree: true });
-})();
-
-// === Patch: don't auto-format coords on Backspace (prevents trailing zeros) ===
-(function () {
-  const SEL = '#coords-input, #coords-input-clone';
-
-  // На этапе capture перехватываем input, вызванный Backspace,
-  // и останавливаем дальнейшие обработчики, которые перезаписывают value (маски/formatters).
-  document.addEventListener('input', function (e) {
-    const el = e.target;
-    if (!el || !el.matches || !el.matches(SEL)) return;
-
-    // Важное: именно для удаления влево не даем форматировать/дописывать нули
-    if (e.inputType === 'deleteContentBackward') {
-      // Обновим видимость крестика вручную (он должен быть, если поле непустое)
-      const btn = el.parentElement && el.parentElement.querySelector('.clear-input-btn');
-      if (btn) btn.style.display = el.value.trim() ? 'inline-flex' : 'none';
-
-      // Не даем другим листенерам «подтереть» текст и дописать нули
-      e.stopImmediatePropagation();
-      return;
-    }
-  }, true); // capture: перехватываем раньше остальных
-})();
