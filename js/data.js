@@ -51,7 +51,8 @@ window.kmlFiles = [
     { name: "02.08.25", path: "kml/ControlZones/Control_25_08_02.kml" },
     { name: "06.08.25", path: "kml/ControlZones/Control_25_08_06.kml" },
     { name: "10.08.25", path: "kml/ControlZones/Control_25_08_10.kml" },
-    { name: "14.08.25", path: "kml/ControlZones/Control_25_08_14.kml" }
+    { name: "14.08.25", path: "kml/ControlZones/Control_25_08_14.kml" },
+    { name: "18.08.25", path: "kml/ControlZones/Control_25_08_18.kml" }
 ];
 
 // Постоянные слои
@@ -88,6 +89,7 @@ window.cities = [
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
     { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
 ];
+
 
 
 
