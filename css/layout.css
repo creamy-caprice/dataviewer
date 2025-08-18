@@ -462,3 +462,108 @@ body {
     background-color: #ffffff; /* Белый фон для прозрачных иконок */
     padding: 2px; /* Небольшой отступ */
 }
+
+
+.coords-error-bubble {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 2px;
+  padding: 2px 6px;
+  font-size: 12px;
+  background: #fdd;
+  border: 1px solid #d99;
+  border-radius: 4px;
+  color: #900;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+
+/* === Clear button for coords inputs — base === */
+.input-with-clear {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.input-with-clear > input {
+  padding-right: 2rem;       /* место под крестик */
+}
+.clear-input-btn {
+  position: absolute;
+  right: .5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0 2px;
+  line-height: 1;
+  z-index: 3;
+  display: none;             /* JS включает при непустом поле */
+}
+.clear-input-btn:hover { color: #000; }
+
+/* Широкий экран: дата-навигация (двойная обёртка) */
+.date-navigator > .input-with-clear {
+  display: inline-flex;
+  align-items: center;
+}
+.date-navigator > .input-with-clear > .input-with-clear {
+  position: relative;        /* якорь для absolute-кнопки */
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Моб. и планшет: центрируем кнопку строго по высоте инпута в меню */
+@media (max-width: 1837px) {
+ #coords-input + .clear-input-btn { display: none !important; }
+  .nav-dropdown .input-with-clear {
+    position: relative;
+    display: inline-flex;     /* высота = высоте инпута */
+    align-items: center;      /* вертикальный центр для детей */
+    width: 100%;
+    margin: 0;                /* убираем возможные внешние зазоры */
+  }
+  .nav-dropdown .input-with-clear > input {
+    width: 100%;
+    flex: 1 1 auto;
+    padding-right: 2rem;      /* место под кнопку */
+    box-sizing: border-box;
+    margin: 0;                /* убираем сдвиги от .dropdown-item */
+    line-height: normal;
+  }
+  .nav-dropdown .clear-input-btn {
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);  /* ровно по центру инпута */
+    z-index: 3;
+  }
+}
+
+/* Очень узкие — те же правила (дублируем, если у тебя есть отдельные медиа ниже 901px) */
+@media (max-width: 901px) {
+ #coords-input + .clear-input-btn { display: none !important; }
+  .nav-dropdown .input-with-clear {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+  }
+  .nav-dropdown .input-with-clear > input {
+    width: 100%;
+    flex: 1 1 auto;
+    padding-right: 2rem;
+    box-sizing: border-box;
+    margin: 0;
+    line-height: normal;
+  }
+  .nav-dropdown .clear-input-btn {
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
