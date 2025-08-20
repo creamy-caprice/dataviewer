@@ -208,7 +208,7 @@ let highlightAnimationInterval = null;
 function centerMap(lat, lng) {
     // const currentZoom = map.getZoom();
 	const centerMapZoom = 14;
-    map.setView([lat, lng], currentZoom);
+    map.setView([lat, lng], centerMapZoom);
     document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
     // Очищаем предыдущие элементы анимации
@@ -1849,4 +1849,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, true); // capture: перехватываем раньше остальных
 })();
+
 
