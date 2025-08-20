@@ -206,7 +206,8 @@ let highlightTimeout = null;
 let highlightAnimationInterval = null;
 
 function centerMap(lat, lng) {
-    const currentZoom = map.getZoom();
+    // const currentZoom = map.getZoom();
+	const centerMapZoom = 14;
     map.setView([lat, lng], currentZoom);
     document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
@@ -1848,3 +1849,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, true); // capture: перехватываем раньше остальных
 })();
+
