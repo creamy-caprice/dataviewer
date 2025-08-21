@@ -205,67 +205,44 @@ let highlightMarker = null;
 let highlightTimeout = null;
 let highlightAnimationInterval = null;
 
-function centerMap(lat, lng) {
-    // const currentZoom = map.getZoom();
-	const centerMapZoom = 14;
+function centerMap(lat, lng) {    
+    const centerMapZoom = 14;
     map.setView([lat, lng], centerMapZoom);
     document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
-    // Очищаем предыдущие элементы анимации
+    // Очищаем предыдущие элементы
     if (highlightMarker) {
         map.removeLayer(highlightMarker);
         highlightMarker = null;
     }
-    if (highlightAnimationInterval) {
-        clearInterval(highlightAnimationInterval);
-    }
     if (highlightTimeout) {
         clearTimeout(highlightTimeout);
+        highlightTimeout = null;
     }
 
-    // Параметры анимации
-    const startRadius = 10000; // Начальный радиус 2 км
-    const endRadius = 200;    // Конечный радиус 200 м
-    const duration = 2500;    // Длительность анимации 2 секунды
-    const steps = 100;         // Количество шагов анимации
+    // Создаем кастомную иконку с фиксированным размером в пикселях
+    const customIcon = L.icon({
+        iconUrl: 'img/mapMarker.png', // путь к вашей картинке
+        iconSize: [100, 100],           // размер иконки в пикселях [ширина, высота]
+        iconAnchor: [50, 50],        // точка привязки должна быть в центре нижней части изображения
+        popupAnchor: [0, 0],       // где появляется popup относительно anchor
+        className: 'fixed-marker'     // добавляем класс для дополнительного CSS контроля
+    });
 
-    // Создаем временный маркер
-    highlightMarker = L.circle([lat, lng], {
-        color: '#ff4444',
-        fillColor: '#ff7777',
-        fillOpacity: 0.3,
-        radius: startRadius
-    }).addTo(map);
+    // Создаем маркер с кастомной иконкой
+    highlightMarker = L.marker([lat, lng], {icon: customIcon}).addTo(map);
 
-    // Анимация уменьшения
-    let currentStep = 0;
-    highlightAnimationInterval = setInterval(() => {
-        currentStep++;
-        const progress = currentStep / steps;
-        const currentRadius = startRadius - (startRadius - endRadius) * progress;
-        
-        highlightMarker.setRadius(currentRadius);
-        
-        if (currentStep >= steps) {
-            clearInterval(highlightAnimationInterval);
-        }
-    }, duration / steps);
-
-    // Удаление через 15 секунд
-    highlightTimeout = setTimeout(() => {
-        map.removeLayer(highlightMarker);
-        highlightMarker = null;
-    }, 15000);
-	
-	
-	// Явно обновляем лейблы текущих координат
+    // Убрали таймер автоматического удаления
+    // Удаление теперь будет происходить только по кнопке очистки
+    
+    // Явно обновляем лейблы текущих координат
     document.getElementById('current-center-coords').textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
     
     const cloneCoords = document.getElementById('current-center-coords-clone');
     if (cloneCoords) {
         cloneCoords.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
     }
-		
+        
     // Обновляем поля ввода координат
     const coordValue = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
     
@@ -278,6 +255,28 @@ function centerMap(lat, lng) {
     if (coordsClone) coordsClone.value = coordValue;
 }
 
+// Функция для очистки маркера и полей ввода
+function clearMarkerAndInput() {
+    if (highlightMarker) {
+        map.removeLayer(highlightMarker);
+        highlightMarker = null;
+    }
+    if (highlightTimeout) {
+        clearTimeout(highlightTimeout);
+        highlightTimeout = null;
+    }
+    
+    // Очищаем оба поля ввода координат
+    const coordsInput = document.getElementById('coords-input');
+    const coordsClone = document.getElementById('coords-input-clone');
+    
+    if (coordsInput) coordsInput.value = '';
+    if (coordsClone) coordsClone.value = '';
+    
+    // Обновляем видимость кнопок очистки
+    toggleClearButton(coordsInput);
+    toggleClearButton(coordsClone);
+}
 
 
 // Вспомогательные функции для парсинга (должны быть доступны для постоянных и временных слоев)
@@ -1740,11 +1739,10 @@ document.addEventListener('DOMContentLoaded', function() {
       input.parentElement.appendChild(btn);
 
       btn.addEventListener('click', () => {
-        input.value = '';
-        toggle(input);
-        // если у вас есть мягкий баббл — спрячем
-        if (typeof hideCoordsError === 'function') hideCoordsError(input);
-        // синхронизируем второе поле, если оно есть
+        // Очищаем маркер и поля ввода
+        clearMarkerAndInput();
+        
+        // Синхронизируем второе поле, если оно есть
         IDS.forEach(id => {
           const other = document.getElementById(id);
           if (other && other !== input) {
@@ -1752,8 +1750,8 @@ document.addEventListener('DOMContentLoaded', function() {
             toggle(other);
           }
         });
-        // Сгенерируем change (без алертов) и вернём фокус
-        input.dispatchEvent(new Event('change', { bubbles: true }));
+        
+        // Возвращаем фокус на поле ввода
         input.focus();
       });
     }
