@@ -488,3 +488,19 @@
 .leaflet-control-ruler-toggle.active + .leaflet-control-polyline-measure {
   display: block !important;
 }
+
+
+.kml-label {
+    background: transparent;
+    border: none;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white, 
+        1px -1px 0 white, 
+        -1px 1px 0 white, 
+        1px 1px 0 white;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+}
