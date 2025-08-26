@@ -39,7 +39,7 @@
       <visibility>1</visibility>
       <description>Polygon features</description>
       <Placemark>
-        <name>Buffer Polygon_2_1</name>
+        <name>Наступление ВСУ 2024</name>
         <visibility>1</visibility>
         <description>Area: 153 752 936,689 m², Area: 153 752 936,689 m², no description</description>
         <styleUrl>#151</styleUrl>
@@ -935,7 +935,7 @@
         </Polygon>
       </Placemark>
       <Placemark>
-        <name>Buffer Polygon_3_1</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>Area: 19 320 066,687 m², Area: 19 320 066,687 m², no description</description>
         <styleUrl>#152</styleUrl>
@@ -1165,7 +1165,7 @@
       <visibility>1</visibility>
       <description>Line and polyline features</description>
       <Placemark>
-        <name>1</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>Distance: 21 968,548 m, no description</description>
         <styleUrl>#149</styleUrl>
@@ -1276,7 +1276,7 @@
         </LineString>
       </Placemark>
       <Placemark>
-        <name>1</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>Distance: 161 956,023 m, no description</description>
         <styleUrl>#150</styleUrl>
@@ -1694,4 +1694,5 @@
       </Placemark>
     </Folder>
   </Document>
+
 </kml>
