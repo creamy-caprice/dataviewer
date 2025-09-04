@@ -205,9 +205,9 @@ let highlightMarker = null;
 let highlightTimeout = null;
 let highlightAnimationInterval = null;
 
-function centerMap(lat, lng) {    
-    const centerMapZoom = 14;
-    map.setView([lat, lng], centerMapZoom);
+function centerMap(lat, lng, zoom = 14) {    
+    // const centerMapZoom = 14;
+    map.setView([lat, lng], zoom);
     document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
     // Очищаем предыдущие элементы
@@ -229,19 +229,50 @@ function centerMap(lat, lng) {
         className: 'fixed-marker'     // добавляем класс для дополнительного CSS контроля
     });
 
-    // Создаем маркер с кастомной иконкой
-    highlightMarker = L.marker([lat, lng], {icon: customIcon}).addTo(map);
+    // Создаем маркер с кастомной иконкой и включаем возможность перетаскивания
+    highlightMarker = L.marker([lat, lng], {
+        icon: customIcon,
+        draggable: true, // Включаем возможность перетаскивания
+        autoPan: true    // Автоматически перемещать карту при перетаскивании маркера
+    }).addTo(map);
 
-    // Убрали таймер автоматического удаления
-    // Удаление теперь будет происходить только по кнопке очистки
-    
+    // Обработчик события перетаскивания маркера
+    highlightMarker.on('drag', function(e) {
+        const position = highlightMarker.getLatLng();
+        const newLat = position.lat;
+        const newLng = position.lng;
+        
+        // Обновляем все поля ввода координат
+        const coordValue = `${newLat.toFixed(6)}, ${newLng.toFixed(6)}`;
+        
+        // Основное поле ввода
+        const coordsInput = document.getElementById('coords-input');
+        if (coordsInput) coordsInput.value = coordValue;
+        
+        // Клон поля ввода для дартс-меню
+        const coordsClone = document.getElementById('coords-input-clone');
+        if (coordsClone) coordsClone.value = coordValue;
+        
+        // Обновляем лейблы текущих координат
+        // document.getElementById('current-center-coords').textContent = coordValue;
+        
+        // const cloneCoords = document.getElementById('current-center-coords-clone');
+        // if (cloneCoords) {
+            // cloneCoords.textContent = coordValue;
+        // }
+        
+        // Обновляем видимость кнопок очистки
+        toggleClearButton(coordsInput);
+        toggleClearButton(coordsClone);
+    });
+
     // Явно обновляем лейблы текущих координат
-    document.getElementById('current-center-coords').textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+    // document.getElementById('current-center-coords').textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
     
-    const cloneCoords = document.getElementById('current-center-coords-clone');
-    if (cloneCoords) {
-        cloneCoords.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-    }
+    // const cloneCoords = document.getElementById('current-center-coords-clone');
+    // if (cloneCoords) {
+        // cloneCoords.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+    // }
         
     // Обновляем поля ввода координат
     const coordValue = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
@@ -253,11 +284,18 @@ function centerMap(lat, lng) {
     // Клон поля ввода для дартс-меню
     const coordsClone = document.getElementById('coords-input-clone');
     if (coordsClone) coordsClone.value = coordValue;
+    
+    // Обновляем видимость кнопок очистки
+    toggleClearButton(coordsInput);
+    toggleClearButton(coordsClone);
 }
+
 
 // Функция для очистки маркера и полей ввода
 function clearMarkerAndInput() {
     if (highlightMarker) {
+        // Удаляем обработчики событий перед удалением маркера
+        highlightMarker.off('dragend');
         map.removeLayer(highlightMarker);
         highlightMarker = null;
     }
@@ -1905,3 +1943,25 @@ function addLabelToLayer(name, geometryType, coords, layerGroup) {
 
 
 
+
+// Добавим функцию для добавления маркера в текущий центр карты
+function addMarkerAtCurrentCenter() {
+    const center = map.getCenter();
+    const currentZoom = map.getZoom();
+    centerMap(center.lat, center.lng, currentZoom);
+}
+
+// Добавим обработчики для кнопок добавления маркера
+document.addEventListener('DOMContentLoaded', function() {
+    // Для основной кнопки
+    const addMarkerBtn = document.getElementById('add-marker-btn');
+    if (addMarkerBtn) {
+        addMarkerBtn.addEventListener('click', addMarkerAtCurrentCenter);
+    }
+    
+    // Для клона в дартс-меню
+    const addMarkerBtnClone = document.getElementById('add-marker-btn-clone');
+    if (addMarkerBtnClone) {
+        addMarkerBtnClone.addEventListener('click', addMarkerAtCurrentCenter);
+    }
+});
