@@ -559,3 +559,39 @@ body {
     transform: translateY(-50%);
   }
 }
+
+/* Добавим стили для кнопки добавления маркера */
+.add-marker-btn {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 3px;
+}
+
+.add-marker-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.marker-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+/* Для дартс-меню */
+.nav-dropdown .add-marker-btn {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-dropdown .marker-icon {
+    width: 16px;
+    height: 16px;
+}
