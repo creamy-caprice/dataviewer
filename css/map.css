@@ -504,3 +504,29 @@
     white-space: nowrap;
     pointer-events: none;
 }
+
+
+/* Стили для перетаскиваемого маркера */
+.fixed-marker {
+    cursor: move !important;
+    /* transition: transform 0.2s ease; */
+    will-change: transform; /* Предупреждаем браузер об изменении трансформации */
+    backface-visibility: hidden; /* Улучшает производительность анимации */
+    transform: translateZ(0); /* Аппаратное ускорение */
+}
+
+.fixed-marker:hover {
+    transform: scale(1.1);
+}
+
+.leaflet-marker-dragging {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 255, 0.5));
+    transition: none; /* Убираем переходы при перетаскивании */
+}
+
+/* Отключаем некоторые эффекты во время перетаскивания для производительности */
+.leaflet-dragging .leaflet-marker-pane,
+.leaflet-dragging .leaflet-shadow-pane {
+    transition: none;
+}
