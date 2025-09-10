@@ -24,7 +24,7 @@
       <visibility>1</visibility>
       <description>Polygon features</description>
       <Placemark>
-        <name>Buffer Polygon_0_0</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>1</description>
         <styleUrl>#122</styleUrl>
@@ -68,7 +68,7 @@
         </Polygon>
       </Placemark>
       <Placemark>
-        <name>Buffer Polygon_0_0</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>1</description>
         <styleUrl>#122</styleUrl>
@@ -240,7 +240,7 @@
       <visibility>1</visibility>
       <description>Line and polyline features</description>
       <Placemark>
-        <name>OBJ__64</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>1</description>
         <styleUrl>#121</styleUrl>
@@ -316,7 +316,7 @@
         </LineString>
       </Placemark>
       <Placemark>
-        <name>OBJ__64</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>1</description>
         <styleUrl>#121</styleUrl>
@@ -343,4 +343,5 @@
       </Placemark>
     </Folder>
   </Document>
+
 </kml>
