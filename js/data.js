@@ -59,7 +59,8 @@ window.kmlFiles = [
     { name: "03.09.25", path: "kml/ControlZones/Control_25_09_03.kml" },
     { name: "07.09.25", path: "kml/ControlZones/Control_25_09_07.kml" },
     { name: "11.09.25", path: "kml/ControlZones/Control_25_09_11.kml" },
-    { name: "15.09.25", path: "kml/ControlZones/Control_25_09_15.kml" }
+    { name: "15.09.25", path: "kml/ControlZones/Control_25_09_15.kml" },
+    { name: "19.09.25", path: "kml/ControlZones/Control_25_09_19.kml" }
 ];
 
 // Постоянные слои
@@ -69,7 +70,7 @@ window.permanentLayers = [
     //Конституционная граница РФ
     { name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_09_11.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_09_15.kml" },
     //Единая линия на 10.10.23
     { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/OffensiveLine_2023_10_10.kml" },
     //Линия максимального продвижения ВСУ в Курской области.
@@ -92,6 +93,7 @@ window.cities = [
     { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
     { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
 ];
+
 
 
 
