@@ -91,7 +91,8 @@
 }
 
 .current-center {
-    display: flex;
+  display:none!important;
+    /* display: flex; */
     align-items: center;
     gap: 5px;
     margin-left: 10px;
@@ -199,7 +200,8 @@
 }
 
 .nav-dropdown .current-center {
-    display: flex;
+  display:none!important;
+    /* display: flex; */
     flex-wrap: wrap;
     /* gap: 5px; */
     align-items: center;
@@ -246,7 +248,7 @@
 	
     .leaflet-top.leaflet-right {
 	    z-index: 1000 !important;
-    }
+    }	
 }
 
 @media (min-width: 1838px) {
@@ -258,7 +260,6 @@
         display: none !important;
     }
 }
-
 
 
 @media (max-width: 901px) {
@@ -322,13 +323,19 @@
     box-sizing: border-box;
 }
 
+.nav-dropdown #copy-coords-external-btn-clone{
+	width:100%;
+}
+
 .nav-dropdown .current-center {
+  display:none!important;
     flex-wrap: wrap; /* Разрешаем перенос элементов */
     /* gap: 5px; Добавляем промежутки */
     box-sizing: border-box;
 }
 
 .nav-dropdown .current-center > * {
+  display:none!important;
     flex: 1 1 auto; /* Гибкое распределение пространства */
     min-width: min-content; /* Минимальная ширина по содержимому */
     box-sizing: border-box;
@@ -341,7 +348,6 @@
      /* max-width: calc(100% - 30px);Оставляем место для кнопки */
     box-sizing: border-box;
 }
-
 
 
 /* Слои карты */
@@ -529,4 +535,14 @@
 .leaflet-dragging .leaflet-marker-pane,
 .leaflet-dragging .leaflet-shadow-pane {
     transition: none;
+}
+
+.nav-dropdown #currentCenter-label-clone {
+  display: none !important;
+}
+.nav-dropdown #current-center-coords-clone {
+  display: none !important;
+}
+.nav-dropdown #copy-coords-btn-clone{
+  display: none !important;
 }

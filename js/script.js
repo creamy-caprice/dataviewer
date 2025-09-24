@@ -200,15 +200,85 @@ function parseCoordinateString(str) {
 
 
 
+
+
+
+
+
+
+
+// Добавляем функцию для обновления видимости кнопок копирования
+function updateCopyButtonsVisibility() {
+    const coordsInput = document.getElementById('coords-input');
+    const coordsClone = document.getElementById('coords-input-clone');
+    
+    const externalCopyBtn = document.getElementById('copy-coords-external-btn');
+    const externalCopyBtnClone = document.getElementById('copy-coords-external-btn-clone');
+    
+    // Обновляем состояние для основного поля
+    if (coordsInput && externalCopyBtn) {
+        const hasValue = coordsInput.value.trim().length > 0;
+        externalCopyBtn.disabled = !hasValue;
+        externalCopyBtn.style.display = 'inline-flex'; // Всегда показываем
+    }
+    
+    // Обновляем состояние для клона
+    if (coordsClone && externalCopyBtnClone) {
+        const hasValue = coordsClone.value.trim().length > 0;
+        externalCopyBtnClone.disabled = !hasValue;
+        externalCopyBtnClone.style.display = 'inline-flex'; // Всегда показываем
+    }
+}
+// Инициализация видимости кнопок при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Ждем немного для инициализации всех элементов
+    setTimeout(() => {
+        updateCopyButtonsVisibility();
+    }, 100);
+});
+
+// Также обновляем видимость при изменении размера окна (на случай перестроения интерфейса)
+window.addEventListener('resize', function() {
+    updateCopyButtonsVisibility();
+});
+
 // Функция центрирования карты по координатам
 let highlightMarker = null;
 let highlightTimeout = null;
 let highlightAnimationInterval = null;
+let isProgrammaticChange = false;
 
 function centerMap(lat, lng, zoom = 14) {    
-    // const centerMapZoom = 14;
     map.setView([lat, lng], zoom);
-    document.getElementById('coords-input').value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+    
+    // Устанавливаем флаг программного изменения
+    isProgrammaticChange = true;
+    
+    // Обновляем все поля ввода координат
+    const coordValue = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+    
+    // Основное поле ввода
+    const coordsInput = document.getElementById('coords-input');
+    if (coordsInput) coordsInput.value = coordValue;
+    
+    // Клон поля ввода для дартс-меню
+    const coordsClone = document.getElementById('coords-input-clone');
+    if (coordsClone) coordsClone.value = coordValue;
+    
+    // Обновляем видимость кнопок копирования
+    updateCopyButtonsVisibility();
+    
+    // Сбрасываем флаг после обновления значений
+    setTimeout(() => {
+        isProgrammaticChange = false;
+    }, 100);
+    
+    // Принудительно обновляем видимость внешних кнопок копирования
+    const externalCopyBtn = document.getElementById('copy-coords-external-btn');
+    const externalCopyBtnClone = document.getElementById('copy-coords-external-btn-clone');
+    
+    if (externalCopyBtn) externalCopyBtn.style.display = 'inline-flex';
+    if (externalCopyBtnClone) externalCopyBtnClone.style.display = 'inline-flex';
 
     // Очищаем предыдущие элементы
     if (highlightMarker) {
@@ -220,20 +290,20 @@ function centerMap(lat, lng, zoom = 14) {
         highlightTimeout = null;
     }
 
-    // Создаем кастомную иконку с фиксированным размером в пикселях
+    // Создаем кастомную иконку
     const customIcon = L.icon({
-        iconUrl: 'img/mapMarker.png', // путь к вашей картинке
-        iconSize: [100, 100],           // размер иконки в пикселях [ширина, высота]
-        iconAnchor: [50, 50],        // точка привязки должна быть в центре нижней части изображения
-        popupAnchor: [0, 0],       // где появляется popup относительно anchor
-        className: 'fixed-marker'     // добавляем класс для дополнительного CSS контроля
+        iconUrl: 'img/mapMarker.png',
+        iconSize: [100, 100],
+        iconAnchor: [50, 50],
+        popupAnchor: [0, 0],
+        className: 'fixed-marker'
     });
 
-    // Создаем маркер с кастомной иконкой и включаем возможность перетаскивания
+    // Создаем маркер
     highlightMarker = L.marker([lat, lng], {
         icon: customIcon,
-        draggable: true, // Включаем возможность перетаскивания
-        autoPan: true    // Автоматически перемещать карту при перетаскивании маркера
+        draggable: true,
+        autoPan: true
     }).addTo(map);
 
     // Обработчик события перетаскивания маркера
@@ -241,6 +311,9 @@ function centerMap(lat, lng, zoom = 14) {
         const position = highlightMarker.getLatLng();
         const newLat = position.lat;
         const newLng = position.lng;
+        
+        // Устанавливаем флаг программного изменения
+        isProgrammaticChange = true;
         
         // Обновляем все поля ввода координат
         const coordValue = `${newLat.toFixed(6)}, ${newLng.toFixed(6)}`;
@@ -253,49 +326,20 @@ function centerMap(lat, lng, zoom = 14) {
         const coordsClone = document.getElementById('coords-input-clone');
         if (coordsClone) coordsClone.value = coordValue;
         
-        // Обновляем лейблы текущих координат
-        // document.getElementById('current-center-coords').textContent = coordValue;
+        // Обновляем видимость кнопок копирования
+        updateCopyButtonsVisibility();
         
-        // const cloneCoords = document.getElementById('current-center-coords-clone');
-        // if (cloneCoords) {
-            // cloneCoords.textContent = coordValue;
-        // }
-        
-        // Обновляем видимость кнопок очистки
-        toggleClearButton(coordsInput);
-        toggleClearButton(coordsClone);
+        // Сбрасываем флаг после обновления значений
+        setTimeout(() => {
+            isProgrammaticChange = false;
+        }, 100);
     });
-
-    // Явно обновляем лейблы текущих координат
-    // document.getElementById('current-center-coords').textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-    
-    // const cloneCoords = document.getElementById('current-center-coords-clone');
-    // if (cloneCoords) {
-        // cloneCoords.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-    // }
-        
-    // Обновляем поля ввода координат
-    const coordValue = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-    
-    // Основное поле ввода
-    const coordsInput = document.getElementById('coords-input');
-    if (coordsInput) coordsInput.value = coordValue;
-    
-    // Клон поля ввода для дартс-меню
-    const coordsClone = document.getElementById('coords-input-clone');
-    if (coordsClone) coordsClone.value = coordValue;
-    
-    // Обновляем видимость кнопок очистки
-    toggleClearButton(coordsInput);
-    toggleClearButton(coordsClone);
 }
-
 
 // Функция для очистки маркера и полей ввода
 function clearMarkerAndInput() {
-    if (highlightMarker) {
-        // Удаляем обработчики событий перед удалением маркера
-        highlightMarker.off('dragend');
+ if (highlightMarker) {
+        highlightMarker.off('drag');
         map.removeLayer(highlightMarker);
         highlightMarker = null;
     }
@@ -304,6 +348,9 @@ function clearMarkerAndInput() {
         highlightTimeout = null;
     }
     
+    // Устанавливаем флаг программного изменения
+    isProgrammaticChange = true;
+    
     // Очищаем оба поля ввода координат
     const coordsInput = document.getElementById('coords-input');
     const coordsClone = document.getElementById('coords-input-clone');
@@ -311,9 +358,13 @@ function clearMarkerAndInput() {
     if (coordsInput) coordsInput.value = '';
     if (coordsClone) coordsClone.value = '';
     
-    // Обновляем видимость кнопок очистки
-    toggleClearButton(coordsInput);
-    toggleClearButton(coordsClone);
+    // Обновляем видимость кнопок копирования
+    updateCopyButtonsVisibility();
+    
+    // Сбрасываем флаг после очистки
+    setTimeout(() => {
+        isProgrammaticChange = false;
+    }, 100);
 }
 
 
@@ -1045,6 +1096,8 @@ async function init() {
 	// Настройка кнопки после инициализации элементов
     setTimeout(() => {
         setupCopyCoordsButton();
+        addCopyButtonsToInputs(); // Добавляем инициализацию кнопок копирования
+        updateCopyButtonsVisibility(); // Инициализируем состояние кнопок
     }, 500);
     
     // Инициализация дартс-меню
@@ -1257,20 +1310,23 @@ function normalizeToTuple(coords) {
 }
 
 function centerMapFromInput(input, showAlert = false) {
-  const raw = parseCoordinates(input.value.trim());
-  const coords = normalizeToTuple(raw);
+    // Если изменение программное, не обрабатываем
+    if (isProgrammaticChange) return;
+    
+    const raw = parseCoordinates(input.value.trim());
+    const coords = normalizeToTuple(raw);
 
-  if (coords) {
-    const [lat, lng] = coords;
-    centerMap(lat, lng);
-    if (typeof hideCoordsError === 'function') hideCoordsError(input);
-  } else if (showAlert) {
-    if (typeof showCoordsError === 'function') {
-      showCoordsError(input, translations[currentLang].invalidCoords);
-    } else {
-      alert(translations[currentLang].invalidCoords);
+    if (coords) {
+        const [lat, lng] = coords;
+        centerMap(lat, lng);
+        if (typeof hideCoordsError === 'function') hideCoordsError(input);
+    } else if (showAlert) {
+        if (typeof showCoordsError === 'function') {
+            showCoordsError(input, translations[currentLang].invalidCoords);
+        } else {
+            alert(translations[currentLang].invalidCoords);
+        }
     }
-  }
 }
 
 function setupInputWithClear(inputEl, clearBtn) {
@@ -1280,6 +1336,12 @@ function setupInputWithClear(inputEl, clearBtn) {
         } else {
             clearBtn.style.display = "none";
         }
+		
+		// Также управляем видимостью кнопки копирования
+		const copyBtn = input.parentNode.querySelector('.copy-input-btn');
+		if (copyBtn) {
+			copyBtn.style.display = input.value ? 'inline-flex' : 'none';
+		}
     }
 
     // следим за вводом, вставкой и изменениями
@@ -1300,16 +1362,74 @@ function setupInputWithClear(inputEl, clearBtn) {
 document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input => {
     // Автоматическое центрирование при вставке (без ошибок)
     input.addEventListener('input', function() {
-        centerMapFromInput(this, false);
+        if (!isProgrammaticChange) {
+            centerMapFromInput(this, false);
+        }
+        // Всегда обновляем видимость кнопок копирования при изменении содержимого
+        updateCopyButtonsVisibility();
     });
     
     // Обработка Enter с показом ошибок
     input.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && !isProgrammaticChange) {
             centerMapFromInput(this, true);
+            // Обновляем видимость кнопок копирования
+            updateCopyButtonsVisibility();
         }
     });
 });
+
+
+
+
+
+// Добавляем обработчики для кнопок очистки (крестиков)
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('clear-input-btn')) {
+        // Находим соответствующее поле ввода
+        const input = e.target.closest('.input-with-clear').querySelector('input');
+        if (input) {
+            // Устанавливаем флаг программного изменения
+            isProgrammaticChange = true;
+            
+            // Очищаем поле
+            input.value = '';
+            
+            // Обновляем видимость кнопок копирования
+            updateCopyButtonsVisibility();
+            
+            // Сбрасываем флаг
+            setTimeout(() => {
+                isProgrammaticChange = false;
+            }, 100);
+            
+            // Синхронизируем второе поле, если оно есть
+            const otherInputId = input.id === 'coords-input' ? 'coords-input-clone' : 'coords-input';
+            const otherInput = document.getElementById(otherInputId);
+            if (otherInput) {
+                isProgrammaticChange = true;
+                otherInput.value = '';
+                setTimeout(() => {
+                    isProgrammaticChange = false;
+                }, 100);
+            }
+            
+            // Обновляем видимость кнопок копирования для обоих полей
+            updateCopyButtonsVisibility();
+            
+            // Очищаем маркер если это основное поле
+            if (input.id === 'coords-input') {
+                clearMarkerAndInput();
+            }
+        }
+    }
+});
+
+
+
+
+
+
 
 // обработчик для нажатия Enter в поле ввода
 // coordsInput.addEventListener('keypress', function(e) {
@@ -1366,6 +1486,7 @@ function initDartMenu() {
     const elementsToClone = [
         'centerOn-label',
         'coords-input',
+		'copy-coords-external-btn',
         'cities-dropdown',
         'currentCenter-label',
         'current-center-coords',
@@ -1435,6 +1556,17 @@ function syncDropdownState() {
     const cloneInput = document.getElementById('coords-input-clone');
     if (originalInput && cloneInput) {
         cloneInput.value = originalInput.value;
+        
+        // Синхронизация видимости внешних кнопок копирования
+        const originalCopyBtn = document.getElementById('copy-coords-external-btn');
+        const cloneCopyBtn = document.getElementById('copy-coords-external-btn-clone');
+        
+        if (originalCopyBtn) {
+            originalCopyBtn.style.display = originalInput.value ? 'inline-flex' : 'none';
+        }
+        if (cloneCopyBtn) {
+            cloneCopyBtn.style.display = cloneInput.value ? 'inline-flex' : 'none';
+        }
     }
 
     // Выпадающий список городов
@@ -1517,6 +1649,11 @@ navMenuToggle.addEventListener('click', function(e) {
 
 
 function copyToClipboard(text, button) {
+    // Проверяем, не disabled ли кнопка
+    if (button.disabled) {
+        return;
+    }
+	
     if (!text || text.includes('не определен') || text.includes('undefined')) {
         return;
     }
@@ -1533,16 +1670,23 @@ function copyToClipboard(text, button) {
         const successful = document.execCommand('copy');
         document.body.removeChild(textArea);
         
-        // Показываем обратную связь
-        const t = translations[currentLang];
-        button.textContent = t ? t.copiedText : '✓';
-        button.classList.add('copied');
+        // Сохраняем исходное состояние если еще не сохранено
+        if (!button.dataset.originalHtml) {
+            button.dataset.originalHtml = button.innerHTML;
+            button.dataset.originalClass = button.className;
+        }
         
+        // Визуальная обратная связь
+        const t = translations[currentLang];
+        button.innerHTML = t ? t.copiedText : '✓';
+        button.className = button.className + ' copied';
+        
+        // Восстанавливаем исходное состояние после 2 секунд
         setTimeout(() => {
-            if (button.dataset.originalText) {
-                button.textContent = button.dataset.originalText;
+            if (button.dataset.originalHtml) {
+                button.innerHTML = button.dataset.originalHtml;
+                button.className = button.dataset.originalClass;
             }
-            button.classList.remove('copied');
         }, 2000);
         
         if (!successful) {
@@ -1551,12 +1695,12 @@ function copyToClipboard(text, button) {
         }
     } catch (err) {
         console.error('Ошибка копирования:', err);
-        button.textContent = translations[currentLang]?.copyError || "Ошибка";
+        button.innerHTML = translations[currentLang]?.copyError || "Ошибка";
         setTimeout(() => {
-            if (button.dataset.originalText) {
-                button.textContent = button.dataset.originalText;
+            if (button.dataset.originalHtml) {
+                button.innerHTML = button.dataset.originalHtml;
+                button.className = button.dataset.originalClass;
             }
-            button.classList.remove('copied');
         }, 2000);
     }
 }
@@ -1576,6 +1720,17 @@ function setupDropdownListeners() {
                 if (centerMapFromInput(this, true)) {
                     navDropdown.classList.remove('active');
                 }
+            }
+        });
+    }
+	
+	 // Обработчик для клонированной внешней кнопки копирования
+    const copyExternalBtnClone = document.getElementById('copy-coords-external-btn-clone');
+    if (copyExternalBtnClone) {
+        copyExternalBtnClone.addEventListener('click', function() {
+            const coordsInputClone = document.getElementById('coords-input-clone');
+            if (coordsInputClone && coordsInputClone.value) {
+                copyToClipboard(coordsInputClone.value, this);
             }
         });
     }
@@ -1949,6 +2104,13 @@ function addMarkerAtCurrentCenter() {
     const center = map.getCenter();
     const currentZoom = map.getZoom();
     centerMap(center.lat, center.lng, currentZoom);
+    
+    // Принудительно показываем кнопки копирования
+    const externalCopyBtn = document.getElementById('copy-coords-external-btn');
+    const externalCopyBtnClone = document.getElementById('copy-coords-external-btn-clone');
+    
+    if (externalCopyBtn) externalCopyBtn.style.display = 'inline-flex';
+    if (externalCopyBtnClone) externalCopyBtnClone.style.display = 'inline-flex';
 }
 
 // Добавим обработчики для кнопок добавления маркера
@@ -1964,4 +2126,57 @@ document.addEventListener('DOMContentLoaded', function() {
     if (addMarkerBtnClone) {
         addMarkerBtnClone.addEventListener('click', addMarkerAtCurrentCenter);
     }
+});
+
+// Добавляем эту функцию для создания кнопок копирования
+function addCopyButtonsToInputs() {
+    // Удаляем старые внутренние кнопки копирования
+    document.querySelectorAll('.copy-input-btn:not(.external)').forEach(btn => {
+        btn.remove();
+    });
+
+    // Обработчики для внешних кнопок копирования
+        function setupExternalCopyButton(buttonId, inputId) {
+        const copyBtn = document.getElementById(buttonId);
+        const input = document.getElementById(inputId);
+        
+        if (copyBtn && input) {
+            copyBtn.addEventListener('click', function() {
+                if (input.value && !this.disabled) {
+                    copyToClipboard(input.value, this);
+                }
+            });
+            
+            // Управление активностью на основе содержимого поля
+            input.addEventListener('input', function() {
+                const hasValue = this.value.trim().length > 0;
+                copyBtn.disabled = !hasValue;
+                copyBtn.style.display = 'inline-flex'; // Всегда показываем
+            });
+            
+            // Инициализация состояния
+            const hasValue = input.value.trim().length > 0;
+            copyBtn.disabled = !hasValue;
+            copyBtn.style.display = 'inline-flex'; // Всегда показываем
+        }
+    }
+
+    // Настройка кнопок для основного поля и клона
+    setupExternalCopyButton('copy-coords-external-btn', 'coords-input');
+    setupExternalCopyButton('copy-coords-external-btn-clone', 'coords-input-clone');
+}
+
+// Вызываем функции инициализации
+document.addEventListener('DOMContentLoaded', function() {
+    addCopyButtonsToInputs();
+    
+    // Также обновляем видимость кнопок при изменении содержимого полей
+    document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input => {
+        input.addEventListener('input', function() {
+            const copyBtn = this.parentNode.querySelector('.copy-input-btn');
+            if (copyBtn) {
+                copyBtn.style.display = this.value ? 'inline-flex' : 'none';
+            }
+        });
+    });
 });
