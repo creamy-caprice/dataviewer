@@ -506,7 +506,16 @@ function initMeasureControl() {
         clearControlTitle: t.clearControlTitle,
         unitControlTitle: t.unitControlTitle,
         bearingText: currentLang === 'ru' ? 'Азимут' : 'Bearing',
-        units: t.units
+        units: t.units,
+		
+		tempLine: {                     // Styling settings for the temporary dashed line
+			color: '#f0f',              // Dashed line color
+			weight: 2                   // Dashed line weight
+		},          
+		fixedLine: {                    // Styling for the solid line
+			color: '#F0F',              // Solid line color
+			weight: 2                   // Solid line weight
+		}
     };
 
 
