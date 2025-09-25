@@ -4,7 +4,7 @@ const translations = {
         //logoAlt: "dataviewer - просмотр данных",
         centerLabel: "Центрировать на:",
         coordsPlaceholder: "Координаты",
-        selectCity: "Выберите город",
+        // selectCity: "Выберите город",
         currentCenter: "Текущий центр: ",
 		invalidCoords: "Неверный формат координат",
         undefinedCoords: "не определен",
@@ -54,7 +54,7 @@ const translations = {
         //logoAlt: "dataviewer - data visualization",
         centerLabel: "Center on:",
         coordsPlaceholder: "Coordinates",
-        selectCity: "Select city",
+        // selectCity: "Select city",
         currentCenter: "Current center: ",
 		invalidCoords: "Invalid coordinate format",
         undefinedCoords: "undefined",
@@ -182,7 +182,7 @@ function setLanguage(lang) {
     // document.getElementById('main-title').textContent = t.title;
     document.getElementById('centerOn-label').textContent = t.centerLabel;
     document.getElementById('coords-input').placeholder = t.coordsPlaceholder;
-    document.getElementById('select-city-default').textContent = t.selectCity;
+    // document.getElementById('select-city-default').textContent = t.selectCity;
     
     document.getElementById('currentCenter-label').textContent = t.currentCenter;
     // Восстанавливаем координаты после обновления префикса
