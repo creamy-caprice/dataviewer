@@ -83,18 +83,20 @@ window.permanentLayers = [
 
 // Список городов с координатами
 window.cities = [
-    { name: { ru: "Суджа",     en: "Sudzha"     }, lat: 51.19055,  lng: 35.27082   },
-    { name: { ru: "Волчанск",  en: "Volchansk"  }, lat: 50.288107, lng: 36.946217  },
-    { name: { ru: "Купянск",   en: "Kupyansk"   }, lat: 49.706396, lng: 37.616586  },
-    { name: { ru: "Боровая",   en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
-    { name: { ru: "Северск",   en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
-    { name: { ru: "Часов Яр",  en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
-    { name: { ru: "Дзержинск", en: "Dzerzhinsk" }, lat: 48.398329, lng: 37.836634  },
+    { name: { ru: "Суджа",      en: "Sudzha"     }, lat: 51.19055,  lng: 35.27082   },
+    { name: { ru: "Волчанск",   en: "Volchansk"  }, lat: 50.288107, lng: 36.946217  },
+    { name: { ru: "Купянск",    en: "Kupyansk"   }, lat: 49.706396, lng: 37.616586  },
+    { name: { ru: "Боровая",    en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
+    { name: { ru: "Северск",    en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
+    { name: { ru: "Часов Яр",   en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
+    { name: { ru: "Константиновка", en: "Konstantinovka" }, lat: 48.521389, lng: 37.714722 },
     { name: { ru: "Красноармейск", en: "Krasnoarmeisk" }, lat: 48.28566, lng:  37.17605 },
-    { name: { ru: "Великая Новосёлка", en: "Velikaya Novoselka" }, lat: 47.83857, lng:  36.83697 },
-    { name: { ru: "Гуляйполе", en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
-    { name: { ru: "Орехов",    en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
+    { name: { ru: "Покровское", en: "Pokrovskoe" }, lat: 47.982166, lng:  36.232438 },
+    { name: { ru: "Гуляйполе",  en: "Gulyaypole" }, lat: 47.66336,  lng:  36.2587   },
+    { name: { ru: "Орехов",     en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
+    { name: { ru: "Степногорск", en: "Stepnogorsk" }, lat: 47.588488,   lng:  35.362448 },
 ];
+
 
 
 
