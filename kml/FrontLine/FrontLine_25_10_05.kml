@@ -6,7 +6,7 @@
     <description>Exported data from UTM Geo Map APP</description>
     <Style id="16345">
       <LineStyle>
-        <width>2</width>
+        <width>1</width>
         <color>ff0000ff</color>
       </LineStyle>
     </Style>
@@ -15,7 +15,7 @@
       <visibility>1</visibility>
       <description>Line and polyline features</description>
       <Placemark>
-        <name>OBJ_</name>
+        <name> </name>
         <visibility>1</visibility>
         <description>Distance: 2 336 521,462 m, Distance: 805,871 m, Note: null</description>
         <styleUrl>#16345</styleUrl>
@@ -16709,4 +16709,5 @@
       </Placemark>
     </Folder>
   </Document>
+
 </kml>
