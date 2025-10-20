@@ -67,13 +67,14 @@ window.kmlFiles = [
     { name: "05.10.25", path: "kml/ControlZones/Control_25_10_05.kml" },
     { name: "09.10.25", path: "kml/ControlZones/Control_25_10_09.kml" },
     { name: "13.10.25", path: "kml/ControlZones/Control_25_10_13.kml" },
-    { name: "17.10.25", path: "kml/ControlZones/Control_25_10_17.kml" }
+    { name: "17.10.25", path: "kml/ControlZones/Control_25_10_17.kml" },
+    { name: "21.10.25", path: "kml/ControlZones/Control_25_10_21.kml" }
 ];
 
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_10_17.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_10_21.kml" },
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
@@ -103,6 +104,7 @@ window.cities = [
     { name: { ru: "Орехов",     en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
     { name: { ru: "Степногорск", en: "Stepnogorsk" }, lat: 47.588488,   lng:  35.362448 },
 ];
+
 
 
 
