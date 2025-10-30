@@ -12,7 +12,7 @@ copyCoordsBtn = document.getElementById('copy-coords-btn');
 let selectedDate = null; // Глобальная переменная для хранения текущей даты
 
 // Глобальный флаг для логгирования стилей временных файлов
-const LOG_TEMPORARY_STYLES = true; // Можно менять на false для отключения
+const LOG_STYLES = true; // Можно менять на false для отключения
 
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
@@ -450,6 +450,408 @@ function parseOpacity(kmlColor) {
 
 window.permanentLayerGroups = []; // Храним группы слоёв
 
+// Конфигурация стилей для KML-файлов
+window.kmlStyleModes = {
+    // Стиль по умолчанию - из KML файла
+    DEFAULT: 'kml',
+    
+    // Заданные стили
+    STYLE_MG:   'styleMG', // Для мультиполигональных файлов
+    STYLE_RUAF: 'styleRuAF', // Для файлов из RuAF
+    STYLE_AFU:  'styleAFU'  // Для файлов из AFU
+};
+
+// Определение стилей
+window.kmlStyles = {
+    [window.kmlStyleModes.STYLE_MG]: {
+        polygon: {
+            color: '#ff0000', // Красная обводка для видимости
+            weight: 0.2, // Тонкая линия
+            fillColor: '#ff0000', // Красная заливка
+            fillOpacity: 0.3, // Низкая непрозрачность
+            interactive: false
+        },
+        polyline: {
+            color: '#0000ff', // Синие линии
+            weight: 3, // Толстая линия
+            opacity: 1,
+            interactive: false
+        }
+    },
+    [window.kmlStyleModes.STYLE_RUAF]: {
+        polygon: {
+            color: '#ff0000',
+            weight: 0.1,
+            fillColor: '#ff0000',
+            fillOpacity: 0.3,
+            interactive: false
+        },
+        polyline: {
+            color: '#ff0000',
+            weight: 4,
+            opacity: 0.8,
+            interactive: false
+        }
+    },
+    [window.kmlStyleModes.STYLE_AFU]: {
+        polygon: {
+            color: '#0000ff',
+            weight: 0.1,
+            fillColor: '#0000ff',
+            fillOpacity: 0.3,
+            interactive: false
+        },
+        polyline: {
+            color: '#0000ff',
+            weight: 4,
+            opacity: 0.8,
+            interactive: false
+        }
+    }
+};
+
+// Функция для определения режима стиля по пути или содержимому файла
+async function getStyleModeForFile(filePath) {
+    // Сначала проверяем путь для RuAF/AFU
+    if (filePath.includes('/RuAF/'))
+        return window.kmlStyleModes.STYLE_RUAF;
+    else if (filePath.includes('/AFU/')) 
+        return window.kmlStyleModes.STYLE_AFU;
+    
+    // Для остальных файлов проверяем содержимое на мультигеометрию
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) return window.kmlStyleModes.DEFAULT;
+        
+        const kmlText = await response.text();
+        const parser = new DOMParser();
+        const kmlDoc = parser.parseFromString(kmlText, "text/xml");
+        
+        // Проверяем наличие MultiGeometry в файле
+        const hasMultiGeometry = kmlDoc.querySelector('MultiGeometry') !== null;
+        
+        if (hasMultiGeometry) {
+            return window.kmlStyleModes.STYLE_MG;
+        }
+    } catch (error) {
+        console.error(`Ошибка проверки файла на мультигеометрию: ${filePath}`, error);
+    }
+    
+    // Если ничто из этого - берём стиль из файла
+    return window.kmlStyleModes.DEFAULT;
+}
+
+// Обрабатываем обычные стили
+function parseStyleFromKmlDoc(kmlDoc)
+{
+    const styles = {};
+    kmlDoc.querySelectorAll('Style').forEach(style => {
+        const id = style.getAttribute('id');
+        styles[id] = {
+            line: parseLineStyle(style),
+            poly: parsePolyStyle(style)
+        };
+    });
+    return styles;
+}
+
+// Обрабатываем StyleMap
+function parseStyleMapFromKmlDoc(kmlDoc)
+{
+    const styleMaps = {};
+    kmlDoc.querySelectorAll('StyleMap').forEach(styleMap => {
+        const id = styleMap.getAttribute('id');
+        const pairs = {};
+        styleMap.querySelectorAll('Pair').forEach(pair => {
+            const key = pair.querySelector('key').textContent;
+            const styleUrl = pair.querySelector('styleUrl').textContent.replace('#', '');
+            pairs[key] = styleUrl;
+        });
+        styleMaps[id] = pairs;
+    });
+    return styleMaps;
+}
+
+// Обработка Placemarks
+function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  styleMode = window.kmlStyleModes.DEFAULT)
+{
+    let bounds = L.latLngBounds(); // Инициализация пустыми границами
+    let elementCount = 0;
+    kmlDoc.querySelectorAll('Placemark').forEach(placemark => {
+        // Получаем стиль для Placemark
+        const styleUrl = placemark.querySelector('styleUrl')?.textContent.replace('#', '');
+        let style = { line: {}, poly: {} };
+        
+        if (styleUrl) {
+            // Проверяем StyleMap
+            if (styleMaps[styleUrl]) {
+                const normalStyleId = styleMaps[styleUrl].normal;
+                if (styles[normalStyleId]) {
+                    style.line = styles[normalStyleId].line || {};
+                    style.poly = styles[normalStyleId].poly || {};
+                }
+            }
+            else if (styles[styleUrl]) { // Проверяем обычный стиль
+                style.line = styles[styleUrl].line || {};
+                style.poly = styles[styleUrl].poly || {};
+            }
+        }
+        
+        // Получаем название для Placemark
+        const name = placemark.querySelector('name')?.textContent;
+
+        // Логирование
+        if (LOG_STYLES)
+        {
+            console.groupCollapsed(`Placemark styles: ${placemark.querySelector('name')?.textContent || 'unnamed'}`);
+            console.log('Name:', name);
+            console.log('Style URL:', styleUrl);
+            console.log('Line Style:', style.line ? {
+                rawColor: style.line.rawColor, 
+                parsedColor: style.line.color,
+                weight: style.line.weight,
+                opacity: style.line.opacity
+            } : null);
+            console.log('Poly Style:', style.poly ? {
+                rawColor: style.poly.rawColor, 
+                parsedFillColor: style.poly.fillColor,
+                fillOpacity: style.poly.fillOpacity
+            } : null);
+        }
+
+		function parseAndAddPolygon(polygon)
+		{
+			const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
+                if (coords.length < 3) {
+                    if (LOG_STYLES) console.log(`Polygon skipped - insufficient coordinates: ${coords.length}`);
+                    return;
+                }
+
+			let polyStyle = {};
+			
+			if (styleMode === window.kmlStyleModes.DEFAULT)
+				polyStyle = {
+                    color: style.line.color || '#3388ff',
+                    weight: style.line.weight || 0,
+                    fillColor: style.poly.fillColor || '#3388ff',
+                    fillOpacity: style.poly.fillOpacity || 0.5,
+                    interactive: false // Отключаем интерактивность полигонов
+				};
+			else
+				polyStyle = window.kmlStyles[styleMode].polygon;
+
+			// Создаем полигон
+			const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
+			
+			// Обновляем границы				
+			if (poly.getBounds().isValid()) {
+				bounds.extend(poly.getBounds());
+			}
+			// Добавляем метку, если есть название
+			if (name && name.trim() !== '') {
+				addLabelToLayer(name, 'Polygon', coords, layerGroup);
+			}			
+
+			// Логирование информации о полигоне
+			if (LOG_STYLES) {
+				console.log(`Polygon in MultiGeometry #${++elementCount}:`);
+				console.log('- Coordinates count:', coords.length);
+				console.log('- Applied styles:', {
+					color: polyStyle.color || '#3388ff',
+					weight: polyStyle.weight || 3,
+					fillColor: polyStyle.fillColor || '#3388ff',
+					fillOpacity: polyStyle.fillOpacity || 0.5
+				});
+			}
+			
+			return poly;
+		}
+		
+		function parseAndAddLineString(lineString)
+		{
+			const coords = parseCoordinates(lineString, map.options.crs);
+                if (coords.length < 2) {
+                    if (LOG_STYLES) console.log(`LineString skipped - insufficient coordinates: ${coords.length}`);
+                    return;
+                }
+				
+				let lineStyle = {};				
+				
+				if (styleMode === window.kmlStyleModes.DEFAULT)
+					lineStyle = {
+						color: style.line.color || '#3388ff',
+						weight: style.line.weight || 3,
+						opacity: style.line.opacity || 1,
+						interactive: false // Отключаем интерактивность полигонов
+					};
+				else
+					lineStyle = window.kmlStyles[styleMode].polyline;
+				
+
+                const polyline = L.polyline(coords, lineStyle).addTo(layerGroup);
+
+				// Обновляем границы	
+                if (polyline.getBounds().isValid()) {
+                    bounds.extend(polyline.getBounds());
+                }
+				// Добавляем метку, если есть название                
+                if (name && name.trim() !== '') {
+                    addLabelToLayer(name, 'LineString', coords, layerGroup);
+                }
+
+                // Логирование информации о линии
+                if (LOG_STYLES) {
+                    console.log(`LineString in MultiGeometry #${++elementCount}:`);
+                    console.log('- Coordinates count:', coords.length);
+                    console.log('- Applied styles:', {
+                        color: lineStyle.color || '#3388ff',
+                        weight: lineStyle.weight || 3,
+                        opacity: lineStyle.opacity || 1
+                    });
+                }
+				return polyline;
+		}
+
+        // Обработка MultiGeometry
+        const multiGeometry = placemark.querySelector('MultiGeometry');
+        if (multiGeometry) {
+            // Обработка Polygon в MultiGeometry
+            multiGeometry.querySelectorAll('Polygon').forEach(polygon => {                
+				const poly = parseAndAddPolygon(polygon);
+            });
+
+            // Обработка LineString в MultiGeometry
+            multiGeometry.querySelectorAll('LineString').forEach(lineString => {
+                const polyline = parseAndAddLineString(lineString);
+            });
+        }
+
+        // Обработка Polygon
+        const polygon = placemark.querySelector('Polygon');
+        if (polygon && !multiGeometry) {                
+				const poly = parseAndAddPolygon(polygon);
+        }
+
+        // Обработка LineString
+        const lineString = placemark.querySelector('LineString');
+        if (lineString && !multiGeometry) {
+			const polyline = parseAndAddLineString(lineString); ///////////
+		}
+                
+        if (LOG_STYLES) console.groupEnd(); // Закрываем группу Placemark
+    });
+    
+    if (LOG_STYLES) {
+        console.log(`Total elements: ${elementCount}`);
+        console.groupEnd(); // Закрываем группу  слоя
+    }
+                
+    return bounds;
+}
+
+// Универсальная функция загрузки KML
+async function loadKmlToLayer(filePath, layerGroup, options = {}) {
+    const {
+        isPermanent = false,
+        preserveZoom = false,
+        fitBounds = true,
+        styleMode = null // Новый параметр
+    } = options;
+
+    try {
+        // Определяем режим стиля для файла (либо из параметров, либо автоматически)
+        let finalStyleMode = styleMode;
+        if (!finalStyleMode) {
+            finalStyleMode = await getStyleModeForFile(filePath);
+        }
+        
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            console.error(`Ошибка загрузки KML (${filePath}): ${response.status}`);
+            return { bounds: L.latLngBounds(), layerGroup };
+        }
+
+        const kmlText = await response.text();
+        const parser = new DOMParser();
+        const kmlDoc = parser.parseFromString(kmlText, "text/xml");
+
+        // Общая логика парсинга
+        const styles = parseStyleFromKmlDoc(kmlDoc);
+        const styleMaps = parseStyleMapFromKmlDoc(kmlDoc);
+        
+        if (LOG_STYLES) {
+            console.groupCollapsed(`${isPermanent ? 'Permanent' : 'Temporary'} layer loaded: ${filePath}`);
+            console.log('Style mode:', finalStyleMode);
+            console.log('Found styles:', styles);
+            console.log('Found styleMaps:', styleMaps);
+        }
+
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode);
+        
+        if (LOG_STYLES) console.groupEnd();
+        
+        return { bounds, layerGroup };
+    } catch (error) {
+        console.error(`Ошибка загрузки KML: ${filePath}`, error);
+        return { bounds: L.latLngBounds(), layerGroup };
+    }
+}
+
+// Вспомогательная функция для применения границ
+// Для временных слоев
+function applyTemporaryLayerBounds(bounds, currentCenter, currentZoom, preserveZoom) {
+    if (bounds && bounds.isValid && bounds.isValid()) {
+        const sw = bounds.getSouthWest();
+        const ne = bounds.getNorthEast();
+        const isNotPoint = sw.lat !== ne.lat || sw.lng !== ne.lng;
+        
+        if (!preserveZoom && isNotPoint) {
+            map.fitBounds(bounds);
+        } else {
+            map.setView(currentCenter, currentZoom);
+        }
+    } else {
+        map.setView(currentCenter, currentZoom);
+    }
+}
+// Для постоянных слоев  
+function applyPermanentLayersBounds(allBounds) {
+    if (allBounds && allBounds.isValid && allBounds.isValid()) {
+        map.fitBounds(allBounds);
+    }
+    // Если границы невалидны - ничего не делаем, оставляем текущий вид
+}
+
+// Функция загрузки основного KML (с сохранением оригинальных стилей)
+async function loadKmlFile(file, targetCRS) {
+    if (currentLayer) {
+        map.removeLayer(currentLayer);
+    }
+
+    try {
+        // Загружаем границы и всё-всё из kml
+        
+        const layerGroup = L.layerGroup().addTo(map);
+        currentLayer = layerGroup;
+        
+        const { bounds } = await loadKmlToLayer(file.path, layerGroup, {
+            isPermanent: false,
+            preserveZoom: preserveZoom,
+            fitBounds: true
+        });
+        
+        // Применяем границы
+
+        const currentCenter = map.getCenter();
+        const currentZoom = map.getZoom();
+        applyTemporaryLayerBounds(bounds, currentCenter, currentZoom, preserveZoom);
+        preserveZoom = true;
+    } catch (error) {
+        console.error("loadKmlFile: ${file.path} ", error);
+    }
+}
+
+
 // Функция загрузки постоянных KML-слоев
 async function loadPermanentKmlLayers() {
     try {
@@ -468,6 +870,9 @@ async function loadPermanentKmlLayers() {
             window.permanentLayerGroups = [];
         }
 
+        // Последовательная загрузка постоянных слоев (чтобы избежать параллельных запросов)
+        window.permanentLayerGroups = [];
+        
         for (const layerData of window.permanentLayers) {
             if (!layerData.path) {
                 console.error("Отсутствует путь для постоянного слоя:", layerData);
@@ -477,365 +882,51 @@ async function loadPermanentKmlLayers() {
             console.log("Загрузка постоянного слоя:", layerData.path);
             
             try {
-                const response = await fetch(layerData.path);
-                if (!response.ok) {
-                    console.error(`Ошибка загрузки KML (${layerData.path}): ${response.status}`);
-                    continue;
-                }
-                
-                const kmlText = await response.text();
-                const parser = new DOMParser();
-                const kmlDoc = parser.parseFromString(kmlText, "text/xml");
-                
                 const layerGroup = L.layerGroup();
-                const styles = {};
-                const styleMaps = {};
-                
-                console.groupCollapsed(`Permanent layer loaded: ${layerData.path}`);
-                let elementCount = 0;
-                let bounds = L.latLngBounds(); // Инициализация границ для этого слоя
-
-                // Парсинг стилей
-                kmlDoc.querySelectorAll('Style').forEach(style => {
-                    const id = style.getAttribute('id');
-                    styles[id] = {
-                        line: parseLineStyle(style),
-                        poly: parsePolyStyle(style)
-                    };
+                // Не передаем styleMode - будет определен автоматически
+                const result = await loadKmlToLayer(layerData.path, layerGroup, {
+                    isPermanent: true,
+                    preserveZoom: false,
+                    fitBounds: false
                 });
 
-                // Парсинг StyleMap
-                kmlDoc.querySelectorAll('StyleMap').forEach(styleMap => {
-                    const id = styleMap.getAttribute('id');
-                    const pairs = {};
-                    styleMap.querySelectorAll('Pair').forEach(pair => {
-                        const key = pair.querySelector('key').textContent;
-                        const styleUrl = pair.querySelector('styleUrl').textContent.replace('#', '');
-                        pairs[key] = styleUrl;
-                    });
-                    styleMaps[id] = pairs;
-                });
-
-                // Обработка Placemarks
-                kmlDoc.querySelectorAll('Placemark').forEach(placemark => {
-                    const styleUrl = placemark.querySelector('styleUrl')?.textContent.replace('#', '');
-                    let style = { line: {}, poly: {} };
-                    
-                    if (styleUrl) {
-                        if (styleMaps[styleUrl]) {
-                            const normalStyleId = styleMaps[styleUrl].normal;
-                            if (styles[normalStyleId]) {
-                                style.line = styles[normalStyleId].line || {};
-                                style.poly = styles[normalStyleId].poly || {};
-                            }
-                        } else if (styles[styleUrl]) {
-                            style.line = styles[styleUrl].line || {};
-                            style.poly = styles[styleUrl].poly || {};
-                        }
-                    }
-                    
-                    const name = placemark.querySelector('name')?.textContent;
-
-                    console.groupCollapsed(`Placemark styles: ${placemark.querySelector('name')?.textContent || 'unnamed'}`);
-                    console.log('Name:', name);
-                    console.log('Style URL:', styleUrl);
-                    console.log('Line Style:', style.line ? {
-                        rawColor: style.line.rawColor, 
-                        parsedColor: style.line.color,
-                        weight: style.line.weight,
-                        opacity: style.line.opacity
-                    } : null);
-                    console.log('Poly Style:', style.poly ? {
-                        rawColor: style.poly.rawColor, 
-                        parsedFillColor: style.poly.fillColor,
-                        fillOpacity: style.poly.fillOpacity
-                    } : null);
-
-                    // Обработка LineString
-                    const lineString = placemark.querySelector('LineString');
-                    if (lineString) {
-                        const coords = parseCoordinates(lineString, map.options.crs);
-                        if (coords.length >= 2) {
-                            const polyline = L.polyline(coords, {
-                                color: style.line.color || '#3388ff',
-                                weight: style.line.weight || 3,
-                                opacity: style.line.opacity || 1,
-								interactive: false
-                            }).addTo(layerGroup);
-                            
-                            addLabelToLayer(name, 'LineString', coords, layerGroup);
-                            
-                            // Обновляем границы СРАЗУ ПОСЛЕ СОЗДАНИЯ
-                            if (polyline.getBounds && polyline.getBounds().isValid()) {
-                                bounds.extend(polyline.getBounds());
-                            }
-                        }
-                        
-                        // Логирование информации о линии
-                        console.log(`LineString #${++elementCount}:`);
-                        console.log(`- Raw color: ${style.line?.rawColor || 'not set'}`);
-                        console.log(`- Parsed color: ${style.line?.color || 'default'}`);
-                        console.log(`- Weight: ${style.line?.weight || 'default'}`);
-                        console.log(`- Opacity: ${style.line?.opacity || 'default'}`);
-                    }
-
-                    // Обработка Polygon
-                    const polygon = placemark.querySelector('Polygon');
-                    if (polygon) {
-                        const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
-                        if (coords.length >= 3) {
-                            const poly = L.polygon(coords, {
-                                color: style.line.color || '#3388ff',
-                                weight: style.line.weight || 0,
-                                fillColor: style.poly.fillColor || '#3388ff',
-                                fillOpacity: style.poly.fillOpacity || 0.5,
-								interactive: false // Отключаем интерактивность полигонов
-                            }).addTo(layerGroup);
-                            
-                            addLabelToLayer(name, 'Polygon', coords, layerGroup);
-                            
-                            // Обновляем границы СРАЗУ ПОСЛЕ СОЗДАНИЯ
-                            if (poly.getBounds && poly.getBounds().isValid()) {
-                                bounds.extend(poly.getBounds());
-                            }
-                        }
-                        
-                        // Логирование информации о полигоне
-                        console.log(`Polygon #${++elementCount}:`);
-                        console.log(`- Raw fill color: ${style.poly?.rawColor || 'not set'}`); 
-                        console.log(`- Parsed fill color: ${style.poly?.fillColor || 'default'}`);
-                        console.log(`- Fill opacity: ${style.poly?.fillOpacity || 'default'}`);
-                        console.log(`- Raw border color: ${style.line?.rawColor || 'not set'}`);
-                        console.log(`- Parsed border color: ${style.line?.color || 'default'}`);
-                        console.log(`- Border weight: ${style.line?.weight || 'default'}`);
-                        console.log(`- Border opacity: ${style.line?.opacity || 'default'}`);
-                    }
-                    
-                    // Закрываем группу для этого Placemark
-                    console.groupEnd();
-                });
-                
-                console.log(`Total elements: ${elementCount}`);
-                console.groupEnd();
-
+                // Добавляем слой на карту после успешной загрузки
                 layerGroup.addTo(map);
-                window.permanentLayerGroups = window.permanentLayerGroups || [];
                 window.permanentLayerGroups.push(layerGroup);
                 
-                // Применяем границы только если они валидны
-//                if (bounds.isValid()) {
-//                    map.fitBounds(bounds);
-//                }
             } catch (error) {
                 console.error(`Ошибка обработки слоя ${layerData.path}:`, error);
             }
         }
-    } catch (error) {
-        console.error("Ошибка загрузки постоянных KML:", error);
-    }
-}
 
-// Функция загрузки основного KML (с сохранением оригинальных стилей)
-async function loadKmlFile(file, targetCRS) {
-    if (currentLayer) {
-        map.removeLayer(currentLayer);
-    }
-
-    const currentCenter = map.getCenter();
-    const currentZoom = map.getZoom();
-
-    try {
-        const response = await fetch(file.path);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const kmlText = await response.text();
-        const parser = new DOMParser();
-        const kmlDoc = parser.parseFromString(kmlText, "text/xml");
-
-        const layerGroup = L.layerGroup().addTo(map);
-        currentLayer = layerGroup;
-
-        // Парсим все стили (включая StyleMap)
-        const styles = {};
-        const styleMaps = {};
-
-        // Обрабатываем обычные стили
-        kmlDoc.querySelectorAll('Style').forEach(style => {
-            const id = style.getAttribute('id');
-            styles[id] = {
-                line: parseLineStyle(style),
-                poly: parsePolyStyle(style)
-            };
-        });
-
-        // Обрабатываем StyleMap
-        kmlDoc.querySelectorAll('StyleMap').forEach(styleMap => {
-            const id = styleMap.getAttribute('id');
-            const pairs = {};
-            styleMap.querySelectorAll('Pair').forEach(pair => {
-                const key = pair.querySelector('key').textContent;
-                const styleUrl = pair.querySelector('styleUrl').textContent.replace('#', '');
-                pairs[key] = styleUrl;
-            });
-            styleMaps[id] = pairs;
-        });
-
-        let bounds = L.latLngBounds(); // Инициализация пустыми границами
+        // Вычисляем объединенные границы всех валидных слоев
+        const allBounds = L.latLngBounds();
+        let hasValidBounds = false;
         
-        // Добавляем логирование для временных файлов
-        let elementCount = 0;
-        if (LOG_TEMPORARY_STYLES) {
-            console.groupCollapsed(`Temporary layer loaded: ${file.path}`);
-        }
-
-        kmlDoc.querySelectorAll('Placemark').forEach(placemark => {
-            // Получаем стиль для Placemark
-            const styleUrl = placemark.querySelector('styleUrl')?.textContent.replace('#', '');
-            let style = { line: {}, poly: {} };
-            
-            if (styleUrl) {
-                // Проверяем StyleMap
-                if (styleMaps[styleUrl]) {
-                    const normalStyleId = styleMaps[styleUrl].normal;
-                    style = Object.assign(
-                        {}, 
-                        styles[normalStyleId]?.line || {},
-                        styles[normalStyleId]?.poly || {}
-                    );
-                } 
-                // Проверяем обычный стиль
-                else if (styles[styleUrl]) {
-                    style = Object.assign(
-                        {}, 
-                        styles[styleUrl].line || {},
-                        styles[styleUrl].poly || {}
-                    );
+        // Для постоянных слоев границы вычисляются по-другому
+        // так как мы не возвращаем bounds из loadKmlToLayer для постоянных слоев
+        window.permanentLayerGroups.forEach(layerGroup => {
+            layerGroup.eachLayer(layer => {
+                if (layer.getBounds && layer.getBounds().isValid()) {
+                    allBounds.extend(layer.getBounds());
+                    hasValidBounds = true;
                 }
-            }
-            
-            // Получаем название для Placemark
-            const name = placemark.querySelector('name')?.textContent;
-
-            // Логирование для временных файлов
-            if (LOG_TEMPORARY_STYLES) {
-                console.groupCollapsed(`Placemark styles: ${placemark.querySelector('name')?.textContent || 'unnamed'}`);
-                console.log('Name:', name);
-                console.log('Style URL:', styleUrl);
-                console.log('Line Style:', style.line ? {
-                    rawColor: style.line.rawColor, 
-                    parsedColor: style.line.color,
-                    weight: style.line.weight,
-                    opacity: style.line.opacity
-                } : null);
-                console.log('Poly Style:', style.poly ? {
-                    rawColor: style.poly.rawColor, 
-                    parsedFillColor: style.poly.fillColor,
-                    fillOpacity: style.poly.fillOpacity
-                } : null);
-            }
-
-            // Обработка LineString
-            const lineString = placemark.querySelector('LineString');
-            if (lineString) {
-                const coords = parseCoordinates(lineString, map.options.crs);
-                if (coords.length < 2) {
-                    if (LOG_TEMPORARY_STYLES) console.groupEnd(); // Закрываем группу Placemark
-                    return;
-                }
-
-                const polyline = L.polyline(coords, {
-                    color: style.color || '#3388ff',
-                    weight: style.weight || 3,
-                    opacity: style.opacity || 1,
-                    interactive: false
-                }).addTo(layerGroup);
-                
-                addLabelToLayer(name, 'LineString', coords, layerGroup);
-
-                // Логирование информации о линии
-                if (LOG_TEMPORARY_STYLES) {
-                    console.log(`LineString #${++elementCount}:`);
-                    console.log(`- Raw color: ${style.line?.rawColor || 'not set'}`);
-                    console.log(`- Parsed color: ${style.line?.color || 'default'}`);
-                    console.log(`- Weight: ${style.line?.weight || 'default'}`);
-                    console.log(`- Opacity: ${style.line?.opacity || 'default'}`);
-                }
-
-                if (polyline.getBounds().isValid()) {
-                    bounds.extend(polyline.getBounds());
-                }
-            }
-
-            // Обработка Polygon
-            const polygon = placemark.querySelector('Polygon');
-            if (polygon) {
-                const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
-                if (coords.length < 3) {
-                    if (LOG_TEMPORARY_STYLES) console.groupEnd(); // Закрываем группу Placemark
-                    return;
-                }
-
-                const poly = L.polygon(coords, {
-                    color: style.color || '#3388ff',
-                    weight: style.weight || 3,
-                    fillColor: style.fillColor || '#3388ff',
-                    fillOpacity: style.fillOpacity || 0.5,
-					interactive: false // Отключаем интерактивность полигонов
-                }).addTo(layerGroup);
-
-                addLabelToLayer(name, 'Polygon', coords, layerGroup);
-
-                // Логирование информации о полигоне
-                if (LOG_TEMPORARY_STYLES) {
-                    console.log(`Polygon #${++elementCount}:`);
-                    console.log(`- Raw fill color: ${style.poly?.rawColor || 'not set'}`); 
-                    console.log(`- Parsed fill color: ${style.poly?.fillColor || 'default'}`);
-                    console.log(`- Fill opacity: ${style.poly?.fillOpacity || 'default'}`);
-                    console.log(`- Raw border color: ${style.line?.rawColor || 'not set'}`);
-                    console.log(`- Parsed border color: ${style.line?.color || 'default'}`);
-                    console.log(`- Border weight: ${style.line?.weight || 'default'}`);
-                    console.log(`- Border opacity: ${style.line?.opacity || 'default'}`);
-                }
-
-                if (poly.getBounds().isValid()) {
-                    bounds.extend(poly.getBounds());
-                }
-            }
-            
-            if (LOG_TEMPORARY_STYLES) console.groupEnd(); // Закрываем группу Placemark
+            });
         });
 
-        if (LOG_TEMPORARY_STYLES) {
-            console.log(`Total elements: ${elementCount}`);
-            console.groupEnd(); // Закрываем группу временного слоя
-        }
-
-        if (bounds.isValid()) {
-            const sw = bounds.getSouthWest();
-            const ne = bounds.getNorthEast();
-            const isNotPoint = sw.lat !== ne.lat || sw.lng !== ne.lng;
-            
-//            if (!preserveZoom && isNotPoint) {
-//                map.fitBounds(bounds);
-//            } else {
-                map.setView(currentCenter, currentZoom);
-//            }
+        if (hasValidBounds) {
+            applyPermanentLayersBounds(allBounds);
         } else {
-            map.setView(currentCenter, currentZoom);
+            console.warn("Ни один постоянный слой не содержит валидных границ");
         }
-        preserveZoom = true;
+        
     } catch (error) {
-        console.error("Ошибка загрузки KML:", error);
-        alert(`Ошибка загрузки файла: ${file.path}\n${error.message}`);
-    }
-
-    function updateBounds(layer) {
-        if (layer.getBounds) {
-            bounds = bounds ? bounds.extend(layer.getBounds()) : layer.getBounds();
-        }
+        console.error("Ошибка загрузки постоянных KML слоев:", error);
     }
 }
+
+
+
 
 async function reloadKmlForCRS(center, zoom) {
     await loadPermanentKmlLayers();
@@ -2179,4 +2270,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
