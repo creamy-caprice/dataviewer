@@ -753,9 +753,9 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
 async function loadKmlToLayer(filePath, layerGroup, options = {}) {
     const {
         isPermanent = false,
-        preserveZoom = false,
-        fitBounds = true,
-        styleMode = null // Новый параметр
+        preserveZoom = true,
+        fitBounds = false,
+        styleMode = null
     } = options;
 
     try {
@@ -790,10 +790,12 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
         
         if (LOG_STYLES) console.groupEnd();
         
-        return { bounds, layerGroup };
+        // return { bounds, layerGroup };
+        return {  layerGroup };
     } catch (error) {
         console.error(`Ошибка загрузки KML: ${filePath}`, error);
-        return { bounds: L.latLngBounds(), layerGroup };
+        return { layerGroup };
+        // return { bounds: L.latLngBounds(), layerGroup };
     }
 }
 
@@ -837,14 +839,14 @@ async function loadKmlFile(file, targetCRS) {
         const { bounds } = await loadKmlToLayer(file.path, layerGroup, {
             isPermanent: false,
             preserveZoom: preserveZoom,
-            fitBounds: true
+            fitBounds: false    // Отключаем авто-подгонку
         });
         
         // Применяем границы
 
-        const currentCenter = map.getCenter();
-        const currentZoom = map.getZoom();
-        applyTemporaryLayerBounds(bounds, currentCenter, currentZoom, preserveZoom);
+        // const currentCenter = map.getCenter();
+        // const currentZoom = map.getZoom();
+        // applyTemporaryLayerBounds(bounds, currentCenter, currentZoom, preserveZoom);
         preserveZoom = true;
     } catch (error) {
         console.error("loadKmlFile: ${file.path} ", error);
@@ -886,7 +888,7 @@ async function loadPermanentKmlLayers() {
                 // Не передаем styleMode - будет определен автоматически
                 const result = await loadKmlToLayer(layerData.path, layerGroup, {
                     isPermanent: true,
-                    preserveZoom: false,
+                    preserveZoom: true,
                     fitBounds: false
                 });
 
@@ -899,26 +901,26 @@ async function loadPermanentKmlLayers() {
             }
         }
 
-        // Вычисляем объединенные границы всех валидных слоев
-        const allBounds = L.latLngBounds();
-        let hasValidBounds = false;
+        //// Вычисляем объединенные границы всех валидных слоев
+        // const allBounds = L.latLngBounds();
+        // let hasValidBounds = false;
         
-        // Для постоянных слоев границы вычисляются по-другому
-        // так как мы не возвращаем bounds из loadKmlToLayer для постоянных слоев
-        window.permanentLayerGroups.forEach(layerGroup => {
-            layerGroup.eachLayer(layer => {
-                if (layer.getBounds && layer.getBounds().isValid()) {
-                    allBounds.extend(layer.getBounds());
-                    hasValidBounds = true;
-                }
-            });
-        });
+        //// Для постоянных слоев границы вычисляются по-другому
+        //// так как мы не возвращаем bounds из loadKmlToLayer для постоянных слоев
+        // window.permanentLayerGroups.forEach(layerGroup => {
+            // layerGroup.eachLayer(layer => {
+                // if (layer.getBounds && layer.getBounds().isValid()) {
+                    // allBounds.extend(layer.getBounds());
+                    // hasValidBounds = true;
+                // }
+            // });
+        // });
 
-        if (hasValidBounds) {
-            applyPermanentLayersBounds(allBounds);
-        } else {
-            console.warn("Ни один постоянный слой не содержит валидных границ");
-        }
+        // if (hasValidBounds) {
+            // applyPermanentLayersBounds(allBounds);
+        // } else {
+            // console.warn("Ни один постоянный слой не содержит валидных границ");
+        // }
         
     } catch (error) {
         console.error("Ошибка загрузки постоянных KML слоев:", error);
@@ -965,14 +967,12 @@ async function navigateTo(index) {
             datePicker.setDate(selectedDate, false);
         }
         
-		// Определяем текущую CRS
-		const currentCRS = map.options.crs;
+        // Загружаем KML без изменения масштаба
         await loadKmlFile(file);
         
     } catch (error) {
         console.error("Ошибка навигации:", error);
     } finally {
-        // Гарантированно обновляем кнопки даже при ошибках
         updateButtons();
     }
 }
@@ -1163,15 +1163,16 @@ async function init() {
     await waitForUIElements();
     
     // Шаг 4: Загружаем данные карты
-    preserveZoom = false;
+    preserveZoom = true;
     currentIndex = kmlFiles.length - 1;
+    // Явно устанавливаем вид только один раз
+    map.setView([48.257381, 37.134785], 10);
     await navigateTo(currentIndex);
     
     // Шаг 5: Финализируем инициализацию карты
     setTimeout(() => {
       if (map) map.invalidateSize();
       updateCurrentCenterDisplay();
-      // replaceAttributionFlag();
     }, 50);
 	
 	map.options.crs = L.CRS.EPSG3857;
@@ -2272,8 +2273,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-
 
 
 
