@@ -483,7 +483,7 @@ window.kmlStyles = {
             color: '#ff0000',
             weight: 0.1,
             fillColor: '#ff0000',
-            fillOpacity: 0.3,
+            fillOpacity: 0.2,
             interactive: false
         },
         polyline: {
@@ -2272,6 +2272,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
 
