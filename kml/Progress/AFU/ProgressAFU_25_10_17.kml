@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Изменения ЛБС</name>
+    <Style id="poly-FF0000-627-28-normal">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>0.627</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>1c0000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <Style id="poly-FF0000-627-28-highlight">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>0.9405</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>1c0000ff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+    </Style>
+    <StyleMap id="poly-FF0000-627-28">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FF0000-627-28-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FF0000-627-28-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="poly-FFFFFF-1000-77-nodesc-normal">
+      <LineStyle>
+        <color>ffffffff</color>
+        <width>1</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4dffffff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-FFFFFF-1000-77-nodesc-highlight">
+      <LineStyle>
+        <color>ffffffff</color>
+        <width>1.5</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4dffffff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-FFFFFF-1000-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FFFFFF-1000-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FFFFFF-1000-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+
+    
+    <Placemark>
+      <name> </name>
+      <styleUrl>#poly-FFFFFF-1000-77-nodesc</styleUrl>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <tessellate>1</tessellate>
+            <coordinates>
+              34.855112,51.137976,0
+              34.856963,51.135184,0
+              34.858199,51.132831,0
+              34.858986,51.130788,0
+              34.859489,51.12893,0
+              34.859875,51.12713,0
+              34.860309,51.125259,0
+              34.860958,51.123192,0
+              34.861987,51.120802,0
+              34.863562,51.117961,0
+              34.86396,51.117406,0
+              34.864445,51.116888,0
+              34.864998,51.116427,0
+              34.865599,51.116041,0
+              34.866227,51.115751,0
+              34.866863,51.115574,0
+              34.867487,51.115531,0
+              34.868078,51.11564,0
+              34.868616,51.115921,0
+              34.870083,51.11727,0
+              34.871015,51.11866,0
+              34.87159,51.120074,0
+              34.871981,51.121496,0
+              34.872366,51.122909,0
+              34.87292,51.124296,0
+              34.873818,51.125642,0
+              34.875236,51.126928,0
+              34.87735,51.12814,0
+              34.875588,51.128628,0
+              34.874395,51.129314,0
+              34.873613,51.130155,0
+              34.873085,51.131112,0
+              34.872651,51.132144,0
+              34.872155,51.133209,0
+              34.871439,51.134267,0
+              34.870344,51.135278,0
+              34.868713,51.136199,0
+              34.867047,51.136803,0
+              34.865529,51.137115,0
+              34.864111,51.137218,0
+              34.862747,51.137192,0
+              34.861391,51.137119,0
+              34.859996,51.137079,0
+              34.858515,51.137155,0
+              34.856903,51.137427,0
+              34.855112,51.137976,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Document>
+
+</kml>
