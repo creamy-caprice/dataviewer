@@ -71,13 +71,14 @@ window.kmlFiles = [
     { name: "21.10.25", path: "kml/ControlZones/Control_25_10_21.kml" },
     { name: "25.10.25", path: "kml/ControlZones/Control_25_10_25.kml" },
     { name: "29.10.25", path: "kml/ControlZones/Control_25_10_29.kml" },
-	{ name: "02.11.25", path: "kml/ControlZones/Control_25_11_02.kml" }
+	{ name: "02.11.25", path: "kml/ControlZones/Control_25_11_02.kml" },
+	{ name: "02.11.25", path: "kml/ControlZones/Control_25_11_06.kml" }
 ];
 
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_11_02.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_11_06.kml" },
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
@@ -91,8 +92,8 @@ window.permanentLayers = [
     // Контур максимального продвижения в Доброполье
     { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
 	// Полигоны изменений
-	{ name: "стиль1", path: "kml/Progress/RuAF/ProgressRuAF_25_11_02.kml" },
-	{ name: "стиль2", path: "kml/Progress/AFU/ProgressAFU_25_11_02.kml" }
+	{ name: "стиль1", path: "kml/Progress/RuAF/ProgressRuAF_25_11_06.kml" },
+	{ name: "стиль2", path: "kml/Progress/AFU/ProgressAFU_25_11_06.kml" }
 ];
 
 // Список городов с координатами
@@ -110,6 +111,7 @@ window.cities = [
     { name: { ru: "Орехов",     en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
     { name: { ru: "Степногорск", en: "Stepnogorsk" }, lat: 47.588488,   lng:  35.362448 },
 ];
+
 
 
 
