@@ -72,7 +72,7 @@ window.kmlFiles = [
     { name: "25.10.25", path: "kml/ControlZones/Control_25_10_25.kml" },
     { name: "29.10.25", path: "kml/ControlZones/Control_25_10_29.kml" },
 	{ name: "02.11.25", path: "kml/ControlZones/Control_25_11_02.kml" },
-	{ name: "02.11.25", path: "kml/ControlZones/Control_25_11_06.kml" }
+	{ name: "06.11.25", path: "kml/ControlZones/Control_25_11_06.kml" }
 ];
 
 // Постоянные слои
@@ -111,6 +111,7 @@ window.cities = [
     { name: { ru: "Орехов",     en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
     { name: { ru: "Степногорск", en: "Stepnogorsk" }, lat: 47.588488,   lng:  35.362448 },
 ];
+
 
 
 
