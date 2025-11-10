@@ -28,7 +28,7 @@
       <description>Polygon features</description>
       
       <Placemark>
-        <name> </name>
+        <name>Union Polygon_0</name>
         <visibility>1</visibility>
         <styleUrl>#ru</styleUrl>
         <Polygon>
@@ -26332,7 +26332,22 @@
 31.240571,46.416606,0.0 
 31.238518,46.409349,0.0 
 31.237304476781173,46.40335042248642,0.0 
-coordinates31.781974005876666,52.11197760097504,0.0 
+</coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Union Polygon_1</name>
+        <visibility>1</visibility>
+        <styleUrl>#ua</styleUrl>
+        <Polygon>
+          <extrude>1</extrude>
+          <altitudeMode>relativeToGround</altitudeMode>
+          <outerBoundaryIs>
+            <LinearRing>
+        <coordinates>31.781974005876666,52.11197760097504,0.0 
 31.78194011599572,52.11194347237375,0.0 
 31.781898853160214,52.11191148594047,0.0 
 31.781853571836177,52.11188557234473,0.0 
@@ -70858,5 +70873,4 @@ coordinates31.781974005876666,52.11197760097504,0.0
       </Placemark>
     </Folder>
   </Document>
-
 </kml>
