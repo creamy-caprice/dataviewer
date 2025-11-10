@@ -267,11 +267,11 @@ window.kmlFiles = [
                                 "kml/Progress/RuAF/ProgressRuAF_25_11_06.kml",
 								"kml/FrontLine/FrontLine_25_11_06.kml",
                                 "kml/Progress/AFU/ProgressAFU_25_11_06.kml"] },
-	//{name: "10.11.25", paths: [
-    //                          "kml/ControlZones/Control_25_11_10.kml",
-    //                        "kml/Progress/RuAF/ProgressRuAF_25_11_10.kml",
-	//							"kml/FrontLine/FrontLine_25_11_10.kml",
-    //                            "kml/Progress/AFU/ProgressAFU_25_11_10.kml"] }
+	{name: "10.11.25", paths: [
+        	                    "kml/ControlZones/Control_25_11_10.kml",
+    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_10.kml",
+								"kml/FrontLine/FrontLine_25_11_10.kml",
+                                "kml/Progress/AFU/ProgressAFU_25_11_10.kml"] }
    ];
 
 // Постоянные слои
@@ -310,6 +310,7 @@ window.cities = [
     { name: { ru: "Орехов",     en: "Orekhov"    }, lat: 47.5675,   lng:  35.78845  },
     { name: { ru: "Степногорск", en: "Stepnogorsk" }, lat: 47.588488,   lng:  35.362448 },
 ];
+
 
 
 
