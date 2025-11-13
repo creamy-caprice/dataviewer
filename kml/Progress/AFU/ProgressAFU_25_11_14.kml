@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Слой без названия</name>
+    <Style id="poly-FFFFFF-180-77-nodesc-normal">
+      <LineStyle>
+        <color>ffffffff</color>
+        <width>0.18</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4dffffff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="poly-FFFFFF-180-77-nodesc-highlight">
+      <LineStyle>
+        <color>ffffffff</color>
+        <width>0.27</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>4dffffff</color>
+        <fill>1</fill>
+        <outline>1</outline>
+      </PolyStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="poly-FFFFFF-180-77-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#poly-FFFFFF-180-77-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#poly-FFFFFF-180-77-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    
+    
+    
+    <Placemark>
+      <name> </name>
+      <styleUrl>#poly-FFFFFF-180-77-nodesc</styleUrl>
+      <MultiGeometry>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <tessellate>1</tessellate>
+              <coordinates>
+              37.212691,48.353534,0.0 
+37.211323,48.35239,0.0 
+37.209675,48.35174,0.0 
+37.207877,48.351448,0.0 
+37.206059,48.35138,0.0 
+37.204352,48.351398,0.0 
+37.20321992141721,48.35137410998226,0.0 
+37.204611,48.350818,0.0 
+37.206176,48.349962,0.0 
+37.207597,48.349014,0.0 
+37.208894,48.348046,0.0 
+37.210088,48.34713,0.0 
+37.211202,48.346338,0.0 
+37.212256,48.345742,0.0 
+37.213272,48.345414,0.0 
+37.214271,48.345426,0.0 
+37.214689,48.345681,0.0 
+37.214731,48.346163,0.0 
+37.214494,48.346844,0.0 
+37.214077,48.347697,0.0 
+37.213577,48.348692,0.0 
+37.213091,48.349802,0.0 
+37.212716,48.350997,0.0 
+37.21255,48.352251,0.0 
+37.212691,48.353534,0.0 
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+</MultiGeometry>
+    </Placemark>
+    
+  </Document>
+</kml>
