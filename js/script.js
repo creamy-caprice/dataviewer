@@ -1068,7 +1068,7 @@ function getPointIcon(position) {
     return L.icon({
         iconUrl: iconUrl,
         iconSize: [20, 14], // размер иконки флага
-        iconAnchor: [0, 0], // точка привязки
+        iconAnchor: [10, 7], // точка привязки
         popupAnchor: [0, 0] // смещение для popup
     });
 }
@@ -2499,6 +2499,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
 
