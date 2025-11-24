@@ -367,6 +367,7 @@ function clearMarkerAndInput() {
     }, 100);
 }
 
+///////////////////////////////////////////////////////////////////////////////
 
 // Вспомогательные функции для парсинга (должны быть доступны для постоянных и временных слоев)
 function parseLineStyle(style) {
@@ -712,6 +713,44 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
 				return polyline;
 		}
 
+
+        function parseAndAddPoint(point, date, position)
+        {
+            const coordinates = parseCoordinates(point, map.options.crs);
+            if (coordinates.length >= 1) {
+                const [lat, lng] = coordinates[0];
+                
+                // Проверяем, попадает ли точка в диапазон дат
+                if (date && window.pointsDateRange && 
+                    !isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
+                    return; // Пропускаем точку, если она не в диапазоне
+                }
+        
+                // Получаем иконку для точки
+                const icon = getPointIcon(position);
+                
+                // Создаем маркер с иконкой флага
+                const marker = L.marker([lat, lng], {icon: icon}).addTo(layerGroup);
+                
+                // Добавляем popup с информацией
+                const popupContent = `
+                    ${name ? `<b>${name}</b><br>` : ''}
+                    ${date ? `Дата: ${date}<br>` : ''}
+                    ${position ? `Позиция: ${position}<br>` : ''}
+                    Координаты: ${lat.toFixed(6)}, ${lng.toFixed(6)}
+                `;
+                marker.bindPopup(popupContent);
+                
+                // Обновляем границы
+                bounds.extend([lat, lng]);
+                elementCount++;
+                
+                if (LOG_STYLES) {
+                    console.log(`Point in MultiGeometry added:`, { name, date, position, coordinates: [lat, lng] });
+                }
+            }
+        }
+
         // Обработка MultiGeometry
         const multiGeometry = placemark.querySelector('MultiGeometry');
         if (multiGeometry) {
@@ -724,6 +763,14 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             multiGeometry.querySelectorAll('LineString').forEach(lineString => {
                 const polyline = parseAndAddLineString(lineString);
             });
+            
+            // Обработка Point в MultiGeometry - ДОБАВЛЕНО
+            multiGeometry.querySelectorAll('Point').forEach(point => {
+                const extendedData = parseExtendedData(placemark);
+                const date = extendedData['дата'];
+                const position = extendedData['позиция'];
+                const pnt = parseAndAddPoint(point, date, position);
+            });
         }
 
         // Обработка Polygon
@@ -735,9 +782,18 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
         // Обработка LineString
         const lineString = placemark.querySelector('LineString');
         if (lineString && !multiGeometry) {
-			const polyline = parseAndAddLineString(lineString); ///////////
+			const polyline = parseAndAddLineString(lineString);
 		}
-                
+        
+        // Обработка Point
+        const point = placemark.querySelector('Point');
+        if (point && !multiGeometry) {
+            const extendedData = parseExtendedData(placemark);
+            const date = extendedData['дата'];
+            const position = extendedData['позиция'];
+            const pnt = parseAndAddPoint(point, date, position);
+        }
+        
         if (LOG_STYLES) console.groupEnd(); // Закрываем группу Placemark
     });
     
@@ -958,6 +1014,171 @@ async function reloadKmlForCRS(center, zoom) {
     map.invalidateSize();
 }
 
+
+
+
+// Функция для установки диапазона дат
+function setPointsDateRange(startDate, endDate) {
+    window.pointsDateRange.start = startDate;
+    window.pointsDateRange.end = endDate;
+    // Перезагружаем точки при изменении диапазона
+    if (window.currentPointsLayer) {
+        loadPointsFromKml(window.currentPointsKmlPath, window.currentPointsLayer);
+    }
+}
+
+// Функция для проверки, попадает ли дата в диапазон
+function isDateInRange(dateString, startDate, endDate) {
+    try {
+        const parts = dateString.split('.');
+        if (parts.length !== 3) return false;
+        
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1]) - 1;
+        const day = parseInt(parts[2]);
+        
+        const pointDate = new Date(year, month, day);
+        return pointDate >= startDate && pointDate <= endDate;
+    } catch (error) {
+        console.error('Ошибка парсинга даты:', dateString, error);
+        return false;
+    }
+}
+
+// Функция для обновления отображаемых точек (можно вызывать при изменении диапазона дат)
+function updatePointsDisplay() {
+    if (window.currentPointsLayer && window.currentPointsKmlPath) {
+        // Очищаем текущий слой
+        window.currentPointsLayer.clearLayers();
+        // Перезагружаем точки с новым фильтром дат
+        loadPointsFromKml(window.currentPointsKmlPath, window.currentPointsLayer);
+    }
+}
+
+// Функция для получения иконки точки на основе позиции
+function getPointIcon(position) {
+    const iconUrls = {
+        'ВС РФ': 'img/flags/ru.svg',
+        'ВСУ': 'img/flags/ua.svg',
+        'default': 'img/flags/ru.svg' // или другая иконка по умолчанию
+    };
+    
+    const iconUrl = iconUrls[position] || iconUrls.default;
+    
+    return L.icon({
+        iconUrl: iconUrl,
+        iconSize: [20, 14], // размер иконки флага
+        iconAnchor: [0, 0], // точка привязки
+        popupAnchor: [0, 0] // смещение для popup
+    });
+}
+
+// Функция для получения стиля точки на основе позиции
+// function getPointStyle(position) {
+    // const styles = {
+        // 'ВС РФ': {
+            // color: '#ff0000',
+            // fillColor: '#ff0000',
+            // fillOpacity: 0.7,
+            // radius: 6
+        // },
+        // 'ВСУ': {
+            // color: '#0000ff', 
+            // fillColor: '#0000ff',
+            // fillOpacity: 0.7,
+            // radius: 6
+        // },
+        // 'default': {
+            // color: '#3388ff',
+            // fillColor: '#3388ff',
+            // fillOpacity: 0.7,
+            // radius: 6
+        // }
+    // };
+    
+    // return styles[position] || styles.default;
+// }
+
+// Функция для извлечения данных из ExtendedData
+function parseExtendedData(placemark) {
+    const extendedData = placemark.querySelector('ExtendedData');
+    const data = {};
+    
+    if (extendedData) {
+        extendedData.querySelectorAll('Data').forEach(dataElement => {
+            const name = dataElement.getAttribute('name');
+            const value = dataElement.querySelector('value')?.textContent;
+            if (name && value) {
+                data[name] = value;
+            }
+        });
+    }
+    
+    return data;
+}
+
+
+// Функция для загрузки KML с точками
+async function loadPointsFromKml(filePath, layerGroup) {
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            console.error(`Ошибка загрузки KML с точками (${filePath}): ${response.status}`);
+            return;
+        }
+
+        const kmlText = await response.text();
+        const parser = new DOMParser();
+        const kmlDoc = parser.parseFromString(kmlText, "text/xml");
+
+        if (LOG_STYLES) {
+            console.groupCollapsed(`Points layer loaded: ${filePath}`);
+        }
+
+        // Загружаем только точки
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT, { 
+            pointsOnly: true 
+        });
+        
+        if (LOG_STYLES) {
+            console.log(`Total points loaded: ${layerGroup.getLayers().length}`);
+            console.groupEnd();
+        }
+        
+        // Сохраняем ссылки для последующего обновления
+        window.currentPointsLayer = layerGroup;
+        window.currentPointsKmlPath = filePath;
+        
+        return bounds;
+    } catch (error) {
+        console.error(`Ошибка загрузки KML с точками: ${filePath}`, error);
+    }
+}
+
+// Функция для инициализации слоя с точками
+async function initPointsLayer(kmlFilePath) {
+    // Удаляем старый слой точек, если он существует
+    if (window.currentPointsLayer) {
+        map.removeLayer(window.currentPointsLayer);
+    }
+    
+    // Создаем новую группу слоев для точек
+    const pointsLayerGroup = L.layerGroup();
+    pointsLayerGroup.addTo(map);
+    
+    // Загружаем точки из KML
+    await loadPointsFromKml(kmlFilePath, pointsLayerGroup);
+    
+    return pointsLayerGroup;
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+
 // Навигация к определенному индексу
 async function navigateTo(index) {
     if (index < 0 || index >= kmlFiles.length) return;
@@ -1156,6 +1377,7 @@ async function init() {
   try {
     // Шаг 1: Загружаем постоянные слои
     await loadPermanentKmlLayers();
+    await initPointsLayer(window.pointsKmlPath);
     
     // Шаг 2: Инициализируем основные компоненты UI
     initDatePicker();    
@@ -2277,6 +2499,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+
+
 
 
 

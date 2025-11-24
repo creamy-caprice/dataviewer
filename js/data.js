@@ -327,50 +327,13 @@ window.cities = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Управление точками
+window.pointsKmlPath = "kml/Geolocations/Current.kml"; // Путь к файлу с точками
+window.pointLayers = [];
+window.pointsDateRange = {
+    start: new Date(2025, 10, 16), // ранняя дата
+    end: new Date(2025, 10, 23)   // поздняя дата
+};
 
 
 
