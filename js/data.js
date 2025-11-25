@@ -331,9 +331,10 @@ window.cities = [
 window.pointsKmlPath = "kml/Geolocations/Current.kml"; // Путь к файлу с точками
 window.pointLayers = [];
 window.pointsDateRange = {
-    start: new Date(2025, 10, 17), // ранняя дата
+    start: new Date(2025, 10, 18), // ранняя дата
     end: new Date(2025, 10, 24)   // поздняя дата
 };
+
 
 
 
