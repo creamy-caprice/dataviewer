@@ -301,7 +301,7 @@ window.permanentLayers = [
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
-    { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_line3.kml" },
+    { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_line.kml" },
     //Конституционная граница РФ
     { name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
         //Единая линия на 10.10.23
@@ -339,6 +339,7 @@ window.pointsDateRange = {
     start: new Date(2025, 10, 22), // ранняя дата
     end: new Date(2025, 10, 26)   // поздняя дата
 };
+
 
 
 
