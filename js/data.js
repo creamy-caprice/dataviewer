@@ -337,8 +337,9 @@ window.pointsKmlPath = "kml/Geolocations/2025 год октябрь - ноябр
 window.pointLayers = [];
 window.pointsDateRange = {
     start: new Date(2025, 10, 22), // ранняя дата
-    end: new Date(2025, 10, 27)   // поздняя дата
+    end: new Date(2025, 10, 28)   // поздняя дата
 };
+
 
 
 
