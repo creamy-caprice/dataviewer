@@ -10798,5 +10798,74 @@ https://t.me/domikpetra #ru</name>
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name>29.11.25 Гуляйполе- Варваровка
+
+Активные боевые действия в районе Гуляйполя.
+ВС РФ расширяют зону контроля на северном охвате Гуляйполя. Штурмовые подразделения продвинулись более 5 км в направлении Варваровки. Военнослужащие ВС РФ под обстрелом ВСУ.
+
+ 47.728449,36.243285 
+ 47.731000 36.274532 
+
+Источник 21+ https://www.facebook.com/reel/1550712465817722
+Источник 21+ https://www.facebook.com/share/v/17k4FTM7M9/?mibextid=wwXIfr
+Геопривязка https://t.me/Zabolocini
+Геопривязка https://t.me/domikpetra #ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10656<br>позиция: ВС РФ*<br>дата: 2025.11.29]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10656</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.11.29</value>
+        </Data>
+      </ExtendedData>
+      <MultiGeometry>
+        <Point>
+          <coordinates>
+            36.243285,47.728449,0
+          </coordinates>
+        </Point>
+        <Point>
+          <coordinates>
+            36.274532,47.731,0
+          </coordinates>
+        </Point>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>30.11.25 Волчанск - Заводы 2-е
+
+Позиционные боевые действия в Волчанске.
+ВСУ обстреляли позицию ВС РФ в районе Заводы 2-е с установленным на доме флагом России.
+ВС РФ увеличили контролируемую часть города Волчанск южнее реки Волчья, продвинувшись на 1 км.
+
+  50.276150,36.962905  
+
+Источник 21+ https://t.me/ompbr57/1396
+Геопривязка https://t.me/Zabolocini #ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10657<br>позиция: ВС РФ*<br>дата: 2025.11.30]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10657</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.11.30</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.962905,50.27615,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
