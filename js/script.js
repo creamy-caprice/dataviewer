@@ -714,8 +714,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
 		}
 
 
-        function parseAndAddPoint(pointElement, date, position)
-        {
+        function parseAndAddPoint(pointElement, date, position, descriptionUrl) {
             const coordinates = parseCoordinates(pointElement, map.options.crs);
             if (coordinates.length < 1) {
                 if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
@@ -754,6 +753,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
                             ⎘
                         </button>
                     </div>
+                    ${descriptionUrl ? `<div style="margin-top: 6px;"><a href="${descriptionUrl}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">📝 Подробная информация</a></div>` : ''}
                 </div>
             `;
             
@@ -772,7 +772,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             });
             
             if (LOG_STYLES) {
-                console.log(`Point added:`, { name, date, position, coordinates: [lat, lng] });
+                console.log(`Point added:`, { name, date, position, descriptionUrl, coordinates: [lat, lng] });
             }
             
             return marker;
@@ -818,12 +818,13 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
                 const polyline = parseAndAddLineString(lineString);
             });
             
-            // Обработка Point в MultiGeometry - ДОБАВЛЕНО
+            // Обработка Point в MultiGeometry
             multiGeometry.querySelectorAll('Point').forEach(point => {
                 const extendedData = parseExtendedData(placemark);
                 const date = extendedData['дата'];
                 const position = extendedData['позиция'];
-                const pnt = parseAndAddPoint(point, date, position);
+                const descriptionUrl = extendedData['описание'];
+                const pnt = parseAndAddPoint(point, date, position, descriptionUrl);
             });
         }
 
@@ -845,6 +846,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             const extendedData = parseExtendedData(placemark);
             const date = extendedData['дата'];
             const position = extendedData['позиция'];
+            const descriptionUrl = extendedData['описание'];
             const pnt = parseAndAddPoint(point, date, position);
         }
         
@@ -1113,8 +1115,10 @@ function updatePointsDisplay() {
 function getPointIcon(position) {
     const iconUrls = {
         'ВС РФ': 'img/flags/ru.svg',
+        'ВС РФ*': 'img/flags/ru.svg',
         'ВСУ': 'img/flags/ua.svg',
-        'default': 'img/flags/ru.svg' // или другая иконка по умолчанию
+        'ВСУ*': 'img/flags/ua.svg',
+        'default': 'img/exclamation.svg' // иконка по умолчанию
     };
     
     const iconUrl = iconUrls[position] || iconUrls.default;
