@@ -847,7 +847,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             const date = extendedData['дата'];
             const position = extendedData['позиция'];
             const descriptionUrl = extendedData['описание'];
-            const pnt = parseAndAddPoint(point, date, position);
+            const pnt = parseAndAddPoint(point, date, position, descriptionUrl);
         }
         
         if (LOG_STYLES) console.groupEnd(); // Закрываем группу Placemark
@@ -2557,6 +2557,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
 
