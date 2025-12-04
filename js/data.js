@@ -320,7 +320,9 @@ window.permanentLayers = [
     { name: "AFU_advance_Kursk2024",  path: "kml/PermanentObjects/AFU_advance_Kursk2024.kml" },
     // Контур максимального продвижения в Доброполье
     { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
+	{ name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
 	// Полигоны изменений
+	
 	//{ name: "стиль1", path: "kml/Progress/RuAF/ProgressRuAF_25_11_06.kml" },
 	//{ name: "стиль2", path: "kml/Progress/AFU/ProgressAFU_25_11_06.kml" }
 ];
@@ -349,6 +351,7 @@ window.pointsDateRange = {
     start: new Date(2025, 10, 29), // ранняя дата
     end: new Date(2025, 11, 04)   // поздняя дата
 };
+
 
 
 
