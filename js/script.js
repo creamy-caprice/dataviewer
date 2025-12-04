@@ -473,7 +473,7 @@ window.kmlStyles = {
             interactive: false
         },
         polyline: {
-            color: '#0000ff', // Цвет линии
+            color: '#ffffff', // Цвет линии
             weight: 1, // Толщина линия
             opacity: 1,
             interactive: false
@@ -2557,6 +2557,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
 
