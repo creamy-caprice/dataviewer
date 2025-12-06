@@ -2,7 +2,7 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>2025 год ноябрь - декабрь</name>
-    <Style id="icon-1899-DB4436-labelson">
+    <Style id="icon-1899-DB4436-normal">
       <IconStyle>
         <color>ff3644db</color>
         <scale>1</scale>
@@ -11,7 +11,33 @@
         </Icon>
         <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
       </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
     </Style>
+    <Style id="icon-1899-DB4436-highlight">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-DB4436">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-DB4436-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-DB4436-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
     <Placemark>
       <name>01.11.25 Великий Бурлук - Амбарное
 
@@ -23,7 +49,7 @@
 Источник 21+ https://t.me/stepova_61/1566
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10411<br>позиция: ВС РФ<br>дата: 2025.11.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10411</value>
@@ -56,7 +82,7 @@
 
 Геопривязка https://x.com/richardzai38580 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10415?single<br>позиция: ВСУ<br>дата: 2025.11.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10415?single</value>
@@ -93,7 +119,7 @@
 Источник https://t.me/msb_company/154
 Геопривязка https://x.com/ZoamSc2 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10419?single<br>позиция: ВСУ<br>дата: 2025.11.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10419?single</value>
@@ -123,7 +149,7 @@
 Источник 21+ https://www.instagram.com/p/DQe7hs1jIvd/
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10422<br>позиция: ВС РФ<br>дата: 2025.11.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10422</value>
@@ -153,7 +179,7 @@
 Источник https://t.me/otrad_kaira/135
 Геопривязка https://x.com/moklasen #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10424?single<br>позиция: ВСУ<br>дата: 2025.11.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10424?single</value>
@@ -183,7 +209,7 @@
 Источник 21+ https://t.me/creamy_caprice/10425
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/shershni68/846<br>позиция: ВС РФ<br>дата: 2025.11.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/shershni68/846</value>
@@ -213,7 +239,7 @@
 Источник 21+ https://t.me/DeepStateUA/22691
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10426<br>позиция: ВС РФ<br>дата: 2025.11.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10426</value>
@@ -243,7 +269,7 @@
 Источник 21+ https://t.me/komandavaluy/196
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10428<br>позиция: ВС РФ<br>дата: 2025.11.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10428</value>
@@ -273,7 +299,7 @@
 Источник https://t.me/mod_russia/58124
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10430?single<br>позиция: ВС РФ<br>дата: 2025.11.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10430?single</value>
@@ -304,7 +330,7 @@
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/Tsarb_Mangal #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10432?single<br>позиция: ВС РФ<br>дата: 2025.11.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10432?single</value>
@@ -333,7 +359,7 @@
 Источник https://t.me/operationall_space/7480
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10435?single<br>позиция: ВСУ<br>дата: 2025.11.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10435?single</value>
@@ -362,7 +388,7 @@
 Источник 21+ https://t.me/DIUkraine/7215
 Геопривязка https://x.com/MaxximOSINT?s=09 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10436<br>позиция: ВСУ<br>дата: 2025.11.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10436</value>
@@ -392,7 +418,7 @@
 Источник 21+ https://t.me/skala425/712
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10437<br>позиция: ВС РФ<br>дата: 2025.11.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10437</value>
@@ -424,7 +450,7 @@
 Источник https://t.me/pionergrupa/9084
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10443?single<br>позиция: ВС РФ<br>дата: 2025.11.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10443?single</value>
@@ -461,7 +487,7 @@
 Источник https://t.me/divannyevoini/17288
 Геопривязка https://x.com/AudaxonX #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10445?single<br>позиция: ВСУ<br>дата: 2025.11.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10445?single</value>
@@ -488,7 +514,7 @@
 
 Согласно https://t.me/creamy_caprice/10401?comment=73011</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10401<br>позиция: ВС РФ<br>дата: 2025.11.08]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10401</value>
@@ -516,7 +542,7 @@
 Согласно https://t.me/creamy_caprice/10289?comment=73020
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10289<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10289</value>
@@ -544,7 +570,7 @@
 Согласно https://t.me/creamy_caprice/10423?comment=73021
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10424?single<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10424?single</value>
@@ -574,7 +600,7 @@
 Источник https://t.me/sashakots/57438
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10447?single<br>позиция: ВСУ<br>дата: 2025.11.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10447?single</value>
@@ -604,7 +630,7 @@
 Источник 21+ https://t.me/kurt_compani_group/780
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10448<br>позиция: ВС РФ<br>дата: 2025.11.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10448</value>
@@ -634,7 +660,7 @@
 Источник 21+ https://t.me/ompbr57/1299
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10449<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10449</value>
@@ -664,7 +690,7 @@
 Источник 21+ https://t.me/craftoriz/354
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10450<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10450</value>
@@ -693,7 +719,7 @@
 Источник 21+ https://www.facebook.com/reel/1347616696738279/?mibextid=rS40aB7S9Ucbxw6v
 Геопривязка https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10451<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10451</value>
@@ -723,7 +749,7 @@
 Источник 21+ https://t.me/shershni68/857
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10453<br>позиция: ВС РФ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10453</value>
@@ -757,7 +783,7 @@
 https://t.me/severman22/116
 Геопривязка https://t.me/Dedylia_and #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10456?single<br>позиция: ВСУ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10456?single</value>
@@ -794,7 +820,7 @@ https://t.me/severman22/116
 Источник https://t.me/voin_dv/17581
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10458?single<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10458?single</value>
@@ -828,7 +854,7 @@ https://t.me/severman22/116
 Источник https://t.me/voin_dv/17584
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10460?single<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10460?single</value>
@@ -880,7 +906,7 @@ https://t.me/severman22/116
 Источник https://t.me/The_Wrong_Side/26579
 Геопривязка https://t.me/xryctik #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10463?single<br>позиция: ВСУ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10463?single</value>
@@ -910,7 +936,7 @@ https://t.me/severman22/116
 Источник 21+ https://t.me/argus38/713
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10464<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10464</value>
@@ -942,7 +968,7 @@ https://t.me/severman22/116
 Источник 21+ https://t.me/novator_my
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10465<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10465</value>
@@ -980,7 +1006,7 @@ https://t.me/severman22/116
 Источник 21+ https://t.me/craftoriz/355
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10466<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10466</value>
@@ -1017,7 +1043,7 @@ https://t.me/severman22/116
 Источник 21+ https://instagram.com/reel/DQwpscaDPt4
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10467<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10467</value>
@@ -1048,7 +1074,7 @@ https://t.me/severman22/116
 Источник 21+ https://instagram.com/reel/DQwDhfTDAHz/
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10468<br>позиция: ВС РФ<br>дата: 2025.11.07]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10468</value>
@@ -1078,7 +1104,7 @@ https://t.me/severman22/116
 Источник 21+ https://t.me/sowaFm/651
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10469<br>позиция: ВС РФ<br>дата: 2025.11.08]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10469</value>
@@ -1106,7 +1132,7 @@ https://t.me/severman22/116
 Согласно https://t.me/creamy_caprice/10097?comment=73058
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10097<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10097</value>
@@ -1136,7 +1162,7 @@ https://t.me/severman22/116
 Согласно https://t.me/creamy_caprice/10444?comment=73059
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10445?single<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10445?single</value>
@@ -1170,7 +1196,7 @@ https://t.me/severman22/116
 
 Согласно https://t.me/creamy_caprice/10444?comment=73060</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10445?single<br>позиция: ВСУ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10445?single</value>
@@ -1200,7 +1226,7 @@ https://t.me/severman22/116
 Источник https://t.me/zarya_1msb/108
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10471?single<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10471?single</value>
@@ -1235,7 +1261,7 @@ https://t.me/severman22/116
 https://t.me/Shtabikus
 https://t.me/p0dimorka #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10473?single<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10473?single</value>
@@ -1282,7 +1308,7 @@ https://t.me/p0dimorka #ru</name>
 Источник 21+ https://t.me/aeronavtyua/4645
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10474<br>позиция: ВС РФ<br>дата: 2025.10.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10474</value>
@@ -1312,7 +1338,7 @@ https://t.me/p0dimorka #ru</name>
 Источник https://t.me/svo_alfa/323
 Геопривязка https://x.com/Bielitzling #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10476?single<br>позиция: ВСУ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10476?single</value>
@@ -1342,7 +1368,7 @@ https://t.me/p0dimorka #ru</name>
 Источник https://t.me/DSN_GROUP67/63
 Геопривязка https://t.me/Zabolocini #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10478?single<br>позиция: ВСУ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10478?single</value>
@@ -1367,7 +1393,7 @@ https://t.me/p0dimorka #ru</name>
 
 Согласно https://t.me/creamy_caprice/10321?comment=73079</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10321<br>позиция: ВС РФ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10321</value>
@@ -1397,7 +1423,7 @@ https://t.me/p0dimorka #ru</name>
 Источник 21+ https://t.me/aeronavtyua/4645
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10479<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10479</value>
@@ -1426,7 +1452,7 @@ https://t.me/p0dimorka #ru</name>
 Источник 21+ https://t.me/vovkodavy34/60
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10480<br>позиция: ВС РФ<br>дата: 2025.11.09]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10480</value>
@@ -1456,7 +1482,7 @@ https://t.me/p0dimorka #ru</name>
 Источник 21+ https://t.me/CrazyCats2SB/116
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10481<br>позиция: ВС РФ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10481</value>
@@ -1485,7 +1511,7 @@ https://t.me/p0dimorka #ru</name>
 Источник https://t.me/RVvoenkor/103491
 Геопривязка https://x.com/RoadtoMars9 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10482?single<br>позиция: ВС РФ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10482?single</value>
@@ -1514,7 +1540,7 @@ https://t.me/p0dimorka #ru</name>
 Источник https://t.me/zola_of_renovation/15177
 Геопривязка https://t.me/HarveySpekter #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10486?single<br>позиция: ВСУ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10486?single</value>
@@ -1552,7 +1578,7 @@ https://t.me/voin_dv/17630
 https://t.me/Zabolocini
 https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10488?single<br>позиция: ВС РФ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10488?single</value>
@@ -1600,7 +1626,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/kyriienko_press/119
 Геопривязка https://t.me/didyha7 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10490<br>позиция: ВСУ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10490</value>
@@ -1628,7 +1654,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/milinfolive/160235
 Геопривязка https://t.me/artemkaydalov #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10491?single<br>позиция: ВС РФ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10491?single</value>
@@ -1658,7 +1684,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/voin_dv/17639
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10496?single<br>позиция: ВС РФ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10496?single</value>
@@ -1689,7 +1715,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/artemkaydalov
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10497?single<br>позиция: ВС РФ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10497?single</value>
@@ -1720,7 +1746,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/mod_russia/58374
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10500?single<br>позиция: ВСУ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10500?single</value>
@@ -1750,7 +1776,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/craftoriz/362
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10501<br>позиция: ВС РФ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10501</value>
@@ -1780,7 +1806,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ompbr57/1311
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10502<br>позиция: ВС РФ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10502</value>
@@ -1810,7 +1836,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://youtu.be/F_9dhf5ISCk
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10506<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10506</value>
@@ -1840,7 +1866,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ombr_28/2665
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10507<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10507</value>
@@ -1870,7 +1896,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/argus38/716
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10508<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10508</value>
@@ -1898,7 +1924,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10352?comment=73111
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10352<br>позиция: ВС РФ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10352</value>
@@ -1926,7 +1952,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10485?comment=73118
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10486?single<br>позиция: ВС РФ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10486?single</value>
@@ -1956,7 +1982,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/brigade56_official/3629
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10509<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10509</value>
@@ -1986,7 +2012,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/zsu82odshbr/1997
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10510<br>позиция: ВС РФ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10510</value>
@@ -2018,7 +2044,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/p0dimorka
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10514?single<br>позиция: ВС РФ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10514?single</value>
@@ -2056,7 +2082,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10020?comment=73133
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10020<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10020</value>
@@ -2081,7 +2107,7 @@ https://t.me/domikpetra #ru</name>
 
 Согласно https://t.me/creamy_caprice/10375?comment=73134</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10375<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10375</value>
@@ -2108,7 +2134,7 @@ https://t.me/domikpetra #ru</name>
 
 Согласно https://t.me/creamy_caprice/10337?comment=73135</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10337<br>позиция: ВС РФ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10337</value>
@@ -2138,7 +2164,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.youtube.com/watch?v=Xm0Cr-B3VSE
 Геопривязка https://x.com/Bielitzling #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10516<br>позиция: ВСУ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10516</value>
@@ -2170,7 +2196,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/motopatriot78/44401
 Геопривязка https://x.com/AudaxonX #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10518?single<br>позиция: ВСУ<br>дата: 2025.11.11]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10518?single</value>
@@ -2207,7 +2233,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ob_army_ua/819
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10519<br>позиция: ВС РФ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10519</value>
@@ -2240,7 +2266,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/voin_dv/17680
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10521?single<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10521?single</value>
@@ -2288,7 +2314,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/shock3OA/3356
 Геопривязка https://t.me/Dedylia_and #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10523?single<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10523?single</value>
@@ -2330,7 +2356,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/fenix_3_79/669
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10525<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10525</value>
@@ -2360,7 +2386,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/operationall_space/7695
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10527?single<br>позиция: ВСУ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10527?single</value>
@@ -2390,7 +2416,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/kyianyn204/4059
 Геопривязка https://t.me/Son_of_Goyda #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10528<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10528</value>
@@ -2422,7 +2448,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/c/2094981281/209
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10529<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10529</value>
@@ -2464,7 +2490,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/kraken_ab3/972
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10530<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10530</value>
@@ -2494,7 +2520,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/taifun_army/465
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10531<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10531</value>
@@ -2524,7 +2550,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/kyianyn204/4063
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10532<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10532</value>
@@ -2556,7 +2582,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Dedylia_and
 Геопривязка https://t.me/p0dimorka #ru]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10534?single<br>позиция: ВС РФ<br>дата: 2025.11.15]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10534?single</value>
@@ -2593,7 +2619,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/robert_magyar/1582
 Геопривязка https://x.com/99Dominik_ #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10537<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10537</value>
@@ -2623,7 +2649,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/azov_brigade_ngu/702
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10541<br>позиция: ВС РФ<br>дата: 2025.11.15]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10541</value>
@@ -2653,7 +2679,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ssternenko/51990
 Геопривязка https://x.com/99Dominik_ #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10542<br>позиция: ВС РФ<br>дата: 2025.11.15]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10542</value>
@@ -2682,7 +2708,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.facebook.com/profile.php?id=61556897412161
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10543<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10543</value>
@@ -2710,7 +2736,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10491?comment=73174
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10492?single<br>позиция: ВС РФ<br>дата: 2025.11.15]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10492?single</value>
@@ -2738,7 +2764,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/9704?comment=73176
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/9704<br>позиция: ВСУ<br>дата: 2025.11.10]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/9704</value>
@@ -2766,7 +2792,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/8988?comment=73177
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/8989?single<br>позиция: ВСУ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/8989?single</value>
@@ -2796,7 +2822,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.facebook.com/share/v/17ZPZyGYWt
 Геопривязка https://t.me/ignored23 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10544<br>позиция: ВС РФ<br>дата: 2025.11.15]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10544</value>
@@ -2831,7 +2857,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Dedylia_and
  #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10546?single<br>позиция: ВС РФ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10546?single</value>
@@ -2877,7 +2903,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://x.com/Bielitzling/status/1990009493308977312
  #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10550<br>позиция: ВС РФ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10550</value>
@@ -2906,7 +2932,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/Khyzhak_brigade/1969
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10551<br>позиция: ВС РФ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10551</value>
@@ -2937,7 +2963,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10552<br>позиция: ВС РФ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10552</value>
@@ -2974,7 +3000,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/SouthernRepublic/27784
 #ua]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10554?single<br>позиция: ВСУ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10554?single</value>
@@ -3006,7 +3032,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/vkysbupek
 Геопривязка https://t.me/p0dimorka #ru]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10556?single<br>позиция: ВС РФ<br>дата: 2025.11.17]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10556?single</value>
@@ -3038,7 +3064,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/vkysbupek #ru]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10558?single<br>позиция: ВС РФ<br>дата: 2025.11.17]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10558?single</value>
@@ -3075,7 +3101,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/incognitogroup_live/337
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10559<br>позиция: ВС РФ<br>дата: 2025.11.17]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10559</value>
@@ -3100,7 +3126,7 @@ https://t.me/domikpetra #ru</name>
 
 Согласно https://t.me/creamy_caprice/10528?comment=73191</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10528<br>позиция: ВС РФ<br>дата: 2025.11.17]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10528</value>
@@ -3130,7 +3156,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/corps7DSHV/773
 Геопривязка https://t.me/Makhno1917 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10560<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10560</value>
@@ -3159,7 +3185,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/Lynx25stories/21
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10562<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10562</value>
@@ -3188,7 +3214,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/soniah_hub/13223
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10563<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10563</value>
@@ -3218,7 +3244,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/SkyFury3mb/1146
 Геопривязка https://x.com/Bielitzling #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10564<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10564</value>
@@ -3246,7 +3272,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10491?comment=73205
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10492?single<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10492?single</value>
@@ -3274,7 +3300,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10559?comment=73206
  #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10559<br>позиция: ВСУ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10559</value>
@@ -3303,7 +3329,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/dontstopwar/23390
 Геопривязка https://x.com/BayesTheorems #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10566?single<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10566?single</value>
@@ -3332,7 +3358,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/shershni68/879
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10567<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10567</value>
@@ -3361,7 +3387,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ssternenko/52118
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10568<br>позиция: ВС РФ<br>дата: 2025.11.18]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10568</value>
@@ -3391,7 +3417,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/svarog_usf/551
 Геопривязка https://x.com/ukrliberation #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10571<br>позиция: ВС РФ<br>дата: 2025.11.14]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10571</value>
@@ -3421,7 +3447,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ombr_155/945
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10572<br>позиция: ВС РФ<br>дата: 2025.11.19]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10572</value>
@@ -3451,7 +3477,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/rubaka_77/201
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10573<br>позиция: ВС РФ<br>дата: 2025.11.19]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10573</value>
@@ -3481,7 +3507,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ua_marines_35brigade/564
 Геопривязка https://x.com/auditor_ya #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10574<br>позиция: ВС РФ<br>дата: 2025.11.19]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10574</value>
@@ -3511,7 +3537,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.facebook.com/share/v/19hMydG7RQ/?mibextid=wwXIfr
 Геопривязка https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10575<br>позиция: ВС РФ<br>дата: 2025.11.19]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10575</value>
@@ -3539,7 +3565,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10062?comment=73226
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10063?single<br>позиция: ВС РФ<br>дата: 2025.11.16]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10063?single</value>
@@ -3566,7 +3592,7 @@ https://t.me/domikpetra #ru</name>
 
 Согласно https://t.me/creamy_caprice/10555?comment=73225</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10556?single<br>позиция: ВС РФ<br>дата: 2025.11.12]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10556?single</value>
@@ -3598,7 +3624,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/p0dimorka #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10577?single<br>позиция: ВС РФ<br>дата: 2025.11.20]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10577?single</value>
@@ -3635,7 +3661,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/stavvoin/43
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10580?single<br>позиция: ВСУ<br>дата: 2025.11.13]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10580?single</value>
@@ -3664,7 +3690,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/sudoplatov_official/6947
 Геопривязка https://t.me/zzeusx #ua]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10582?single<br>позиция: ВСУ<br>дата: 2025.11.20]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10582?single</value>
@@ -3694,7 +3720,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ua_marines_35brigade/565
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10583<br>позиция: ВС РФ<br>дата: 2025.11.20]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10583</value>
@@ -3724,7 +3750,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ARKAN108batalion/113
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10584<br>позиция: ВС РФ<br>дата: 2025.11.20]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10584</value>
@@ -3758,7 +3784,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/Makhno1917 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10586?single<br>позиция: ВС РФ<br>дата: 2025.11.21]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10586?single</value>
@@ -3808,7 +3834,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/Dedylia_and #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10588?single<br>позиция: ВС РФ<br>дата: 2025.11.21]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10588?single</value>
@@ -3854,7 +3880,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/xryctik
 Геопривязка https://t.me/ignored23 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10590?single<br>позиция: ВС РФ<br>дата: 2025.11.21]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10590?single</value>
@@ -3908,7 +3934,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/tass_agency/349459
  #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10592?single<br>позиция: ВС РФ<br>дата: 2025.11.21]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10592?single</value>
@@ -3950,7 +3976,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/tass_agency/349461
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10594?single<br>позиция: ВС РФ<br>дата: 2025.11.21]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10594?single</value>
@@ -3986,7 +4012,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/shock3OA/3496
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10598?single<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10598?single</value>
@@ -4016,7 +4042,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/Shtabikus #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10599<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10599</value>
@@ -4046,7 +4072,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/rubaka_77/202
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10600<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10600</value>
@@ -4076,7 +4102,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/taifun_army/471
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10601<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10601</value>
@@ -4105,7 +4131,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://x.com/i/status/1992251215044805062
 Геопривязка https://t.me/mapukrdailyupdate #ru]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10602<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10602</value>
@@ -4135,7 +4161,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://x.com/Bielitzling/status/1992326197884448980
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10603<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10603</value>
@@ -4164,7 +4190,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/apachi_fpv/506
 Геопривязка+ https://t.me/Shtabikus #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10604<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10604</value>
@@ -4195,7 +4221,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/Shtabikus #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10606?single<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10606?single</value>
@@ -4231,7 +4257,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/Lynx25stories/26
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10609<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10609</value>
@@ -4261,7 +4287,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.facebook.com/share/v/1Bf73sCNf1/?mibextid=wwXIfr
 Геопривязка https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10610<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10610</value>
@@ -4291,7 +4317,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.instagram.com/stories/asp.kr/3771170185814766096/
 Геопривязка https://x.com/AudaxonX #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10611<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10611</value>
@@ -4324,7 +4350,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Dedylia_and
 Геопривязка https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10612<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10612</value>
@@ -4353,7 +4379,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/UA_Friflebrigade/194
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10613<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10613</value>
@@ -4384,7 +4410,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/omsbr_88_official/87
 Геопривязка https://t.me/Dedylia_and#ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10615?single<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10615?single</value>
@@ -4421,7 +4447,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.instagram.com/reel/DRbmddADFHG/#
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10616<br>позиция: ВС РФ<br>дата: 2025.11.24]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10616</value>
@@ -4453,7 +4479,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/voin_dv/17800
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10618?single<br>позиция: ВС РФ<br>дата: 2025.11.24]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10618?single</value>
@@ -4499,7 +4525,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/anna_news/86909
 Геопривязка https://t.me/arrroh #ua]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10620?single<br>позиция: ВСУ<br>дата: 2025.11.24]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10620?single</value>
@@ -4529,7 +4555,7 @@ https://t.me/domikpetra #ru</name>
  Источник 21+ https://www.instagram.com/reel/DRcNty9jF5D
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10621<br>позиция: ВС РФ<br>дата: 2025.11.24]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10621</value>
@@ -4557,7 +4583,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10079?comment=73292
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10079<br>позиция: ВСУ<br>дата: 2025.11.06]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10079</value>
@@ -4585,7 +4611,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10060?comment=73293
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10061?single<br>позиция: ВС РФ<br>дата: 2025.11.23]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10061?single</value>
@@ -4615,7 +4641,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/brigada291art/166
 Геопривязка https://t.me/Dedylia_and #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10624?single<br>позиция: ВСУ<br>дата: 2025.11.25]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10624?single</value>
@@ -4646,7 +4672,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.instagram.com/reel/DRfL4xBk3zC/
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10625<br>позиция: ВС РФ<br>дата: 2025.11.25]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10625</value>
@@ -4683,7 +4709,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/zluki_bobry/148
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10626<br>позиция: ВС РФ<br>дата: 2025.11.25]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10626</value>
@@ -4713,7 +4739,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.instagram.com/reel/DRgmW0Kgr0Z
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10627<br>позиция: ВС РФ<br>дата: 2025.11.26]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10627</value>
@@ -4742,7 +4768,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/urga_74/7655
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10631?single<br>позиция: ВС РФ<br>дата: 2025.11.26]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10631?single</value>
@@ -4772,7 +4798,7 @@ https://t.me/domikpetra #ru</name>
 Источник https://t.me/boevoekteschenie/1371
 Геопривязка https://t.me/Zabolocini #ua]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10633?single<br>позиция: ВСУ<br>дата: 2025.11.26]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10633?single</value>
@@ -4802,7 +4828,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://www.instagram.com/13ompb/reel/DRfL4xBk3zC/
 Геопривязка https://x.com/giK1893 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10634<br>позиция: ВС РФ<br>дата: 2025.11.25]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10634</value>
@@ -4833,7 +4859,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10635<br>позиция: ВС РФ<br>дата: 2025.11.27]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10635</value>
@@ -4863,7 +4889,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10636<br>позиция: ВС РФ<br>дата: 2025.11.27]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10636</value>
@@ -4893,7 +4919,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://lostarmour.info/ 
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10641?single<br>позиция: ВСУ<br>дата: 2025.11.27]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10641?single</value>
@@ -4923,7 +4949,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10642<br>позиция: ВС РФ<br>дата: 2025.11.27]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10642</value>
@@ -4954,7 +4980,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/ZoamSc2
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10643<br>позиция: ВС РФ<br>дата: 2025.11.22]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10643</value>
@@ -4984,7 +5010,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/aukrop
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10645?single<br>позиция: ВСУ<br>дата: 2025.11.26]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10645?single</value>
@@ -5014,7 +5040,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Makhno1917
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10646<br>позиция: ВС РФ<br>дата: 2025.11.27]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10646</value>
@@ -5044,7 +5070,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/giK1893
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10647<br>позиция: ВС РФ<br>дата: 2025.11.28]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10647</value>
@@ -5075,7 +5101,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/AudaxonX
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10650<br>позиция: ВС РФ<br>дата: 2025.11.25]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10650</value>
@@ -5105,7 +5131,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10651<br>позиция: ВС РФ<br>дата: 2025.11.28]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10651</value>
@@ -5135,7 +5161,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/moklasen
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10652<br>позиция: ВС РФ<br>дата: 2025.11.28]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10652</value>
@@ -5165,7 +5191,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10654<br>позиция: ВС РФ<br>дата: 2025.11.29]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10654</value>
@@ -5196,7 +5222,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/AudaxonX
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10655<br>позиция: ВС РФ<br>дата: 2025.11.26]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10655</value>
@@ -5228,7 +5254,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 Геопривязка https://t.me/domikpetra #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10656<br>позиция: ВС РФ*<br>дата: 2025.11.29]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10656</value>
@@ -5265,7 +5291,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ompbr57/1396
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10657<br>позиция: ВС РФ*<br>дата: 2025.11.30]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10657</value>
@@ -5293,7 +5319,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10591?comment=73363
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10592?single<br>позиция: ВСУ*<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10592?single</value>
@@ -5324,7 +5350,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/ZoamSc2
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10660<br>позиция: ВС РФ*<br>дата: 2025.11.30]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10660</value>
@@ -5353,7 +5379,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/ab3army/6243
 Геопривязка https://t.me/Zabolocini #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10664<br>позиция: ВСУ*<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10664</value>
@@ -5381,7 +5407,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/9686?comment=73366
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/9686<br>позиция: ВС РФ<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/9686</value>
@@ -5412,7 +5438,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10665<br>позиция: ВС РФ*<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10665</value>
@@ -5443,7 +5469,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/blinzka
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10666<br>позиция: ВС РФ*<br>дата: 2025.11.28]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10666</value>
@@ -5474,7 +5500,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10667<br>позиция: ВС РФ<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10667</value>
@@ -5506,7 +5532,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini 
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10669?single<br>позиция: ВС РФ<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10669?single</value>
@@ -5550,7 +5576,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10671?single<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10671?single</value>
@@ -5588,7 +5614,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10672<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10672</value>
@@ -5619,7 +5645,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10674<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10674</value>
@@ -5650,7 +5676,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10676?single<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10676?single</value>
@@ -5678,7 +5704,7 @@ https://t.me/domikpetra #ru</name>
 Согласно https://t.me/creamy_caprice/10672?comment=73393
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10672<br>позиция: ВС РФ*<br>дата: 2025.12.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10672</value>
@@ -5710,7 +5736,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/domikpetra
 #ru]]></name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10677<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10677</value>
@@ -5747,7 +5773,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10678<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10678</value>
@@ -5783,7 +5809,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10680?single<br>позиция: ВС РФ*<br>дата: 2025.12.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10680?single</value>
@@ -5841,7 +5867,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10681<br>позиция: ВС РФ*<br>дата: 2025.12.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10681</value>
@@ -5872,7 +5898,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini 
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10686<br>позиция: ВС РФ*<br>дата: 2025.12.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10686</value>
@@ -5903,7 +5929,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/AudaxonX
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10687<br>позиция: ВС РФ*<br>дата: 2025.11.28]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10687</value>
@@ -5935,7 +5961,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Makhno1917
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10689?single<br>позиция: ВС РФ*<br>дата: 2025.12.01]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10689?single</value>
@@ -5966,7 +5992,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/domikpetra
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10690<br>позиция: ВС РФ*<br>дата: 2025.12.03]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10690</value>
@@ -5998,7 +6024,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/blinzka
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10693<br>позиция: ВСУ*<br>дата: 2025.12.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10693</value>
@@ -6036,7 +6062,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/MaxximOSINT?t=-YzJJrKCwSJpu
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10694<br>позиция: ВСУ*<br>дата: 2025.12.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10694</value>
@@ -6067,7 +6093,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/Bielitzling
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10695<br>позиция: ВСУ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10695</value>
@@ -6098,7 +6124,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/domikpetra
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10696<br>позиция: ВС РФ*<br>дата: 2025.12.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10696</value>
@@ -6129,7 +6155,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Makhno1917
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10697<br>позиция: ВС РФ*<br>дата: 2025.12.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10697</value>
@@ -6159,7 +6185,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Makhno1917
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10698<br>позиция: ВС РФ*<br>дата: 2025.12.02]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10698</value>
@@ -6189,7 +6215,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10699<br>позиция: ВС РФ*<br>дата: 2025.12.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10699</value>
@@ -6220,7 +6246,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://x.com/giK1893
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10705?single<br>позиция: ВСУ*<br>дата: 2025.12.04]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10705?single</value>
@@ -6250,7 +6276,7 @@ https://t.me/domikpetra #ru</name>
 Источник 21+ https://t.me/sowaFm/656
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10706<br>позиция: ВС РФ*<br>дата: 2025.12.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10706</value>
@@ -6280,7 +6306,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ru</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10707<br>позиция: ВС РФ*<br>дата: 2025.12.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10707</value>
@@ -6310,7 +6336,7 @@ https://t.me/domikpetra #ru</name>
 Геопривязка https://t.me/Zabolocini
 #ua</name>
       <description><![CDATA[описание: https://t.me/creamy_caprice/10709?single<br>позиция: ВСУ<br>дата: 2025.12.05]]></description>
-      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>https://t.me/creamy_caprice/10709?single</value>
@@ -6325,6 +6351,36 @@ https://t.me/domikpetra #ru</name>
       <Point>
         <coordinates>
           32.649917,46.674688,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>05.12.25 Красноармейск 
+
+Позиционные боевые действия в районе Красноармейска.
+Передовая позиция ВС РФ под огнём ВСУ. ВС РФ продвинулись в горловине Красноармейского мешка на 1 км и заняли новые позиции севернее города. 
+
+ 48.312957,37.175500 
+
+Источник 21+ https://t.me/ua_marines_35brigade/577
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10710<br>позиция: ВС РФ*<br>дата: 2025.12.05]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10710</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.05</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.1755,48.312957,0
         </coordinates>
       </Point>
     </Placemark>
