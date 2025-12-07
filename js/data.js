@@ -301,7 +301,12 @@ window.kmlFiles = [
         	                    "kml/ControlZones/Control_25_12_04.kml",
     	                        "kml/Progress/RuAF/ProgressRuAF_25_12_04.kml",
 								"kml/FrontLine/FrontLine_25_12_04.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_04.kml"] }
+                                "kml/Progress/AFU/ProgressAFU_25_12_04.kml"] },
+	{name: "08.12.25", paths: [
+        	                    "kml/ControlZones/Control_25_12_08.kml",
+    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_08.kml",
+								"kml/FrontLine/FrontLine_25_12_08.kml",
+                                "kml/Progress/AFU/ProgressAFU_25_12_08.kml"] }
    ];
 
 // Постоянные слои
@@ -351,6 +356,7 @@ window.pointsDateRange = {
     start: new Date(2025, 10, 29), // ранняя дата
     end: new Date(2025, 11, 31)   // поздняя дата
 };
+
 
 
 
