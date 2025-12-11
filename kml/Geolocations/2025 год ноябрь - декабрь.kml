@@ -7144,5 +7144,65 @@ https://t.me/domikpetra #ru</name>
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name>10.12.25 Красный Лиман - Диброва
+
+Активные боевые действия в районе Красного Лимана.
+Атака ВС РФ в направлении Диброва. Штурмовая группа занимает одиночное строение на окраине населённого пункта под огнём противника.
+Продвижение ВС РФ около 5 км восточнее Красного Лимана.
+
+ 48.92637, 37.86204 
+
+Источник 21+ https://t.me/trozsusumy117/1492
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10751<br>позиция: ВС РФ*<br>дата: 2025.12.10]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10751</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.10</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.86204,48.92637,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10.12.25 Димитров - Даманский
+
+Позиционные боевые действия в районе Красноармейска.
+Авиабомбовый удар ВКС РФ по позиции ВСУ в многоэтажном доме микрорайона Даманский . Применение авиационного боеприпаса с модулем планирования и коррекции. Уточнение зоны контроля ВСУ в Димитрове.
+
+  48.30328, 37.28265 
+
+Источник https://t.me/The_Wrong_Side/27152
+#ua</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10753?single<br>позиция: ВСУ<br>дата: 2025.12.10]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10753?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВСУ</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.10</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.28265,48.30328,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
