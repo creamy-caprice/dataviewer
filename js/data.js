@@ -306,13 +306,18 @@ window.kmlFiles = [
         	                    "kml/ControlZones/Control_25_12_08.kml",
     	                        "kml/Progress/RuAF/ProgressRuAF_25_12_08.kml",
 								"kml/FrontLine/FrontLine_25_12_08.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_08.kml"] }
+                                "kml/Progress/AFU/ProgressAFU_25_12_08.kml"] },
+	{name: "12.12.25", paths: [
+        	                    "kml/ControlZones/Control_25_12_12.kml",
+    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_12.kml",
+								"kml/FrontLine/FrontLine_25_12_12.kml",
+                                "kml/Progress/AFU/ProgressAFU_25_12_12.kml"] }
    ];
 
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_12_08.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_12_12.kml" },
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
@@ -353,9 +358,10 @@ window.cities = [
 window.pointsKmlPath = "kml/Geolocations/2025 год ноябрь - декабрь.kml"; // Путь к файлу с точками
 window.pointLayers = [];
 window.pointsDateRange = {
-    start: new Date(2025, 11, 03), // ранняя дата
+    start: new Date(2025, 11, 08), // ранняя дата
     end: new Date(2025, 11, 31)   // поздняя дата
 };
+
 
 
 
