@@ -14,36 +14,97 @@ let selectedDate = null; // Глобальная переменная для х�
 // Глобальный флаг для логгирования стилей временных файлов
 const LOG_STYLES = true; // Можно менять на false для отключения
 
+let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
+
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
 
 // Функция для преобразования даты из формата DD.MM.YY в объект Date
 function parseCustomDate(dateStr) {
-    const [day, month, year] = dateStr.split('.').map(Number);
-    return new Date(2000 + year, month - 1, day);
+    if (!dateStr) {
+        console.warn('parseCustomDate: dateStr is null or undefined, returning current date');
+        return new Date();
+    }
+    
+    try {
+        const [day, month, year] = dateStr.split('.').map(Number);
+        // Добавляем проверку на валидность чисел
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            console.warn('parseCustomDate: invalid date format, returning current date');
+            return new Date();
+        }
+        return new Date(2000 + year, month - 1, day);
+    } catch (error) {
+        console.error('parseCustomDate: error parsing date', error);
+        return new Date();
+    }
 }
 
-// Инициализация календаря с ограничением доступных дат
+// Функция для получения текущей даты в формате DD.MM.YY
+function getCurrentDateFormatted() {
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = String(now.getFullYear()).slice(-2);
+    return `${day}.${month}.${year}`;
+}
+
+// Функция для нахождения ближайшей доступной даты к указанной
+function findNearestAvailableDate(targetDateStr) {
+    if (!targetDateStr || availableDates.length === 0) {
+        return kmlFiles[kmlFiles.length - 1]?.name || null;
+    }
+    
+    const targetDate = parseCustomDate(targetDateStr);
+    let nearestDate = null;
+    let minDiff = Infinity;
+    
+    for (const dateStr of availableDates) {
+        const date = parseCustomDate(dateStr);
+        const diff = Math.abs(targetDate - date);
+        
+        if (diff < minDiff) {
+            minDiff = diff;
+            nearestDate = dateStr;
+        }
+    }
+    
+    return nearestDate || kmlFiles[kmlFiles.length - 1]?.name;
+}
+
+// Инициализация календаря - теперь позволяет выбирать любую дату
 let datePicker;
 function initDatePicker() {
-    // Используем сохраненную дату или последнюю доступную
-    const defaultDate = selectedDate || kmlFiles[kmlFiles.length - 1].name;
+    // Используем сохраненную дату или текущую дату
+    const defaultDate = selectedDate || getCurrentDateFormatted();
     
     datePicker = flatpickr("#date-picker", {
         locale: currentLang === 'ru' ? 'ru' : 'default',
         dateFormat: "d.m.y",
         allowInput: true,
         defaultDate: defaultDate, // Используем сохраненную дату
-        enable: [
-            function(date) {
-                const dateStr = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth()+1).toString().padStart(2, '0')}.${date.getFullYear().toString().slice(-2)}`;
-                return availableDates.includes(dateStr);
-            }
-        ],
+        // Убираем ограничение, чтобы можно было выбрать любую дату
         onChange: function(selectedDates, dateStr) {
-            const index = kmlFiles.findIndex(file => file.name === dateStr);
+            console.log('Дата выбрана в календаре:', dateStr);
+            
+            // Обновляем selectedDate на выбранную дату
+            selectedDate = dateStr;
+            
+            // Обновляем фильтр точек для новой даты
+            updatePointsDateFilterForSelectedDate();
+            
+            // Перезагружаем точки с новым фильтром
+            reloadPointsWithCurrentFilter();
+            
+            // Ищем индекс ближайшей доступной даты
+            const nearestDate = findNearestAvailableDate(dateStr);
+            const index = kmlFiles.findIndex(file => file.name === nearestDate);
+            
             if (index !== -1) {
-                navigateTo(index);
+                // Загружаем KML для ближайшей доступной даты
+                loadKmlForNearestDate(index);
+            } else {
+                console.log('Не найдено ни одной доступной даты для загрузки KML');
             }
         },
         onDayCreate: function(dObj, dStr, fp, dayElem) {
@@ -58,15 +119,69 @@ function initDatePicker() {
             
             const dateStr = `${dayElem.dateObj.getDate().toString().padStart(2, '0')}.${(dayElem.dateObj.getMonth()+1).toString().padStart(2, '0')}.${dayElem.dateObj.getFullYear().toString().slice(-2)}`;
             
+            // Подсвечиваем даты, для которых есть KML файлы
             if (availableDates.includes(dateStr)) {
                 dayElem.classList.add('available');
                 
-                if (dateStr === kmlFiles[currentIndex].name) {
+                // Если это текущая выбранная дата и она есть в KML файлах
+                if (dateStr === selectedDate && kmlFiles[currentIndex]?.name === selectedDate) {
                     dayElem.classList.add('selected');
                 }
             }
+            
+            // Также выделяем выбранную дату, даже если для нее нет KML
+            if (dateStr === selectedDate) {
+                dayElem.classList.add('selected');
+            }
         }
     });
+}
+
+// Новая функция для загрузки KML по ближайшей доступной дате
+async function loadKmlForNearestDate(index) {
+    if (index < 0 || index >= kmlFiles.length) return;
+    
+    try {
+        currentIndex = index;
+        const file = kmlFiles[currentIndex];
+        
+        console.log(`Загрузка KML для ближайшей доступной даты: ${file.name}`);
+        
+        // Загружаем KML без изменения масштаба
+        await loadKmlFile(file);
+        
+        // Обновляем кнопки навигации
+        updateButtons();
+    } catch (error) {
+        console.error("Ошибка загрузки KML для ближайшей даты:", error);
+    }
+}
+
+// Новая функция для перезагрузки точек с текущим фильтром
+async function reloadPointsWithCurrentFilter() {
+    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
+    
+    // Перезагружаем точки из всех файлов с текущим фильтром
+    window.currentPointsLayer.clearLayers();
+    
+    for (const path of window.currentPointsKmlPaths) {
+        await loadPointsFromKml(path, window.currentPointsLayer);
+    }
+}
+
+// Новая функция для обновления фильтра точек при изменении выбранной даты
+function updatePointsDateFilterForSelectedDate() {
+    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
+    
+    // Получаем выбранную дату из календаря
+    const currentDate = parseCustomDate(selectedDate);
+    
+    // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
+    const startDate = getStartDateByRange(currentDateRange, currentDate);
+    
+    // Обновляем диапазон дат
+    window.pointsDateRange.start = startDate;
+    window.pointsDateRange.end = currentDate;
 }
 
 // Функция для проверки валидности координат
@@ -85,10 +200,10 @@ function updateCurrentCenterDisplay() {
     const center = map.getCenter();
     if (center.lat === 0 && center.lng === 0) return; // Игнорируем нулевые координаты
     
-	// обновление лейбла
+    // обновление лейбла
     currentCenterCoordsElement.textContent =
         `${center.lat.toFixed(6)}, ${center.lng.toFixed(6)}`;
-		
+        
     // Обновляем клон лейбла для дартс-меню
     const cloneCoords = document.getElementById('current-center-coords-clone');
     if (cloneCoords) {
@@ -467,21 +582,21 @@ window.kmlStyles = {
     [window.kmlStyleModes.STYLE_MG]: {
         polygon: {
             color: '#ffffff', // Обводка для видимости
-            weight: 1, // Толщина линия
-            fillColor: '#999999', // Заливка
-            fillOpacity: 0.25, // Непрозрачность
+            weight: 1, // Толщина линии
+            fillColor: '#999999', //Заливка
+            fillOpacity: 0.25, //  Непрозрачность
             interactive: false
         },
         polyline: {
             color: '#ffffff', // Цвет линии
-            weight: 1, // Толщина линия
+            weight: 1, // Толщина линии
             opacity: 1,
             interactive: false
         }
     },
     [window.kmlStyleModes.STYLE_RUAF]: {
         polygon: {
-            color: '#ffffff',
+            color: '#ff0000',
             weight: 0.1,
             fillColor: '#ff0000',
             fillOpacity: 0.2,
@@ -620,82 +735,82 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             } : null);
         }
 
-		function parseAndAddPolygon(polygon)
-		{
-			const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
+        function parseAndAddPolygon(polygon)
+        {
+            const coords = parseCoordinates(polygon.querySelector('LinearRing'), map.options.crs);
                 if (coords.length < 3) {
                     if (LOG_STYLES) console.log(`Polygon skipped - insufficient coordinates: ${coords.length}`);
                     return;
                 }
 
-			let polyStyle = {};
-			
-			if (styleMode === window.kmlStyleModes.DEFAULT)
-				polyStyle = {
+            let polyStyle = {};
+            
+            if (styleMode === window.kmlStyleModes.DEFAULT)
+                polyStyle = {
                     color: style.line.color || '#3388ff',
                     weight: style.line.weight || 0,
                     fillColor: style.poly.fillColor || '#3388ff',
                     fillOpacity: style.poly.fillOpacity || 0.5,
                     interactive: false // Отключаем интерактивность полигонов
-				};
-			else
-				polyStyle = window.kmlStyles[styleMode].polygon;
+                };
+            else
+                polyStyle = window.kmlStyles[styleMode].polygon;
 
-			// Создаем полигон
-			const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
-			
-			// Обновляем границы				
-			if (poly.getBounds().isValid()) {
-				bounds.extend(poly.getBounds());
-			}
-			// Добавляем метку, если есть название
-			if (name && name.trim() !== '') {
-				addLabelToLayer(name, 'Polygon', coords, layerGroup);
-			}			
+            // Создаем полигон
+            const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
+            
+            // Обновляем границы                
+            if (poly.getBounds().isValid()) {
+                bounds.extend(poly.getBounds());
+            }
+            // Добавляем метку, если есть название
+            if (name && name.trim() !== '') {
+                addLabelToLayer(name, 'Polygon', coords, layerGroup);
+            }            
 
-			// Логирование информации о полигоне
-			if (LOG_STYLES) {
-				console.log(`Polygon in MultiGeometry #${++elementCount}:`);
-				console.log('- Coordinates count:', coords.length);
-				console.log('- Applied styles:', {
-					color: polyStyle.color || '#3388ff',
-					weight: polyStyle.weight || 3,
-					fillColor: polyStyle.fillColor || '#3388ff',
-					fillOpacity: polyStyle.fillOpacity || 0.5
-				});
-			}
-			
-			return poly;
-		}
-		
-		function parseAndAddLineString(lineString)
-		{
-			const coords = parseCoordinates(lineString, map.options.crs);
+            // Логирование информации о полигоне
+            if (LOG_STYLES) {
+                console.log(`Polygon in MultiGeometry #${++elementCount}:`);
+                console.log('- Coordinates count:', coords.length);
+                console.log('- Applied styles:', {
+                    color: polyStyle.color || '#3388ff',
+                    weight: polyStyle.weight || 3,
+                    fillColor: polyStyle.fillColor || '#3388ff',
+                    fillOpacity: polyStyle.fillOpacity || 0.5
+                });
+            }
+            
+            return poly;
+        }
+        
+        function parseAndAddLineString(lineString)
+        {
+            const coords = parseCoordinates(lineString, map.options.crs);
                 if (coords.length < 2) {
                     if (LOG_STYLES) console.log(`LineString skipped - insufficient coordinates: ${coords.length}`);
                     return;
                 }
-				
-				let lineStyle = {};				
-				
-				if (styleMode === window.kmlStyleModes.DEFAULT)
-					lineStyle = {
-						color: style.line.color || '#3388ff',
-						weight: style.line.weight || 3,
-						opacity: style.line.opacity || 1,
-						interactive: false // Отключаем интерактивность полигонов
-					};
-				else
-					lineStyle = window.kmlStyles[styleMode].polyline;
-				
+                
+                let lineStyle = {};                
+                
+                if (styleMode === window.kmlStyleModes.DEFAULT)
+                    lineStyle = {
+                        color: style.line.color || '#3388ff',
+                        weight: style.line.weight || 3,
+                        opacity: style.line.opacity || 1,
+                        interactive: false // Отключаем интерактивность полигонов
+                    };
+                else
+                    lineStyle = window.kmlStyles[styleMode].polyline;
+                
 
                 const polyline = L.polyline(coords, lineStyle).addTo(layerGroup);
 
-				// Обновляем границы	
+                // Обновляем границы    
                 if (polyline.getBounds().isValid()) {
                     bounds.extend(polyline.getBounds());
                 }
-				// Добавляем метку, если есть название                
+                // Добавляем метку, если есть название                
                 if (name && name.trim() !== '') {
                     addLabelToLayer(name, 'LineString', coords, layerGroup);
                 }
@@ -710,8 +825,8 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
                         opacity: lineStyle.opacity || 1
                     });
                 }
-				return polyline;
-		}
+                return polyline;
+        }
 
 
         function parseAndAddPoint(pointElement, date, position, descriptionUrl) {
@@ -780,37 +895,37 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
 
         // Функция для форматирования названия с заменой ссылок на кликабельные
         function formatNameWithLinks(name) 
-		{
-		    if (!name) return '';
-		    
-		    // Простая замена паттернов на гиперссылки
-		    let formatted = name;
-		    
-		    // Заменяем "Источник url" на "Источник" (только слово "Источник" становится ссылкой)
-		    formatted = formatted.replace(/Источник\s+(https?:\/\/[^\s]+)/g, 
-		        '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник</a>');
-		    
-		    // Заменяем "Источник 21+ url" на "Источник 21+" (только слова "Источник 21+" становятся ссылкой)
-		    formatted = formatted.replace(/Источник\s+21\+\s+(https?:\/\/[^\s]+)/g, 
-		        '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник 21+</a>');
-		    
-		    // Заменяем "Геопривязка url" на "Геопривязка" (только слово "Геопривязка" становится ссылкой)
-		    formatted = formatted.replace(/Геопривязка\s+(https?:\/\/[^\s]+)/g, 
-		        '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Геопривязка</a>');
-		    
-		    // Заменяем "Согласно url" на "Согласно..." (только слово "Согласно" становится ссылкой)
-		    formatted = formatted.replace(/Согласно\s+(https?:\/\/[^\s]+)/g, 
-		        '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Согласно...</a>');
-		    
-		    return formatted;
-		}
+        {
+            if (!name) return '';
+            
+            // Простая замена паттернов на гиперссылки
+            let formatted = name;
+            
+            // Заменяем "Источник url" на "Источник" (только слово "Источник" становится ссылкой)
+            formatted = formatted.replace(/Источник\s+(https?:\/\/[^\s]+)/g, 
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник</a>');
+            
+            // Заменяем "Источник 21+ url" на "Источник 21+" (только слова "Источник 21+" становятся ссылкой)
+            formatted = formatted.replace(/Источник\s+21\+\s+(https?:\/\/[^\s]+)/g, 
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник 21+</a>');
+            
+            // Заменяем "Геопривязка url" на "Геопривязка" (только слово "Геопривязка" становится ссылкой)
+            formatted = formatted.replace(/Геопривязка\s+(https?:\/\/[^\s]+)/g, 
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Геопривязка</a>');
+            
+            // Заменяем "Согласно url" на "Согласно..." (только слово "Согласно" становится ссылкой)
+            formatted = formatted.replace(/Согласно\s+(https?:\/\/[^\s]+)/g, 
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Согласно...</a>');
+            
+            return formatted;
+        }
 
         // Обработка MultiGeometry
         const multiGeometry = placemark.querySelector('MultiGeometry');
         if (multiGeometry) {
             // Обработка Polygon в MultiGeometry
             multiGeometry.querySelectorAll('Polygon').forEach(polygon => {                
-				const poly = parseAndAddPolygon(polygon);
+                const poly = parseAndAddPolygon(polygon);
             });
 
             // Обработка LineString в MultiGeometry
@@ -831,14 +946,14 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
         // Обработка Polygon
         const polygon = placemark.querySelector('Polygon');
         if (polygon && !multiGeometry) {                
-				const poly = parseAndAddPolygon(polygon);
+                const poly = parseAndAddPolygon(polygon);
         }
 
         // Обработка LineString
         const lineString = placemark.querySelector('LineString');
         if (lineString && !multiGeometry) {
-			const polyline = parseAndAddLineString(lineString);
-		}
+            const polyline = parseAndAddLineString(lineString);
+        }
         
         // Обработка Point
         const point = placemark.querySelector('Point');
@@ -902,12 +1017,10 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
         
         if (LOG_STYLES) console.groupEnd();
         
-        // return { bounds, layerGroup };
-        return {  layerGroup };
+        return { layerGroup };
     } catch (error) {
         console.error(`Ошибка загрузки KML: ${filePath}`, error);
         return { layerGroup };
-        // return { bounds: L.latLngBounds(), layerGroup };
     }
 }
 
@@ -961,9 +1074,6 @@ async function loadKmlFile(file, targetCRS) {
         await Promise.all(loadPromises);
         
         // Применяем границы
-        // const currentCenter = map.getCenter();
-        // const currentZoom = map.getZoom();
-        // applyTemporaryLayerBounds(bounds, currentCenter, currentZoom, preserveZoom);
         preserveZoom = true;
     } catch (error) {
         console.error("loadKmlFile: ${file.path} ", error);
@@ -1017,27 +1127,6 @@ async function loadPermanentKmlLayers() {
                 console.error(`Ошибка обработки слоя ${layerData.path}:`, error);
             }
         }
-
-        //// Вычисляем объединенные границы всех валидных слоев
-        // const allBounds = L.latLngBounds();
-        // let hasValidBounds = false;
-        
-        //// Для постоянных слоев границы вычисляются по-другому
-        //// так как мы не возвращаем bounds из loadKmlToLayer для постоянных слоев
-        // window.permanentLayerGroups.forEach(layerGroup => {
-            // layerGroup.eachLayer(layer => {
-                // if (layer.getBounds && layer.getBounds().isValid()) {
-                    // allBounds.extend(layer.getBounds());
-                    // hasValidBounds = true;
-                // }
-            // });
-        // });
-
-        // if (hasValidBounds) {
-            // applyPermanentLayersBounds(allBounds);
-        // } else {
-            // console.warn("Ни один постоянный слой не содержит валидных границ");
-        // }
         
     } catch (error) {
         console.error("Ошибка загрузки постоянных KML слоев:", error);
@@ -1070,19 +1159,6 @@ async function reloadKmlForCRS(center, zoom) {
     map.invalidateSize();
 }
 
-
-
-
-// Функция для установки диапазона дат
-function setPointsDateRange(startDate, endDate) {
-    window.pointsDateRange.start = startDate;
-    window.pointsDateRange.end = endDate;
-    // Перезагружаем точки при изменении диапазона
-    if (window.currentPointsLayer) {
-        loadPointsFromKml(window.currentPointsKmlPath, window.currentPointsLayer);
-    }
-}
-
 // Функция для проверки, попадает ли дата в диапазон
 function isDateInRange(dateString, startDate, endDate) {
     try {
@@ -1098,16 +1174,6 @@ function isDateInRange(dateString, startDate, endDate) {
     } catch (error) {
         console.error('Ошибка парсинга даты:', dateString, error);
         return false;
-    }
-}
-
-// Функция для обновления отображаемых точек (можно вызывать при изменении диапазона дат)
-function updatePointsDisplay() {
-    if (window.currentPointsLayer && window.currentPointsKmlPath) {
-        // Очищаем текущий слой
-        window.currentPointsLayer.clearLayers();
-        // Перезагружаем точки с новым фильтром дат
-        loadPointsFromKml(window.currentPointsKmlPath, window.currentPointsLayer);
     }
 }
 
@@ -1130,32 +1196,6 @@ function getPointIcon(position) {
         popupAnchor: [0, 0] // смещение для popup
     });
 }
-
-// Функция для получения стиля точки на основе позиции
-// function getPointStyle(position) {
-    // const styles = {
-        // 'ВС РФ': {
-            // color: '#ff0000',
-            // fillColor: '#ff0000',
-            // fillOpacity: 0.7,
-            // radius: 6
-        // },
-        // 'ВСУ': {
-            // color: '#0000ff', 
-            // fillColor: '#0000ff',
-            // fillOpacity: 0.7,
-            // radius: 6
-        // },
-        // 'default': {
-            // color: '#3388ff',
-            // fillColor: '#3388ff',
-            // fillOpacity: 0.7,
-            // radius: 6
-        // }
-    // };
-    
-    // return styles[position] || styles.default;
-// }
 
 // Функция для извлечения данных из ExtendedData
 function parseExtendedData(placemark) {
@@ -1194,18 +1234,12 @@ async function loadPointsFromKml(filePath, layerGroup) {
         }
 
         // Загружаем только точки
-        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT, { 
-            pointsOnly: true 
-        });
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT);
         
         if (LOG_STYLES) {
-            console.log(`Total points loaded: ${layerGroup.getLayers().length}`);
+            console.log(`Total points loaded from ${filePath}: ${layerGroup.getLayers().length}`);
             console.groupEnd();
         }
-        
-        // Сохраняем ссылки для последующего обновления
-        window.currentPointsLayer = layerGroup;
-        window.currentPointsKmlPath = filePath;
         
         return bounds;
     } catch (error) {
@@ -1213,8 +1247,13 @@ async function loadPointsFromKml(filePath, layerGroup) {
     }
 }
 
-// Функция для инициализации слоя с точками
-async function initPointsLayer(kmlFilePath) {
+// Функция для инициализации слоя с точками из нескольких файлов
+async function initPointsLayer(kmlFilePaths) {
+    // Если передана строка, преобразуем в массив
+    if (typeof kmlFilePaths === 'string') {
+        kmlFilePaths = [kmlFilePaths];
+    }
+    
     // Удаляем старый слой точек, если он существует
     if (window.currentPointsLayer) {
         map.removeLayer(window.currentPointsLayer);
@@ -1224,26 +1263,173 @@ async function initPointsLayer(kmlFilePath) {
     const pointsLayerGroup = L.layerGroup();
     pointsLayerGroup.addTo(map);
     
-    // Загружаем точки из KML
-    await loadPointsFromKml(kmlFilePath, pointsLayerGroup);
+    // Сохраняем ссылки для последующего обновления
+    window.currentPointsLayer = pointsLayerGroup;
+    window.currentPointsKmlPaths = kmlFilePaths; // Сохраняем массив путей
+    
+    // Загружаем точки из всех KML файлов
+    for (const path of kmlFilePaths) {
+        await loadPointsFromKml(path, pointsLayerGroup);
+    }
     
     return pointsLayerGroup;
 }
 
+// Функция для вычисления даты начала на основе текущей даты и диапазона
+function getStartDateByRange(rangeType, baseDate = null) {
+    // Используем переданную дату или текущую дату
+    const date = baseDate || parseCustomDate(selectedDate) || new Date();
+    const result = new Date(date);
+    
+    switch(rangeType) {
+        case 'week':
+            result.setDate(result.getDate() - 7);
+            break;
+        case 'month':
+            result.setMonth(result.getMonth() - 1);
+            break;
+        case '3months':
+            result.setMonth(result.getMonth() - 3);
+            break;
+        case '6months':
+            result.setMonth(result.getMonth() - 6);
+            break;
+        case 'year':
+            result.setFullYear(result.getFullYear() - 1);
+            break;
+        default:
+            result.setDate(result.getDate() - 7); // По умолчанию 1 неделя
+    }
+    
+    return result;
+}
 
+// Функция для инициализации кнопок фильтров
+function initFilterButtons() {
+    console.log('Инициализация фильтров...');
+    
+    const dateRangeBtn = document.getElementById('date-range-btn');
+    const dateRangeDropdown = document.getElementById('date-range-dropdown');
+    const rangeOptions = document.querySelectorAll('.range-option');
+    
+    if (!dateRangeBtn || !dateRangeDropdown) {
+        console.error('Не найдены элементы фильтра:', {dateRangeBtn, dateRangeDropdown});
+        return;
+    }
+    
+    console.log('Элементы фильтра найдены');
+    
+    // Обработчик клика на кнопку фильтра дат
+    dateRangeBtn.addEventListener('click', function(e) {
+        console.log('Кнопка фильтра нажата');
+        e.stopPropagation();
+        e.preventDefault();
+        dateRangeDropdown.classList.toggle('show');
+        console.log('Класс show:', dateRangeDropdown.classList.contains('show'));
+    });
+    
+    // Обработчик клика на опции диапазона
+    rangeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const range = this.getAttribute('data-range');
+            
+            // Убираем активный класс со всех опций
+            rangeOptions.forEach(opt => opt.classList.remove('active'));
+            // Добавляем активный класс выбранной опции
+            this.classList.add('active');
+            
+            // Сохраняем выбранный диапазон
+            currentDateRange = range;
+            
+            // Обновляем заголовок кнопки (можно добавить иконку или текст)
+            updateDateRangeButtonTitle();
+            
+            // Применяем фильтр - используем выбранную дату из календаря
+            updatePointsDateFilter();
+            
+            // Закрываем выпадающий список
+            dateRangeDropdown.classList.remove('show');
+        });
+    });
+    
+    // Устанавливаем активную опцию по умолчанию
+    document.querySelector(`.range-option[data-range="${currentDateRange}"]`)?.classList.add('active');
+    
+    // Обновляем заголовок кнопки
+    updateDateRangeButtonTitle();
+    
+    // Закрытие выпадающего списка при клике вне его
+    document.addEventListener('click', function(e) {
+        if (!dateRangeBtn.contains(e.target) && !dateRangeDropdown.contains(e.target)) {
+            dateRangeDropdown.classList.remove('show');
+        }
+    });
+    
+    // Обработчики для неактивных кнопок (для отладки)
+    document.querySelectorAll('.filter-btn.disabled').forEach(btn => {
+        btn.addEventListener('click', function() {
+            console.log('Кнопка фильтра в разработке');
+            // Можно добавить временный функционал для отладки
+            alert('Эта функция находится в разработке');
+        });
+    });
+    
+    // Инициализация состояния кнопки
+    updateDateRangeButtonTitle();
+    
+    // Применяем начальный фильтр
+    updatePointsDateFilter();
+}
 
+// Функция для обновления заголовка кнопки фильтра дат
+function updateDateRangeButtonTitle() {
+    const dateRangeBtn = document.getElementById('date-range-btn');
+    if (!dateRangeBtn) return;
+    
+    const titles = {
+        'week': 'Фильтр: 1 неделя',
+        'month': 'Фильтр: 1 месяц',
+        '3months': 'Фильтр: 3 месяца',
+        '6months': 'Фильтр: 6 месяцев',
+        'year': 'Фильтр: 1 год'
+    };
+    
+    dateRangeBtn.title = titles[currentDateRange] || 'Фильтр по дате';
+}
 
-///////////////////////////////////////////////////////////////////////////////
+// Функция для обновления фильтра точек по дате
+async function updatePointsDateFilter() {
+    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
+    
+    // Получаем выбранную дату из календаря
+    const currentDate = parseCustomDate(selectedDate);
+    
+    // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
+    const startDate = getStartDateByRange(currentDateRange, currentDate);
+    
+    // Обновляем диапазон дат
+    window.pointsDateRange.start = startDate;
+    window.pointsDateRange.end = currentDate;
+    
+    // Перезагружаем точки из всех файлов с новым фильтром
+    if (window.currentPointsLayer && window.currentPointsKmlPaths) {
+        window.currentPointsLayer.clearLayers();
+        
+        for (const path of window.currentPointsKmlPaths) {
+            await loadPointsFromKml(path, window.currentPointsLayer);
+        }
+    }
+}
 
-
-
-// Навигация к определенному индексу
+// Навигация к определенному индексу (для кнопок навигации по KML файлам)
 async function navigateTo(index) {
     if (index < 0 || index >= kmlFiles.length) return;
     
     try {        
         currentIndex = index;
         const file = kmlFiles[currentIndex];
+        
+        // Обновляем selectedDate на дату KML файла
         selectedDate = file.name;
         
         if (datePicker) {
@@ -1252,6 +1438,11 @@ async function navigateTo(index) {
         
         // Загружаем KML без изменения масштаба
         await loadKmlFile(file);
+        
+        // Обновляем фильтр точек для новой даты
+        if (window.currentPointsLayer && window.pointsDateRange && window.currentPointsKmlPaths) {
+            await updatePointsDateFilter();
+        }
         
     } catch (error) {
         console.error("Ошибка навигации:", error);
@@ -1307,7 +1498,6 @@ document.getElementById('last-btn').addEventListener('click', async () => {
 
 
 
-
 // Заполнение выпадающего списка городов
 // Обработчик выбора города
 document.getElementById('cities-dropdown').addEventListener('change', async function() {
@@ -1329,7 +1519,6 @@ document.getElementById('cities-dropdown').addEventListener('change', async func
 });
 
 // Обработчик выбора города
-
 citiesDropdown.addEventListener('change', function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
@@ -1430,36 +1619,67 @@ function setupCopyCoordsButton() {
     }
 }
 
-
 async function init() {
   try {
     // Шаг 1: Загружаем постоянные слои
     await loadPermanentKmlLayers();
-    await initPointsLayer(window.pointsKmlPath);
     
-    // Шаг 2: Инициализируем основные компоненты UI
-    initDatePicker();    
-    selectedDate = kmlFiles[kmlFiles.length - 1].name; // Инициализируем selectedDate последней доступной датой
+    // Шаг 2: Инициализируем selectedDate текущей датой
+    selectedDate = getCurrentDateFormatted();
+    console.log('Установлена текущая дата:', selectedDate);
+    
+    // Шаг 3: Инициализируем календарь с текущей датой
+    initDatePicker();
+    
+    // Шаг 4: Инициализируем точки
+    // Инициализируем диапазон дат для точек
+    window.pointsDateRange = window.pointsDateRange || { start: null, end: null };    
+    // Устанавливаем начальный диапазон (1 неделя) на основе текущей даты
+    const currentDate = parseCustomDate(selectedDate);
+    const startDate = getStartDateByRange('week', currentDate);
+    
+    window.pointsDateRange.start = startDate;
+    window.pointsDateRange.end = currentDate;
+    
+    // Загружаем точки с фильтром
+    await initPointsLayer(window.pointsKmlPaths);
+    
+    // Шаг 5: Инициализация кнопок фильтров
+    initFilterButtons();
+    
+    // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
     document.querySelector('.date-navigator-wrapper').style.display = 'block';
         
-    // Шаг 3: Ждем когда все элементы интерфейса будут доступны
+    // Шаг 7: Ждем когда все элементы интерфейса будут доступны
     await waitForUIElements();
     
-    // Шаг 4: Загружаем данные карты
-    preserveZoom = true;
-    currentIndex = kmlFiles.length - 1;
-    // Явно устанавливаем вид только один раз
-    map.setView([48.257381, 37.134785], 10);
-    await navigateTo(currentIndex);
+    // Шаг 8: Находим и загружаем ближайший доступный KML к текущей дате
+    const nearestDate = findNearestAvailableDate(selectedDate);
+    const nearestIndex = kmlFiles.findIndex(file => file.name === nearestDate);
     
-    // Шаг 5: Финализируем инициализацию карты
+    if (nearestIndex !== -1) {
+        currentIndex = nearestIndex;
+        console.log(`Загружаем KML для ближайшей доступной даты: ${nearestDate} (индекс: ${nearestIndex})`);
+        
+        // Загружаем данные карты
+        preserveZoom = true;
+        // Явно устанавливаем вид только один раз
+        map.setView([48.257381, 37.134785], 10);
+        await loadKmlForNearestDate(nearestIndex);
+    } else {
+        console.log('Не найдено доступных KML файлов для загрузки');
+        // Устанавливаем вид по умолчанию
+        map.setView([48.257381, 37.134785], 10);
+    }
+    
+    // Шаг 9: Финализируем инициализацию карты
     setTimeout(() => {
       if (map) map.invalidateSize();
       updateCurrentCenterDisplay();
     }, 50);
-	
-	map.options.crs = L.CRS.EPSG3857;
+    
+    map.options.crs = L.CRS.EPSG3857;
     
     const flagInterval = setInterval(() => {
     if (document.querySelector('.leaflet-control-attribution')) {
@@ -1467,9 +1687,8 @@ async function init() {
         clearInterval(flagInterval);
         }
     }, 500);
-	
-	//
-	// Настройка кнопки после инициализации элементов
+    
+    // Настройка кнопки после инициализации элементов
     setTimeout(() => {
         setupCopyCoordsButton();
         addCopyButtonsToInputs(); // Добавляем инициализацию кнопок копирования
@@ -1478,32 +1697,36 @@ async function init() {
     
     // Инициализация дартс-меню
     initDartMenu(); 
-	
-	// Для выпадающего списка слоёв (подложек)
-	// таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
-	setTimeout(() => {
-		if (map) map.invalidateSize();
-		updateCurrentCenterDisplay();
-		
-		// Явно инициализируем обработчик после создания элементов
-		const toggleBtn = document.querySelector('.leaflet-control-layers-toggle');
-		if (toggleBtn) {
-			toggleBtn.addEventListener('click', function(e) {
-				e.preventDefault();
-				e.stopPropagation();
-				
-				const isVisible = layerControlContainer.style.display === 'block';
-				layerControlContainer.style.display = isVisible ? 'none' : 'block';
-				layerControlContainer.classList.toggle('leaflet-control-layers-expanded', !isVisible);
-			});
-		}
-	}, 300);
-	
-	window.initialLayerSet = false;
-	map.on('load', function() {
-		window.osm.addTo(map); // Активируйте OSM слой
-		window.initialLayerSet = true;
-	});
+    
+    // Для выпадающего списка слоёв (подложек)
+    // таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
+    setTimeout(() => {
+        if (map) map.invalidateSize();
+        updateCurrentCenterDisplay();
+        
+        // Явно инициализируем обработчик после создания элементов
+        const toggleBtn = document.querySelector('.leaflet-control-layers-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isVisible = layerControlContainer.style.display === 'block';
+                layerControlContainer.style.display = isVisible ? 'none' : 'block';
+                layerControlContainer.classList.toggle('leaflet-control-layers-expanded', !isVisible);
+            });
+        }
+    }, 300);
+    
+    // Инициализация поиска по названию
+    initSearchFunctionality();
+    
+    
+    window.initialLayerSet = false;
+    map.on('load', function() {
+        window.osm.addTo(map); // Активируйте OSM слой
+        window.initialLayerSet = true;
+    });
         
   } catch (error) {
     console.error('Ошибка инициализации:', error);
@@ -1532,7 +1755,6 @@ function waitForUIElements() {
     checkElements();
   });
 }
-
 
 document.addEventListener('DOMContentLoaded', init);
 
@@ -1605,7 +1827,7 @@ document.addEventListener('languageChanged', function(event) {
         datePicker.destroy();
     }
         initDatePicker();
-	
+    
     populateCitiesDropdown(); // Обновляем основной список
     initDartMenu(); // Перестраиваем дартс-меню
 });
@@ -1647,7 +1869,6 @@ map.whenReady(function() {
         }
     }, 100);
 });
-
 
 // Обработчик для поля ввода координат
 function showCoordsError(input, message) {
@@ -1712,12 +1933,12 @@ function setupInputWithClear(inputEl, clearBtn) {
         } else {
             clearBtn.style.display = "none";
         }
-		
-		// Также управляем видимостью кнопки копирования
-		const copyBtn = input.parentNode.querySelector('.copy-input-btn');
-		if (copyBtn) {
-			copyBtn.style.display = input.value ? 'inline-flex' : 'none';
-		}
+        
+        // Также управляем видимостью кнопки копирования
+        const copyBtn = input.parentNode.querySelector('.copy-input-btn');
+        if (copyBtn) {
+            copyBtn.style.display = input.value ? 'inline-flex' : 'none';
+        }
     }
 
     // следим за вводом, вставкой и изменениями
@@ -1754,10 +1975,6 @@ document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input =>
         }
     });
 });
-
-
-
-
 
 // Добавляем обработчики для кнопок очистки (крестиков)
 document.addEventListener('click', function(e) {
@@ -1801,19 +2018,6 @@ document.addEventListener('click', function(e) {
     }
 });
 
-
-
-
-
-
-
-// обработчик для нажатия Enter в поле ввода
-// coordsInput.addEventListener('keypress', function(e) {
-	// if (e.key === 'Enter') {
-		// this.dispatchEvent(new Event('change'));
-    // }
-// });
-
 document.querySelectorAll('.view-menu-container').forEach(container => {
     const viewMenuBtn = container.querySelector('.view-menu-btn');
     
@@ -1838,7 +2042,6 @@ document.querySelectorAll('.view-menu-container').forEach(container => {
     });
 });
 
-
 //////////////////////////////////////////////////////////////////////
 
 const navDropdown = document.getElementById('nav-dropdown');
@@ -1862,7 +2065,7 @@ function initDartMenu() {
     const elementsToClone = [
         'centerOn-label',
         'coords-input',
-		'copy-coords-external-btn',
+        'copy-coords-external-btn',
         'cities-dropdown',
         'currentCenter-label',
         'current-center-coords',
@@ -1894,7 +2097,7 @@ function initDartMenu() {
     navDropdown.appendChild(container);
     console.log(`[initDartMenu] В nav-dropdown добавлено ${clonedItems.length} элементов`);
 
-	setupCopyCoordsButton(); // Повторная инициализация обработчиков копирования
+    setupCopyCoordsButton(); // Повторная инициализация обработчиков копирования
 
     // Добавляем обработчики для клонированных элементов
     setupDropdownListeners();
@@ -1913,7 +2116,7 @@ function initDartMenu() {
     
     window.addEventListener('resize', handleResize);
     handleResize();
-	
+    
     // Синхронизируем состояние при инициализации
     syncDropdownState();
 }
@@ -1956,67 +2159,67 @@ function syncDropdownState() {
 
 // Обработчики для клонов в выпадающем меню
 navDropdown.querySelectorAll('input, select').forEach(clone => {
-	clone.addEventListener('change', function() {
-		// Находим соответствующий оригинальный элемент по индексу
-		const index = Array.from(navDropdown.children).indexOf(this.parentElement);
-		if (index === -1) return;
-		
-		const original = hideableItems[index];
-		if (!original) return;
-		
-		// Обновляем оригинальный элемент
-		if (this.tagName === 'INPUT') {
-			const origInput = original.querySelector('input');
-			if (origInput) {
-				origInput.value = this.value;
-				
-				// Для координат - центрируем карту
-				if (origInput.id === 'coords-input') {
-					const coords = this.value.split(',').map(coord => parseFloat(coord.trim()));
-					if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
-						centerMap(coords[0], coords[1]);
-					}
-				}
-			}
-		}
-		else if (this.tagName === 'SELECT') {
-			const origSelect = original.querySelector('select');
-			if (origSelect) {
-				origSelect.value = this.value;
-				
-				// Для выпадающего списка городов
-				const city = cities.find(c => c.name[currentLang] === this.value);
-				if (city) {
-					centerMap(city.lat, city.lng);
-				}
-			}
-		}
-	});
+    clone.addEventListener('change', function() {
+        // Находим соответствующий оригинальный элемент по индексу
+        const index = Array.from(navDropdown.children).indexOf(this.parentElement);
+        if (index === -1) return;
+        
+        const original = hideableItems[index];
+        if (!original) return;
+        
+        // Обновляем оригинальный элемент
+        if (this.tagName === 'INPUT') {
+            const origInput = original.querySelector('input');
+            if (origInput) {
+                origInput.value = this.value;
+                
+                // Для координат - центрируем карту
+                if (origInput.id === 'coords-input') {
+                    const coords = this.value.split(',').map(coord => parseFloat(coord.trim()));
+                    if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+                        centerMap(coords[0], coords[1]);
+                    }
+                }
+            }
+        }
+        else if (this.tagName === 'SELECT') {
+            const origSelect = original.querySelector('select');
+            if (origSelect) {
+                origSelect.value = this.value;
+                
+                // Для выпадающего списка городов
+                const city = cities.find(c => c.name[currentLang] === this.value);
+                if (city) {
+                    centerMap(city.lat, city.lng);
+                }
+            }
+        }
+    });
 });
 
 // Обработчик для кнопки копирования в меню
 navDropdown.querySelectorAll('.copy-coords-btn').forEach(btn => {
-	btn.addEventListener('click', function() {
-		const coordsElement = this.closest('.current-center')?.querySelector('.current-coords-display');
-		if (coordsElement) {
-			const coords = coordsElement.textContent;
-			copyToClipboard(coords, this);
-		}
-	});
+    btn.addEventListener('click', function() {
+        const coordsElement = this.closest('.current-center')?.querySelector('.current-coords-display');
+        if (coordsElement) {
+            const coords = coordsElement.textContent;
+            copyToClipboard(coords, this);
+        }
+    });
 });
 
 // Закрытие меню при клике вне его
 document.addEventListener('click', function(e) {
-	if (!navDropdown.contains(e.target) && e.target !== navMenuToggle) {
-		navDropdown.classList.remove('active');
-	}
+    if (!navDropdown.contains(e.target) && e.target !== navMenuToggle) {
+        navDropdown.classList.remove('active');
+    }
 });
 
 
 // Обработчик для кнопки меню
 navMenuToggle.addEventListener('click', function(e) {
-	e.stopPropagation();
-	console.log("[navMenuToggle] Кнопка меню нажата");
+    e.stopPropagation();
+    console.log("[navMenuToggle] Кнопка меню нажата");
     // Синхронизируем состояние перед открытием
     syncDropdownState();
     // Открываем/закрываем меню
@@ -2029,7 +2232,7 @@ function copyToClipboard(text, button) {
     if (button.disabled) {
         return;
     }
-	
+    
     if (!text || text.includes('не определен') || text.includes('undefined')) {
         return;
     }
@@ -2099,8 +2302,8 @@ function setupDropdownListeners() {
             }
         });
     }
-	
-	 // Обработчик для клонированной внешней кнопки копирования
+    
+     // Обработчик для клонированной внешней кнопки копирования
     const copyExternalBtnClone = document.getElementById('copy-coords-external-btn-clone');
     if (copyExternalBtnClone) {
         copyExternalBtnClone.addEventListener('click', function() {
@@ -2228,7 +2431,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-
 
 
 
@@ -2557,25 +2759,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
