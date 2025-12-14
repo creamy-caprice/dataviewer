@@ -7734,5 +7734,105 @@ https://t.me/domikpetra #ru</name>
         </Point>
       </MultiGeometry>
     </Placemark>
+    <Placemark>
+      <name>12.12.25 Гуляйполе
+
+Дополнительно. Штурмовики ВС РФ попали под обстрел ВСУ
+
+ 0:26 47.657338 36.267237 
+
+Согласно  https://t.me/creamy_caprice/10764?comment=73543
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10764<br>позиция: ВС РФ*<br>дата: 2025.12.12]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10764</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.12</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.267237,47.657338,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>14.12.25 Гуляйполе - Варваровка
+
+Последствия боевых действий в районе Гуляйполя.
+Военнослужащие ВС РФ поднимают флаги Российской Федерации в Варваровке и фиксируют своё присутствие в южной части населённого пункта.
+Продвижение ВС РФ 3,5 км на северном охвате Гуляйполя, выход передовых подразделений на трассу к Покровскому.
+
+2:07 47.706834,36.211440
+2:20 47.715485,36.202009
+
+Источник https://t.me/voin_dv/18039
+Геопривязка https://t.me/Zabolocini
+Геопривязка https://t.me/arrroh
+Геопривязка https://t.me/Makhno1917
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10772?single<br>позиция: ВС РФ*<br>дата: 2025.12.14]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10772?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.14</value>
+        </Data>
+      </ExtendedData>
+      <MultiGeometry>
+        <Point>
+          <coordinates>
+            36.21144,47.706834,0
+          </coordinates>
+        </Point>
+        <Point>
+          <coordinates>
+            36.202009,47.715485,0
+          </coordinates>
+        </Point>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>14.12.25 Боровая - Богуславка
+
+Активные боевые действия в районе Боровой.
+Уничтожение операторами FPV-дронов ВС РФ оставленного бронеавтомобиля ВСУ в окрестностях Богуславки.  
+Удаление от линии боевого соприкосновения до 2 км. 
+
+ 49.476964,37.670485 
+
+Источник https://t.me/boevoekteschenie/1389
+Геопривязка https://t.me/Zabolocini
+#ua</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10775?single<br>позиция: ВСУ<br>дата: 2025.12.14]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10775?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВСУ</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.14</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.670485,49.476964,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
