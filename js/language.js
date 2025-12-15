@@ -16,7 +16,7 @@ const translations = {
         firstBtnTitle: "Первый",
         prevBtnTitle: "Предыдущий",
         nextBtnTitle: "Следующий",
-        lastBtnTitle: "Последний",
+        lastBtnTitle: "Сегодня",
         
         ruBtnTitle: "Текущий язык: Русский",
         enBtnTitle: "Переключить на Английский",
@@ -66,7 +66,7 @@ const translations = {
         firstBtnTitle: "First",
         prevBtnTitle: "Previous",
         nextBtnTitle: "Next",
-        lastBtnTitle: "Last",
+        lastBtnTitle: "Today",
         
         ruBtnTitle: "Switch to Russian",
         enBtnTitle: "Current language: English",

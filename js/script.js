@@ -1387,11 +1387,11 @@ function updateDateRangeButtonTitle() {
     if (!dateRangeBtn) return;
     
     const titles = {
-        'week': 'Фильтр: 1 неделя',
-        'month': 'Фильтр: 1 месяц',
-        '3months': 'Фильтр: 3 месяца',
-        '6months': 'Фильтр: 6 месяцев',
-        'year': 'Фильтр: 1 год'
+        'week': '1 неделя',
+        'month': '1 месяц',
+        '3months': '3 месяца',
+        '6months': '6 месяцев',
+        'year': '1 год'
     };
     
     dateRangeBtn.title = titles[currentDateRange] || 'Фильтр по дате';
@@ -1461,20 +1461,41 @@ function updateButtons() {
     
     if (!firstBtn || !prevBtn || !nextBtn || !lastBtn) return;
     
-    const isFirst = currentIndex === 0;
-    const isLast = currentIndex === kmlFiles.length - 1;
+    // Получаем сегодняшнюю дату
+    const today = getCurrentDateFormatted();
     
-    firstBtn.disabled = isFirst;
-    prevBtn.disabled = isFirst;
-    nextBtn.disabled = isLast;
-    lastBtn.disabled = isLast;
+    // Проверяем, выбрана ли в календаре сегодняшняя дата
+    const isToday = selectedDate === today;
     
-    firstBtn.classList.toggle('disabled', isFirst);
-    prevBtn.classList.toggle('disabled', isFirst);
-    nextBtn.classList.toggle('disabled', isLast);
-    lastBtn.classList.toggle('disabled', isLast);
+    // Проверяем, находимся ли на самой свежей сводке (последний доступный kml)
+    const isLastAvailable = currentIndex === kmlFiles.length - 1;
+    
+    // Находим ближайшую дату слева и справа от выбранной в календаре
+    const hasPrevious = findPreviousAvailableDate(selectedDate) !== null;
+    const hasNext = findNextAvailableDate(selectedDate) !== null;
+    
+    // Проверяем, самая ли это первая доступная дата
+    const isFirstAvailable = currentIndex === 0;
+    
+    // Для кнопки ">" (nextBtn): 
+    // - Активна, если есть следующая доступная дата ИЛИ если мы на последней сводке
+    // - Неактивна, только если сегодняшняя дата уже выбрана (isToday)
+    // - Также неактивна, если нет следующей даты и мы не на последней сводке
+    
+    const nextDisabled = (isToday) || (!hasNext && !isLastAvailable);
+    
+    firstBtn.disabled = isFirstAvailable;
+    prevBtn.disabled = !hasPrevious;
+    nextBtn.disabled = nextDisabled;
+    lastBtn.disabled = isToday;
+    
+    firstBtn.classList.toggle('disabled', isFirstAvailable);
+    prevBtn.classList.toggle('disabled', !hasPrevious);
+    nextBtn.classList.toggle('disabled', nextDisabled);
+    lastBtn.classList.toggle('disabled', isToday);
     
     console.log(`First: ${firstBtn.disabled}, Prev: ${prevBtn.disabled}, Next: ${nextBtn.disabled}, Last: ${lastBtn.disabled}`);
+    console.log(`Today: ${today}, SelectedDate: ${selectedDate}, isToday: ${isToday}, isLastAvailable: ${isLastAvailable}`);
 }
 
 // Обработчики кнопок навигации
@@ -1483,17 +1504,178 @@ document.getElementById('first-btn').addEventListener('click', async () => {
 });
 
 document.getElementById('prev-btn').addEventListener('click', async () => {
-    await navigateTo(currentIndex - 1).catch(console.error);
+    // Находим все доступные даты, которые меньше выбранной даты в календаре
+    const selectedDateObj = parseCustomDate(selectedDate);
+    let previousDate = null;
+    let minDiff = Infinity;
+    
+    // Ищем ближайшую дату слева от выбранной
+    for (const dateStr of availableDates) {
+        const date = parseCustomDate(dateStr);
+        const diff = selectedDateObj - date;
+        
+        // diff > 0 означает, что date раньше selectedDate
+        if (diff > 0 && diff < minDiff) {
+            minDiff = diff;
+            previousDate = dateStr;
+        }
+    }
+    
+    if (previousDate) {
+        // Находим индекс предыдущей даты
+        const prevIndex = kmlFiles.findIndex(file => file.name === previousDate);
+        
+        if (prevIndex !== -1) {
+            // Обновляем selectedDate на предыдущую дату
+            selectedDate = previousDate;
+            
+            // Обновляем календарь
+            if (datePicker) {
+                datePicker.setDate(selectedDate, false);
+            }
+            
+            // Загружаем KML для предыдущей даты
+            await navigateTo(prevIndex);
+        }
+    }
 });
 
 document.getElementById('next-btn').addEventListener('click', async () => {
-    await navigateTo(currentIndex + 1).catch(console.error);
+    // Получаем сегодняшнюю дату
+    const today = getCurrentDateFormatted();
+    
+    // Получаем следующую доступную дату
+    let nextDate = findNextAvailableDate(selectedDate);
+    
+    // Если следующей доступной даты нет, но мы на последней сводке - переходим на сегодня
+    if (!nextDate && currentIndex === kmlFiles.length - 1) {
+        nextDate = today;
+    }
+    
+    if (nextDate) {
+        // Определяем, нужно ли переходить на сегодняшнюю дату
+        if (nextDate === today) {
+            // Устанавливаем календарь на сегодня
+            selectedDate = today;
+            
+            if (datePicker) {
+                datePicker.setDate(today, false);
+            }
+            
+            // Находим ближайшую доступную дату к сегодняшней
+            const nearestDate = findNearestAvailableDate(today);
+            const index = kmlFiles.findIndex(file => file.name === nearestDate);
+            
+            if (index !== -1) {
+                await loadKmlForNearestDate(index);
+            }
+        } else {
+            // Переходим на следующую доступную дату
+            const index = kmlFiles.findIndex(file => file.name === nextDate);
+            
+            if (index !== -1) {
+                // Обновляем selectedDate на следующую дату
+                selectedDate = nextDate;
+                
+                if (datePicker) {
+                    datePicker.setDate(selectedDate, false);
+                }
+                
+                // Загружаем KML для следующей даты
+                await loadKmlForNearestDate(index);
+            }
+        }
+        
+        // Обновляем фильтр точек
+        updatePointsDateFilterForSelectedDate();
+        await reloadPointsWithCurrentFilter();
+    }
+    
+    // Обновляем состояние кнопок
+    updateButtons();
 });
+
 
 document.getElementById('last-btn').addEventListener('click', async () => {
-    await navigateTo(kmlFiles.length - 1).catch(console.error);
+    // Получаем текущую дату
+    const today = getCurrentDateFormatted();
+    
+    // Находим ближайшую доступную дату к сегодняшней
+    const nearestDate = findNearestAvailableDate(today);
+    
+    // Находим индекс ближайшей доступной даты
+    const index = kmlFiles.findIndex(file => file.name === nearestDate);
+    
+    if (index !== -1) {
+        // Обновляем selectedDate на сегодняшнюю дату
+        selectedDate = today;
+        
+        // Обновляем календарь на сегодняшнюю дату
+        if (datePicker) {
+            datePicker.setDate(today, false);
+        }
+        
+        // Загружаем KML для ближайшей доступной даты
+        await loadKmlForNearestDate(index);
+        
+        // Обновляем фильтр точек для новой даты
+        updatePointsDateFilterForSelectedDate();
+        
+        // Перезагружаем точки с новым фильтром
+        await reloadPointsWithCurrentFilter();
+        
+        // Обновляем состояние кнопок
+        updateButtons();
+    } else {
+        console.log('Не найдено доступных дат для загрузки');
+        // Если нет доступных дат, переходим на последнюю сводку
+        await navigateTo(kmlFiles.length - 1);
+    }
 });
 
+// Функция для поиска ближайшей доступной даты слева от указанной
+function findPreviousAvailableDate(targetDateStr) {
+    if (!targetDateStr || availableDates.length === 0) return null;
+    
+    const targetDate = parseCustomDate(targetDateStr);
+    let previousDate = null;
+    let minDiff = Infinity;
+    
+    for (const dateStr of availableDates) {
+        const date = parseCustomDate(dateStr);
+        const diff = targetDate - date;
+        
+        // diff > 0 означает, что date раньше targetDate
+        if (diff > 0 && diff < minDiff) {
+            minDiff = diff;
+            previousDate = dateStr;
+        }
+    }
+    
+    return previousDate;
+}
+
+// Функция для поиска ближайшей доступной даты справа от указанной
+function findNextAvailableDate(targetDateStr) {
+    if (!targetDateStr || availableDates.length === 0) return null;
+    
+    const targetDate = parseCustomDate(targetDateStr);
+    let nextDate = null;
+    let minDiff = Infinity;
+    
+    for (const dateStr of availableDates) {
+        const date = parseCustomDate(dateStr);
+        const diff = date - targetDate;
+        
+        // diff > 0 означает, что date позже targetDate
+        if (diff > 0 && diff < minDiff) {
+            minDiff = diff;
+            nextDate = dateStr;
+        }
+    }
+    
+    return nextDate;
+}
 
 
 
