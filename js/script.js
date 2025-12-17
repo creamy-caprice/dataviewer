@@ -49,27 +49,59 @@ function getCurrentDateFormatted() {
     return `${day}.${month}.${year}`;
 }
 
-// Функция для нахождения ближайшей доступной даты к указанной
-function findNearestAvailableDate(targetDateStr) {
+// Функция для нахождения ближайшей доступной даты к указанной (раньше или равной)
+function findNearestEarlierDate(targetDateStr) {
     if (!targetDateStr || availableDates.length === 0) {
         return kmlFiles[kmlFiles.length - 1]?.name || null;
     }
     
     const targetDate = parseCustomDate(targetDateStr);
-    let nearestDate = null;
+    
+    // Сначала проверяем точное совпадение
+    for (const dateStr of availableDates) {
+        if (dateStr === targetDateStr) {
+            return dateStr; // Возвращаем точное совпадение
+        }
+    }
+    
+    // Если точного совпадения нет, ищем ближайшую более раннюю дату
+    let nearestEarlierDate = null;
     let minDiff = Infinity;
     
     for (const dateStr of availableDates) {
         const date = parseCustomDate(dateStr);
-        const diff = Math.abs(targetDate - date);
+        const diff = targetDate - date;
         
-        if (diff < minDiff) {
+        // diff > 0 означает, что date раньше targetDate
+        if (diff >= 0 && diff < minDiff) {
             minDiff = diff;
-            nearestDate = dateStr;
+            nearestEarlierDate = dateStr;
         }
     }
     
-    return nearestDate || kmlFiles[kmlFiles.length - 1]?.name;
+    // Если не нашли более раннюю дату, возвращаем самую раннюю доступную
+    if (!nearestEarlierDate && availableDates.length > 0) {
+        // Находим самую раннюю дату
+        let earliestDate = null;
+        let earliestTime = Infinity;
+        
+        for (const dateStr of availableDates) {
+            const date = parseCustomDate(dateStr);
+            if (date.getTime() < earliestTime) {
+                earliestTime = date.getTime();
+                earliestDate = dateStr;
+            }
+        }
+        return earliestDate;
+    }
+    
+    return nearestEarlierDate || kmlFiles[kmlFiles.length - 1]?.name;
+}
+
+// Обновляем функцию findNearestAvailableDate для обратной совместимости (если она используется в других местах)
+function findNearestAvailableDate(targetDateStr) {
+    // Делегируем новой функции для поиска ближайшей более ранней даты
+    return findNearestEarlierDate(targetDateStr);
 }
 
 // Инициализация календаря - теперь позволяет выбирать любую дату
@@ -96,12 +128,12 @@ function initDatePicker() {
             // Перезагружаем точки с новым фильтром
             reloadPointsWithCurrentFilter();
             
-            // Ищем индекс ближайшей доступной даты
-            const nearestDate = findNearestAvailableDate(dateStr);
+            // Ищем ближайшую доступную дату (раньше или равную)
+            const nearestDate = findNearestEarlierDate(dateStr);
             const index = kmlFiles.findIndex(file => file.name === nearestDate);
             
             if (index !== -1) {
-                // Загружаем KML для ближайшей доступной даты
+                // Загружаем KML для найденной даты
                 loadKmlForNearestDate(index);
             } else {
                 console.log('Не найдено ни одной доступной даты для загрузки KML');
@@ -122,22 +154,12 @@ function initDatePicker() {
             // Подсвечиваем даты, для которых есть KML файлы
             if (availableDates.includes(dateStr)) {
                 dayElem.classList.add('available');
-                
-                // Если это текущая выбранная дата и она есть в KML файлах
-                if (dateStr === selectedDate && kmlFiles[currentIndex]?.name === selectedDate) {
-                    dayElem.classList.add('selected');
-                }
-            }
-            
-            // Также выделяем выбранную дату, даже если для нее нет KML
-            if (dateStr === selectedDate) {
-                dayElem.classList.add('selected');
             }
         }
     });
 }
 
-// Новая функция для загрузки KML по ближайшей доступной дате
+//  функция для загрузки KML по ближайшей доступной дате (теперь она загружает более раннюю или равную дату)
 async function loadKmlForNearestDate(index) {
     if (index < 0 || index >= kmlFiles.length) return;
     
@@ -145,7 +167,7 @@ async function loadKmlForNearestDate(index) {
         currentIndex = index;
         const file = kmlFiles[currentIndex];
         
-        console.log(`Загрузка KML для ближайшей доступной даты: ${file.name}`);
+        console.log(`Загрузка KML для даты: ${file.name} (запрошена дата: ${selectedDate})`);
         
         // Загружаем KML без изменения масштаба
         await loadKmlFile(file);
@@ -153,7 +175,7 @@ async function loadKmlForNearestDate(index) {
         // Обновляем кнопки навигации
         updateButtons();
     } catch (error) {
-        console.error("Ошибка загрузки KML для ближайшей даты:", error);
+        console.error("Ошибка загрузки KML для найденной даты:", error);
     }
 }
 
@@ -1467,35 +1489,28 @@ function updateButtons() {
     // Проверяем, выбрана ли в календаре сегодняшняя дата
     const isToday = selectedDate === today;
     
-    // Проверяем, находимся ли на самой свежей сводке (последний доступный kml)
-    const isLastAvailable = currentIndex === kmlFiles.length - 1;
+    // Проверяем, есть ли более поздние доступные даты
+    const hasNextAvailableDate = findNextAvailableDate(kmlFiles[currentIndex]?.name) !== null;
     
-    // Находим ближайшую дату слева и справа от выбранной в календаре
-    const hasPrevious = findPreviousAvailableDate(selectedDate) !== null;
-    const hasNext = findNextAvailableDate(selectedDate) !== null;
+    // Проверяем, есть ли более ранние доступные даты
+    const hasPreviousAvailableDate = findPreviousAvailableDate(kmlFiles[currentIndex]?.name) !== null;
     
     // Проверяем, самая ли это первая доступная дата
     const isFirstAvailable = currentIndex === 0;
     
-    // Для кнопки ">" (nextBtn): 
-    // - Активна, если есть следующая доступная дата ИЛИ если мы на последней сводке
-    // - Неактивна, только если сегодняшняя дата уже выбрана (isToday)
-    // - Также неактивна, если нет следующей даты и мы не на последней сводке
-    
-    const nextDisabled = (isToday) || (!hasNext && !isLastAvailable);
-    
+    // Определяем состояние кнопок
     firstBtn.disabled = isFirstAvailable;
-    prevBtn.disabled = !hasPrevious;
-    nextBtn.disabled = nextDisabled;
-    lastBtn.disabled = isToday;
+    prevBtn.disabled = !hasPreviousAvailableDate;
+    nextBtn.disabled = isToday;
+    lastBtn.disabled = isToday; // Кнопка "сегодня" отключена, если уже сегодня
     
     firstBtn.classList.toggle('disabled', isFirstAvailable);
-    prevBtn.classList.toggle('disabled', !hasPrevious);
-    nextBtn.classList.toggle('disabled', nextDisabled);
+    prevBtn.classList.toggle('disabled', !hasPreviousAvailableDate);
+    nextBtn.classList.toggle('disabled', isToday);
     lastBtn.classList.toggle('disabled', isToday);
     
     console.log(`First: ${firstBtn.disabled}, Prev: ${prevBtn.disabled}, Next: ${nextBtn.disabled}, Last: ${lastBtn.disabled}`);
-    console.log(`Today: ${today}, SelectedDate: ${selectedDate}, isToday: ${isToday}, isLastAvailable: ${isLastAvailable}`);
+    console.log(`Today: ${today}, SelectedDate: ${selectedDate}, isToday: ${isToday}`);
 }
 
 // Обработчики кнопок навигации
@@ -2941,3 +2956,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+
