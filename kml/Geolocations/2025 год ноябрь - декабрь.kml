@@ -8392,5 +8392,65 @@ https://t.me/The_Wrong_Side/27245
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name>18.12.25 Гуляйполе
+
+Штурм Гуляйполя.
+ВС РФ увеличили зону контроля на левом берегу реки Гайчур продвинувшись в восточной части города до 500 метров. Передовая позиция ВС РФ в частном секторе подверглась обстрелу ВСУ.
+
+0:18 47.649126 36.301381
+
+Источник 21+ https://t.me/romedronen/499
+Геопривязка https://t.me/domikpetra
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10810<br>позиция: ВС РФ*<br>дата: 2025.12.18]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10810</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.18</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.301381,47.649126,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18.12.25 Гуляйполе - Варваровка
+
+Позиционные боевые действия в районе Гуляйполя.
+ВС РФ продвинулись в Варваровке к северу на 2.5 км и заняли новые позиции в центральной части населённого пункта.  Передовая позиция ВС РФ в жилой застройке под огнём ВСУ.
+
+1:33 47.734732,36.193630
+
+Источник 21+ https://t.me/romedronen/499
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10811<br>позиция: ВС РФ*<br>дата: 2025.12.18]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10811</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.18</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.19363,47.734732,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
