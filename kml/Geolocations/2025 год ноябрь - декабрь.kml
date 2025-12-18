@@ -8300,5 +8300,97 @@ https://t.me/domikpetra #ru</name>
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name><![CDATA[16.12.25 Запорожье - Хортицкий район
+
+Боевые действия в глубине обороны ВСУ.
+Успешное поражение бронемашины ВСУ барражирующим боеприпасом "Ланцет" в Хортицком районе города Запорожье. Детонация боекомплекта. Удаление от линии боевого соприкосновения около 29 км.
+
+ 47.808491,35.053920 
+
+Источник https://t.me/aukrop/480
+https://t.me/The_Wrong_Side/27245
+Геопривязка https://t.me/Zabolocini
+#ua]]></name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10805?single<br>позиция: ВСУ<br>дата: 2025.12.16]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10805?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВСУ</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.16</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.05392,47.808491,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[17.12.25 Семёновка
+
+Уничтожение инфраструктурных объектов Украины.
+Поражение барражирующим боеприпасом "Ланцет" заправочной станции в Семёновке. Детонация горючего.
+Удаление от демаркационной линии около 11 км.
+
+ 52.16145, 32.63379 
+
+Источник https://t.me/The_Wrong_Side/27247
+#ua]]></name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10807?single<br>позиция: ВСУ<br>дата: 2025.12.17]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10807?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВСУ</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.17</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.63379,52.16145,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>17.12.25 Степногорск - Лукьяновское
+
+Позиционные боевые действия в районе Степногорска.
+Штурмовые подразделения ВС РФ продвинулись на 3 км восточном направлении и вышли на окраины Лукьяновского.
+Передовая позиция ВС РФ в сельскохозяйственных постройках обстреляна с дрона ВСУ.
+
+0:23 47.609962,35.440900 
+
+Источник 21+ https://t.me/tgkryucova/48
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10808<br>позиция: ВС РФ*<br>дата: 2025.12.17]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10808</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.17</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.4409,47.609962,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
