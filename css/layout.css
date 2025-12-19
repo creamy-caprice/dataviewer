@@ -133,7 +133,7 @@ body {
 
 /* Стили для полей ввода */
 .date-selector input, #cities-dropdown {
-  height: 40px;
+  height: 28px;
   padding: 0 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -164,9 +164,10 @@ body {
 
 /* Стили для навигационной панели */
 .date-navigator {
-    display: flex;
+    display: flex;	
+    flex-wrap: wrap; /* ??? */
     align-items: center;
-    gap: 5px;
+    /* gap: 5px; */
     flex-wrap: nowrap;
     max-width: 100%;
     /* flex-grow: 1; */
@@ -706,9 +707,9 @@ body {
 .filter-btn {
     width: 30px;
     height: 30px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f0f0f0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -732,21 +733,21 @@ body {
 
 .filter-btn:hover:not(.disabled) {
     border-color: #007bff;
-    background: #f0f8ff;
 }
 
 /* Выпадающий список для фильтра дат */
 #date-range-dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    /* top: 100%;
     left: 0;
-    z-index: 1000;
+    z-index: 1000; */
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    min-width: 150px;
+    /* min-width: 150px; */
+	width: auto;
     margin-top: 5px;
 }
 
@@ -781,10 +782,8 @@ body {
         margin-left: 5px;
         gap: 3px;
     }
-    
-    .filter-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
 }
+
+
+
+
