@@ -368,11 +368,12 @@ window.cities = [
 // Путь к файлу с точками
 // window.pointsKmlPaths = ["kml/Geolocations/2025 год ноябрь - декабрь.kml",
  //                         "kml/Geolocations/2025 .kml"];
-window.pointLayers = [];
-window.pointsDateRange = {
-    start: null,
-    end: null
-};
+// window.pointLayers = [];
+// window.pointsDateRange = {
+//    start: null,
+//    end: null
+// };
+
 
 
 
