@@ -5,9 +5,9 @@
   border-radius: 0; /* Убираем скругление углов */
 }
 
-.date-navigator {
-    flex-wrap: wrap; /* ??? */
-}
+/* .date-navigator {
+    flex-wrap: wrap; 
+} */
 
 .date-selector {
     width: 85px;
@@ -222,6 +222,10 @@
 @media (max-width: 1837px) { /* Когда схлопываем в дартс-меню */
     #nav-menu-toggle {
         display: flex !important;
+    }
+	    
+    #nav-menu-toggle:hover:not(.disabled) {
+        border-color: #007bff;
     }
     
     .hideable-nav-item:not(.keep-visible) {
@@ -545,4 +549,9 @@
 }
 .nav-dropdown #copy-coords-btn-clone{
   display: none !important;
+
 }
+
+
+
+
