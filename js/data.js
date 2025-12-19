@@ -316,13 +316,18 @@ window.kmlFiles = [
         	                    "kml/ControlZones/Control_25_12_16.kml",
     	                        "kml/Progress/RuAF/ProgressRuAF_25_12_16.kml",
 								"kml/FrontLine/FrontLine_25_12_16.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_16.kml"] }
+                                "kml/Progress/AFU/ProgressAFU_25_12_16.kml"] },
+	{name: "20.12.25", paths: [
+        	                    "kml/ControlZones/Control_25_12_20.kml",
+    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_20.kml",
+								"kml/FrontLine/FrontLine_25_12_20.kml",
+                                "kml/Progress/AFU/ProgressAFU_25_12_20.kml"] }
    ];
 
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_12_16.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_25_12_20.kml" },
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
@@ -368,6 +373,7 @@ window.pointsDateRange = {
     start: null,
     end: null
 };
+
 
 
 
