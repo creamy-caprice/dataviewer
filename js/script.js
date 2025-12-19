@@ -115,6 +115,10 @@ function initDatePicker() {
         dateFormat: "d.m.y",
         allowInput: true,
         defaultDate: defaultDate, // Используем сохраненную дату
+        disableMobile: true, // ВАЖНО: Отключаем нативный picker на мобильных
+        disableMobile: "true", // Дополнительно для совместимости
+        static: true, // Статическое отображение календаря
+        inline: false, // Не показываем календарь всегда
         // Убираем ограничение, чтобы можно было выбрать любую дату
         onChange: function(selectedDates, dateStr) {
             console.log('Дата выбрана в календаре:', dateStr);
