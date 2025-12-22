@@ -9060,5 +9060,106 @@ https://t.me/The_Wrong_Side/27245
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name>21.12.25 Константиновка - Предтечино
+
+Штурм Константиновки.
+ВС РФ вернули под свой контроль восточный въезд в Константиновку на трассе к Артёмовску. Продвижение ВС РФ до 2 км.
+Передовая позиция попала под обстрел ВСУ.
+
+0:2148.518458,37.803148
+1:00 48.530008,37.788890
+
+Источник 21+ https://t.me/info5battalion/76
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10843<br>позиция: ВС РФ*<br>дата: 2025.12.21]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10843</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.21</value>
+        </Data>
+      </ExtendedData>
+      <MultiGeometry>
+        <Point>
+          <coordinates>
+            37.803148,48.518458,0
+          </coordinates>
+        </Point>
+        <Point>
+          <coordinates>
+            37.78889,48.530008,0
+          </coordinates>
+        </Point>
+      </MultiGeometry>
+    </Placemark>
+    <Placemark>
+      <name>21.12.25 Константиновка - Плещеевка
+
+Активные боевые действия в районе Горловки.
+Атака ВС РФ мотострелковым подразделением на запад от Плещеевки в направлении высоты 178,8. Штурмовая группа из лёгких мотострелков попала под обстрел ВСУ.
+ВС РФ увеличивают хону контроля на южном охвате Константиновки до 1,5 км.
+
+ 48.45861, 37.75777 
+
+Источник 21+ https://t.me/craftoriz/445
+Геопривязка https://x.com/AudaxonX
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10844<br>позиция: ВС РФ*<br>дата: 2025.12.21]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10844</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.21</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.75777,48.45861,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>22.12.25 Константиновка - Степановка
+
+Активные боевые действия в районе Горловки.
+Атака ВС РФ бронетехникой в направлении Степановки. Десантная машина ВС РФ под обстрелом ВСУ.
+Продвижение ВС РФ до 2 км на южном охвате Константиновки.
+
+ 48.458189,37.584048 
+
+Источник 21+ https://t.me/ssternenko/53310
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10845<br>позиция: ВС РФ*<br>дата: 2025.12.22]]></description>
+      <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10845</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2025.12.22</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.584048,48.458189,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
