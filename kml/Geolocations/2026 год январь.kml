@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>2026 год январь</name>
+    <Style id="icon-1899-DB4436-normal">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-DB4436-highlight">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-DB4436">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-DB4436-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-DB4436-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>02.01.26 Часов Яр - Майское
+
+Последствия боевых действий в районе Артёмовска.
+Военнослужащие ВС РФ устанавливают Российский флаг на водонапорной башне в восточной части жилой застройки Майского, подтверждая уверенный контроль занятых территорий.
+Продвижение ВС РФ до 2 км  на северном охвате Константиновки.
+
+ 48.624794,37.777777 
+
+Источник https://t.me/russian_combat_unit/1318
+Геопривязка https://t.me/Zabolocini
+Геопривязка https://t.me/Tsarb_Mangal
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10923?single<br>позиция: ВС РФ*<br>дата: 2026.01.02]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10923?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2026.01.02</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.777777,48.624794,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>02.01.26 Краснополье - Грабовское
+
+Активные боевые действия в сумской зоне безопасности.
+Обстрел опорного пункта в окрестностях Грабовского. Атака ВСУ пехотным подразделением. Контактный стрелковый бой.
+ВС РФ контролируют позицию на удалении в 2,5 км от демаркационной линии. 
+
+ 50.718074,35.432200 
+
+Источник https://t.me/warriorofnorth/14488
+Геопривязка https://t.me/xryctik
+Геопривязка https://t.me/Zabolocini
+Геопривязка https://t.me/jep2211
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10926?single<br>позиция: ВС РФ<br>дата: 2026.01.02]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10926?single</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ</value>
+        </Data>
+        <Data name="дата">
+          <value>2026.01.02</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.4322,50.718074,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>02.01.26 Орехов - Белогорье
+
+Активные боевые действия в районе Орехова.
+Атака ВС РФ пехотным подразделением в направлении Белогорья. Форсирование реки Конка в районе автомобильного моста на южном въезде в населённый пункт. Авиабомбовый удар со стороны ВВС ВСУ по переправе. Увеличение зоны контроля ВС РФ более 1 км по фронту.
+
+ 47.515892, 35.996816 
+
+Источник 21+ https://t.me/soniah_hub/13792
+Геопривязка https://x.com/auditor_ya
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10928<br>позиция: ВС РФ*<br>дата: 2026.01.02]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10928</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2026.01.02</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.996816,47.515892,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
