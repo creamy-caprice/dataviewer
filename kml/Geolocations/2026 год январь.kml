@@ -133,5 +133,67 @@
         </coordinates>
       </Point>
     </Placemark>
+    <Placemark>
+      <name>02.01.26 Артёмовск - Зализнянское
+
+Активные боевые действия в районе Артёмовска.
+Атака ВС РФ пехотным подразделением вдоль трассы Е-40 в направлении к повороту на Миньковку. Военнослужащий ВС РФ попал под обстрел ВСУ. ВС РФ увеличивают зону контроля на 800 метров на северном фланге Артёмовска.
+
+ 48.69754, 37.89994 
+
+Источник 21+ https://t.me/aerobomber_ua/467
+Геопривязка https://x.com/giK1893
+Геопривязка по https://t.me/creamy_caprice/448
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10931<br>позиция: ВС РФ*<br>дата: 2026.01.02]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10931</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2026.01.02</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.89994,48.69754,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>03.01.26 Северск - Фёдоровка
+
+Позиционные боевые действия в районе Северска.
+Военнослужащий ВС РФ обстрелян дроном ВСУ к западу от Фёдоровки.
+ВС РФ продвинулись на южном фланге Северска до 3 км и вышли на новые позиции на рубеже Пазено - Резниковка.
+
+ 48.784831,38.007624 
+
+Источник 21+ https://t.me/ogshb8/790
+Геопривязка https://t.me/Zabolocini 
+#ru</name>
+      <description><![CDATA[описание: https://t.me/creamy_caprice/10932<br>позиция: ВС РФ*<br>дата: 2026.01.03]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>https://t.me/creamy_caprice/10932</value>
+        </Data>
+        <Data name="позиция">
+          <value>ВС РФ*</value>
+        </Data>
+        <Data name="дата">
+          <value>2026.01.03</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          38.007624,48.784831,0
+        </coordinates>
+      </Point>
+    </Placemark>
   </Document>
 </kml>
