@@ -351,12 +351,8 @@ window.kmlFiles = [
         	                    "kml/ControlZones/Control_26_01_13.kml",
     	                        "kml/Progress/RuAF/ProgressRuAF_26_01_13.kml",
 								"kml/FrontLine/FrontLine_26_01_13.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_13.kml"] },
-	{name: "17.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_17.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_17.kml",
-								"kml/FrontLine/FrontLine_26_01_17.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_17.kml"] }
+                                "kml/Progress/AFU/ProgressAFU_26_01_13.kml"] }
+	
    ];
 
 // Постоянные слои
@@ -408,6 +404,7 @@ window.cities = [
     start: null,
     end: null
  };
+
 
 
 
