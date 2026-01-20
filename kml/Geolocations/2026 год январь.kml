@@ -1078,7 +1078,7 @@
                     <value>https://t.me/creamy_caprice/10998</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.13</value>
@@ -1398,7 +1398,7 @@
                     <value>https://t.me/creamy_caprice/10995</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.12</value>
@@ -1480,7 +1480,7 @@
                     <value>https://t.me/creamy_caprice/10997</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.13</value>
@@ -2190,62 +2190,6 @@
             </MultiGeometry>
         </Placemark>
         <Placemark id="icon-515-FF0000">
-            <name>18.01.26 Купянск - Песчаное
-
-Позиционные боевые действия в районе Купянска.
-Передовая позиция ВС РФ в окрестностях Песчаного обстреляна ВСУ.
-ВС РФ заняли новые позиции в крупном опорном пункте расположенному к югу от населённого пункта.
-
- `49.650519,37.780123` 
-
-Источник 21+ https://t.me/ombr43/2686
-Геопривязка https://t.me/Zabolocini
-#ru</name>
-            <description>https://t.me/creamy_caprice/11046</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11046</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ*</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.01.18</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-514-FF0000">
-                <coordinates>37.780123,49.650519,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-521-FF0000">
-            <name>19.01.26 Константиновка - Предтечино
-
-Позиционные боевые действия в районе Константиновки.
-ВС РФ усилили контроль трассы на восточном въезде в Константиновку со стороны Ступочек, расширив зону контроля до 1 км по фронту.
-Военнослужащий ВС РФ попала под обстрел ВСУ.  
-
- `48.535603,37.797389` 
-
-Источник 21+ https://t.me/Gryphon501/70
-Геопривязка https://t.me/Zabolocini
-#ru</name>
-            <description>https://t.me/creamy_caprice/11047</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11047</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ*</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.01.19</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-520-FF0000">
-                <coordinates>37.797389,48.535603,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-527-FF0000">
             <name>19.01.26 Краснополье - Высокое
 
 Позиционные боевые действия в Сумской зоне безопасности.
@@ -2269,11 +2213,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-526-FF0000">
+            <Point id="icon-514-FF0000">
                 <coordinates>35.473528,50.752826,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-533-FF0000">
+        <Placemark id="icon-521-FF0000">
             <name>19.01.26 Краснополье - Грабовское
 
 Позиционные боевые действия в Сумской зоне безопасности.
@@ -2296,11 +2240,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-532-FF0000">
+            <Point id="icon-520-FF0000">
                 <coordinates>35.446144,50.691522,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-539-FF0000">
+        <Placemark id="icon-527-FF0000">
             <name>19.01.26 Красный Лиман
 
 Позиционные боевые действия в районе Красного Лимана.
@@ -2324,11 +2268,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-538-FF0000">
+            <Point id="icon-526-FF0000">
                 <coordinates>37.860832,48.991515,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-545-FF0000">
+        <Placemark id="icon-533-FF0000">
             <name>18.01.26 Константиновка - Новосёловка
 
 Штурм Константиновки.
@@ -2351,11 +2295,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-544-FF0000">
+            <Point id="icon-532-FF0000">
                 <coordinates>37.6638241,48.5355762,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-551-FF0000">
+        <Placemark id="icon-539-FF0000">
             <name>19.01.26 Красный Лиман - Кировск
 
 Позиционные боевые действия в районе Красного Лимана.
@@ -2379,11 +2323,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-550-FF0000">
+            <Point id="icon-538-FF0000">
                 <coordinates>37.899346,49.040379,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-557-FF0000">
+        <Placemark id="icon-545-FF0000">
             <name>04.01.26 Степногорск - Лукьяновское
 
 Позиционные боевые действия в районе Каменского.
@@ -2409,11 +2353,11 @@
                     <value>2026.01.04</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-556-FF0000">
+            <Point id="icon-544-FF0000">
                 <coordinates>35.44255,47.60385,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-563-FF0000">
+        <Placemark id="icon-551-FF0000">
             <name>18.01.26 Дополнительно. Обстрел позиции ВСУ
 
  `47.603910, 35.434127 `
@@ -2432,11 +2376,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-562-FF0000">
+            <Point id="icon-550-FF0000">
                 <coordinates>35.434127,47.603910,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-569-FF0000">
+        <Placemark id="icon-557-FF0000">
             <name>18.01.26 Запорожье - Скворцово - Василевка
 
 Уничтожение инфраструктурных объектов Украины.
@@ -2463,16 +2407,16 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-568-FF0000">
-                <Point id="icon-570-FF0000">
+            <MultiGeometry id="icon-556-FF0000">
+                <Point id="icon-558-FF0000">
                     <coordinates>35.510200,48.000000,0.0</coordinates>
                 </Point>
-                <Point id="icon-572-FF0000">
+                <Point id="icon-560-FF0000">
                     <coordinates>35.248777,47.904600,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-579-FF0000">
+        <Placemark id="icon-567-FF0000">
             <name>19.01.26 Константиновка - Центральный
 
 Штурм Константиновки.
@@ -2495,11 +2439,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-578-FF0000">
+            <Point id="icon-566-FF0000">
                 <coordinates>37.690492,48.511338,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-585-FF0000">
+        <Placemark id="icon-573-FF0000">
             <name>19.01.26 Волчанск - Нестерное - Круглое
 
 Позиционные боевые действия в Харьковской зоне безопасности.
@@ -2525,16 +2469,16 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-584-FF0000">
-                <Point id="icon-586-FF0000">
+            <MultiGeometry id="icon-572-FF0000">
+                <Point id="icon-574-FF0000">
                     <coordinates>37.448980,50.425519,0.0</coordinates>
                 </Point>
-                <Point id="icon-588-FF0000">
+                <Point id="icon-576-FF0000">
                     <coordinates>37.389178,50.424358,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-595-FF0000">
+        <Placemark id="icon-583-FF0000">
             <name>18.01.26 Степногорск - Приморское
 
 Активные боевые действия в районе Каменского.
@@ -2558,11 +2502,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-594-FF0000">
+            <Point id="icon-582-FF0000">
                 <coordinates>35.293147,47.620169,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-601-FF0000">
+        <Placemark id="icon-589-FF0000">
             <name>19.01.26 Днепропетровск - Шевченко
 
 Боевые действия в глубине обороны ВСУ. Уничтожение средств ПВО ВСУ.
@@ -2586,9 +2530,206 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-600-FF0000">
+            <Point id="icon-588-FF0000">
                 <coordinates>34.874961,48.371375,0.0</coordinates>
             </Point>
+        </Placemark>
+        <Placemark id="icon-595-FF0000">
+            <name>19.01.26 Красноармейск - Гришино
+
+Позиционные боевые действия в районе Красноармейска.
+Передовая позиция ВС РФ в жилой застройке Гришино обстреляна FPV-дроном ВСУ.
+ВС РФ увеличили зону контроля в посёлке, продвинувшись в восточной части более 600 метров.
+
+1:11 `48.318740, 37.106177`
+
+Источник 21+ https://t.me/zsu82odshbr/2370
+Геопривязка https://x.com/Bielitzling
+#ru</name>
+            <description>https://t.me/creamy_caprice/11058</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11058</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-594-FF0000">
+                <coordinates>37.106177,48.318740,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-601-FF0000">
+            <name>19.01.26 Купянск - Песчаное
+
+Позиционные боевые действия в районе Купянска.
+Передовая позиция ВС РФ в окрестностях Песчаного обстреляна ВСУ.
+ВС РФ заняли новые позиции в крупном опорном пункте расположенному к югу от населённого пункта.
+
+ `49.650519,37.780123` 
+
+Источник 21+ https://t.me/ombr43/2686
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11046</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11046</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-600-FF0000">
+                <coordinates>37.780123,49.650519,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-607-FF0000">
+            <name>19.01.26 Константиновка - Предтечино
+
+Позиционные боевые действия в районе Константиновки.
+ВС РФ усилили контроль трассы на восточном въезде в Константиновку со стороны Ступочек, расширив зону контроля до 1 км по фронту.
+Военнослужащий ВС РФ попал под обстрел ВСУ.  
+
+ `48.535603,37.797389` 
+
+Источник 21+ https://t.me/Gryphon501/70
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11047</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11047</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-606-FF0000">
+                <coordinates>37.797389,48.535603,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-613-FF0000">
+            <name>19.01,26 Дополнительно. Позиция ВСУ под обстрелом ВС РФ
+
+ `48.5568005, 37.8230853` 
+
+Согласно https://t.me/creamy_caprice/9689?comment=74216
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/9689</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/9689</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-612-FF0000">
+                <coordinates>37.8230853,48.5568005,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-619-FF0000">
+            <name>20.01.26 Волчанск - Заводы 2-е
+
+Позиционные боевые действия в Харьковской зоне безопасности.
+ВС РФ продвинулись в Волчанске по направлению к восточной окраине до 1 км и увеличили зону контроля. 
+Военнослужащий ВС РФ попал под обстрел ВСУ в жилой застройке восточной части города.
+
+0:24 `50.293906,36.988877` 
+
+Источник 21+ https://www.facebook.com/share/v/17qwf1d9UN/
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11059</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11059</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-618-FF0000">
+                <coordinates>36.988877,50.293906,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-625-FF0000">
+            <name>20.01.26 Константиновка - Гора
+
+Штурм Константиновки.
+ВС РФ продвинулись до 2 км в Константиновке и заняли новые позиции в микрорайоне Гора.
+Передовая позиция в жилой застройке города под огнём ВСУ.
+
+1:26 `48.527170,37.738286` 
+
+Источник 21+ https://t.me/info5battalion/80
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11060</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11060</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-624-FF0000">
+                <coordinates>37.738286,48.527170,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-631-FF0000">
+            <name>20,01,26 Красноармейск - Гришино
+
+Активные боевые действия в районе Красноармейска.
+Атака ВС РФ пехотными подразделениями в Гришино. Штурмовые группы занимают новые позиции огнём противника.
+ВС РФ продвигаются к центру Гришино более 1 км и увеличивают зону контроля в жилой застройке населённого пункта.
+
+ `48.320927, 37.089926` 
+ `48.321179, 37.095817` 
+
+Источник 21+ https://x.com/425Skala/status/2013679576468050376
+Геопривязка https://x.com/Bielitzling
+#ru</name>
+            <description>https://t.me/creamy_caprice/11061</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11061</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <MultiGeometry id="icon-630-FF0000">
+                <Point id="icon-632-FF0000">
+                    <coordinates>37.089926,48.320927,0.0</coordinates>
+                </Point>
+                <Point id="icon-634-FF0000">
+                    <coordinates>37.095817,48.321179,0.0</coordinates>
+                </Point>
+            </MultiGeometry>
         </Placemark>
     </Document>
 </kml>
