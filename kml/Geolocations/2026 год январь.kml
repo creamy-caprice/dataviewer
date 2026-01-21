@@ -1158,7 +1158,7 @@
                     <value>https://t.me/creamy_caprice/11002</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.14</value>
@@ -1214,7 +1214,7 @@
                     <value>https://t.me/creamy_caprice/11005</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.14</value>
@@ -1264,7 +1264,7 @@
                     <value>https://t.me/creamy_caprice/10999</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.13</value>
@@ -1845,33 +1845,6 @@
             </Point>
         </Placemark>
         <Placemark id="icon-431-FF0000">
-            <name>15.01.26 Красный Лиман - Богородичное
-
-Позиционные боевые действия в районе Красного Лимана.
-Подрыв понтонной переправы через Северский Донец в Богородичном на пути снабжения группировки ВСУ в окрестностях Святогорска.
-Боевые действия в 5 км от линии боевого соприкосновения. 
-
- `49.022870, 37.512410` 
-
-Источник https://t.me/creamy_caprice
-#ru #out</name>
-            <description>https://t.me/creamy_caprice/11015</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11015</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.01.15</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-430-FF0000">
-                <coordinates>37.512410,49.022870,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-437-FF0000">
             <name>16,01,26 Дополнительно. Позиция ВСУ под огнём ВС РФ
 
  0:16 `49.730524, 37.612098`
@@ -1890,11 +1863,11 @@
                     <value>2026.01.16</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-436-FF0000">
+            <Point id="icon-430-FF0000">
                 <coordinates>37.612098,49.730524,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-443-FF0000">
+        <Placemark id="icon-437-FF0000">
             <name>15.01.26 Красный Лиман - Диброва
 
 Активные боевые действия в районе Красного Лимана.
@@ -1921,11 +1894,11 @@
                     <value>2026.01.15</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-442-FF0000">
+            <Point id="icon-436-FF0000">
                 <coordinates>37.854982,48.916829,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-449-FF0000">
+        <Placemark id="icon-443-FF0000">
             <name>15,01,26 Дополнительно. Обстрел позиции ВС РФ в населённом пункте Диброва
  
  `48.914234,37.862763` 
@@ -1944,11 +1917,11 @@
                     <value>2026.01.15</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-448-FF0000">
+            <Point id="icon-442-FF0000">
                 <coordinates>37.862763,48.914234,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-455-FF0000">
+        <Placemark id="icon-449-FF0000">
             <name>17.01.26 Северск - Закотное
 
 Последствия боевых действий в районе Северска.
@@ -1972,16 +1945,16 @@
                     <value>2026.01.17</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-454-FF0000">
-                <Point id="icon-456-FF0000">
+            <MultiGeometry id="icon-448-FF0000">
+                <Point id="icon-450-FF0000">
                     <coordinates>37.946784,48.906194,0.0</coordinates>
                 </Point>
-                <Point id="icon-458-FF0000">
+                <Point id="icon-452-FF0000">
                     <coordinates>37.939631,48.903060,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-465-FF0000">
+        <Placemark id="icon-459-FF0000">
             <name>17.01.26 Красноармейск - Гришино
 
 Позиционные боевые действия в районе Красноармейска.
@@ -2005,11 +1978,11 @@
                     <value>2026.01.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-464-FF0000">
+            <Point id="icon-458-FF0000">
                 <coordinates>37.133323,48.324764,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-471-FF0000">
+        <Placemark id="icon-465-FF0000">
             <name>17.01.26 Гуляйполе
 
 Штурм Гуляйполя.
@@ -2033,11 +2006,11 @@
                     <value>2026.01.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-470-FF0000">
+            <Point id="icon-464-FF0000">
                 <coordinates>36.218158,47.658985,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-477-FF0000">
+        <Placemark id="icon-471-FF0000">
             <name>15.01.26 Купянск - Радьковка
 
 Позиционные боевые действия в районе Купянска.
@@ -2060,11 +2033,11 @@
                     <value>2026.01.15</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-476-FF0000">
+            <Point id="icon-470-FF0000">
                 <coordinates>37.606587,49.743327,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-483-FF0000">
+        <Placemark id="icon-477-FF0000">
             <name>18.01.26 Орехов - Щербаки
 
 Активные боевые действия в районе Орехова.
@@ -2088,16 +2061,16 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-482-FF0000">
-                <Point id="icon-484-FF0000">
+            <MultiGeometry id="icon-476-FF0000">
+                <Point id="icon-478-FF0000">
                     <coordinates>35.594173,47.548612,0.0</coordinates>
                 </Point>
-                <Point id="icon-486-FF0000">
+                <Point id="icon-480-FF0000">
                     <coordinates>35.597650,47.527097,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-493-FF0000">
+        <Placemark id="icon-487-FF0000">
             <name>17.01.26 Константиновка -  Ильиновка
 
 Позиционные боевые действия в районе Горловки.
@@ -2121,11 +2094,11 @@
                     <value>2026.01.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-492-FF0000">
+            <Point id="icon-486-FF0000">
                 <coordinates>37.652093,48.474486,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-499-FF0000">
+        <Placemark id="icon-493-FF0000">
             <name>17.01.26 Красноармейск - Светлое
 
 Активные боевые действия в районе Красноармейска.
@@ -2150,11 +2123,11 @@
                     <value>2026.01.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-498-FF0000">
+            <Point id="icon-492-FF0000">
                 <coordinates>37.2159709,48.3217325,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-505-FF0000">
+        <Placemark id="icon-499-FF0000">
             <name>14.01.26 Межевая - Ивановка
 
 Активные боевые действия в Днепропетровской зоне безопасности.
@@ -2180,16 +2153,16 @@
                     <value>2026.01.14</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-504-FF0000">
-                <Point id="icon-506-FF0000">
+            <MultiGeometry id="icon-498-FF0000">
+                <Point id="icon-500-FF0000">
                     <coordinates>36.6756919,48.1004442,0.0</coordinates>
                 </Point>
-                <Point id="icon-508-FF0000">
+                <Point id="icon-502-FF0000">
                     <coordinates>36.6811505,48.1000813,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-515-FF0000">
+        <Placemark id="icon-509-FF0000">
             <name>19.01.26 Краснополье - Высокое
 
 Позиционные боевые действия в Сумской зоне безопасности.
@@ -2213,38 +2186,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-514-FF0000">
+            <Point id="icon-508-FF0000">
                 <coordinates>35.473528,50.752826,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-521-FF0000">
-            <name>19.01.26 Краснополье - Грабовское
-
-Позиционные боевые действия в Сумской зоне безопасности.
-Военнослужащий ВС РФ попал под обстрел ВСУ в Грабовском. ВС РФ увеличили зону контроля до 1 км и заняли новые позиции в сельскохозяйственных постройках южной части населённого пункта.
-
-  https://www.facebook.com/share/v/17BEJDANrQ/?mibextid=wwXIfr`50.691522 35.446144 `
-
-Источник 21+ https://www.facebook.com/share/v/17BEJDANrQ/?mibextid=wwXIfr
-Геопривязка https://t.me/domikpetra
-#ru</name>
-            <description>https://t.me/creamy_caprice/11050</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11050</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ*</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.01.19</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-520-FF0000">
-                <coordinates>35.446144,50.691522,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-527-FF0000">
+        <Placemark id="icon-515-FF0000">
             <name>19.01.26 Красный Лиман
 
 Позиционные боевые действия в районе Красного Лимана.
@@ -2268,11 +2214,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-526-FF0000">
+            <Point id="icon-514-FF0000">
                 <coordinates>37.860832,48.991515,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-533-FF0000">
+        <Placemark id="icon-521-FF0000">
             <name>18.01.26 Константиновка - Новосёловка
 
 Штурм Константиновки.
@@ -2295,11 +2241,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-532-FF0000">
+            <Point id="icon-520-FF0000">
                 <coordinates>37.6638241,48.5355762,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-539-FF0000">
+        <Placemark id="icon-527-FF0000">
             <name>19.01.26 Красный Лиман - Кировск
 
 Позиционные боевые действия в районе Красного Лимана.
@@ -2323,11 +2269,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-538-FF0000">
+            <Point id="icon-526-FF0000">
                 <coordinates>37.899346,49.040379,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-545-FF0000">
+        <Placemark id="icon-533-FF0000">
             <name>04.01.26 Степногорск - Лукьяновское
 
 Позиционные боевые действия в районе Каменского.
@@ -2353,11 +2299,11 @@
                     <value>2026.01.04</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-544-FF0000">
+            <Point id="icon-532-FF0000">
                 <coordinates>35.44255,47.60385,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-551-FF0000">
+        <Placemark id="icon-539-FF0000">
             <name>18.01.26 Дополнительно. Обстрел позиции ВСУ
 
  `47.603910, 35.434127 `
@@ -2376,11 +2322,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-550-FF0000">
+            <Point id="icon-538-FF0000">
                 <coordinates>35.434127,47.603910,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-557-FF0000">
+        <Placemark id="icon-545-FF0000">
             <name>18.01.26 Запорожье - Скворцово - Василевка
 
 Уничтожение инфраструктурных объектов Украины.
@@ -2407,16 +2353,16 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-556-FF0000">
-                <Point id="icon-558-FF0000">
+            <MultiGeometry id="icon-544-FF0000">
+                <Point id="icon-546-FF0000">
                     <coordinates>35.510200,48.000000,0.0</coordinates>
                 </Point>
-                <Point id="icon-560-FF0000">
+                <Point id="icon-548-FF0000">
                     <coordinates>35.248777,47.904600,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-567-FF0000">
+        <Placemark id="icon-555-FF0000">
             <name>19.01.26 Константиновка - Центральный
 
 Штурм Константиновки.
@@ -2433,17 +2379,17 @@
                     <value>https://t.me/creamy_caprice/11053</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВСУ*</value>
+                    <value>ВСУ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-566-FF0000">
+            <Point id="icon-554-FF0000">
                 <coordinates>37.690492,48.511338,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-573-FF0000">
+        <Placemark id="icon-561-FF0000">
             <name>19.01.26 Волчанск - Нестерное - Круглое
 
 Позиционные боевые действия в Харьковской зоне безопасности.
@@ -2469,16 +2415,16 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-572-FF0000">
-                <Point id="icon-574-FF0000">
+            <MultiGeometry id="icon-560-FF0000">
+                <Point id="icon-562-FF0000">
                     <coordinates>37.448980,50.425519,0.0</coordinates>
                 </Point>
-                <Point id="icon-576-FF0000">
+                <Point id="icon-564-FF0000">
                     <coordinates>37.389178,50.424358,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
-        <Placemark id="icon-583-FF0000">
+        <Placemark id="icon-571-FF0000">
             <name>18.01.26 Степногорск - Приморское
 
 Активные боевые действия в районе Каменского.
@@ -2502,11 +2448,11 @@
                     <value>2026.01.18</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-582-FF0000">
+            <Point id="icon-570-FF0000">
                 <coordinates>35.293147,47.620169,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-589-FF0000">
+        <Placemark id="icon-577-FF0000">
             <name>19.01.26 Днепропетровск - Шевченко
 
 Боевые действия в глубине обороны ВСУ. Уничтожение средств ПВО ВСУ.
@@ -2524,17 +2470,17 @@
                     <value>https://t.me/creamy_caprice/11056</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВСУ*</value>
+                    <value>ВСУ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-588-FF0000">
+            <Point id="icon-576-FF0000">
                 <coordinates>34.874961,48.371375,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-595-FF0000">
+        <Placemark id="icon-583-FF0000">
             <name>19.01.26 Красноармейск - Гришино
 
 Позиционные боевые действия в районе Красноармейска.
@@ -2558,11 +2504,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-594-FF0000">
+            <Point id="icon-582-FF0000">
                 <coordinates>37.106177,48.318740,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-601-FF0000">
+        <Placemark id="icon-589-FF0000">
             <name>19.01.26 Купянск - Песчаное
 
 Позиционные боевые действия в районе Купянска.
@@ -2586,11 +2532,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-600-FF0000">
+            <Point id="icon-588-FF0000">
                 <coordinates>37.780123,49.650519,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-607-FF0000">
+        <Placemark id="icon-595-FF0000">
             <name>19.01.26 Константиновка - Предтечино
 
 Позиционные боевые действия в районе Константиновки.
@@ -2614,11 +2560,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-606-FF0000">
+            <Point id="icon-594-FF0000">
                 <coordinates>37.797389,48.535603,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-613-FF0000">
+        <Placemark id="icon-601-FF0000">
             <name>19.01,26 Дополнительно. Позиция ВСУ под обстрелом ВС РФ
 
  `48.5568005, 37.8230853` 
@@ -2637,11 +2583,11 @@
                     <value>2026.01.19</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-612-FF0000">
+            <Point id="icon-600-FF0000">
                 <coordinates>37.8230853,48.5568005,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-619-FF0000">
+        <Placemark id="icon-607-FF0000">
             <name>20.01.26 Волчанск - Заводы 2-е
 
 Позиционные боевые действия в Харьковской зоне безопасности.
@@ -2665,39 +2611,11 @@
                     <value>2026.01.20</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-618-FF0000">
+            <Point id="icon-606-FF0000">
                 <coordinates>36.988877,50.293906,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-625-FF0000">
-            <name>20.01.26 Константиновка - Гора
-
-Штурм Константиновки.
-ВС РФ продвинулись до 2 км в Константиновке и заняли новые позиции в микрорайоне Гора.
-Передовая позиция в жилой застройке города под огнём ВСУ.
-
-1:26 `48.527170,37.738286` 
-
-Источник 21+ https://t.me/info5battalion/80
-Геопривязка https://t.me/Zabolocini
-#ru</name>
-            <description>https://t.me/creamy_caprice/11060</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11060</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ*</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.01.20</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-624-FF0000">
-                <coordinates>37.738286,48.527170,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-631-FF0000">
+        <Placemark id="icon-613-FF0000">
             <name>20,01,26 Красноармейск - Гришино
 
 Активные боевые действия в районе Красноармейска.
@@ -2722,12 +2640,464 @@
                     <value>2026.01.20</value>
                 </Data>
             </ExtendedData>
-            <MultiGeometry id="icon-630-FF0000">
-                <Point id="icon-632-FF0000">
+            <MultiGeometry id="icon-612-FF0000">
+                <Point id="icon-614-FF0000">
                     <coordinates>37.089926,48.320927,0.0</coordinates>
                 </Point>
-                <Point id="icon-634-FF0000">
+                <Point id="icon-616-FF0000">
                     <coordinates>37.095817,48.321179,0.0</coordinates>
+                </Point>
+            </MultiGeometry>
+        </Placemark>
+        <Placemark id="icon-623-FF0000">
+            <name>20.01.26 Красноармейск - Лазурный
+
+Последствия боевых действий в районе Красноармейска.
+Эвакуация мирных жителей мобильной группой ВС РФ из Красноармейска. События в 5 км от зоны активных боевых действий.
+
+ `48.24722, 37.16722` 
+
+Источник https://t.me/aukrop/625
+#ru #add</name>
+            <description>https://t.me/creamy_caprice/11062</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11062</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-622-FF0000">
+                <coordinates>37.16722,48.24722,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-629-FF0000">
+            <name>20.01.26 Харьков - Ольшаны
+
+Позиционные боевые действия в Харьковской зоне безопасности.
+Ракетные удары со стороны ВС РФ по полевому лагерю военной техники ВСУ рядом с населённым пунктом Ольшаны.
+Удаление от демаркационной линии более 30 км.
+
+ `50.066, 35.8335` 
+
+Источник https://t.me/The_Wrong_Side/27762
+Геопривязка https://x.com/DrazaM33
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/11065</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11065</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-628-FF0000">
+                <coordinates>35.8335,50.066,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-635-FF0000">
+            <name>15.01.26 Красный Лиман - Богородичное
+
+Позиционные боевые действия в районе Красного Лимана.
+Подрыв понтонной переправы через Северский Донец в Богородичном на пути снабжения группировки ВСУ в окрестностях Святогорска.
+Боевые действия в 5 км от линии боевого соприкосновения. 
+
+ `49.022870, 37.512410` 
+
+Источник https://t.me/creamy_caprice
+#ru #out
+
+Уничтожение переправ ВСУ через Северский Донец.
+
+</name>
+            <description>https://t.me/creamy_caprice/11015</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11015</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.15</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-634-FF0000">
+                <coordinates>37.512410,49.022870,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-641-FF0000">
+            <name>20,01,26 Дополнительно. Заявлено как авиабомбовый удар ВКС РФ по переправе ВСУ в Щурово.
+
+ `48.929126, 37.733933` 
+
+Согласно https://t.me/creamy_caprice/11015?comment=74229
+#ua #add
+
+</name>
+            <description>https://t.me/creamy_caprice/11015</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11015</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-640-FF0000">
+                <coordinates>37.733933,48.929126,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-647-FF0000">
+            <name>16,01,26 Дополнительно. Авиабомбовый удар по переправе ВСУ в районе нп Николаевка
+
+ `48.881189,37.767290` 
+
+Согласно https://t.me/creamy_caprice/11015?comment=74230
+#ua #add
+
+</name>
+            <description>https://t.me/creamy_caprice/11015</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11015</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.16</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-646-FF0000">
+                <coordinates>37.767290,48.881189,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-653-FF0000">
+            <name>14.01.26 Дополнительно. Ракетный удар по переправе ВСУ в районе нп Маяки
+
+ `48.950176,37.634780` 
+
+Согласно https://t.me/creamy_caprice/11015?comment=74231
+#ua #add
+
+</name>
+            <description>https://t.me/creamy_caprice/11015</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11015</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.14</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-652-FF0000">
+                <coordinates>37.634780,48.950176,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-659-FF0000">
+            <name>19,01,26 Дополнительно. Обстрел позиции ВСУ
+
+ `49.661723 37.734566`
+
+Согласно https://t.me/creamy_caprice/10776?comment=74228
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/10776</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/10776</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-658-FF0000">
+                <coordinates>37.734566,49.661723,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-665-FF0000">
+            <name>20,01,26 Дополнительно. Обстрел позиции ВСУ со стороны ВС РФ
+
+ `47.510556, 35.841111 `
+
+Согласно https://t.me/creamy_caprice/10610?comment=74241
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/10610</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/10610</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-664-FF0000">
+                <coordinates>35.841111,47.510556,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-671-FF0000">
+            <name>21.01.26 Орехов - Белогорье
+
+Позиционные боевые действия в районе Орехова.
+Военнослужащий ВС РФ попал под обстрел с дрона ВСУ в Белогорье.
+ВС РФ продвинулись в населённом пункте более 1,5 км и заняли новые позиции в западной части жилой застройки.
+
+0:02 `47.529334,35.977995`
+
+Источник 21+ https://www.facebook.com/reel/897947106055810
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11067</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11067</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.21</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-670-FF0000">
+                <coordinates>35.977995,47.529334,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-677-FF0000">
+            <name>20.01.26 Шостка - Степное
+
+Боевые действия в глубине обороны ВСУ.
+Обстрел барражирующими боеприпасами ВС РФ позиции военной техники ВСУ в Сумской области около Степного. Заявлено как комплекс радиоэлектронной разведки.
+Удаление от демаркационной линии более 20 км.
+
+ `52.06450, 33.76388` 
+
+Источник https://t.me/brigadagromkaskad/43
+Геопривязка https://t.me/osint_alarm/1770
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/11068</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11068</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-676-FF0000">
+                <coordinates>33.76388,52.06450,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-683-FF0000">
+            <name>20.01.26 Дополнительно. Налёт ВС РФ на позицию ВСУ. Военнослужащие ВСУ попали в плен и и были обстреляны с дронов.
+
+ `49.361434 37.952769` 
+
+Согласно https://t.me/creamy_caprice/6215?comment=74227
+#ru #add</name>
+            <description>https://t.me/creamy_caprice/6215</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/6215</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-682-FF0000">
+                <coordinates>37.952769,49.361434,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-689-FF0000">
+            <name>19.01.26 Краснополье - Грабовское
+
+Позиционные боевые действия в Сумской зоне безопасности.
+Военнослужащий ВС РФ попал под обстрел ВСУ в Грабовском. ВС РФ увеличили зону контроля до 1 км и заняли новые позиции в сельскохозяйственных постройках южной части населённого пункта.
+`
+50.691522 35.446144 `
+
+Источник 21+ https://www.facebook.com/share/v/17BEJDANrQ/?mibextid=wwXIfr
+Геопривязка https://t.me/domikpetra
+#ru</name>
+            <description>https://t.me/creamy_caprice/11050</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11050</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.19</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-688-FF0000">
+                <coordinates>35.446144,50.691522,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-695-FF0000">
+            <name>21.01.26 Дополнительно. Обстрел FPV-дронами ВС РФ позиции ВСУ в Торском
+
+ `48.5477528, 37.4209745` 
+
+Согласно https://t.me/creamy_caprice/9904?comment=74274
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/9904</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/9904</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.21</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-694-FF0000">
+                <coordinates>37.4209745,48.5477528,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-701-FF0000">
+            <name>20.01.26 Волчанск - Графское
+
+Позиционные боевые действия в Харьковской зоне безопасности.
+ВС РФ продвинулись около 3 км вдоль русла реки Северский Донец в Харьковской области и достигли новых позиций в населённом пункте Графское.
+Передовая позиция в северной части Графского попала под обстрел ВСУ.
+
+ `50.23161, 36.84417` 
+
+Источник 21+ https://t.me/chotyry8/64
+Геопривязка https://t.me/volksotn
+#ru</name>
+            <description>https://t.me/creamy_caprice/11072</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11072</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-700-FF0000">
+                <coordinates>36.84417,50.23161,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-707-FF0000">
+            <name>21.01.26 Волчанск - Волчанские хутора
+
+Позиционные боевые действия в Харьковской зоне безопасности.
+Передовая позиция ВС РФ в населённом пункте Волчанские Хутора под огнём ВСУ. ВС РФ продвинулись более 1,5 км вдоль реки Волчья и заняли новые позиции в жилой застройке на западе Волчанских Хуторов.
+
+ `50.294643,37.011200`
+
+Источник 21+ https://www.facebook.com/share/v/1Jmo4hBW59/
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11073</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11073</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.21</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-706-FF0000">
+                <coordinates>37.011200,50.294643,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-713-FF0000">
+            <name>21.01.26 Доброполье - Дорожное
+
+Позиционные боевые действия в районе Красноармейска.
+Военнослужащие  ВС РФ попали под обстрел ВСУ на железнодорожной ветке ведущей к Доброполью.
+ВС РФ увеличили зону контроля западнее Дорожного более 1 км в направлении на Доброполье.
+
+ `48.434462,37.205710`  
+
+Источник 21+ https://t.me/uda_army/18525
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11074</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11074</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.21</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-712-FF0000">
+                <coordinates>37.205710,48.434462,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-719-FF0000">
+            <name>20.01.26 Константиновка - Гора
+
+Штурм Константиновки.
+ВС РФ продвинулись до 2 км в Константиновке и заняли новые позиции в микрорайоне Гора.
+Передовая позиция в жилой застройке города под огнём ВСУ.
+
+1:26 `48.527170,37.738286` 
+0:18 `48.545801, 37.815022`
+
+Источник 21+ https://t.me/info5battalion/80
+Геопривязка https://t.me/Zabolocini
+#ru</name>
+            <description>https://t.me/creamy_caprice/11060</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11060</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВС РФ*</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.01.20</value>
+                </Data>
+            </ExtendedData>
+            <MultiGeometry id="icon-718-FF0000">
+                <Point id="icon-720-FF0000">
+                    <coordinates>37.815022,48.545801,0.0</coordinates>
+                </Point>
+                <Point id="icon-722-FF0000">
+                    <coordinates>37.738286,48.527170,0.0</coordinates>
                 </Point>
             </MultiGeometry>
         </Placemark>
