@@ -12,7 +12,7 @@ copyCoordsBtn = document.getElementById('copy-coords-btn');
 let selectedDate = null; // Глобальная переменная для хранения текущей даты
 
 // Глобальный флаг для логгирования стилей временных файлов
-const LOG_STYLES = true; // Можно менять на false/true для переключения
+const LOG_STYLES = false; // Можно менять на false/true для переключения
 
 let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
 
@@ -2960,6 +2960,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
 
