@@ -366,14 +366,19 @@ window.kmlFiles = [
         	                    "kml/ControlZones/Control_26_01_25.kml",
     	                        "kml/Progress/RuAF/ProgressRuAF_26_01_25.kml",
 								"kml/FrontLine/FrontLine_26_01_25.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_25.kml"] }
+                                "kml/Progress/AFU/ProgressAFU_26_01_25.kml"] },
+	{name: "29.01.26", paths: [
+        	                    "kml/ControlZones/Control_26_01_29.kml",
+    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_29.kml",
+								"kml/FrontLine/FrontLine_26_01_29.kml",
+                                "kml/Progress/AFU/ProgressAFU_26_01_29.kml"] }
 	
    ];
 
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_01_25.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_01_29.kml" },
     // Изменения по сводке
     // { name: "Progress",      path: "kml/PermanentObjects/Progress_25_10_09.kml" },
     // Граница ЛДНР без Ростовской области
@@ -427,6 +432,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
