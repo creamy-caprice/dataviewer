@@ -15,6 +15,8 @@ let selectedDate = null; // Глобальная переменная для х�
 const LOG_STYLES = false; // Можно менять на false/true для переключения
 
 let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
+let isMilEquipVisible     = false; // Флаг видимости слоя техники
+let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
 
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
@@ -715,7 +717,7 @@ function parseStyleMapFromKmlDoc(kmlDoc)
 }
 
 // Обработка Placemarks
-function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  styleMode = window.kmlStyleModes.DEFAULT)
+function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  styleMode = window.kmlStyleModes.DEFAULT, iconGetter = getPointIcon)
 {
     let bounds = L.latLngBounds(); // Инициализация пустыми границами
     let elementCount = 0;
@@ -855,33 +857,79 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
         }
 
 
-        function parseAndAddPoint(pointElement, date, position, descriptionUrl) {
-            const coordinates = parseCoordinates(pointElement, map.options.crs);
-            if (coordinates.length < 1) {
-                if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
-                return null;
-            }
-
-            const [lat, lng] = coordinates[0];
+        // Функция для создания HTML-контента popup
+        function createPopupContent(params) {
+            const {
+                formattedName,
+                date,
+                equipmentType,
+                coordsString,
+                descriptionUrl,
+                isEquipment = false,
+                extendedData = {} // Новый параметр для всех данных ExtendedData
+            } = params;
             
-            // Проверяем, попадает ли точка в диапазон дат
-            if (date && window.pointsDateRange && 
-                !isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
-                return null; // Пропускаем точку, если она не в диапазоне
-            }
-
-            // Получаем иконку для точки
-            const icon = getPointIcon(position);
-            
-            // Создаем маркер с иконкой флага
-            const marker = L.marker([lat, lng], {icon: icon}).addTo(layerGroup);
-            
-            // Форматируем название - заменяем ссылки на кликабельные
-            const formattedName = formatNameWithLinks(name);
-            
-            // Добавляем popup с информацией с красивым форматированием
-            const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-            const popupContent = `
+            // Если это техника и есть extendedData, отображаем все поля
+            if (isEquipment && extendedData && Object.keys(extendedData).length > 0) {
+                // Собираем все поля из extendedData, кроме "Тип техники" который уже выводится отдельно
+                let extendedInfoHTML = '';
+                
+                // Обрабатываем каждое поле из extendedData
+                for (const [key, value] of Object.entries(extendedData)) {
+                    // Пропускаем поля
+                    if (['Тип техники', 'equipment_type',
+                         'object_type',
+                         'описание', 'description', 
+                         'дата', 'date', 'Датировано',
+                         'позиция', 'position', 'Координаты точки', 'coordinates'].includes(key)) {
+                        continue;
+                    }
+                    
+                    // Для поля "Координаты" добавляем кнопку копирования
+                    if (key === 'Координаты' || key === 'coordinates') {
+                        extendedInfoHTML += `
+                            <div style="margin-top: 4px;">
+                                <strong>${key}:</strong> 
+                                <span style="font-family: monospace;">${value}</span>
+                                <button class="copy-coords-popup-btn" data-coords="${value}" 
+                                        style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px; margin-left: 8px;">
+                                    ⎘
+                                </button>
+                            </div>`;
+                    } 
+                    // Для полей с URL выводим как ссылку
+                    else if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
+                        // Извлекаем домен для отображения
+                        const url = new URL(value);
+                        const domain = url.hostname;
+                        extendedInfoHTML += `
+                            <div style="margin-top: 4px;">
+                                <strong>${key}:</strong> 
+                                <a href="${value}" target="_blank" style="color: #007bff; text-decoration: none;">
+                                    ${domain}
+                                </a>
+                            </div>`;
+                    }
+                    // Для остальных полей просто текст
+                    else {
+                        extendedInfoHTML += `<div style="margin-top: 4px;"><strong>${key}:</strong> ${value}</div>`;
+                    }
+                }
+                
+                return `
+                    ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
+                    <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
+                        ${date ? `<div><strong>Датировано:</strong> ${date}</div>` : ''}
+                        ${equipmentType ? `<div><strong>Тип техники:</strong> ${equipmentType}</div>` : ''}
+                        ${descriptionUrl ? `<div style="margin-top: 4px;"><strong>Описание:</strong> ${descriptionUrl}</div>` : ''}
+                        ${extendedInfoHTML}
+                    </div>
+                `;
+            } 
+            // Старый формат для обычных точек
+            else {                
+                const position = equipmentType;
+                return `
                 ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
                 <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
                     ${date ? `<div><strong>Дата:</strong> ${date}</div>` : ''}
@@ -897,6 +945,70 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
                     ${descriptionUrl ? `<div style="margin-top: 6px;"><a href="${descriptionUrl}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">📝 Подробная информация</a></div>` : ''}
                 </div>
             `;
+            }
+        }
+
+        // Обновленная функция parseAndAddPoint с использованием новой функции
+        function parseAndAddPoint(pointElement, date, position, descriptionUrl, iconGetter = getPointIcon) {
+            const coordinates = parseCoordinates(pointElement, map.options.crs);
+            if (coordinates.length < 1) {
+                if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
+                return null;
+            }
+
+            const [lat, lng] = coordinates[0];
+            
+            // Проверяем, попадает ли точка в диапазон дат (только для обычных точек)
+            // Не применяем фильтр для техники (getMilEquipIcon) и атак по Украине (getAttacksOnUaIcon)
+            if (iconGetter !== getMilEquipIcon && 
+                iconGetter !== getAttacksOnUaIcon && 
+                date && window.pointsDateRange && 
+                !isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
+                return null; // Пропускаем точку, если она не в диапазоне
+            }
+
+            // Парсим extendedData для всех точек
+            const extendedData = parseExtendedData(placemark);
+
+            // Определяем категорию в зависимости от типа иконки
+            let category;
+            if (iconGetter === getMilEquipIcon) {
+                // Для техники используем поле "Тип техники"
+                category = extendedData['Тип техники'] || extendedData['equipment_type'] || position;
+            } else if (iconGetter === getAttacksOnUaIcon) {
+                // Для атак по Украине используем поле "Тип объекта"
+                category = extendedData['Тип объекта'] || extendedData['object_type'] || position;
+            } else {
+                // Для обычных точек используем position
+                category = position;
+            }
+            
+            // Получаем иконку для точки с помощью переданной функции
+            const icon = iconGetter(category);
+            
+            // Создаем маркер с иконкой
+            const marker = L.marker([lat, lng], {icon: icon}).addTo(layerGroup);
+            
+            // Форматируем название - заменяем ссылки на кликабельные
+            const formattedName = formatNameWithLinks(name);
+            
+            // Создаем контент для popup
+            const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+            
+            // Определяем тип точки для отображения в popup
+            const isEquipment = iconGetter === getMilEquipIcon;
+            const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
+            
+            // Используем категорию как equipmentType для popup
+            const popupContent = createPopupContent({
+                formattedName,
+                date,
+                equipmentType: category, // Используем определенную категорию
+                coordsString,
+                descriptionUrl,
+                isEquipment: isEquipment || isAttackOnUa, // Для техники и атак показываем extendedData
+                extendedData: isEquipment || isAttackOnUa ? extendedData : {} // Передаем extendedData только для техники и атак
+            });
             
             marker.bindPopup(popupContent);
             
@@ -913,7 +1025,16 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             });
             
             if (LOG_STYLES) {
-                console.log(`Point added:`, { name, date, position, descriptionUrl, coordinates: [lat, lng] });
+                console.log(`Point added:`, { 
+                    name, 
+                    date, 
+                    category: category,
+                    descriptionUrl, 
+                    coordinates: [lat, lng], 
+                    iconGetter: iconGetter.name,
+                    isEquipment: isEquipment,
+                    isAttackOnUa: isAttackOnUa
+                });
             }
             
             return marker;
@@ -962,10 +1083,17 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
             // Обработка Point в MultiGeometry
             multiGeometry.querySelectorAll('Point').forEach(point => {
                 const extendedData = parseExtendedData(placemark);
-                const date = extendedData['дата'];
-                const position = extendedData['позиция'];
-                const descriptionUrl = extendedData['описание'];
-                const pnt = parseAndAddPoint(point, date, position, descriptionUrl);
+                const date = extendedData['дата'] || extendedData['date'];
+                // Для техники используем категорию из "Тип техники"
+                const equipmentType = extendedData['Тип техники'] || extendedData['equipment_type'];
+                const descriptionUrl = extendedData['описание'] || extendedData['description'];
+                
+                // Если это слой техники и есть категория, используем ее
+                const position = (iconGetter === getMilEquipIcon && equipmentType) ? 
+                    equipmentType : 
+                    (extendedData['позиция'] || extendedData['position']);
+                    
+                const pnt = parseAndAddPoint(point, date, position, descriptionUrl, iconGetter);
             });
         }
 
@@ -985,10 +1113,17 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup,  style
         const point = placemark.querySelector('Point');
         if (point && !multiGeometry) {
             const extendedData = parseExtendedData(placemark);
-            const date = extendedData['дата'];
-            const position = extendedData['позиция'];
-            const descriptionUrl = extendedData['описание'];
-            const pnt = parseAndAddPoint(point, date, position, descriptionUrl);
+            const date = extendedData['дата'] || extendedData['date'];
+            // Для техники используем категорию из "Тип техники"
+            const equipmentType = extendedData['Тип техники'] || extendedData['equipment_type'];
+            const descriptionUrl = extendedData['описание'] || extendedData['description'];
+            
+            // Если это слой техники и есть категорию, используем ее
+            const position = (iconGetter === getMilEquipIcon && equipmentType) ? 
+                equipmentType : 
+                (extendedData['позиция'] || extendedData['position']);
+            
+            const pnt = parseAndAddPoint(point, date, position, descriptionUrl, iconGetter);
         }
         
         if (LOG_STYLES) console.groupEnd(); // Закрываем группу Placemark
@@ -1039,7 +1174,7 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
             console.log('Found styleMaps:', styleMaps);
         }
 
-        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode);
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode, getPointIcon);
         
         if (LOG_STYLES) console.groupEnd();
         
@@ -1223,6 +1358,48 @@ function getPointIcon(position) {
     });
 }
 
+function getMilEquipIcon(position) {
+    const iconUrls = {
+        'Авиация'                  : 'img/military equipment/Авиация.png',
+        'Артиллерия'               : 'img/military equipment/Артиллерия.png',
+        'БПЛА'                     : 'img/military equipment/БПЛА.png',
+        'Бронированный транспорт'  : 'img/military equipment/Бронированный транспорт.png',
+        'Другое'                   : 'img/military equipment/Другое.png',
+        'Другое/Нет данных'        : 'img/military equipment/Другое Нет данных.png',
+        'Небронированный транспорт': 'img/military equipment/Небронированный транспорт.png',
+        'ПВО'                      : 'img/military equipment/ПВО.png',
+        'Танк'                     : 'img/military equipment/Танк.png',
+        'default'                  : 'img/logo.png',
+    };
+
+    const iconUrl = iconUrls[position] || iconUrls.default;
+    
+    return L.icon({
+        iconUrl: iconUrl,
+        iconSize: [28, 28], // размер иконки
+        iconAnchor: [14, 14], // точка привязки
+        popupAnchor: [0, 0] // смещение для popup
+    });
+}
+
+
+function getAttacksOnUaIcon(position) {
+    const iconUrls = {
+        'Предприятие ВПК'          : 'img/Взрывчик.png',
+        'default'                  : 'img/Взрывчик.png',
+    };
+
+    const iconUrl = iconUrls[position] || iconUrls.default;
+    
+    return L.icon({
+        iconUrl: iconUrl,
+        iconSize: [28, 28], // размер иконки
+        iconAnchor: [14, 14], // точка привязки
+        popupAnchor: [0, 0] // смещение для popup
+    });
+}
+
+
 // Функция для извлечения данных из ExtendedData
 function parseExtendedData(placemark) {
     const extendedData = placemark.querySelector('ExtendedData');
@@ -1233,7 +1410,24 @@ function parseExtendedData(placemark) {
             const name = dataElement.getAttribute('name');
             const value = dataElement.querySelector('value')?.textContent;
             if (name && value) {
+                // Сохраняем с оригинальным именем
                 data[name] = value;
+                // Также добавляем англоязычные альтернативы для совместимости
+                if (name === 'Тип техники') {
+                    data['equipment_type'] = value;
+                } else if (name === 'Тип объекта') {
+                    data['object_type'] = value;
+                } else if (name === 'позиция') {
+                    data['position'] = value;
+                } else if (name === 'дата') {
+                    data['date'] = value;
+                } else if (name === 'Датировано') {
+                    data['date'] = value;
+                } else if (name === 'описание') {
+                    data['description'] = value;
+                } else if (name === 'Координаты') {
+                    data['coordinates'] = value;
+                }
             }
         });
     }
@@ -1242,8 +1436,13 @@ function parseExtendedData(placemark) {
 }
 
 
-// Функция для загрузки KML с точками
-async function loadPointsFromKml(filePath, layerGroup) {
+// Функция для загрузки KML с точками (с поддержкой разных типов иконок)
+async function loadPointsFromKml(filePath, layerGroup, options = {}) {
+    const {
+        iconGetter = getPointIcon, // По умолчанию используем getPointIcon
+        isEquipment = false // Флаг для техники
+    } = options;
+
     try {
         const response = await fetch(filePath);
         if (!response.ok) {
@@ -1256,11 +1455,11 @@ async function loadPointsFromKml(filePath, layerGroup) {
         const kmlDoc = parser.parseFromString(kmlText, "text/xml");
 
         if (LOG_STYLES) {
-            console.groupCollapsed(`Points layer loaded: ${filePath}`);
+            console.groupCollapsed(`Points layer loaded: ${filePath} ${isEquipment ? '(техника)' : ''}`);
         }
 
-        // Загружаем только точки
-        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT);
+        // Загружаем только точки с указанной функцией получения иконок
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT, iconGetter);
         
         if (LOG_STYLES) {
             console.log(`Total points loaded from ${filePath}: ${layerGroup.getLayers().length}`);
@@ -1299,6 +1498,214 @@ async function initPointsLayer(kmlFilePaths) {
     }
     
     return pointsLayerGroup;
+}
+
+// Функция для инициализации слоя с техникой
+async function initMilequipLayer(kmlFilePaths) {
+    // Если передана строка, преобразуем в массив
+    if (typeof kmlFilePaths === 'string') {
+        kmlFilePaths = [kmlFilePaths];
+    }
+    
+    // Удаляем старые слои техники, если они существуют
+    if (window.milequipLayers && window.milequipLayers.length) {
+        window.milequipLayers.forEach(layer => {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+            }
+        });
+        window.milequipLayers = [];
+    }
+    
+    // Создаем новую группу слоев для техники
+    const milequipLayerGroup = L.layerGroup();
+    // НЕ добавляем на карту сразу - только при нажатии кнопки
+    
+    // Сохраняем ссылки для последующего управления
+    window.milequipLayers.push(milequipLayerGroup);
+    
+    // Загружаем технику из всех KML файлов
+    for (const path of kmlFilePaths) {
+        await loadPointsFromKml(path, milequipLayerGroup, {
+            iconGetter: getMilEquipIcon,
+            isEquipment: true
+        });
+    }
+    
+    console.log(`Загружено слоев техники: ${window.milequipLayers.length}, точек: ${milequipLayerGroup.getLayers().length}`);
+    
+    return milequipLayerGroup;
+}
+
+// Функция для инициализации слоя с атаками на Украину
+async function initAttacksOnUaLayer(kmlFilePaths) {
+    // Если передана строка, преобразуем в массив
+    if (typeof kmlFilePaths === 'string') {
+        kmlFilePaths = [kmlFilePaths];
+    }
+    
+    // Удаляем старые слои атак, если они существуют
+    if (window.attacksOnUaLayers && window.attacksOnUaLayers.length) {
+        window.attacksOnUaLayers.forEach(layer => {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+            }
+        });
+        window.attacksOnUaLayers = [];
+    }
+    
+    // Создаем новую группу слоев для атак
+    const attacksOnUaLayerGroup = L.layerGroup();
+    // НЕ добавляем на карту сразу - только при нажатии кнопки
+    
+    // Сохраняем ссылки для последующего управления
+    window.attacksOnUaLayers.push(attacksOnUaLayerGroup);
+    
+    // Загружаем точки атак из всех KML файлов
+    for (const path of kmlFilePaths) {
+        await loadPointsFromKml(path, attacksOnUaLayerGroup, {
+            iconGetter: getAttacksOnUaIcon,
+            isEquipment: true // Можно использовать тот же флаг или создать отдельный
+        });
+    }
+    
+    console.log(`Загружено слоев атак: ${window.attacksOnUaLayers.length}, точек: ${attacksOnUaLayerGroup.getLayers().length}`);
+    
+    return attacksOnUaLayerGroup;
+}
+
+// Функция для переключения отображения техники
+function toggleMilEquipVisibility() {
+    const milEquipBtn = document.getElementById('mil-equip-btn');
+    
+    // Переключаем флаг
+    isMilEquipVisible = !isMilEquipVisible;
+    
+    if (isMilEquipVisible) {
+        // Показываем технику
+        milEquipBtn.classList.add('active');
+        
+        // Если слои техники еще не загружены, загружаем их
+        if (!window.milequipLayers || window.milequipLayers.length === 0) {
+            console.log('Загрузка техники...');
+            initMilequipLayer(window.milequipKmlPaths).then(() => {
+                // После загрузки добавляем на карту
+                window.milequipLayers.forEach(layer => {
+                    if (layer && !map.hasLayer(layer)) {
+                        layer.addTo(map);
+                    }
+                });
+            });
+        } else {
+            // Если уже загружены, просто добавляем на карту
+            window.milequipLayers.forEach(layer => {
+                if (layer && !map.hasLayer(layer)) {
+                    layer.addTo(map);
+                }
+            });
+        }
+        
+        console.log('Техника показана');
+    } else {
+        // Скрываем технику
+        milEquipBtn.classList.remove('active');
+        
+        // Убираем слои техники с карты
+        if (window.milequipLayers && window.milequipLayers.length) {
+            window.milequipLayers.forEach(layer => {
+                if (layer && map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                }
+            });
+        }
+        
+        console.log('Техника скрыта');
+    }
+    
+    // Обновляем title кнопки
+    updateMilEquipButtonTitle();
+}
+
+// Функция для переключения отображения атак на Украину
+function toggleAttacksOnUaVisibility() {
+    const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
+    
+    // Переключаем флаг
+    isAttacksOnUaVisible = !isAttacksOnUaVisible;
+    
+    if (isAttacksOnUaVisible) {
+        // Показываем атаки
+        attacksOnUaBtn.classList.add('active');
+        
+        // Если слои атак еще не загружены, загружаем их
+        if (!window.attacksOnUaLayers || window.attacksOnUaLayers.length === 0) {
+            console.log('Загрузка атак на Украину...');
+            initAttacksOnUaLayer(window.attacksOnUaKmlPaths).then(() => {
+                // После загрузки добавляем на карту
+                window.attacksOnUaLayers.forEach(layer => {
+                    if (layer && !map.hasLayer(layer)) {
+                        layer.addTo(map);
+                    }
+                });
+            });
+        } else {
+            // Если уже загружены, просто добавляем на карту
+            window.attacksOnUaLayers.forEach(layer => {
+                if (layer && !map.hasLayer(layer)) {
+                    layer.addTo(map);
+                }
+            });
+        }
+        
+        console.log('Атаки на Украину показаны');
+    } else {
+        // Скрываем атаки
+        attacksOnUaBtn.classList.remove('active');
+        
+        // Убираем слои атак с карты
+        if (window.attacksOnUaLayers && window.attacksOnUaLayers.length) {
+            window.attacksOnUaLayers.forEach(layer => {
+                if (layer && map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                }
+            });
+        }
+        
+        console.log('Атаки на Украину скрыты');
+    }
+    
+    // Обновляем title кнопки
+    updateAttacksOnUaButtonTitle();
+}
+
+// Функция для обновления заголовка кнопки техники
+function updateMilEquipButtonTitle() {
+    const milEquipBtn = document.getElementById('mil-equip-btn');
+    if (milEquipBtn) {
+        const t = translations[currentLang];
+        if (t) {
+            milEquipBtn.title = isMilEquipVisible ? 
+                (t.hideEquipment || 'Скрыть технику') : 
+                (t.showEquipment || 'Показать технику');
+        } else {
+            milEquipBtn.title = isMilEquipVisible ? 'Скрыть технику' : 'Показать технику';
+        }
+    }
+}
+
+// Функция для обновления заголовка кнопки атак на Украину
+function updateAttacksOnUaButtonTitle() {
+    const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
+    if (attacksOnUaBtn) {
+        const t = translations[currentLang];
+        if (t) {
+            attacksOnUaBtn.title = isAttacksOnUaVisible ? 
+                (t.hideAttacksOnUa || 'Скрыть удары по Украине') : 
+                (t.showAttacksOnUa || 'Показать удары по Украине');
+        } else {
+            attacksOnUaBtn.title = isAttacksOnUaVisible ? 'Скрыть удары по Украине' : 'Показать удары по Украине';
+        }
+    }
 }
 
 // Функция для вычисления даты начала на основе текущей даты и диапазона
@@ -1406,6 +1813,169 @@ function initFilterButtons() {
     // Применяем начальный фильтр
     updatePointsDateFilter();
 }
+
+// Функция для инициализации мобильного меню фильтров
+function initMobileFilterMenu() {
+    console.log('Инициализация мобильного меню фильтров...');
+    
+    const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
+    const filterButtons = document.querySelector('.filter-buttons');
+    const dateRangeBtn = document.getElementById('date-range-btn');
+    const dateRangeDropdown = document.getElementById('date-range-dropdown');
+    
+    if (!mobileFilterToggle || !filterButtons || !dateRangeBtn || !dateRangeDropdown) {
+        console.error('Не найдены элементы мобильного фильтра');
+        return;
+    }
+    
+    console.log('Элементы мобильного фильтра найдены');
+    
+    // Флаг для отслеживания состояния
+    let isDateDropdownOpen = false;
+    
+    // Функция для открытия/закрытия мобильного меню
+    function toggleMobileFilterMenu() {
+        const isVisible = filterButtons.classList.contains('show-mobile');
+        
+        if (isVisible) {
+            // Закрываем меню
+            mobileFilterToggle.classList.remove('active');
+            filterButtons.classList.remove('show-mobile');
+            
+            // Также закрываем выпадающий список диапазонов
+            dateRangeDropdown.classList.remove('show');
+            isDateDropdownOpen = false;
+        } else {
+            // Открываем меню
+            mobileFilterToggle.classList.add('active');
+            filterButtons.classList.add('show-mobile');
+        }
+    }
+    
+    // Функция для открытия/закрытия выпадающего списка диапазонов
+    function toggleDateRangeDropdown(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const isVisible = dateRangeDropdown.classList.contains('show');
+        
+        // if (isVisible) {
+            // // Закрываем выпадающий список
+            // dateRangeDropdown.classList.remove('show');
+            // isDateDropdownOpen = false;
+        // } else {
+            // Открываем выпадающий список
+            dateRangeDropdown.classList.add('show');
+            isDateDropdownOpen = true;
+            
+            // Позиционируем выпадающий список относительно кнопки
+            const rect = dateRangeBtn.getBoundingClientRect();
+            dateRangeDropdown.style.left = '0';
+            dateRangeDropdown.style.top = rect.height + 'px';
+        // }
+    }
+    
+    // Обработчик клика на кнопку переключения
+    mobileFilterToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileFilterMenu();
+    });
+    
+    // Обработчик клика на date-range-btn
+    dateRangeBtn.addEventListener('click', function(e) {
+        // Открываем только выпадающий список диапазонов
+        toggleDateRangeDropdown(e);
+        
+        // НЕ закрываем основное меню - позволяем пользователю выбрать диапазон
+        // Не вызываем stopImmediatePropagation(), так как можем иметь другие обработчики
+    });
+    
+    // Обработчик для опций диапазона
+    dateRangeDropdown.querySelectorAll('.range-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            
+            // Выполняем выбор диапазона (ваш существующий код)
+            const range = this.getAttribute('data-range');
+            const rangeOptions = dateRangeDropdown.querySelectorAll('.range-option');
+            
+            // Убираем активный класс со всех опций
+            rangeOptions.forEach(opt => opt.classList.remove('active'));
+            // Добавляем активный класс выбранной опции
+            this.classList.add('active');
+            
+            // Сохраняем выбранный диапазон
+            currentDateRange = range;
+            
+            // Обновляем заголовок кнопки
+            updateDateRangeButtonTitle();
+            
+            // Применяем фильтр
+            updatePointsDateFilter();
+            
+            // Закрываем выпадающий список
+            dateRangeDropdown.classList.remove('show');
+            isDateDropdownOpen = false;
+            
+            // Не закрываем основное меню фильтров
+            // (оставляем его открытым, чтобы пользователь мог выполнить другие действия)
+        });
+    });
+    
+    // Обработчик клика на другие кнопки фильтров (кроме date-range-btn)
+    filterButtons.querySelectorAll('.filter-btn:not(#date-range-btn)').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Для остальных кнопок закрываем мобильное меню
+            toggleMobileFilterMenu();
+        });
+    });
+    
+    // Закрытие при клике вне области
+    document.addEventListener('click', function(e) {
+        const isMobileFilterToggle = mobileFilterToggle.contains(e.target);
+        const isFilterButtons = filterButtons.contains(e.target);
+        const isDateRangeBtn = dateRangeBtn.contains(e.target);
+        const isDateRangeDropdown = dateRangeDropdown.contains(e.target);
+        
+        // Если выпадающий список диапазонов открыт и клик был вне его
+        if (isDateDropdownOpen && !isDateRangeDropdown && !isDateRangeBtn) {
+            dateRangeDropdown.classList.remove('show');
+            isDateDropdownOpen = false;
+        }
+        
+        // Если клик был вне всех элементов мобильного фильтра
+        if (!isMobileFilterToggle && !isFilterButtons && !isDateRangeDropdown && !isDateRangeBtn) {
+            if (mobileFilterToggle.classList.contains('active')) {
+                toggleMobileFilterMenu();
+            }
+        }
+    });
+    
+    // Также закрываем при нажатии Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (isDateDropdownOpen) {
+                dateRangeDropdown.classList.remove('show');
+                isDateDropdownOpen = false;
+            } else if (mobileFilterToggle.classList.contains('active')) {
+                toggleMobileFilterMenu();
+            }
+        }
+    });
+    
+    // Обработчик изменения размера окна
+    window.addEventListener('resize', function() {
+        // На широких экранах убеждаемся, что всё закрыто
+        if (window.innerWidth > 768) {
+            if (mobileFilterToggle.classList.contains('active')) {
+                toggleMobileFilterMenu();
+            }
+        }
+    });
+    
+    console.log('Мобильное меню фильтров инициализировано');
+}
+
 
 // Функция для обновления заголовка кнопки фильтра дат
 function updateDateRangeButtonTitle() {
@@ -1842,11 +2412,15 @@ async function init() {
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
     
-    // Загружаем точки с фильтром
-    await initPointsLayer(window.pointsKmlPaths);
+    // Загружаем точки с фильтром по дате
+    await initPointsLayer(window.pointsKmlPaths);    
+    // Загружаем технику (без фильтра по дате)
+    // await initMilequipLayer(window.milequipKmlPaths);
+    // загружаем по кнопке
     
     // Шаг 5: Инициализация кнопок фильтров
     initFilterButtons();
+    initMobileFilterMenu();
     
     // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
@@ -1922,6 +2496,18 @@ async function init() {
     // Инициализация поиска по названию
     initSearchFunctionality();
     
+    // обработчик для кнопки техники
+    const milEquipBtn = document.getElementById('mil-equip-btn');
+    if (milEquipBtn) {
+        milEquipBtn.addEventListener('click', toggleMilEquipVisibility);
+        updateMilEquipButtonTitle(); // Инициализируем заголовок
+    }
+    // обработчик для кнопки атак на Украину
+    const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
+    if (attacksOnUaBtn) {
+        attacksOnUaBtn.addEventListener('click', toggleAttacksOnUaVisibility);
+        updateAttacksOnUaButtonTitle(); // Инициализируем заголовок
+    }
     
     window.initialLayerSet = false;
     map.on('load', function() {

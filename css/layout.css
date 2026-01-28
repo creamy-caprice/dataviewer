@@ -694,7 +694,6 @@ body {
 /* Стили для кнопок фильтров */
 .filter-buttons {
     display: flex;
-    gap: 5px;
     margin-left: 10px;
     align-items: center;
 }
@@ -787,3 +786,158 @@ body {
 
 
 
+/* Стили для мобильного фильтра */
+.filter-buttons-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.filter-buttons {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.mobile-filter-toggle {
+    display: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f0f0f0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0;
+    margin-left: 5px;
+}
+
+.mobile-filter-toggle .filter-icon {
+    display: inline-block;
+}
+
+.mobile-filter-toggle.active {
+    border-color: #007bff;
+    background: #e6f2ff;
+}
+
+.mobile-filter-toggle:hover {
+    border-color: #007bff;
+}
+
+/* Выпадающая панель фильтров для мобильных */
+.filter-buttons-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 8px;
+    z-index: 1001;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.filter-buttons-dropdown.show {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .mobile-filter-toggle {
+        display: flex;
+    }
+    
+    .filter-buttons {
+        display: none;
+        margin-left: 0;
+    }
+    
+    .filter-buttons.show-mobile {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        padding: 8px;
+        z-index: 1001;
+        margin-top: 5px;
+    }
+    
+    .filter-buttons.show-mobile .filter-btn {
+        margin: 0 2px;
+    }
+    
+    /* Для очень узких экранов уменьшаем отступы */
+    @media (max-width: 480px) {
+        .filter-buttons.show-mobile {
+            padding: 6px;
+            gap: 4px;
+        }
+        
+        .filter-buttons.show-mobile .filter-btn {
+            width: 28px;
+            height: 28px;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+/* Альтернативный вариант с горизонтальной полоской */
+@media (max-width: 768px) {
+    .filter-buttons.show-mobile {
+        flex-direction: row;
+        min-width: auto;
+        width: auto;
+    }
+}
+
+/* Для планшетов и очень узких десктопов */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mobile-filter-toggle {
+        display: none;
+    }
+    
+    .filter-buttons {
+        display: flex;
+    }
+}
+
+.filter-btn.active {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border-color: #45a049 !important;
+}
+
+.filter-btn.active:hover {
+    background-color: #45a049 !important;
+}
+
+/* Стиль иконок кнопок-фильтров */
+.filter-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    vertical-align: middle;
+
+}
+
+/* Временное скрытие кнопки ВЗРЫВЧИК */
+#attacks-on-ua-btn {
+display: none !important;
+}

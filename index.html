@@ -85,20 +85,28 @@
                         <button id="next-btn" class="nav-btn" title="Следующий">❯</button>
                         <button id="last-btn" class="nav-btn" title="Сегодня">❯❯</button>						
 						
-                        <div class="filter-buttons">
-                            <div class="filter-btn-container">
-                                <button id="date-range-btn" class="filter-btn" title="Фильтр по дате">⏳</button>
-                                <div id="date-range-dropdown" class="dropdown-content">
-                                    <div class="range-option" data-range="week">1 неделя</div>
-                                    <div class="range-option" data-range="month">1 месяц</div>
-                                    <div class="range-option" data-range="3months">3 месяца</div>
-                                    <div class="range-option" data-range="6months">6 месяцев</div>
-                                    <div class="range-option" data-range="year">1 год</div>
+                        <div class="filter-buttons-wrapper">
+                            <div class="filter-buttons">
+                                <div class="filter-btn-container">
+                                    <button id="date-range-btn" class="filter-btn" title="Фильтр по дате">⏳</button>
+                                    <div id="date-range-dropdown" class="dropdown-content">
+                                        <div class="range-option" data-range="week">1 неделя</div>
+                                        <div class="range-option" data-range="month">1 месяц</div>
+                                        <div class="range-option" data-range="3months">3 месяца</div>
+                                        <div class="range-option" data-range="6months">6 месяцев</div>
+                                        <div class="range-option" data-range="year">1 год</div>
+                                    </div>
                                 </div>
+                                <button id="mil-equip-btn" class="filter-btn" title="Техника">
+                                    <img src="img/military equipment/Артиллерия.png" alt="🚓" class="filter-icon">
+                                </button>
+                                <button id="attacks-on-ua-btn" class="filter-btn" title="Удары по тер. Украины">
+                                    <img src="img/Взрывчик.png" alt="💥" class="filter-icon">
+                                </button>
                             </div>
-                            <!-- <button class="filter-btn disabled" title="Фильтр 2">🗺</button> -->
-                            <!-- <button class="filter-btn disabled" title="Фильтр 3">🚓</button> -->
-                            <!-- <button class="filter-btn disabled" title="Фильтр 4">🚀</button> -->
+                            
+                            <!-- Кнопка для мобильной версии -->
+                            <button id="mobile-filter-toggle" class="mobile-filter-toggle filter-btn" title="Фильтры">📁</button>
                         </div>
 
                         <!-- Элементы для скрытия (с классом hideable-nav-item) -->
