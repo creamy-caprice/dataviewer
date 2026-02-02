@@ -42,7 +42,7 @@
     </StyleMap>
     
     <Placemark>
-      <name>Продвижения ВС РФ за 04 - 07 января</name>
+      <name>Продвижения ВС РФ за 04 - 07 декабря</name>
       <description>ВС РФ</description>
       <styleUrl>#poly-FFFFFF-180-77-nodesc</styleUrl>
       <MultiGeometry>
@@ -557,7 +557,7 @@
     </Placemark>
     
     <Placemark>
-      <name>Продвижения ВСУ за 04 - 07 января</name>
+      <name>Продвижения ВСУ за 04 - 07 декабря</name>
       <description>ВСУ</description>
       <styleUrl>#poly-FFFFFF-180-77-nodesc</styleUrl>
       <MultiGeometry>
@@ -734,4 +734,5 @@
     
   </Document>
 </kml>
+
 
