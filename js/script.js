@@ -3489,6 +3489,7 @@ function getPolygonCenter(coords) {
 }
 // функция для добавления метки к объекту
 function addLabelToLayer(name, geometryType, coords, layerGroup) {
+	return;
     if (!name || name.trim() === '') return;
     
     let labelCoords;
