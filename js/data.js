@@ -314,24 +314,28 @@ window.kmlFiles = [
                                 "kml/Progress/AFU/ProgressAFU_25_12_12.kml"] },
 	{name: "16.12.25", paths: [
         	                    "kml/ControlZones/Control_25_12_16.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_16.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_12_16.kml",
 								"kml/FrontLine/FrontLine_25_12_16.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_16.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_12_16.kml"]
+								"kml/Progress/Progress_25_12_16.kml"]},
 	{name: "20.12.25", paths: [
         	                    "kml/ControlZones/Control_25_12_20.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_20.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_12_20.kml",
 								"kml/FrontLine/FrontLine_25_12_20.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_20.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_12_20.kml"]
+								"kml/Progress/Progress_25_12_20.kml"]},
 	{name: "24.12.25", paths: [
         	                    "kml/ControlZones/Control_25_12_24.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_24.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_12_24.kml",
 								"kml/FrontLine/FrontLine_25_12_24.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_24.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_12_24.kml"]
+								"kml/Progress/Progress_25_12_24.kml"]},
 	{name: "28.12.25", paths: [
         	                    "kml/ControlZones/Control_25_12_28.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_12_28.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_12_28.kml",
 								"kml/FrontLine/FrontLine_25_12_28.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_12_28.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_12_28.kml"]
+								"kml/Progress/Progress_25_12_28.kml"]},
 	{name: "01.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_01.kml",
     	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_01.kml",
@@ -440,6 +444,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
