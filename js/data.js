@@ -261,37 +261,44 @@ window.kmlFiles = [
                                 "kml/ControlZones/Control_25_11_02.kml",
                                 "kml/Progress/RuAF/ProgressRuAF_25_11_02.kml",
 								"kml/FrontLine/FrontLine_25_11_02.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_02.kml"] },
+                                "kml/Progress/AFU/ProgressAFU_25_11_02.kml"]},
+								//"kml/Progress/Progress_25_11_02.kml"]},
 	{name: "06.11.25", paths: [
                                 "kml/ControlZones/Control_25_11_06.kml",
-                                "kml/Progress/RuAF/ProgressRuAF_25_11_06.kml",
+                                //"kml/Progress/RuAF/ProgressRuAF_25_11_06.kml",
 								"kml/FrontLine/FrontLine_25_11_06.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_06.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_06.kml"]
+								"kml/Progress/Progress_25_11_06.kml"]},
 	{name: "10.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_10.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_10.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_10.kml",
 								"kml/FrontLine/FrontLine_25_11_10.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_10.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_10.kml"]
+								"kml/Progress/Progress_25_11_10.kml"]},
 	{name: "14.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_14.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_14.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_14.kml",
 								"kml/FrontLine/FrontLine_25_11_14.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_14.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_14.kml"]
+								"kml/Progress/Progress_25_11_14.kml"]},
 	{name: "18.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_18.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_18.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_18.kml",
 								"kml/FrontLine/FrontLine_25_11_18.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_18.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_18.kml"]
+								"kml/Progress/Progress_25_11_18.kml"]},
 	{name: "22.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_22.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_22.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_22.kml",
 								"kml/FrontLine/FrontLine_25_11_22.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_22.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_22.kml"]
+								"kml/Progress/Progress_25_11_22.kml"]},
 	{name: "26.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_26.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_25_11_26.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_26.kml",
 								"kml/FrontLine/FrontLine_25_11_26.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_26.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_11_26.kml"]
+								"kml/Progress/Progress_25_11_26.kml"]},
 	{name: "30.11.25", paths: [
         	                    "kml/ControlZones/Control_25_11_30.kml",
     	                        //"kml/Progress/RuAF/ProgressRuAF_25_11_30.kml",
@@ -448,6 +455,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
