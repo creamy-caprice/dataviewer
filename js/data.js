@@ -349,9 +349,10 @@ window.kmlFiles = [
                                 "kml/Progress/AFU/ProgressAFU_26_01_09.kml"] },
 	{name: "13.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_13.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_13.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_13.kml",
 								"kml/FrontLine/FrontLine_26_01_13.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_13.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_26_01_13.kml"]
+								"kml/Progress/Progress_26_01_13.kml"]},
 	{name: "17.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_17.kml",
     	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_17.kml",
@@ -436,6 +437,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
