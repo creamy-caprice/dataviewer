@@ -334,19 +334,22 @@ window.kmlFiles = [
                                 "kml/Progress/AFU/ProgressAFU_25_12_28.kml"] },
 	{name: "01.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_01.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_01.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_01.kml",
 								"kml/FrontLine/FrontLine_26_01_01.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_01.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_26_01_01.kml"]
+								"kml/Progress/Progress_26_01_01.kml"]},
 	{name: "05.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_05.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_05.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_05.kml",
 								"kml/FrontLine/FrontLine_26_01_05.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_05.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_26_01_05.kml"]
+								"kml/Progress/Progress_26_01_05.kml"]},
 	{name: "09.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_09.kml",
-    	                        "kml/Progress/RuAF/ProgressRuAF_26_01_09.kml",
+    	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_09.kml",
 								"kml/FrontLine/FrontLine_26_01_09.kml",
-                                "kml/Progress/AFU/ProgressAFU_26_01_09.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_26_01_09.kml"]
+								"kml/Progress/Progress_26_01_09.kml"]},
 	{name: "13.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_13.kml",
     	                        //"kml/Progress/RuAF/ProgressRuAF_26_01_13.kml",
@@ -437,6 +440,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
