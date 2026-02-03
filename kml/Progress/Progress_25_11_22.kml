@@ -42,7 +42,8 @@
     </StyleMap>
     
     <Placemark>
-      <name>продвижения ВС РФ за 18 - 21 ноября</name>
+      <name>Продвижения ВС РФ за 18 - 21 ноября</name>
+      <description>ВС РФ</description>
       <styleUrl>#poly-FFFFFF-180-77-nodesc</styleUrl>
       <MultiGeometry>
         <Polygon>
@@ -967,3 +968,4 @@
     
   </Document>
 </kml>
+
