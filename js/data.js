@@ -230,7 +230,8 @@ window.kmlFiles = [
 							    "kml/FrontLine/FrontLine_25_10_05.kml"] },
 	{ name: "09.10.25", paths: [
 								"kml/ControlZones/Control_25_10_09.kml",
-							    "kml/FrontLine/FrontLine_25_10_09.kml"] },
+							    "kml/FrontLine/FrontLine_25_10_09.kml",
+								"kml/Progress/Progress_25_10_09.kml"]},
 	{ name: "13.10.25", paths: [
 								"kml/ControlZones/Control_25_10_13.kml",
 							    "kml/FrontLine/FrontLine_25_10_13.kml"] },
@@ -239,30 +240,34 @@ window.kmlFiles = [
 	
 	{ name: "17.10.25", paths: [
                                 "kml/ControlZones/Control_25_10_17.kml",
-								"kml/FrontLine/FrontLine_25_10_17.kml",
+								//"kml/FrontLine/FrontLine_25_10_17.kml",
                                 "kml/Progress/RuAF/ProgressRuAF_25_10_17.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_10_17.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_10_17.kml"] },
+								"kml/Progress/Progress_25_10_17.kml"]},
 	{name: "21.10.25", paths: [
                                 "kml/ControlZones/Control_25_10_21.kml",
-								"kml/FrontLine/FrontLine_25_10_21.kml",
+								//"kml/FrontLine/FrontLine_25_10_21.kml",
                                 "kml/Progress/RuAF/ProgressRuAF_25_10_21.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_10_21.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_10_21.kml"] },
+								"kml/Progress/Progress_25_10_21.kml"]},
 	{ name: "25.10.25", paths: [
                                 "kml/ControlZones/Control_25_10_25.kml",
-								"kml/FrontLine/FrontLine_25_10_25.kml",
+								//"kml/FrontLine/FrontLine_25_10_25.kml",
                                 "kml/Progress/RuAF/ProgressRuAF_25_10_25.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_10_25.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_10_25.kml"] },
+								"kml/Progress/Progress_25_10_25.kml"]},
 	{ name: "29.10.25", paths: [
                                 "kml/ControlZones/Control_25_10_29.kml",
-								"kml/FrontLine/FrontLine_25_10_29.kml",
+								//"kml/FrontLine/FrontLine_25_10_29.kml",
                                 "kml/Progress/RuAF/ProgressRuAF_25_10_29.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_10_29.kml"] },
+                                //"kml/Progress/AFU/ProgressAFU_25_10_29.kml"] },
+								"kml/Progress/Progress_25_10_29.kml"]},
 	{ name: "02.11.25", paths: [
                                 "kml/ControlZones/Control_25_11_02.kml",
-                                "kml/Progress/RuAF/ProgressRuAF_25_11_02.kml",
+                                //"kml/Progress/RuAF/ProgressRuAF_25_11_02.kml",
 								"kml/FrontLine/FrontLine_25_11_02.kml",
-                                "kml/Progress/AFU/ProgressAFU_25_11_02.kml"]},
-								//"kml/Progress/Progress_25_11_02.kml"]},
+                                //"kml/Progress/AFU/ProgressAFU_25_11_02.kml"]},
+								"kml/Progress/Progress_25_11_02.kml"]},
 	{name: "06.11.25", paths: [
                                 "kml/ControlZones/Control_25_11_06.kml",
                                 //"kml/Progress/RuAF/ProgressRuAF_25_11_06.kml",
@@ -455,6 +460,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
