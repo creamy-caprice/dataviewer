@@ -351,37 +351,37 @@ window.kmlFiles = [
 	{name: "01.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_01.kml",
     	                      
-								"kml/FrontLine/FrontLine_26_01_01.kml",
+								//"kml/FrontLine/FrontLine_26_01_01.kml",
                                 
 								"kml/Progress/Progress_26_01_01.kml"]},
 	{name: "05.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_05.kml",
     	                        
-								"kml/FrontLine/FrontLine_26_01_05.kml",
+								//"kml/FrontLine/FrontLine_26_01_05.kml",
                                
 								"kml/Progress/Progress_26_01_05.kml"]},
 	{name: "09.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_09.kml",
     	                      
-								"kml/FrontLine/FrontLine_26_01_09.kml",
+								//"kml/FrontLine/FrontLine_26_01_09.kml",
                                 
 								"kml/Progress/Progress_26_01_09.kml"]},
 	{name: "13.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_13.kml",
     	                       
-								"kml/FrontLine/FrontLine_26_01_13.kml",
+								//"kml/FrontLine/FrontLine_26_01_13.kml",
                                
 								"kml/Progress/Progress_26_01_13.kml"]},
 	{name: "17.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_17.kml",
     	                      
-								"kml/FrontLine/FrontLine_26_01_17.kml",
+								//"kml/FrontLine/FrontLine_26_01_17.kml",
                                
 								"kml/Progress/Progress_26_01_17.kml"]},
 	{name: "21.01.26", paths: [
         	                    "kml/ControlZones/Control_26_01_21.kml",
     	                      
-								"kml/FrontLine/FrontLine_26_01_21.kml",
+								//"kml/FrontLine/FrontLine_26_01_21.kml",
                                 
 								"kml/Progress/Progress_26_01_21.kml"]},
 	{name: "25.01.26", paths: [
@@ -456,6 +456,7 @@ window.milequipLayers = [];
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
