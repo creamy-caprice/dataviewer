@@ -1,0 +1,2826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>2022</name>
+    <Style id="icon-1564-F57C00-normal">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1564-F57C00-highlight">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1564-F57C00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1564-F57C00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1564-F57C00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1564-FFEA00-normal">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1564-FFEA00-highlight">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1564-FFEA00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1564-FFEA00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1564-FFEA00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1565-0F9D58-normal">
+      <IconStyle>
+        <color>ff589d0f</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1565-0F9D58-highlight">
+      <IconStyle>
+        <color>ff589d0f</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1565-0F9D58">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1565-0F9D58-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1565-0F9D58-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1565-AFB42B-normal">
+      <IconStyle>
+        <color>ff2bb4af</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1565-AFB42B-highlight">
+      <IconStyle>
+        <color>ff2bb4af</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1565-AFB42B">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1565-AFB42B-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1565-AFB42B-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1581-000000-normal">
+      <IconStyle>
+        <color>ff000000</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1581-000000-highlight">
+      <IconStyle>
+        <color>ff000000</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1581-000000">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1581-000000-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1581-000000-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1581-097138-normal">
+      <IconStyle>
+        <color>ff387109</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1581-097138-highlight">
+      <IconStyle>
+        <color>ff387109</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1581-097138">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1581-097138-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1581-097138-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1581-A52714-normal">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1581-A52714-highlight">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1581-A52714">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1581-A52714-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1581-A52714-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1594-757575-normal">
+      <IconStyle>
+        <color>ff757575</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1594-757575-highlight">
+      <IconStyle>
+        <color>ff757575</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1594-757575">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1594-757575-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1594-757575-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1603-0288D1-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1603-0288D1-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1603-0288D1">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1603-0288D1-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1603-0288D1-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-0097A7-normal">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-0097A7-highlight">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-0097A7">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-0097A7-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-0097A7-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-424242-normal">
+      <IconStyle>
+        <color>ff424242</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-424242-highlight">
+      <IconStyle>
+        <color>ff424242</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-424242">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-424242-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-424242-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-795548-normal">
+      <IconStyle>
+        <color>ff485579</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-795548-highlight">
+      <IconStyle>
+        <color>ff485579</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-795548">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-795548-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-795548-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-7CB342-normal">
+      <IconStyle>
+        <color>ff42b37c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-7CB342-highlight">
+      <IconStyle>
+        <color>ff42b37c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-7CB342">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-7CB342-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-7CB342-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-880E4F-normal">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-880E4F-highlight">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-880E4F">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-880E4F-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-880E4F-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-A52714-normal">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-A52714-highlight">
+      <IconStyle>
+        <color>ff1427a5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-A52714">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-A52714-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-A52714-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-BDBDBD-normal">
+      <IconStyle>
+        <color>ffbdbdbd</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-BDBDBD-highlight">
+      <IconStyle>
+        <color>ffbdbdbd</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-BDBDBD">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-BDBDBD-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-BDBDBD-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-C2185B-normal">
+      <IconStyle>
+        <color>ff5b18c2</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-C2185B-highlight">
+      <IconStyle>
+        <color>ff5b18c2</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-C2185B">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-C2185B-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-C2185B-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1693-F57C00-normal">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1693-F57C00-highlight">
+      <IconStyle>
+        <color>ff007cf5</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1693-F57C00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1693-F57C00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1693-F57C00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1710-1A237E-normal">
+      <IconStyle>
+        <color>ff7e231a</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1710-1A237E-highlight">
+      <IconStyle>
+        <color>ff7e231a</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1710-1A237E">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1710-1A237E-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1710-1A237E-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-006064-normal">
+      <IconStyle>
+        <color>ff646000</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-006064-highlight">
+      <IconStyle>
+        <color>ff646000</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-006064">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-006064-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-006064-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-01579B-normal">
+      <IconStyle>
+        <color>ff9b5701</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-01579B-highlight">
+      <IconStyle>
+        <color>ff9b5701</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-01579B">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-01579B-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-01579B-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-097138-normal">
+      <IconStyle>
+        <color>ff387109</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-097138-highlight">
+      <IconStyle>
+        <color>ff387109</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-097138">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-097138-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-097138-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-7CB342-normal">
+      <IconStyle>
+        <color>ff42b37c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-7CB342-highlight">
+      <IconStyle>
+        <color>ff42b37c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-7CB342">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-7CB342-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-7CB342-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-817717-normal">
+      <IconStyle>
+        <color>ff177781</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-817717-highlight">
+      <IconStyle>
+        <color>ff177781</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-817717">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-817717-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-817717-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-FBC02D-normal">
+      <IconStyle>
+        <color>ff2dc0fb</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-FBC02D-highlight">
+      <IconStyle>
+        <color>ff2dc0fb</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-FBC02D">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-FBC02D-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-FBC02D-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1750-FF5252-normal">
+      <IconStyle>
+        <color>ff5252ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1750-FF5252-highlight">
+      <IconStyle>
+        <color>ff5252ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1750-FF5252">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1750-FF5252-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1750-FF5252-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1826-FFEA00-normal">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1826-FFEA00-highlight">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1826-FFEA00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1826-FFEA00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1826-FFEA00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>2 апреля, г. Шепетовка, нефтебаза</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopEtLxFxRfMbm91PO2xGPryTA6eCv33MFYVV8a-pSlKNOqAEVFqldiD9brazojxPwBf3a1X72cW3OOLl0vTy350e_98U8GTDqOzWlAkF3gSY0ITxY7-ilWKzyDue_1QFALVadbCpMhUQICpdLjh1-nTDu6DFcKlE781AtpQnWJP9lQ82T2CbdmFnKZyCaGEN4CWTCSwr5CB6m6rqNQPj6T1DwgX-4cM4ZqwJrQ0koE88pMaNkRi2AsofcY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по нефтебазе в г.Шепетовка Хмельницкой области 2 апреля 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.04.02<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/636]]></description>
+      <styleUrl>#icon-1581-000000</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по нефтебазе в г.Шепетовка Хмельницкой области 2 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/636</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopEtLxFxRfMbm91PO2xGPryTA6eCv33MFYVV8a-pSlKNOqAEVFqldiD9brazojxPwBf3a1X72cW3OOLl0vTy350e_98U8GTDqOzWlAkF3gSY0ITxY7-ilWKzyDue_1QFALVadbCpMhUQICpdLjh1-nTDu6DFcKlE781AtpQnWJP9lQ82T2CbdmFnKZyCaGEN4CWTCSwr5CB6m6rqNQPj6T1DwgX-4cM4ZqwJrQ0koE88pMaNkRi2AsofcY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          27.0910191,50.1771907,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>14 марта, г. Киев, предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorzAOAxplCLp1LN16mSTaBt8X87jAYVoMytG3JLLpizXNC_ciAHKI4LjOVDZf0SNUCE8mMovQp_H41les0eZG6mHaft3AMFEx4voAqkUyBNq9jodLGHXw8ekgjQoJzNaOo_xWcDUNyrbyeXnzUggJ_K1ud5Mn-S3cFeFBqXVUevHorhmA1E-zvvqd7dupgzi9Tgdefy60JlHYx3XpiInxeFPRpFM1HvHau61ky6ZtKibB1qVwwWwOCMzEU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по территории завода "Антонов" в г.Киев 14 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.14<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/608]]></description>
+      <styleUrl>#icon-1693-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Ракетный удар по территории завода "Антонов" в г.Киев 14 марта 2022г.
+
+]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.14</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/608</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorzAOAxplCLp1LN16mSTaBt8X87jAYVoMytG3JLLpizXNC_ciAHKI4LjOVDZf0SNUCE8mMovQp_H41les0eZG6mHaft3AMFEx4voAqkUyBNq9jodLGHXw8ekgjQoJzNaOo_xWcDUNyrbyeXnzUggJ_K1ud5Mn-S3cFeFBqXVUevHorhmA1E-zvvqd7dupgzi9Tgdefy60JlHYx3XpiInxeFPRpFM1HvHau61ky6ZtKibB1qVwwWwOCMzEU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.3902227,50.4645476,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>26 марта, г. Львов, нефтебаза</name>
+      <description><![CDATA[описание: Ракетный удар по нефтебазе в г.Львов, Львовской области в ночь на 26 марта 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.03.26<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/584]]></description>
+      <styleUrl>#icon-1581-000000</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по нефтебазе в г.Львов, Львовской области в ночь на 26 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.26</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/584</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          24.0565063,49.8602149,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>26 марта, г. Львов, предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBop2rTPjuYVawWskwBHcisQ8z96mj29j_3sf6k-lCAAD0tVDDnulZJoCbOQwLbdrvZZ9ogSwHmFJWVBciKOFkS17t8YdiIoPUGYPo9e4l_DVKGZzPrAaM-xY-07eEBBrtre6Z0wpNl4Oah3jXqOJbJ3_DUwi8Vs4vE-No2K33s_8NXfSqklXGLR8jgL3SSL0czFS6-c6nKKPeVwGCjya8x-gh7wvxySmSiiSw3GK4OZC6oELAEof-iDiOdI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по львовскому бронетанковому заводу в г.Львов, Львовской области 26 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.26<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/580]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по львовскому бронетанковому заводу в г.Львов, Львовской области 26 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.26</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/580</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBop2rTPjuYVawWskwBHcisQ8z96mj29j_3sf6k-lCAAD0tVDDnulZJoCbOQwLbdrvZZ9ogSwHmFJWVBciKOFkS17t8YdiIoPUGYPo9e4l_DVKGZzPrAaM-xY-07eEBBrtre6Z0wpNl4Oah3jXqOJbJ3_DUwi8Vs4vE-No2K33s_8NXfSqklXGLR8jgL3SSL0czFS6-c6nKKPeVwGCjya8x-gh7wvxySmSiiSw3GK4OZC6oELAEof-iDiOdI?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          24.0288028,49.789543,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4 марта, н.п.Новогуйвинское, предприятие </name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в н.п.Новогуйвинское, Житомирской области в ночь на 4 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.04<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/348]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в н.п.Новогуйвинское, Житомирской области в ночь на 4 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.04</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/348</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          28.69395,50.211083,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 августа, г. Шепетовка, предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooDtaFgNI8YDhMvH6UhvQESGyqsxLA6G14_leXZt3GFLkCjq556NTtbhSNiFQnGnw_-pv10RX4FhOtnUhHYU6GBOXGq1dTzARyhFlQSWKs14hdQAV0P5VwRTEr36cHt5bep5bEXE31u5BcAUBnCd9CM5zwzbYC7h7Y-NPbM6bLocrLPKVCdj3UOE_xsKpVfmVizqGXGJxtlko6OvEGFcOWuyky5K3qK9gQek0QuC7yaOxNyPkGs2MjLVMk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятию в г.Шепетовка, Хмельницкой области вечером 24 августа 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.08.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/639]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Шепетовка, Хмельницкой области вечером 24 августа 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.08.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/639</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooDtaFgNI8YDhMvH6UhvQESGyqsxLA6G14_leXZt3GFLkCjq556NTtbhSNiFQnGnw_-pv10RX4FhOtnUhHYU6GBOXGq1dTzARyhFlQSWKs14hdQAV0P5VwRTEr36cHt5bep5bEXE31u5BcAUBnCd9CM5zwzbYC7h7Y-NPbM6bLocrLPKVCdj3UOE_xsKpVfmVizqGXGJxtlko6OvEGFcOWuyky5K3qK9gQek0QuC7yaOxNyPkGs2MjLVMk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          27.0826004,50.1836411,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>23 октября, г. Смела, нефтебаза</name>
+      <description><![CDATA[описание: Удар БпЛА по нефтебазе у г.Смела, Черкасской области в ночь на 23 октября 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.10.23<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/692]]></description>
+      <styleUrl>#icon-1581-000000</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Удар БпЛА по нефтебазе у г.Смела, Черкасской области в ночь на 23 октября 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.10.23</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/692</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.9027586,49.2657436,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15 марта, г. Киев, предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoqV-6cgAr-G5pBMDgfoUFIqpk144YWNYMBPloXDqnEjmlIVX1uGV6fa86QG3hrJ40iRoil2W-hD6TG8RSQEuc4mapCzLaGYX4Cs5QwE4s5y37O_jl6QX8we8k8UhxoHFhym1HR6_3mMlUBXOjnyiSyX-os7SgUUpUBkyJQL8B-wZZ9tLoSX5PFPqNVe_M4ZEJy5L8td74XTwb7Qg_aZLwRnF5egoqAeBpqbsr9oLJoQ5rUFf3rRIGuBpVU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по заводу "Артём" в г.Киев, в ночь на 15 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.15<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/724]]></description>
+      <styleUrl>#icon-1693-795548</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Ракетный удар по заводу "Артём" в г.Киев, в ночь на 15 марта 2022г.
+
+]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.15</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/724</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoqV-6cgAr-G5pBMDgfoUFIqpk144YWNYMBPloXDqnEjmlIVX1uGV6fa86QG3hrJ40iRoil2W-hD6TG8RSQEuc4mapCzLaGYX4Cs5QwE4s5y37O_jl6QX8we8k8UhxoHFhym1HR6_3mMlUBXOjnyiSyX-os7SgUUpUBkyJQL8B-wZZ9tLoSX5PFPqNVe_M4ZEJy5L8td74XTwb7Qg_aZLwRnF5egoqAeBpqbsr9oLJoQ5rUFf3rRIGuBpVU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.4830315,50.4623884,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>17 марта, г. Николаев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар удар по авиаремонтному заводу в г.Николаев, Николаевской области, предположительно, 17 марта 2022г.<br> <br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.17<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/750]]></description>
+      <styleUrl>#icon-1693-0097A7</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар удар по авиаремонтному заводу в г.Николаев, Николаевской области, предположительно, 17 марта 2022г.
+ 
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.17</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/750</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0844159,46.9180761,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>7 марта, г. Харьков, Предприятие</name>
+      <description><![CDATA[описание: Предположительно, авиабомбовый удар по ХБтЗ в г.Харьков, Харьковской области, предположительно, 7 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.07<br>Средства поражения: Авиабомбы<br>Ссылка: https://t.me/osint_alarm/760]]></description>
+      <styleUrl>#icon-1693-A52714</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Предположительно, авиабомбовый удар по ХБтЗ в г.Харьков, Харьковской области, предположительно, 7 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.07</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Авиабомбы</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/760</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.1889501,50.0235566,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15 апреля, г. Харьков, Предприятие</name>
+      <description><![CDATA[описание: Предположительно, удар РЗСО по ХБтЗ в г.Харьков, Харьковской области, предположительно, 15 апреля 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.04.15<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/762]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Предположительно, удар РЗСО по ХБтЗ в г.Харьков, Харьковской области, предположительно, 15 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.15</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/762</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.1860802,50.025667,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8 июня, г. Харьков, предприятие</name>
+      <description><![CDATA[описание: Предположительно, ракетный удар по ХБтЗ в г.Харьков, Харьковской области, предположительно, 8 июня 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.06.08<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/770]]></description>
+      <styleUrl>#icon-1693-880E4F</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Предположительно, ракетный удар по ХБтЗ в г.Харьков, Харьковской области, предположительно, 8 июня 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.06.08</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/770</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.1891954,50.0240234,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>16 марта, г. Киев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по КБтЗ в г.Киев между 16 и 18 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.16<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/793]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по КБтЗ в г.Киев между 16 и 18 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.16</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/793</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.6987142,50.4202565,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>16 апреля, г. Киев, Предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooQrYGpCjwKqkavAeTgAsoaqWa82zTxl8JAmio5zQxO1C_Fo6OcMnGudcULayNVarWcWvSFADoL4QCof0rHXP2c9yAfApFS8qwogVJXyOsFu4wrXqDJdKXnq7O_0AUQgOGTJH80fg19PVcaXF7Rthn0TYxv-GBjGUcvCbPFZeHnU9mOHUfdMx3VPVOwdgUmWEH7gTWTtueKy2ADkcrpNYDQZanFtvKmTuLAXJOFr4qnvY0VJIM8tQ3sUf4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по КБтЗ в г.Киев предположительно, 16 апреля 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.04.16<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/903]]></description>
+      <styleUrl>#icon-1693-A52714</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по КБтЗ в г.Киев предположительно, 16 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.16</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/903</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooQrYGpCjwKqkavAeTgAsoaqWa82zTxl8JAmio5zQxO1C_Fo6OcMnGudcULayNVarWcWvSFADoL4QCof0rHXP2c9yAfApFS8qwogVJXyOsFu4wrXqDJdKXnq7O_0AUQgOGTJH80fg19PVcaXF7Rthn0TYxv-GBjGUcvCbPFZeHnU9mOHUfdMx3VPVOwdgUmWEH7gTWTtueKy2ADkcrpNYDQZanFtvKmTuLAXJOFr4qnvY0VJIM8tQ3sUf4?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.7020343,50.4190232,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>5 июня, г. Киев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по КБтЗ в г.Киев предположительно, 5 июня 2022г.<br>https://t.me/osint_alarm/905<br>Тип объекта: Предприятие ВПК<br>Дата: 2022.06.05<br>Средства поражения: <br>Ссылка: ]]></description>
+      <styleUrl>#icon-1693-C2185B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по КБтЗ в г.Киев предположительно, 5 июня 2022г.
+https://t.me/osint_alarm/905</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.06.05</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value/>
+        </Data>
+        <Data name="Ссылка">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.7005961,50.4219721,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 октября, г. Запорожье, Предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooW7h2qpqXg-DlNSBIihJ0mOGbVTEv6CqoJ5SsJJBoRDLRfiJyBj5YQGqQbJppF7kMQdxOVswIqjs2wLnqFZjXaM4TVzzSH4dSvNe73iccWsIIVzJi4umbCXeLEfBV3LKzM60_2-4-XUpNVN9gKVyGvgNM_ewyiTTyCCDyO7Y0M-KSqnF2gYWdN7S8k5tolMikfDR5KnIGxZN44Uyyuk9Dytgm6OYT6P_4-dQrZbfCojKJFpYkV1n8KAmc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Предположительно, ракетный удар по предприятию в г.Запорожье, Запорожской области между 18 октября 2022г и 11 января 2023г<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2022.10.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/913]]></description>
+      <styleUrl>#icon-1565-AFB42B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Предположительно, ракетный удар по предприятию в г.Запорожье, Запорожской области между 18 октября 2022г и 11 января 2023г
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие гражданского или двойного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.10.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/913</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooW7h2qpqXg-DlNSBIihJ0mOGbVTEv6CqoJ5SsJJBoRDLRfiJyBj5YQGqQbJppF7kMQdxOVswIqjs2wLnqFZjXaM4TVzzSH4dSvNe73iccWsIIVzJi4umbCXeLEfBV3LKzM60_2-4-XUpNVN9gKVyGvgNM_ewyiTTyCCDyO7Y0M-KSqnF2gYWdN7S8k5tolMikfDR5KnIGxZN44Uyyuk9Dytgm6OYT6P_4-dQrZbfCojKJFpYkV1n8KAmc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.1764787,47.799872,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>19 сентября, г. Запорожье, Предприятие </name>
+      <description><![CDATA[описание: Ракетный удар по КП НПК "Искра" в г.Запорожье, Запорожской области в ночь на 19 сентября 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.09.19<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/925]]></description>
+      <styleUrl>#icon-1693-C2185B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Ракетный удар по КП НПК "Искра" в г.Запорожье, Запорожской области в ночь на 19 сентября 2022г.
+
+]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.09.19</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/925</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.2306057,47.838212,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 октября, г. Запорожье, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по КП НПК "Искра" в г.Запорожье, Запорожской области или 18 октября 2022, или 17 ноября 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.10.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/929]]></description>
+      <styleUrl>#icon-1693-424242</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Ракетный удар по КП НПК "Искра" в г.Запорожье, Запорожской области или 18 октября 2022, или 17 ноября 2022г.
+
+]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.10.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/929</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.2296737,47.8375012,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 августа, г. Харьков, Предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooFgz0QtgSD_OIb-6gtUiLcR_KvHyXciCJhNrWGqbyo3Jv_XNc0PZgDwmoBcdsloe0P37gd_6Nq5uonJVk_VaV1KQ7TPg8OSxzAYbHs1mNgQ17v9itSnj3tIVrmRCMAz9iUu3Uggpe0PmgUEpBtLjShZhc7QnwotXMzSpwhXpPE7kVsOUC0D3EAp0heBe7iwnHmRrV_4T5GrC3Mt8kCKDYl8Rx_6HRyBSKm_1izn_GWxz-4YvjKjRiiliY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по территории ХЗТМ им.Малышева в г.Харьков, Харьковской области, предположительно, 18 августа 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.08.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/941]]></description>
+      <styleUrl>#icon-1693-424242</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по территории ХЗТМ им.Малышева в г.Харьков, Харьковской области, предположительно, 18 августа 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.08.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/941</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBooFgz0QtgSD_OIb-6gtUiLcR_KvHyXciCJhNrWGqbyo3Jv_XNc0PZgDwmoBcdsloe0P37gd_6Nq5uonJVk_VaV1KQ7TPg8OSxzAYbHs1mNgQ17v9itSnj3tIVrmRCMAz9iUu3Uggpe0PmgUEpBtLjShZhc7QnwotXMzSpwhXpPE7kVsOUC0D3EAp0heBe7iwnHmRrV_4T5GrC3Mt8kCKDYl8Rx_6HRyBSKm_1izn_GWxz-4YvjKjRiiliY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.2814019,49.9689989,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15 марта, г. Николаев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.15<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1066]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.15</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1066</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0487529,46.9285424,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>5 июня, г. Киев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Киев, в ночь на 5 июня 2022г.<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2022.06.05<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1107]]></description>
+      <styleUrl>#icon-1565-AFB42B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Киев, в ночь на 5 июня 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие гражданского или двойного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.06.05</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1107</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.6834966,50.4491223,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>16 марта, г. Чернигов, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г. Чернигов между 16 и 18 марта 2022 г.<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2022.03.16<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1111]]></description>
+      <styleUrl>#icon-1565-AFB42B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г. Чернигов между 16 и 18 марта 2022 г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие гражданского или двойного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.16</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1111</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.238977,51.4637337,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 марта, г. Чернигов, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г. Чернигов между 18 и 21 марта 2022<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2022.03.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1111]]></description>
+      <styleUrl>#icon-1565-0F9D58</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г. Чернигов между 18 и 21 марта 2022
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие гражданского или двойного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1111</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.2399001,51.4645082,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>17 апреля, г. Бровары, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Бровары, Киевской области в ночь на 17 апреля 2022г.<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2022.04.17<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1113]]></description>
+      <styleUrl>#icon-1565-AFB42B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Бровары, Киевской области в ночь на 17 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие гражданского или двойного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.17</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1113</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.8132497,50.5291242,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15 апреля, г. Киев, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Киев, в ночь на 15 апреля 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.04.15<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1192]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Киев, в ночь на 15 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.15</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1192</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.3568828,50.3848268,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Харьков, Предприятие </name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Харьков, Харьковской области между 24 февраля и 15 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1493]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Харьков, Харьковской области между 24 февраля и 15 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1493</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.3654146,49.9679764,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>19-24 мая, г.Николаев, промах</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBor8uIo1N0AQ17K7toURnMioINJrI-sKFAfySWTX8z7e1NqIYLf6MDSKwrHIZ5VRJFLkMIkv43B9Sd8uUjcaK5_YVnGa1xAfhdRhFMRfArO_I70uKmF2wKiLcYZRGM7kAMKu3nwOa7CSeYkA80aykgn3LbKNi9ltjseVvQeBkWCCz2v-8q6Wz7LGvMuRRxolu44vxwcYFNhulgSFQk6gPMIDjRmw-4O_StTLEvM_GCrqLMX-zSdEwDPwrBY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Промах ракеты произошёл между 19 и 24 мая 2022г.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2022.05.20<br>Средства поражения: Ракеты<br>Ссылка: <br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorZa-aTF4OuYnz9RnDW1E54_ApmZHi7C64cUlIHIZgNyGq6ScUpK6UcVyzzxkv80MQl3S3Kq9fAplf7D4Wv8KHTKpxDCKMkwWAHVxkCepODmfHbE2roWSaZDRqzIUD-nPgVLNuebQ-6gSH7h8eK7YVLYKhrCG4osL1GGTNQwchZKLA2EebIApDUoRsHcZv2miiJ0Ce_2jrwvBBaHwVB9V36V65oDrUV9LvOdfBsNWf9UYBD_aJY0j68Ruc?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <styleUrl>#icon-1594-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Промах ракеты произошёл между 19 и 24 мая 2022г.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Объект неустановленного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.05.20</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value/>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBor8uIo1N0AQ17K7toURnMioINJrI-sKFAfySWTX8z7e1NqIYLf6MDSKwrHIZ5VRJFLkMIkv43B9Sd8uUjcaK5_YVnGa1xAfhdRhFMRfArO_I70uKmF2wKiLcYZRGM7kAMKu3nwOa7CSeYkA80aykgn3LbKNi9ltjseVvQeBkWCCz2v-8q6Wz7LGvMuRRxolu44vxwcYFNhulgSFQk6gPMIDjRmw-4O_StTLEvM_GCrqLMX-zSdEwDPwrBY?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorZa-aTF4OuYnz9RnDW1E54_ApmZHi7C64cUlIHIZgNyGq6ScUpK6UcVyzzxkv80MQl3S3Kq9fAplf7D4Wv8KHTKpxDCKMkwWAHVxkCepODmfHbE2roWSaZDRqzIUD-nPgVLNuebQ-6gSH7h8eK7YVLYKhrCG4osL1GGTNQwchZKLA2EebIApDUoRsHcZv2miiJ0Ce_2jrwvBBaHwVB9V36V65oDrUV9LvOdfBsNWf9UYBD_aJY0j68Ruc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0822571,46.9204657,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>март, г.Николаев промах</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBortp3GYJpQjO0HalYluCX_LhE4hPgb-u8RiRN02O0cyMM0CGYIF3-VSBxVtpP_JhTetCtcjideEwTa68r44b7Z8E1LHOKcC5R76VJlnoNwuj-NDCPnMkWB7zxsSW6EUyfpNZ6EIwsSjzOYEMSMt1tp8g2v9_UgSMUyscXdx3P3tDsZjEUOCwK8cCqme0Sc-KBxG-fqXaZNZcUz0IXFH9wOvc8VXS-DjiM61UL_wsadOJoABp4JGj1WCOO4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Прилёт был до 15 марта, не смотря на промах часть зданий так же пострадало, а верхний ангар был позже демонтирован.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2022.03.01<br>Средства поражения: Ракеты<br>Ссылка: ]]></description>
+      <styleUrl>#icon-1594-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Прилёт был до 15 марта, не смотря на промах часть зданий так же пострадало, а верхний ангар был позже демонтирован.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Объект неустановленного назначения</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value/>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBortp3GYJpQjO0HalYluCX_LhE4hPgb-u8RiRN02O0cyMM0CGYIF3-VSBxVtpP_JhTetCtcjideEwTa68r44b7Z8E1LHOKcC5R76VJlnoNwuj-NDCPnMkWB7zxsSW6EUyfpNZ6EIwsSjzOYEMSMt1tp8g2v9_UgSMUyscXdx3P3tDsZjEUOCwK8cCqme0Sc-KBxG-fqXaZNZcUz0IXFH9wOvc8VXS-DjiM61UL_wsadOJoABp4JGj1WCOO4?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.075332,46.9420178,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Луцк, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому г.Луцк, Волынской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1610]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому г.Луцк, Волынской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1610</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          25.355769,50.7885191,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 марта, г. Луцк, Склад боеприпасов</name>
+      <description><![CDATA[описание: Ракетный удар по складу боеприпасов в г.Луцк, Волынской области в ночь на 11 марта 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.03.11<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1614]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов в г.Луцк, Волынской области в ночь на 11 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1614</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          25.354137,50.7849552,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Миргород, Склад боеприпасов</name>
+      <description><![CDATA[описание: Ракетный удар по складу боеприпасов у г.Миргород, Полтавской области 24 февраля 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1622]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов у г.Миргород, Полтавской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1622</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.6036902,49.9284058,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Миргород, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому г.Миргород, Полтавской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1622]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому г.Миргород, Полтавской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1622</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.6261401,49.9249765,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Ивано-Франковск, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Ивано-Франковск, Ивано-Франковской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1626]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Ивано-Франковск, Ивано-Франковской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1626</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          24.6974657,48.891753,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Чугуев, Аэродром</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBophbJ3fBV7o_5g0dq6vpV-nUZ0q5hlFdeVDWiHE2IhTqbxexN09ImFIeDLYbPrFYedUK-prtyy7Vd5HDJrGbRTPZDQw0_ioKCI9JJ_jXDQlri-3e6ALoCJYibaUzxgNqhqFZCcquPi3kSaVArLpdr-HyRD3KUqiNLNcjBs7j52DoHaRYuvzfPj1mEUsFSF6P3UehQVVb4C7nL3bA0OzWeJFxsidxmiUd9-683nkW4WRCVCNZnPyO-ixfec?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по аэродрому  в г.Чугуев, Харьковской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1638]]></description>
+      <styleUrl>#icon-1750-817717</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому  в г.Чугуев, Харьковской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1638</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBophbJ3fBV7o_5g0dq6vpV-nUZ0q5hlFdeVDWiHE2IhTqbxexN09ImFIeDLYbPrFYedUK-prtyy7Vd5HDJrGbRTPZDQw0_ioKCI9JJ_jXDQlri-3e6ALoCJYibaUzxgNqhqFZCcquPi3kSaVArLpdr-HyRD3KUqiNLNcjBs7j52DoHaRYuvzfPj1mEUsFSF6P3UehQVVb4C7nL3bA0OzWeJFxsidxmiUd9-683nkW4WRCVCNZnPyO-ixfec?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.6456889,49.846072,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Чугуев, Склад боеприпасов </name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoosfp3vKnr7PcExCOXK94MWKeIKZKRMJbEwJ5E8-_IQyxptHs4aYZ-FAp-RvfcUJ6ldni6uenxX1GIt1R44z4-8XfJiWybLlt_bJHT4ibBwBt8UEWKcuZFKOUdzMAPVdrRjR9ASElfI08kdJypBCYlXtorgMcxvm9gFkAAaqLX5I-RlkpybPoWi47VJsQghTFWaWsO39wUPwUvq8OSO5xhd_xT3ZemQ4ttvXCO3igrLYAUNSED2xCpqchk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по складу боеприпасов в г.Чугуев, Харьковской области 24 февраля 2022г.<br><br><br>Тип объекта: Склад боеприпасов <br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1638]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов в г.Чугуев, Харьковской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов </value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1638</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoosfp3vKnr7PcExCOXK94MWKeIKZKRMJbEwJ5E8-_IQyxptHs4aYZ-FAp-RvfcUJ6ldni6uenxX1GIt1R44z4-8XfJiWybLlt_bJHT4ibBwBt8UEWKcuZFKOUdzMAPVdrRjR9ASElfI08kdJypBCYlXtorgMcxvm9gFkAAaqLX5I-RlkpybPoWi47VJsQghTFWaWsO39wUPwUvq8OSO5xhd_xT3ZemQ4ttvXCO3igrLYAUNSED2xCpqchk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.6524552,49.835883,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>26 апреля, г. Чугуев, Аэродром</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopDRAVSD0tD1H_W8aTZZcvGjQmyIjaer6YRVEOgspiD7-Rm9kQYhtGZtDmZIJUha15C544w-8JrpmGul56AXZolrHQvMeRuxMX_TBvTuaQrU7TnD8uObZdSqk29xf0rRlciUMeha5gGH7zKDPNynED3Guuwxa8DZQJFl-E7L_wzpov8vlp2B4d5MYGfcu0z9Wzy1rlZGtGgtXfqUlWyOVuXPWXNFfnMhBb9nQ6r6YZyqpEGeekVZzfttw0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по аэродрому в г.Чугуев, Харьковской области между 26 и 28 апреля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.04.26<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1643]]></description>
+      <styleUrl>#icon-1750-097138</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Чугуев, Харьковской области между 26 и 28 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.26</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1643</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopDRAVSD0tD1H_W8aTZZcvGjQmyIjaer6YRVEOgspiD7-Rm9kQYhtGZtDmZIJUha15C544w-8JrpmGul56AXZolrHQvMeRuxMX_TBvTuaQrU7TnD8uObZdSqk29xf0rRlciUMeha5gGH7zKDPNynED3Guuwxa8DZQJFl-E7L_wzpov8vlp2B4d5MYGfcu0z9Wzy1rlZGtGgtXfqUlWyOVuXPWXNFfnMhBb9nQ6r6YZyqpEGeekVZzfttw0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.6550644,49.8506939,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>29 апреля, г. Чугуев, Аэродром</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoqqvXxV5bGWlD1yeyJ9drrA_vssULf8kBwkHOXPGjAo107fdCWWe7GOQf2sVz0ICP5PEKR96khf1B07E0BVtQaX1drb8JvNZmhz1jkz0uir17mTPjfoVspAxpI4TmcZvd04WRD-O_Y9U8Nd3i4ZepLVXo0dPpNGLm3kWTpn2c2zmgrnGoMgrpeNa4Aqo4W2BbZwobFfYxZKnxVomgV1qh2LJmn3or6sc-LwGK1fOFouxjKB6K6AKpKse90?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по аэродрому в г. Чугуев 29 апреля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.04.29<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1643]]></description>
+      <styleUrl>#icon-1750-FF5252</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г. Чугуев 29 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.29</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1643</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBoqqvXxV5bGWlD1yeyJ9drrA_vssULf8kBwkHOXPGjAo107fdCWWe7GOQf2sVz0ICP5PEKR96khf1B07E0BVtQaX1drb8JvNZmhz1jkz0uir17mTPjfoVspAxpI4TmcZvd04WRD-O_Y9U8Nd3i4ZepLVXo0dPpNGLm3kWTpn2c2zmgrnGoMgrpeNa4Aqo4W2BbZwobFfYxZKnxVomgV1qh2LJmn3or6sc-LwGK1fOFouxjKB6K6AKpKse90?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.6569271,49.849153,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>27 февраля, г. Чугуев, Склад боеприпасов</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopERvLhB5vz8E_54rtMGR-69vwN79_ruFbSsiYgJuVQGAeDHd3UOXm3x_YvBx5YI-zly1AzVWE9DP3hhY_Zkt0MVr3sFsh0miSfiD2nfNKmSr4nNgQLiibL9YclHuqo9hPwdtvd7j9nUS_we4AEtYgA7nGzxiygeoxiAznaxLwEmn3SjcsLmyXldrJa6XUwmDC5dwPBnWgv0TjFTbytKlkmXF-8DfqOfwVHTPs57Y-EovQhGH1iqAcH6HE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по складу боеприпасов у г.Чугуев, Харьковской области между 27 февраля и 17 марта 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.02.27<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1646]]></description>
+      <styleUrl>#icon-1564-FFEA00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов у г.Чугуев, Харьковской области между 27 февраля и 17 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.27</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1646</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBopERvLhB5vz8E_54rtMGR-69vwN79_ruFbSsiYgJuVQGAeDHd3UOXm3x_YvBx5YI-zly1AzVWE9DP3hhY_Zkt0MVr3sFsh0miSfiD2nfNKmSr4nNgQLiibL9YclHuqo9hPwdtvd7j9nUS_we4AEtYgA7nGzxiygeoxiAznaxLwEmn3SjcsLmyXldrJa6XUwmDC5dwPBnWgv0TjFTbytKlkmXF-8DfqOfwVHTPs57Y-EovQhGH1iqAcH6HE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.6516264,49.835523,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 марта, г. Львов, Предприятие</name>
+      <description><![CDATA[описание: Ракетный удар по предприятию в г.Львов, Львовской области 18 марта 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.03.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1728]]></description>
+      <styleUrl>#icon-1693-BDBDBD</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Львов, Львовской области 18 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1728</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          23.9371387,49.8181995,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>6 марта, г. Винница, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Винница, Винницкой области 6 марта 2022г<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.03.06<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1652]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Винница, Винницкой области 6 марта 2022г
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.06</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1652</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          28.6119092,49.2401724,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Ивано-Франковск, Склад</name>
+      <description><![CDATA[описание: Ракетный удар по складским помещениям в г. Ивано-Франковск 24 февраля 2022г.<br><br><br>Тип объекта: Склад<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1658]]></description>
+      <styleUrl>#icon-1603-0288D1</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складским помещениям в г. Ивано-Франковск 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1658</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          24.7056316,48.8957582,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Мелитополь, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Мелитополь, Запорожской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1660]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Мелитополь, Запорожской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1660</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.3110715,46.8804753,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Мелитополь, Склад боеприпасов</name>
+      <description><![CDATA[описание: Ракетный удар по складу боеприпасов в г.Мелитополь, Запорожской области 24 февраля 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1660]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов в г.Мелитополь, Запорожской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1660</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.31361,46.8752459,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 марта, г. Васильков, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Васильков, Киевской области между 11 марта и 16 марта 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.03.11<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1665]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Васильков, Киевской области между 11 марта и 16 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1665</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.298239,50.2244651,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>28 февраля, г. Николаев, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.28<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1678]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.28</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1678</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0724956,46.9401066,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>28 февраля, г. Николаев, Склад боеприпасов</name>
+      <description><![CDATA[описание: Ракетный удар по складу боеприпасов в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.02.28<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1678]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов в г.Николаев, Николаевской области между 28 февраля и 15 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.28</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1678</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.1042486,46.9476346,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Николаев, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Николаев, Николаевской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1683]]></description>
+      <styleUrl>#icon-1750-01579B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Николаев, Николаевской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1683</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0942622,46.9470035,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>28 февраля, г. Вознесенск, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Вознесенск, Одесской области между 28 февраля и 10 марта 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.28<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1697]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Вознесенск, Одесской области между 28 февраля и 10 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.28</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1697</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.2584769,47.5099771,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, н.п. Озерное, Склад боеприпасов</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorRbr5B-dMbknSoiJAcsKU9ZYdTD1_ggrR2m3ji4UsBh77qa-q-eCMA_Dx69p6xY7Z4XS5ppIultty6QGAQ2Eulg7TCqbOm2mkIp0dGSWXJju1PXzB1lGkN2X7DbkrSrAEFsT5ipLNTC4wlLIIl20XXwKCBElUyvoHG6PVquIVqsJc9choG8WbnYQG3wOf1vVY-9yA7XceB2Otxhk17cTFDqM0yn1NYXK30eMxK7ZUsEw8-gDufL-r5Qto?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по складу боеприпасов в н.п.Озёрное, Житомирской области 24 февраля 2022г.<br><br><br>Тип объекта: Склад боеприпасов<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1699]]></description>
+      <styleUrl>#icon-1564-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по складу боеприпасов в н.п.Озёрное, Житомирской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад боеприпасов</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1699</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorRbr5B-dMbknSoiJAcsKU9ZYdTD1_ggrR2m3ji4UsBh77qa-q-eCMA_Dx69p6xY7Z4XS5ppIultty6QGAQ2Eulg7TCqbOm2mkIp0dGSWXJju1PXzB1lGkN2X7DbkrSrAEFsT5ipLNTC4wlLIIl20XXwKCBElUyvoHG6PVquIVqsJc9choG8WbnYQG3wOf1vVY-9yA7XceB2Otxhk17cTFDqM0yn1NYXK30eMxK7ZUsEw8-gDufL-r5Qto?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          28.7635212,50.1598876,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, н.п. Озерное, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в н.п.Озёрное, Житомирской области 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1699]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в н.п.Озёрное, Житомирской области 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1699</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          28.7293575,50.1672668,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>28 февраля, г. Кировоград, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Кировоград, Кировоградской области между 28 февраля и 10 марта 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.28<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1706]]></description>
+      <styleUrl>#icon-1750-817717</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Кировоград, Кировоградской области между 28 февраля и 10 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.28</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1706</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.3966716,48.5641777,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>23 июля, г. Кировоград, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Кировоград, Кировоградской области между 23 июля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.07.23<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1712]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Кировоград, Кировоградской области между 23 июля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.07.23</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1712</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.3887027,48.5639024,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Староконстантинов, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Староконстантинов, Хмельницкой области, предположительно, 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1717]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Староконстантинов, Хмельницкой области, предположительно, 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1717</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          27.2532396,49.7487045,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>22 апреля, г. Староконстантинов, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Староконстантинов, Хмельницкой области, предположительно, 12 апреля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.04.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1720]]></description>
+      <styleUrl>#icon-1750-006064</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Староконстантинов, Хмельницкой области, предположительно, 12 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.22</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1720</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          27.2620158,49.7427384,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>25 мая, г. Запорожье, Предприятие</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorpFuBnUQIPN5kTIQVR28HGUGy34LGHqg19Od9HSUAjWxKfpIlO37RhIqFOI9cYUjUdojUXqew5RrRZT2OCkHnIIcQwsj4UNcfHnOdirxx2pB-g1bOWH0OFE8zy8ClcRYrY3ezQ9TCzoakTTTvphDwhD_SuxZlbLbg8o-BCtCMKLP0CeJCVZkA53ZM4qjMHnxrIRt2c3P-jregf2w-nYsMMFL6HDEauqGKIglB61geFPo8arZc3xZT6dYE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятию в г.Запорожье, Запорожской области 25 мая 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.05.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1739]]></description>
+      <styleUrl>#icon-1693-F57C00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по предприятию в г.Запорожье, Запорожской области 25 мая 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.05.22</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1739</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3ALCsBorpFuBnUQIPN5kTIQVR28HGUGy34LGHqg19Od9HSUAjWxKfpIlO37RhIqFOI9cYUjUdojUXqew5RrRZT2OCkHnIIcQwsj4UNcfHnOdirxx2pB-g1bOWH0OFE8zy8ClcRYrY3ezQ9TCzoakTTTvphDwhD_SuxZlbLbg8o-BCtCMKLP0CeJCVZkA53ZM4qjMHnxrIRt2c3P-jregf2w-nYsMMFL6HDEauqGKIglB61geFPo8arZc3xZT6dYE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.1909666,47.8293248,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>18 ноября, г. Запорожье, Предприятие</name>
+      <description><![CDATA[описание: Ракетный уда по предприятию в г.Запорожье, Запорожской области, 18 ноября 2022г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2022.11.18<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1742]]></description>
+      <styleUrl>#icon-1693-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный уда по предприятию в г.Запорожье, Запорожской области, 18 ноября 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Предприятие ВПК</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.11.18</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1742</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.1981146,47.8223053,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2 апреля, г. Кременчуг, НПЗ</name>
+      <description><![CDATA[описание: Ракетный удар по НПЗ у г.Кременчуг, Полтавской области 2 апреля 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.04.02<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1825]]></description>
+      <styleUrl>#icon-1581-097138</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по НПЗ у г.Кременчуг, Полтавской области 2 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1825</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.5044341,49.165927,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 апреля, г. Кременчуг, ТЭЦ</name>
+      <description><![CDATA[описание: Ракетный удар по энергоинфраструктуре у г.Кременчуг, Полтавской области 24 апреля 2022г.<br><br><br>Тип объекта: Энергогенерация<br>Дата: 2022.04.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1827]]></description>
+      <styleUrl>#icon-1710-1A237E</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по энергоинфраструктуре у г.Кременчуг, Полтавской области 24 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Энергогенерация</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1827</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.4463533,49.1721536,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>12 мая, г. Кременчуг, НПЗ</name>
+      <description><![CDATA[описание: Ракетный удар по НПЗ у г.Кременчуг, Полтавской области 12 мая 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.05.12<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1832]]></description>
+      <styleUrl>#icon-1581-A52714</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по НПЗ у г.Кременчуг, Полтавской области 12 мая 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.05.12</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1832</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.4715401,49.1741832,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>24 февраля, г. Броды, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому у г.Броды, Львовской области, предположительно, 24 февраля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.02.24<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1842]]></description>
+      <styleUrl>#icon-1750-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому у г.Броды, Львовской области, предположительно, 24 февраля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.02.24</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1842</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          25.1706729,50.1274055,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>15 апреля, г. Александрия, ППД</name>
+      <description><![CDATA[описание: Ракетный удар по ППД у г.Александрия, Кировоградской области 15 апреля 2022г.<br><br><br>Тип объекта: ППД<br>Дата: 2022.04.015<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1844]]></description>
+      <styleUrl>#icon-1826-FFEA00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по ППД у г.Александрия, Кировоградской области 15 апреля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>ППД</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.04.015</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1844</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          33.1801877,48.6855473,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 марта, н.п. Шестовица, ПВД</name>
+      <description><![CDATA[описание: Ракетный удар, предположительно, по ПВД у н.п.Шестовица, Черниговской области, предположительно, 11 марта 2022г.<br><br><br>Тип объекта: ППД<br>Дата: 2022.03.11<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1850]]></description>
+      <styleUrl>#icon-1826-FFEA00</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар, предположительно, по ПВД у н.п.Шестовица, Черниговской области, предположительно, 11 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>ППД</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1850</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.1553912,51.4062549,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>14 июля, г. Николаев, Аэродром</name>
+      <description><![CDATA[описание: Ракетный удар по аэродрому в г.Николаев, Николаевской области, предположительно 14 июля 2022г.<br><br><br>Тип объекта: Аэродром<br>Дата: 2022.07.14<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1853]]></description>
+      <styleUrl>#icon-1750-FBC02D</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по аэродрому в г.Николаев, Николаевской области, предположительно 14 июля 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Аэродром</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.07.14</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1853</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.0758803,46.9382737,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>19 марта, г. Чернигов, Нефтебаза</name>
+      <description><![CDATA[описание: Ракетный удар по нефтебазе в г.Чернигов, Черниговской области 19 марта 2022г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2022.03.19<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1138]]></description>
+      <styleUrl>#icon-1581-000000</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Ракетный удар по нефтебазе в г.Чернигов, Черниговской области 19 марта 2022г.
+
+</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Склад ГСМ</value>
+        </Data>
+        <Data name="Дата">
+          <value>2022.03.19</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Ракеты</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/1138</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.2469242,51.4736522,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
