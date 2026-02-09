@@ -406,7 +406,7 @@ window.kmlFiles = [
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_02_10.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_02_06.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
@@ -458,6 +458,7 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 							  "kml/Geolocations/osint_alarm_2025.kml"
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
