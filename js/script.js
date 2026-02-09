@@ -1471,7 +1471,8 @@ function getAttacksOnUaIcon(position) {
         'Тяговая подстанция'                               : 'img/attack types/тяговая подстанции.png',
         'Мост'                                             : 'img/attack types/мосты.png',
         'Газовая инфраструктура'                           : 'img/attack types/газ.png',
-        'Судно                             '               : 'img/attack types/судно.png',
+        'Судно'                                            : 'img/attack types/судно.png',
+        'Склад боеприпасов'                                : 'img/attack types/склад-бк.png',
         'Объект неустановленного назначения'               : 'img/attack types/вопрос.png',
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
@@ -3646,6 +3647,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
