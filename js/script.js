@@ -1467,6 +1467,7 @@ function getAttacksOnUaIcon(position) {
         'Подстанция'                                       : 'img/attack types/подстанция.png',
         'Склад'                                            : 'img/attack types/склад.png',
         'Склад ГСМ'                                        : 'img/attack types/гсм.png',
+        'Энергогенерация'                                  : 'img/attack types/генерация.png',
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
 
@@ -3640,6 +3641,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
