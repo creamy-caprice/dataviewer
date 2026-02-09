@@ -399,12 +399,8 @@ window.kmlFiles = [
 	{name: "06.02.26", paths: [
         	                    "kml/ControlZones/Control_26_02_06.kml",
     	                        //"kml/FrontLine/FrontLine_26_02_06.kml",
-                                "kml/Progress/Progress_26_02_06.kml"] },
-	{name: "10.02.26", paths: [
-        	                    "kml/ControlZones/Control_26_02_10.kml",
-    	                        //"kml/FrontLine/FrontLine_26_02_10.kml",
-                                "kml/Progress/Progress_26_02_10.kml"] }
-	
+                                "kml/Progress/Progress_26_02_06.kml"] }
+		
    ];
 
 // Постоянные слои
@@ -462,6 +458,7 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 							  "kml/Geolocations/osint_alarm_2025.kml"
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
