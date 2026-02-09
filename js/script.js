@@ -921,11 +921,40 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                 coordsString,
                 descriptionUrl,
                 isEquipment = false,
+                isAttackOnUa = false, // Новый параметр для атак на Украину
                 extendedData = {} // Новый параметр для всех данных ExtendedData
             } = params;
             
-            // Если это техника и есть extendedData, отображаем все поля
-            if (isEquipment && extendedData && Object.keys(extendedData).length > 0) {
+            // Обрабатываем случай атак на Украину
+            if (isAttackOnUa) {
+                // Извлекаем данные для атак на Украину
+                const objectType = extendedData['Тип объекта'] || extendedData['object_type'] || equipmentType;
+                const weaponType = extendedData['Средства поражения'] || extendedData['weapon_type'];
+                const attackDate = extendedData['Дата'] || extendedData['date'] || date;
+                const description = extendedData['описание'] || extendedData['description'] || '';
+                const link = extendedData['Ссылка'] || extendedData['link'] || '';
+                
+                return `
+                    ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
+                    ${description ? `<div class="popup-description" style="margin-bottom: 8px; white-space: pre-wrap;">${description}</div>` : ''}
+                    <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
+                        ${objectType ? `<div><strong>Тип объекта:</strong> ${objectType}</div>` : ''}
+                        ${attackDate ? `<div><strong>Дата:</strong> ${attackDate}</div>` : ''}
+                        ${weaponType ? `<div><strong>Средства поражения:</strong> ${weaponType}</div>` : ''}
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                            <strong>Координаты:</strong> 
+                            <span style="font-family: monospace;">${coordsString}</span>
+                            <button class="copy-coords-popup-btn" data-coords="${coordsString}" 
+                                    style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px;">
+                                ⎘
+                            </button>
+                        </div>
+                        ${link ? `<div style="margin-top: 6px;"><a href="${link}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">📝 Подробная информация</a></div>` : ''}
+                    </div>
+                `;
+            }
+            // Обрабатываем случай техники (без изменений)
+            else if (isEquipment && extendedData && Object.keys(extendedData).length > 0) {
                 // Собираем все поля из extendedData, кроме "Тип техники" который уже выводится отдельно
                 let extendedInfoHTML = '';
                 
@@ -1053,7 +1082,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             // Определяем тип точки для отображения в popup
             const isEquipment = iconGetter === getMilEquipIcon;
             const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
-            
+
             // Используем категорию как equipmentType для popup
             const popupContent = createPopupContent({
                 formattedName,
@@ -1061,23 +1090,13 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                 equipmentType: category, // Используем определенную категорию
                 coordsString,
                 descriptionUrl,
-                isEquipment: isEquipment || isAttackOnUa, // Для техники и атак показываем extendedData
-                extendedData: isEquipment || isAttackOnUa ? extendedData : {} // Передаем extendedData только для техники и атак
+                isEquipment: isEquipment,
+                isAttackOnUa: isAttackOnUa, // Передаем флаг для атак на Украину
+                extendedData: isEquipment || isAttackOnUa ? extendedData : {} // Передаем extendedData для техники и атак
             });
             
             marker.bindPopup(popupContent);
             
-            // Добавляем обработчик для кнопки копирования в popup
-            marker.on('popupopen', function() {
-                const copyBtn = document.querySelector('.copy-coords-popup-btn');
-                if (copyBtn) {
-                    copyBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const coords = this.getAttribute('data-coords');
-                        copyToClipboard(coords, this);
-                    });
-                }
-            });
             
             if (LOG_STYLES) {
                 console.log(`Point added:`, { 
@@ -1440,8 +1459,14 @@ function getMilEquipIcon(position) {
 
 function getAttacksOnUaIcon(position) {
     const iconUrls = {
-        'Предприятие ВПК'          : 'img/Взрывчик.png',
-        'default'                  : 'img/Взрывчик.png',
+        'Предприятие ВПК'                                  : 'img/attack types/ВПК.png',
+        'ЖД инфраструктура'                                : 'img/attack types/депо.png',
+        'Аэродром'                                         : 'img/attack types/аэродром.png',
+        'Предприятие гражданского или двойного назначения' : 'img/attack types/ВПК2.png',
+        'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/рлс.png',
+        'Подстанция'                                       : 'img/attack types/подстанция.png',
+        'Склад'                                            : 'img/attack types/подстанция.png',
+        'default'                                          : 'img/attack types/Взрывчик.png',
     };
 
     const iconUrl = iconUrls[position] || iconUrls.default;
@@ -3489,7 +3514,7 @@ function getPolygonCenter(coords) {
 }
 // функция для добавления метки к объекту
 function addLabelToLayer(name, geometryType, coords, layerGroup) {
-	return;
+    return;
     if (!name || name.trim() === '') return;
     
     let labelCoords;
@@ -3602,6 +3627,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+document.addEventListener('click', function(e) {
+    // Проверяем, кликнули ли по кнопке копирования в popup
+    if (e.target && e.target.classList.contains('copy-coords-popup-btn')) {
+        e.stopPropagation();
+        e.preventDefault();
+        const coords = e.target.getAttribute('data-coords');
+        if (coords) {
+            copyToClipboard(coords, e.target);
+        }
+    }
+});
+
+
+
+
 
 
 

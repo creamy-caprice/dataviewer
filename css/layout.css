@@ -938,6 +938,6 @@ body {
 }
 
 /* Временное скрытие кнопки ВЗРЫВЧИК */
-#attacks-on-ua-btn {
-display: none !important;
-}
+/* #attacks-on-ua-btn { */
+/* display: none !important; */
+/* } */
