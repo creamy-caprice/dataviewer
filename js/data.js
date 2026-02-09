@@ -453,11 +453,12 @@ window.milequipLayers = [];
 
 
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
-							  "kml/Geolocations/osint_alarm_2023.kml"
+							  "kml/Geolocations/osint_alarm_2023.kml",
 							  "kml/Geolocations/osint_alarm_2024.kml",
-							  "kml/Geolocations/osint_alarm_2025.kml"
+							  "kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
+
 
 
 
