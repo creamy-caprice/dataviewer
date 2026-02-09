@@ -1470,6 +1470,7 @@ function getAttacksOnUaIcon(position) {
         'Энергогенерация'                                  : 'img/attack types/генерация.png',
         'Тяговая подстанция'                               : 'img/attack types/тяговая подстанции.png',
         'Мост'                                             : 'img/attack types/мосты.png',
+        'Газовая инфраструктура'                           : 'img/attack types/газ.png',
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
 
@@ -3643,6 +3644,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
