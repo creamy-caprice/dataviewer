@@ -1466,7 +1466,7 @@ function getAttacksOnUaIcon(position) {
         'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/РЛС2.png',
         'Подстанция'                                       : 'img/attack types/подстанция.png',
         'Склад'                                            : 'img/attack types/склад.png',
-        'Склад ГСМ'                                        : 'img/attack types/гсм.png',
+        'Склад ГСМ'                                        : 'img/attack types/ГСМ2.png',
         'Энергогенерация'                                  : 'img/attack types/генерация.png',
         'Тяговая подстанция'                               : 'img/attack types/тяговая подстанции.png',
         'Мост'                                             : 'img/attack types/мосты.png',
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
