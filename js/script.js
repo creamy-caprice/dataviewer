@@ -1463,7 +1463,7 @@ function getAttacksOnUaIcon(position) {
         'ЖД инфраструктура'                                : 'img/attack types/депо.png',
         'Аэродром'                                         : 'img/attack types/аэродром.png',
         'Предприятие гражданского или двойного назначения' : 'img/attack types/ВПК.png',
-        'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/рлс.png',
+        'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/РЛС2.png',
         'Подстанция'                                       : 'img/attack types/подстанция.png',
         'Склад'                                            : 'img/attack types/склад.png',
         'Склад ГСМ'                                        : 'img/attack types/гсм.png',
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
