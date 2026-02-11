@@ -1468,7 +1468,7 @@ function getAttacksOnUaIcon(position) {
         'Склад'                                            : 'img/attack types/склад.png',
         'Склад ГСМ'                                        : 'img/attack types/ГСМ2.png',
         'Энергогенерация'                                  : 'img/attack types/генерация.png',
-        'Тяговая подстанция'                               : 'img/attack types/тяговая подстанции.png',
+        'Тяговая подстанция'                               : 'img/attack types/ТПС2.png',
         'Мост'                                             : 'img/attack types/Мост2.png',
         'Газовая инфраструктура'                           : 'img/attack types/газ.png',
         'Судно'                                            : 'img/attack types/Судно2.png',
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
