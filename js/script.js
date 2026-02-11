@@ -1459,7 +1459,7 @@ function getMilEquipIcon(position) {
 
 function getAttacksOnUaIcon(position) {
     const iconUrls = {
-        'Предприятие ВПК'                                  : 'img/attack types/ВПК2.png',
+        'Предприятие ВПК'                                  : 'img/attack types/ВПК22.png',
         'ЖД инфраструктура'                                : 'img/attack types/депо.png',
         'Аэродром'                                         : 'img/attack types/Аэродром2.png',
         'Предприятие гражданского или двойного назначения' : 'img/attack types/ВПК.png',
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
