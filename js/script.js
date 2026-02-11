@@ -1461,7 +1461,7 @@ function getAttacksOnUaIcon(position) {
     const iconUrls = {
         'Предприятие ВПК'                                  : 'img/attack types/ВПК2.png',
         'ЖД инфраструктура'                                : 'img/attack types/депо.png',
-        'Аэродром'                                         : 'img/attack types/аэродром.png',
+        'Аэродром'                                         : 'img/attack types/Аэродром2.png',
         'Предприятие гражданского или двойного назначения' : 'img/attack types/ВПК.png',
         'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/РЛС2.png',
         'Подстанция'                                       : 'img/attack types/подстанция.png',
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
