@@ -1475,7 +1475,7 @@ function getAttacksOnUaIcon(position) {
         'Судно'                                            : 'img/attack types/Судно2.png',
         'Склад боеприпасов'                                : 'img/attack types/СкладБК2.png',
         'Стоянка грузового транспорта'                     : 'img/attack types/Парковка2.png',
-        'ППД'                                              : 'img/attack types/ПВД2.png',
+        'ППД'                                              : 'img/attack types/ПВД22.png',
         'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
         
         'default'                                          : 'img/attack types/Взрывчик.png',
@@ -3651,6 +3651,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
