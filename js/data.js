@@ -1,411 +1,80 @@
-// Основные KML-файлы
-// window.kmlFiles = [
-    // { name: "03.09.23", path: "kml/ControlZones/Control_23_09_03.kml" },
-    // { name: "06.10.23", path: "kml/ControlZones/Control_23_10_06.kml" },
-    // { name: "01.11.23", path: "kml/ControlZones/Control_23_11_01.kml" },
-    // { name: "01.12.23", path: "kml/ControlZones/Control_23_12_01.kml" },
+// Основные KML-файлы - автоматически генерируются из dateList
 
-    // { name: "01.01.24", path: "kml/ControlZones/Control_24_01_01.kml" },
-    // { name: "01.02.24", path: "kml/ControlZones/Control_24_02_01.kml" },
-    // { name: "01.03.24", path: "kml/ControlZones/Control_24_03_01.kml" },
-    // { name: "01.04.24", path: "kml/ControlZones/Control_24_04_01.kml" },
-    // { name: "01.05.24", path: "kml/ControlZones/Control_24_05_01.kml" },
-    // { name: "01.06.24", path: "kml/ControlZones/Control_24_06_01.kml" },
-    // { name: "01.07.24", path: "kml/ControlZones/Control_24_07_01.kml" },
-    // { name: "01.08.24", path: "kml/ControlZones/Control_24_08_01.kml" },
-    // { name: "01.09.24", path: "kml/ControlZones/Control_24_09_01.kml" },
-    // { name: "01.10.24", path: "kml/ControlZones/Control_24_10_01.kml" },
-    // { name: "01.11.24", path: "kml/ControlZones/Control_24_11_01.kml" },
-    // { name: "01.12.24", path: "kml/ControlZones/Control_24_12_01.kml" },
+// Функция для преобразования даты из формата "DD.MM.YY" в "YY_MM_DD"
+function formatDateForFilename(dateStr) {
+    const [day, month, year] = dateStr.split('.');
+    return `${year}_${month}_${day}`;
+}
 
-    // { name: "01.01.25", path: "kml/ControlZones/Control_25_01_01.kml" },    
-    // { name: "01.02.25", path: "kml/ControlZones/Control_25_02_01.kml" },
-    // { name: "01.03.25", path: "kml/ControlZones/Control_25_03_01.kml" },
-    // { name: "01.04.25", path: "kml/ControlZones/Control_25_04_01.kml" },
+// Функция для определения типов файлов, доступных для каждой даты
+function getFileTypesForDate(dateStr) {
+    const date = new Date(2000 + parseInt(dateStr.split('.')[2]), 
+                         parseInt(dateStr.split('.')[1]) - 1, 
+                         parseInt(dateStr.split('.')[0]));
     
-    // { name: "01.05.25", path: "kml/ControlZones/Control_25_05_01.kml" },
-    // { name: "02.05.25", path: "kml/ControlZones/Control_25_05_02.kml" },
-    // { name: "06.05.25", path: "kml/ControlZones/Control_25_05_06.kml" },
-    // { name: "10.05.25", path: "kml/ControlZones/Control_25_05_10.kml" },
-    // { name: "14.05.25", path: "kml/ControlZones/Control_25_05_14.kml" },
-    // { name: "18.05.25", path: "kml/ControlZones/Control_25_05_18.kml" },
-    // { name: "22.05.25", path: "kml/ControlZones/Control_25_05_22.kml" },
-    // { name: "26.05.25", path: "kml/ControlZones/Control_25_05_26.kml" },
-    // { name: "30.05.25", path: "kml/ControlZones/Control_25_05_30.kml" },
-    // { name: "01.06.25", path: "kml/ControlZones/Control_25_06_01.kml" },
-    // { name: "03.06.25", path: "kml/ControlZones/Control_25_06_03.kml" },
-    // { name: "07.06.25", path: "kml/ControlZones/Control_25_06_07.kml" },
-    // { name: "11.06.25", path: "kml/ControlZones/Control_25_06_11.kml" },
-    // { name: "15.06.25", path: "kml/ControlZones/Control_25_06_15.kml" },
-    // { name: "19.06.25", path: "kml/ControlZones/Control_25_06_19.kml" },
-    // { name: "23.06.25", path: "kml/ControlZones/Control_25_06_23.kml" },
-    // { name: "27.06.25", path: "kml/ControlZones/Control_25_06_27.kml" },
-    // { name: "01.07.25", path: "kml/ControlZones/Control_25_07_01.kml" },
-    // { name: "05.07.25", path: "kml/ControlZones/Control_25_07_05.kml" },
-    // { name: "09.07.25", path: "kml/ControlZones/Control_25_07_09.kml" },
-    // { name: "13.07.25", path: "kml/ControlZones/Control_25_07_13.kml" },
-    // { name: "17.07.25", path: "kml/ControlZones/Control_25_07_17.kml" },
-    // { name: "21.07.25", path: "kml/ControlZones/Control_25_07_21.kml" },
-    // { name: "25.07.25", path: "kml/ControlZones/Control_25_07_25.kml" },
-    // { name: "29.07.25", path: "kml/ControlZones/Control_25_07_29.kml" },
-    // { name: "02.08.25", path: "kml/ControlZones/Control_25_08_02.kml" },
-    // { name: "06.08.25", path: "kml/ControlZones/Control_25_08_06.kml" },
-    // { name: "10.08.25", path: "kml/ControlZones/Control_25_08_10.kml" },
-    // { name: "14.08.25", path: "kml/ControlZones/Control_25_08_14.kml" },
-    // { name: "18.08.25", path: "kml/ControlZones/Control_25_08_18.kml" },
-    // { name: "22.08.25", path: "kml/ControlZones/Control_25_08_22.kml" },
-    // { name: "26.08.25", path: "kml/ControlZones/Control_25_08_26.kml" },
-    // { name: "30.08.25", path: "kml/ControlZones/Control_25_08_30.kml" },
-    // { name: "03.09.25", path: "kml/ControlZones/Control_25_09_03.kml" },
-    // { name: "07.09.25", path: "kml/ControlZones/Control_25_09_07.kml" },
-    // { name: "11.09.25", path: "kml/ControlZones/Control_25_09_11.kml" },
-    // { name: "15.09.25", path: "kml/ControlZones/Control_25_09_15.kml" },
-    // { name: "19.09.25", path: "kml/ControlZones/Control_25_09_19.kml" },
-    // { name: "23.09.25", path: "kml/ControlZones/Control_25_09_23.kml" },
-	// { name: "21.10.25", path: "kml/ControlZones/Control_25_10_21.kml" },
-	// { name: "29.10.25", path: "kml/ControlZones/Control_25_10_29.kml" }
-   // ];
+    const startDate = new Date(2023, 8, 3); // 03.09.2023
+    const frontLineStart = new Date(2025, 1, 1); // 01.02.2025
+    const ruafafuStart = new Date(2025, 9, 17); // 17.10.2025
+    const ruafafuEnd = new Date(2026, 0, 25); // 25.01.2026
+    const combinedProgressStart = new Date(2025, 9, 9); // 09.10.2025
+    
+    const types = [];
+    
+    // ControlZones доступен для всех дат
+    types.push("ControlZones");
+    
+    // FrontLine доступен с 01.02.2025
+    if (date >= frontLineStart) {
+        types.push("FrontLine");
+    }
+    
+    // ProgressRuAF и ProgressAFU доступны с 17.10.2025 до 25.01.2026
+    if (date >= ruafafuStart && date <= ruafafuEnd) {
+        types.push("ProgressRuAF");
+        types.push("ProgressAFU");
+    }
+    
+    // Progress доступен с 09.10.2025
+    if (date >= combinedProgressStart) {
+        types.push("Progress");
+    }
+    
+    return types;
+}
+
+// Генерация window.kmlFiles на основе dateList
+window.kmlFiles = (window.dateList || []).map(dateStr => {
+    const formattedDate = formatDateForFilename(dateStr);
+    const types = getFileTypesForDate(dateStr);
+    
+    const paths = types.map(type => {
+        switch(type) {
+            case "ControlZones":
+                return `kml/ControlZones/Control_${formattedDate}.kml`;
+            case "FrontLine":
+                return `kml/FrontLine/FrontLine_${formattedDate}.kml`;
+            //case "ProgressRuAF":
+            //    return `kml/Progress/RuAF/ProgressRuAF_${formattedDate}.kml`;
+            //case "ProgressAFU":
+            //    return `kml/Progress/AFU/ProgressAFU_${formattedDate}.kml`;
+            case "Progress":
+                return `kml/Progress/Progress_${formattedDate}.kml`;
+            default:
+                return null;
+        }
+    }).filter(path => path !== null);
+    
+    return {
+        name: dateStr,
+        paths: paths
+    };
+});
 
 
-window.kmlFiles = [
-    { name: "03.09.23", paths: ["kml/ControlZones/Control_23_09_03.kml"] },
-	{ name: "06.10.23", paths: ["kml/ControlZones/Control_23_10_06.kml"] },
-	{ name: "01.11.23", paths: ["kml/ControlZones/Control_23_11_01.kml"] },
-	{ name: "01.12.23", paths: ["kml/ControlZones/Control_23_12_01.kml"] },
 
-	{ name: "01.01.24", paths: ["kml/ControlZones/Control_24_01_01.kml"] },
-	{ name: "01.02.24", paths: ["kml/ControlZones/Control_24_02_01.kml"] },
-	{ name: "01.03.24", paths: ["kml/ControlZones/Control_24_03_01.kml"] },
-	{ name: "01.04.24", paths: ["kml/ControlZones/Control_24_04_01.kml"] },
-	{ name: "01.05.24", paths: ["kml/ControlZones/Control_24_05_01.kml"] },
-	{ name: "01.06.24", paths: ["kml/ControlZones/Control_24_06_01.kml"] },
-	{ name: "01.07.24", paths: ["kml/ControlZones/Control_24_07_01.kml"] },
-	{ name: "01.08.24", paths: ["kml/ControlZones/Control_24_08_01.kml"] },
-	{ name: "01.09.24", paths: ["kml/ControlZones/Control_24_09_01.kml"] },
-	{ name: "01.10.24", paths: ["kml/ControlZones/Control_24_10_01.kml"] },
-	{ name: "01.11.24", paths: ["kml/ControlZones/Control_24_11_01.kml"] },
-	{ name: "01.12.24", paths: ["kml/ControlZones/Control_24_12_01.kml"] },
+///////////////////////////////////////////////////////////////
 
-	{ name: "01.01.25", paths: ["kml/ControlZones/Control_25_01_01.kml"] },
-	{ name: "01.02.25", paths: [
-								"kml/ControlZones/Control_25_02_01.kml",
-								"kml/FrontLine/FrontLine_25_02_01.kml"] },
-	{ name: "01.03.25", paths: [
-								"kml/ControlZones/Control_25_03_01.kml",
-							    "kml/FrontLine/FrontLine_25_03_01.kml"] },
-	{ name: "01.04.25", paths: [
-								"kml/ControlZones/Control_25_04_01.kml",
-							    "kml/FrontLine/FrontLine_25_04_01.kml"] },
-	
-	{ name: "01.05.25", paths: [
-								"kml/ControlZones/Control_25_05_01.kml",
-							    "kml/FrontLine/FrontLine_25_05_01.kml"] },
-	{ name: "02.05.25", paths: [
-								"kml/ControlZones/Control_25_05_02.kml",
-							    "kml/FrontLine/FrontLine_25_05_02.kml"] },
-	{ name: "06.05.25", paths: [
-								"kml/ControlZones/Control_25_05_06.kml",
-							    "kml/FrontLine/FrontLine_25_05_06.kml"] },
-	{ name: "10.05.25", paths: [
-								"kml/ControlZones/Control_25_05_10.kml",
-							    "kml/FrontLine/FrontLine_25_05_10.kml"] },
-	{ name: "14.05.25", paths: [
-								"kml/ControlZones/Control_25_05_14.kml",
-							    "kml/FrontLine/FrontLine_25_05_14.kml"] },
-	{ name: "18.05.25", paths: [
-								"kml/ControlZones/Control_25_05_18.kml",
-							    "kml/FrontLine/FrontLine_25_05_18.kml"] },
-	{ name: "22.05.25", paths: [
-								"kml/ControlZones/Control_25_05_22.kml",
-							    "kml/FrontLine/FrontLine_25_05_22.kml"] },
-	{ name: "26.05.25", paths: [
-								"kml/ControlZones/Control_25_05_26.kml",
-							    "kml/FrontLine/FrontLine_25_05_26.kml"] },
-	{ name: "30.05.25", paths: [
-								"kml/ControlZones/Control_25_05_30.kml",
-							    "kml/FrontLine/FrontLine_25_05_30.kml"] },
 
-	{ name: "01.06.25", paths: [
-								"kml/ControlZones/Control_25_06_01.kml",
-							    "kml/FrontLine/FrontLine_25_06_01.kml"] },
-	{ name: "03.06.25", paths: [
-								"kml/ControlZones/Control_25_06_03.kml",
-							    "kml/FrontLine/FrontLine_25_06_03.kml"] },
-	{ name: "07.06.25", paths: [
-								"kml/ControlZones/Control_25_06_07.kml",
-							    "kml/FrontLine/FrontLine_25_06_07.kml"] },
-	{ name: "11.06.25", paths: [
-								"kml/ControlZones/Control_25_06_11.kml",
-							    "kml/FrontLine/FrontLine_25_06_11.kml"] },
-	{ name: "15.06.25", paths: [
-								"kml/ControlZones/Control_25_06_15.kml",
-							    "kml/FrontLine/FrontLine_25_06_15.kml"] },
-	{ name: "19.06.25", paths: [
-								"kml/ControlZones/Control_25_06_19.kml",
-							    "kml/FrontLine/FrontLine_25_06_19.kml"] },
-	{ name: "23.06.25", paths: [
-								"kml/ControlZones/Control_25_06_23.kml",
-							    "kml/FrontLine/FrontLine_25_06_23.kml"] },
-	{ name: "27.06.25", paths: [
-								"kml/ControlZones/Control_25_06_27.kml",
-							    "kml/FrontLine/FrontLine_25_06_27.kml"] },
-	
-	{ name: "01.07.25", paths: [
-								"kml/ControlZones/Control_25_07_01.kml",
-							    "kml/FrontLine/FrontLine_25_07_01.kml"] },
-	{ name: "05.07.25", paths: [
-								"kml/ControlZones/Control_25_07_05.kml",
-							    "kml/FrontLine/FrontLine_25_07_05.kml"] },
-	{ name: "09.07.25", paths: [
-								"kml/ControlZones/Control_25_07_09.kml",
-							    "kml/FrontLine/FrontLine_25_07_09.kml"] },
-	{ name: "13.07.25", paths: [
-								"kml/ControlZones/Control_25_07_13.kml",
-							    "kml/FrontLine/FrontLine_25_07_13.kml"] },
-	{ name: "17.07.25", paths: [
-								"kml/ControlZones/Control_25_07_17.kml",
-							    "kml/FrontLine/FrontLine_25_07_17.kml"] },
-	{ name: "21.07.25", paths: [
-								"kml/ControlZones/Control_25_07_21.kml",
-							    "kml/FrontLine/FrontLine_25_07_21.kml"] },
-	{ name: "25.07.25", paths: [
-								"kml/ControlZones/Control_25_07_25.kml",
-							    "kml/FrontLine/FrontLine_25_07_25.kml"] },
-	{ name: "29.07.25", paths: [
-								"kml/ControlZones/Control_25_07_29.kml",
-							    "kml/FrontLine/FrontLine_25_07_29.kml"] },
-
-	{ name: "02.08.25", paths: [
-								"kml/ControlZones/Control_25_08_02.kml",
-							    "kml/FrontLine/FrontLine_25_08_02.kml"] },
-	{ name: "06.08.25", paths: [
-								"kml/ControlZones/Control_25_08_06.kml",
-							    "kml/FrontLine/FrontLine_25_08_06.kml"] },
-	{ name: "10.08.25", paths: [
-								"kml/ControlZones/Control_25_08_10.kml",
-							    "kml/FrontLine/FrontLine_25_08_10.kml"] },
-	{ name: "14.08.25", paths: [
-								"kml/ControlZones/Control_25_08_14.kml",
-							    "kml/FrontLine/FrontLine_25_08_14.kml"] },
-	{ name: "18.08.25", paths: [
-								"kml/ControlZones/Control_25_08_18.kml",
-							    "kml/FrontLine/FrontLine_25_08_18.kml"] },
-	{ name: "22.08.25", paths: [
-								"kml/ControlZones/Control_25_08_22.kml",
-							    "kml/FrontLine/FrontLine_25_08_22.kml"] },
-	{ name: "26.08.25", paths: [
-								"kml/ControlZones/Control_25_08_26.kml",
-							    "kml/FrontLine/FrontLine_25_08_26.kml"] },
-	{ name: "30.08.25", paths: [
-								"kml/ControlZones/Control_25_08_30.kml",
-							    "kml/FrontLine/FrontLine_25_08_30.kml"] },
-
-	{ name: "03.09.25", paths: [
-								"kml/ControlZones/Control_25_09_03.kml",
-							    "kml/FrontLine/FrontLine_25_09_03.kml"] },
-	{ name: "07.09.25", paths: [
-								"kml/ControlZones/Control_25_09_07.kml",
-							    "kml/FrontLine/FrontLine_25_09_07.kml"] },
-	{ name: "11.09.25", paths: [
-								"kml/ControlZones/Control_25_09_11.kml",
-							    "kml/FrontLine/FrontLine_25_09_11.kml"] },
-	{ name: "15.09.25", paths: [
-								"kml/ControlZones/Control_25_09_15.kml",
-							    "kml/FrontLine/FrontLine_25_09_15.kml"] },
-	{ name: "19.09.25", paths: [
-								"kml/ControlZones/Control_25_09_19.kml",
-							    "kml/FrontLine/FrontLine_25_09_19.kml"] },
-	{ name: "23.09.25", paths: [
-								"kml/ControlZones/Control_25_09_23.kml",
-							    "kml/FrontLine/FrontLine_25_09_23.kml"] },
-	{ name: "27.09.25", paths: [
-								"kml/ControlZones/Control_25_09_27.kml",
-							    "kml/FrontLine/FrontLine_25_09_27.kml"] },
-
-	{ name: "01.10.25", paths: [
-								"kml/ControlZones/Control_25_10_01.kml",
-							    "kml/FrontLine/FrontLine_25_10_01.kml"] },
-	{ name: "05.10.25", paths: [
-								"kml/ControlZones/Control_25_10_05.kml",
-							    "kml/FrontLine/FrontLine_25_10_05.kml"] },
-	{ name: "09.10.25", paths: [
-								"kml/ControlZones/Control_25_10_09.kml",
-							    "kml/FrontLine/FrontLine_25_10_09.kml",
-								"kml/Progress/Progress_25_10_09.kml"]},
-	{ name: "13.10.25", paths: [
-								"kml/ControlZones/Control_25_10_13.kml",
-							    "kml/FrontLine/FrontLine_25_10_13.kml"] },
-	
-	
-	
-	{ name: "17.10.25", paths: [
-                                "kml/ControlZones/Control_25_10_17.kml",
-								"kml/FrontLine/FrontLine_25_10_17.kml",
-                                
-								"kml/Progress/Progress_25_10_17.kml"]},
-	{name: "21.10.25", paths: [
-                                "kml/ControlZones/Control_25_10_21.kml",
-								"kml/FrontLine/FrontLine_25_10_21.kml",
-                               
-								"kml/Progress/Progress_25_10_21.kml"]},
-	{ name: "25.10.25", paths: [
-                                "kml/ControlZones/Control_25_10_25.kml",
-								"kml/FrontLine/FrontLine_25_10_25.kml",
-                                
-								"kml/Progress/Progress_25_10_25.kml"]},
-	{ name: "29.10.25", paths: [
-                                "kml/ControlZones/Control_25_10_29.kml",
-								"kml/FrontLine/FrontLine_25_10_29.kml",
-                                
-								"kml/Progress/Progress_25_10_29.kml"]},
-	{ name: "02.11.25", paths: [
-                                "kml/ControlZones/Control_25_11_02.kml",
-                                
-								"kml/FrontLine/FrontLine_25_11_02.kml",
-                             
-								"kml/Progress/Progress_25_11_02.kml"]},
-	{name: "06.11.25", paths: [
-                                "kml/ControlZones/Control_25_11_06.kml",
-                              
-								"kml/FrontLine/FrontLine_25_11_06.kml",
-                               
-								"kml/Progress/Progress_25_11_06.kml"]},
-	{name: "10.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_10.kml",
-    	                       
-								"kml/FrontLine/FrontLine_25_11_10.kml",
-                             
-								"kml/Progress/Progress_25_11_10.kml"]},
-	{name: "14.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_14.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_11_14.kml",
-                               
-								"kml/Progress/Progress_25_11_14.kml"]},
-	{name: "18.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_18.kml",
-    	                      
-								"kml/FrontLine/FrontLine_25_11_18.kml",
-                               
-								"kml/Progress/Progress_25_11_18.kml"]},
-	{name: "22.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_22.kml",
-    	                       
-								"kml/FrontLine/FrontLine_25_11_22.kml",
-                               
-								"kml/Progress/Progress_25_11_22.kml"]},
-	{name: "26.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_26.kml",
-    	                      
-								"kml/FrontLine/FrontLine_25_11_26.kml",
-                                
-								"kml/Progress/Progress_25_11_26.kml"]},
-	{name: "30.11.25", paths: [
-        	                    "kml/ControlZones/Control_25_11_30.kml",
-    	                      
-								"kml/FrontLine/FrontLine_25_11_30.kml",
-                              
-								"kml/Progress/Progress_25_11_30.kml"]},
-	{name: "04.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_04.kml",
-    	                       
-								"kml/FrontLine/FrontLine_25_12_04.kml",
-                             
-								"kml/Progress/Progress_25_12_04.kml"]},
-	{name: "08.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_08.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_12_08.kml",
-                                
-								"kml/Progress/Progress_25_12_08.kml"]},
-	{name: "12.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_12.kml",
-    	                       
-								"kml/FrontLine/FrontLine_25_12_12.kml",
-                              
-								"kml/Progress/Progress_25_12_12.kml"]},
-	{name: "16.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_16.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_12_16.kml",
-                               
-								"kml/Progress/Progress_25_12_16.kml"]},
-	{name: "20.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_20.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_12_20.kml",
-                               
-								"kml/Progress/Progress_25_12_20.kml"]},
-	{name: "24.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_24.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_12_24.kml",
-                                
-								"kml/Progress/Progress_25_12_24.kml"]},
-	{name: "28.12.25", paths: [
-        	                    "kml/ControlZones/Control_25_12_28.kml",
-    	                        
-								"kml/FrontLine/FrontLine_25_12_28.kml",
-                               
-								"kml/Progress/Progress_25_12_28.kml"]},
-	{name: "01.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_01.kml",
-    	                      
-								//"kml/FrontLine/FrontLine_26_01_01.kml",
-                                
-								"kml/Progress/Progress_26_01_01.kml"]},
-	{name: "05.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_05.kml",
-    	                        
-								//"kml/FrontLine/FrontLine_26_01_05.kml",
-                               
-								"kml/Progress/Progress_26_01_05.kml"]},
-	{name: "09.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_09.kml",
-    	                      
-								//"kml/FrontLine/FrontLine_26_01_09.kml",
-                                
-								"kml/Progress/Progress_26_01_09.kml"]},
-	{name: "13.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_13.kml",
-    	                       
-								//"kml/FrontLine/FrontLine_26_01_13.kml",
-                               
-								"kml/Progress/Progress_26_01_13.kml"]},
-	{name: "17.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_17.kml",
-    	                      
-								//"kml/FrontLine/FrontLine_26_01_17.kml",
-                               
-								"kml/Progress/Progress_26_01_17.kml"]},
-	{name: "21.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_21.kml",
-    	                      
-								//"kml/FrontLine/FrontLine_26_01_21.kml",
-                                
-								"kml/Progress/Progress_26_01_21.kml"]},
-	{name: "25.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_25.kml",
-  								// "kml/FrontLine/FrontLine_26_01_25.kml",
-       							"kml/Progress/Progress_26_01_25.kml"] },
-	{name: "29.01.26", paths: [
-        	                    "kml/ControlZones/Control_26_01_29.kml",
-    	                       	//"kml/FrontLine/FrontLine_26_01_29.kml",
-                              	"kml/Progress/Progress_26_01_29.kml"] },
-	{name: "02.02.26", paths: [
-        	                    "kml/ControlZones/Control_26_02_02.kml",
-    	                        //"kml/FrontLine/FrontLine_26_02_02.kml",
-                                "kml/Progress/Progress_26_02_02.kml"] },
-	{name: "06.02.26", paths: [
-        	                    "kml/ControlZones/Control_26_02_06.kml",
-    	                        //"kml/FrontLine/FrontLine_26_02_06.kml",
-                                "kml/Progress/Progress_26_02_06.kml"] },
-	{name: "10.02.26", paths: [
-        	                    "kml/ControlZones/Control_26_02_10.kml",
-    	                        //"kml/FrontLine/FrontLine_26_02_10.kml",
-                                "kml/Progress/Progress_26_02_10.kml"] }
-		
-   ];
 
 // Постоянные слои
 window.permanentLayers = [
@@ -462,18 +131,6 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 							  "kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
 window.attacksOnUaLayers = [];
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

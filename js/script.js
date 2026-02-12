@@ -940,7 +940,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
                         ${objectType ? `<div><strong>Тип объекта:</strong> ${objectType}</div>` : ''}
                         ${attackDate ? `<div><strong>Дата:</strong> ${attackDate}</div>` : ''}
-                        ${weaponType ? `<div><strong>Средства поражения:</strong> ${weaponType}</div>` : ''}
+                        ${weaponType ? `<div><strong>Средство поражения:</strong> ${weaponType}</div>` : ''}
                         <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
                             <strong>Координаты:</strong> 
                             <span style="font-family: monospace;">${coordsString}</span>
@@ -2487,6 +2487,9 @@ async function init() {
     // Шаг 1: Загружаем постоянные слои
     await loadPermanentKmlLayers();
     
+    // Проверяем, что kmlFiles сгенерирован правильно
+    console.log('KML файлов загружено:', window.kmlFiles.length);
+    
     // Шаг 2: Инициализируем selectedDate текущей датой
     selectedDate = getCurrentDateFormatted();
     console.log('Установлена текущая дата:', selectedDate);
@@ -3651,39 +3654,6 @@ document.addEventListener('click', function(e) {
         }
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
