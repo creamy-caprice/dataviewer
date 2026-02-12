@@ -1459,6 +1459,7 @@ function getMilEquipIcon(position) {
 
 function getAttacksOnUaIcon(position) {
     const iconUrls = {
+        'Объект неустановленного назначения'               : 'img/attack types/Вопрос2.png',
         'Предприятие ВПК'                                  : 'img/attack types/ВПК22.png',
         'ЖД инфраструктура'                                : 'img/attack types/депо.png',
         'Аэродром'                                         : 'img/attack types/Аэродром2.png',
@@ -1476,7 +1477,7 @@ function getAttacksOnUaIcon(position) {
         'Стоянка грузового транспорта'                     : 'img/attack types/Парковка2.png',
         'ППД'                                              : 'img/attack types/ПВД2.png',
         'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
-        'Объект неустановленного назначения'               : 'img/attack types/вопрос.png',
+        
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
 
@@ -3650,6 +3651,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
