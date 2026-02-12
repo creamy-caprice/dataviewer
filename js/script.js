@@ -1475,7 +1475,7 @@ function getAttacksOnUaIcon(position) {
         'Склад боеприпасов'                                : 'img/attack types/склад-бк.png',
         'Стоянка грузового транспорта'                     : 'img/attack types/Парковка2.png',
         'ППД'                                              : 'img/attack types/ПВД2.png',
-        'Поезда и локомотивы'                              : 'img/attack types/поезда.png',
+        'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
         'Объект неустановленного назначения'               : 'img/attack types/вопрос.png',
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
@@ -3650,6 +3650,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
 
 
 
