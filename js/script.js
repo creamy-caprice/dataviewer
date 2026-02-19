@@ -17,6 +17,7 @@ const LOG_STYLES = false; // Можно менять на false/true для пе
 let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
 let isMilEquipVisible     = false; // Флаг видимости слоя техники
 let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
+let isFortificationVisible = false; // Флаг видимости слоя фортификаций
 
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
@@ -602,7 +603,8 @@ window.kmlStyleModes = {
     // Заданные стили
     STYLE_MG:   'styleMG', // Для мультиполигональных файлов
     STYLE_RUAF: 'styleRuAF', // Для файлов из RuAF
-    STYLE_AFU:  'styleAFU'  // Для файлов из AFU
+    STYLE_AFU:  'styleAFU',  // Для файлов из AFU
+    STYLE_CITIES: 'styleCities' // Для городов
 };
 
 // Определение стилей
@@ -610,14 +612,14 @@ window.kmlStyles = {
     [window.kmlStyleModes.STYLE_MG]: {
         polygon: {
             color: '#ffffff', // Обводка для видимости
-            weight: 1, // Толщина линии
+            weight: 5, // Толщина линии
             fillColor: '#999999', //Заливка
             fillOpacity: 0.25, //  Непрозрачность
             interactive: false
         },
         polyline: {
             color: '#ffffff', // Цвет линии
-            weight: 1, // Толщина линии
+            weight: 5, // Толщина линии
             opacity: 1,
             interactive: false
         }
@@ -651,6 +653,21 @@ window.kmlStyles = {
             opacity: 0.8,
             interactive: false
         }
+    },
+    [window.kmlStyleModes.STYLE_CITIES]: {
+        polygon: {
+            color: '#ffffff',      // цвет обводки
+            weight: 1,             // толщина обводки
+            fillColor: '#999999',   // цвет заливки
+            fillOpacity: 0.25,      // прозрачность заливки
+            interactive: false
+        },
+        polyline: {
+            color: '#ffffff',
+            weight: 1,
+            opacity: 1,
+            interactive: false
+        }
     }
 };
 
@@ -662,11 +679,13 @@ async function getStyleModeForFile(filePath) {
     else if (filePath.includes('/AFU/')) 
         return window.kmlStyleModes.STYLE_AFU;
     else if (filePath.includes('/Progress/')) {
-        // Новые файлы в папке Progress могут содержать обе стороны
-        // Возвращаем DEFAULT, чтобы стиль определялся по description
         return window.kmlStyleModes.DEFAULT;
     }
-    
+        
+    if (filePath.includes('CitiesBorders.kml')) {
+        return window.kmlStyleModes.STYLE_CITIES;
+    }
+        
     // Для остальных файлов проверяем содержимое на мультигеометрию
     try {
         const response = await fetch(filePath);
@@ -681,7 +700,6 @@ async function getStyleModeForFile(filePath) {
         
         if (hasMultiGeometry) {
             // Для мультигеометрии проверяем, есть ли description с указанием стороны
-            // Если есть - возвращаем DEFAULT, чтобы стиль определялся динамически
             const placemarks = kmlDoc.querySelectorAll('Placemark');
             for (const placemark of placemarks) {
                 const description = placemark.querySelector('description');
@@ -691,7 +709,8 @@ async function getStyleModeForFile(filePath) {
                 }
             }
             // Если description нет, но есть мультигеометрия - используем STYLE_MG
-            return window.kmlStyleModes.STYLE_MG;
+            // return window.kmlStyleModes.STYLE_MG;
+            return window.kmlStyleModes.DEFAULT;
         }
     } catch (error) {
         console.error(`Ошибка проверки файла на мультигеометрию: ${filePath}`, error);
@@ -766,7 +785,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
         // Если у нас DEFAULT и есть мультигеометрия без description, используем STYLE_MG
         const hasMultiGeometry = placemark.querySelector('MultiGeometry') !== null;
         if (placemarkStyleMode === window.kmlStyleModes.DEFAULT && hasMultiGeometry && !descriptionStyleMode) {
-            placemarkStyleMode = window.kmlStyleModes.STYLE_MG;
+            // placemarkStyleMode = window.kmlStyleModes.STYLE_MG;
         }
         
         // Получаем стиль для Placemark из KML
@@ -1666,6 +1685,44 @@ async function initAttacksOnUaLayer(kmlFilePaths) {
     return attacksOnUaLayerGroup;
 }
 
+// Функция для инициализации слоя с фортификационными линиями
+async function initFortificationLayer(kmlFilePaths) {
+    // Если передана строка, преобразуем в массив
+    if (typeof kmlFilePaths === 'string') {
+        kmlFilePaths = [kmlFilePaths];
+    }
+    
+    // Удаляем старые слои фортификаций, если они существуют
+    if (window.fortificationLayers && window.fortificationLayers.length) {
+        window.fortificationLayers.forEach(layer => {
+            if (map.hasLayer(layer)) {
+                map.removeLayer(layer);
+            }
+        });
+        window.fortificationLayers = [];
+    }
+    
+    // Создаём новую группу слоёв для фортификаций
+    const fortificationLayerGroup = L.layerGroup();
+    
+    // Загружаем все KML-файлы фортификаций в группу
+    for (const path of kmlFilePaths) {
+        await loadKmlToLayer(path, fortificationLayerGroup, {
+            isPermanent: false,
+            preserveZoom: true,
+            fitBounds: false
+            // styleMode не указываем — используется DEFAULT, т.е. стили из KML
+        });
+    }
+    
+    // Сохраняем группу в глобальном массиве
+    window.fortificationLayers.push(fortificationLayerGroup);
+    
+    console.log(`Загружено слоёв фортификаций: ${window.fortificationLayers.length}, объектов: ${fortificationLayerGroup.getLayers().length}`);
+    
+    return fortificationLayerGroup;
+}
+
 // Функция для переключения отображения техники
 function toggleMilEquipVisibility() {
     const milEquipBtn = document.getElementById('mil-equip-btn');
@@ -1770,6 +1827,58 @@ function toggleAttacksOnUaVisibility() {
     updateAttacksOnUaButtonTitle();
 }
 
+// Функция для переключения отображения фортификаций
+function toggleFortificationVisibility() {
+    const fortificationBtn = document.getElementById('fortification-btn');
+    
+    // Переключаем флаг
+    isFortificationVisible = !isFortificationVisible;
+    
+    if (isFortificationVisible) {
+        // Показываем фортификации
+        fortificationBtn.classList.add('active');
+        
+        // Если слои фортификаций ещё не загружены, загружаем их
+        if (!window.fortificationLayers || window.fortificationLayers.length === 0) {
+            console.log('Загрузка фортификаций...');
+            initFortificationLayer(window.fortificationKmlPaths).then(() => {
+                // После загрузки добавляем на карту
+                window.fortificationLayers.forEach(layer => {
+                    if (layer && !map.hasLayer(layer)) {
+                        layer.addTo(map);
+                    }
+                });
+            });
+        } else {
+            // Если уже загружены, просто добавляем на карту
+            window.fortificationLayers.forEach(layer => {
+                if (layer && !map.hasLayer(layer)) {
+                    layer.addTo(map);
+                }
+            });
+        }
+        
+        console.log('Фортификации показаны');
+    } else {
+        // Скрываем фортификации
+        fortificationBtn.classList.remove('active');
+        
+        // Убираем слои фортификаций с карты
+        if (window.fortificationLayers && window.fortificationLayers.length) {
+            window.fortificationLayers.forEach(layer => {
+                if (layer && map.hasLayer(layer)) {
+                    map.removeLayer(layer);
+                }
+            });
+        }
+        
+        console.log('Фортификации скрыты');
+    }
+    
+    // Обновляем title кнопки
+    updateFortificationButtonTitle();
+}
+
 // Функция для обновления заголовка кнопки техники
 function updateMilEquipButtonTitle() {
     const milEquipBtn = document.getElementById('mil-equip-btn');
@@ -1796,6 +1905,21 @@ function updateAttacksOnUaButtonTitle() {
                 (t.showAttacksOnUa || 'Показать удары по Украине');
         } else {
             attacksOnUaBtn.title = isAttacksOnUaVisible ? 'Скрыть удары по Украине' : 'Показать удары по Украине';
+        }
+    }
+}
+
+// Функция для обновления заголовка кнопки фортификаций
+function updateFortificationButtonTitle() {
+    const fortificationBtn = document.getElementById('fortification-btn');
+    if (fortificationBtn) {
+        const t = translations[currentLang];
+        if (t) {
+            fortificationBtn.title = isFortificationVisible ? 
+                (t.hideFortifications || 'Скрыть фортификации (Playfra map)') : 
+                (t.showFortifications || 'Показать фортификации (Playfra map)');
+        } else {
+            fortificationBtn.title = isFortificationVisible ? 'Скрыть фортификации (Playfra map)' : 'Показать фортификации (Playfra map)';
         }
     }
 }
@@ -2602,6 +2726,12 @@ async function init() {
     if (attacksOnUaBtn) {
         attacksOnUaBtn.addEventListener('click', toggleAttacksOnUaVisibility);
         updateAttacksOnUaButtonTitle(); // Инициализируем заголовок
+    }
+    // обработчик для кнопки фортификаций
+    const fortificationBtn = document.getElementById('fortification-btn');
+    if (fortificationBtn) {
+        fortificationBtn.addEventListener('click', toggleFortificationVisibility);
+        updateFortificationButtonTitle(); // Инициализируем заголовок
     }
     
     window.initialLayerSet = false;
