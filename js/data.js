@@ -140,11 +140,13 @@ window.fortificationKmlPaths = ["kml/Fortifications/Trenches_Volchansk.kml",
 								"kml/Fortifications/Trenches_Pokrovsk.kml",
 								"kml/Fortifications/Trenches_ Mezhevaya.kml",
 								"kml/Fortifications/Trenches_Gulyaypole.kml",
+								"kml/Fortifications/Trenches_Zaporozhie.kml",
 								
 								"kml/Fortifications/Ditches.kml",
 								"kml/Fortifications/Barbed_wire.kml",
                                 "kml/Fortifications/Dragons_teeth.kml"];
 window.fortificationLayers = [];
+
 
 
 
