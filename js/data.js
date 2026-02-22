@@ -79,7 +79,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_02_18.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_02_22.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
@@ -146,6 +146,7 @@ window.fortificationKmlPaths = ["kml/Fortifications/Trenches_Volchansk.kml",
 								"kml/Fortifications/Barbed_wire.kml",
                                 "kml/Fortifications/Dragons_teeth.kml"];
 window.fortificationLayers = [];
+
 
 
 
