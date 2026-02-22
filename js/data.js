@@ -51,8 +51,8 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
         switch(type) {
             case "ControlZones":
                 return `kml/ControlZones/Control_${formattedDate}.kml`;
-            case "FrontLine":
-                return `kml/FrontLine/FrontLine_${formattedDate}.kml`;
+            //case "FrontLine":
+            //    return `kml/FrontLine/FrontLine_${formattedDate}.kml`;
             //case "ProgressRuAF":
             //    return `kml/Progress/RuAF/ProgressRuAF_${formattedDate}.kml`;
             //case "ProgressAFU":
@@ -146,6 +146,7 @@ window.fortificationKmlPaths = ["kml/Fortifications/Trenches_Volchansk.kml",
 								"kml/Fortifications/Barbed_wire.kml",
                                 "kml/Fortifications/Dragons_teeth.kml"];
 window.fortificationLayers = [];
+
 
 
 
