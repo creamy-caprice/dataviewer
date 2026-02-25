@@ -1685,7 +1685,7 @@ async function initAttacksOnUaLayer(kmlFilePaths) {
     return attacksOnUaLayerGroup;
 }
 
-// Функция для инициализации слоя с фортификационными линиями
+// Функция для инициализации слоя с фортификационными линиями (поддержка .kml и .geojson)
 async function initFortificationLayer(kmlFilePaths) {
     // Если передана строка, преобразуем в массив
     if (typeof kmlFilePaths === 'string') {
@@ -1705,14 +1705,54 @@ async function initFortificationLayer(kmlFilePaths) {
     // Создаём новую группу слоёв для фортификаций
     const fortificationLayerGroup = L.layerGroup();
     
-    // Загружаем все KML-файлы фортификаций в группу
+    // Загружаем все файлы (KML или GeoJSON) в группу
     for (const path of kmlFilePaths) {
-        await loadKmlToLayer(path, fortificationLayerGroup, {
-            isPermanent: false,
-            preserveZoom: true,
-            fitBounds: false
-            // styleMode не указываем — используется DEFAULT, т.е. стили из KML
-        });
+        const ext = path.split('.').pop().toLowerCase();
+        
+        if (ext === 'geojson' || ext === 'json') {
+            // Загрузка GeoJSON
+            try {
+                const response = await fetch(path);
+                if (!response.ok) {
+                    console.error(`Ошибка загрузки GeoJSON (${path}): ${response.status}`);
+                    continue;
+                }
+                const geojsonData = await response.json();
+                
+                // Опции стиля (можно взять из свойств GeoJSON или задать свои)
+                const geoJsonLayer = L.geoJSON(geojsonData, {
+                    style: function(feature) {
+                        // Используем свойства из файла, если есть
+                        return {
+                            color: feature.properties?.stroke || '#ff0000',
+                            weight: feature.properties?.['stroke-width'] || 2,
+                            opacity: feature.properties?.['stroke-opacity'] || 1,
+                            // можно добавить другие параметры
+                        };
+                    },
+                    onEachFeature: function(feature, layer) {
+                        // Если нужно добавить всплывающее окно с именем
+                        if (feature.properties && feature.properties.name) {
+                            layer.bindPopup(feature.properties.name);
+                        }
+                    }
+                });
+                
+                geoJsonLayer.addTo(fortificationLayerGroup);
+                console.log(`Загружен GeoJSON: ${path}, объектов: ${geoJsonLayer.getLayers().length}`);
+                
+            } catch (error) {
+                console.error(`Ошибка загрузки GeoJSON: ${path}`, error);
+            }
+        } else {
+            // Старая загрузка KML
+            await loadKmlToLayer(path, fortificationLayerGroup, {
+                isPermanent: false,
+                preserveZoom: true,
+                fitBounds: false
+                // styleMode не указываем — используется DEFAULT
+            });
+        }
     }
     
     // Сохраняем группу в глобальном массиве
@@ -1722,6 +1762,7 @@ async function initFortificationLayer(kmlFilePaths) {
     
     return fortificationLayerGroup;
 }
+
 
 // Функция для переключения отображения техники
 function toggleMilEquipVisibility() {
