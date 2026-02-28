@@ -1305,32 +1305,39 @@ function applyPermanentLayersBounds(allBounds) {
 
 // Функция загрузки основного KML (с сохранением оригинальных стилей)
 async function loadKmlFile(file, targetCRS) {
-    if (currentLayer) {
-        map.removeLayer(currentLayer);
-    }
+    // Создаём новый слой, но пока не добавляем на карту
+    const newLayer = L.layerGroup();
 
     try {
-        // Загружаем границы и всё-всё из kml
-        
-        const layerGroup = L.layerGroup().addTo(map);
-        currentLayer = layerGroup;
-        
-        // Загружаем все KML-файлы для этой даты
+        // Загружаем все KML-файлы для этой даты в новый слой
         const loadPromises = file.paths.map(path => 
-            loadKmlToLayer(path, layerGroup, {
+            loadKmlToLayer(path, newLayer, {
                 isPermanent: false,
                 preserveZoom: preserveZoom,
                 fitBounds: false
             })
         );
-        
-        // Ждем загрузки всех файлов
+
+        // Ждём полной загрузки всех файлов
         await Promise.all(loadPromises);
-        
-        // Применяем границы
+
+        // Теперь новый слой готов – добавляем его на карту
+        newLayer.addTo(map);
+
+        // Удаляем старый слой, если он существовал
+        if (currentLayer) {
+            map.removeLayer(currentLayer);
+        }
+
+        // Обновляем ссылку на текущий слой
+        currentLayer = newLayer;
+
+        // Применяем границы (если нужно) – оставляем как было
         preserveZoom = true;
     } catch (error) {
         console.error("loadKmlFile: ${file.path} ", error);
+        // В случае ошибки удаляем новый слой, если он был создан
+        if (newLayer) map.removeLayer(newLayer);
     }
 }
 
@@ -1957,10 +1964,8 @@ function updateFortificationButtonTitle() {
         const t = translations[currentLang];
         if (t) {
             fortificationBtn.title = isFortificationVisible ? 
-                (t.hideFortifications || 'Скрыть фортификации (Playfra map)') : 
-                (t.showFortifications || 'Показать фортификации (Playfra map)');
-        } else {
-            fortificationBtn.title = isFortificationVisible ? 'Скрыть фортификации (Playfra map)' : 'Показать фортификации (Playfra map)';
+                (t.hideFortifications) : 
+                (t.showFortifications);
         }
     }
 }
@@ -2752,6 +2757,9 @@ async function init() {
             });
         }
     }, 300);
+	
+    // Кнопка полноэкранного режима
+    initFullscreenControl();
     
     // Инициализация поиска по названию
     initSearchFunctionality();
@@ -2871,18 +2879,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     switchMapStatViewByBtn(mapBtn, stats1Btn, stats2Btn);
     
-});
-
-// Обработчик изменения языка
-document.addEventListener('languageChanged', function(event) {
-    currentLang = event.detail;
-    if (datePicker) {
-        datePicker.destroy();
-    }
-        initDatePicker();
-    
-    populateCitiesDropdown(); // Обновляем основной список
-    initDartMenu(); // Перестраиваем дартс-меню
 });
 
 // Закрываем меню при клике на карту

@@ -542,3 +542,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+
+
+
+
+let fullscreenToggle;
+
+function initFullscreenControl() {
+    fullscreenToggle = L.control({ position: 'topright' });
+    fullscreenToggle.onAdd = function(map) {
+        this._div = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-fullscreen-toggle');
+        const link = L.DomUtil.create('a', 'leaflet-control-fullscreen-toggle-btn', this._div);
+        link.href = '#';
+        link.title = translations[currentLang].fullscreenTitle || 'Полноэкранный режим';
+        link.innerHTML = '⛶'; // начальный символ
+		
+		// Функция обновления символа в зависимости от состояния fullscreen
+		function updateFullscreenIcon() {
+			const isFullscreen = document.fullscreenElement ||
+								 document.webkitFullscreenElement ||
+								 document.mozFullScreenElement ||
+								 document.msFullscreenElement;
+			link.innerHTML = isFullscreen ? '✕' : '⛶';
+		}			
+
+        // Слушаем изменения полноэкранного режима (кросс-браузерно)
+        document.addEventListener('fullscreenchange', updateFullscreenIcon);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
+
+		function toggleFullscreen() {
+			document.body.classList.toggle('fullscreen');
+			// Обновим размер карты после изменения отображения top-bar
+			setTimeout(() => {
+				map.invalidateSize();
+				updateFullscreenIcon();
+			}, 100);
+		}
+
+        // Обработчик клика — вызывает существующую функцию toggleFullscreen
+        L.DomEvent.on(link, 'click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleFullscreen(); // предполагается, что эта функция определена глобально
+        });
+
+        return this._div;
+    };
+    fullscreenToggle.addTo(map);
+}
+
+
+
+
+
+
+
+
+
+
+
+

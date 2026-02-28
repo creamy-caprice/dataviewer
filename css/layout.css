@@ -941,3 +941,35 @@ body {
 /* #attacks-on-ua-btn { */
 /* display: none !important; */
 /* } */
+
+.fullscreen .top-bar {
+    display: none;
+}
+.fullscreen #map-container {
+    height: 100vh;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.content-section {
+    display: none;
+}
+.content-section.active {
+    display: block;
+}
+#map-container {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+#map-container.active {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+}
