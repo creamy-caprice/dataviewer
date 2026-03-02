@@ -601,6 +601,38 @@ function initFullscreenControl() {
 
 
 
+// Функция, которая скрывает тултипы с "+0" и показывает остальные
+function hideZeroTooltips() {
+    document.querySelectorAll('.polyline-measure-tooltip').forEach(tooltip => {
+        const diffDiv = tooltip.querySelector('.polyline-measure-tooltip-difference');
+        if (diffDiv) {
+            const diffText = diffDiv.textContent.trim();
+            // Если текст содержит "+0" или просто "0" (в зависимости от локализации)
+            if (diffText === '+0' || diffText === '0' || diffText === '0 км' || diffText === '0 м') {
+                tooltip.style.display = 'none';
+            } else {
+                // Если расстояние ненулевое, показываем (на случай, если ранее было скрыто)
+                tooltip.style.display = '';
+            }
+        }
+    });
+}
 
+// Наблюдаем за контейнером, куда плагин добавляет тултипы (обычно .leaflet-marker-pane)
+const targetNode = document.querySelector('.leaflet-marker-pane');
+if (targetNode) {
+    const observer = new MutationObserver(function(mutations) {
+        // Запускаем проверку при любых изменениях (добавление, удаление, изменение атрибутов)
+        hideZeroTooltips();
+    });
 
+    observer.observe(targetNode, {
+        childList: true,      // следить за добавлением/удалением элементов
+        subtree: true,        // следить за всеми потомками
+        characterData: true,  // следить за изменением текста внутри элементов
+        attributes: false     // изменение атрибутов не нужно
+    });
 
+    // Первоначальный запуск для уже существующих тултипов
+    hideZeroTooltips();
+}
