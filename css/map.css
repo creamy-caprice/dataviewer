@@ -457,6 +457,7 @@
     position: absolute;
     top: 0;
     left: 0;
+	font-size: 1.1rem;
 }
 
 .leaflet-control-ruler-toggle.active a { /* Прожатая кнопка линейки-менюшки */
@@ -580,5 +581,6 @@ img.leaflet-marker-icon.leaflet-zoom-animated.leaflet-interactive
 /* .polyline-measure-tooltip:first-child { /* Убрать первый тултип с +0 */ */
     /* display: none; */
 /* } */
+
 
 
