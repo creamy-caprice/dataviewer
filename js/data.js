@@ -115,8 +115,8 @@ window.cities = [
 // Путь к файлу с точками
 // window.pointsKmlPaths = ["kml/Geolocations/2026 год январь.kml",
 //						  "kml/Geolocations/2023-2025.kml"];
-//window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
-//						  "kml/Geolocations/oldesPoint.kml"];
+window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
+						  "kml/Geolocations/oldesPoint.kml"];
  window.pointLayers = [];
  window.pointsDateRange = {
     start: null,
@@ -148,6 +148,7 @@ window.fortificationKmlPaths = ["kml/Fortifications/Geojson/Trenches_Volchansk.g
 								"kml/Fortifications/Geojson/Barbed_wire.geojson",
                                 "kml/Fortifications/Geojson/Dragons_teeth.geojson"];
 window.fortificationLayers = [];
+
 
 
 
