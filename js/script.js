@@ -1996,6 +1996,8 @@ function getStartDateByRange(rangeType, baseDate = null) {
             result.setDate(result.getDate() - 7); // По умолчанию 1 неделя
     }
     
+    result.setDate(result.getDate() + 1); // включаем сегодня
+    
     return result;
 }
 
@@ -2686,7 +2688,7 @@ async function init() {
     // Шаг 5: Инициализация кнопок фильтров
     initFilterButtons();
     initMobileFilterMenu();
-    
+        
     // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
     document.querySelector('.date-navigator-wrapper').style.display = 'block';
@@ -3153,7 +3155,7 @@ function initDartMenu() {
     
     // Обработчик изменения размера окна
     function handleResize() {
-        if (window.innerWidth < 1838) {
+        if (window.innerWidth < 1201) {
             hideableItems.forEach(item => item.style.display = 'none');
             navMenuToggle.style.display = 'flex';
         } else {

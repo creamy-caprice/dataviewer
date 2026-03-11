@@ -219,7 +219,7 @@
 }
 
 /* Для мобильной адаптации */
-@media (max-width: 1837px) { /* Когда схлопываем в дартс-меню */
+@media (max-width: 1200px) { /* Когда схлопываем в дартс-меню (лупа) */
     #nav-menu-toggle {
         display: flex !important;
     }
@@ -254,7 +254,7 @@
     }	
 }
 
-@media (min-width: 1838px) {
+@media (min-width: 1201px) {
     #nav-menu-toggle {
         display: none !important;
     }
@@ -457,7 +457,7 @@
     position: absolute;
     top: 0;
     left: 0;
-	font-size: 1.1rem;
+    font-size: 1.1rem;
 }
 
 .leaflet-control-ruler-toggle.active a { /* Прожатая кнопка линейки-менюшки */

@@ -511,7 +511,7 @@ body {
 }
 
 /* Моб. и планшет: центрируем кнопку строго по высоте инпута в меню */
-@media (max-width: 1837px) {
+@media (max-width: 1200px) {
  #coords-input + .clear-input-btn { display: none !important; }
  /* #coords-input + .copy-input-btn { display: none !important; } */
  /* #coords-input + .copy-input-btn + .clear-input-btn{ display: none !important; } */
