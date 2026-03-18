@@ -5751,7 +5751,7 @@
                     <value>https://t.me/creamy_caprice/11453</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.03.11</value>
@@ -5779,7 +5779,7 @@
                     <value>https://t.me/creamy_caprice/11454</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.03.11</value>
@@ -5833,7 +5833,7 @@
                     <value>https://t.me/creamy_caprice/11460</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.02.26</value>
@@ -5860,7 +5860,7 @@
                     <value>https://t.me/creamy_caprice/11461</value>
                 </Data>
                 <Data name="позиция">
-                    <value>ВС РФ*</value>
+                    <value>ВС РФ</value>
                 </Data>
                 <Data name="дата">
                     <value>2026.03.10</value>
@@ -6370,33 +6370,6 @@
             </Point>
         </Placemark>
         <Placemark id="icon-44133-FF0000">
-            <name>16.03.26 Покровское - Новониколаевка
-
-Позиционные боевые действия в Днепропетровской зоне безопасности.
-Позиция ВСУ в жилой застройке Новониколаевки под огнём ВС РФ. Боевые действия в 3,5 км от линии боевого соприкосновения.
-
- `47.845244,36.493621` 
-
-Источник https://t.me/burpobeda/18273
-Геопривязка  https://x.com/richardzai38580
-#ru</name>
-            <description>https://t.me/creamy_caprice/11490</description>
-            <ExtendedData>
-                <Data name="описание">
-                    <value>https://t.me/creamy_caprice/11490</value>
-                </Data>
-                <Data name="позиция">
-                    <value>ВС РФ*</value>
-                </Data>
-                <Data name="дата">
-                    <value>2026.03.16</value>
-                </Data>
-            </ExtendedData>
-            <Point id="icon-44132-FF0000">
-                <coordinates>36.493621,47.845244,0.0</coordinates>
-            </Point>
-        </Placemark>
-        <Placemark id="icon-44139-FF0000">
             <name>09.03.26 Межевая  - Новопавловка
 
 Позиционные боевые действия в Днепропетровской зоне безопасности.
@@ -6419,11 +6392,11 @@
                     <value>2026.03.09</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-44138-FF0000">
+            <Point id="icon-44132-FF0000">
                 <coordinates>36.829970,48.139244,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-44145-FF0000">
+        <Placemark id="icon-44139-FF0000">
             <name>16.03.26 Северск -  Закотное
 
 Активные боевые действия в районе Северска.
@@ -6446,11 +6419,11 @@
                     <value>2026.03.16</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-44144-FF0000">
+            <Point id="icon-44138-FF0000">
                 <coordinates>37.994946,48.884720,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-44151-FF0000">
+        <Placemark id="icon-44145-FF0000">
             <name>17.03.26 Северск - Каленики
 
 Активные боевые действия в районе Северска.
@@ -6473,11 +6446,11 @@
                     <value>2026.03.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-44150-FF0000">
+            <Point id="icon-44144-FF0000">
                 <coordinates>37.933859,48.820137,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-44157-FF0000">
+        <Placemark id="icon-44151-FF0000">
             <name>16.03.26 Гуляйполе  - Новоивановка
 
 Активные боевые действия в районе Гуляйполя.
@@ -6500,11 +6473,11 @@
                     <value>2026.03.16</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-44156-FF0000">
+            <Point id="icon-44150-FF0000">
                 <coordinates>36.486422,47.820469,0.0</coordinates>
             </Point>
         </Placemark>
-        <Placemark id="icon-44163-FF0000">
+        <Placemark id="icon-44157-FF0000">
             <name>17.03.26 Северск - Рай-Александровка
 
 Активные боевые действия в районе Северска.
@@ -6527,8 +6500,35 @@
                     <value>2026.03.17</value>
                 </Data>
             </ExtendedData>
-            <Point id="icon-44162-FF0000">
+            <Point id="icon-44156-FF0000">
                 <coordinates>37.858738,48.840049,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="icon-44163-FF0000">
+            <name>16.03.26 Покровское - Новониколаевка
+
+Позиционные боевые действия в Днепропетровской зоне безопасности.
+Позиция ВСУ в жилой застройке Новониколаевки под огнём ВС РФ. Боевые действия в 3,5 км от линии боевого соприкосновения.
+
+ `47.845244,36.493621` 
+
+Источник https://t.me/burpobeda/18273
+Геопривязка  https://x.com/richardzai38580
+#ua #add</name>
+            <description>https://t.me/creamy_caprice/11490</description>
+            <ExtendedData>
+                <Data name="описание">
+                    <value>https://t.me/creamy_caprice/11490</value>
+                </Data>
+                <Data name="позиция">
+                    <value>ВСУ</value>
+                </Data>
+                <Data name="дата">
+                    <value>2026.03.16</value>
+                </Data>
+            </ExtendedData>
+            <Point id="icon-44162-FF0000">
+                <coordinates>36.493621,47.845244,0.0</coordinates>
             </Point>
         </Placemark>
     </Document>
