@@ -431,7 +431,7 @@ layerControlContainer.addEventListener('click', function(e) {
 let rulerToggle;
 function initRulerControl() {
   // Создаем кнопку переключения как стандартный контрол Leaflet
-  rulerToggle = L.control({ position: 'topleft' });
+  rulerToggle = L.control({ position: 'topright' });
   
   rulerToggle.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-ruler-toggle');
@@ -492,7 +492,7 @@ function initMeasureControl() {
     const t = translations[currentLang];
     
     const options = {
-        position: 'topleft',
+        position: 'topright',
         unit: 'kilometres',
         clearMeasurementsOnStop: false,
         showUnitControl: true,
@@ -636,3 +636,22 @@ if (targetNode) {
     // Первоначальный запуск для уже существующих тултипов
     hideZeroTooltips();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.leafletMap = map;
+console.log('Карта доступна как window.leafletMap');

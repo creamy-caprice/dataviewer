@@ -251,7 +251,12 @@
 	
     .leaflet-top.leaflet-right {
 	    z-index: 1000 !important;
-    }	
+    }
+    
+    
+    .leaflet-control-zoom{ 
+        display: none !important;
+    }
 }
 
 @media (min-width: 1201px) {
@@ -261,6 +266,9 @@
     
     #centerOn-label {
         display: none !important;
+    }
+    .leaflet-control-zoom{ 
+        display: block;
     }
 }
 

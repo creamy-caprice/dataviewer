@@ -19,6 +19,35 @@ let isMilEquipVisible     = false; // Флаг видимости слоя те�
 let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
 let isFortificationVisible = false; // Флаг видимости слоя фортификаций
 
+
+// Единый список категорий техники: порядок, оригинальное значение, отображаемое название
+const equipmentCategories = [
+    { value: 'Авиация',                   label: 'Авиация' },
+    { value: 'Артиллерия',                label: 'Артиллерия' },
+    { value: 'БПЛА',                      label: 'БПЛА' },
+    { value: 'Бронированный транспорт',   label: 'Бронемашины' },
+    { value: 'ПВО',                       label: 'ПВО' },
+    { value: 'Танки',                     label: 'Танк' },
+    { value: 'Небронированный транспорт', label: 'Транспорт' },
+    { value: 'Другое',                    label: 'Другое' },
+    { value: 'Другое/Нет данных',         label: 'Нет данных' }
+];
+// Категории техники (ключи из getMilEquipIcon)
+// Для обратной совместимости с кодом, который использует массив значений
+// const EQUIPMENT_CATEGORIES = equipmentCategories.map(cat => cat.value);
+// Хранилище всех маркеров техники
+window.allEquipmentMarkers = []; // { marker, category }
+// Текущий фильтр: null — все, иначе массив выбранных категорий
+window.selectedEquipmentCategories = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+    const equipMenu = document.getElementById('equipment-filter-menu');
+    if (equipMenu && equipMenu.parentNode !== document.body) {
+        document.body.appendChild(equipMenu);
+    }
+});
+
+
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
 
@@ -1052,86 +1081,71 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
         }
 
         // Обновленная функция parseAndAddPoint с использованием новой функции
-        function parseAndAddPoint(pointElement, date, position, descriptionUrl, iconGetter = getPointIcon) {
-            const coordinates = parseCoordinates(pointElement, map.options.crs);
-            if (coordinates.length < 1) {
-                if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
-                return null;
-            }
+        function parseAndAddPoint(pointElement, date, position, descriptionUrl, name, extendedData, iconGetter) {
+			const coordinates = parseCoordinates(pointElement, map.options.crs);
+			if (coordinates.length < 1) {
+				if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
+				return null;
+			}
 
-            const [lat, lng] = coordinates[0];
-            
-            // Проверяем, попадает ли точка в диапазон дат (только для обычных точек)
-            // Не применяем фильтр для техники (getMilEquipIcon) и атак по Украине (getAttacksOnUaIcon)
-            if (iconGetter !== getMilEquipIcon && 
-                iconGetter !== getAttacksOnUaIcon && 
-                date && window.pointsDateRange && 
-                !isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
-                return null; // Пропускаем точку, если она не в диапазоне
-            }
+			const [lat, lng] = coordinates[0];
+			
+			// Фильтр по дате (для обычных точек)
+			if (iconGetter !== getMilEquipIcon && 
+				iconGetter !== getAttacksOnUaIcon && 
+				date && window.pointsDateRange && 
+				!isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
+				return null;
+			}
 
-            // Парсим extendedData для всех точек
-            const extendedData = parseExtendedData(placemark);
+			// Определяем категорию
+			let category;
+			if (iconGetter === getMilEquipIcon) {
+				category = extendedData['Тип техники'] || extendedData['equipment_type'] || position;
+			} else if (iconGetter === getAttacksOnUaIcon) {
+				category = extendedData['Тип объекта'] || extendedData['object_type'] || position;
+			} else {
+				category = position;
+			}
+			
+			// Получаем иконку
+			const icon = iconGetter(category);
+			
+			// Создаём маркер
+			const marker = L.marker([lat, lng], { icon: icon }).addTo(layerGroup);
+			
+			// Для техники сохраняем в глобальный массив
+			if (iconGetter === getMilEquipIcon) {
+				if (!window.allEquipmentMarkers) window.allEquipmentMarkers = [];
+				window.allEquipmentMarkers.push({ marker: marker, category: category });
+				marker.category = category;
+			}
+			
+			// Форматируем название и создаём popup
+			const formattedName = formatNameWithLinks(name);
+			const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+			const isEquipment = iconGetter === getMilEquipIcon;
+			const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
 
-            // Определяем категорию в зависимости от типа иконки
-            let category;
-            if (iconGetter === getMilEquipIcon) {
-                // Для техники используем поле "Тип техники"
-                category = extendedData['Тип техники'] || extendedData['equipment_type'] || position;
-            } else if (iconGetter === getAttacksOnUaIcon) {
-                // Для атак по Украине используем поле "Тип объекта"
-                category = extendedData['Тип объекта'] || extendedData['object_type'] || position;
-            } else {
-                // Для обычных точек используем position
-                category = position;
-            }
-            
-            // Получаем иконку для точки с помощью переданной функции
-            const icon = iconGetter(category);
-            
-            // Создаем маркер с иконкой
-            const marker = L.marker([lat, lng], {icon: icon}).addTo(layerGroup);
-            
-            // Форматируем название - заменяем ссылки на кликабельные
-            const formattedName = formatNameWithLinks(name);
-            
-            // Создаем контент для popup
-            const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-            
-            // Определяем тип точки для отображения в popup
-            const isEquipment = iconGetter === getMilEquipIcon;
-            const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
-
-            // Используем категорию как equipmentType для popup
-            const popupContent = createPopupContent({
-                formattedName,
-                date,
-                equipmentType: category, // Используем определенную категорию
-                coordsString,
-                descriptionUrl,
-                isEquipment: isEquipment,
-                isAttackOnUa: isAttackOnUa, // Передаем флаг для атак на Украину
-                extendedData: isEquipment || isAttackOnUa ? extendedData : {} // Передаем extendedData для техники и атак
-            });
-            
-            marker.bindPopup(popupContent);
-            
-            
-            if (LOG_STYLES) {
-                console.log(`Point added:`, { 
-                    name, 
-                    date, 
-                    category: category,
-                    descriptionUrl, 
-                    coordinates: [lat, lng], 
-                    iconGetter: iconGetter.name,
-                    isEquipment: isEquipment,
-                    isAttackOnUa: isAttackOnUa
-                });
-            }
-            
-            return marker;
-        }
+			const popupContent = createPopupContent({
+				formattedName,
+				date,
+				equipmentType: category,
+				coordsString,
+				descriptionUrl,
+				isEquipment,
+				isAttackOnUa,
+				extendedData: isEquipment || isAttackOnUa ? extendedData : {}
+			});
+			
+			marker.bindPopup(popupContent);
+			
+			if (LOG_STYLES) {
+				console.log(`Point added:`, { name, date, category, descriptionUrl, coordinates: [lat, lng], iconGetter: iconGetter.name });
+			}
+			
+			return marker;
+		}
 
         // Функция для форматирования названия с заменой ссылок на кликабельные
         function formatNameWithLinks(name) 
@@ -1186,10 +1200,10 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     equipmentType : 
                     (extendedData['позиция'] || extendedData['position']);
                     
-                const pnt = parseAndAddPoint(point, date, position, descriptionUrl, iconGetter);
+                const pnt = parseAndAddPoint(point, date, position, descriptionUrl, name, extendedData, iconGetter);
             });
         }
-
+		
         // Обработка Polygon (не в MultiGeometry)
         const polygon = placemark.querySelector('Polygon');
         if (polygon && !multiGeometry) {                
@@ -1203,21 +1217,18 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
         }
         
         // Обработка Point (не в MultiGeometry)
-        const point = placemark.querySelector('Point');
-        if (point && !multiGeometry) {
-            const extendedData = parseExtendedData(placemark);
-            const date = extendedData['дата'] || extendedData['date'];
-            // Для техники используем категорию из "Тип техники"
-            const equipmentType = extendedData['Тип техники'] || extendedData['equipment_type'];
-            const descriptionUrl = extendedData['описание'] || extendedData['description'];
-            
-            // Если это слой техники и есть категорию, используем ее
-            const position = (iconGetter === getMilEquipIcon && equipmentType) ? 
-                equipmentType : 
-                (extendedData['позиция'] || extendedData['position']);
-            
-            const pnt = parseAndAddPoint(point, date, position, descriptionUrl, iconGetter);
-        }
+		const point = placemark.querySelector('Point');
+		if (point && !multiGeometry) {
+			const extendedData = parseExtendedData(placemark);
+			const date = extendedData['дата'] || extendedData['date'];
+			const equipmentType = extendedData['Тип техники'] || extendedData['equipment_type'];
+			const descriptionUrl = extendedData['описание'] || extendedData['description'];
+			const position = (iconGetter === getMilEquipIcon && equipmentType) ? 
+				equipmentType : 
+				(extendedData['позиция'] || extendedData['position']);
+			
+			const pnt = parseAndAddPoint(point, date, position, descriptionUrl, name, extendedData, iconGetter);
+		}
         
         if (LOG_STYLES) console.groupEnd(); // Закрываем группу Placemark
     });
@@ -1620,6 +1631,8 @@ async function initPointsLayer(kmlFilePaths) {
 
 // Функция для инициализации слоя с техникой
 async function initMilequipLayer(kmlFilePaths) {
+    window.allEquipmentMarkers = []; // очищаем старые маркеры
+    
     // Если передана строка, преобразуем в массив
     if (typeof kmlFilePaths === 'string') {
         kmlFilePaths = [kmlFilePaths];
@@ -1649,11 +1662,190 @@ async function initMilequipLayer(kmlFilePaths) {
             isEquipment: true
         });
     }
-    
     console.log(`Загружено слоев техники: ${window.milequipLayers.length}, точек: ${milequipLayerGroup.getLayers().length}`);
+
+    // Применяем текущий фильтр (если техника должна быть видима)
+    if (window.isMilEquipVisible) {
+        applyEquipmentFilter();
+    } else {
+        hideAllEquipmentMarkers();
+    }
     
     return milequipLayerGroup;
 }
+
+
+// Создание списка чекбоксов категорий
+function buildEquipmentFilterMenu() {
+    const container = document.getElementById('equip-category-list');
+    if (!container) return;
+    container.innerHTML = '';
+    equipmentCategories.forEach(cat => {
+        const div = document.createElement('div');
+        div.innerHTML = `<label><input type="checkbox" class="equip-cat-checkbox" value="${cat.value}"> ${cat.label}</label>`;
+        container.appendChild(div);
+    });
+}
+
+// Восстановление состояния чекбоксов из глобальных переменных
+function restoreEquipmentFilterState() {
+    const selectAll = document.getElementById('equip-select-all');
+    const catCheckboxes = document.querySelectorAll('.equip-cat-checkbox');
+    
+    if (window.selectedEquipmentCategories === null) {
+        selectAll.checked = true;
+        catCheckboxes.forEach(cb => cb.checked = true);
+    } else if (window.selectedEquipmentCategories.length === 0) {
+        selectAll.checked = false;
+        catCheckboxes.forEach(cb => cb.checked = false);
+    } else {
+        selectAll.checked = false;
+        catCheckboxes.forEach(cb => {
+            cb.checked = window.selectedEquipmentCategories.includes(cb.value);
+        });
+    }
+}
+
+// Обновление фильтра при изменении чекбоксов
+function updateEquipmentFilter() {
+    const selectAll = document.getElementById('equip-select-all');
+    const catCheckboxes = document.querySelectorAll('.equip-cat-checkbox');
+    
+    const selected = Array.from(catCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+    
+    if (selectAll.checked) {
+        window.selectedEquipmentCategories = null;
+        catCheckboxes.forEach(cb => cb.checked = true);
+    } else {
+        window.selectedEquipmentCategories = selected.length > 0 ? selected : [];
+    }
+    
+    const milEquipBtn = document.getElementById('mil-equip-btn');
+    if (window.selectedEquipmentCategories === null) {
+        window.isMilEquipVisible = true;
+        milEquipBtn.classList.add('active');
+        applyEquipmentFilter();
+    } else if (window.selectedEquipmentCategories.length === 0) {
+        window.isMilEquipVisible = false;
+        milEquipBtn.classList.remove('active');
+        hideAllEquipmentMarkers();
+    } else {
+        window.isMilEquipVisible = true;
+        milEquipBtn.classList.add('active');
+        applyEquipmentFilter();
+    }
+    
+    // синхронизация состояния чекбокса "Все"
+    const allChecked = Array.from(catCheckboxes).every(cb => cb.checked);
+    if (allChecked && !selectAll.checked) selectAll.checked = true;
+    if (!allChecked && selectAll.checked) selectAll.checked = false;
+}
+
+// Применить текущий фильтр к видимости маркеров
+function applyEquipmentFilter() {
+    if (!window.isMilEquipVisible) {
+        hideAllEquipmentMarkers();
+        return;
+    }
+    
+    window.allEquipmentMarkers.forEach(item => {
+        const marker = item.marker;
+        const category = item.category;
+        let shouldShow = false;
+        
+        if (window.selectedEquipmentCategories === null) {
+            shouldShow = true;
+        } else {
+            shouldShow = window.selectedEquipmentCategories.includes(category);
+        }
+        
+        if (shouldShow) {
+            if (!map.hasLayer(marker)) {
+                marker.addTo(map);
+            }
+        } else {
+            if (map.hasLayer(marker)) {
+                map.removeLayer(marker);
+            }
+        }
+    });
+}
+
+// Скрыть все маркеры техники
+function hideAllEquipmentMarkers() {
+    window.allEquipmentMarkers.forEach(item => {
+        if (map.hasLayer(item.marker)) {
+            map.removeLayer(item.marker);
+        }
+    });
+}
+
+// Переключение меню фильтра техники
+function toggleEquipmentMenu() {
+    const menu = document.getElementById('equipment-filter-menu');
+    if (!menu) return;
+    
+    const isVisible = menu.style.display === 'block';
+    
+    if (!isVisible) {
+        const btn = document.getElementById('mil-equip-btn');
+        const rect = btn.getBoundingClientRect();
+        menu.style.top = (rect.bottom + window.scrollY) + 'px';
+        menu.style.left = (rect.left + window.scrollX) + 'px';
+        menu.style.display = 'block';
+        
+        // Восстанавливаем состояние чекбоксов из глобальной переменной
+        restoreEquipmentFilterState();
+        
+        // Если техника ещё не загружена, загружаем её, но не меняем фильтр
+        if (window.allEquipmentMarkers.length === 0) {
+            initMilequipLayer(window.milequipKmlPaths).then(() => {
+                // Применяем текущий фильтр (который пустой, если ничего не выбрано)
+                applyEquipmentFilter();
+            });
+        } else {
+            // Просто применяем текущий фильтр
+            applyEquipmentFilter();
+        }
+    } else {
+        menu.style.display = 'none';
+    }
+}
+
+// Инициализация обработчиков для чекбоксов
+function initEquipmentFilterListeners() {
+    const selectAll = document.getElementById('equip-select-all');
+    const catCheckboxes = document.querySelectorAll('.equip-cat-checkbox');
+    
+    selectAll.addEventListener('change', function() {
+        if (this.checked) {
+            catCheckboxes.forEach(cb => cb.checked = true);
+        } else {
+            catCheckboxes.forEach(cb => cb.checked = false);
+        }
+        updateEquipmentFilter();
+    });
+    
+    catCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function() {
+            const allChecked = Array.from(catCheckboxes).every(c => c.checked);
+            selectAll.checked = allChecked;
+            updateEquipmentFilter();
+        });
+    });
+    
+    // Закрытие меню при клике вне его
+    document.addEventListener('click', function(e) {
+        const menu = document.getElementById('equipment-filter-menu');
+        const btn = document.getElementById('mil-equip-btn');
+        if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+            menu.style.display = 'none';
+        }
+    });
+}
+
 
 // Функция для инициализации слоя с атаками на Украину
 async function initAttacksOnUaLayer(kmlFilePaths) {
@@ -2769,9 +2961,14 @@ async function init() {
     // обработчик для кнопки техники
     const milEquipBtn = document.getElementById('mil-equip-btn');
     if (milEquipBtn) {
-        milEquipBtn.addEventListener('click', toggleMilEquipVisibility);
+        milEquipBtn.removeEventListener('click', toggleMilEquipVisibility); // убираем старый
+        milEquipBtn.addEventListener('click', toggleEquipmentMenu);
         updateMilEquipButtonTitle(); // Инициализируем заголовок
     }
+    // Построить меню фильтра техники
+    buildEquipmentFilterMenu();
+    initEquipmentFilterListeners();
+	restoreEquipmentFilterState();
     // обработчик для кнопки атак на Украину
     const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
     if (attacksOnUaBtn) {
@@ -3823,11 +4020,4 @@ document.addEventListener('click', function(e) {
         }
     }
 });
-
-
-
-
-
-
-
 
