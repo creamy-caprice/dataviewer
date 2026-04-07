@@ -26,7 +26,9 @@ const translations = {
         rangeYear: "1 год",
 		
         showEquipment: 'Показать технику',
-        hideEquipment: 'Скрыть технику',        
+        hideEquipment: 'Скрыть технику',
+        
+        selectAll: "Все",
         
         showAttacksOnUa: 'Показать удары по территории Украины',
         hideAttacksOnUa: 'Скрыть удары по территории Украины',
@@ -92,6 +94,8 @@ const translations = {
 		
         showEquipment: 'Show equipment',
         hideEquipment: 'Hide equipment',
+        
+        selectAll: "All",
         
         showAttacksOnUa: 'Show attacks on Ukraine',
         hideAttacksOnUa: 'Hide attacks on Ukraine',		
@@ -299,6 +303,28 @@ function setLanguage(lang) {
         document.getElementById('current-center-coords').textContent = t.undefinedCoords;
     }
     
+    // Обновляем текст чекбокса "Все" в фильтре техники
+    const equipSelectAll = document.getElementById('equip-select-all');
+    if (equipSelectAll) {
+        // Ищем родительский label (обычно чекбокс обёрнут в <label>)
+        const label = equipSelectAll.closest('label');
+        if (label) {
+            // Сохраняем ссылку на сам чекбокс
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            // Обновляем текст, оставляя чекбокс нетронутым
+            label.innerHTML = '';
+            if (checkbox) label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(' ' + t.selectAll));
+        } else {
+            // Если label нет, просто меняем следующий текстовый узел
+            const nextNode = equipSelectAll.nextSibling;
+            if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+                nextNode.textContent = ' ' + t.selectAll;
+            }
+        }
+    }
+    
+    
     // Сохраняем выбор в localStorage
     localStorage.setItem('preferredLang', lang);
     document.documentElement.lang = lang;
@@ -322,6 +348,13 @@ document.addEventListener('languageChanged', function(event) {
     
     populateCitiesDropdown(); // Обновляем основной список
     initDartMenu(); // Перестраиваем дартс-меню	
+	
+	// фильтр техники
+	initEquipmentFilter();
+    if (window.isMilEquipVisible) {
+        applyEquipmentFilter();
+    }
+	
 });
 
 // Обработчики кнопок переключения языка
