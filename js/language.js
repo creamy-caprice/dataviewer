@@ -324,6 +324,18 @@ function setLanguage(lang) {
         }
     }
     
+    // Обновляем текст чекбокса "Все" в фильтре атак
+    const attacksSelectAll = document.getElementById('attacks-select-all');
+    if (attacksSelectAll) {
+        const label = attacksSelectAll.closest('label');
+        if (label) {
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            label.innerHTML = '';
+            if (checkbox) label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(' ' + t.selectAll));
+        }
+    }
+    
     
     // Сохраняем выбор в localStorage
     localStorage.setItem('preferredLang', lang);
@@ -353,6 +365,12 @@ document.addEventListener('languageChanged', function(event) {
 	initEquipmentFilter();
     if (window.isMilEquipVisible) {
         applyEquipmentFilter();
+    }
+    
+    // фильтр атак
+    initAttacksFilter();
+    if (window.isAttacksVisible) {
+        applyAttacksFilter();
     }
 	
 });
