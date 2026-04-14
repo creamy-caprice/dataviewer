@@ -87,7 +87,7 @@ const attackGroups = [
     {
         tag: 'group6',
         labelRu: 'ПВО/РВ',
-        labelEn: 'Air-defense',
+        labelEn: 'AD/GMW',
         categories: [
             'ПВО, РЛС и ракетное вооружение'
         ]
