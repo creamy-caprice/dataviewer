@@ -135,14 +135,15 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 window.attacksOnUaLayers = [];
 
 
-window.fortificationKmlPaths = ["kml/Fortifications/Geojson/Trenches_Volchansk.geojson",
-								"kml/Fortifications/Geojson/Trenches_Kupyansk.geojson",
-								"kml/Fortifications/Geojson/Trenches_Lyman.geojson",
-								"kml/Fortifications/Geojson/Trenches_Kramatorsk.geojson",
-								"kml/Fortifications/Geojson/Trenches_Pokrovsk.geojson",
-								"kml/Fortifications/Geojson/Trenches_ Mezhevaya.geojson",
-								"kml/Fortifications/Geojson/Trenches_Gulyaypole.geojson",
-								"kml/Fortifications/Geojson/Trenches_Zaporozhie.geojson",
+window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Volchansk.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Kupyansk.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Lyman.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Kramatorsk.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Pokrovsk.geojson",
+								//"kml/Fortifications/Geojson/Trenches_ Mezhevaya.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Gulyaypole.geojson",
+								//"kml/Fortifications/Geojson/Trenches_Zaporozhie.geojson",
 								
 								"kml/Fortifications/Geojson/Ditches.geojson",
 								"kml/Fortifications/Geojson/Barbed_wire.geojson",
