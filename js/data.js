@@ -145,7 +145,8 @@ window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson"
 								//"kml/Fortifications/Geojson/Trenches_Gulyaypole.geojson",
 								//"kml/Fortifications/Geojson/Trenches_Zaporozhie.geojson",
 								
-								"kml/Fortifications/Geojson/Ditches.geojson",
+								//"kml/Fortifications/Geojson/Ditches.geojson",
+								"kml/Fortifications/Geojson/CK_Ditches.geojson",
 								"kml/Fortifications/Geojson/Barbed_wire.geojson",
 								"kml/Fortifications/Geojson/CK_Teeth.geojson"
                                 //"kml/Fortifications/Geojson/Dragons_teeth.geojson"
