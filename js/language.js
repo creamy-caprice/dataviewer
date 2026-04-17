@@ -335,7 +335,23 @@ function setLanguage(lang) {
             label.appendChild(document.createTextNode(' ' + t.selectAll));
         }
     }
-    
+	
+    // Обновляем текст чекбокса "Все" в фильтре фортификаций
+    const fortifSelectAll = document.getElementById('fortif-select-all');
+    if (fortifSelectAll) {
+        const label = fortifSelectAll.closest('label');
+        if (label) {
+            const checkbox = label.querySelector('input[type="checkbox"]');
+            label.innerHTML = '';
+            if (checkbox) label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(' ' + t.selectAll));
+        } else {
+            const nextNode = fortifSelectAll.nextSibling;
+            if (nextNode && nextNode.nodeType === Node.TEXT_NODE) {
+                nextNode.textContent = ' ' + t.selectAll;
+            }
+        }
+    }	
     
     // Сохраняем выбор в localStorage
     localStorage.setItem('preferredLang', lang);
@@ -371,6 +387,12 @@ document.addEventListener('languageChanged', function(event) {
     initAttacksFilter();
     if (window.isAttacksVisible) {
         applyAttacksFilter();
+    }
+	
+	// фильтр фортификаций
+    if (typeof initFortificationFilter === 'function') {
+        initFortificationFilter();
+        if (window.isFortificationVisible) applyFortificationFilter();
     }
 	
 });

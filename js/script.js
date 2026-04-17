@@ -17,7 +17,7 @@ const LOG_STYLES = false; // Можно менять на false/true для пе
 let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
 // let isMilEquipVisible     = false; // Флаг видимости слоя техники
 // let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
-let isFortificationVisible = false; // Флаг видимости слоя фортификаций
+// let isFortificationVisible = false; // Флаг видимости слоя фортификаций
 
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
@@ -1693,7 +1693,7 @@ async function initAttacksOnUaLayer(kmlFilePaths) {
     
     return attacksOnUaLayerGroup;
 }
-
+/*
 // Функция для инициализации слоя с фортификационными линиями (поддержка .kml и .geojson)
 async function initFortificationLayer(kmlFilePaths) {
     // Если передана строка, преобразуем в массив
@@ -1771,73 +1771,7 @@ async function initFortificationLayer(kmlFilePaths) {
     
     return fortificationLayerGroup;
 }
-
-
-// Функция для переключения отображения фортификаций
-function toggleFortificationVisibility() {
-    const fortificationBtn = document.getElementById('fortification-btn');
-    
-    // Переключаем флаг
-    isFortificationVisible = !isFortificationVisible;
-    
-    if (isFortificationVisible) {
-        // Показываем фортификации
-        fortificationBtn.classList.add('active');
-        
-        // Если слои фортификаций ещё не загружены, загружаем их
-        if (!window.fortificationLayers || window.fortificationLayers.length === 0) {
-            console.log('Загрузка фортификаций...');
-            initFortificationLayer(window.fortificationKmlPaths).then(() => {
-                // После загрузки добавляем на карту
-                window.fortificationLayers.forEach(layer => {
-                    if (layer && !map.hasLayer(layer)) {
-                        layer.addTo(map);
-                    }
-                });
-            });
-        } else {
-            // Если уже загружены, просто добавляем на карту
-            window.fortificationLayers.forEach(layer => {
-                if (layer && !map.hasLayer(layer)) {
-                    layer.addTo(map);
-                }
-            });
-        }
-        
-        console.log('Фортификации показаны');
-    } else {
-        // Скрываем фортификации
-        fortificationBtn.classList.remove('active');
-        
-        // Убираем слои фортификаций с карты
-        if (window.fortificationLayers && window.fortificationLayers.length) {
-            window.fortificationLayers.forEach(layer => {
-                if (layer && map.hasLayer(layer)) {
-                    map.removeLayer(layer);
-                }
-            });
-        }
-        
-        console.log('Фортификации скрыты');
-    }
-    
-    // Обновляем title кнопки
-    updateFortificationButtonTitle();
-}
-
-// Функция для обновления заголовка кнопки фортификаций
-function updateFortificationButtonTitle() {
-    const fortificationBtn = document.getElementById('fortification-btn');
-    if (fortificationBtn) {
-        const t = translations[currentLang];
-        if (t) {
-            fortificationBtn.title = isFortificationVisible ? 
-                (t.hideFortifications) : 
-                (t.showFortifications);
-        }
-    }
-}
-
+*/
 // Функция для вычисления даты начала на основе текущей даты и диапазона
 function getStartDateByRange(rangeType, baseDate = null) {
     // Используем переданную дату или текущую дату
@@ -2649,8 +2583,8 @@ async function init() {
     // обработчик для кнопки фортификаций
     const fortificationBtn = document.getElementById('fortification-btn');
     if (fortificationBtn) {
-        fortificationBtn.addEventListener('click', toggleFortificationVisibility);
-        updateFortificationButtonTitle(); // Инициализируем заголовок
+        fortificationBtn.addEventListener('click', window.toggleFortificationMenu);
+        window.updateFortificationButtonTitle(); // инициализация заголовка
     }
     
     window.initialLayerSet = false;
