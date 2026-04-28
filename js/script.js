@@ -9,7 +9,7 @@ coordsInput = document.getElementById('coords-input');
 currentCenterCoordsElement = document.getElementById('current-center-coords');
 copyCoordsBtn = document.getElementById('copy-coords-btn');
 
-let selectedDate = null; // Глобальная переменная для хранения текущей даты
+window.selectedDate = null; // Глобальная переменная для хранения текущей даты
 
 // Глобальный флаг для логгирования стилей временных файлов
 const LOG_STYLES = false; // Можно менять на false/true для переключения
@@ -111,23 +111,25 @@ function findNearestAvailableDate(targetDateStr) {
 let datePicker;
 function initDatePicker() {
     // Используем сохраненную дату или текущую дату
-    const defaultDate = selectedDate || getCurrentDateFormatted();
+    const defaultDate = window.selectedDate || getCurrentDateFormatted();
     
     datePicker = flatpickr("#date-picker", {
         locale: currentLang === 'ru' ? 'ru' : 'default',
         dateFormat: "d.m.y",
         allowInput: true,
         defaultDate: defaultDate, // Используем сохраненную дату
-        disableMobile: true, // ВАЖНО: Отключаем нативный picker на мобильных
-        disableMobile: "true", // Дополнительно для совместимости
-        static: true, // Статическое отображение календаря
-        inline: false, // Не показываем календарь всегда
+        disableMobile: true,      // ВАЖНО: Отключаем нативный picker на мобильных
+        disableMobile: "true",    // Дополнительно для совместимости
+        static: true,             // Статическое отображение календаря
+        inline: false,            // Не показываем календарь всегда
+        minDate: new Date(2022, 0, 1),      // ограничение от 2022
+        maxDate: new Date(2030, 11, 31),    // ограничение до 2030
         // Убираем ограничение, чтобы можно было выбрать любую дату
         onChange: function(selectedDates, dateStr) {
             console.log('Дата выбрана в календаре:', dateStr);
             
             // Обновляем selectedDate на выбранную дату
-            selectedDate = dateStr;
+            window.selectedDate = dateStr;
             
             // Обновляем фильтр точек для новой даты
             updatePointsDateFilterForSelectedDate();
@@ -174,7 +176,7 @@ async function loadKmlForNearestDate(index) {
         currentIndex = index;
         const file = kmlFiles[currentIndex];
         
-        console.log(`Загрузка KML для даты: ${file.name} (запрошена дата: ${selectedDate})`);
+        console.log(`Загрузка KML для даты: ${file.name} (запрошена дата: ${window.selectedDate})`);
         
         // Загружаем KML без изменения масштаба
         await loadKmlFile(file);
@@ -203,7 +205,7 @@ function updatePointsDateFilterForSelectedDate() {
     if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
     
     // Получаем выбранную дату из календаря
-    const currentDate = parseCustomDate(selectedDate);
+    const currentDate = parseCustomDate(window.selectedDate);
     
     // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
     const startDate = getStartDateByRange(currentDateRange, currentDate);
@@ -211,6 +213,11 @@ function updatePointsDateFilterForSelectedDate() {
     // Обновляем диапазон дат
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
+    
+    // Если слой подразделений активен, обновляем его с новой датой
+    if (window.reloadUnitsUaLayer) {
+        window.reloadUnitsUaLayer();
+    }
 }
 
 // Функция для проверки валидности координат
@@ -1775,7 +1782,7 @@ async function initFortificationLayer(kmlFilePaths) {
 // Функция для вычисления даты начала на основе текущей даты и диапазона
 function getStartDateByRange(rangeType, baseDate = null) {
     // Используем переданную дату или текущую дату
-    const date = baseDate || parseCustomDate(selectedDate) || new Date();
+    const date = baseDate || parseCustomDate(window.selectedDate) || new Date();
     const result = new Date(date);
     
     switch(rangeType) {
@@ -2064,7 +2071,7 @@ async function updatePointsDateFilter() {
     if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
     
     // Получаем выбранную дату из календаря
-    const currentDate = parseCustomDate(selectedDate);
+    const currentDate = parseCustomDate(window.selectedDate);
     
     // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
     const startDate = getStartDateByRange(currentDateRange, currentDate);
@@ -2092,10 +2099,10 @@ async function navigateTo(index) {
         const file = kmlFiles[currentIndex];
         
         // Обновляем selectedDate на дату KML файла
-        selectedDate = file.name;
+        window.selectedDate = file.name;
         
         if (datePicker) {
-            datePicker.setDate(selectedDate, false);
+            datePicker.setDate(window.selectedDate, false);
         }
         
         // Загружаем KML без изменения масштаба
@@ -2110,6 +2117,10 @@ async function navigateTo(index) {
         console.error("Ошибка навигации:", error);
     } finally {
         updateButtons();
+        // Обновляем слой подразделений при смене даты
+        if (window.reloadUnitsUaLayer) {
+            window.reloadUnitsUaLayer();
+        }
     }
 }
 
@@ -2127,7 +2138,7 @@ function updateButtons() {
     const today = getCurrentDateFormatted();
     
     // Проверяем, выбрана ли в календаре сегодняшняя дата
-    const isToday = selectedDate === today;
+    const isToday = window.selectedDate === today;
     
     // Проверяем, есть ли более поздние доступные даты
     const hasNextAvailableDate = findNextAvailableDate(kmlFiles[currentIndex]?.name) !== null;
@@ -2150,7 +2161,7 @@ function updateButtons() {
     lastBtn.classList.toggle('disabled', isToday);
     
     console.log(`First: ${firstBtn.disabled}, Prev: ${prevBtn.disabled}, Next: ${nextBtn.disabled}, Last: ${lastBtn.disabled}`);
-    console.log(`Today: ${today}, SelectedDate: ${selectedDate}, isToday: ${isToday}`);
+    console.log(`Today: ${today}, SelectedDate: ${window.selectedDate}, isToday: ${isToday}`);
 }
 
 // Обработчики кнопок навигации
@@ -2160,7 +2171,7 @@ document.getElementById('first-btn').addEventListener('click', async () => {
 
 document.getElementById('prev-btn').addEventListener('click', async () => {
     // Находим все доступные даты, которые меньше выбранной даты в календаре
-    const selectedDateObj = parseCustomDate(selectedDate);
+    const selectedDateObj = parseCustomDate(window.selectedDate);
     let previousDate = null;
     let minDiff = Infinity;
     
@@ -2182,11 +2193,11 @@ document.getElementById('prev-btn').addEventListener('click', async () => {
         
         if (prevIndex !== -1) {
             // Обновляем selectedDate на предыдущую дату
-            selectedDate = previousDate;
+            window.selectedDate = previousDate;
             
             // Обновляем календарь
             if (datePicker) {
-                datePicker.setDate(selectedDate, false);
+                datePicker.setDate(window.selectedDate, false);
             }
             
             // Загружаем KML для предыдущей даты
@@ -2200,7 +2211,7 @@ document.getElementById('next-btn').addEventListener('click', async () => {
     const today = getCurrentDateFormatted();
     
     // Получаем следующую доступную дату
-    let nextDate = findNextAvailableDate(selectedDate);
+    let nextDate = findNextAvailableDate(window.selectedDate);
     
     // Если следующей доступной даты нет, но мы на последней сводке - переходим на сегодня
     if (!nextDate && currentIndex === kmlFiles.length - 1) {
@@ -2211,7 +2222,7 @@ document.getElementById('next-btn').addEventListener('click', async () => {
         // Определяем, нужно ли переходить на сегодняшнюю дату
         if (nextDate === today) {
             // Устанавливаем календарь на сегодня
-            selectedDate = today;
+            window.selectedDate = today;
             
             if (datePicker) {
                 datePicker.setDate(today, false);
@@ -2230,10 +2241,10 @@ document.getElementById('next-btn').addEventListener('click', async () => {
             
             if (index !== -1) {
                 // Обновляем selectedDate на следующую дату
-                selectedDate = nextDate;
+                window.selectedDate = nextDate;
                 
                 if (datePicker) {
-                    datePicker.setDate(selectedDate, false);
+                    datePicker.setDate(window.selectedDate, false);
                 }
                 
                 // Загружаем KML для следующей даты
@@ -2263,7 +2274,7 @@ document.getElementById('last-btn').addEventListener('click', async () => {
     
     if (index !== -1) {
         // Обновляем selectedDate на сегодняшнюю дату
-        selectedDate = today;
+        window.selectedDate = today;
         
         // Обновляем календарь на сегодняшнюю дату
         if (datePicker) {
@@ -2465,8 +2476,8 @@ async function init() {
     console.log('KML файлов загружено:', window.kmlFiles.length);
     
     // Шаг 2: Инициализируем selectedDate текущей датой
-    selectedDate = getCurrentDateFormatted();
-    console.log('Установлена текущая дата:', selectedDate);
+    window.selectedDate = getCurrentDateFormatted();
+    console.log('Установлена текущая дата:', window.selectedDate);
     
     // Шаг 3: Инициализируем календарь с текущей датой
     initDatePicker();
@@ -2475,21 +2486,20 @@ async function init() {
     // Инициализируем диапазон дат для точек
     window.pointsDateRange = window.pointsDateRange || { start: null, end: null };    
     // Устанавливаем начальный диапазон (1 неделя) на основе текущей даты
-    const currentDate = parseCustomDate(selectedDate);
+    const currentDate = parseCustomDate(window.selectedDate);
     const startDate = getStartDateByRange('week', currentDate);
     
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
     
     // Загружаем точки с фильтром по дате
-    await initPointsLayer(window.pointsKmlPaths);    
-    // Загружаем технику (без фильтра по дате)
-    // await initMilequipLayer(window.milequipKmlPaths);
-    // загружаем по кнопке
+    await initPointsLayer(window.pointsKmlPaths);
     
     // Шаг 5: Инициализация кнопок фильтров
     initFilterButtons();
     initMobileFilterMenu();
+    
+    initUnitsUaButton();
         
     // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
@@ -2499,7 +2509,7 @@ async function init() {
     await waitForUIElements();
     
     // Шаг 8: Находим и загружаем ближайший доступный KML к текущей дате
-    const nearestDate = findNearestAvailableDate(selectedDate);
+    const nearestDate = findNearestAvailableDate(window.selectedDate);
     const nearestIndex = kmlFiles.findIndex(file => file.name === nearestDate);
     
     if (nearestIndex !== -1) {

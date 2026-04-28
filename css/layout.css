@@ -869,7 +869,7 @@ body {
         display: flex;
         position: absolute;
         top: 100%;
-        right: 0;
+        right: -30px;
         background: white;
         border: 1px solid #ddd;
         border-radius: 5px;

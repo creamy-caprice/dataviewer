@@ -36,6 +36,9 @@ const translations = {
         showFortifications: 'Показать фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
         hideFortifications: 'Скрыть фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
         
+        showUnitsUa: 'Показать подразделения ВСУ',
+        hideUnitsUa: 'Скрыть подразделения ВСУ',
+        
         ruBtnTitle: "Текущий язык: Русский",
         enBtnTitle: "Переключить на Английский",
         
@@ -102,6 +105,9 @@ const translations = {
 		
         showFortifications: 'Show fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
         hideFortifications: 'Hide fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
+        
+        showUnitsUa: 'Show Ukrainian units',
+        hideUnitsUa: 'Hide Ukrainian units',
         
         ruBtnTitle: "Switch to Russian",
         enBtnTitle: "Current language: English",

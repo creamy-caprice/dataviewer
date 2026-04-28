@@ -154,13 +154,9 @@ window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson"
 							   ];
 window.fortificationLayers = [];
 
-
-
-
-
-
-
-
+// CSV с данными о подразделениях ВСУ
+window.unitsUaCsvPath  = "kml/Geolocations/UnitsUA.csv";
+window.unitsUaJsonPath = "units/ua/UnitsUA.json";
 
 
 
