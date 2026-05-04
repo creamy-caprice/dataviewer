@@ -19,6 +19,8 @@ let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
 // let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
 // let isFortificationVisible = false; // Флаг видимости слоя фортификаций
 
+const INTERACTIVE = true;
+
 // Получаем массив доступных дат из kmlFiles
 const availableDates = kmlFiles.map(file => file.name);
 
@@ -622,13 +624,13 @@ window.kmlStyles = {
             weight: 5, // Толщина линии
             fillColor: '#999999', //Заливка
             fillOpacity: 0.25, //  Непрозрачность
-            interactive: false
+            interactive: INTERACTIVE
         },
         polyline: {
             color: '#ffffff', // Цвет линии
             weight: 5, // Толщина линии
             opacity: 1,
-            interactive: false
+            interactive: INTERACTIVE
         }
     },
     [window.kmlStyleModes.STYLE_RUAF]: {
@@ -637,13 +639,13 @@ window.kmlStyles = {
             weight: 0.1,
             fillColor: '#ff0000',
             fillOpacity: 0.2,
-            interactive: false
+            interactive: INTERACTIVE
         },
         polyline: {
             color: '#ff0000',
             weight: 4,
             opacity: 0.8,
-            interactive: false
+            interactive: INTERACTIVE
         }
     },
     [window.kmlStyleModes.STYLE_AFU]: {
@@ -652,13 +654,13 @@ window.kmlStyles = {
             weight: 0.1,
             fillColor: '#0000ff',
             fillOpacity: 0.2,
-            interactive: false
+            interactive: INTERACTIVE
         },
         polyline: {
             color: '#0000ff',
             weight: 4,
             opacity: 0.8,
-            interactive: false
+            interactive: INTERACTIVE
         }
     },
     [window.kmlStyleModes.STYLE_CITIES]: {
@@ -667,13 +669,13 @@ window.kmlStyles = {
             weight: 1,             // толщина обводки
             fillColor: '#999999',   // цвет заливки
             fillOpacity: 0.25,      // прозрачность заливки
-            interactive: false
+            interactive: INTERACTIVE
         },
         polyline: {
             color: '#ffffff',
             weight: 1,
             opacity: 1,
-            interactive: false
+            interactive: INTERACTIVE
         }
     }
 };
@@ -776,9 +778,58 @@ function parseStyleMapFromKmlDoc(kmlDoc)
 }
 
 // Обработка Placemarks
-function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleMode = window.kmlStyleModes.DEFAULT, iconGetter = getPointIcon) {
+function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleMode = window.kmlStyleModes.DEFAULT, iconGetter = getPointIcon, isInteractive = true) {
     let bounds = L.latLngBounds(); // Инициализация пустыми границами
     let elementCount = 0;
+    
+    // Вспомогательная функция для привязки тултипа при наведении
+    function bindTooltipOnHover(layer, name) {
+	    // Сохраняем исходный стиль для сброса
+	    layer._originalStyle = { ...layer.options };
+	    
+	    // Подсветка при наведении (всегда)
+	    layer.on('mouseover', function() {
+	        this.setStyle({
+	            weight: (this._originalStyle.weight || 0) + 3,
+	            color: '#ff0000',
+	            fillColor: '#ff0000',
+				opacity: 0.15,        // для линий
+				fillOpacity: 0.15     // для полигонов
+	        });
+	    });
+	    layer.on('mouseout', function() {
+	        this.setStyle(this._originalStyle);
+	    });
+	    
+	    // Если есть имя – добавляем тултип
+	    if (name && name.trim() !== '' && !name.includes('Control_')) {
+	        let tooltipText = name.replace(/<[^>]*>/g, '');
+	        layer.bindTooltip(tooltipText, {
+	            sticky: true,
+	            direction: 'auto',
+	            offset: [0, 0]
+	        });
+	        
+	        layer.on('mouseover', function(ev) {
+	            console.log(`mouseover на "${name}"`);
+	            this.openTooltip();
+	            setTimeout(() => {
+	                if (!this.isTooltipOpen()) {
+	                    console.warn(`Тултип не открылся для "${name}"`);
+	                    this.unbindTooltip();
+	                    this.bindTooltip(tooltipText, { sticky: true, direction: 'auto', offset: [0,0] });
+	                    this.openTooltip();
+	                }
+	            }, 10);
+	        });
+	        layer.on('mouseout', function() {
+	            this.closeTooltip();
+	        });
+	    } else {
+	        // Для объектов без имени – просто лог (опционально)
+	        // layer.on('mouseover', () => console.log(`mouseover on: "${name || 'unnamed'}"`));
+	    }
+	}
     
     kmlDoc.querySelectorAll('Placemark').forEach(placemark => {
         // Получаем описание для определения стиля
@@ -845,7 +896,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     weight: style.line.weight || 0,
                     fillColor: style.poly.fillColor || '#3388ff',
                     fillOpacity: style.poly.fillOpacity || 0.5,
-                    interactive: false
+                    interactive: INTERACTIVE
                 };
             } else {
                 // Для заданных стилей (STYLE_RUAF, STYLE_AFU, STYLE_MG) используем предопределенные
@@ -858,22 +909,24 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                         weight: 0,
                         fillColor: '#3388ff',
                         fillOpacity: 0.5,
-                        interactive: false
+                        interactive: INTERACTIVE
                     };
                 }
             }
 
+			const finalInteractive = isInteractive && INTERACTIVE;
+			polyStyle.interactive = finalInteractive;
+			polyStyle.pane = isInteractive ? 'interactive' : 'nonInteractive';
+
             // Создаем полигон
             const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
-            
+                        
             // Обновляем границы                
             if (poly.getBounds().isValid()) {
                 bounds.extend(poly.getBounds());
             }
-            // Добавляем метку, если есть название
-            if (name && name.trim() !== '') {
-                addLabelToLayer(name, 'Polygon', coords, layerGroup);
-            }            
+            // Добавляем метку
+            bindTooltipOnHover(poly, name);
 
             // Логирование информации о полигоне
             if (LOG_STYLES) {
@@ -900,7 +953,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     color: style.line.color || '#3388ff',
                     weight: style.line.weight || 3,
                     opacity: style.line.opacity || 1,
-                    interactive: false
+                    interactive: INTERACTIVE
                 };
             } else {
                 const styleConfig = window.kmlStyles[useStyleMode];
@@ -911,10 +964,15 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                         color: '#3388ff',
                         weight: 3,
                         opacity: 1,
-                        interactive: false
+                        interactive: INTERACTIVE
                     };
                 }
             }
+
+			
+			const finalInteractive = isInteractive && INTERACTIVE;
+			lineStyle.interactive = finalInteractive;
+			lineStyle.pane = isInteractive ? 'interactive' : 'nonInteractive';
 
             const polyline = L.polyline(coords, lineStyle).addTo(layerGroup);
 
@@ -922,10 +980,8 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             if (polyline.getBounds().isValid()) {
                 bounds.extend(polyline.getBounds());
             }
-            // Добавляем метку, если есть название                
-            if (name && name.trim() !== '') {
-                addLabelToLayer(name, 'LineString', coords, layerGroup);
-            }
+            // Добавляем метку
+            bindTooltipOnHover(polyline, name);
 
             // Логирование информации о линии
             if (LOG_STYLES) {
@@ -1091,7 +1147,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 			
 			// Создаём маркер
 			const marker = L.marker([lat, lng], { icon: icon }).addTo(layerGroup);
-			
+            			
 			// Для техники сохраняем в глобальный массив
 			if (iconGetter === getMilEquipIcon) {
 				if (!window.allEquipmentMarkers) window.allEquipmentMarkers = [];
@@ -1230,7 +1286,8 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
         isPermanent = false,
         preserveZoom = true,
         fitBounds = false,
-        styleMode = null
+        styleMode = null,
+		interactive = null
     } = options;
 
     try {
@@ -1253,6 +1310,11 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
         // Общая логика парсинга
         const styles = parseStyleFromKmlDoc(kmlDoc);
         const styleMaps = parseStyleMapFromKmlDoc(kmlDoc);
+
+		let useInteractive = interactive;
+	    if (useInteractive === null) {
+	        useInteractive = !(filePath.includes('ControlZones') || filePath.includes('Control_'));
+	    }
         
         if (LOG_STYLES) {
             console.groupCollapsed(`${isPermanent ? 'Permanent' : 'Temporary'} layer loaded: ${filePath}`);
@@ -1261,7 +1323,7 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
             console.log('Found styleMaps:', styleMaps);
         }
 
-        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode, getPointIcon);
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode, getPointIcon, useInteractive);
         
         if (LOG_STYLES) console.groupEnd();
         
@@ -3496,50 +3558,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, true); // capture: перехватываем раньше остальных
 })();
-
-// функция для вычисления центра полигона
-function getPolygonCenter(coords) {
-    let minLat = Infinity, maxLat = -Infinity, minLng = Infinity, maxLng = -Infinity;
-    coords.forEach(coord => {
-        minLat = Math.min(minLat, coord[0]);
-        maxLat = Math.max(maxLat, coord[0]);
-        minLng = Math.min(minLng, coord[1]);
-        maxLng = Math.max(maxLng, coord[1]);
-    });
-    return [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
-}
-// функция для добавления метки к объекту
-function addLabelToLayer(name, geometryType, coords, layerGroup) {
-    return;
-    if (!name || name.trim() === '') return;
-    
-    let labelCoords;
-    if (geometryType === 'LineString') {
-        labelCoords = coords[0]; // Первая точка линии
-    } else if (geometryType === 'Polygon') {
-        labelCoords = getPolygonCenter(coords); // Центр полигона
-    }
-
-    if (!labelCoords) return;
-
-    const labelIcon = L.divIcon({
-        className: 'kml-label',
-        html: name,
-        iconSize: [100, 20],
-        iconAnchor: [50, 0]
-    });
-    
-    const labelMarker = L.marker(labelCoords, {
-        icon: labelIcon,
-        interactive: false
-    }).addTo(layerGroup);
-    
-    return labelMarker;
-
-}
-
-
-
 
 // Добавим функцию для добавления маркера в текущий центр карты
 function addMarkerAtCurrentCenter() {

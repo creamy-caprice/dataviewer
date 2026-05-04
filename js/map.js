@@ -655,3 +655,15 @@ if (targetNode) {
 
 window.leafletMap = map;
 console.log('Карта доступна как window.leafletMap');
+
+
+// Создание панелей для управления z-index (интерактивные выше, неинтерактивные ниже)
+const interactivePane = map.createPane('interactive');
+interactivePane.style.zIndex = 500;  // выше стандартной overlay-pane (400)
+const nonInteractivePane = map.createPane('nonInteractive');
+nonInteractivePane.style.zIndex = 400; // ниже интерактивной
+
+
+
+
+
