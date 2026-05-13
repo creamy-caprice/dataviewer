@@ -100,8 +100,8 @@ const translations = {
         
         selectAll: "All",
         
-        showAttacksOnUa: 'Show attacks on Ukraine',
-        hideAttacksOnUa: 'Hide attacks on Ukraine',		
+        showAttacksOnUa: 'Show strikes on Ukraine',
+        hideAttacksOnUa: 'Hide strikes on Ukraine',		
 		
         showFortifications: 'Show fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
         hideFortifications: 'Hide fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
