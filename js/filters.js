@@ -716,6 +716,8 @@ async function loadUnitsUaIcons() {
         const response = await fetch(jsonPath);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
+        
+        window.unitsUaData = data; // сохраняем целиком для поиска
 
         for (const msg of data.messages) {
             // Пропускаем сообщения без файла (например, «Резерв»)
@@ -732,14 +734,8 @@ async function loadUnitsUaIcons() {
             if (!imagePath) continue;
 
             // Извлекаем полный текст сообщения (строка или массив)
-            let text = '';
-            if (typeof msg.text === 'string') {
-                text = msg.text;
-            } else if (Array.isArray(msg.text)) {
-                text = msg.text.map(part => (typeof part === 'string' ? part : part.text)).join('');
-            } else {
-                continue;
-            }
+            const text = getMessageText(msg);
+            if (!text) continue;
 
             const idMatch = text.match(/^ID\s*:\s*(\d+)/m);
             if (!idMatch) continue;
@@ -772,6 +768,49 @@ async function loadUnitsUaIcons() {
     }
 }
 
+function getMessageText(msg) {
+    if (typeof msg.text === 'string') return msg.text;
+    if (Array.isArray(msg.text))
+        return msg.text.map(part => (typeof part === 'string' ? part : part.text)).join('');
+    return '';
+}
+
+// Функция поиска профилей по цифрам
+// точное совпадение числа, для обоих тэгов
+function getProfileIdsBySearchDigits(digits) {
+    const result = new Set();
+    if (!window.unitsUaData || !window.unitsUaData.messages) return result;
+
+    const reBr = /#Бр_(\d+)/g;
+    const rePk = /#Пк_(\d+)/g;
+
+    for (const msg of window.unitsUaData.messages) {
+        const text = getMessageText(msg);
+        let found = false;
+
+        // Проверяем все вхождения #Бр_ (не прерываем)
+        let match;
+        while ((match = reBr.exec(text)) !== null) {
+            if (match[1] === digits) {
+                found = true;
+                // Можно продолжать, но break не ставим, чтобы не прерывать
+            }
+        }
+        // Проверяем все вхождения #Пк_ (всегда, даже если уже found)
+        while ((match = rePk.exec(text)) !== null) {
+            if (match[1] === digits) {
+                found = true;
+            }
+        }
+
+        if (found) {
+            const idMatch = text.match(/^ID\s*:\s*(\d+)/m);
+            if (idMatch) result.add(idMatch[1]);
+        }
+    }
+    return result;
+}
+
 // Парсинг даты из CSV (формат YYYY.MM.DD)
 function parseCsvDate(dateStr) {
     if (!dateStr) return null;
@@ -800,7 +839,7 @@ function parseUnitsCsvRow(row) {
 }
 
 // Функция загрузки точек с фильтром по дате (только ПВД, не более одной на ID)
-async function loadUnitsUaWithDateFilter(targetDateStr) {
+async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null) {
     if (!window.unitsUaCsvPath) {
         console.error('Путь к CSV не задан в data.js');
         return;
@@ -822,6 +861,8 @@ async function loadUnitsUaWithDateFilter(targetDateStr) {
             if (!data) continue;
             if (isNaN(data.lat) || isNaN(data.lng)) continue;
             if (data.characteristic !== 'ПВД') continue;
+            // Фильтр по ID (если задан)
+            if (allowedProfileIds && !allowedProfileIds.has(data.profileId)) continue;
             allRows.push(data);
         }
 
@@ -933,14 +974,17 @@ async function loadUnitsUaWithDateFilter(targetDateStr) {
 // Перезагрузка слоя с учётом текущей selectedDate
 function reloadUnitsUaLayer() {
     if (window.isUnitsUaVisible) {
-        // Всегда используем актуальную дату из календаря
-        const currentDate = window.selectedDate;
-        if (!currentDate) {
-            console.warn('reloadUnitsUaLayer: selectedDate не определена, используется текущая дата');
-            currentDate = getCurrentDateFormatted();
+        const currentDate = window.selectedDate || getCurrentDateFormatted();
+        let filterSet = null;
+        if (window.unitsSearchDigits) {
+            filterSet = window.getProfileIdsBySearchDigits(window.unitsSearchDigits);
+            if (filterSet.size === 0) filterSet = new Set();
         }
-        loadUnitsUaWithDateFilter(currentDate).then(() => {
-            // Убедимся, что слой на карте
+        loadUnitsUaWithDateFilter(currentDate, filterSet).then(() => {
+            // Убедимся, что слой существует (защита от null)
+            if (!window.unitsUaLayer) {
+                window.unitsUaLayer = L.layerGroup();
+            }
             if (!map.hasLayer(window.unitsUaLayer)) {
                 window.unitsUaLayer.addTo(map);
             }
@@ -948,25 +992,77 @@ function reloadUnitsUaLayer() {
     }
 }
 
+// Функция поиска
+function applyUnitsSearch() {
+    const input = document.getElementById('units-search-input');
+    const raw = input.value.trim();
+    if (raw && /^\d{1,3}$/.test(raw)) {
+        window.unitsSearchDigits = raw;
+    } else {
+        window.unitsSearchDigits = null;
+        input.value = '';
+    }
+    reloadUnitsUaLayer();
+}
+
 // Переключение видимости слоя
 async function toggleUnitsUa() {
+    const panel = document.getElementById('units-search-panel');
+    const btn = document.getElementById('units-ua-btn');
+    
     if (!window.isUnitsUaVisible) {
-        // Показать слой: загрузить данные с фильтром по текущей дате
+        // ===== Включение слоя =====
         const currentDate = window.selectedDate || getCurrentDateFormatted();
-        await loadUnitsUaWithDateFilter(currentDate);
+        if (!window.unitsUaLayer) {
+            window.unitsUaLayer = L.layerGroup();
+        }
+        let filterSet = null;
+        if (window.unitsSearchDigits) {
+            filterSet = window.getProfileIdsBySearchDigits(window.unitsSearchDigits);
+            if (filterSet.size === 0) filterSet = new Set();
+        }
+        try {
+            await loadUnitsUaWithDateFilter(currentDate, filterSet);
+        } catch (err) {
+            console.error('Ошибка загрузки UnitsUA слоя:', err);
+        }
         window.unitsUaLayer.addTo(map);
+        
+        // Позиционирование панели
+        if (panel && btn) {
+            if (window.innerWidth <= 768) {
+                // мобильные: фиксированный левый верхний угол
+                panel.style.position = 'fixed';
+                panel.style.top = '0px';
+                panel.style.left = '0px';
+            } else {
+                // десктоп: под кнопкой
+                const rect = btn.getBoundingClientRect();
+                panel.style.position = 'absolute';
+                panel.style.top = (rect.bottom + window.scrollY) + 'px';
+                panel.style.left = (rect.left + window.scrollX) + 'px';
+            }
+            panel.style.display = 'flex';
+        }
+        
         window.isUnitsUaVisible = true;
-        document.getElementById('units-ua-btn').classList.add('active');
+        btn.classList.add('active');
     } else {
-        // Скрыть
-        if (map.hasLayer(window.unitsUaLayer)) {
+        // ===== Выключение слоя =====
+        if (window.unitsUaLayer && map.hasLayer(window.unitsUaLayer)) {
             map.removeLayer(window.unitsUaLayer);
         }
+        if (panel) {
+            panel.style.display = 'none';
+            const input = document.getElementById('units-search-input');
+            if (input) input.value = '';
+            window.unitsSearchDigits = null;
+        }
         window.isUnitsUaVisible = false;
-        document.getElementById('units-ua-btn').classList.remove('active');
+        btn.classList.remove('active');
     }
 
-    const btn = document.getElementById('units-ua-btn');
+    // Обновляем title кнопки
     if (btn) {
         const t = translations[currentLang];
         btn.title = window.isUnitsUaVisible ?
@@ -975,11 +1071,49 @@ async function toggleUnitsUa() {
     }
 }
 
-// Инициализация кнопки
+// Инициализация кнопки подразделений
 function initUnitsUaButton() {
     const btn = document.getElementById('units-ua-btn');
     if (!btn) return;
+
+    // Создаём панель поиска
+    const searchPanel = document.createElement('div');
+    searchPanel.id = 'units-search-panel';
+    searchPanel.style.display = 'none';
+    searchPanel.innerHTML = `
+        <span class="units-search-input-wrap">
+            <input type="text" id="units-search-input" placeholder="123" maxlength="3"
+                   inputmode="numeric" pattern="[0-9]*">
+            <button id="units-search-clear" class="units-search-clear-inside" title="Очистить">✕</button>
+        </span>
+        <button id="units-search-btn" title="Поиск">🔍</button>
+    `;
+    // btn.parentNode.insertBefore(searchPanel, btn.nextSibling);
+    document.body.appendChild(searchPanel);
+
+    const searchInput = document.getElementById('units-search-input');
+    const searchClearBtn = document.getElementById('units-search-clear');
+
+    // Управление видимостью крестика
+    searchInput.addEventListener('input', function() {
+        searchClearBtn.style.display = this.value.trim() ? 'block' : 'none';
+    });
+
+    // Обработчики панели
+    document.getElementById('units-search-btn').addEventListener('click', applyUnitsSearch);
+    searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        window.unitsSearchDigits = null;
+        // input event автоматически скроет крестик
+        reloadUnitsUaLayer();
+    });
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') applyUnitsSearch();
+    });
+
+    // Обработчик самой кнопки
     btn.addEventListener('click', toggleUnitsUa);
+
     window.isUnitsUaVisible = false;
     btn.classList.remove('active');
     const t = translations[currentLang];

@@ -12,7 +12,7 @@ copyCoordsBtn = document.getElementById('copy-coords-btn');
 window.selectedDate = null; // Глобальная переменная для хранения текущей даты
 
 // Глобальный флаг для логгирования стилей временных файлов
-const LOG_STYLES = false; // Можно менять на false/true для переключения
+const LOG_STYLES = true; // Можно менять на false для отключения
 
 let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
 // let isMilEquipVisible     = false; // Флаг видимости слоя техники
@@ -827,7 +827,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 	        });
 	    } else {
 	        // Для объектов без имени – просто лог (опционально)
-	        // layer.on('mouseover', () => console.log(`mouseover on: "${name || 'unnamed'}"`));
+	        layer.on('mouseover', () => console.log(`mouseover on: "${name || 'unnamed'}"`));
 	    }
 	}
     
@@ -2562,6 +2562,9 @@ async function init() {
     initMobileFilterMenu();
     
     initUnitsUaButton();
+	  
+    // Кнопка полноэкранного режима
+    initFullscreenControl();
         
     // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
@@ -2613,7 +2616,7 @@ async function init() {
     
     // Инициализация дартс-меню
     initDartMenu(); 
-    
+        
     // Для выпадающего списка слоёв (подложек)
     // таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
     setTimeout(() => {
@@ -2634,8 +2637,6 @@ async function init() {
         }
     }, 300);
 	
-    // Кнопка полноэкранного режима
-    initFullscreenControl();
     
     // Инициализация поиска по названию
     initSearchFunctionality();
