@@ -390,7 +390,7 @@
     position: absolute;
     top: 45px;
     right: 0;
-    width: 250px;
+    width: max-content;
     z-index: 2000;
 	    opacity: 1 !important; /* Гарантируем видимость */
     visibility: visible !important; /* Гарантируем видимость */
