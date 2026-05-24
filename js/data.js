@@ -79,7 +79,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_05_21.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_05_25.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
@@ -113,8 +113,6 @@ window.cities = [
 
 // Управление точками
 // Путь к файлу с точками
-// window.pointsKmlPaths = ["kml/Geolocations/2026 год январь.kml",
-//						  "kml/Geolocations/2023-2025.kml"];
 window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
 						  "kml/Geolocations/oldesPoint.kml"];
  window.pointLayers = [];
@@ -136,21 +134,9 @@ window.attacksOnUaLayers = [];
 
 
 window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Volchansk.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Kupyansk.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Lyman.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Kramatorsk.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Pokrovsk.geojson",
-								//"kml/Fortifications/Geojson/Trenches_ Mezhevaya.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Gulyaypole.geojson",
-								//"kml/Fortifications/Geojson/Trenches_Zaporozhie.geojson",
-								
-								//"kml/Fortifications/Geojson/Ditches.geojson",
 								"kml/Fortifications/Geojson/CK_Ditches.geojson",
 								"kml/Fortifications/Geojson/CK_Wire.geojson",
-								//"kml/Fortifications/Geojson/Barbed_wire.geojson",
 								"kml/Fortifications/Geojson/CK_Teeth.geojson"
-                                //"kml/Fortifications/Geojson/Dragons_teeth.geojson"
 							   ];
 window.fortificationLayers = [];
 
