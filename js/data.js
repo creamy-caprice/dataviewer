@@ -97,9 +97,11 @@ window.permanentLayers = [
 // Список городов с координатами
 window.cities = [
     { name: { ru: "Суджа",      en: "Sudzha"     }, lat: 51.19055,  lng: 35.27082   },
+	{ name: { ru: "Сумы",      en: "Sumy"        }, lat: 50.919052, lng: 34.828720  },
     { name: { ru: "Волчанск",   en: "Volchansk"  }, lat: 50.288107, lng: 36.946217  },
     { name: { ru: "Купянск",    en: "Kupyansk"   }, lat: 49.706396, lng: 37.616586  },
     { name: { ru: "Боровая",    en: "Borovaya"   }, lat: 49.38417,  lng: 37.62086   },
+	{ name: { ru: "Красный Лиман",    en: "Krasnyy Liman"   }, lat: 48.985174,  lng: 37.810822   },
     { name: { ru: "Северск",    en: "Seversk"    }, lat: 48.868709, lng: 38.106425  },
     //{ name: { ru: "Часов Яр",   en: "Chasov Yar" }, lat: 48.591656, lng: 37.820354  },
     { name: { ru: "Константиновка", en: "Konstantinovka" }, lat: 48.521389, lng: 37.714722 },
