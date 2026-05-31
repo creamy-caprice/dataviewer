@@ -2,6 +2,40 @@
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
     <name>2023</name>
+    <Style id="icon-1528-757575-normal">
+      <IconStyle>
+        <color>ff757575</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1528-757575-highlight">
+      <IconStyle>
+        <color>ff757575</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1528-757575">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1528-757575-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1528-757575-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
     <Style id="icon-1565-AFB42B-normal">
       <IconStyle>
         <color>ff2bb4af</color>
@@ -712,7 +746,7 @@
     </Placemark>
     <Placemark>
       <name>10 августа, н.п. Смыга, нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gwu11jEVfSvVullok9U3heP0l8x3n82uNLH1Q_RR8J6Pw6ZazozzeUhXhsM9f6wBvQM-VRpbORqOTo6MAGCQw6r8dWv0YecfhBJfNxnvbCjMMeZXg4YkqUV4yWUi9px1FMkjtdxUvuqm49hNDdhrpZmheD_b0Sx3vnln3p6Qs-vP612EYG7uEDf0oFad6TU6wBZn1sCstXOuwgol81rz4rKysEQHSqFBohqHKdZ7kuBSnHqLPYyK048_sw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтехранилищу у н.п.Смыга, Ровенской области в ночь на 10 августа 2023г<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.08.10<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/659]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GxrOgQj-BO8w2wgy33nvvj-ga0jFYmMfws7nP9NBANKD34zTVTHIdoh0FeIkoXecH4jIfPSrmfRfeiV1vipUDILVRcUrfxZvEEiXH2gcYB05bXnsAhy9_nNzerG0keJipjEQCKHNn3V7Op79b_JZm6N37PF7Bw7_aLkG0MValT7YBeH12G5Go5smQPSYPiU68T8x_bvlbtgGRz2o4I3ACiEMaOEMQLIgMojVcqBPSdEtzEcSWTwybu_e88?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтехранилищу у н.п.Смыга, Ровенской области в ночь на 10 августа 2023г<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.08.10<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/659]]></description>
       <styleUrl>#icon-1581-000000</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -733,7 +767,7 @@
           <value>https://t.me/osint_alarm/659</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gwu11jEVfSvVullok9U3heP0l8x3n82uNLH1Q_RR8J6Pw6ZazozzeUhXhsM9f6wBvQM-VRpbORqOTo6MAGCQw6r8dWv0YecfhBJfNxnvbCjMMeZXg4YkqUV4yWUi9px1FMkjtdxUvuqm49hNDdhrpZmheD_b0Sx3vnln3p6Qs-vP612EYG7uEDf0oFad6TU6wBZn1sCstXOuwgol81rz4rKysEQHSqFBohqHKdZ7kuBSnHqLPYyK048_sw?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GxrOgQj-BO8w2wgy33nvvj-ga0jFYmMfws7nP9NBANKD34zTVTHIdoh0FeIkoXecH4jIfPSrmfRfeiV1vipUDILVRcUrfxZvEEiXH2gcYB05bXnsAhy9_nNzerG0keJipjEQCKHNn3V7Op79b_JZm6N37PF7Bw7_aLkG0MValT7YBeH12G5Go5smQPSYPiU68T8x_bvlbtgGRz2o4I3ACiEMaOEMQLIgMojVcqBPSdEtzEcSWTwybu_e88?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -773,7 +807,7 @@
     </Placemark>
     <Placemark>
       <name>19 августа, г. Новоград-Волынский, нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyTfulLXrq7FA9-OF1f8x7UBqAWQtCF6gyKDbB2n81Hr3QrDa5WaFQlFJBthyGs_FkwXPJdJXISz_JE6Q9ZIWETUG84fEGnqPQCKuURD5TfzBDUWDVU1IXmgRCWGbTHaa4h8soEVHbGX86ynzy7hkNueX-kbATiwNVf05Umz9Aqyg4BEsBK-kJiFabGSktA3g457KlzXPq7MXmuYFEaenCi9-U7isZty4D_7O4juW1ZzZeKLa7nPyxCD10?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтехранилищу у г.Новоград-Волынский, Житомирской области в ночь на 19 августа 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.08.19<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/663]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GycfUkoCIitSDY6h_OOGvj0y5WJvqYzg8AvAIsJNEWeHOI7eADcAw0U1DEDHiO84p0nFFa7wOBt7iZL6fB4sW0Nf8DZ0T3faLhBo6IZefGXs_nq4S1-uyo4L7mhLdgSThmv57kQD4F-jq50EnSvZhSlOP1wU7v-WZQRp1QaJSnNHIpymoOO9ekB6HV3eMHBW3VfND2W0JQWHb1w_r7B775X72u1WWUPUinmXB4D04Okuq-3OqNNd5fmwLE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтехранилищу у г.Новоград-Волынский, Житомирской области в ночь на 19 августа 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.08.19<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/663]]></description>
       <styleUrl>#icon-1581-000000</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -794,7 +828,7 @@
           <value>https://t.me/osint_alarm/663</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyTfulLXrq7FA9-OF1f8x7UBqAWQtCF6gyKDbB2n81Hr3QrDa5WaFQlFJBthyGs_FkwXPJdJXISz_JE6Q9ZIWETUG84fEGnqPQCKuURD5TfzBDUWDVU1IXmgRCWGbTHaa4h8soEVHbGX86ynzy7hkNueX-kbATiwNVf05Umz9Aqyg4BEsBK-kJiFabGSktA3g457KlzXPq7MXmuYFEaenCi9-U7isZty4D_7O4juW1ZzZeKLa7nPyxCD10?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GycfUkoCIitSDY6h_OOGvj0y5WJvqYzg8AvAIsJNEWeHOI7eADcAw0U1DEDHiO84p0nFFa7wOBt7iZL6fB4sW0Nf8DZ0T3faLhBo6IZefGXs_nq4S1-uyo4L7mhLdgSThmv57kQD4F-jq50EnSvZhSlOP1wU7v-WZQRp1QaJSnNHIpymoOO9ekB6HV3eMHBW3VfND2W0JQWHb1w_r7B775X72u1WWUPUinmXB4D04Okuq-3OqNNd5fmwLE?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -834,7 +868,7 @@
     </Placemark>
     <Placemark>
       <name>23 июня, г. Смела, нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzZMefZXMjnsZikJb-xVMMH1F9cBsqiDPEq2oXmbSR9irA5imAqOYfHI8Cqxt7h3q-CI9n5sFm6fDStW8tFDTw7_lNsmIlwYKi8wa_YLyJ1gvVZpOYCfy83mQKGGrwbm7aBpdMvHaD8scouXYv33fzNpdJiH2qbIXKNrHG0TN18edQT4a4O0R8JLppp42IaasKO4YEfjQbNxc0T34vFL7DJCV0ajk5ueNYN18efI8hIWcEYmRUttjjCYag?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе у г.Смела, Черкасской области межд 23 июня и 1 июля 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.06.23<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/694]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gyq5MoKlpHa7bzVcgJwasSy4toO3C_m_F5p0eSr6zrxfDaaHHkTeFli-VGXU5zl-pF1AqIRfYKI8W3Cyq_QbJelVXDiaFpZYIBYpvvETFc3JgLWxuVRoUvvDVBiSAG4kGQr0PjXWthEvEllq3zyq9NPJ8XJ18pNNUcPnSWamkUVqZ1ttv5M8b4VwcVdouaMV6RWXdNKc01l8JyV3y59KNUd5QPgkARilXIn-1RmmK-xg2cpDXWqU0uldf0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе у г.Смела, Черкасской области межд 23 июня и 1 июля 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.06.23<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/694]]></description>
       <styleUrl>#icon-1581-757575</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -855,7 +889,7 @@
           <value>https://t.me/osint_alarm/694</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzZMefZXMjnsZikJb-xVMMH1F9cBsqiDPEq2oXmbSR9irA5imAqOYfHI8Cqxt7h3q-CI9n5sFm6fDStW8tFDTw7_lNsmIlwYKi8wa_YLyJ1gvVZpOYCfy83mQKGGrwbm7aBpdMvHaD8scouXYv33fzNpdJiH2qbIXKNrHG0TN18edQT4a4O0R8JLppp42IaasKO4YEfjQbNxc0T34vFL7DJCV0ajk5ueNYN18efI8hIWcEYmRUttjjCYag?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gyq5MoKlpHa7bzVcgJwasSy4toO3C_m_F5p0eSr6zrxfDaaHHkTeFli-VGXU5zl-pF1AqIRfYKI8W3Cyq_QbJelVXDiaFpZYIBYpvvETFc3JgLWxuVRoUvvDVBiSAG4kGQr0PjXWthEvEllq3zyq9NPJ8XJ18pNNUcPnSWamkUVqZ1ttv5M8b4VwcVdouaMV6RWXdNKc01l8JyV3y59KNUd5QPgkARilXIn-1RmmK-xg2cpDXWqU0uldf0?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -866,7 +900,7 @@
     </Placemark>
     <Placemark>
       <name>29 декабря, г. Киев, предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyPcFIjQdvgB-jsNcj1m-snRJu8-tcB4BLUqPR-iFPkepW-nSN_g0qel0rtbxQjTNZe_JtQOBWk_5E8G7n6r0xRMP5g6ziETNI2grzNX4alLgyX3EayGoNnl8L8wHg-5QxHbdn-d99ki4BWoO47zhQb-FcU7kX7FBhIAJyolDo7cNbkszyT5r9zwfKJWQ7hAlzSSEh6IR9fJfyCUyv-ypsybfmqPjqVo_WhRsJyuiEAh978WFzREdw2G30?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по заводу "Артём" 29 декабря 2023г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2023.12.29<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/728]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzmYA_JsvrP2znGlpxnOY3mCe_s2_H5iBVsDpgTRvPwg-UK77D81KvI-kOzLwEtnNOexBK-m5olrHb5PLbAwp0Gf17gxy-waRYsx9CtDcjV32Qio15APiQUp8nfZdKoEoh0BtqZx-w_T5yfOXp8olIUzEQi0kdJZ32RfcIAV_m85TCF-CBycW0yLJxMt5EO3hzB3qGr2mrZ8mucSihy2wiFQHM0aSKIrsd3yGnWM-ZfZrEmqoAOIBqjGpQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по заводу "Артём" 29 декабря 2023г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2023.12.29<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/728]]></description>
       <styleUrl>#icon-1693-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -887,7 +921,7 @@
           <value>https://t.me/osint_alarm/728</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyPcFIjQdvgB-jsNcj1m-snRJu8-tcB4BLUqPR-iFPkepW-nSN_g0qel0rtbxQjTNZe_JtQOBWk_5E8G7n6r0xRMP5g6ziETNI2grzNX4alLgyX3EayGoNnl8L8wHg-5QxHbdn-d99ki4BWoO47zhQb-FcU7kX7FBhIAJyolDo7cNbkszyT5r9zwfKJWQ7hAlzSSEh6IR9fJfyCUyv-ypsybfmqPjqVo_WhRsJyuiEAh978WFzREdw2G30?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzmYA_JsvrP2znGlpxnOY3mCe_s2_H5iBVsDpgTRvPwg-UK77D81KvI-kOzLwEtnNOexBK-m5olrHb5PLbAwp0Gf17gxy-waRYsx9CtDcjV32Qio15APiQUp8nfZdKoEoh0BtqZx-w_T5yfOXp8olIUzEQi0kdJZ32RfcIAV_m85TCF-CBycW0yLJxMt5EO3hzB3qGr2mrZ8mucSihy2wiFQHM0aSKIrsd3yGnWM-ZfZrEmqoAOIBqjGpQ?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -956,7 +990,7 @@
     </Placemark>
     <Placemark>
       <name>22 марта, г. Житомир, Нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gz1DxIf4H-i7Z6srwkiE8sbnAe_CRF20n-GjtR5EL35a75grF5w6gJpag1LFbkTBOOR4sh9vG-jjA01ltpgzqIlMR7yAVVysNMMWEqFgVmJHb--1jpLdwAggHQzxPecNMQ0wmFTKYAoRUMhlpRGcLqvAv4IIxoWuGF5PwcdLzFUelojcVTObqzzwH0FwHPenNwBbasnJwrF_VSFJK36dE-oD3mfpfjUpN7kRzk5z_TGCQ4Lbbx4NLcuJ50?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Житомир, Житомирской области в ночь на 22 марта 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.03.22<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/892]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyA0gBxkwBk4s3BocL9xfrJas7mVZaYgzSBgSxVgliMaog-BtfoLWhJPUAelOwOP1AiDbctAa0PX4EMC4FWBoRXgwMGptngrB-_iIO8ONpub25RNgE-jMd_y9e3nZYnDKjMm5Ruz3r3DclQDkNUTyfeGDVkIWV7W7IN3uuNiTBHK6uaw9RUKLUQ8CfhntBgo_7JIgR5EAmk0h_As9g-xU9O-wX6PTUEDrWAiuOSnQWmgI6jQCVnGOu3TvY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Житомир, Житомирской области в ночь на 22 марта 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.03.22<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/892]]></description>
       <styleUrl>#icon-1581-757575</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -977,7 +1011,7 @@
           <value>https://t.me/osint_alarm/892</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gz1DxIf4H-i7Z6srwkiE8sbnAe_CRF20n-GjtR5EL35a75grF5w6gJpag1LFbkTBOOR4sh9vG-jjA01ltpgzqIlMR7yAVVysNMMWEqFgVmJHb--1jpLdwAggHQzxPecNMQ0wmFTKYAoRUMhlpRGcLqvAv4IIxoWuGF5PwcdLzFUelojcVTObqzzwH0FwHPenNwBbasnJwrF_VSFJK36dE-oD3mfpfjUpN7kRzk5z_TGCQ4Lbbx4NLcuJ50?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GyA0gBxkwBk4s3BocL9xfrJas7mVZaYgzSBgSxVgliMaog-BtfoLWhJPUAelOwOP1AiDbctAa0PX4EMC4FWBoRXgwMGptngrB-_iIO8ONpub25RNgE-jMd_y9e3nZYnDKjMm5Ruz3r3DclQDkNUTyfeGDVkIWV7W7IN3uuNiTBHK6uaw9RUKLUQ8CfhntBgo_7JIgR5EAmk0h_As9g-xU9O-wX6PTUEDrWAiuOSnQWmgI6jQCVnGOu3TvY?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -988,7 +1022,7 @@
     </Placemark>
     <Placemark>
       <name>12 февраля, г. Харьков, Предприятие </name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gy_EW5mb0bWgt0rTJZA12of8Gj6pQCiCh4Qr30suzIrvf519Gah5YkKeAEVmxN2Cr6zCmrxLJ8KXuUPSJZcImxBzFyzvAfLHw6B9haAwUjoAVGxwc6r-ePhHrep259_pTOPD2KSF32dru-oFOD-X4sisJUcDdhpfArhmzQuzb2EYWWXBwExEfXmNxxe0fMPEruu4Ww4DoWxBqkVkF40Yw71pMkb3q9kmz-fAsuqC0Hxy0fTkdTXBnQr9Zo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по территории ХЗТМ им.Малышева, в г.Харьков, Харьковской области 12 февраля 2023г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2023.02.12<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/943]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gwl_Zn40bkvSSL39D4h99ToF_Ij5SUBrnZ03YkNYgqd5RpZQngoKUlIjgdO-38qoL0yJ0uh2VD2OyLAKdU3DjU73Sf4DFhgrOY7J5hZSALaVWXj1t1dRxiTK6SHAgRTXvEJ0osJYm0ffnR74WjJLVXpmEdrDhmMmlLfwKVpcw4-4NsFqfpg5Lfze64KULnvCiSYLV3cFoDUYdb1eWRsKlQaUKt7K-XJJ0gdp7Rkgp4lQ7KQG8ozNKn4xj8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по территории ХЗТМ им.Малышева, в г.Харьков, Харьковской области 12 февраля 2023г.<br><br><br>Тип объекта: Предприятие ВПК<br>Дата: 2023.02.12<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/943]]></description>
       <styleUrl>#icon-1693-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1009,7 +1043,7 @@
           <value>https://t.me/osint_alarm/943</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gy_EW5mb0bWgt0rTJZA12of8Gj6pQCiCh4Qr30suzIrvf519Gah5YkKeAEVmxN2Cr6zCmrxLJ8KXuUPSJZcImxBzFyzvAfLHw6B9haAwUjoAVGxwc6r-ePhHrep259_pTOPD2KSF32dru-oFOD-X4sisJUcDdhpfArhmzQuzb2EYWWXBwExEfXmNxxe0fMPEruu4Ww4DoWxBqkVkF40Yw71pMkb3q9kmz-fAsuqC0Hxy0fTkdTXBnQr9Zo?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gwl_Zn40bkvSSL39D4h99ToF_Ij5SUBrnZ03YkNYgqd5RpZQngoKUlIjgdO-38qoL0yJ0uh2VD2OyLAKdU3DjU73Sf4DFhgrOY7J5hZSALaVWXj1t1dRxiTK6SHAgRTXvEJ0osJYm0ffnR74WjJLVXpmEdrDhmMmlLfwKVpcw4-4NsFqfpg5Lfze64KULnvCiSYLV3cFoDUYdb1eWRsKlQaUKt7K-XJJ0gdp7Rkgp4lQ7KQG8ozNKn4xj8?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1020,7 +1054,7 @@
     </Placemark>
     <Placemark>
       <name>1 октября, г. Умань, Склады</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzmAxIPT9-xx_wiV57XGOLk5PP4x3VZ94ZYB0_FqWtxK5w0ueoX1ckdhcuvN2lk71sgKfRWcczuGBLVk-s2kIO1Wv26M9YnYlokU_Cns9osxbOzuuJ1zUeoSYzQUH3Rc57Wp6UkBGCyswA_I7hb72SdH66OPghMvraK-Rb8NQp19d2Eip1xALc-5ZccIBfQFb8E7SuIYhKEUPyCT-izqopAQ7heAyD0B9F547zJ1mWvDF36Fr_ZiUb34uM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по складам в г.Умань, Черкасской области в ночь на 1 октября 2023г.<br><br><br>Тип объекта: Склад<br>Дата: 2023.10.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1052]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwaFE4FfxBj8yD5S-U1x5qIUuhY3o1_YuSeX5esrnGNM1gVqTTuWPhiaHDSxaJpCe1HNuP9ZzN6dvUXb4xM1XyT4KkCF_711AoCyHDZa-JMFfFWN_z6eDkAEFBXYvMLGC7TbXKF_pEmlWD0DlWQZHXUiXnnfMGeqeQ6I1_pyT6UpaYxpR2NioJVtOv3ztjc8fJt3AxGa3uXtYAYjznabmRaWXDB1JjOtG1n1vAh9dZY1e9KMXJvm31yCE4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по складам в г.Умань, Черкасской области в ночь на 1 октября 2023г.<br><br><br>Тип объекта: Склад<br>Дата: 2023.10.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1052]]></description>
       <styleUrl>#icon-1603-0288D1</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1041,7 +1075,7 @@
           <value>https://t.me/osint_alarm/1052</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzmAxIPT9-xx_wiV57XGOLk5PP4x3VZ94ZYB0_FqWtxK5w0ueoX1ckdhcuvN2lk71sgKfRWcczuGBLVk-s2kIO1Wv26M9YnYlokU_Cns9osxbOzuuJ1zUeoSYzQUH3Rc57Wp6UkBGCyswA_I7hb72SdH66OPghMvraK-Rb8NQp19d2Eip1xALc-5ZccIBfQFb8E7SuIYhKEUPyCT-izqopAQ7heAyD0B9F547zJ1mWvDF36Fr_ZiUb34uM?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwaFE4FfxBj8yD5S-U1x5qIUuhY3o1_YuSeX5esrnGNM1gVqTTuWPhiaHDSxaJpCe1HNuP9ZzN6dvUXb4xM1XyT4KkCF_711AoCyHDZa-JMFfFWN_z6eDkAEFBXYvMLGC7TbXKF_pEmlWD0DlWQZHXUiXnnfMGeqeQ6I1_pyT6UpaYxpR2NioJVtOv3ztjc8fJt3AxGa3uXtYAYjznabmRaWXDB1JjOtG1n1vAh9dZY1e9KMXJvm31yCE4?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1052,7 +1086,7 @@
     </Placemark>
     <Placemark>
       <name>1 октября, г. Умань, Нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwmhKJrXXmUeSNkurUzbW3ZaVvuJPsJY1wPsa4STD0h9i4h_8D4_YlViGQFwv8KYYGeUs4ZQRxRvfprtDqKpQt-IEsuPnSemnDL3V-HvrzKWJy_O2MA4KrD0OBtbqgfMjp8nxp4Z7lEB6qLPXVdUuFYb4WfR2O5aJDVDy3OCcuBSRCWuTNSexNVAwr-qOC-Xfl6wciw8gAXPNKDwLhLUcRjiIOZuxGx0XZLz5jLWy6LcRX8hyA7yVMtON0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Умань, Черкасской области в ночь на 1 октября 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.10.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1052]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gx40e0FeDd52vsYCO-b88jhrmS5ovmUF8ba_tlg5w0BwAxpRxnvX4dmLKxWwbczr8YCuL14_6OdU5L3KURV1Y_L8xZOEPoIHnB0ZNGxi48eX9i9nrqb-FuUCcOYY_IhZRMfeKHbKBa0d2MoUR2wRoV-JFqQqI4jCijv065cHZOwEV8KOipQfzFLcfSdMae0ZuTNgVoTu06QShWHpfbrQy6TLKS-r-obRePEVG_Vm1zMNf4bgZwPfDcJiYs?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Умань, Черкасской области в ночь на 1 октября 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.10.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1052]]></description>
       <styleUrl>#icon-1581-000000</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1073,7 +1107,7 @@
           <value>https://t.me/osint_alarm/1052</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwmhKJrXXmUeSNkurUzbW3ZaVvuJPsJY1wPsa4STD0h9i4h_8D4_YlViGQFwv8KYYGeUs4ZQRxRvfprtDqKpQt-IEsuPnSemnDL3V-HvrzKWJy_O2MA4KrD0OBtbqgfMjp8nxp4Z7lEB6qLPXVdUuFYb4WfR2O5aJDVDy3OCcuBSRCWuTNSexNVAwr-qOC-Xfl6wciw8gAXPNKDwLhLUcRjiIOZuxGx0XZLz5jLWy6LcRX8hyA7yVMtON0?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gx40e0FeDd52vsYCO-b88jhrmS5ovmUF8ba_tlg5w0BwAxpRxnvX4dmLKxWwbczr8YCuL14_6OdU5L3KURV1Y_L8xZOEPoIHnB0ZNGxi48eX9i9nrqb-FuUCcOYY_IhZRMfeKHbKBa0d2MoUR2wRoV-JFqQqI4jCijv065cHZOwEV8KOipQfzFLcfSdMae0ZuTNgVoTu06QShWHpfbrQy6TLKS-r-obRePEVG_Vm1zMNf4bgZwPfDcJiYs?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1142,7 +1176,7 @@
     </Placemark>
     <Placemark>
       <name>22 марта 2023, г.Ржищев, лицей</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwH5d670QcntTP8brSXld9Cu7PWfgTbYZ0pUpGX_SkrFb7MAa-zs2ljvCnbkDKa0Ja9AJJfwWmN2XAopeV0uKxbeWs__ki_E4x6pD5g2yl0zlmZifFMHBFtxJQxdQEyuwyIP1rYBXpY1zpGkqH8vzit-NirV2iNQP-MMwFHSMLZuzCwxfunG_ShRnf5C58m2hPSLL8Rup75cUanIfmBKC809raQ-vcYJf1aRoN3UoXwATEcb6lDuswa-MM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по общежитию лицея.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2023.03.22<br>Средства поражения: БпЛА<br>Ссылка: ]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gx9kp1tL3WV0nzgEAX-WTsbrKKHeE0WpVFiPGL2sx3eVMnJyb_sMUYOaPwjMzjBCiQHNSKHazPP9t0Tq4huFPp6ZGye9mDJyVFBkc-iSq1XD37xIuZyD50vX3iuBSKXiSLI6Ypk4ymEsx_gZJDnZq66zi0TQDUlnOH4WqHY3LiNo4j3XtjpGegYH4S1ITVR-w55ToS2YZQW2AaEqQRFCc4a3bOzkgpp1vSRDIoQIdoWUBqH04JOw9YWp-M?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по общежитию лицея.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2023.03.22<br>Средства поражения: БпЛА<br>Ссылка: ]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1161,7 +1195,7 @@
           <value/>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwH5d670QcntTP8brSXld9Cu7PWfgTbYZ0pUpGX_SkrFb7MAa-zs2ljvCnbkDKa0Ja9AJJfwWmN2XAopeV0uKxbeWs__ki_E4x6pD5g2yl0zlmZifFMHBFtxJQxdQEyuwyIP1rYBXpY1zpGkqH8vzit-NirV2iNQP-MMwFHSMLZuzCwxfunG_ShRnf5C58m2hPSLL8Rup75cUanIfmBKC809raQ-vcYJf1aRoN3UoXwATEcb6lDuswa-MM?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_Gx9kp1tL3WV0nzgEAX-WTsbrKKHeE0WpVFiPGL2sx3eVMnJyb_sMUYOaPwjMzjBCiQHNSKHazPP9t0Tq4huFPp6ZGye9mDJyVFBkc-iSq1XD37xIuZyD50vX3iuBSKXiSLI6Ypk4ymEsx_gZJDnZq66zi0TQDUlnOH4WqHY3LiNo4j3XtjpGegYH4S1ITVR-w55ToS2YZQW2AaEqQRFCc4a3bOzkgpp1vSRDIoQIdoWUBqH04JOw9YWp-M?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1288,7 +1322,7 @@
     </Placemark>
     <Placemark>
       <name>11 июля, г. Ильичевск, Нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzcNkApNHDVm68576-sj0joBTwd4Az8xOSgBQQbcBXg3KhBOBwx-R8n-dEj1lQJhNZQrtTdxaw9WcN0cSgsBsgDpTGI9yIwXszJh8AO1sail1Nk1YmeUFtVzdqQXpTUabblujTbsQNe1k3I57AabstlUlLpto5ILA9ZNcb_PuiAFAOdo00GUU8KVILUktN5pgS1wpkMK63AiK4WUDDjQvdlhQs7gGiB_EW8gU92TFnd8w290neUCP8H81k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Ильичевск, Одесской области в ночь на 11 июля 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.07.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1585]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwdVMI1VVbxriH3t9Bc68SRW_WCMKdgtrHQSsOqkS-Q-Yd8P-uq2-c-W6klEPYqVLTc-jyRhlSuxLrj1GzPBOUzG2pEar21Suy1vFMzHZaddhEhx22cPbx98fvv-fw93FEeSNufz6NsVYB4bo7lHg1FdrvPbncd2OBnDpDsMzNC2hT8AkskV41nfIvCwPVJQj41GCjGtj_EZaP2eFzV1OdCodBN0NOYaewPZweThXHc1ayLAwwLMQRVJsU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Ильичевск, Одесской области в ночь на 11 июля 2023г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2023.07.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1585]]></description>
       <styleUrl>#icon-1581-000000</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1309,7 +1343,7 @@
           <value>https://t.me/osint_alarm/1585</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzcNkApNHDVm68576-sj0joBTwd4Az8xOSgBQQbcBXg3KhBOBwx-R8n-dEj1lQJhNZQrtTdxaw9WcN0cSgsBsgDpTGI9yIwXszJh8AO1sail1Nk1YmeUFtVzdqQXpTUabblujTbsQNe1k3I57AabstlUlLpto5ILA9ZNcb_PuiAFAOdo00GUU8KVILUktN5pgS1wpkMK63AiK4WUDDjQvdlhQs7gGiB_EW8gU92TFnd8w290neUCP8H81k?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GwdVMI1VVbxriH3t9Bc68SRW_WCMKdgtrHQSsOqkS-Q-Yd8P-uq2-c-W6klEPYqVLTc-jyRhlSuxLrj1GzPBOUzG2pEar21Suy1vFMzHZaddhEhx22cPbx98fvv-fw93FEeSNufz6NsVYB4bo7lHg1FdrvPbncd2OBnDpDsMzNC2hT8AkskV41nfIvCwPVJQj41GCjGtj_EZaP2eFzV1OdCodBN0NOYaewPZweThXHc1ayLAwwLMQRVJsU?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1378,7 +1412,7 @@
     </Placemark>
     <Placemark>
       <name>21 марта, г.Одесса, монастырь</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzaP8FRkd6VKn_VSwCS_naZmV1ngyojr2_tjDVWgS2IZ1Td4aFFmfEpyuFskwOhlljnGzsfHrYJB_1e2bLlx0o21a26Jx4t4l7_zKP4MvzD_yQRNgLzRkZ9ge6-_BqCBtE_Q8Sj53jhSKaVAS2-qeWYRkEsRdzt1jZcehD1dnY_NcXT90hFotwBJwOCidtxbiTNziv94GDf77d0eB9WmyeAZePQFMFz1ugOi1PcfqFH9Y4YSDtTxHi2t9M?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Промах по предприятию при налёте БпЛА, в следствии чего пострадал монастырь. К августу здание отремонтировали.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2023.03.21<br>Средства поражения: БпЛА<br>Ссылка: ]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GxBHK5YYMllf8y6XbcK0K_i4TIJvyFRDmAN8an_2IL33tzWoiikx3pLyVCdLrU9bdx3r-Z4_bBS27kBdEv8YOWjgGIlbOLnlbCWpCLo9s581ofkbwDpBbBqZjvemmLB-nLeFmYQQmqIUqT44801v-XygdfcIrqsU1J_WmEML_UkDDLBFuFHfh3DckqkxEfJcrYKYGcmc7dXEdN33yrWmYoD33Ls-S4amGFo-clUa45QF6aq2XeMuBicyGk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Промах по предприятию при налёте БпЛА, в следствии чего пострадал монастырь. К августу здание отремонтировали.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2023.03.21<br>Средства поражения: БпЛА<br>Ссылка: ]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -1397,7 +1431,7 @@
           <value/>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GzaP8FRkd6VKn_VSwCS_naZmV1ngyojr2_tjDVWgS2IZ1Td4aFFmfEpyuFskwOhlljnGzsfHrYJB_1e2bLlx0o21a26Jx4t4l7_zKP4MvzD_yQRNgLzRkZ9ge6-_BqCBtE_Q8Sj53jhSKaVAS2-qeWYRkEsRdzt1jZcehD1dnY_NcXT90hFotwBJwOCidtxbiTNziv94GDf77d0eB9WmyeAZePQFMFz1ugOi1PcfqFH9Y4YSDtTxHi2t9M?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AE5a_GxBHK5YYMllf8y6XbcK0K_i4TIJvyFRDmAN8an_2IL33tzWoiikx3pLyVCdLrU9bdx3r-Z4_bBS27kBdEv8YOWjgGIlbOLnlbCWpCLo9s581ofkbwDpBbBqZjvemmLB-nLeFmYQQmqIUqT44801v-XygdfcIrqsU1J_WmEML_UkDDLBFuFHfh3DckqkxEfJcrYKYGcmc7dXEdN33yrWmYoD33Ls-S4amGFo-clUa45QF6aq2XeMuBicyGk?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -1865,6 +1899,33 @@
       <Point>
         <coordinates>
           35.080861,47.8689521,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10 февраля, н.п.Затока, мост</name>
+      <description><![CDATA[описание: Удар БЭКа по мосту.<br>Тип объекта: Мост<br>Дата: 2023.02.10<br>Средства поражения: БЭК<br>Ссылка: https://t.me/osint_alarm/3159]]></description>
+      <styleUrl>#icon-1528-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Удар БЭКа по мосту.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Мост</value>
+        </Data>
+        <Data name="Дата">
+          <value>2023.02.10</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БЭК</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/3159</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.47025,46.07685,0
         </coordinates>
       </Point>
     </Placemark>
