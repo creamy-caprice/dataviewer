@@ -51,13 +51,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
         switch(type) {
             case "ControlZones":
                 return `kml/ControlZones/Control_${formattedDate}.kml`;
-            //case "FrontLine":
-            //    return `kml/FrontLine/FrontLine_${formattedDate}.kml`;
-            //case "ProgressRuAF":
-            //    return `kml/Progress/RuAF/ProgressRuAF_${formattedDate}.kml`;
-            //case "ProgressAFU":
-            //    return `kml/Progress/AFU/ProgressAFU_${formattedDate}.kml`;
-            case "Progress":
+                        case "Progress":
                 return `kml/Progress/Progress_${formattedDate}.kml`;
             default:
                 return null;
@@ -79,7 +73,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_05_29.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_06_02.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
