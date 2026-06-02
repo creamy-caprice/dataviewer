@@ -7158,8 +7158,8 @@
    "type": "message",
    "date": "2026-03-16T16:52:58",
    "date_unixtime": "1773669178",
-   "edited": "2026-05-31T20:02:34",
-   "edited_unixtime": "1780246954",
+   "edited": "2026-06-02T09:11:39",
+   "edited_unixtime": "1780380699",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/60.png",
@@ -7185,6 +7185,11 @@
     {
      "type": "link",
      "text": "https://t.me/FENRIRFPVMAVICJOB"
+    },
+    "\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/ua_16_ompb_58_ompbr"
     },
     "\nФБ ",
     {
@@ -7242,6 +7247,14 @@
     {
      "type": "link",
      "text": "https://t.me/FENRIRFPVMAVICJOB"
+    },
+    {
+     "type": "plain",
+     "text": "\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/ua_16_ompb_58_ompbr"
     },
     {
      "type": "plain",
@@ -22524,15 +22537,103 @@
    "type": "message",
    "date": "2026-04-26T17:59:14",
    "date_unixtime": "1777215554",
-   "edited": "2026-04-27T02:08:20",
-   "edited_unixtime": "1777244900",
+   "edited": "2026-06-02T14:24:12",
+   "edited_unixtime": "1780399452",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
-   "text": "ID:199\n\nРезерв",
+   "file": "files/199.png",
+   "file_name": "199.png",
+   "file_size": 44661,
+   "thumbnail": "files/199.png_thumb.jpg",
+   "thumbnail_file_size": 19250,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:199\n\n25-й отдельный штурмовой полк «Рысь»\n\n(25-й окремий штурмовий полк «Рись»)\n\nРанее 25-й отдельный штурмовой батальон «Рысь»\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/Lynx25stories"
+    },
+    "\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1aJ6RhgUaN/"
+    },
+    "\n\nСостав\n?\n\nВооружение\n?\n\n",
+    {
+     "type": "hashtag",
+     "text": "#ВСУ"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Пк_25"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    "?"
+   ],
    "text_entities": [
     {
      "type": "plain",
-     "text": "ID:199\n\nРезерв"
+     "text": "ID:199\n\n25-й отдельный штурмовой полк «Рысь»\n\n(25-й окремий штурмовий полк «Рись»)\n\nРанее 25-й отдельный штурмовой батальон «Рысь»\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/Lynx25stories"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1aJ6RhgUaN/"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n?\n\nВооружение\n?\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#ВСУ"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Пк_25"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    {
+     "type": "plain",
+     "text": "?"
     }
    ]
   },
