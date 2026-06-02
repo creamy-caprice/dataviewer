@@ -25,19 +25,19 @@ const translations = {
         range6Months: "6 месяцев",
         rangeYear: "1 год",
 		
-        showEquipment: 'Показать технику',
-        hideEquipment: 'Скрыть технику',
+        showEquipment: 'Техника',
+        // hideEquipment: 'Скрыть технику',
         
         selectAll: "Все",
         
-        showAttacksOnUa: 'Показать удары по территории Украины',
-        hideAttacksOnUa: 'Скрыть удары по территории Украины',
+        showAttacksOnUa: 'Удары по территории Украины',
+        // hideAttacksOnUa: 'Скрыть удары по территории Украины',
 		
-        showFortifications: 'Показать фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
-        hideFortifications: 'Скрыть фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
+        showFortifications: 'Фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
+        // hideFortifications: 'Скрыть фортификации (Playfra map) Зеленый - Рвы, Белый - Надолбы, Голубой - Колючая проволока',
         
-        showUnitsUa: 'Показать подразделения ВСУ',
-        hideUnitsUa: 'Скрыть подразделения ВСУ',
+        showUnitsUa: 'Подразделения ВСУ',
+        // hideUnitsUa: 'Скрыть подразделения ВСУ',
         
         ruBtnTitle: "Текущий язык: Русский",
         enBtnTitle: "Переключить на Английский",
@@ -95,19 +95,19 @@ const translations = {
         range6Months: "6 months",
         rangeYear: "1 year",
 		
-        showEquipment: 'Show equipment',
-        hideEquipment: 'Hide equipment',
+        showEquipment: 'Equipment',
+        // hideEquipment: 'Hide equipment',
         
         selectAll: "All",
         
-        showAttacksOnUa: 'Show strikes on Ukraine',
-        hideAttacksOnUa: 'Hide strikes on Ukraine',		
+        showAttacksOnUa: 'Strikes on Ukraine',
+        // hideAttacksOnUa: 'Hide strikes on Ukraine',		
 		
-        showFortifications: 'Show fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
-        hideFortifications: 'Hide fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
+        showFortifications: 'Fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
+        // hideFortifications: 'Hide fortifications (Playfra map) Green - Ditches, White - Dragons teeth, Blue - Barbed wire',
         
-        showUnitsUa: 'Show Ukrainian units',
-        hideUnitsUa: 'Hide Ukrainian units',
+        showUnitsUa: 'Ukrainian units',
+        // hideUnitsUa: 'Hide Ukrainian units',
         
         ruBtnTitle: "Switch to Russian",
         enBtnTitle: "Current language: English",
@@ -273,6 +273,7 @@ function setLanguage(lang) {
 	if (typeof updateMilEquipButtonTitle === 'function') updateMilEquipButtonTitle();
 	if (typeof updateAttacksOnUaButtonTitle === 'function') updateAttacksOnUaButtonTitle();
 	if (typeof updateFortificationButtonTitle === 'function') updateFortificationButtonTitle();
+    if (typeof updateUnitsUaButtonTitle === 'function') updateUnitsUaButtonTitle();
     
     // Обновляем title кнопки переключения слоев
     const layersToggleLink = document.querySelector('.leaflet-control-layers-toggle a');

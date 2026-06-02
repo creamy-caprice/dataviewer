@@ -701,6 +701,47 @@ window.isUnitsUaVisible = false;     // флаг видимости
 window.unitsUaLayer = null;          // групп-слой
 window.unitsUaIconsMap = {};         // словарь id → { photo, title }
 window.unitsUaIconsLoaded = false;   // загружен ли result.json
+window.unitsUaDetailsMap = {};       // Дополнительный объект для хранения детальной информации о подразделении
+
+// Функция парсинга текста сообщения для извлечения состава, вооружения и меток
+function parseUnitsUaDetails(text) {
+    const details = {
+        composition: '',
+        armament: '',
+        formation: '',
+        armyCorps: '?'
+    };
+    if (!text) return details;
+
+    // Ищем секцию "Состав" – от слова "Состав" (с двоеточием или без) до следующего пустого блока или до "Вооружение"
+    const compRegex = /Состав:?[\s\n]*([\s\S]*?)Вооружение/i;
+    const compMatch = text.match(compRegex);
+    if (compMatch) {
+        details.composition = compMatch[1].trim();
+    }
+
+    // Ищем секцию "Вооружение" – от слова "Вооружение" до следующего пустого блока или до заголовков (РСЗО, Тяжёлая бронетехника, Зенитно-ракетные, #)
+    const armRegex = /Вооружение:?[\s\n]*([^#]+)/i;
+    const armMatch = text.match(armRegex);
+    if (armMatch) {
+        details.armament = armMatch[1].trim();
+    }
+
+    // Формирование по хэштегу
+    const formationTags = ['#ВСУ', '#НГУ', '#ГПСУ', '#МВД'];
+    for (const tag of formationTags) {
+        if (text.includes(tag)) {
+            details.formation = tag.substring(1);
+            break;
+        }
+    }
+
+    // Армейский корпус
+    const akMatch = text.match(/#АК_(\d+)/);
+    if (akMatch) details.armyCorps = akMatch[1];
+
+    return details;
+}
 
 // Загрузка иконок и названий из result.json (поддержка photo и file_name)
 async function loadUnitsUaIcons() {
@@ -716,34 +757,33 @@ async function loadUnitsUaIcons() {
         const response = await fetch(jsonPath);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        
-        window.unitsUaData = data; // сохраняем целиком для поиска
+        window.unitsUaData = data;
 
         for (const msg of data.messages) {
-            // Пропускаем сообщения без файла (например, «Резерв»)
             if (!msg.file && !msg.file_name) continue;
 
             let imagePath = null;
-            // Используем file (уже содержит путь относительно units/ua, например "files/8.png")
             if (msg.file && typeof msg.file === 'string') {
-                imagePath = msg.file;                     // "files/8.png"
+                imagePath = msg.file;
             } else if (msg.file_name && typeof msg.file_name === 'string') {
-                imagePath = 'files/' + msg.file_name;    // "files/some_name.png"
+                imagePath = 'files/' + msg.file_name;
             }
-
             if (!imagePath) continue;
 
-            // Извлекаем полный текст сообщения (строка или массив)
-            const text = getMessageText(msg);
-            if (!text) continue;
+            const fullText = getMessageText(msg);
+            if (!fullText) continue;
 
-            const idMatch = text.match(/^ID\s*:\s*(\d+)/m);
+            const idMatch = fullText.match(/^ID\s*:\s*(\d+)/m);
             if (!idMatch) continue;
 
             const profileId = idMatch[1];
+            
+            // console.log(`Обработка сообщения ID: ${idMatch ? idMatch[1] : 'unknown'}`);
+            const details = parseUnitsUaDetails(fullText);
+            // console.log(`Детали для ID ${profileId}:`, details);
 
-            // Название — первая непустая строка после ID
-            const lines = text.split('\n');
+            // Извлекаем название (первая непустая строка после ID)
+            const lines = fullText.split('\n');
             let title = '';
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i].trim();
@@ -753,15 +793,18 @@ async function loadUnitsUaIcons() {
                 }
             }
 
+            // Сохраняем иконку и название
             window.unitsUaIconsMap[profileId] = {
-                photo: imagePath,                                    // уже относительно units/ua
+                photo: imagePath,
                 title: title || `Подразделение ID:${profileId}`
             };
+
+            // Парсим детали (состав, вооружение, формирование, армейский корпус)
+            window.unitsUaDetailsMap[profileId] = parseUnitsUaDetails(fullText);
         }
 
         window.unitsUaIconsLoaded = true;
-        console.log(`Загружено ${Object.keys(window.unitsUaIconsMap).length} иконок подразделений`);
-
+        // console.log(`Загружено ${Object.keys(window.unitsUaIconsMap).length} профилей с деталями`);
     } catch (error) {
         console.error('Ошибка загрузки UnitsUA.json:', error);
         window.unitsUaIconsLoaded = true;
@@ -854,55 +897,42 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
 
         const dataLines = lines.slice(1); // без заголовка
 
-        // Парсим все строки
         const allRows = [];
         for (const line of dataLines) {
             const data = parseUnitsCsvRow(line);
             if (!data) continue;
             if (isNaN(data.lat) || isNaN(data.lng)) continue;
             if (data.characteristic !== 'ПВД') continue;
-            // Фильтр по ID (если задан)
             if (allowedProfileIds && !allowedProfileIds.has(data.profileId)) continue;
             allRows.push(data);
         }
 
-        // Группируем по profileId
         const byProfile = {};
         allRows.forEach(row => {
             if (!byProfile[row.profileId]) byProfile[row.profileId] = [];
             byProfile[row.profileId].push(row);
         });
 
-        // Целевая дата (из календаря)
         const targetDate = parseCustomDate(targetDateStr);
-
-        // Для каждого ID выбираем точку с датой <= targetDate и максимальной
         const selectedRows = [];
 
         for (const profileId in byProfile) {
             const rows = byProfile[profileId];
-            // Фильтруем даты <= targetDate
             const validRows = rows.filter(row => {
                 const rowDate = parseCsvDate(row.date);
                 return rowDate <= targetDate;
             });
-
             if (validRows.length === 0) continue;
-
-            // Находим строку с максимальной датой (ближайшая к целевой, но не позже)
             const latestRow = validRows.reduce((a, b) => {
                 const dateA = parseCsvDate(a.date);
                 const dateB = parseCsvDate(b.date);
                 return dateA > dateB ? a : b;
             });
-
             selectedRows.push(latestRow);
         }
 
-        // Загружаем иконки (если ещё не загружены)
-        await loadUnitsUaIcons();
+        await loadUnitsUaIcons(); // гарантируем, что детали загружены
 
-        // Очищаем слой
         if (window.unitsUaLayer) {
             window.unitsUaLayer.clearLayers();
         } else {
@@ -910,7 +940,6 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
         }
         window.unitsUaMarkers = [];
 
-        // Иконка по умолчанию
         const defaultIcon = L.icon({
             iconUrl: 'img/attack types/Взрывчик.png',
             iconSize: [28, 28],
@@ -918,7 +947,6 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
             popupAnchor: [0, 0]
         });
 
-        // Создаём маркеры
         for (const row of selectedRows) {
             let icon = defaultIcon;
             let unitTitle = '';
@@ -936,39 +964,61 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
             }
 
             const marker = L.marker([row.lat, row.lng], { icon: icon });
-            const coordsString = `${row.lat.toFixed(6)}, ${row.lng.toFixed(6)}`;
-            /*
-            const popupContent = `
-                <div style="font-size:14px;">
-                    <strong>${unitTitle}</strong><br>
-                    <strong>Дата:</strong> ${row.date}<br>
-                    <strong>Характеристика:</strong> ${row.characteristic}<br>
-                    <strong>Координаты:</strong> 
-                    <span style="font-family: monospace;">${coordsString}</span>
-                    <button class="copy-coords-popup-btn" data-coords="${coordsString}" 
-                            style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px; margin-left: 8px;">
-                        ⎘
-                    </button><br>
-                    ${row.link ? `<a href="${row.link}" target="_blank">Источник</a>` : ''}
-                </div>
-            `;
-            */
-            const popupContent = `
-                <div style="font-size:14px;">
-                    <strong>${unitTitle}</strong><br>
-                </div>
-            `;            
-            
-            marker.bindPopup(popupContent);
+
+            // Получаем детали для данного profileId, если нет — создаём с пустыми значениями
+			const details = window.unitsUaDetailsMap[row.profileId] || { composition: '', armament: '', formation: '', armyCorps: '?' };
+
+			// Для единообразия всегда показываем блоки, даже если данные отсутствуют
+			const compositionText = details.composition.trim() ? details.composition : '?';
+			const armamentText = details.armament.trim() ? details.armament : '?';
+			const formationText = details.formation.trim() ? details.formation : '?';
+			const armyCorpsText = details.armyCorps || '?';
+
+			// Формируем HTML popup
+			let popupHtml = `<div style="font-size:14px;"><strong>${escapeHtml(unitTitle)}</strong>`;
+
+			// Состав (всегда сворачиваемый блок)
+			popupHtml += `
+				<details class="collapse-block" style="margin-top:8px;">
+					<summary>📄 Состав</summary>
+					<div class="collapse-content" style="margin-top: 4px; white-space: pre-wrap;">${escapeHtml(compositionText).replace(/\n/g, '<br>')}</div>
+				</details>`;
+
+			// Вооружение (всегда сворачиваемый блок)
+			popupHtml += `
+				<details class="collapse-block" style="margin-top:8px;">
+					<summary>📄 Вооружение</summary>
+					<div class="collapse-content" style="margin-top: 4px; white-space: pre-wrap;">${escapeHtml(armamentText).replace(/\n/g, '<br>')}</div>
+				</details>`;
+
+			// Формирование (всегда видимая строка)
+			popupHtml += `<div style="margin-top:8px;"><strong>Формирование:</strong> ${escapeHtml(formationText)}</div>`;
+
+			// Армейский корпус (всегда видимая строка)
+			popupHtml += `<div style="margin-top:8px;"><strong>Армейский корпус:</strong> ${escapeHtml(armyCorpsText)}</div>`;
+
+			popupHtml += `</div>`;
+
+			marker.bindPopup(popupHtml);
             marker.addTo(window.unitsUaLayer);
             window.unitsUaMarkers.push(marker);
         }
 
-        console.log(`Загружено ${window.unitsUaMarkers.length} точек ПВД для даты ${targetDateStr}`);
-
+        // console.log(`Загружено ${window.unitsUaMarkers.length} точек ПВД с расширенной информацией для даты ${targetDateStr}`);
     } catch (error) {
         console.error('Ошибка загрузки CSV подразделений ВСУ:', error);
     }
+}
+
+// Простая функция экранирования HTML (чтобы избежать XSS)
+function escapeHtml(str) {
+    if (!str) return '';
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 // Перезагрузка слоя с учётом текущей selectedDate
@@ -1063,12 +1113,20 @@ async function toggleUnitsUa() {
     }
 
     // Обновляем title кнопки
-    if (btn) {
-        const t = translations[currentLang];
-        btn.title = window.isUnitsUaVisible ?
-            (t.hideUnitsUa || 'Скрыть подразделения ВСУ') :
-            (t.showUnitsUa || 'Показать подразделения ВСУ');
-    }
+    // if (btn) {
+        // const t = translations[currentLang];
+        // btn.title = window.isUnitsUaVisible ?
+            // (t.hideUnitsUa || 'Скрыть подразделения ВСУ') :
+            // (t.showUnitsUa || 'Показать подразделения ВСУ');
+    // }
+}
+
+// Обновление всплывающей подсказки кнопки подразделений ВСУ
+function updateUnitsUaButtonTitle() {
+    const btn = document.getElementById('units-ua-btn');
+    if (!btn) return;
+    const t = translations[currentLang];
+    btn.title = t.showUnitsUa || 'Подразделения ВСУ';
 }
 
 // Инициализация кнопки подразделений
@@ -1128,9 +1186,9 @@ function initFilters() {
     initAttacksFilter();
     initFortificationFilter();
     // Обновим заголовки кнопок
-    updateMilEquipButtonTitle();
-    updateAttacksOnUaButtonTitle();
-    updateFortificationButtonTitle();
+    // updateMilEquipButtonTitle();
+    // updateAttacksOnUaButtonTitle();
+    // updateFortificationButtonTitle();
 }
 
 // Экспортируем функции, которые будут нужны в script.js
@@ -1145,6 +1203,7 @@ window.toggleFortificationMenu = toggleFortificationMenu;
 window.updateMilEquipButtonTitle = updateMilEquipButtonTitle;
 window.updateAttacksOnUaButtonTitle = updateAttacksOnUaButtonTitle;
 window.updateFortificationButtonTitle = updateFortificationButtonTitle;
+window.updateUnitsUaButtonTitle = updateUnitsUaButtonTitle;
 
 window.applyEquipmentFilter = applyEquipmentFilter;
 window.applyAttacksFilter = applyAttacksFilter;
