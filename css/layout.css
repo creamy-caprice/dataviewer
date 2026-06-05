@@ -107,7 +107,7 @@ body {
 .top-bar {
   background: #dadada; /* серый цвет */
   padding: 8px 15px;
-  margin: 0; /* внешние отступы */
+  margin: env(safe-area-insert-top) 0 0 0; /* внешние отступы */
   display: flex;
   align-items: center;
   min-height: 60px; /* Фиксированная минимальная высота */
