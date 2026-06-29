@@ -1559,6 +1559,7 @@ function getAttacksOnUaIcon(position) {
         'Стоянка грузового транспорта'                     : 'img/attack types/Парковка2.png',
         'ППД'                                              : 'img/attack types/ПВД22.png',
         'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
+		'Административный объект'                          : 'img/attack types/Адм2.png',
         
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
@@ -2547,124 +2548,132 @@ function getDeepLinkViewFromUrl() {
 
 async function init() {
 	//Шаг 0 : переход по ссылкке с координатами
-	const deepLink = getDeepLinkViewFromUrl();
-	
+  const deepLink = getDeepLinkViewFromUrl();
+
   try {
     // Шаг 1: Загружаем постоянные слои
     await loadPermanentKmlLayers();
-    
+
     // Проверяем, что kmlFiles сгенерирован правильно
     console.log('KML файлов загружено:', window.kmlFiles.length);
-    
+
     // Шаг 2: Инициализируем selectedDate текущей датой
     window.selectedDate = getCurrentDateFormatted();
     console.log('Установлена текущая дата:', window.selectedDate);
-    
+
     // Шаг 3: Инициализируем календарь с текущей датой
     initDatePicker();
-    
+
     // Шаг 4: Инициализируем точки
     // Инициализируем диапазон дат для точек
-    window.pointsDateRange = window.pointsDateRange || { start: null, end: null };    
+    window.pointsDateRange = window.pointsDateRange || { start: null, end: null };
     // Устанавливаем начальный диапазон (1 неделя) на основе текущей даты
     const currentDate = parseCustomDate(window.selectedDate);
     const startDate = getStartDateByRange('week', currentDate);
-    
+
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
-    
+
     // Загружаем точки с фильтром по дате
     await initPointsLayer(window.pointsKmlPaths);
-    
+
     // Шаг 5: Инициализация кнопок фильтров
     initFilterButtons();
     initMobileFilterMenu();
-    
+
     initUnitsUaButton();
-	  
+
     // Кнопка полноэкранного режима
     initFullscreenControl();
-        
+
     // Шаг 6: Инициализируем другие UI компоненты
     populateCitiesDropdown();
     document.querySelector('.date-navigator-wrapper').style.display = 'block';
-        
+
     // Шаг 7: Ждем когда все элементы интерфейса будут доступны
     await waitForUIElements();
-    
+
     // Шаг 8: Находим и загружаем ближайший доступный KML к текущей дате
     const nearestDate = findNearestAvailableDate(window.selectedDate);
     const nearestIndex = kmlFiles.findIndex(file => file.name === nearestDate);
-    
+
     if (nearestIndex !== -1) {
         currentIndex = nearestIndex;
         console.log(`Загружаем KML для ближайшей доступной даты: ${nearestDate} (индекс: ${nearestIndex})`);
-        
+
         // Загружаем данные карты
         preserveZoom = true;
-        // Явно устанавливаем вид только один раз
-        map.setView([48.257381, 37.134785], 10);
+        if (!deepLink) {
+            // Явно устанавливаем вид только один раз
+            map.setView([48.257381, 37.134785], 10);
+        }
         await loadKmlForNearestDate(nearestIndex);
     } else {
         console.log('Не найдено доступных KML файлов для загрузки');
-        // Устанавливаем вид по умолчанию
-        map.setView([48.257381, 37.134785], 10);
+        if (!deepLink) {
+            // Устанавливаем вид по умолчанию
+            map.setView([48.257381, 37.134785], 10);
+        }
     }
-    
+
+    if (deepLink) {
+        centerMap(deepLink.lat, deepLink.lng, deepLink.zoom);
+    }
+
     // Шаг 9: Финализируем инициализацию карты
     setTimeout(() => {
       if (map) map.invalidateSize();
       updateCurrentCenterDisplay();
     }, 50);
-    
+
     map.options.crs = L.CRS.EPSG3857;
-    
+
     const flagInterval = setInterval(() => {
     if (document.querySelector('.leaflet-control-attribution')) {
         replaceAttributionFlag();
         clearInterval(flagInterval);
         }
     }, 500);
-    
+
     // Настройка кнопки после инициализации элементов
     setTimeout(() => {
         setupCopyCoordsButton();
         addCopyButtonsToInputs(); // Добавляем инициализацию кнопок копирования
         updateCopyButtonsVisibility(); // Инициализируем состояние кнопок
     }, 500);
-    
+
     // Инициализация дартс-меню
-    initDartMenu(); 
-        
+    initDartMenu();
+
     // Для выпадающего списка слоёв (подложек)
     // таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
     setTimeout(() => {
         if (map) map.invalidateSize();
         updateCurrentCenterDisplay();
-        
+
         // Явно инициализируем обработчик после создания элементов
         const toggleBtn = document.querySelector('.leaflet-control-layers-toggle');
         if (toggleBtn) {
             toggleBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const isVisible = layerControlContainer.style.display === 'block';
                 layerControlContainer.style.display = isVisible ? 'none' : 'block';
                 layerControlContainer.classList.toggle('leaflet-control-layers-expanded', !isVisible);
             });
         }
     }, 300);
-	
-    
+
+
     // Инициализация поиска по названию
     initSearchFunctionality();
-    
+
     // обработчик для кнопки техники
     const milEquipBtn = document.getElementById('mil-equip-btn');
     if (milEquipBtn) {
         milEquipBtn.addEventListener('click', window.toggleEquipmentMenu);
-    }    
+    }
     const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
     if (attacksOnUaBtn) {
         attacksOnUaBtn.addEventListener('click', window.toggleAttacksMenu);
@@ -2678,17 +2687,160 @@ async function init() {
         fortificationBtn.addEventListener('click', window.toggleFortificationMenu);
         window.updateFortificationButtonTitle(); // инициализация заголовка
     }
-    
+
     window.initialLayerSet = false;
     map.on('load', function() {
         window.osm.addTo(map); // Активируйте OSM слой
         window.initialLayerSet = true;
     });
-        
+
   } catch (error) {
     console.error('Ошибка инициализации:', error);
   }
 }
+
+
+//async function init() {
+//try {
+//    // Шаг 1: Загружаем постоянные слои
+//    await loadPermanentKmlLayers();
+//    
+//    // Проверяем, что kmlFiles сгенерирован правильно
+//    console.log('KML файлов загружено:', window.kmlFiles.length);
+    
+//    // Шаг 2: Инициализируем selectedDate текущей датой
+//    window.selectedDate = getCurrentDateFormatted();
+//    console.log('Установлена текущая дата:', window.selectedDate);
+    
+//    // Шаг 3: Инициализируем календарь с текущей датой
+//    initDatePicker();
+    
+//   // Шаг 4: Инициализируем точки
+//    // Инициализируем диапазон дат для точек
+//    window.pointsDateRange = window.pointsDateRange || { start: null, end: null };    
+//    // Устанавливаем начальный диапазон (1 неделя) на основе текущей даты
+//    const currentDate = parseCustomDate(window.selectedDate);
+//    const startDate = getStartDateByRange('week', currentDate);
+    
+//    window.pointsDateRange.start = startDate;
+//    window.pointsDateRange.end = currentDate;
+    
+//    // Загружаем точки с фильтром по дате
+//    await initPointsLayer(window.pointsKmlPaths);
+    
+//    // Шаг 5: Инициализация кнопок фильтров
+//    initFilterButtons();
+//    initMobileFilterMenu();
+    
+//    initUnitsUaButton();
+	  
+//    // Кнопка полноэкранного режима
+//    initFullscreenControl();
+        
+//    // Шаг 6: Инициализируем другие UI компоненты
+//    populateCitiesDropdown();
+//    document.querySelector('.date-navigator-wrapper').style.display = 'block';
+        
+//    // Шаг 7: Ждем когда все элементы интерфейса будут доступны
+//    await waitForUIElements();
+    
+//    // Шаг 8: Находим и загружаем ближайший доступный KML к текущей дате
+//    const nearestDate = findNearestAvailableDate(window.selectedDate);
+//    const nearestIndex = kmlFiles.findIndex(file => file.name === nearestDate);
+    
+//    if (nearestIndex !== -1) {
+//        currentIndex = nearestIndex;
+//        console.log(`Загружаем KML для ближайшей доступной даты: ${nearestDate} (индекс: ${nearestIndex})`);
+        
+//        // Загружаем данные карты
+//        preserveZoom = true;
+//        // Явно устанавливаем вид только один раз
+//        map.setView([48.257381, 37.134785], 10);
+//        await loadKmlForNearestDate(nearestIndex);
+//    } else {
+//        console.log('Не найдено доступных KML файлов для загрузки');
+//        // Устанавливаем вид по умолчанию
+//        map.setView([48.257381, 37.134785], 10);
+//    }
+    
+//    // Шаг 9: Финализируем инициализацию карты
+//    setTimeout(() => {
+//      if (map) map.invalidateSize();
+//      updateCurrentCenterDisplay();
+//    }, 50);
+    
+//    map.options.crs = L.CRS.EPSG3857;
+    
+//    const flagInterval = setInterval(() => {
+//    if (document.querySelector('.leaflet-control-attribution')) {
+//        replaceAttributionFlag();
+//        clearInterval(flagInterval);
+//        }
+//    }, 500);
+    
+//    // Настройка кнопки после инициализации элементов
+//    setTimeout(() => {
+//        setupCopyCoordsButton();
+//        addCopyButtonsToInputs(); // Добавляем инициализацию кнопок копирования
+//        updateCopyButtonsVisibility(); // Инициализируем состояние кнопок
+//    }, 500);
+    
+//    // Инициализация дартс-меню
+//    initDartMenu(); 
+        
+//    // Для выпадающего списка слоёв (подложек)
+ //   // таймаут при инициализации карты, чтобы убедиться, что все элементы созданы
+//    setTimeout(() => {
+//        if (map) map.invalidateSize();
+//        updateCurrentCenterDisplay();
+        
+//        // Явно инициализируем обработчик после создания элементов
+//        const toggleBtn = document.querySelector('.leaflet-control-layers-toggle');
+//        if (toggleBtn) {
+//            toggleBtn.addEventListener('click', function(e) {
+//                e.preventDefault();
+ //               e.stopPropagation();
+                
+ //               const isVisible = layerControlContainer.style.display === 'block';
+ //               layerControlContainer.style.display = isVisible ? 'none' : 'block';
+ //               layerControlContainer.classList.toggle('leaflet-control-layers-expanded', !isVisible);
+ //           });
+//        }
+//    }, 300);
+	
+    
+//    // Инициализация поиска по названию
+//    initSearchFunctionality();
+    
+//    // обработчик для кнопки техники
+//    const milEquipBtn = document.getElementById('mil-equip-btn');
+//    if (milEquipBtn) {
+//        milEquipBtn.addEventListener('click', window.toggleEquipmentMenu);
+//    }    
+//    const attacksOnUaBtn = document.getElementById('attacks-on-ua-btn');
+//    if (attacksOnUaBtn) {
+ //       attacksOnUaBtn.addEventListener('click', window.toggleAttacksMenu);
+//    }
+//    // Построить меню фильтра техники
+ //   window.initFilters();
+
+//    // обработчик для кнопки фортификаций
+//    const fortificationBtn = document.getElementById('fortification-btn');
+//    if (fortificationBtn) {
+//        fortificationBtn.addEventListener('click', window.toggleFortificationMenu);
+ //       window.updateFortificationButtonTitle(); // инициализация заголовка
+//    }
+    
+ //   window.initialLayerSet = false;
+//    map.on('load', function() {
+//        window.osm.addTo(map); // Активируйте OSM слой
+//        window.initialLayerSet = true;
+//    });
+        
+//  } catch (error) {
+//    console.error('Ошибка инициализации:', error);
+//  }
+// }
 
 // Новая функция для ожидания готовности UI элементов
 function waitForUIElements() {
