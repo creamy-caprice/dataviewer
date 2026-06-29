@@ -2546,6 +2546,9 @@ function getDeepLinkViewFromUrl() {
 }
 
 async function init() {
+	//Шаг 0 : переход по ссылкке с координатами
+	const deepLink = getDeepLinkViewFromUrl();
+	
   try {
     // Шаг 1: Загружаем постоянные слои
     await loadPermanentKmlLayers();
