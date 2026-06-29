@@ -2528,6 +2528,22 @@ function setupCopyCoordsButton() {
         cloneCopyBtn.addEventListener('click', copyHandler);
     }
 }
+// Функция перехода на карту по сссылке с координатами
+function getDeepLinkViewFromUrl() {
+  const params = new URLSearchParams(location.search);
+  const lat = parseFloat(params.get('lat'));
+  const lng = parseFloat(params.get('lng') ?? params.get('lon'));
+  const zoom = parseInt(params.get('zoom') ?? params.get('z'), 10);
+
+  if (Number.isNaN(lat) || Number.isNaN(lng)) return null;
+  if (lat < -90 || lat > 90 || lng < -180 || lng > 180) return null;
+
+  return {
+    lat,
+    lng,
+    zoom: Number.isNaN(zoom) ? 14 : zoom,
+  };
+}
 
 async function init() {
   try {
