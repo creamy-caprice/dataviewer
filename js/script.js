@@ -1468,9 +1468,6 @@ async function reloadKmlForCRS(center, zoom) {
     // Восстанавливаем позицию с проверкой валидности
     if (center && zoom && center.lat !== 0 && center.lng !== 0) {
         map.setView(center, zoom);
-    } else {
-        // Используем центр по умолчанию, если текущий невалиден
-        map.setView([48.257381, 37.134785], 10);
     }
     
     map.invalidateSize();
@@ -2529,7 +2526,7 @@ function setupCopyCoordsButton() {
         cloneCopyBtn.addEventListener('click', copyHandler);
     }
 }
-// Функция перехода на карту по сссылке с координатами
+
 function getDeepLinkViewFromUrl() {
   const params = new URLSearchParams(location.search);
   const lat = parseFloat(params.get('lat'));
@@ -2547,8 +2544,7 @@ function getDeepLinkViewFromUrl() {
 }
 
 async function init() {
-	//Шаг 0 : переход по ссылкке с координатами
-  const deepLink = getDeepLinkViewFromUrl();
+  // const deepLink = getDeepLinkViewFromUrl();
 
   try {
     // Шаг 1: Загружаем постоянные слои
@@ -2603,21 +2599,15 @@ async function init() {
 
         // Загружаем данные карты
         preserveZoom = true;
-        if (!deepLink) {
-            // Явно устанавливаем вид только один раз
-            map.setView([48.257381, 37.134785], 10);
-        }
         await loadKmlForNearestDate(nearestIndex);
     } else {
         console.log('Не найдено доступных KML файлов для загрузки');
-        if (!deepLink) {
-            // Устанавливаем вид по умолчанию
-            map.setView([48.257381, 37.134785], 10);
-        }
     }
-
-    if (deepLink) {
-        centerMap(deepLink.lat, deepLink.lng, deepLink.zoom);
+	
+	// Маркер при загрузке координат из url
+    const urlCoords = getUrlCoords();
+    if (urlCoords) {
+      centerMap(urlCoords.lat, urlCoords.lng, urlCoords.zoom);
     }
 
     // Шаг 9: Финализируем инициализацию карты

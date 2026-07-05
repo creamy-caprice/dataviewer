@@ -92,9 +92,27 @@ window.yandexLayer = L.tileLayer(yandexUrl, {
 
 /////////////////////////////////////////////
 
+// === Чтение координат из URL ===
+function getUrlCoords() {
+    const params = new URLSearchParams(window.location.search);
+    let lat = parseFloat(params.get('lat'));
+    let lng = parseFloat(params.get('lng') ?? params.get('lon'));
+    let zoom = parseInt(params.get('zoom') ?? params.get('z'), 10);
+    if (!isNaN(lat) && !isNaN(lng) && lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+        return { lat, lng, zoom: isNaN(zoom) ? 14 : zoom };
+    }
+    return null;
+}
 
-// Инициализация карты
-const map = L.map('map', {preferCanvas: true}).setView([48.257381, 37.134785], 10);
+// === Начальные координаты ===
+const defaultCoords = [48.257381, 37.134785];
+const defaultZoom = 10;
+const urlCoords = getUrlCoords();
+const initialCenter = urlCoords ? [urlCoords.lat, urlCoords.lng] : defaultCoords;
+const initialZoom = urlCoords ? urlCoords.zoom : defaultZoom;
+
+// === Создание карты с правильным центром ===
+const map = L.map('map', { preferCanvas: true }).setView(initialCenter, initialZoom);
 // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // attribution: '© OpenStreetMap'
 // }).addTo(map);
