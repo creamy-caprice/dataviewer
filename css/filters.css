@@ -337,3 +337,10 @@
 #units-search-btn:hover {
     opacity: 0.7;
 }
+
+
+/* Попапы подразделений — фиксированная минимальная ширина */
+
+.units-ua-popup .leaflet-popup-content-wrapper {
+    min-width: 300px;
+}

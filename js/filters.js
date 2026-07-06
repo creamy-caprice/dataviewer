@@ -999,7 +999,7 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
 
 			popupHtml += `</div>`;
 
-			marker.bindPopup(popupHtml);
+			marker.bindPopup(popupHtml, { className: 'units-ua-popup' });
             marker.addTo(window.unitsUaLayer);
             window.unitsUaMarkers.push(marker);
         }
