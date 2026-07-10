@@ -1557,7 +1557,7 @@ function getAttacksOnUaIcon(position) {
         'ППД'                                              : 'img/attack types/ПВД22.png',
         'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
 		'Административный объект'                          : 'img/attack types/Адм2.png',
-		'АЗС					'                          : 'img/attack types/АЗС2.png',
+		'АЗС'					                           : 'img/attack types/АЗС2.png',
         
         'default'                                          : 'img/attack types/Взрывчик.png',
     };
