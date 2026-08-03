@@ -118,7 +118,7 @@ const attackGroups = [
         labelRu: 'Транспорт',
         labelEn: 'Transport',
         categories: [
-           // 'Судно',
+           	'Судно',
             'Поезда и локомотивы'            
         ]
     },
