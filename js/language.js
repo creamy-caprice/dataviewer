@@ -13,7 +13,7 @@ const translations = {
         copyFallback: "Скопируйте координаты вручную",
         copyError: "Ошибка копирования",
         
-        firstBtnTitle: "Первый",
+        firstBtnTitle: "На год назад",
         prevBtnTitle: "Предыдущий",
         nextBtnTitle: "Следующий",
         lastBtnTitle: "Сегодня",
@@ -22,8 +22,8 @@ const translations = {
         rangeWeek: "1 неделя",
         rangeMonth: "1 месяц",
         range3Months: "3 месяца",
-        range6Months: "6 месяцев",
         rangeYear: "1 год",
+        rangeAll: "Все",
 		
         showEquipment: 'Техника',
         // hideEquipment: 'Скрыть технику',
@@ -84,7 +84,7 @@ const translations = {
         copyFallback: "Copy coordinates manually",
         copyError: "Copy error",
         
-        firstBtnTitle: "First",
+        firstBtnTitle: "Year ago",
         prevBtnTitle: "Previous",
         nextBtnTitle: "Next",
         lastBtnTitle: "Today",
@@ -92,8 +92,8 @@ const translations = {
 		rangeWeek: "1 week",
         rangeMonth: "1 month",
         range3Months: "3 months",
-        range6Months: "6 months",
         rangeYear: "1 year",
+        rangeAll: "All",
 		
         showEquipment: 'Equipment',
         // hideEquipment: 'Hide equipment',
@@ -256,14 +256,14 @@ function setLanguage(lang) {
 	
 	// Обновление текста в выпадающем списке диапазонов дат
     const rangeOptions = document.querySelectorAll('#date-range-dropdown .range-option');
-    if (rangeOptions.length >= 5) {
-        // Порядок: неделя, месяц, 3 месяца, 6 месяцев, год
-        rangeOptions[0].textContent = t.rangeWeek;
-        rangeOptions[1].textContent = t.rangeMonth;
-        rangeOptions[2].textContent = t.range3Months;
-        rangeOptions[3].textContent = t.range6Months;
-        rangeOptions[4].textContent = t.rangeYear;
-    }
+	rangeOptions.forEach(option => {
+		const range = option.getAttribute('data-range');
+		if (range === 'week') option.textContent = t.rangeWeek;
+		else if (range === 'month') option.textContent = t.rangeMonth;
+		else if (range === '3months') option.textContent = t.range3Months;
+		else if (range === 'year') option.textContent = t.rangeYear;
+		else if (range === 'all') option.textContent = t.rangeAll;
+	});
 	
 	// Обновляем заголовок кнопки фильтра дат
 	if (typeof updateDateRangeButtonTitle === 'function') {

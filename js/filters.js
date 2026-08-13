@@ -118,7 +118,7 @@ const attackGroups = [
         labelRu: 'Транспорт',
         labelEn: 'Transport',
         categories: [
-           	'Судно',
+            'Судно',
             'Поезда и локомотивы'            
         ]
     },
@@ -150,6 +150,8 @@ attackGroups.forEach(group => {
         categoryToGroupTag[cat] = group.tag;
     });
 });
+// Доступен из CanvasPointsLayer.applyFilter
+window.categoryToGroupTag = categoryToGroupTag;
 
 
 // Глобальные переменные для фильтров
@@ -258,21 +260,11 @@ function applyEquipmentFilter() {
         hideAllEquipmentMarkers();
         return;
     }
-    window.allEquipmentMarkers.forEach(item => {
-        const shouldShow = (window.selectedEquipmentCategories === null) ||
-                           window.selectedEquipmentCategories.includes(item.category);
-        if (shouldShow) {
-            if (!map.hasLayer(item.marker)) item.marker.addTo(map);
-        } else {
-            if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
-        }
-    });
+    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
 }
 
 function hideAllEquipmentMarkers() {
-    window.allEquipmentMarkers.forEach(item => {
-        if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
-    });
+    if (window.pointsCanvas) window.pointsCanvas.setLayerTypeVisible('equipment', false);
 }
 
 function toggleEquipmentMenu() {
@@ -386,32 +378,11 @@ function applyAttacksFilter() {
         hideAllAttacksMarkers();
         return;
     }
-    
-    // Если выбраны все группы (null) – показываем всё
-    if (window.selectedAttacksCategories === null) {
-        window.allAttacksMarkers.forEach(item => {
-            if (!map.hasLayer(item.marker)) item.marker.addTo(map);
-        });
-        return;
-    }
-    
-    // Иначе показываем только те маркеры, чья категория входит в выбранные группы
-    const selectedGroupsSet = new Set(window.selectedAttacksCategories);
-    window.allAttacksMarkers.forEach(item => {
-        const groupTag = categoryToGroupTag[item.category];
-        const shouldShow = groupTag && selectedGroupsSet.has(groupTag);
-        if (shouldShow) {
-            if (!map.hasLayer(item.marker)) item.marker.addTo(map);
-        } else {
-            if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
-        }
-    });
+    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
 }
 
 function hideAllAttacksMarkers() {
-    window.allAttacksMarkers.forEach(item => {
-        if (map.hasLayer(item.marker)) map.removeLayer(item.marker);
-    });
+    if (window.pointsCanvas) window.pointsCanvas.setLayerTypeVisible('attacks', false);
 }
 
 function toggleAttacksMenu() {

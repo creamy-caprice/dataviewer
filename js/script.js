@@ -14,7 +14,7 @@ window.selectedDate = null; // Глобальная переменная для 
 // Глобальный флаг для логгирования стилей временных файлов
 const LOG_STYLES = false; // Можно менять на false/true для переключения
 
-let currentDateRange = 'week'; // 'week', 'month', '3months', '6months', 'year'
+let currentDateRange = 'week'; // 'week', 'month', '6months', 'year', 'all'
 // let isMilEquipVisible     = false; // Флаг видимости слоя техники
 // let isAttacksOnUaVisible  = false; // Флаг видимости слоя атак по территории
 // let isFortificationVisible = false; // Флаг видимости слоя фортификаций
@@ -192,30 +192,22 @@ async function loadKmlForNearestDate(index) {
 
 // Новая функция для перезагрузки точек с текущим фильтром
 async function reloadPointsWithCurrentFilter() {
-    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
-    
-    // Перезагружаем точки из всех файлов с текущим фильтром
-    window.currentPointsLayer.clearLayers();
-    
-    for (const path of window.currentPointsKmlPaths) {
-        await loadPointsFromKml(path, window.currentPointsLayer);
+    // Перезагрузка не нужна — переприменяем фильтр по диапазону дат
+    if (window.pointsCanvas && window.pointsDateRange) {
+        window.pointsCanvas.setDateRange(window.pointsDateRange.start, window.pointsDateRange.end);
     }
 }
 
 // Новая функция для обновления фильтра точек при изменении выбранной даты
 function updatePointsDateFilterForSelectedDate() {
-    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
-    
     // Получаем выбранную дату из календаря
     const currentDate = parseCustomDate(window.selectedDate);
-    
     // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
     const startDate = getStartDateByRange(currentDateRange, currentDate);
-    
-    // Обновляем диапазон дат
+    // Обновляем диапазон дат и перефильтровываем модель (без перезагрузки KML)
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
-    
+    if (window.pointsCanvas) window.pointsCanvas.setDateRange(startDate, currentDate);
     // Если слой подразделений активен, обновляем его с новой датой
     if (window.reloadUnitsUaLayer) {
         window.reloadUnitsUaLayer();
@@ -1114,77 +1106,89 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             }
         }
 
-        // Обновленная функция parseAndAddPoint с использованием новой функции
-        function parseAndAddPoint(pointElement, date, position, descriptionUrl, name, extendedData, iconGetter) {
-			const coordinates = parseCoordinates(pointElement, map.options.crs);
-			if (coordinates.length < 1) {
-				if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
-				return null;
-			}
+        // Формирование модели точки (без DOM) для canvas-слоя
+        function buildPointModel(lat, lng, category, date, name, descriptionUrl, extendedData, iconGetter) {
+            const layerType = iconGetter === getMilEquipIcon ? 'equipment'
+                            : iconGetter === getAttacksOnUaIcon ? 'attacks' : 'points';
+            const iconKey = category || 'default';
+            const formattedName = formatNameWithLinks(name);
+            const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+            const isEquipment = iconGetter === getMilEquipIcon;
+            const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
 
-			const [lat, lng] = coordinates[0];
-			
-			// Фильтр по дате (для обычных точек)
-			if (iconGetter !== getMilEquipIcon && 
-				iconGetter !== getAttacksOnUaIcon && 
-				date && window.pointsDateRange && 
-				!isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)) {
-				return null;
-			}
+            const popupHtml = createPopupContent({
+                formattedName,
+                date,
+                equipmentType: category,
+                coordsString,
+                descriptionUrl,
+                isEquipment,
+                isAttackOnUa,
+                extendedData: isEquipment || isAttackOnUa ? extendedData : {}
+            });
 
-			// Определяем категорию
-			let category;
-			if (iconGetter === getMilEquipIcon) {
-				category = extendedData['Тип техники'] || extendedData['equipment_type'] || position;
-			} else if (iconGetter === getAttacksOnUaIcon) {
-				category = extendedData['Тип объекта'] || extendedData['object_type'] || position;
-			} else {
-				category = position;
-			}
-			
-			// Получаем иконку
-			const icon = iconGetter(category);
-			
-			// Создаём маркер
-			const marker = L.marker([lat, lng], { icon: icon }).addTo(layerGroup);
-            			
-			// Для техники сохраняем в глобальный массив
-			if (iconGetter === getMilEquipIcon) {
-				if (!window.allEquipmentMarkers) window.allEquipmentMarkers = [];
-				window.allEquipmentMarkers.push({ marker: marker, category: category });
-				marker.category = category;
-			}
-            if (iconGetter === getAttacksOnUaIcon) {
+            if (!window.__pointSeq) window.__pointSeq = 0;
+            const point = {
+                id: `${layerType}-${++window.__pointSeq}`,
+                layerType,
+                category,
+                iconKey,
+                lat,
+                lng,
+                date,
+                name,
+                formattedName,
+                coordsString,
+                popupHtml,
+                extendedData,
+                // Сразу применяем фильтр по диапазону дат: иначе до вызова applyFilter
+                // (после загрузки всех файлов) redraw успел бы показать все точки
+                visible: (layerType === 'points' && date && window.pointsDateRange &&
+                          window.pointsDateRange.start && window.pointsDateRange.end)
+                    ? isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)
+                    : true
+            };
+
+            if (!window.pointsModel[layerType]) window.pointsModel[layerType] = [];
+            window.pointsModel[layerType].push(point);
+
+            // Совместимость с фильтрами: массивы { marker, category }
+            if (layerType === 'equipment') {
+                if (!window.allEquipmentMarkers) window.allEquipmentMarkers = [];
+                window.allEquipmentMarkers.push({ marker: point, category: category });
+            } else if (layerType === 'attacks') {
                 if (!window.allAttacksMarkers) window.allAttacksMarkers = [];
-                window.allAttacksMarkers.push({ marker: marker, category: category });
-                marker.category = category;
+                window.allAttacksMarkers.push({ marker: point, category: category });
             }
-			
-			// Форматируем название и создаём popup
-			const formattedName = formatNameWithLinks(name);
-			const coordsString = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
-			const isEquipment = iconGetter === getMilEquipIcon;
-			const isAttackOnUa = iconGetter === getAttacksOnUaIcon;
 
-			const popupContent = createPopupContent({
-				formattedName,
-				date,
-				equipmentType: category,
-				coordsString,
-				descriptionUrl,
-				isEquipment,
-				isAttackOnUa,
-				extendedData: isEquipment || isAttackOnUa ? extendedData : {}
-			});
-			
-			marker.bindPopup(popupContent);
-			
-			if (LOG_STYLES) {
-				console.log(`Point added:`, { name, date, category, descriptionUrl, coordinates: [lat, lng], iconGetter: iconGetter.name });
-			}
-			
-			return marker;
-		}
+            if (LOG_STYLES) {
+                console.log(`Point added to model:`, { name, date, category, descriptionUrl, coordinates: [lat, lng], iconGetter: iconGetter.name });
+            }
+            return point;
+        }
+
+        // Точка добавляется в модель без DOM; видимость по дате вычисляет pointsCanvas.applyFilter()
+        function parseAndAddPoint(pointElement, date, position, descriptionUrl, name, extendedData, iconGetter) {
+            const coordinates = parseCoordinates(pointElement, map.options.crs);
+            if (coordinates.length < 1) {
+                if (LOG_STYLES) console.log(`Point skipped - insufficient coordinates: ${coordinates.length}`);
+                return null;
+            }
+
+            const [lat, lng] = coordinates[0];
+
+            // Определяем категорию
+            let category;
+            if (iconGetter === getMilEquipIcon) {
+                category = extendedData['Тип техники'] || extendedData['equipment_type'] || position;
+            } else if (iconGetter === getAttacksOnUaIcon) {
+                category = extendedData['Тип объекта'] || extendedData['object_type'] || position;
+            } else {
+                category = position;
+            }
+
+            return buildPointModel(lat, lng, category, date, name, descriptionUrl, extendedData, iconGetter);
+        }
 
         // Функция для форматирования названия с заменой ссылок на кликабельные
         function formatNameWithLinks(name) 
@@ -1492,16 +1496,10 @@ function isDateInRange(dateString, startDate, endDate) {
 }
 
 // Функция для получения иконки точки на основе позиции
+// Карты URL — в window.ICON_MAPS (js/data.js)
 function getPointIcon(position) {
-    const iconUrls = {
-        'ВС РФ': 'img/flags/ru.svg',
-        'ВС РФ*': 'img/flags/ru.svg',
-        'ВСУ': 'img/flags/ua.svg',
-        'ВСУ*': 'img/flags/ua.svg',
-        'default': 'img/exclamation.svg' // иконка по умолчанию
-    };
-    
-    const iconUrl = iconUrls[position] || iconUrls.default;
+    const iconUrls = window.ICON_MAPS.points || {};
+    const iconUrl = iconUrls[position] || iconUrls.default || 'img/exclamation.svg';
     
     return L.icon({
         iconUrl: iconUrl,
@@ -1512,20 +1510,8 @@ function getPointIcon(position) {
 }
 
 function getMilEquipIcon(position) {
-    const iconUrls = {
-        'Авиация'                  : 'img/military equipment/Авиация.png',
-        'Артиллерия'               : 'img/military equipment/Артиллерия.png',
-        'БПЛА'                     : 'img/military equipment/БПЛА.png',
-        'Бронированный транспорт'  : 'img/military equipment/Бронированный транспорт.png',
-        'Другое'                   : 'img/military equipment/Другое.png',
-        'Другое/Нет данных'        : 'img/military equipment/Другое Нет данных.png',
-        'Небронированный транспорт': 'img/military equipment/Небронированный транспорт.png',
-        'ПВО'                      : 'img/military equipment/ПВО.png',
-        'Танк'                     : 'img/military equipment/Танк.png',
-        'default'                  : 'img/logo.png',
-    };
-
-    const iconUrl = iconUrls[position] || iconUrls.default;
+    const iconUrls = window.ICON_MAPS.equipment || {};
+    const iconUrl = iconUrls[position] || iconUrls.default || 'img/logo.png';
     
     return L.icon({
         iconUrl: iconUrl,
@@ -1537,32 +1523,8 @@ function getMilEquipIcon(position) {
 
 
 function getAttacksOnUaIcon(position) {
-    const iconUrls = {
-        'Объект неустановленного назначения'               : 'img/attack types/Вопрос2.png',
-        'Предприятие ВПК'                                  : 'img/attack types/ВПК22.png',
-        'ЖД инфраструктура'                                : 'img/attack types/Депо2.png',
-        'Аэродром'                                         : 'img/attack types/Аэродром2.png',
-        'Предприятие гражданского или двойного назначения' : 'img/attack types/ВПК12.png',
-        'ПВО, РЛС и ракетное вооружение'                   : 'img/attack types/РЛС2.png',
-        'Подстанция'                                       : 'img/attack types/Подстанция2.png',
-        'Склад'                                            : 'img/attack types/Склад2.png',
-        'Склад ГСМ'                                        : 'img/attack types/ГСМ2.png',
-        'Энергогенерация'                                  : 'img/attack types/Генерация2.png',
-        'Тяговая подстанция'                               : 'img/attack types/ТПС2.png',
-        'Мост'                                             : 'img/attack types/Мост2.png',
-        'Газовая инфраструктура'                           : 'img/attack types/газ.png',
-        'Судно'                                            : 'img/attack types/Судно2.png',
-        'Склад боеприпасов'                                : 'img/attack types/СкладБК2.png',
-        'Стоянка грузового транспорта'                     : 'img/attack types/Парковка2.png',
-        'ППД'                                              : 'img/attack types/ПВД22.png',
-        'Поезда и локомотивы'                              : 'img/attack types/Поезд2.png',
-		'Административный объект'                          : 'img/attack types/Адм2.png',
-		'АЗС'					                           : 'img/attack types/АЗС2.png',
-        
-        'default'                                          : 'img/attack types/Взрывчик.png',
-    };
-
-    const iconUrl = iconUrls[position] || iconUrls.default;
+    const iconUrls = window.ICON_MAPS.attacks || {};
+    const iconUrl = iconUrls[position] || iconUrls.default || 'img/attack types/Взрывчик.png';
     
     return L.icon({
         iconUrl: iconUrl,
@@ -1635,7 +1597,10 @@ async function loadPointsFromKml(filePath, layerGroup, options = {}) {
         const bounds = parsePlacemarksFromKmlDoc(kmlDoc, {}, {}, layerGroup, window.kmlStyleModes.DEFAULT, iconGetter);
         
         if (LOG_STYLES) {
-            console.log(`Total points loaded from ${filePath}: ${layerGroup.getLayers().length}`);
+            const total = window.pointsModel
+                ? Object.keys(window.pointsModel).reduce((sum, k) => sum + window.pointsModel[k].length, 0)
+                : 0;
+            console.log(`Total points loaded from ${filePath}: ${total}`);
             console.groupEnd();
         }
         
@@ -1651,26 +1616,18 @@ async function initPointsLayer(kmlFilePaths) {
     if (typeof kmlFilePaths === 'string') {
         kmlFilePaths = [kmlFilePaths];
     }
-    
-    // Удаляем старый слой точек, если он существует
-    if (window.currentPointsLayer) {
-        map.removeLayer(window.currentPointsLayer);
+
+    window.pointsModel.points = [];
+    if (!window.pointsCanvas && window.CanvasPointsLayer) {
+        window.pointsCanvas = new window.CanvasPointsLayer(window.POINTS_CANVAS_OPTIONS || {}).addTo(map);
     }
-    
-    // Создаем новую группу слоев для точек
-    const pointsLayerGroup = L.layerGroup();
-    pointsLayerGroup.addTo(map);
-    
-    // Сохраняем ссылки для последующего обновления
-    window.currentPointsLayer = pointsLayerGroup;
-    window.currentPointsKmlPaths = kmlFilePaths; // Сохраняем массив путей
-    
-    // Загружаем точки из всех KML файлов
+    // Throwaway layerGroup: линии/полигоны из KML добавляются в группу, не помещённую на карту
+    const throwawayGroup = L.layerGroup();
     for (const path of kmlFilePaths) {
-        await loadPointsFromKml(path, pointsLayerGroup);
+        await loadPointsFromKml(path, throwawayGroup);
     }
-    
-    return pointsLayerGroup;
+    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
+    return window.pointsCanvas;
 }
 
 // Функция для инициализации слоя с техникой
@@ -1681,41 +1638,18 @@ async function initMilequipLayer(kmlFilePaths) {
     if (typeof kmlFilePaths === 'string') {
         kmlFilePaths = [kmlFilePaths];
     }
-    
-    // Удаляем старые слои техники, если они существуют
-    if (window.milequipLayers && window.milequipLayers.length) {
-        window.milequipLayers.forEach(layer => {
-            if (map.hasLayer(layer)) {
-                map.removeLayer(layer);
-            }
-        });
-        window.milequipLayers = [];
-    }
-    
-    // Создаем новую группу слоев для техники
-    const milequipLayerGroup = L.layerGroup();
-    // НЕ добавляем на карту сразу - только при нажатии кнопки
-    
-    // Сохраняем ссылки для последующего управления
-    window.milequipLayers.push(milequipLayerGroup);
-    
-    // Загружаем технику из всех KML файлов
-    for (const path of kmlFilePaths) {
-        await loadPointsFromKml(path, milequipLayerGroup, {
-            iconGetter: getMilEquipIcon,
-            isEquipment: true
-        });
-    }
-    console.log(`Загружено слоев техники: ${window.milequipLayers.length}, точек: ${milequipLayerGroup.getLayers().length}`);
 
-    // Применяем текущий фильтр (если техника должна быть видима)
-    if (window.isMilEquipVisible) {
-        applyEquipmentFilter();
-    } else {
-        hideAllEquipmentMarkers();
+    window.pointsModel.equipment = [];
+    if (!window.pointsCanvas && window.CanvasPointsLayer) {
+        window.pointsCanvas = new window.CanvasPointsLayer(window.POINTS_CANVAS_OPTIONS || {}).addTo(map);
     }
-    
-    return milequipLayerGroup;
+    const throwawayGroup = L.layerGroup();
+    for (const path of kmlFilePaths) {
+        await loadPointsFromKml(path, throwawayGroup, { iconGetter: getMilEquipIcon, isEquipment: true });
+    }
+    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
+    console.log(`Загружено техники (canvas): ${window.pointsModel.equipment.length} точек`);
+    return window.pointsCanvas;
 }
 
 
@@ -1725,41 +1659,18 @@ async function initAttacksOnUaLayer(kmlFilePaths) {
     if (typeof kmlFilePaths === 'string') {
         kmlFilePaths = [kmlFilePaths];
     }
-    
-    // Удаляем старые слои атак, если они существуют
-    if (window.attacksOnUaLayers && window.attacksOnUaLayers.length) {
-        window.attacksOnUaLayers.forEach(layer => {
-            if (map.hasLayer(layer)) {
-                map.removeLayer(layer);
-            }
-        });
-        window.attacksOnUaLayers = [];
+
+    window.pointsModel.attacks = [];
+    if (!window.pointsCanvas && window.CanvasPointsLayer) {
+        window.pointsCanvas = new window.CanvasPointsLayer(window.POINTS_CANVAS_OPTIONS || {}).addTo(map);
     }
-    
-    // Создаем новую группу слоев для атак
-    const attacksOnUaLayerGroup = L.layerGroup();
-    // НЕ добавляем на карту сразу - только при нажатии кнопки
-    
-    // Сохраняем ссылки для последующего управления
-    window.attacksOnUaLayers.push(attacksOnUaLayerGroup);
-    
-    // Загружаем точки атак из всех KML файлов
+    const throwawayGroup = L.layerGroup();
     for (const path of kmlFilePaths) {
-        await loadPointsFromKml(path, attacksOnUaLayerGroup, {
-            iconGetter: getAttacksOnUaIcon,
-            isEquipment: true // Можно использовать тот же флаг или создать отдельный
-        });
+        await loadPointsFromKml(path, throwawayGroup, { iconGetter: getAttacksOnUaIcon, isEquipment: true });
     }
-    
-    if (window.isAttacksVisible) {
-        window.applyAttacksFilter();
-    } else {
-        window.hideAllAttacksMarkers();
-    }
-    
-    console.log(`Загружено слоев атак: ${window.attacksOnUaLayers.length}, точек: ${attacksOnUaLayerGroup.getLayers().length}`);
-    
-    return attacksOnUaLayerGroup;
+    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
+    console.log(`Загружено атак (canvas): ${window.pointsModel.attacks.length} точек`);
+    return window.pointsCanvas;
 }
 /*
 // Функция для инициализации слоя с фортификационными линиями (поддержка .kml и .geojson)
@@ -1844,7 +1755,7 @@ async function initFortificationLayer(kmlFilePaths) {
 function getStartDateByRange(rangeType, baseDate = null) {
     // Используем переданную дату или текущую дату
     const date = baseDate || parseCustomDate(window.selectedDate) || new Date();
-    const result = new Date(date);
+    let result = new Date(date);
     
     switch(rangeType) {
         case 'week':
@@ -1856,11 +1767,11 @@ function getStartDateByRange(rangeType, baseDate = null) {
         case '3months':
             result.setMonth(result.getMonth() - 3);
             break;
-        case '6months':
-            result.setMonth(result.getMonth() - 6);
-            break;
         case 'year':
             result.setFullYear(result.getFullYear() - 1);
+            break;
+        case 'all':
+            result = new Date(2022, 2, 24);
             break;
         default:
             result.setDate(result.getDate() - 7); // По умолчанию 1 неделя
@@ -2120,8 +2031,8 @@ function updateDateRangeButtonTitle() {
         'week': '1 неделя',
         'month': '1 месяц',
         '3months': '3 месяца',
-        '6months': '6 месяцев',
-        'year': '1 год'
+        'year': '1 год',
+        'all': 'Все'
     };
     
     dateRangeBtn.title = titles[currentDateRange] || 'Фильтр по дате';
@@ -2129,26 +2040,14 @@ function updateDateRangeButtonTitle() {
 
 // Функция для обновления фильтра точек по дате
 async function updatePointsDateFilter() {
-    if (!window.currentPointsLayer || !window.pointsDateRange || !window.currentPointsKmlPaths) return;
-    
     // Получаем выбранную дату из календаря
     const currentDate = parseCustomDate(window.selectedDate);
-    
     // Вычисляем начальную дату на основе выбранного диапазона и выбранной даты
     const startDate = getStartDateByRange(currentDateRange, currentDate);
-    
-    // Обновляем диапазон дат
+    // Обновляем диапазон дат и перефильтровываем модель (без перезагрузки KML)
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
-    
-    // Перезагружаем точки из всех файлов с новым фильтром
-    if (window.currentPointsLayer && window.currentPointsKmlPaths) {
-        window.currentPointsLayer.clearLayers();
-        
-        for (const path of window.currentPointsKmlPaths) {
-            await loadPointsFromKml(path, window.currentPointsLayer);
-        }
-    }
+    if (window.pointsCanvas) window.pointsCanvas.setDateRange(startDate, currentDate);
 }
 
 // Навигация к определенному индексу (для кнопок навигации по KML файлам)
@@ -2170,7 +2069,7 @@ async function navigateTo(index) {
         await loadKmlFile(file);
         
         // Обновляем фильтр точек для новой даты
-        if (window.currentPointsLayer && window.pointsDateRange && window.currentPointsKmlPaths) {
+        if (window.pointsDateRange) {
             await updatePointsDateFilter();
         }
         
@@ -2227,7 +2126,32 @@ function updateButtons() {
 
 // Обработчики кнопок навигации
 document.getElementById('first-btn').addEventListener('click', async () => {
-    await navigateTo(0).catch(console.error);
+    const currentDateStr = window.selectedDate;
+    if (!currentDateStr) return;
+
+    const currentDate = parseCustomDate(currentDateStr);
+    const targetDate = new Date(currentDate);
+    targetDate.setFullYear(targetDate.getFullYear() - 1);
+
+    // Форматируем целевую дату в DD.MM.YY
+    const day = String(targetDate.getDate()).padStart(2, '0');
+    const month = String(targetDate.getMonth() + 1).padStart(2, '0');
+    const year = String(targetDate.getFullYear()).slice(-2);
+    const targetDateStr = `${day}.${month}.${year}`;
+
+    const nearestDate = findNearestEarlierDate(targetDateStr);
+    if (!nearestDate) {
+        console.warn('Не найдено доступных дат для года назад');
+        return;
+    }
+
+    const index = kmlFiles.findIndex(file => file.name === nearestDate);
+    if (index === -1) {
+        console.warn('Не найден индекс для даты', nearestDate);
+        return;
+    }
+
+    await navigateTo(index);
 });
 
 document.getElementById('prev-btn').addEventListener('click', async () => {
