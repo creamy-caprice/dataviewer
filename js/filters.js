@@ -681,9 +681,17 @@ function parseUnitsUaDetails(text) {
         composition: '',
         armament: '',
         formation: '',
-        armyCorps: '?'
+        armyCorps: '?',
+        description: ''
     };
     if (!text) return details;
+
+    // Парсинг "Описание" – исключаем строки, начинающиеся с префиксов ссылок
+    const descRegex = /Описание:?\s*([\s\S]*?)(?=\n\s*(?:ТГ|ФБ|Ют|Тв|Инст|Тик|X|Facebook|Telegram|Youtube|Instagram|TikTok|Twitter|Link|Сайт|Веб|http|Состав|Вооружение|$))/i;
+    const descMatch = text.match(descRegex);
+    if (descMatch) {
+        details.description = descMatch[1].trim();
+    }
 
     // Ищем секцию "Состав" – от слова "Состав" (с двоеточием или без) до следующего пустого блока или до "Вооружение"
     const compRegex = /Состав:?[\s\n]*([\s\S]*?)Вооружение/i;
@@ -938,9 +946,10 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
             const marker = L.marker([row.lat, row.lng], { icon: icon });
 
             // Получаем детали для данного profileId, если нет — создаём с пустыми значениями
-			const details = window.unitsUaDetailsMap[row.profileId] || { composition: '', armament: '', formation: '', armyCorps: '?' };
+			const details = window.unitsUaDetailsMap[row.profileId] || { composition: '', armament: '', formation: '', armyCorps: '?', description: '' };
 
 			// Для единообразия всегда показываем блоки, даже если данные отсутствуют
+            const descriptionText = details.description.trim() ? details.description : '?';
 			const compositionText = details.composition.trim() ? details.composition : '?';
 			const armamentText = details.armament.trim() ? details.armament : '?';
 			const formationText = details.formation.trim() ? details.formation : '?';
@@ -948,6 +957,13 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
 
 			// Формируем HTML popup
 			let popupHtml = `<div style="font-size:14px;"><strong>${escapeHtml(unitTitle)}</strong>`;
+
+            // Описание (всегда сворачиваемый блок)
+            popupHtml += `
+                <details class="collapse-block" style="margin-top:8px;">
+                <summary>📄 Описание</summary>
+                <div class="collapse-content" style="margin-top: 4px; white-space: pre-wrap;">${escapeHtml(descriptionText).replace(/\n/g, '<br>')}</div>
+                </details>`;
 
 			// Состав (всегда сворачиваемый блок)
 			popupHtml += `
