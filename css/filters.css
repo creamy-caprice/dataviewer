@@ -343,4 +343,32 @@
 
 .units-ua-popup .leaflet-popup-content-wrapper {
     min-width: 300px;
+    width: 300px !important;
 }
+
+.units-ua-popup .leaflet-popup-content {
+    width: auto !important;
+}
+
+.units-ua-details-btn-wrap {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.units-ua-details-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.units-ua-details-btn:hover {
+    background: #2563eb;
+}
+

@@ -674,6 +674,11 @@ window.unitsUaLayer = null;          // групп-слой
 window.unitsUaIconsMap = {};         // словарь id → { photo, title }
 window.unitsUaIconsLoaded = false;   // загружен ли result.json
 window.unitsUaDetailsMap = {};       // Дополнительный объект для хранения детальной информации о подразделении
+window.unitsUaDetailMode = false;    // режим детального просмотра
+window.unitsUaDetailProfileId = null; // ID подразделения в режиме деталей
+window.unitsUaSavedMarkers = [];     // сохранённые маркеры ПВД для восстановления
+window.unitsUaDetailMarkers = [];    // маркеры БД в режиме деталей
+window.unitsUaDetailPvdMarkers = []; // маркеры ПВД в режиме деталей
 
 // Функция парсинга текста сообщения для извлечения состава, вооружения и меток
 function parseUnitsUaDetails(text) {
@@ -850,14 +855,13 @@ function parseUnitsCsvRow(row) {
     const parts = row.split(',');
     if (parts.length < 7) return null; // минимум до столбца "Источник"
     return {
-        // id: parts[0].trim(), // больше не нужно
-        profileId: parts[1].trim(),   // было parts[1] – остаётся, но индекс изменился
-        date: parts[2].trim(),        // было parts[2]
+        profileId: parts[1].trim(),
+        date: parts[2].trim(),
         lat: parseFloat(parts[3].trim()),
         lng: parseFloat(parts[4].trim()),
         characteristic: parts[5].trim(),
-        link: parts[6].trim()         // источник
-        // details: parts[7] – можно добавить, но не используется
+        link: parts[6].trim(),
+        details: parts.length > 7 ? parts.slice(7).join(',').trim() : ''
     };
 }
 
@@ -943,7 +947,7 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
                 unitTitle = `ID:${row.profileId}`;
             }
 
-            const marker = L.marker([row.lat, row.lng], { icon: icon });
+            const marker = L.marker([row.lat, row.lng], { icon: icon, _profileId: row.profileId });
 
             // Получаем детали для данного profileId, если нет — создаём с пустыми значениями
 			const details = window.unitsUaDetailsMap[row.profileId] || { composition: '', armament: '', formation: '', armyCorps: '?', description: '' };
@@ -980,11 +984,16 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
 				</details>`;
 
 			// Формирование (всегда видимая строка)
-			popupHtml += `<div style="margin-top:8px;"><strong>Формирование:</strong> ${escapeHtml(formationText)}</div>`;
+			popupHtml += `<div style="margin-top:4px;"><strong>Формирование:</strong> ${escapeHtml(formationText)}</div>`;
 
 			// Армейский корпус (всегда видимая строка)
-			popupHtml += `<div style="margin-top:8px;"><strong>Армейский корпус:</strong> ${escapeHtml(armyCorpsText)}</div>`;
+			popupHtml += `<div style="margin-top:4px;"><strong>Армейский корпус:</strong> ${escapeHtml(armyCorpsText)}</div>`;
+			
+			//
+			popupHtml += `<div style="margin-top:4px;"><strong>Дата:</strong> ${escapeHtml(row.date)}</div>`;
 
+			//
+			popupHtml += `<div class="units-ua-details-btn-wrap"><button class="units-ua-details-btn" onclick="window.showUnitDetailsForProfileId('${row.profileId}'); map.closePopup();">Геоданные</button></div>`;
 			popupHtml += `</div>`;
 
 			marker.bindPopup(popupHtml, { className: 'units-ua-popup' });
@@ -996,6 +1005,149 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
     } catch (error) {
         console.error('Ошибка загрузки CSV подразделений ВСУ:', error);
     }
+}
+
+// Показывает детали для выбранного подразделения
+async function showUnitDetailsForProfileId(profileId) {
+    if (window.unitsUaDetailMode && window.unitsUaDetailProfileId === profileId) {
+        resetUnitDetails();
+        return;
+    }
+
+    // Сбрасываем предыдущий режим деталей, если он был
+    if (window.unitsUaDetailMode) {
+        resetUnitDetails();
+    }
+
+    window.unitsUaDetailMode = true;
+    window.unitsUaDetailProfileId = profileId;
+
+    // Сохраняем текущие маркеры ПВД для восстановления
+    window.unitsUaSavedMarkers = [...window.unitsUaMarkers];
+
+    // Очищаем слой
+    if (window.unitsUaLayer) {
+        window.unitsUaLayer.clearLayers();
+    }
+    window.unitsUaMarkers = [];
+    window.unitsUaDetailMarkers = [];
+    window.unitsUaDetailPvdMarkers = [];
+
+    // Определяем иконку подразделения
+    const unitIconInfo = window.unitsUaIconsMap[profileId];
+    const unitTitle = unitIconInfo ? unitIconInfo.title : `ID:${profileId}`;
+    const unitIcon = unitIconInfo
+        ? L.icon({
+            iconUrl: `units/ua/${unitIconInfo.photo}`,
+            iconSize: [28, 32],
+            iconAnchor: [14, 16],
+            popupAnchor: [0, -16]
+        })
+        : L.icon({
+            iconUrl: 'img/attack types/Взрывчик.png',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            popupAnchor: [0, 0]
+        });
+
+    // Добавляем обратно актуальный маркер (с оригинальным попапом и кнопкой)
+    const currentMarker = window.unitsUaSavedMarkers.find(function(m) {
+        return m && m.options && m.options._profileId === profileId;
+    });
+    if (currentMarker) {
+        currentMarker.addTo(window.unitsUaLayer);
+        window.unitsUaMarkers.push(currentMarker);
+    }
+
+    // Загружаем все геолокации (ПВД и БД) для этого profileId
+    try {
+        const response = await fetch(window.unitsUaCsvPath);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const csvText = await response.text();
+        const lines = csvText.split(/\r?\n/).filter(function(line) { return line.trim().length > 0; });
+        if (lines.length === 0) return;
+
+        const dataLines = lines.slice(1);
+        for (const line of dataLines) {
+            const data = parseUnitsCsvRow(line);
+            if (!data) continue;
+            if (isNaN(data.lat) || isNaN(data.lng)) continue;
+            if (data.profileId !== profileId) continue;
+
+            // Пропускаем запись, которая уже отображена актуальным маркером
+            if (currentMarker) {
+                const curLatLng = currentMarker.getLatLng();
+                if (Math.abs(data.lat - curLatLng.lat) < 0.0001 && Math.abs(data.lng - curLatLng.lng) < 0.0001) {
+                    continue;
+                }
+            }
+
+            if (data.characteristic === 'ПВД') {
+                const oldPvdIcon = L.icon({
+                    iconUrl: unitIconInfo ? `units/ua/${unitIconInfo.photo}` : 'img/attack types/Взрывчик.png',
+                    iconSize: [24, 28],
+                    iconAnchor: [10, 12],
+                    popupAnchor: [0, -12]
+                });
+                const pvdMarker = L.marker([data.lat, data.lng], { icon: oldPvdIcon, _profileId: profileId });
+                pvdMarker.bindPopup(
+                    `<div style="font-size:13px;">
+                        <strong>${escapeHtml(unitTitle)}</strong>
+                        <div style="margin-top:4px;"><strong>Дата:</strong> ${escapeHtml(data.date)}</div>
+                    </div>`,
+                    { className: 'units-ua-popup' }
+                );
+                pvdMarker.addTo(window.unitsUaLayer);
+                window.unitsUaDetailPvdMarkers.push(pvdMarker);
+            } else if (data.characteristic === 'БД') {
+                const bdIcon = L.icon({
+                    iconUrl: 'img/attack types/Взрывчик.png',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 24],
+                    popupAnchor: [0, -24]
+                });
+                const bdMarker = L.marker([data.lat, data.lng], { icon: bdIcon });
+                let bdPopup = `<div style="font-size:13px;"><strong>Боевые действия</strong>`;
+                bdPopup += `<div style="margin-top:4px;"><strong>Дата:</strong> ${escapeHtml(data.date)}</div>`;
+                if (data.details) {
+                    bdPopup += `<div style="margin-top:4px;"><strong>Примечание:</strong> ${escapeHtml(data.details)}</div>`;
+                }
+                if (data.link) {
+                    bdPopup += `<div style="margin-top:4px;"><a href="${escapeHtml(data.link)}" target="_blank" rel="noopener" title="${escapeHtml(data.link)}">Источник</a></div>`;
+                }
+                bdPopup += `</div>`;
+                bdMarker.bindPopup(bdPopup, { className: 'units-ua-popup' });
+                bdMarker.addTo(window.unitsUaLayer);
+                window.unitsUaDetailMarkers.push(bdMarker);
+            }
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки CSV для деталей:', error);
+    }
+}
+
+// Восстанавливает все маркеры ПВД и убирает БД маркеры
+function resetUnitDetails() {
+    if (!window.unitsUaDetailMode) return;
+
+    window.unitsUaDetailMode = false;
+    window.unitsUaDetailProfileId = null;
+
+    if (window.unitsUaLayer) {
+        window.unitsUaLayer.clearLayers();
+    }
+
+    window.unitsUaMarkers = [];
+    window.unitsUaDetailMarkers = [];
+    window.unitsUaDetailPvdMarkers = [];
+
+    window.unitsUaSavedMarkers.forEach(function(m) {
+        if (m) {
+            m.addTo(window.unitsUaLayer);
+            window.unitsUaMarkers.push(m);
+        }
+    });
+    window.unitsUaSavedMarkers = [];
 }
 
 // Простая функция экранирования HTML (чтобы избежать XSS)
@@ -1012,6 +1164,7 @@ function escapeHtml(str) {
 // Перезагрузка слоя с учётом текущей selectedDate
 function reloadUnitsUaLayer() {
     if (window.isUnitsUaVisible) {
+        resetUnitDetails();
         const currentDate = window.selectedDate || getCurrentDateFormatted();
         let filterSet = null;
         if (window.unitsSearchDigits) {
@@ -1087,6 +1240,7 @@ async function toggleUnitsUa() {
         btn.classList.add('active');
     } else {
         // ===== Выключение слоя =====
+        resetUnitDetails();
         if (window.unitsUaLayer && map.hasLayer(window.unitsUaLayer)) {
             map.removeLayer(window.unitsUaLayer);
         }
@@ -1202,6 +1356,7 @@ window.hideAllAttacksMarkers = hideAllAttacksMarkers;
 window.hideAllFortificationLayers = hideAllFortificationLayers;
 
 window.reloadUnitsUaLayer = reloadUnitsUaLayer;
+window.showUnitDetailsForProfileId = showUnitDetailsForProfileId;
 
 
 //

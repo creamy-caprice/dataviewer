@@ -2978,10 +2978,15 @@ document.querySelectorAll('#coords-input, #coords-input-clone').forEach(input =>
         updateCopyButtonsVisibility();
     });
     
-    // Обработка Enter с показом ошибок
+    // Обработка Enter: координаты → центрирование, текст → поиск населённого пункта
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' && !isProgrammaticChange) {
-            centerMapFromInput(this, true);
+            const coords = normalizeToTuple(parseCoordinates(this.value.trim()));
+            if (coords) {
+                centerMapFromInput(this, true);
+            } else if (typeof window.performPlaceSearch === 'function') {
+                window.performPlaceSearch(this.value);
+            }
             // Обновляем видимость кнопок копирования
             updateCopyButtonsVisibility();
         }
@@ -3025,6 +3030,9 @@ document.addEventListener('click', function(e) {
             // Очищаем маркер если это основное поле
             if (input.id === 'coords-input') {
                 clearMarkerAndInput();
+                if (typeof window.clearSearchMarkers === 'function') {
+                    window.clearSearchMarkers();
+                }
             }
         }
     }
@@ -3305,11 +3313,16 @@ function setupDropdownListeners() {
             centerMapFromInput(this, false);
         });
         
-        // Обработка Enter с показом ошибок и закрытием меню
+        // Обработка Enter: координаты → центрирование + закрытие меню, текст → поиск
         coordsClone.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
-                if (centerMapFromInput(this, true)) {
-                    navDropdown.classList.remove('active');
+                const coords = normalizeToTuple(parseCoordinates(this.value.trim()));
+                if (coords) {
+                    if (centerMapFromInput(this, true)) {
+                        navDropdown.classList.remove('active');
+                    }
+                } else if (typeof window.performPlaceSearch === 'function') {
+                    window.performPlaceSearch(this.value);
                 }
             }
         });
