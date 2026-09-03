@@ -73,7 +73,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 // Постоянные слои
 window.permanentLayers = [
     // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_08_17.kml" },
+    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_09_02.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
@@ -82,6 +82,8 @@ window.permanentLayers = [
     { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/OffensiveLine_2023_10_10.kml" },
     //Линия максимального продвижения ВСУ в Курской области.
     { name: "AFU_advance_Kursk2024",  path: "kml/PermanentObjects/AFU_advance_Kursk2024.kml" },
+	//Граница уверенного контроля ВС РФ в зоне ответственности ГВ Восток
+	{ name: "Восток",  path: "kml/PermanentObjects/Восток.kml" },
     // Контур максимального продвижения в Доброполье
     { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
 	{ name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
