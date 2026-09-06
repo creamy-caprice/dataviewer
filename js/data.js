@@ -85,7 +85,8 @@ window.permanentLayers = [
 	//Граница уверенного контроля ВС РФ в зоне ответственности ГВ Восток
 	{ name: "Восток",  path: "kml/PermanentObjects/Восток.kml" },
     // Контур максимального продвижения в Доброполье
-    { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
+    //{ name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
+	//Границы городов
 	{ name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
 
 ];
