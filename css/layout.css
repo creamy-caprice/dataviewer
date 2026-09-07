@@ -499,6 +499,29 @@ body {
 }
 .clear-input-btn:hover { color: #000; }
 
+.input-search-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.search-input-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  /* padding: 4px 6px; */
+  /* line-height: 1; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.search-input-btn:hover { color: #000; }
+.search-input-btn:active { transform: scale(0.9); }
+
 /* Широкий экран: дата-навигация (двойная обёртка) */
 .date-navigator > .input-with-clear {
   display: inline-flex;

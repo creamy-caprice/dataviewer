@@ -3005,6 +3005,9 @@ document.addEventListener('click', function(e) {
             // Очищаем поле
             input.value = '';
             
+            // Очищаем маркеры найденных населённых пунктов
+            if (window.clearSearchMarkers) { window.clearSearchMarkers(); }
+            
             // Обновляем видимость кнопок копирования
             updateCopyButtonsVisibility();
             
@@ -3566,6 +3569,41 @@ document.addEventListener('DOMContentLoaded', function() {
         input.focus();
       });
     }
+
+    // Кнопка поиска (лупа) — только для мобильного клона, справа от поля
+    if (input.id !== 'coords-input-clone') return;
+    let row = input.parentElement.parentElement;
+    if (!(row && row.classList.contains('input-search-row'))) {
+      row = document.createElement('div');
+      row.className = 'input-search-row';
+      const parent = input.parentElement.parentNode;
+      parent.insertBefore(row, input.parentElement);
+      row.appendChild(input.parentElement);
+    }
+    let sBtn = row.querySelector('.search-input-btn');
+    if (!sBtn) {
+      sBtn = document.createElement('button');
+      sBtn.type = 'button';
+      sBtn.className = 'search-input-btn';
+      sBtn.setAttribute('aria-label', 'Поиск');
+      sBtn.title = 'Поиск';
+      sBtn.textContent = '🔍';
+      row.appendChild(sBtn);
+
+      sBtn.addEventListener('click', () => {
+        const val = input.value.trim();
+        if (!val) return;
+        const coords = normalizeToTuple(parseCoordinates(val));
+        if (coords) {
+          centerMapFromInput(input, true);
+          const dd = document.getElementById('nav-dropdown');
+          if (dd) dd.classList.remove('active');
+        } else if (typeof window.performPlaceSearch === 'function') {
+          window.performPlaceSearch(val);
+        }
+        updateCopyButtonsVisibility();
+      });
+    }
   }
 
   function toggle(input) {
@@ -3574,6 +3612,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const btn = input.parentElement.querySelector('.clear-input-btn');
     if (!btn) return;
     btn.style.display = (input.value && input.value.trim()) ? 'inline-flex' : 'none';
+    const row = input.parentElement.parentElement;
+    if (row && row.classList.contains('input-search-row')) {
+      const sBtn = row.querySelector('.search-input-btn');
+      if (sBtn) {
+        sBtn.style.display = (input.value && input.value.trim()) ? 'inline-flex' : 'none';
+      }
+    }
   }
 
   function refreshAll() {
