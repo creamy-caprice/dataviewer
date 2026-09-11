@@ -274,8 +274,15 @@ function toggleEquipmentMenu() {
     if (!isVisible) {
         const btn = document.getElementById('mil-equip-btn');
         const rect = btn.getBoundingClientRect();
-        menu.style.top = (rect.bottom + window.scrollY) + 'px';
-        menu.style.left = (rect.left + window.scrollX) + 'px';
+        if (window.innerWidth <= 901) {
+            menu.style.bottom = '0px';
+            menu.style.top = 'auto';
+            menu.style.left = '0px';
+        } else {
+            menu.style.top = (rect.bottom + window.scrollY) + 'px';
+            menu.style.left = (rect.left + window.scrollX) + 'px';
+            menu.style.bottom = 'auto';
+        }
         menu.style.display = 'block';
         if (window.allEquipmentMarkers.length === 0 && window.milequipKmlPaths) {
             initMilequipLayer(window.milequipKmlPaths).then(() => applyEquipmentFilter());
@@ -392,8 +399,15 @@ function toggleAttacksMenu() {
     if (!isVisible) {
         const btn = document.getElementById('attacks-on-ua-btn');
         const rect = btn.getBoundingClientRect();
-        menu.style.top = (rect.bottom + window.scrollY) + 'px';
-        menu.style.left = (rect.left + window.scrollX) + 'px';
+        if (window.innerWidth <= 901) {
+            menu.style.bottom = '0px';
+            menu.style.top = 'auto';
+            menu.style.left = '0px';
+        } else {
+            menu.style.top = (rect.bottom + window.scrollY) + 'px';
+            menu.style.left = (rect.left + window.scrollX) + 'px';
+            menu.style.bottom = 'auto';
+        }
         menu.style.display = 'block';
         if (window.allAttacksMarkers.length === 0 && window.attacksOnUaKmlPaths) {
             initAttacksOnUaLayer(window.attacksOnUaKmlPaths).then(() => applyAttacksFilter());
@@ -577,8 +591,15 @@ function toggleFortificationMenu() {
     if (!isVisible) {
         const btn = document.getElementById('fortification-btn');
         const rect = btn.getBoundingClientRect();
-        menu.style.top = (rect.bottom + window.scrollY) + 'px';
-        menu.style.left = (rect.left + window.scrollX) + 'px';
+        if (window.innerWidth <= 901) {
+            menu.style.bottom = '0px';
+            menu.style.top = 'auto';
+            menu.style.left = '0px';
+        } else {
+            menu.style.top = (rect.bottom + window.scrollY) + 'px';
+            menu.style.left = (rect.left + window.scrollX) + 'px';
+            menu.style.bottom = 'auto';
+        }
         menu.style.display = 'block';
         // Если слои ещё не загружены, загружаем их
         if (window.allFortificationLayers.length === 0 && window.fortificationKmlPaths) {
@@ -1378,4 +1399,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (fortificationMenu && fortificationMenu.parentNode !== document.body) {
         document.body.appendChild(fortificationMenu);
     }
+    
+    // Закрытие меню фильтров при клике вне их области
+    document.addEventListener('click', function(e) {
+        var filters = [
+            { menu: document.getElementById('equipment-filter-menu'), btn: document.getElementById('mil-equip-btn') },
+            { menu: document.getElementById('attacks-filter-menu'), btn: document.getElementById('attacks-on-ua-btn') },
+            { menu: document.getElementById('fortification-filter-menu'), btn: document.getElementById('fortification-btn') }
+        ];
+        filters.forEach(function(item) {
+            if (!item.menu || item.menu.style.display !== 'block') return;
+            var inMenu = item.menu.contains(e.target);
+            var inBtn = item.btn && item.btn.contains(e.target);
+            if (!inMenu && !inBtn) {
+                item.menu.style.display = 'none';
+            }
+        });
+    });
 });

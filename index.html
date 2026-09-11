@@ -86,24 +86,27 @@
                         <button id="next-btn" class="nav-btn" title="Следующий">❯</button>
                         <button id="last-btn" class="nav-btn" title="Сегодня">❯❯</button>						
 						
-                        <div class="filter-buttons-wrapper">
-						
-						<div class="filter-btn-container">
-                                    <button id="date-range-btn" class="filter-btn" title="Фильтр по дате">
-                                        <img src="img/Кнопка1.png" alt="⏳" class="filter-icon">
-                                    </button>
-                                    <div id="date-range-dropdown" class="dropdown-content">
-                                        <div class="range-option" data-range="week">1 неделя</div>
-                                        <div class="range-option" data-range="month">1 месяц</div>
-                                        <div class="range-option" data-range="3months">3 месяца</div>
-                                        <div class="range-option" data-range="year">1 год</div>
-                                        <div class="range-option" data-range="all">Все</div>
-                                    </div>
-                                </div>
-								
-                            <div class="filter-buttons">
-                                
-                                <button id="mil-equip-btn" class="filter-btn" title="Техника ВСУ">
+                         <div class="filter-buttons-wrapper">
+
+                               <div class="filter-btn-container">
+                                   <button id="date-range-btn" class="filter-btn" title="Фильтр по дате">
+                                       <img src="img/Кнопка1.png" alt="⏳" class="filter-icon">
+                                   </button>
+                                   <div id="date-range-dropdown" class="dropdown-content">
+                                       <div class="range-option" data-range="week">1 неделя</div>
+                                       <div class="range-option" data-range="month">1 месяц</div>
+                                       <div class="range-option" data-range="3months">3 месяца</div>
+                                       <div class="range-option" data-range="year">1 год</div>
+                                       <div class="range-option" data-range="all">Все</div>
+                                   </div>
+                               </div>
+
+                               <div class="filter-buttons">
+                                   <button id="toggle-points-btn" class="filter-btn" title="Показать/скрыть боевые действия">
+                                       <img src="img/Кнопка2.png" alt="📍" class="filter-icon">
+                                   </button>
+
+                                   <button id="mil-equip-btn" class="filter-btn" title="Техника ВСУ">
                                     <img src="img/military equipment/Артиллерия.png" alt="🚓" class="filter-icon">
                                 </button>
                                 <div id="equipment-filter-menu" class="equipment-filter-menu">
@@ -155,7 +158,7 @@
 
                         <!-- Элементы для скрытия (с классом hideable-nav-item) -->
 						<label id="centerOn-label" class="hideable-nav-item" data-translate="centerLabel">Центрировать на:</label>
-						<input type="text" id="coords-input" placeholder="Координаты" class="hideable-nav-item coord-input">
+						<input type="text" id="coords-input" placeholder="Координаты/Поиск" class="hideable-nav-item coord-input">
 						<button id="copy-coords-external-btn" class="hideable-nav-item copy-input-btn external" title="Копировать координаты">
 							⎘
 						</button>

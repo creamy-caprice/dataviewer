@@ -1143,7 +1143,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                 extendedData,
                 // Сразу применяем фильтр по диапазону дат: иначе до вызова applyFilter
                 // (после загрузки всех файлов) redraw успел бы показать все точки
-                visible: (layerType === 'points' && date && window.pointsDateRange &&
+                visible: (date && window.pointsDateRange &&
                           window.pointsDateRange.start && window.pointsDateRange.end)
                     ? isDateInRange(date, window.pointsDateRange.start, window.pointsDateRange.end)
                     : true
@@ -1480,13 +1480,22 @@ async function reloadKmlForCRS(center, zoom) {
 // Функция для проверки, попадает ли дата в диапазон
 function isDateInRange(dateString, startDate, endDate) {
     try {
-        const parts = dateString.split('.');
-        if (parts.length !== 3) return false;
-        
-        const year = parseInt(parts[0]);
-        const month = parseInt(parts[1]) - 1;
-        const day = parseInt(parts[2]);
-        
+        let year, month, day;
+
+        if (dateString.includes('-')) {
+            const parts = dateString.split('-');
+            if (parts.length !== 3) return false;
+            year = parseInt(parts[0]);
+            month = parseInt(parts[1]) - 1;
+            day = parseInt(parts[2]);
+        } else {
+            const parts = dateString.split('.');
+            if (parts.length !== 3) return false;
+            year = parseInt(parts[0]);
+            month = parseInt(parts[1]) - 1;
+            day = parseInt(parts[2]);
+        }
+
         const pointDate = new Date(year, month, day);
         return pointDate >= startDate && pointDate <= endDate;
     } catch (error) {
@@ -1554,7 +1563,7 @@ function parseExtendedData(placemark) {
                     data['object_type'] = value;
                 } else if (name === 'позиция') {
                     data['position'] = value;
-                } else if (name === 'дата') {
+                } else if (name === 'дата' || name === 'Дата') {
                     data['date'] = value;
                 } else if (name === 'Датировано') {
                     data['date'] = value;
@@ -1786,6 +1795,7 @@ function getStartDateByRange(rangeType, baseDate = null) {
 function initFilterButtons() {
     console.log('Инициализация фильтров...');
     
+    const togglePointsBtn = document.getElementById('toggle-points-btn');
     const dateRangeBtn = document.getElementById('date-range-btn');
     const dateRangeDropdown = document.getElementById('date-range-dropdown');
     const rangeOptions = document.querySelectorAll('.range-option');
@@ -1794,7 +1804,22 @@ function initFilterButtons() {
         console.error('Не найдены элементы фильтра:', {dateRangeBtn, dateRangeDropdown});
         return;
     }
-    
+
+    // Инициализация состояния кнопки точек (по умолчанию включена)
+    if (togglePointsBtn) {
+        togglePointsBtn.classList.add('active');
+        togglePointsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            togglePointsBtn.classList.toggle('active');
+            const isVisible = togglePointsBtn.classList.contains('active');
+            if (window.pointsCanvas) {
+                window.pointsCanvas.setLayerTypeVisible('points', isVisible);
+            }
+            updateTogglePointsButtonTitle();
+        });
+    }
+
     console.log('Элементы фильтра найдены');
     
     // Обработчик клика на кнопку фильтра дат
@@ -1865,6 +1890,7 @@ function initMobileFilterMenu() {
     
     const mobileFilterToggle = document.getElementById('mobile-filter-toggle');
     const filterButtons = document.querySelector('.filter-buttons');
+    const togglePointsBtn = document.getElementById('toggle-points-btn');
     const dateRangeBtn = document.getElementById('date-range-btn');
     const dateRangeDropdown = document.getElementById('date-range-dropdown');
     
@@ -1935,6 +1961,14 @@ function initMobileFilterMenu() {
         // Не вызываем stopImmediatePropagation(), так как можем иметь другие обработчики
     });
     
+    // Обработчик клика на toggle-points-btn в мобильном меню
+    if (togglePointsBtn) {
+        togglePointsBtn.addEventListener('click', function(e) {
+            // Закрываем мобильное меню при клике (как и для других кнопок)
+            toggleMobileFilterMenu();
+        });
+    }
+    
     // Обработчик для опций диапазона
     dateRangeDropdown.querySelectorAll('.range-option').forEach(option => {
         option.addEventListener('click', function(e) {
@@ -1979,6 +2013,7 @@ function initMobileFilterMenu() {
     document.addEventListener('click', function(e) {
         const isMobileFilterToggle = mobileFilterToggle.contains(e.target);
         const isFilterButtons = filterButtons.contains(e.target);
+        const isTogglePointsBtn = togglePointsBtn && togglePointsBtn.contains(e.target);
         const isDateRangeBtn = dateRangeBtn.contains(e.target);
         const isDateRangeDropdown = dateRangeDropdown.contains(e.target);
         
@@ -1989,7 +2024,7 @@ function initMobileFilterMenu() {
         }
         
         // Если клик был вне всех элементов мобильного фильтра
-        if (!isMobileFilterToggle && !isFilterButtons && !isDateRangeDropdown && !isDateRangeBtn) {
+        if (!isMobileFilterToggle && !isFilterButtons && !isDateRangeDropdown && !isDateRangeBtn && !isTogglePointsBtn) {
             if (mobileFilterToggle.classList.contains('active')) {
                 toggleMobileFilterMenu();
             }
@@ -2036,6 +2071,14 @@ function updateDateRangeButtonTitle() {
     };
     
     dateRangeBtn.title = titles[currentDateRange] || 'Фильтр по дате';
+}
+
+// Функция для обновления заголовка кнопки переключения точек
+function updateTogglePointsButtonTitle() {
+    const togglePointsBtn = document.getElementById('toggle-points-btn');
+    if (!togglePointsBtn) return;
+    const isVisible = togglePointsBtn.classList.contains('active');
+    togglePointsBtn.title = isVisible ? 'Скрыть боевые действия' : 'Показать боевые действия';
 }
 
 // Функция для обновления фильтра точек по дате
@@ -2607,6 +2650,16 @@ async function init() {
     map.on('load', function() {
         window.osm.addTo(map); // Активируйте OSM слой
         window.initialLayerSet = true;
+    });
+
+    // Закрытие меню фильтров при клике на карту
+    map.on('click', function() {
+        ['equipment-filter-menu', 'attacks-filter-menu', 'fortification-filter-menu'].forEach(function(id) {
+            var m = document.getElementById(id);
+            if (m && m.style.display === 'block') {
+                m.style.display = 'none';
+            }
+        });
     });
 
   } catch (error) {

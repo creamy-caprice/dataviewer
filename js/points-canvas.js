@@ -220,13 +220,13 @@
                         continue;
                     }
                     if (type === 'equipment') {
-                        p.visible = (eqSel === null || eqSel === undefined) || eqSel.indexOf(p.category) !== -1;
+                        p.visible = ((eqSel === null || eqSel === undefined) || eqSel.indexOf(p.category) !== -1) && this._dateAllowed(p);
                     } else if (type === 'attacks') {
                         if (atkSel === null || atkSel === undefined) {
-                            p.visible = true;
+                            p.visible = this._dateAllowed(p);
                         } else {
                             const groupTag = groupMap ? groupMap[p.category] : null;
-                            p.visible = !!groupTag && atkSel.indexOf(groupTag) !== -1;
+                            p.visible = !!groupTag && atkSel.indexOf(groupTag) !== -1 && this._dateAllowed(p);
                         }
                     } else {
                         p.visible = this._dateAllowed(p);

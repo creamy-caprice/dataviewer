@@ -270,10 +270,11 @@ function setLanguage(lang) {
 		updateDateRangeButtonTitle();
 	}
 	
-	if (typeof updateMilEquipButtonTitle === 'function') updateMilEquipButtonTitle();
-	if (typeof updateAttacksOnUaButtonTitle === 'function') updateAttacksOnUaButtonTitle();
-	if (typeof updateFortificationButtonTitle === 'function') updateFortificationButtonTitle();
+    if (typeof updateMilEquipButtonTitle === 'function') updateMilEquipButtonTitle();
+    if (typeof updateAttacksOnUaButtonTitle === 'function') updateAttacksOnUaButtonTitle();
+    if (typeof updateFortificationButtonTitle === 'function') updateFortificationButtonTitle();
     if (typeof updateUnitsUaButtonTitle === 'function') updateUnitsUaButtonTitle();
+    if (typeof updateTogglePointsButtonTitle === 'function') updateTogglePointsButtonTitle();
     
     // Обновляем title кнопки переключения слоев
     const layersToggleLink = document.querySelector('.leaflet-control-layers-toggle a');
