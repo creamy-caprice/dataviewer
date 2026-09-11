@@ -3742,43 +3742,9 @@
         <styleUrl>#icon-1856-E65100-highlight</styleUrl>
       </Pair>
     </StyleMap>
-    <Style id="icon-1856-F57C00-normal">
-      <IconStyle>
-        <color>ff007cf5</color>
-        <scale>1</scale>
-        <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
-        </Icon>
-      </IconStyle>
-      <LabelStyle>
-        <scale>0</scale>
-      </LabelStyle>
-    </Style>
-    <Style id="icon-1856-F57C00-highlight">
-      <IconStyle>
-        <color>ff007cf5</color>
-        <scale>1</scale>
-        <Icon>
-          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
-        </Icon>
-      </IconStyle>
-      <LabelStyle>
-        <scale>1</scale>
-      </LabelStyle>
-    </Style>
-    <StyleMap id="icon-1856-F57C00">
-      <Pair>
-        <key>normal</key>
-        <styleUrl>#icon-1856-F57C00-normal</styleUrl>
-      </Pair>
-      <Pair>
-        <key>highlight</key>
-        <styleUrl>#icon-1856-F57C00-highlight</styleUrl>
-      </Pair>
-    </StyleMap>
     <Placemark>
       <name>3 февраля, г.Мерефа</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7-35w7g1KmAOisEWYKapziHG3FS4YSqgqFRSGmrpZtgbK8KIn4vjL4xBg-yb5AYRpEgrSOhe0cSQGgH46t6J3Ajz1-10ClKsoT1MXMT7eQbhkkCshMau3VxIXsfQfVX1XqpqBN4eubWo5_kEG8EsUrjRu2h2XX6MT3YrGVQ8-jKZ7evKDEB39kdvzY8Dd19GEoe-QsbvM7R_dGWYsREWRxkPD-INI8xR_8oVI33p5I9Zg3eSlZitpva5k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар ОТРК "Искандер" по неизвестной цели.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: <br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4a5FLmDWrdvs996w7wI6BGuOaqTTLafR9sB_AvZsUmku_V1748T88T3tezwNL12ktLbKzWLiY-4ZmHMc344dY34NHKKnNyyqSW3Z8PxPBxoNndK7MKq3UyKX6j0mrQ2taotVxeYHug4ctQFw0Jiw_jMBGQg6RN3A4SgAIL1-bIi9R0e-70aU6tHs8N15vm_BdIgzBNf7ZqL2pc4dHokXVKxtsaYk6IohH_P3J7_w8jkhzQBdxhuVXmqhU?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4-ibC_F4yhLvYHY3NaIj_yZb62bsFZj-wYULw50FP1W-Lgscd70yrDYpNGDMmKRlY4k63_Av7_NsPim9TbopP-rPaUFshAxpU-sMJ9tmsfnIDMZfFyq8LAhr_xzfTXSF7FzwLxcvPVZmMB7DVIDwKWturFdSE4hU1_YEHkyG7phvfNGqIk5v-k_Yw2ISSxZcg22vDryzcHy6F-J2F0OqmoQ2ZT6PE0TOmM8JwjNRqYjira-zSRiHc6ciw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар ОТРК "Искандер" по неизвестной цели.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: <br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6WtcCpovUbcU51_dvnBr9ZgQqt7YTd5QZUZUZleVOIW0LVBtUzJFFbko9J5hE2YRGHAx2HmmUvAxry6GueG8Zeiq2Dp8ONASHUSzVTs-XyOLZMvSbFPNUK_9hrBKrRfHLfTI8p3t5zRpWUgnyFdaYZJ5jjaIVQjRQu3GaPtt-IzFU9vGq5RCsry7Bo4BbOMCUG_4wnGFme6NoI7rDaP5FkGEnWGQEu88cCkfVakjE8FqNAf-o1pxc23uA?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -3797,7 +3763,7 @@
           <value/>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7-35w7g1KmAOisEWYKapziHG3FS4YSqgqFRSGmrpZtgbK8KIn4vjL4xBg-yb5AYRpEgrSOhe0cSQGgH46t6J3Ajz1-10ClKsoT1MXMT7eQbhkkCshMau3VxIXsfQfVX1XqpqBN4eubWo5_kEG8EsUrjRu2h2XX6MT3YrGVQ8-jKZ7evKDEB39kdvzY8Dd19GEoe-QsbvM7R_dGWYsREWRxkPD-INI8xR_8oVI33p5I9Zg3eSlZitpva5k?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4a5FLmDWrdvs996w7wI6BGuOaqTTLafR9sB_AvZsUmku_V1748T88T3tezwNL12ktLbKzWLiY-4ZmHMc344dY34NHKKnNyyqSW3Z8PxPBxoNndK7MKq3UyKX6j0mrQ2taotVxeYHug4ctQFw0Jiw_jMBGQg6RN3A4SgAIL1-bIi9R0e-70aU6tHs8N15vm_BdIgzBNf7ZqL2pc4dHokXVKxtsaYk6IohH_P3J7_w8jkhzQBdxhuVXmqhU?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4-ibC_F4yhLvYHY3NaIj_yZb62bsFZj-wYULw50FP1W-Lgscd70yrDYpNGDMmKRlY4k63_Av7_NsPim9TbopP-rPaUFshAxpU-sMJ9tmsfnIDMZfFyq8LAhr_xzfTXSF7FzwLxcvPVZmMB7DVIDwKWturFdSE4hU1_YEHkyG7phvfNGqIk5v-k_Yw2ISSxZcg22vDryzcHy6F-J2F0OqmoQ2ZT6PE0TOmM8JwjNRqYjira-zSRiHc6ciw?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6WtcCpovUbcU51_dvnBr9ZgQqt7YTd5QZUZUZleVOIW0LVBtUzJFFbko9J5hE2YRGHAx2HmmUvAxry6GueG8Zeiq2Dp8ONASHUSzVTs-XyOLZMvSbFPNUK_9hrBKrRfHLfTI8p3t5zRpWUgnyFdaYZJ5jjaIVQjRQu3GaPtt-IzFU9vGq5RCsry7Bo4BbOMCUG_4wnGFme6NoI7rDaP5FkGEnWGQEu88cCkfVakjE8FqNAf-o1pxc23uA?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -4063,7 +4029,7 @@ https://t.me/icpbtrubicon/941]]></value>
     </Placemark>
     <Placemark>
       <name>12 января, Одесса, Судно</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6OiO2pW5oQLM9Gvwel7nw08NjMdHGyv1IU_xfwNmMnuGKnI9CrnsFDtYaFY1dlPjgqekPrvHLhVqrvPp9DfSkwHluKWYVZvtdYAfKcVD_hQRDW6EEfHwh6NryK-08Tx1ZssAc2-m8-VinX8CjjYjhKXgzfOwFh_nJG04FeSd2pvfG8tUak8M7VJu6yUReWIaFPFr_JtKZP870eEsF3mkvu8PPvSpRBJbvpJzBX8dd0nlj3oZcG0c5aEyg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по судну BLUE BEAD.<br><br>Тип объекта: Судно<br>Дата: 2026.01.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/icpbtrubicon/943]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR53b1hi8dU8ssvSPZC05-EkQlM8r07qG1RSlYRLnwIZsSVe6h20lV7cUrWBEktFIKoqKnyGfj2XjF4XmxBSOMVBJLbvlXxDotQuKX6u5sBSkOgbEazd3Aahh_EED-j8nWw_SH8gXg14zqZsovbL8tIze25R6WBAIfP-EUvL14mcqNphlwTWFPu9sFaq9Ko25bqFe1u88YV8dZxrnud6FpF4-fMJfJpLT8erZ6SD80G9l32a6y4SdGm-NTk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по судну BLUE BEAD.<br><br>Тип объекта: Судно<br>Дата: 2026.01.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/icpbtrubicon/943]]></description>
       <styleUrl>#icon-1569-01579B</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -4083,7 +4049,7 @@ https://t.me/icpbtrubicon/941]]></value>
           <value>https://t.me/icpbtrubicon/943</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6OiO2pW5oQLM9Gvwel7nw08NjMdHGyv1IU_xfwNmMnuGKnI9CrnsFDtYaFY1dlPjgqekPrvHLhVqrvPp9DfSkwHluKWYVZvtdYAfKcVD_hQRDW6EEfHwh6NryK-08Tx1ZssAc2-m8-VinX8CjjYjhKXgzfOwFh_nJG04FeSd2pvfG8tUak8M7VJu6yUReWIaFPFr_JtKZP870eEsF3mkvu8PPvSpRBJbvpJzBX8dd0nlj3oZcG0c5aEyg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR53b1hi8dU8ssvSPZC05-EkQlM8r07qG1RSlYRLnwIZsSVe6h20lV7cUrWBEktFIKoqKnyGfj2XjF4XmxBSOMVBJLbvlXxDotQuKX6u5sBSkOgbEazd3Aahh_EED-j8nWw_SH8gXg14zqZsovbL8tIze25R6WBAIfP-EUvL14mcqNphlwTWFPu9sFaq9Ko25bqFe1u88YV8dZxrnud6FpF4-fMJfJpLT8erZ6SD80G9l32a6y4SdGm-NTk?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -4123,7 +4089,7 @@ https://t.me/icpbtrubicon/941]]></value>
     </Placemark>
     <Placemark>
       <name>13 января, г.Славянск, ТПС</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7kdqy0RwbfNIkcOlrDMPFc9IW30-ZWAhZFZUN7tB4DGZD6C_L4mWEKmKMblbl3nHe4-RLmyt0IDiTjZy3DKT5heSndCANrv6KjoZcOzf_uGxOw80b6hyr1MtjPCLuTEh3T3Usil4xUsp5dNgjyrkzAXIXqCGSGyFbjrVc8g5R8oTTmLZcCdRDdQqV4xoIttlH5gR-ILOdZzYWX1rvqhxzg-_U4YKMQoWrw-Ak15YvGHROGfmFNOwrmHAg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ТПС. Но с учётом того, что "электрички" ещё в ноябре 2025г перестали ходить в город, то пользы не много.<br><br><br>Тип объекта: Тяговая подстанция<br>Дата: 2026.01.13<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/don_partizan/10969]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4l8lXfo288GuXVtjNPvsAYUYdI7RI-V6CrWjGywmwlka81fvbDv5XMEdI1V6fzNncG0VrExZGcAXiVroXUWjc-va2SMc0txpRc4yZ_DqlMkWCGIjKE3G13D_zr0ElnqJafb1fC0xnuOybYRnjIc0yEss91DuexNS-y87lpT3iTJ_YIA9R0sR9kET7vJvSREVS_pgyGRwGmEJF8ao9Nm06HOspLHGVKwkqcsHDSFJxCS8hMhr2AyGJp2k8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ТПС. Но с учётом того, что "электрички" ещё в ноябре 2025г перестали ходить в город, то пользы не много.<br><br><br>Тип объекта: Тяговая подстанция<br>Дата: 2026.01.13<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/don_partizan/10969]]></description>
       <styleUrl>#icon-1660-006064</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -4144,7 +4110,7 @@ https://t.me/icpbtrubicon/941]]></value>
           <value>https://t.me/don_partizan/10969</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7kdqy0RwbfNIkcOlrDMPFc9IW30-ZWAhZFZUN7tB4DGZD6C_L4mWEKmKMblbl3nHe4-RLmyt0IDiTjZy3DKT5heSndCANrv6KjoZcOzf_uGxOw80b6hyr1MtjPCLuTEh3T3Usil4xUsp5dNgjyrkzAXIXqCGSGyFbjrVc8g5R8oTTmLZcCdRDdQqV4xoIttlH5gR-ILOdZzYWX1rvqhxzg-_U4YKMQoWrw-Ak15YvGHROGfmFNOwrmHAg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4l8lXfo288GuXVtjNPvsAYUYdI7RI-V6CrWjGywmwlka81fvbDv5XMEdI1V6fzNncG0VrExZGcAXiVroXUWjc-va2SMc0txpRc4yZ_DqlMkWCGIjKE3G13D_zr0ElnqJafb1fC0xnuOybYRnjIc0yEss91DuexNS-y87lpT3iTJ_YIA9R0sR9kET7vJvSREVS_pgyGRwGmEJF8ao9Nm06HOspLHGVKwkqcsHDSFJxCS8hMhr2AyGJp2k8?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -4383,7 +4349,7 @@ https://t.me/icpbtrubicon/941]]></value>
     </Placemark>
     <Placemark>
       <name>1 января, г. Луцк, Нефтебаза</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7syfKRzM76bqcoWMYCGqFETo17mcmwr_kGmvVS9aeIrzvDUTr0WHxqj_TgnHV0Ucv2l0DEYnMHT1FkQte5-Oji7lPCRBSNty6BcC22Gr9Ybqy9yifZZkRjcTWWGooLGebhPsEgAwPkKX7DcrxZ5CxalkSQYkIUKrErp3Anc8HKgCZcKbJH6Wn7s9hzKV1J8vXaJFJRGe3XkdRlM4RZmS4InbRwi3S9hfP7HOwfY8BYaRIftQpEffE2W9s?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Луцк, Волынской области в ночь на 1 января 2026г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2026.01.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1600]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5gd8ApW1JpFeQeyiR9Ea3yBOitTrppI4jVBsATNVjrryBaFxI2uJwTcH4gDip43qL2I0aNYInBOzCwiGGJsiLeQ3jTCIJu9e15pTM-2BORtp9V7YQ0friY_LM9L9uwVWJYGfpgs_Uf00f8p4mWzAWuyKKqnJNwy_zpplA_vTBM4bPg8sVdzjtHdA6aWJUpEQNBbvKKR6GrLE_d8nxLySZIUDjk-PDeV5UfFgm_GLATtl4trj_WzTxDjqQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по нефтебазе в г.Луцк, Волынской области в ночь на 1 января 2026г.<br><br><br>Тип объекта: Склад ГСМ<br>Дата: 2026.01.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1600]]></description>
       <styleUrl>#icon-1581-000000</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -4404,7 +4370,7 @@ https://t.me/icpbtrubicon/941]]></value>
           <value>https://t.me/osint_alarm/1600</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7syfKRzM76bqcoWMYCGqFETo17mcmwr_kGmvVS9aeIrzvDUTr0WHxqj_TgnHV0Ucv2l0DEYnMHT1FkQte5-Oji7lPCRBSNty6BcC22Gr9Ybqy9yifZZkRjcTWWGooLGebhPsEgAwPkKX7DcrxZ5CxalkSQYkIUKrErp3Anc8HKgCZcKbJH6Wn7s9hzKV1J8vXaJFJRGe3XkdRlM4RZmS4InbRwi3S9hfP7HOwfY8BYaRIftQpEffE2W9s?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5gd8ApW1JpFeQeyiR9Ea3yBOitTrppI4jVBsATNVjrryBaFxI2uJwTcH4gDip43qL2I0aNYInBOzCwiGGJsiLeQ3jTCIJu9e15pTM-2BORtp9V7YQ0friY_LM9L9uwVWJYGfpgs_Uf00f8p4mWzAWuyKKqnJNwy_zpplA_vTBM4bPg8sVdzjtHdA6aWJUpEQNBbvKKR6GrLE_d8nxLySZIUDjk-PDeV5UfFgm_GLATtl4trj_WzTxDjqQ?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -4444,7 +4410,7 @@ https://t.me/icpbtrubicon/941]]></value>
     </Placemark>
     <Placemark>
       <name>12 января, г. Киев, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5tlMiZM_PzaPaqLFg0HCrXKJPa6GVECPafpce3NbRXWIIhvj_25LQ1f7__Sq9QA5F3eHrLhcsFRqxlrWkITfUwLHjTU_7hBbYtuWBgjlKbG6613J6dEJD6LFooYpspmUdZEVg1frIbn3NwOTbhBGMFlxfFjeIGVfP5xmYBQoPiC_kz5D5f0bcUQq86MGshoW0Rx--vp-8ySci3A0GETv21G5ZHkw6Vc1-28P19oEvNaacwm4p7cFTYcKM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Киев, 12 января 2026г.<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1689]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6lHik0TZm92oYe1VmQmcw_GTZROPkOMVNIm0mlFcGSsZmuFfMKe_fFfydlSdR4cLchu_pf5qGCBeNDj2fxf1fm_NtmXwGMDe0pUP38bXqKPigCLVqH3qMzRt8fafCzFhi5tqtCHOsRpbeyVsR9WALo9z4D6owm4r9l_1K1roSIr0fD_eIDiMpl_xWkOWI5wFtCkTgxGMoCZ83Gnm4JzyyNkblhAJJ3Iw5U7EPt-oYgLE9dXCG941YQNcQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Киев, 12 января 2026г.<br><br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1689]]></description>
       <styleUrl>#icon-1693-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -4465,7 +4431,7 @@ https://t.me/icpbtrubicon/941]]></value>
           <value>https://t.me/osint_alarm/1689</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5tlMiZM_PzaPaqLFg0HCrXKJPa6GVECPafpce3NbRXWIIhvj_25LQ1f7__Sq9QA5F3eHrLhcsFRqxlrWkITfUwLHjTU_7hBbYtuWBgjlKbG6613J6dEJD6LFooYpspmUdZEVg1frIbn3NwOTbhBGMFlxfFjeIGVfP5xmYBQoPiC_kz5D5f0bcUQq86MGshoW0Rx--vp-8ySci3A0GETv21G5ZHkw6Vc1-28P19oEvNaacwm4p7cFTYcKM?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6lHik0TZm92oYe1VmQmcw_GTZROPkOMVNIm0mlFcGSsZmuFfMKe_fFfydlSdR4cLchu_pf5qGCBeNDj2fxf1fm_NtmXwGMDe0pUP38bXqKPigCLVqH3qMzRt8fafCzFhi5tqtCHOsRpbeyVsR9WALo9z4D6owm4r9l_1K1roSIr0fD_eIDiMpl_xWkOWI5wFtCkTgxGMoCZ83Gnm4JzyyNkblhAJJ3Iw5U7EPt-oYgLE9dXCG941YQNcQ?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -4564,7 +4530,7 @@ https://t.me/Osintpen/2399
     </Placemark>
     <Placemark>
       <name>17 января, н.п.Новая Берёзовка, Patriot</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ioUqEiKjawnfksyd-xuvco3XW1liv8bZbPebVrCoUW54SrniIFkON3raEBdUM0Lo8RxqKiQrY4LgcFfaB44iKO8v__fUPcfLRLUIAl6-EPEXe8A69iT4oa7saOr0Ebrt-JIM6wBUjvxe_e-AkOdyyqWcqhrJ7KPwrQi50VhLN_HTG81mtEtGgeoVqGqwlT0welVTs7jlGAVkJxO4fn5xzNcYugqm9lW1KwoUGpxx32QzSbIn9UXLtQ8Q?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Налёт на позицию ЗРК Patriot с помощью БпЛА. По ПУ (красное) был промах или она была повреждена, РЛС (оранжевое) была уничтожена.<br><br><br>Тип объекта: ПВО, РЛС и ракетное вооружение<br>Дата: 2026.01.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/icpbtrubicon/967]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7t_CjMHV3FI_wlo3k9-0iKYGrOe3TuYqZTKvwj040LSnPuW-2OVGLYngqM37CkpfHtNNDlo6hyogGacG3asCuGLi-YinP2iZn6QrHTgheRccgcKMQPDchEmyJ4DJQQ6rsdWqMFTfbRUIi7cXUngscPgL0sqhR-k_mK0RgZgH78k21Xklr5yEzW_KThHlRsA7hI4QZxb8UIuAPDjLSEFtpz7CvnC5TT9dg0nTAjZX0NrgJboTiOAOaMTxM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Налёт на позицию ЗРК Patriot с помощью БпЛА. По ПУ (красное) был промах или она была повреждена, РЛС (оранжевое) была уничтожена.<br><br><br>Тип объекта: ПВО, РЛС и ракетное вооружение<br>Дата: 2026.01.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/icpbtrubicon/967]]></description>
       <styleUrl>#icon-1856-E65100</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -4585,7 +4551,7 @@ https://t.me/Osintpen/2399
           <value>https://t.me/icpbtrubicon/967</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ioUqEiKjawnfksyd-xuvco3XW1liv8bZbPebVrCoUW54SrniIFkON3raEBdUM0Lo8RxqKiQrY4LgcFfaB44iKO8v__fUPcfLRLUIAl6-EPEXe8A69iT4oa7saOr0Ebrt-JIM6wBUjvxe_e-AkOdyyqWcqhrJ7KPwrQi50VhLN_HTG81mtEtGgeoVqGqwlT0welVTs7jlGAVkJxO4fn5xzNcYugqm9lW1KwoUGpxx32QzSbIn9UXLtQ8Q?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7t_CjMHV3FI_wlo3k9-0iKYGrOe3TuYqZTKvwj040LSnPuW-2OVGLYngqM37CkpfHtNNDlo6hyogGacG3asCuGLi-YinP2iZn6QrHTgheRccgcKMQPDchEmyJ4DJQQ6rsdWqMFTfbRUIi7cXUngscPgL0sqhR-k_mK0RgZgH78k21Xklr5yEzW_KThHlRsA7hI4QZxb8UIuAPDjLSEFtpz7CvnC5TT9dg0nTAjZX0NrgJboTiOAOaMTxM?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -5004,7 +4970,7 @@ https://t.me/Osintpen/2399
     </Placemark>
     <Placemark>
       <name>22 января, г.Кривой Рог, промах</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7AuDYAH4lWw1UbNK2XnwjTs0dqhuvlR2Gd5mBh6fciZ5uHHl8ooqDNsit0fRuN1DTgAO3zypBZlow5Rlsx_ZouiXKwUWVIgmpvNYPFZiIrKDIGyQiANEA1O8a2DnT1uiaKKGva2pXD93ygNgTyPKQPq74MSQWDsOxj89nl790a0IzkJQlM57k4AEji5V9cDcSEXRxhQmZaXgmvUd9gdVy1wSdR_tM4JoTjcyCy1BEdFa7b2bBlXyJJywg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Промах Искандера по производству.<br><br><br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.01.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/geranium_chronicles/52888]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5jGPHesP6QU0jEMp2feYRgDz5xs4x3Kro9Z67WnUS-ITBkcuvluCMxa4iEhPj7UesHBsHJc8sXsMxuS2BsOnHvjO8_ZrOhbNCuQTd0_KNwRHNP6BM1ehcffcv9e-p4rv2fNSklveV0ovZYKBgl2GfW-MTVkgZuLzx1tTKkWOPCz3Nw31uiJmgHKMupEgKYFEUCKFT4yly4IHLzGUtJpvMfhRrF4FqdldPCspsFF2OPshtrVm4IukETSZ0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Промах Искандера по производству.<br><br><br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.01.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/geranium_chronicles/52888]]></description>
       <styleUrl>#icon-1594-757575</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -5025,7 +4991,7 @@ https://t.me/Osintpen/2399
           <value>https://t.me/geranium_chronicles/52888</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7AuDYAH4lWw1UbNK2XnwjTs0dqhuvlR2Gd5mBh6fciZ5uHHl8ooqDNsit0fRuN1DTgAO3zypBZlow5Rlsx_ZouiXKwUWVIgmpvNYPFZiIrKDIGyQiANEA1O8a2DnT1uiaKKGva2pXD93ygNgTyPKQPq74MSQWDsOxj89nl790a0IzkJQlM57k4AEji5V9cDcSEXRxhQmZaXgmvUd9gdVy1wSdR_tM4JoTjcyCy1BEdFa7b2bBlXyJJywg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5jGPHesP6QU0jEMp2feYRgDz5xs4x3Kro9Z67WnUS-ITBkcuvluCMxa4iEhPj7UesHBsHJc8sXsMxuS2BsOnHvjO8_ZrOhbNCuQTd0_KNwRHNP6BM1ehcffcv9e-p4rv2fNSklveV0ovZYKBgl2GfW-MTVkgZuLzx1tTKkWOPCz3Nw31uiJmgHKMupEgKYFEUCKFT4yly4IHLzGUtJpvMfhRrF4FqdldPCspsFF2OPshtrVm4IukETSZ0?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -5529,7 +5495,7 @@ https://t.me/Osintpen/2399
     </Placemark>
     <Placemark>
       <name>20 января, н.п. Селещина, Газовая инфраструктура</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ihdbiQ9b4XHJH88KxY59mQ9J-YINz7kqsrxA2lIhj97xXQrRN04Y9TvQvLlhZ5kQtUqOzmda5L9Uy7YtMYLv4qvjSheXcTsSMPXwZj5ePc1bi8qpoeOiUFUO77FLRcNQTSujUvQvhU7pWcBnUsfCvH8ilN_OAsKy2OeJ0pvFjDMlNXxF__GXjgmH1lKPyocTvnYB_XzOh8I1eLrdh7mgVqm5GHq2X1Me6zhCV0jqe9k3IcckHyy3EWNw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по газовой инфраструктуре у н.п.Селещина, Полтавской области, 20 января 2026г.<br><br><br>Тип объекта: Газовая инфраструктура<br>Дата: 2026.01.20<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1812]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR55rcbvMrVToUziv4MSZDO2XSCAjsvuaByzRPzDMiffFdJCM_bvvLAmT64FPwY63--GJCDuT5-asGqtOUEDPGKT5CVPGq_ugpK8F5Ufir_HBOQRTWKIUsWRpwY_umDkPOhCDhU7H1V51bNNfsPPDiJAaLSNS0oRByA6IX9ideR3G3B48iCvAQ221o55QP102H1D6lVqRKcN-AjYppH861oi9VyDxpJwDNBOELIIor1QmWe1Wy-vnmnJt1k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по газовой инфраструктуре у н.п.Селещина, Полтавской области, 20 января 2026г.<br><br><br>Тип объекта: Газовая инфраструктура<br>Дата: 2026.01.20<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1812]]></description>
       <styleUrl>#icon-1702-817717</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -5550,7 +5516,7 @@ https://t.me/Osintpen/2399
           <value>https://t.me/osint_alarm/1812</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ihdbiQ9b4XHJH88KxY59mQ9J-YINz7kqsrxA2lIhj97xXQrRN04Y9TvQvLlhZ5kQtUqOzmda5L9Uy7YtMYLv4qvjSheXcTsSMPXwZj5ePc1bi8qpoeOiUFUO77FLRcNQTSujUvQvhU7pWcBnUsfCvH8ilN_OAsKy2OeJ0pvFjDMlNXxF__GXjgmH1lKPyocTvnYB_XzOh8I1eLrdh7mgVqm5GHq2X1Me6zhCV0jqe9k3IcckHyy3EWNw?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR55rcbvMrVToUziv4MSZDO2XSCAjsvuaByzRPzDMiffFdJCM_bvvLAmT64FPwY63--GJCDuT5-asGqtOUEDPGKT5CVPGq_ugpK8F5Ufir_HBOQRTWKIUsWRpwY_umDkPOhCDhU7H1V51bNNfsPPDiJAaLSNS0oRByA6IX9ideR3G3B48iCvAQ221o55QP102H1D6lVqRKcN-AjYppH861oi9VyDxpJwDNBOELIIor1QmWe1Wy-vnmnJt1k?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -5590,7 +5556,7 @@ https://t.me/Osintpen/2399
     </Placemark>
     <Placemark>
       <name>20 января, г. Киев, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7KVxusiDrlJKnoFgobgji-4tEQhl0L6CTTR_KMHNTgk9Y87JDPIpb4h7YAUMWjcetADZ7Jw9JKvzZOEXwMZpmQkWd7unwzGyp65Qui-_xTd8f7eRx_oJELyJzbNfczKFZL8IQM1DWeWKUbUuHe9JBvE6Rpnk1QQvh5GqoM0nIPLaRELUMU7f1yGQ-gdvEgu_0t2Gv9TZ6y382vU6K3DXdoLYtnOrThFeirpwKIUbW4imdI1ZcOv1dAXyE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Предположительно, комбинированный удар по энергоинфраструктуре в г.Киев, в ночь на 20 января 2026г.<br><br><br>Тип объекта: Подстанция<br>Дата: 2026.01.20<br>Средства поражения: Комбинированные<br>Ссылка: https://t.me/osint_alarm/1830]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4qpfUOGQwq4YxFbS3i3L5XHtJW8X_8zkxcDl2HKDenxaj5hPUly5QoZFH2lwPoJnEgSBjgk-WiLhVsOX_sZO0yldcj-je5qTaSg5SNUVmpUKPc2Wqj1C4OhRgVK3ESqLhnZoUyChtLio05nv8pH9EaJOqgve-qalDgl1HnjDFDikY9csG_bb7NXliauFF1xKplMhivtPJACdQycRCIikCgqE6fLYufn_L3OSjlbEbXztg3jmydImXucz4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Предположительно, комбинированный удар по энергоинфраструктуре в г.Киев, в ночь на 20 января 2026г.<br><br><br>Тип объекта: Подстанция<br>Дата: 2026.01.20<br>Средства поражения: Комбинированные<br>Ссылка: https://t.me/osint_alarm/1830]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -5611,7 +5577,7 @@ https://t.me/Osintpen/2399
           <value>https://t.me/osint_alarm/1830</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7KVxusiDrlJKnoFgobgji-4tEQhl0L6CTTR_KMHNTgk9Y87JDPIpb4h7YAUMWjcetADZ7Jw9JKvzZOEXwMZpmQkWd7unwzGyp65Qui-_xTd8f7eRx_oJELyJzbNfczKFZL8IQM1DWeWKUbUuHe9JBvE6Rpnk1QQvh5GqoM0nIPLaRELUMU7f1yGQ-gdvEgu_0t2Gv9TZ6y382vU6K3DXdoLYtnOrThFeirpwKIUbW4imdI1ZcOv1dAXyE?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4qpfUOGQwq4YxFbS3i3L5XHtJW8X_8zkxcDl2HKDenxaj5hPUly5QoZFH2lwPoJnEgSBjgk-WiLhVsOX_sZO0yldcj-je5qTaSg5SNUVmpUKPc2Wqj1C4OhRgVK3ESqLhnZoUyChtLio05nv8pH9EaJOqgve-qalDgl1HnjDFDikY9csG_bb7NXliauFF1xKplMhivtPJACdQycRCIikCgqE6fLYufn_L3OSjlbEbXztg3jmydImXucz4?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6018,7 +5984,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>17 января, г. Запорожье, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7jByQ1s7LdPaIP2eGhsPGsjtl3PqbeQYWBLfDLWwkHWmioLk7p8RKUgr8Asbk_C8TX91MbeBT7kV1ZnlS65lKALVl6UhA7-oFcfp3Bn3f_NavYd-VB2pMIvJSTdkPLtplYpbwixlrLTX2Cuw45GDitPON6CIk5Phe-V4W6zD9IUjA7ghGb9-QcklKDAcCyy9QvR8aJhgU366r1EtuW-Xb9nEOAp0ZpxJPenW_WB_KUd7higKL6KPS1-nc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре у г.Запорожье, Запорожской области, предположительно, 17 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1865]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR497O17MYQbNSplzjkCGusGYRyesq1z6d0Ymxag4881rrWu3i5kBnx1R1kKSmD5qZscc441s3xscey6pnYAkv-1Edmtr28-XtSY0OaePucpASxVub03BXsIALnQTiycFshAygMfnnSNMysQAGf6FNqyxdgsYR2kgFpTg3oPQPSuGeEOLCQzkv0WIqv3MPsiPmo_jlTON4Id-qWossn_DzS-93tqifHuVZkYeDSKXwJwRw8_amcCnHxgPD4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре у г.Запорожье, Запорожской области, предположительно, 17 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1865]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6037,7 +6003,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1865</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7jByQ1s7LdPaIP2eGhsPGsjtl3PqbeQYWBLfDLWwkHWmioLk7p8RKUgr8Asbk_C8TX91MbeBT7kV1ZnlS65lKALVl6UhA7-oFcfp3Bn3f_NavYd-VB2pMIvJSTdkPLtplYpbwixlrLTX2Cuw45GDitPON6CIk5Phe-V4W6zD9IUjA7ghGb9-QcklKDAcCyy9QvR8aJhgU366r1EtuW-Xb9nEOAp0ZpxJPenW_WB_KUd7higKL6KPS1-nc?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR497O17MYQbNSplzjkCGusGYRyesq1z6d0Ymxag4881rrWu3i5kBnx1R1kKSmD5qZscc441s3xscey6pnYAkv-1Edmtr28-XtSY0OaePucpASxVub03BXsIALnQTiycFshAygMfnnSNMysQAGf6FNqyxdgsYR2kgFpTg3oPQPSuGeEOLCQzkv0WIqv3MPsiPmo_jlTON4Id-qWossn_DzS-93tqifHuVZkYeDSKXwJwRw8_amcCnHxgPD4?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6160,7 +6126,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>20 января, г. Киев, ТЭЦ</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ajEUO17W2BAXIe6EHK7kvisne3M4ce_VEXOZysCxtaYvpnrDPatHcDO78PHejYibgEdzOu9ZKxztZQoF9XuWJcDhziLoPK6POvwjPDy-1BtmoZVhegER3_4bhq6dH5FBN61wlJNjUeoEr4SJ28_uEM_9DC2uka6Q8N5FtQ2Glj0W270NszF7QCLHwbqiPKsJseW428OhLcyxezxTzoqbPxzlUnL2lE4qVgMyC5HTpIPM78AhggFHZgIM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, в г.Киев, в ночь на 20 января 2026г.<br><br>Тип объекта: Энергогенерация<br>Дата: 2026.01.20<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1923]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR724aqX1rq1sUnD6KbM8SzS8EgITv7sLt4DJiVsIxijPMj1ZEhiX_ENFWctPecwM9th7PvtWL0hN_1H_2QJTqbRldVH9anTHDq5SnhcAb20LJ8AM-FCKUOIxx35_RPOkf6_IrzIZAs-OYC2SETdjy74gJWH0lLDU3QxmiVpZ7E2Vuvke4nYDIvXdsNakHafaRU3IiClEZ6-UqGxhLfk8HHK4Px3m8bGfp8Joqlg85o_r6-S056zDGqfo08?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, в г.Киев, в ночь на 20 января 2026г.<br><br>Тип объекта: Энергогенерация<br>Дата: 2026.01.20<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1923]]></description>
       <styleUrl>#icon-1710-1A237E</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6180,7 +6146,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1923</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ajEUO17W2BAXIe6EHK7kvisne3M4ce_VEXOZysCxtaYvpnrDPatHcDO78PHejYibgEdzOu9ZKxztZQoF9XuWJcDhziLoPK6POvwjPDy-1BtmoZVhegER3_4bhq6dH5FBN61wlJNjUeoEr4SJ28_uEM_9DC2uka6Q8N5FtQ2Glj0W270NszF7QCLHwbqiPKsJseW428OhLcyxezxTzoqbPxzlUnL2lE4qVgMyC5HTpIPM78AhggFHZgIM?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR724aqX1rq1sUnD6KbM8SzS8EgITv7sLt4DJiVsIxijPMj1ZEhiX_ENFWctPecwM9th7PvtWL0hN_1H_2QJTqbRldVH9anTHDq5SnhcAb20LJ8AM-FCKUOIxx35_RPOkf6_IrzIZAs-OYC2SETdjy74gJWH0lLDU3QxmiVpZ7E2Vuvke4nYDIvXdsNakHafaRU3IiClEZ6-UqGxhLfk8HHK4Px3m8bGfp8Joqlg85o_r6-S056zDGqfo08?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6191,7 +6157,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 февраля, г. Киев, ТЭЦ</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR45PDOoBCgZOFP0h1pkKmqOqA91aoMfFpoDCnnDMmfAhjJw2zfcMCR0fm7tdu78OtHE9j8DjqoXBN40eo22feO8crjtCBBrwKF5sL_OHDSPQc5TbV1CSsUvqE_2rRmZjnpxYRsqdpEvK6iHsEwjoi50EZD07ZKcflHtslHu8l217IufoDaIBiAdH2Mr8pQu2Br6Pq1rHGM6fTzA1lKpJsK_Tn16VvVMtj1mBp3ueh7oOTNoggmdunDR8no?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, в г.Киев, в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1927]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5FEx63dpEIoqQFW-zqjLI5U5egSTWEuH4cNvJzyAd_lrSQKVTxAugMlv_hoMJ2vU7wm9RlY4C1CWJQBhrO15u3f3_ohLGwtL4HMekP0ySHwGed0TgFaVEgtAJKMZCE_Z9ANKL4sov9mcz9SmRJuIcE7dy-5pVvX9JuREsqTiPxYvmc1HJqRrJMLr0UhKC6Hi6QcdiO9zQL81qxQHEoUY07UQwa7DRF7DVQKGZGNDr1wbAka65P7sCor9k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, в г.Киев, в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1927]]></description>
       <styleUrl>#icon-1710-3949AB</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6210,7 +6176,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1927</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR45PDOoBCgZOFP0h1pkKmqOqA91aoMfFpoDCnnDMmfAhjJw2zfcMCR0fm7tdu78OtHE9j8DjqoXBN40eo22feO8crjtCBBrwKF5sL_OHDSPQc5TbV1CSsUvqE_2rRmZjnpxYRsqdpEvK6iHsEwjoi50EZD07ZKcflHtslHu8l217IufoDaIBiAdH2Mr8pQu2Br6Pq1rHGM6fTzA1lKpJsK_Tn16VvVMtj1mBp3ueh7oOTNoggmdunDR8no?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5FEx63dpEIoqQFW-zqjLI5U5egSTWEuH4cNvJzyAd_lrSQKVTxAugMlv_hoMJ2vU7wm9RlY4C1CWJQBhrO15u3f3_ohLGwtL4HMekP0ySHwGed0TgFaVEgtAJKMZCE_Z9ANKL4sov9mcz9SmRJuIcE7dy-5pVvX9JuREsqTiPxYvmc1HJqRrJMLr0UhKC6Hi6QcdiO9zQL81qxQHEoUY07UQwa7DRF7DVQKGZGNDr1wbAka65P7sCor9k?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6221,7 +6187,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 февраля, г. Слобожанское, Энергогенерация</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6FsjbZh805g7_5R4AVAC4PwoqWn6BUArWZXkr8AfmVWfJRQG0L__HpjQ-c60Rdft48sNVH9FjllloMpgM4Rm81zm_ojhgaN2_IixRMU76i5JcdC20-qzQIBbibRbRV7z33Y8brnSDkMnd1XXay1HeQ0hBsEaJKiuXnUbycL4ikAHVeTaUcJ0J3Bd5RhlJoL0Vut_yqiRaT2uhrI76mcQS7A55JVLWXTEN_lNGmswzodNVs0qBtvhs-XDE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, у г.Слобожанское, Харьковской области в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1933<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR521Dt7VUhNP81ycY9xkCKoybqzM5dphpeNHTf3dN8x1U3-p0s79joShAPq6BJ_z7bsRWDvechPpawiemA8o0Wcrze30FxoYo21ZfeSUkDuQsTKLTylxTrRSojTHKU1mirNkdDNR4pHc4Z5Kv0W_3ldZc6f_dC4YatwKFh18WB8BI4j300jWf5C841wTJgJmX2WD8HLmFZADg-IfcIefUJsRh9qIs68Rta991XBIEwclIEfHnt331lPcyU?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6kkFBywP1Z-0zbL2LTYezeid9DptI9gXVZ4A8SXEMVdOHhbPAhihtI4dWwEseWpmRIPFFADD7VSbJRUQpeAhrZhOXFoElj3rIIbwMYtmtUopNipF8lJZyeiGXYc13PRkRHWvd5gl2EBHYWwgGIAdlPknfNlHXX3GPwLL44cwBNxYWkLOJl3-lu7K6zOIddDRtbjqAz5-6h79-IqphZKdRDK1Z8XrTcgeE54SgP0t1QqGQ4yEIBfOohufY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энегоинфраструктуре, у г.Слобожанское, Харьковской области в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1933<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DgvJfSnuM4mnoRKRY4tZ9nBUVcL7L1DxGtnUbmAKh2taw91dxzZtHwQnhg57ICXVw9Mae2JuctjMbPFo_uC9kyoEWDEsNEJv_Jdp6UFKKna_FIWGXTbkDsZ2S-Dgo2m2tS7xF0o9RT30imye8H5Bj88LOwnGvAwAzJMGR-__JEqkptIapn2jtt3GLX7IvVzLf5rbThk0K2y-YU9F3Y0X1GUTiZDA61nI9E2bpU1Q4L4hW723jA0k_wo4?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
       <styleUrl>#icon-1710-097138</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6240,7 +6206,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1933</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6FsjbZh805g7_5R4AVAC4PwoqWn6BUArWZXkr8AfmVWfJRQG0L__HpjQ-c60Rdft48sNVH9FjllloMpgM4Rm81zm_ojhgaN2_IixRMU76i5JcdC20-qzQIBbibRbRV7z33Y8brnSDkMnd1XXay1HeQ0hBsEaJKiuXnUbycL4ikAHVeTaUcJ0J3Bd5RhlJoL0Vut_yqiRaT2uhrI76mcQS7A55JVLWXTEN_lNGmswzodNVs0qBtvhs-XDE?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR521Dt7VUhNP81ycY9xkCKoybqzM5dphpeNHTf3dN8x1U3-p0s79joShAPq6BJ_z7bsRWDvechPpawiemA8o0Wcrze30FxoYo21ZfeSUkDuQsTKLTylxTrRSojTHKU1mirNkdDNR4pHc4Z5Kv0W_3ldZc6f_dC4YatwKFh18WB8BI4j300jWf5C841wTJgJmX2WD8HLmFZADg-IfcIefUJsRh9qIs68Rta991XBIEwclIEfHnt331lPcyU?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6kkFBywP1Z-0zbL2LTYezeid9DptI9gXVZ4A8SXEMVdOHhbPAhihtI4dWwEseWpmRIPFFADD7VSbJRUQpeAhrZhOXFoElj3rIIbwMYtmtUopNipF8lJZyeiGXYc13PRkRHWvd5gl2EBHYWwgGIAdlPknfNlHXX3GPwLL44cwBNxYWkLOJl3-lu7K6zOIddDRtbjqAz5-6h79-IqphZKdRDK1Z8XrTcgeE54SgP0t1QqGQ4yEIBfOohufY?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DgvJfSnuM4mnoRKRY4tZ9nBUVcL7L1DxGtnUbmAKh2taw91dxzZtHwQnhg57ICXVw9Mae2JuctjMbPFo_uC9kyoEWDEsNEJv_Jdp6UFKKna_FIWGXTbkDsZ2S-Dgo2m2tS7xF0o9RT30imye8H5Bj88LOwnGvAwAzJMGR-__JEqkptIapn2jtt3GLX7IvVzLf5rbThk0K2y-YU9F3Y0X1GUTiZDA61nI9E2bpU1Q4L4hW723jA0k_wo4?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6251,7 +6217,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>5 января, г. Киев, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6A1mFtx0iKnc2c639aSxSfPvDIelPafp5ZfM6zQUhFz54zKWJQMyjGMGPKAYanwan2bxLGI66VEJDl8H3Nd2Gw_1LTCsuflP-OI22ARk4O_L_gJrB0b76Jfe04uXzLFfy-WN9WBk-wmP16NdPel1tW4pfPUQAg79XxeoZtPoj2Rz-sJpofucF-NnQ0s7sxToU1y51uhKqz1oT8V7K5uGDTRdWh3dHFMihZItzm9iBUGhWv4txWR8mZgW0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Предположительно, ракетный удар по предприятию в г.Киев,в ночь 5 января 2026г.<br>Тип объекта: Предприятие ВПК<br>Дата: 2026.01.05<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1947]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Yicz-alVIzo2Xo3OJKzNC-h9U-50nACNleyFejEFUIM6JbN5nCaFUBVl8Y-TbVYBv5pEtFtDqydnNQWnzbQ_-cmmgMIardJWZi9N3rw3C5se92EY_3jkgpHtkfjB56B1imZ9qIU_7U-XuBPq92Dzt1rjKcl3HDuX22inINGVLlLi13GGKYJXUn5s8TWQ2Ppk1uQL64tFXf2LMYfHS8Dwgmv-1X8vppU8WV_JNlGZwFFjCoLKBHYs6jAE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Предположительно, ракетный удар по предприятию в г.Киев,в ночь 5 января 2026г.<br>Тип объекта: Предприятие ВПК<br>Дата: 2026.01.05<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1947]]></description>
       <styleUrl>#icon-1693-097138</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6270,7 +6236,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1947</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6A1mFtx0iKnc2c639aSxSfPvDIelPafp5ZfM6zQUhFz54zKWJQMyjGMGPKAYanwan2bxLGI66VEJDl8H3Nd2Gw_1LTCsuflP-OI22ARk4O_L_gJrB0b76Jfe04uXzLFfy-WN9WBk-wmP16NdPel1tW4pfPUQAg79XxeoZtPoj2Rz-sJpofucF-NnQ0s7sxToU1y51uhKqz1oT8V7K5uGDTRdWh3dHFMihZItzm9iBUGhWv4txWR8mZgW0?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Yicz-alVIzo2Xo3OJKzNC-h9U-50nACNleyFejEFUIM6JbN5nCaFUBVl8Y-TbVYBv5pEtFtDqydnNQWnzbQ_-cmmgMIardJWZi9N3rw3C5se92EY_3jkgpHtkfjB56B1imZ9qIU_7U-XuBPq92Dzt1rjKcl3HDuX22inINGVLlLi13GGKYJXUn5s8TWQ2Ppk1uQL64tFXf2LMYfHS8Dwgmv-1X8vppU8WV_JNlGZwFFjCoLKBHYs6jAE?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6281,7 +6247,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 февраля, г. Лозовая, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7VDnPiAKEujYkq_yWVr9ooO9AQ_LyPFpghSyHg4RIX73S-V5x-fHw-pf1aDodsZGQomqFQKfgOGRbheNm1l9v16e5BWM9N40oaTrwO5qNPzyGU9wf3X_tJbcInO6jIeho3D_OpumVh5HlhSM13Y6FoHSmACrxwkOlspKMMjUO4cTctHOTtPCcUiERWf-kazxlp1KlXhxXZPkQZiGzyje5SIoVO76EOI4KG6DqwF5MDGLEKvSiz8_Iszy4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Лозовая, Харьковской области в ночь на 3 февраля 2026г.<br>Тип объекта: Предприятие ВПК<br>Дата: 2026.02.03<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1952]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5baZTr5ZgnIfu07UAZYRzcSJuebG0MYWqjEvhIQD6QP1ggk5Kf9GpVm4ca0_R-m8B4bgzgf5sjnwWfOd6QmZmAcgaJS4lox4DPTaBNQ-6biKj2AtX9kWbOPSogmrbq15YZbvfehbUXhqNov9bqPvQs1PI8lq9HodXzbHd2bT3Dv9yQ-09qRX1aiXJc6G2NP7yMK8fgldkwxuoUjUjLGzz1mxergFJOPqKPINvgll3p4bkFoUXI0JQSCVw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Лозовая, Харьковской области в ночь на 3 февраля 2026г.<br>Тип объекта: Предприятие ВПК<br>Дата: 2026.02.03<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1952]]></description>
       <styleUrl>#icon-1693-FBC02D</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6300,7 +6266,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1952</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7VDnPiAKEujYkq_yWVr9ooO9AQ_LyPFpghSyHg4RIX73S-V5x-fHw-pf1aDodsZGQomqFQKfgOGRbheNm1l9v16e5BWM9N40oaTrwO5qNPzyGU9wf3X_tJbcInO6jIeho3D_OpumVh5HlhSM13Y6FoHSmACrxwkOlspKMMjUO4cTctHOTtPCcUiERWf-kazxlp1KlXhxXZPkQZiGzyje5SIoVO76EOI4KG6DqwF5MDGLEKvSiz8_Iszy4?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5baZTr5ZgnIfu07UAZYRzcSJuebG0MYWqjEvhIQD6QP1ggk5Kf9GpVm4ca0_R-m8B4bgzgf5sjnwWfOd6QmZmAcgaJS4lox4DPTaBNQ-6biKj2AtX9kWbOPSogmrbq15YZbvfehbUXhqNov9bqPvQs1PI8lq9HodXzbHd2bT3Dv9yQ-09qRX1aiXJc6G2NP7yMK8fgldkwxuoUjUjLGzz1mxergFJOPqKPINvgll3p4bkFoUXI0JQSCVw?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6311,7 +6277,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 февраля, г.Днепропетровск, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hEeb_yC4jeFY0h4o5MJQGZJakZGJ4-cLA44_WWUeGQk4-XN8cj6BsfYNanLCZEDrRRR31UISGWoKi35pgqDW19ljt2_mK_IamIHqMX7pbWWVh6Cc0afsFbh7AQ5BF_oNZ9o96dnqnrX6AvJ1yLQVBx4c7pp-qGW2HiuNSFwG7gNnItBvoTogIRG35W1tnh5zXL6fSrOTlsVFbaACVELobWFzd9v4M05Z9IwS4KYhHc0jisFUJfGGByys?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятиям в г.Днепропетровск, Днепропетровской области в ночь на 3 февраля 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1955]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5xpGdHPBKu_W1SU8IldasQCweTabaYQUdV2nAh2udR6kKjGWYADfLIMjHJZJsLwp-Rpycjj3GmI-dNAf6X5aB_q6pXwcUQwf-j6t1Ck9Z2ynirnjIOLlIOOzLwoQNAtLVUsjkiwpWbwlE4Zhig6MSExB5YRT10IDMDGbWEwGei_kiVZE5VF5svnrA66-uwexqlcEfu5h2ADgqxXV6TFC3wCVE3YL7N1iuGi6YebN5jiuFrU_C11UPjlMA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятиям в г.Днепропетровск, Днепропетровской области в ночь на 3 февраля 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.02.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1955]]></description>
       <styleUrl>#icon-1693-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6330,7 +6296,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1955</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hEeb_yC4jeFY0h4o5MJQGZJakZGJ4-cLA44_WWUeGQk4-XN8cj6BsfYNanLCZEDrRRR31UISGWoKi35pgqDW19ljt2_mK_IamIHqMX7pbWWVh6Cc0afsFbh7AQ5BF_oNZ9o96dnqnrX6AvJ1yLQVBx4c7pp-qGW2HiuNSFwG7gNnItBvoTogIRG35W1tnh5zXL6fSrOTlsVFbaACVELobWFzd9v4M05Z9IwS4KYhHc0jisFUJfGGByys?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5xpGdHPBKu_W1SU8IldasQCweTabaYQUdV2nAh2udR6kKjGWYADfLIMjHJZJsLwp-Rpycjj3GmI-dNAf6X5aB_q6pXwcUQwf-j6t1Ck9Z2ynirnjIOLlIOOzLwoQNAtLVUsjkiwpWbwlE4Zhig6MSExB5YRT10IDMDGbWEwGei_kiVZE5VF5svnrA66-uwexqlcEfu5h2ADgqxXV6TFC3wCVE3YL7N1iuGi6YebN5jiuFrU_C11UPjlMA?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6341,7 +6307,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>20 января, г. Днепропетровск, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4wvvAv42vDIF5Ih5LlMq96HV7Iy5a3Zdoh2Slxn4kgu93x0MvOKg39v3zghMVTTxP9APGPeiZhmzONb1BZPhBXbvFr7ui0OxIVpuGddiGj7t0zbeHxBNErzblLk406G2pqvBJeSk0pGZiVD_3UN6gIGJ_fad6s8KUG5wgZ2rldCwc7ojC-fSdYcucF01WgrPM3jgg2Hd5zT2hZtNtNk0qkNnBX6YVItmCvGJkvB2XXw3GADk7OBbz03KI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятию в г.Днепропетровск, Днепропетровской области в ночь на 20 января 2026г.<br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.20<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1958]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR77YEWMT9cdi4Sr9kSjib7MlfFixnw9rsE3oettEX0JXSr4m4ZNiuQz6rOnrL1fgKHPwCCEB-P2uw5RDUawolkLVFYgHqcs_totLjvRmCMmGVFnvyfFmmBNamNokWDzRWeRGEy_3cIkFIN1O319M_D2W8YHkmAOU-ZxW1I6a8-HUb0sZ7JdBmNS2xo_TZwSJRUxjJqrJ2T3sEn0WMaXaP6YVsqah75rQK-QafY4mc_T_wGs1W4Jwdc2aAM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по предприятию в г.Днепропетровск, Днепропетровской области в ночь на 20 января 2026г.<br><br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.20<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1958]]></description>
       <styleUrl>#icon-1565-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6361,7 +6327,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1958</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4wvvAv42vDIF5Ih5LlMq96HV7Iy5a3Zdoh2Slxn4kgu93x0MvOKg39v3zghMVTTxP9APGPeiZhmzONb1BZPhBXbvFr7ui0OxIVpuGddiGj7t0zbeHxBNErzblLk406G2pqvBJeSk0pGZiVD_3UN6gIGJ_fad6s8KUG5wgZ2rldCwc7ojC-fSdYcucF01WgrPM3jgg2Hd5zT2hZtNtNk0qkNnBX6YVItmCvGJkvB2XXw3GADk7OBbz03KI?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR77YEWMT9cdi4Sr9kSjib7MlfFixnw9rsE3oettEX0JXSr4m4ZNiuQz6rOnrL1fgKHPwCCEB-P2uw5RDUawolkLVFYgHqcs_totLjvRmCMmGVFnvyfFmmBNamNokWDzRWeRGEy_3cIkFIN1O319M_D2W8YHkmAOU-ZxW1I6a8-HUb0sZ7JdBmNS2xo_TZwSJRUxjJqrJ2T3sEn0WMaXaP6YVsqah75rQK-QafY4mc_T_wGs1W4Jwdc2aAM?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6372,7 +6338,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>13 января, г. Зеленодольск, ТЭС</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6gin35UMXLjnkFxr3MpYyuYbMP1SjYe7poHFcuzzkkVr4l2p50JQorwG5AO-e4eW1U4zV_YNIkenCHqBFvQR0Emw1sul4E3Ci64Uq4ord89_x4TnGIjLz-y4P6Bc4xW8T81heKVjVg55pwFoUDbXzJehkKwOG3O7mPknj7rWneKzuyVe7C8DWj7-yK9nuWQtHjbtFZ8K-h8Phdl1B-cGliQPExB28oOHKolkd4b4Awg4L4kBemlnGZX_c?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре в г.Зеленодольск, Днепропетровской области в ночь 13 января 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.01.13<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1960]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR65q23_zF1FSrQTr9yk91LTbjdLbP-3IGAZ9LUZXU9en56xJCaAOgIiIxAruJmrmQYs-_6ppDGlOHoQt9Vg_rfb4qt_ILPLF78prVef1e5b-B6I8H-SKAej6322Pkr-5EU5v93ElaszTq-6c6KFC5KTdfB_ne5HhPIWsS2__RiksVB3_tDibxhel8enfaI1LIcFEcIi2amuzXvQG3SfirVP6rfHtieQ36T6_6oDsMn7zhm8D8KKJSkegYY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре в г.Зеленодольск, Днепропетровской области в ночь 13 января 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.01.13<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/1960]]></description>
       <styleUrl>#icon-1710-01579B</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6391,7 +6357,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1960</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6gin35UMXLjnkFxr3MpYyuYbMP1SjYe7poHFcuzzkkVr4l2p50JQorwG5AO-e4eW1U4zV_YNIkenCHqBFvQR0Emw1sul4E3Ci64Uq4ord89_x4TnGIjLz-y4P6Bc4xW8T81heKVjVg55pwFoUDbXzJehkKwOG3O7mPknj7rWneKzuyVe7C8DWj7-yK9nuWQtHjbtFZ8K-h8Phdl1B-cGliQPExB28oOHKolkd4b4Awg4L4kBemlnGZX_c?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR65q23_zF1FSrQTr9yk91LTbjdLbP-3IGAZ9LUZXU9en56xJCaAOgIiIxAruJmrmQYs-_6ppDGlOHoQt9Vg_rfb4qt_ILPLF78prVef1e5b-B6I8H-SKAej6322Pkr-5EU5v93ElaszTq-6c6KFC5KTdfB_ne5HhPIWsS2__RiksVB3_tDibxhel8enfaI1LIcFEcIi2amuzXvQG3SfirVP6rfHtieQ36T6_6oDsMn7zhm8D8KKJSkegYY?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6402,7 +6368,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>9 февраля, н.п. Качановка, Газовая инфраструктура</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6bd_9DK2sttguyJ36cjC4IIRMy_N52Eht7pIMqTng6h5OH3GL-VvRN1py1176PggwZQx70C_qEwEXIXUaZ5W4bxnfmrKy138fUuxVZDe0BkVT3UwyZw0NnExwQNX5Ic9HKPv7ep26EnYj3nQDxFuozlREIXBsLr5LGWIAJt3be8OSCGOFHn734OFG0HMW_2F6RgdXOvpKYEqSBa2BgLm0HA5Yg27g2Umb4bes41wSkQAe1dZLPokdJ5_s?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по газовой инфраструктуре у н.п.Качановка, Сумской области в ночь на 9 февраля 2026г.<br><br>Тип объекта: Газовая инфраструктура<br>Дата: 2026.02.09<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1972]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4rMZjVhJXMguvfC4CdMZxtYab7XgmmIp_E2L_MVsO3OY4zAcGqTyxmrjCtjKFFIK_3F1JI1xbeFGSd__5syVp8Ohur2eTGZxZfPcoDpay6dxtRTZi8MM65BMk_Y-woDWw7KTre1z9tbQWIpigcmHWjAzrff-D4UtH41jFWbCVl7AEH55BsCEQYnduLFaN7qRl3Ej60hnPkAr2DNXZgkvZqRvGAv6CDk_CMaMFDPiQCMQX-W_aIsiBSUT0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по газовой инфраструктуре у н.п.Качановка, Сумской области в ночь на 9 февраля 2026г.<br><br>Тип объекта: Газовая инфраструктура<br>Дата: 2026.02.09<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1972]]></description>
       <styleUrl>#icon-1702-006064</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6422,7 +6388,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1972</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6bd_9DK2sttguyJ36cjC4IIRMy_N52Eht7pIMqTng6h5OH3GL-VvRN1py1176PggwZQx70C_qEwEXIXUaZ5W4bxnfmrKy138fUuxVZDe0BkVT3UwyZw0NnExwQNX5Ic9HKPv7ep26EnYj3nQDxFuozlREIXBsLr5LGWIAJt3be8OSCGOFHn734OFG0HMW_2F6RgdXOvpKYEqSBa2BgLm0HA5Yg27g2Umb4bes41wSkQAe1dZLPokdJ5_s?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4rMZjVhJXMguvfC4CdMZxtYab7XgmmIp_E2L_MVsO3OY4zAcGqTyxmrjCtjKFFIK_3F1JI1xbeFGSd__5syVp8Ohur2eTGZxZfPcoDpay6dxtRTZi8MM65BMk_Y-woDWw7KTre1z9tbQWIpigcmHWjAzrff-D4UtH41jFWbCVl7AEH55BsCEQYnduLFaN7qRl3Ej60hnPkAr2DNXZgkvZqRvGAv6CDk_CMaMFDPiQCMQX-W_aIsiBSUT0?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6433,7 +6399,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 февраля, г. Ладыжин, ТЭС</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR788mNEtWrIbcmA13LN2W5qjPeRJJAfrg7Ja_pFVf_57a1LmqzXVL97Iw9eevg-kDp41PpUHiiUgFdUhik1OiZP5CL45Y59uZ4rpuPOPQOhUQkRjXCmnfX-Lg1P9x6i3o8WKGBFulOerZmnrgkQ1BNhzP5txpHUDe2Uwm9snYXCB_tbBR9ZgYSMexZypvSi43V33mWuzB333nB7Ol_s2owoxlAmMz4Jl6O7kEH--QKj821EdVzAsHQdmL4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Комбинированный удар по энергоинфраструктуре у г.Ладыжин, Винницкой области в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Комбинированные<br>Ссылка: https://t.me/osint_alarm/1983]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6MSLwNqzWtFwu4rpZjwjulpcapN5MPu5L__S82T5BjBR20CZFX5f1NEXiSVutIg8kW1gewg-mghoEwk5AXiu_2oGro3Ns6-V7yfMyhmUyz2UTb8ZLZsdUVvr0QUcc4XWUhQh7x-RjkGUmXhhi2H3XUaFAcflg10_vrrYroxkJSwLgxrezpxfInoFb_Hl2Av_wNibWzRG6XfKSbeS_3X6CqRXpcOaYCjRpN1M9Q5yJXjcPpOQFIEfK5s3k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Комбинированный удар по энергоинфраструктуре у г.Ладыжин, Винницкой области в ночь на 3 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.03<br>Средства поражения: Комбинированные<br>Ссылка: https://t.me/osint_alarm/1983]]></description>
       <styleUrl>#icon-1710-795548</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6452,7 +6418,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1983</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR788mNEtWrIbcmA13LN2W5qjPeRJJAfrg7Ja_pFVf_57a1LmqzXVL97Iw9eevg-kDp41PpUHiiUgFdUhik1OiZP5CL45Y59uZ4rpuPOPQOhUQkRjXCmnfX-Lg1P9x6i3o8WKGBFulOerZmnrgkQ1BNhzP5txpHUDe2Uwm9snYXCB_tbBR9ZgYSMexZypvSi43V33mWuzB333nB7Ol_s2owoxlAmMz4Jl6O7kEH--QKj821EdVzAsHQdmL4?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6MSLwNqzWtFwu4rpZjwjulpcapN5MPu5L__S82T5BjBR20CZFX5f1NEXiSVutIg8kW1gewg-mghoEwk5AXiu_2oGro3Ns6-V7yfMyhmUyz2UTb8ZLZsdUVvr0QUcc4XWUhQh7x-RjkGUmXhhi2H3XUaFAcflg10_vrrYroxkJSwLgxrezpxfInoFb_Hl2Av_wNibWzRG6XfKSbeS_3X6CqRXpcOaYCjRpN1M9Q5yJXjcPpOQFIEfK5s3k?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6492,7 +6458,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>11 февраля, г.Конотоп, вагон-электростанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K-Anm1zAsGB6fe5gN05whjoikZtO7v4a5_t7-kT3SmHwkfzg_pVHJj5OosxZv9-COFeTNx7JuAkFDHYAF-3iqylZHNHXRhy3UBBuzvKl9joCsSpdFijIck_pCeryiHoYvMonEBhwG7dE_Ea7MWYlyahZc1yEMSqxtS5Y0oiz3MOxmKbGKvx01-XMxuF8wIJjUZO9FlpVGcKuXgYmAx83usZA03Fz32V7Dt4WkGRZ6lyklu9YYlo9Dblw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по вагону-электростанции или вагону от рефсекции.<br>Не геолоцировано.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.02.11<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/file/d/1FGdvBcsO0K3oqhE9DWZHFg99iQZZIIvw/view?usp=drive_link]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Q3IIv6_rQhKRQquthV3iWN-aBNGT2PwnSrYlYfEGXrg_4TWx4993fPf1z9Ab51LDalAV_bSLCNSUx5j1LNcdaddueCVHDvzhvbHs0YNdREKwRSAiTdxf5rocqMbXNNmcPJZtKaa9YymjtRhf_hrEhoOc6JB7fCT6tDqm-4ovEjbv1X_gdhumcIxyDZt-KmxZfXKzj61XFc3yJ80os9JjL_4R5xWYK7LXLjAYRKVGOjRMOVEigH03TI8I?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по вагону-электростанции или вагону от рефсекции.<br>Не геолоцировано.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.02.11<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/file/d/1FGdvBcsO0K3oqhE9DWZHFg99iQZZIIvw/view?usp=drive_link]]></description>
       <styleUrl>#icon-1719-7CB342</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6512,7 +6478,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://drive.google.com/file/d/1FGdvBcsO0K3oqhE9DWZHFg99iQZZIIvw/view?usp=drive_link</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K-Anm1zAsGB6fe5gN05whjoikZtO7v4a5_t7-kT3SmHwkfzg_pVHJj5OosxZv9-COFeTNx7JuAkFDHYAF-3iqylZHNHXRhy3UBBuzvKl9joCsSpdFijIck_pCeryiHoYvMonEBhwG7dE_Ea7MWYlyahZc1yEMSqxtS5Y0oiz3MOxmKbGKvx01-XMxuF8wIJjUZO9FlpVGcKuXgYmAx83usZA03Fz32V7Dt4WkGRZ6lyklu9YYlo9Dblw?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Q3IIv6_rQhKRQquthV3iWN-aBNGT2PwnSrYlYfEGXrg_4TWx4993fPf1z9Ab51LDalAV_bSLCNSUx5j1LNcdaddueCVHDvzhvbHs0YNdREKwRSAiTdxf5rocqMbXNNmcPJZtKaa9YymjtRhf_hrEhoOc6JB7fCT6tDqm-4ovEjbv1X_gdhumcIxyDZt-KmxZfXKzj61XFc3yJ80os9JjL_4R5xWYK7LXLjAYRKVGOjRMOVEigH03TI8I?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6523,7 +6489,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>17 февраля, г.Сумы, ресторан</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6A_TIvXa3vRBMwDYYxOT0I6WfuLlUlpk90NIJodj4VcawxXAcYSPWBPO-elHMBGs7BbmYqNc7dYMNVdp_79Cf79CkozyFHC5CjmfGxlMcNUP-R5dCQVB4qYJoI6V9uvx1t2M_45o15hegVhbZgATnVxBAXnZRkxyW7aI2xcqDCfHdoP1XwsZY1yHKYYhoIX-Ab-w0YUgWGXc5FwUJidlK_GGFx6vidMq6OIMIdRWPxZTDNAGsHHaF7Du0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ресторану.<br>Геопривязка от подписчика: @dnavidomoi<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.02.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/sumy_info_news/54500]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5EC-erOYYI_f8rl98SSAlWx-Pb-iHw_B6uM_fwSx6u_9qPLOR-_8iBOmRZM29xkDjINjelQKNKXeiZxeZFvtM9pW2xo5U-OeMQol21CHDx8NlfX1AmpaadZmUVrLr_Ijeg1oju8fcrK2HJW1zlw_OT-2ZuE70POmbFxtkrgYc3dEnQBYn1ldG7Zit_SD_C9yxzFhKICnlQ7dJEJJHmpQfmp9oTEZHlZ-Ieo1VK3Bm61OWFE1mHnD8ZB0M?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ресторану.<br>Геопривязка от подписчика: @dnavidomoi<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.02.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/sumy_info_news/54500]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6543,7 +6509,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/sumy_info_news/54500</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6A_TIvXa3vRBMwDYYxOT0I6WfuLlUlpk90NIJodj4VcawxXAcYSPWBPO-elHMBGs7BbmYqNc7dYMNVdp_79Cf79CkozyFHC5CjmfGxlMcNUP-R5dCQVB4qYJoI6V9uvx1t2M_45o15hegVhbZgATnVxBAXnZRkxyW7aI2xcqDCfHdoP1XwsZY1yHKYYhoIX-Ab-w0YUgWGXc5FwUJidlK_GGFx6vidMq6OIMIdRWPxZTDNAGsHHaF7Du0?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5EC-erOYYI_f8rl98SSAlWx-Pb-iHw_B6uM_fwSx6u_9qPLOR-_8iBOmRZM29xkDjINjelQKNKXeiZxeZFvtM9pW2xo5U-OeMQol21CHDx8NlfX1AmpaadZmUVrLr_Ijeg1oju8fcrK2HJW1zlw_OT-2ZuE70POmbFxtkrgYc3dEnQBYn1ldG7Zit_SD_C9yxzFhKICnlQ7dJEJJHmpQfmp9oTEZHlZ-Ieo1VK3Bm61OWFE1mHnD8ZB0M?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6610,7 +6576,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>3 января, г. Николаев, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7j5JeHcWvh7q7tU_F1B4Ii0Na_TZDtLfMM0SuNssd7RGB6iUQYZFlhQAJHM1MPtSVUoh04A8PdIqF2lzhqNmwsqiRQZGtFu93XmGQMAYzbVayHVd7nwHaHrjNRXP9jYHT646vNrbbbigl8wsfQhbaNO7gPW9eYg4AqcmkI_I2yKLFdo-na056hhDyfEn6e_7Qs_9wu2ta0Ry5vFFeYS7-DRqTz1MrTueWhlCs8etdJRk2iZAWDhRpRNpo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Николаев, Николаевской области, в ночь на 3 января 2025г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.03<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1998]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5RX9C-jp_-NtV79cBs8citMpxUxH-9pv5xkybLzA8I4jeVBxOMAQ9dR9rqYx4RUFfGF8wyel463ymTsKMNd6Wm83VVuW9l7A5UaIFE1GCE2ephBiKncdhGedxFYxFAG_JKmqcylCZOFQxllBwQKryiphk501WzaCZZ1cUKDVrpD6-LFK5vdUX2Y29aAhXc8GuT1gps63yrwdLBy7thhg3u9u_Bq9xeswnpcnD0nOiSGbBAniUukr_BfGs?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Николаев, Николаевской области, в ночь на 3 января 2025г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.03<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/1998]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6629,7 +6595,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/1998</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7j5JeHcWvh7q7tU_F1B4Ii0Na_TZDtLfMM0SuNssd7RGB6iUQYZFlhQAJHM1MPtSVUoh04A8PdIqF2lzhqNmwsqiRQZGtFu93XmGQMAYzbVayHVd7nwHaHrjNRXP9jYHT646vNrbbbigl8wsfQhbaNO7gPW9eYg4AqcmkI_I2yKLFdo-na056hhDyfEn6e_7Qs_9wu2ta0Ry5vFFeYS7-DRqTz1MrTueWhlCs8etdJRk2iZAWDhRpRNpo?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5RX9C-jp_-NtV79cBs8citMpxUxH-9pv5xkybLzA8I4jeVBxOMAQ9dR9rqYx4RUFfGF8wyel463ymTsKMNd6Wm83VVuW9l7A5UaIFE1GCE2ephBiKncdhGedxFYxFAG_JKmqcylCZOFQxllBwQKryiphk501WzaCZZ1cUKDVrpD6-LFK5vdUX2Y29aAhXc8GuT1gps63yrwdLBy7thhg3u9u_Bq9xeswnpcnD0nOiSGbBAniUukr_BfGs?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6640,7 +6606,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>15 января, г. Николаев, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5jfciNVBI9E02lkDGoVy8joxR4DP8lUPL8EBxAr5Jm-zpHRcKDQMHL-VvG2Dg6QVuU1EB7wOYKPOhaoVqVW-mQduOQ_D60fNhgX94q49YD0nJNUbZ6hBEFetRgD6qwgn6k3tw8NxOPEebolEsOQbRpdwuFpyDjADDmaxSf8otNp2EtWHIaw1HpIAn_hHlc6S_XwBBQfxWtmJXPkhiorImg3Xww0-ufB75eFBZ3waFd1dN4PAX0N69jG4U?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энегоинфраструктуре в г.Николаев, Николаевской области, предположительно, 15 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.15<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2001]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K6hqrTgm4A_NcrSfOgTpd_G0mpRodqDlq0zcPyFHYZK286xI0ulxs1LySlS6ba5PxWwCRHK-ZgjeizFisuZxkJgjd7C5bVZgML6QXsjqgMELyqznlb87eNVFtWP9u1hVxaE2eDk91vyAZlq4Xi7oSMFJZ9i2EEDqX8-ndrlU_IppKD5w_uXMv5uVJ9Xa0swhY3pe62DWarG-MqBXh1psG3_sGNmgEHYyV7ZjLSXq1w0Q2kA2kr05aG6c?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энегоинфраструктуре в г.Николаев, Николаевской области, предположительно, 15 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.15<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2001]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6659,7 +6625,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2001</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5jfciNVBI9E02lkDGoVy8joxR4DP8lUPL8EBxAr5Jm-zpHRcKDQMHL-VvG2Dg6QVuU1EB7wOYKPOhaoVqVW-mQduOQ_D60fNhgX94q49YD0nJNUbZ6hBEFetRgD6qwgn6k3tw8NxOPEebolEsOQbRpdwuFpyDjADDmaxSf8otNp2EtWHIaw1HpIAn_hHlc6S_XwBBQfxWtmJXPkhiorImg3Xww0-ufB75eFBZ3waFd1dN4PAX0N69jG4U?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K6hqrTgm4A_NcrSfOgTpd_G0mpRodqDlq0zcPyFHYZK286xI0ulxs1LySlS6ba5PxWwCRHK-ZgjeizFisuZxkJgjd7C5bVZgML6QXsjqgMELyqznlb87eNVFtWP9u1hVxaE2eDk91vyAZlq4Xi7oSMFJZ9i2EEDqX8-ndrlU_IppKD5w_uXMv5uVJ9Xa0swhY3pe62DWarG-MqBXh1psG3_sGNmgEHYyV7ZjLSXq1w0Q2kA2kr05aG6c?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6670,7 +6636,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>7 января, г. Кривой Рог, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7ErpperJohRLuG53Kljt4SM4aqk3aw69_xcjzOMHR07jt5YzdDIMw2u-k4M-JGyqZpCzkicoE9iTzvQ3tCiQy78lnp2sDwx0jHeyO251_FtgtBpmK8_qiA7X5GFU8NtZVtrN0BlJlvP-REnM1W16lKg2-uA5MfPbWKdZFCrr5z7_br_YRQtpTv1-XYQoBtAS1OM_802KBTJGKwYdSa5SI8F7e0kteDhNCJxtoSPaipetr_I0zX_5azA60?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Кривой Рог, Днепропетровской области 7 января 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.07<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2005]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ZwIXpaLvmM8QJM-nN0KC1I6-uJI1ysqPD3opWTVwzB3Qzv66CXcAQ0arzC4liBMVaTaG6K6lacSIDd2Eg-ohF3g_blnxdegtZ2eR699DTHK6ujZkO4upvrvUyuCa5cCCiyi5Ldcji1r7kIgZzJHvY3pmMv60xe2dG1pJsMvdohAi2tHWiZQpwj0EJg2n9GVwbq_01YMKnx1OL0WjY6gqmEtcluSU1eFLLSH2Yr6rjtQAv2S_fPCjhhUg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Кривой Рог, Днепропетровской области 7 января 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.01.07<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2005]]></description>
       <styleUrl>#icon-1565-AFB42B</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6689,7 +6655,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2005</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7ErpperJohRLuG53Kljt4SM4aqk3aw69_xcjzOMHR07jt5YzdDIMw2u-k4M-JGyqZpCzkicoE9iTzvQ3tCiQy78lnp2sDwx0jHeyO251_FtgtBpmK8_qiA7X5GFU8NtZVtrN0BlJlvP-REnM1W16lKg2-uA5MfPbWKdZFCrr5z7_br_YRQtpTv1-XYQoBtAS1OM_802KBTJGKwYdSa5SI8F7e0kteDhNCJxtoSPaipetr_I0zX_5azA60?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ZwIXpaLvmM8QJM-nN0KC1I6-uJI1ysqPD3opWTVwzB3Qzv66CXcAQ0arzC4liBMVaTaG6K6lacSIDd2Eg-ohF3g_blnxdegtZ2eR699DTHK6ujZkO4upvrvUyuCa5cCCiyi5Ldcji1r7kIgZzJHvY3pmMv60xe2dG1pJsMvdohAi2tHWiZQpwj0EJg2n9GVwbq_01YMKnx1OL0WjY6gqmEtcluSU1eFLLSH2Yr6rjtQAv2S_fPCjhhUg?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6700,7 +6666,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>8 января, г. Кривой Рог, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7bRUYz8QJpP7cWjAEpWu9gH7kCN44fS5tM9D0yg8JIsKg_xqaMC6FblgJO-hd51irnieovFCBjtW7-gF3CfFvJJOkp1ly6kXfuatl1rdsXbWbcU1qUS-urgozZj_bGHHdg2giM_kLuqT3gWgHGGJ1JJCQ56vdIgURrdsMOekkiDbHLm_fJSJUIpBe3hzp5zGsECaLpSu6shuYL0BOBAa8iPt9o9u3n2rFpCoK-uk_QOA6h_mPWXNKJKTg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфрструктуре в г.Кривой Рог, Днепропетровской области, предположительно, в ночь 8 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2009]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6Q1ggidz8MaBI5OfMqNLH5pdK2QF-pqDVV6K2hLeB1smQbge7mkMVbVYLXoI9hggk8mRLMD8qXWU2hyyKZ84R20IkXOBQCRjTpjWaa3RE9paC6G6k8dfaM1748rKbP3Y_-lYgqLUd51p6k_svNTc0Um6Ad0fHBT7FtVBL8ZhBDCIfviJ6jx5KmnOnVZc79xfIVs7AGuIac8Jg-vr9i855fg6TGcLsWR-iYKXBSOFnvB8BAokVHAtgJIO0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфрструктуре в г.Кривой Рог, Днепропетровской области, предположительно, в ночь 8 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2009]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6719,7 +6685,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2009</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7bRUYz8QJpP7cWjAEpWu9gH7kCN44fS5tM9D0yg8JIsKg_xqaMC6FblgJO-hd51irnieovFCBjtW7-gF3CfFvJJOkp1ly6kXfuatl1rdsXbWbcU1qUS-urgozZj_bGHHdg2giM_kLuqT3gWgHGGJ1JJCQ56vdIgURrdsMOekkiDbHLm_fJSJUIpBe3hzp5zGsECaLpSu6shuYL0BOBAa8iPt9o9u3n2rFpCoK-uk_QOA6h_mPWXNKJKTg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6Q1ggidz8MaBI5OfMqNLH5pdK2QF-pqDVV6K2hLeB1smQbge7mkMVbVYLXoI9hggk8mRLMD8qXWU2hyyKZ84R20IkXOBQCRjTpjWaa3RE9paC6G6k8dfaM1748rKbP3Y_-lYgqLUd51p6k_svNTc0Um6Ad0fHBT7FtVBL8ZhBDCIfviJ6jx5KmnOnVZc79xfIVs7AGuIac8Jg-vr9i855fg6TGcLsWR-iYKXBSOFnvB8BAokVHAtgJIO0?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6730,7 +6696,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>7 января, г. Кривой Рог, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7VLwkYbSWp9FHz2LBya4sM2mwwOSpCso0uXzDOX_drJ-jjhJibb5hWAkHGGmJZ8fLf7nojFR5Y7Pcm_XL1688OdXSPuVjiqYYyjc0vUispJUFgNhBzAuCkWZoQLhuAa7NUDHwPHOVxdk5AMPB5OywgFhGBDnqKMCin6F8-s8Hhsk4tbrzvNc-yenTb8QQfNFEAgoF8gj_ufBhYwSIl-Mq32b1OCgjhuqJM6oDP-91j3d1EIx2OOz74SFg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфрструктуре в г.Кривой Рог, Днепропетровской области, предположительно, в ночь 7 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.07<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2011]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5oVYanzuRRPNcuNckoLRgzmr9OZo3XMDGPKY90PzescVA2fAAy8rwdUwixz9KQKriissivH8dU4okYpVHpZM3hwpCTjh0hW1bb2fdpNfv0i_rfKe1PVITRK8glOb6-J3f42pL4Nfp6g7UJFBxwpse73CeaOdV2AVkG958o9aFn-Vj-5X84nvxUPcJKq_4RFPSc9PhzNT8QLnNaGIQUqJ-7isZuwns-CUvlccNHnIT2u1n6UrnGABdkmzw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфрструктуре в г.Кривой Рог, Днепропетровской области, предположительно, в ночь 7 января 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.01.07<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2011]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6749,7 +6715,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2011</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7VLwkYbSWp9FHz2LBya4sM2mwwOSpCso0uXzDOX_drJ-jjhJibb5hWAkHGGmJZ8fLf7nojFR5Y7Pcm_XL1688OdXSPuVjiqYYyjc0vUispJUFgNhBzAuCkWZoQLhuAa7NUDHwPHOVxdk5AMPB5OywgFhGBDnqKMCin6F8-s8Hhsk4tbrzvNc-yenTb8QQfNFEAgoF8gj_ufBhYwSIl-Mq32b1OCgjhuqJM6oDP-91j3d1EIx2OOz74SFg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5oVYanzuRRPNcuNckoLRgzmr9OZo3XMDGPKY90PzescVA2fAAy8rwdUwixz9KQKriissivH8dU4okYpVHpZM3hwpCTjh0hW1bb2fdpNfv0i_rfKe1PVITRK8glOb6-J3f42pL4Nfp6g7UJFBxwpse73CeaOdV2AVkG958o9aFn-Vj-5X84nvxUPcJKq_4RFPSc9PhzNT8QLnNaGIQUqJ-7isZuwns-CUvlccNHnIT2u1n6UrnGABdkmzw?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6760,7 +6726,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>8 февраля, г. Одесса, Предприятие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5A1w0xSZqJ4r9LITWO0hotqakd1iM3dCoRyvZD4Vay0ScawxQb3AbM0DG5Mj3lTB0M3x3S7KzYhCfD9W5G6jJXTkoykv6fa0d8otuGCihc-n1253UQ4Wa0p79ZVzWNbcEgbJSClyaBkCPVSuKNOJuu2I89sFNDb8itCZRhKjJWNcg-Dw8t8JD0ikSjnAkWEqyK1GFCqB8QGhlQiKebBlqmBWP4WmY0Nw_XDHkuZ9tWTdNHuggQmqSbC7M?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Одесса, Одесской области в ночь на 8 февраля 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.02.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2063]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4cbsoZ5-OBTezX14DtgQXWPvz4uugjF9nRvHk7OalTh1RewNcwF7rwlpWzU8C6uElUo4YSBljE2NwWEV6XR-R8yGIXWsqVkuQWF9MdWRcXFl26Vq-ELpnmPYxtj3MPsB4nkjEjacz_suChF61TbyzLeGVIHUOnswJXKl9nXSrTytc0IHYsML-5W1FOD5EKcIzpujnkIR_JcfgRW9JRvIAmup1xSITKBLFRmft8JYZwidtfuqNr8D3vYHU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по предприятию в г.Одесса, Одесской области в ночь на 8 февраля 2026г.<br>Тип объекта: Предприятие гражданского или двойного назначения<br>Дата: 2026.02.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2063]]></description>
       <styleUrl>#icon-1693-BDBDBD</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6779,7 +6745,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2063</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5A1w0xSZqJ4r9LITWO0hotqakd1iM3dCoRyvZD4Vay0ScawxQb3AbM0DG5Mj3lTB0M3x3S7KzYhCfD9W5G6jJXTkoykv6fa0d8otuGCihc-n1253UQ4Wa0p79ZVzWNbcEgbJSClyaBkCPVSuKNOJuu2I89sFNDb8itCZRhKjJWNcg-Dw8t8JD0ikSjnAkWEqyK1GFCqB8QGhlQiKebBlqmBWP4WmY0Nw_XDHkuZ9tWTdNHuggQmqSbC7M?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4cbsoZ5-OBTezX14DtgQXWPvz4uugjF9nRvHk7OalTh1RewNcwF7rwlpWzU8C6uElUo4YSBljE2NwWEV6XR-R8yGIXWsqVkuQWF9MdWRcXFl26Vq-ELpnmPYxtj3MPsB4nkjEjacz_suChF61TbyzLeGVIHUOnswJXKl9nXSrTytc0IHYsML-5W1FOD5EKcIzpujnkIR_JcfgRW9JRvIAmup1xSITKBLFRmft8JYZwidtfuqNr8D3vYHU?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6817,7 +6783,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>январь, г.Ильечёвск, порт</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6sUwJDVXKVFIYeXTnFpUk52JfoxDID1dD_1H9QCDBiM2Up33fXzPJkOqRNLBBqkCemynf9FNlPLn8PYt1OUXmNmqPeQvvfKoRzVwBWjHxTBRC48FX4tMH7eE13lwFSpePN-mG6BLeRDlJHqjaqDNjH5K3wUR_3tPTJNq8GIz5UsqQwf8FwQId3lRTI8A8vQftkGU7JDXYG2ThnM-qqNxI7aiTDwvbJ5EhFO0c93kx--OpLmfjDl4aU-2I?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА, предположительно, 16 января, в следствии чего произошло попадание у погрузочного крана.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.01.16<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/donbass24_7/93272]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR48sS_AWqTxrVb3PM3pNpCtB_mPIopOILZZGhD9Zz68SuoaJABolmXUJ8yhQ4FCeoDZEO5nY9Y0bPObdxXIT0cqvwXb2cuqQMVKem0ZVE5vvhNAYygGbij6UVxKpxfc7ZBxhsRVEOG5hLAO1ImR6IZW6eBiKsYnaJYpVOi9c4e3xceYfO5t3E59wxgqX0C6abVu3Sp8k3YmMucOWXZg_iVkOWcov-J3ObC4ilfV_XeFGAxpsSKrylv9Opo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА, предположительно, 16 января, в следствии чего произошло попадание у погрузочного крана.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.01.16<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/donbass24_7/93272]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6836,7 +6802,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/donbass24_7/93272</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6sUwJDVXKVFIYeXTnFpUk52JfoxDID1dD_1H9QCDBiM2Up33fXzPJkOqRNLBBqkCemynf9FNlPLn8PYt1OUXmNmqPeQvvfKoRzVwBWjHxTBRC48FX4tMH7eE13lwFSpePN-mG6BLeRDlJHqjaqDNjH5K3wUR_3tPTJNq8GIz5UsqQwf8FwQId3lRTI8A8vQftkGU7JDXYG2ThnM-qqNxI7aiTDwvbJ5EhFO0c93kx--OpLmfjDl4aU-2I?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR48sS_AWqTxrVb3PM3pNpCtB_mPIopOILZZGhD9Zz68SuoaJABolmXUJ8yhQ4FCeoDZEO5nY9Y0bPObdxXIT0cqvwXb2cuqQMVKem0ZVE5vvhNAYygGbij6UVxKpxfc7ZBxhsRVEOG5hLAO1ImR6IZW6eBiKsYnaJYpVOi9c4e3xceYfO5t3E59wxgqX0C6abVu3Sp8k3YmMucOWXZg_iVkOWcov-J3ObC4ilfV_XeFGAxpsSKrylv9Opo?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6874,7 +6840,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>7 февраля, н.п. Бурштын, ТЭС</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR77PsLXhsN_mhKrtg3sM9zPzzUV8YJZEtrQJDoJHYafCUdeR0-xoi7shon-SmESOKUszNmQHmUlrvi0F_O2PJcSOEshgIji7249yvyHiujrQUGWNSq7wRZn9ArLuLRj1hbMp9L-oILy3j2PDiwzbl5BXUQCQzSjRUOpHii0xnd5qdZhc1yS7D6M9tnHOAqwLTg1tyReRqfWIIAp6YqttTG3Y101ivJvAQOGUatbpAHSe4ZPlUCR298mvVg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре у н.п.Бурштын, Инвано-Франковской области в ночь на 7 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.07<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2088]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4eQ_AAiazK6kuvn_Vt1Xeaf65M-wrZdrIv8LZBDGJ0Y4AETN6GULVJaXdG-cHq1jBRxPDcB64daiHw29TSQZLEoEwKRY6WrAZ8Bvag-Xf0z5LPtoPe8eofIUJhX32ac-X0ru-TNPqAJCBIF8UDeO-tyEt9JtausSRtb8LA0Z9pPrq2XJ8DNKHAa3Ly5V68XPXBkZZCLN5-WuhefsTDdqfvBcDCI0Gbwf0JUraOdLqwqrEYBC40t_F6Ceo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре у н.п.Бурштын, Инвано-Франковской области в ночь на 7 февраля 2026г.<br>Тип объекта: Энергогенерация<br>Дата: 2026.02.07<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2088]]></description>
       <styleUrl>#icon-1710-1A237E</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6893,7 +6859,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2088</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR77PsLXhsN_mhKrtg3sM9zPzzUV8YJZEtrQJDoJHYafCUdeR0-xoi7shon-SmESOKUszNmQHmUlrvi0F_O2PJcSOEshgIji7249yvyHiujrQUGWNSq7wRZn9ArLuLRj1hbMp9L-oILy3j2PDiwzbl5BXUQCQzSjRUOpHii0xnd5qdZhc1yS7D6M9tnHOAqwLTg1tyReRqfWIIAp6YqttTG3Y101ivJvAQOGUatbpAHSe4ZPlUCR298mvVg?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4eQ_AAiazK6kuvn_Vt1Xeaf65M-wrZdrIv8LZBDGJ0Y4AETN6GULVJaXdG-cHq1jBRxPDcB64daiHw29TSQZLEoEwKRY6WrAZ8Bvag-Xf0z5LPtoPe8eofIUJhX32ac-X0ru-TNPqAJCBIF8UDeO-tyEt9JtausSRtb8LA0Z9pPrq2XJ8DNKHAa3Ly5V68XPXBkZZCLN5-WuhefsTDdqfvBcDCI0Gbwf0JUraOdLqwqrEYBC40t_F6Ceo?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6933,7 +6899,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>19 февраля, г. Снигирёвка</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5TNPBFikBaa5t_sFpKgL49a7RNeKOzuB-nWDY4-fGoVhUMn7sRrFARUAYzVL_Yku5tzG5ggJt3m0P9kFlsbd27GdVXrKm5-Y_b9Lju8Q_8IT2kWRAS-OBr4uoNLM-F0QDgjUXT-jbi92A2Pmqcx5QR_MqQY0mtX99-jExvrqJyAB_dSJ4520oIfRgy1Jb7ovPeFgcEngJcJtK58JIKD3lnu5W8x_0EjGkPyf9J4l_aVGfIwuN2LE6gXr8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре у г.Снигирёвка, Николаевской области 19 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.19<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2095]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7QArwzRCoU9YEq_5MUThLFIaiHP0L7-YrvMyQY8iykSsy204VUfLqlBAoZciQwhbFcPfS2nFEKl7_6bmx0AnT4mwVDC4hNFsTQZIekEoTZtXagC1lShZb-NiUkJh-O6gjxCPr2RpGvk1i0ZxP5-apkvT9IQpxbazvszGQOL5dUFr5XaS8ubZqzu_UBoIlkr5EKzwpmWWbqdxRf8jEFR5Cd7lNEEiLYYsiC1nlJ7vw2rdnknjg6oEQGIMk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре у г.Снигирёвка, Николаевской области 19 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.19<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2095]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6952,7 +6918,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2095</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5TNPBFikBaa5t_sFpKgL49a7RNeKOzuB-nWDY4-fGoVhUMn7sRrFARUAYzVL_Yku5tzG5ggJt3m0P9kFlsbd27GdVXrKm5-Y_b9Lju8Q_8IT2kWRAS-OBr4uoNLM-F0QDgjUXT-jbi92A2Pmqcx5QR_MqQY0mtX99-jExvrqJyAB_dSJ4520oIfRgy1Jb7ovPeFgcEngJcJtK58JIKD3lnu5W8x_0EjGkPyf9J4l_aVGfIwuN2LE6gXr8?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7QArwzRCoU9YEq_5MUThLFIaiHP0L7-YrvMyQY8iykSsy204VUfLqlBAoZciQwhbFcPfS2nFEKl7_6bmx0AnT4mwVDC4hNFsTQZIekEoTZtXagC1lShZb-NiUkJh-O6gjxCPr2RpGvk1i0ZxP5-apkvT9IQpxbazvszGQOL5dUFr5XaS8ubZqzu_UBoIlkr5EKzwpmWWbqdxRf8jEFR5Cd7lNEEiLYYsiC1nlJ7vw2rdnknjg6oEQGIMk?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -6963,7 +6929,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>22 февраля, г. Кировоград, Аэродром</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4r_KZaOCkmdC8fhJa12gNEve7eguskXOy6l-nEdNVJLPCPEMmmLe9ij3hXkAv9yXbYhLPh4oPBa0z2LuXsnwhnGSuoHZHFqtZz1cYOiygg7pQfGRQSZp0mYFdLlWtQU5aPhod_N7mC38MKVf6jZbFwOLyG0t_COyuEFLOaevEpUH84bKn0iLAhoPuAGmCpiHBU6rnJO-xDtyzVKPiTXZGn7Rz9QqF5vb_Vz44mFAYNWxRhY9hyvisxEFE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по аэродрому у г.Кировоград, Кировоградской области в ночь на 22 февраля 2026г.<br><br>Тип объекта: Аэродром<br>Дата: 2026.02.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2099]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4i8v_E6ZdmrzteYvcrAo4wuX8uU6QLnhRHPBIYA0Ya_rxE6G1RMzlPk9TAmJuh9g_68jttj355XTe5XXLfe3a87JKaLAkUbQJ0HlZAJ8RSKAEIuoKhkeD9dOZOOof81qDWIYKohMaJW-jDjUsAeOU_m8fDGhDdc6bnrA6UsaKKTRV_3Nh7ftrWg83PSfwZa88LkCHm9_Hzter07S5lDuwLdMSidZZ0DInUsbCTTsB4YFz_n0yyjux3QI4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по аэродрому у г.Кировоград, Кировоградской области в ночь на 22 февраля 2026г.<br><br>Тип объекта: Аэродром<br>Дата: 2026.02.22<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2099]]></description>
       <styleUrl>#icon-1750-E65100</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -6983,7 +6949,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2099</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4r_KZaOCkmdC8fhJa12gNEve7eguskXOy6l-nEdNVJLPCPEMmmLe9ij3hXkAv9yXbYhLPh4oPBa0z2LuXsnwhnGSuoHZHFqtZz1cYOiygg7pQfGRQSZp0mYFdLlWtQU5aPhod_N7mC38MKVf6jZbFwOLyG0t_COyuEFLOaevEpUH84bKn0iLAhoPuAGmCpiHBU6rnJO-xDtyzVKPiTXZGn7Rz9QqF5vb_Vz44mFAYNWxRhY9hyvisxEFE?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4i8v_E6ZdmrzteYvcrAo4wuX8uU6QLnhRHPBIYA0Ya_rxE6G1RMzlPk9TAmJuh9g_68jttj355XTe5XXLfe3a87JKaLAkUbQJ0HlZAJ8RSKAEIuoKhkeD9dOZOOof81qDWIYKohMaJW-jDjUsAeOU_m8fDGhDdc6bnrA6UsaKKTRV_3Nh7ftrWg83PSfwZa88LkCHm9_Hzter07S5lDuwLdMSidZZ0DInUsbCTTsB4YFz_n0yyjux3QI4?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -7103,7 +7069,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>7 февраля, г. Ходоров, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5aXsTe8A22hWMIYU-n-_zR2kfCcKCQ_j2pTDFbeZxu6diYeu-sFxRKOcKZ20QO5e1x12awJaxP004gAZlj4P4332Wm6-A8_VyA2KG1WfyrCzTQMFaSTmT4qzkSYla_1VdXAMoMvdH7YdUHdC75LIsoqS_a--QQySj5GucAbrICZ7FQd4DjA8eGEStngLVxQpWTOhqTnSjcgiIejnWf2F9IkmSRl5hlfPz53s2hGvWNVKtoRgswHX02BII?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре у г.Ходоров, Львовской области в ночь на 7 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.07<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2168]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7YNgyy_erFDbHGX1vBNCzYuh9qFguuzIqRlpph5bGlTMiq26Z_vUGQM7gbGKDEu35d968LlFrwn0uxhwVxUWAD3mN3WyDGbErnJcqvdKB069awcueNUlM6660iAqC8B6sMdbBjzpKlnndv76NBjb8JgtDhT2sLyY0vZHCb1m9tf1iQLx5vFZngiuhsdYOxKk7_9A7-hJhoIn6HteSlh6_0b1cTvNqJlZnN5PHw_8LbbkiarN3zoEqhlaw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Ракетный удар по энергоинфраструктуре у г.Ходоров, Львовской области в ночь на 7 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.07<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/osint_alarm/2168]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -7122,7 +7088,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2168</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5aXsTe8A22hWMIYU-n-_zR2kfCcKCQ_j2pTDFbeZxu6diYeu-sFxRKOcKZ20QO5e1x12awJaxP004gAZlj4P4332Wm6-A8_VyA2KG1WfyrCzTQMFaSTmT4qzkSYla_1VdXAMoMvdH7YdUHdC75LIsoqS_a--QQySj5GucAbrICZ7FQd4DjA8eGEStngLVxQpWTOhqTnSjcgiIejnWf2F9IkmSRl5hlfPz53s2hGvWNVKtoRgswHX02BII?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7YNgyy_erFDbHGX1vBNCzYuh9qFguuzIqRlpph5bGlTMiq26Z_vUGQM7gbGKDEu35d968LlFrwn0uxhwVxUWAD3mN3WyDGbErnJcqvdKB069awcueNUlM6660iAqC8B6sMdbBjzpKlnndv76NBjb8JgtDhT2sLyY0vZHCb1m9tf1iQLx5vFZngiuhsdYOxKk7_9A7-hJhoIn6HteSlh6_0b1cTvNqJlZnN5PHw_8LbbkiarN3zoEqhlaw?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -7188,7 +7154,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>12 февраля, г. Одесса, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5KfEb5eyWGOtrDVEqDDGhqvwhfjFx3zWSSPMfW1x2Mwb7OKCjjDv2Sxbvcfm18Y7enQicMXohnpo-A1uvFD142UsG2C6I-97-3dL999OZJFIt3PA_93O-zFoNRKE2qAiopBK-dHD9N8FaOl0eYqSAXWIGkjBrILQFkW9jgY1Cuwmy-dwCb7TT5ZB5IIMpoalwvYWsZO2wf4cSXrz273hQqKSacRP-ov4wRLKO6CURXNnX9VPqVfGUTxHo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Одесса, Одесской области в ночь на 12 февраля 2026г.<br><br>Тип объекта: Подстанция<br>Дата: 2026.02.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2202]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5aN76tfOOeUKAvHJuvyBTIDTwi6NtcXdtLcTNV8eDdavmPXN6CMxHVdzuQUDgeJ_ZZ2VtZxy8kiaLKUhCYfzLC3bVYSE8jI-5snJdZQQWDBZ1YEXHpc8vAA9Vnh4wA_Sln-DP0A9BjS4HGjM-Y8iujmz2FonljwbJyDVEKn6uG8y5OokH4nX6Msj45GlzjZHxbmatKk4MRtAsFVoqzZ4KDzGrcipQ112qlHYkkKhkb7kJrVUZ6O_MT6dM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Одесса, Одесской области в ночь на 12 февраля 2026г.<br><br>Тип объекта: Подстанция<br>Дата: 2026.02.12<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2202]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -7208,7 +7174,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2202</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5KfEb5eyWGOtrDVEqDDGhqvwhfjFx3zWSSPMfW1x2Mwb7OKCjjDv2Sxbvcfm18Y7enQicMXohnpo-A1uvFD142UsG2C6I-97-3dL999OZJFIt3PA_93O-zFoNRKE2qAiopBK-dHD9N8FaOl0eYqSAXWIGkjBrILQFkW9jgY1Cuwmy-dwCb7TT5ZB5IIMpoalwvYWsZO2wf4cSXrz273hQqKSacRP-ov4wRLKO6CURXNnX9VPqVfGUTxHo?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5aN76tfOOeUKAvHJuvyBTIDTwi6NtcXdtLcTNV8eDdavmPXN6CMxHVdzuQUDgeJ_ZZ2VtZxy8kiaLKUhCYfzLC3bVYSE8jI-5snJdZQQWDBZ1YEXHpc8vAA9Vnh4wA_Sln-DP0A9BjS4HGjM-Y8iujmz2FonljwbJyDVEKn6uG8y5OokH4nX6Msj45GlzjZHxbmatKk4MRtAsFVoqzZ4KDzGrcipQ112qlHYkkKhkb7kJrVUZ6O_MT6dM?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -7219,7 +7185,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>17 февраля, г. Одесса, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4FU7cWxYK7SWkvtYWY18e5LiiqcaHIuhvxJEUIU61ndDfpskZZeepM_M3bMoqiDekD8MBiX8AOhxxTh7oNrwfBWYRn7BZCDZqEUqsFSh1ZpXJ64YOytbX1t1l6bPoJLhPAAn-Mnacv9wK312ntNAcdYUHWoQ6YMYThrEZbO0_TlwJzDsYj0t2FHhEYjhbR5n9UCDHxYs0iBHH_5_QAkyj6GQ1iHIqUDaj0kaTOeFeHv0DVxdYuNF2Kyg8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Одесса, Одесской области в ночь на 17 февраля 2026г.<br><br>Тип объекта: Подстанция<br>Дата: 2026.02.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2205]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR46imfJRrEqStBNktbXpYWWiahLeJA5fRbK83IXaNuq9GuLvhjM7pDoXpeKPDaS2DvVHr-Xjls8sDhacqTi6enR69ZFGiChdxQV1ImdSllJBiSIhFeR1FRvut_odFT10mheH5TD9amMoIhkFyaT98oaZ4jGByn0YPHEx8s0QtkhRiCJMrTuxVpVtcC10xIxxQfJ3CC7iuOI1IAIx_2qhCzgWhj7lMGUIYnu-yk_3ul664WzxxZ7SKZ7w1E?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоинфраструктуре в г.Одесса, Одесской области в ночь на 17 февраля 2026г.<br><br>Тип объекта: Подстанция<br>Дата: 2026.02.17<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2205]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -7239,7 +7205,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2205</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4FU7cWxYK7SWkvtYWY18e5LiiqcaHIuhvxJEUIU61ndDfpskZZeepM_M3bMoqiDekD8MBiX8AOhxxTh7oNrwfBWYRn7BZCDZqEUqsFSh1ZpXJ64YOytbX1t1l6bPoJLhPAAn-Mnacv9wK312ntNAcdYUHWoQ6YMYThrEZbO0_TlwJzDsYj0t2FHhEYjhbR5n9UCDHxYs0iBHH_5_QAkyj6GQ1iHIqUDaj0kaTOeFeHv0DVxdYuNF2Kyg8?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR46imfJRrEqStBNktbXpYWWiahLeJA5fRbK83IXaNuq9GuLvhjM7pDoXpeKPDaS2DvVHr-Xjls8sDhacqTi6enR69ZFGiChdxQV1ImdSllJBiSIhFeR1FRvut_odFT10mheH5TD9amMoIhkFyaT98oaZ4jGByn0YPHEx8s0QtkhRiCJMrTuxVpVtcC10xIxxQfJ3CC7iuOI1IAIx_2qhCzgWhj7lMGUIYnu-yk_3ul664WzxxZ7SKZ7w1E?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -7250,7 +7216,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>21 февраля, г. Одесса, Подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5dewM2_pb00-K3USpTX08MuxvD-TBZLaU_lGyZmonJfArtgInnKgCR5us_dM0qgjVsn9DAZTatWLjA366QluLIZFcFA2bO9uqssMjAVenXbmWgs7cXZv9bdqYU5pWHPVOjHaM86XLz4I6iaYaIhy5XgfzHBHudXYqYEYFIDEv5c-NtyvfKVvDLR-nm8iPaoi6WrdPP3bx2NfGDWYvhKH6HxZTjoXEij_qqDv84E3f0O_Z6CfiBWNJh-lY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоифраструктуре в г.Одесса, Одесской области в ночь на 21 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.21<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2209]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7fGxStEsQo_uMVE2Jk0dxZuMMSWOrvpA_141fUz60ETa3x4YOgPSJZFdgl4ZUVmow62Vksau-Q8N5ruCLDIa801R5YL5EpKYqIDzNG-Cc4DOFsJ3qaZuJ3i4ywt-3Xj3084Uv_Br5uukLqhcXH_VvgG49IS04egPJbLhw7bt2FklnLbK_ZvefRXF0veVBm4qFdgwEXnzrjf_2kEBB4G5Ewz7aubvE1UCd4zbfyewn60NchgJQxcFGFrUc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по энергоифраструктуре в г.Одесса, Одесской области в ночь на 21 февраля 2026г.<br>Тип объекта: Подстанция<br>Дата: 2026.02.21<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2209]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -7269,7 +7235,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/osint_alarm/2209</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5dewM2_pb00-K3USpTX08MuxvD-TBZLaU_lGyZmonJfArtgInnKgCR5us_dM0qgjVsn9DAZTatWLjA366QluLIZFcFA2bO9uqssMjAVenXbmWgs7cXZv9bdqYU5pWHPVOjHaM86XLz4I6iaYaIhy5XgfzHBHudXYqYEYFIDEv5c-NtyvfKVvDLR-nm8iPaoi6WrdPP3bx2NfGDWYvhKH6HxZTjoXEij_qqDv84E3f0O_Z6CfiBWNJh-lY?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7fGxStEsQo_uMVE2Jk0dxZuMMSWOrvpA_141fUz60ETa3x4YOgPSJZFdgl4ZUVmow62Vksau-Q8N5ruCLDIa801R5YL5EpKYqIDzNG-Cc4DOFsJ3qaZuJ3i4ywt-3Xj3084Uv_Br5uukLqhcXH_VvgG49IS04egPJbLhw7bt2FklnLbK_ZvefRXF0veVBm4qFdgwEXnzrjf_2kEBB4G5Ewz7aubvE1UCd4zbfyewn60NchgJQxcFGFrUc?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -8187,7 +8153,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>18 марта, г.Сумы, ТЦК</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ExxJPHpoLeL1aCGvsaMeMlJGpKtk8FZiFoA5u1rVppZNlbi1ZXQDCQE1zNTudgLqoEEE7l2B7XUzGrrlnKaBwPGOtakCjwdEGF1CLS9dl2-CZI7wH898WdjX63ZPGkguuRb3pGDWwTFP7GVsI1mp8Yqa0VvcvvFBoZ0zfgW5zG2AVY1wxV0XiOzttnaI-oa3YlG9JfaAsVrErzPq8jRu6uc-0xntYtgTTXJyfG_HKZxAeJ2JLcmUaABI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ТЦК г.Сум.<br>Тип объекта: ППД<br>Дата: 2026.03.18<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/drive/folders/1ZoH9kV31_kY3-GsO0-CtWpbjXb2fzr4f?usp=drive_link<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5ZcYCELCWpFWoKtX1H29los_IoiNPnkWI6_r17fHfe5WnjR61lNrpSwQGtJHeqiqDoXqCN59cxMEo5omyT-rC_vOkND9AXZS85aFF7AV64tRqE9Avk8fM7KBsOeUn1HsJG-YmoDPUvFIdZWNal0HwFPAUq3A4IUQOXphtdEcKO18lAKLZ7oFQjFp4zhk6UTuz8bmohVtvsMre4nDshxMDQtW8LOi_NVLrVF9Bn1AtCtpkcvzzmN6mU4_8?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6HLXayvJwrMcLD15QciuDeP6OU2VHH8RGt802Vu57uIbdlx6wB3EJbR1r2wk0mL4E8us6EqgtYDVepuu6WCuNdb1Hz6aBor-B_wxTWiMkgcyDEv8bGN3oXdERIdjKy6ZLVvIswVVJr0-CIhjM59UmtMnpTIg0DUjL20cxoLlAC10f-ilqWvYdcm-IOcNEesyY4scGmG2Met8yGx8kRo4jPMTPbP1gAGqMefJijv63yj9EAR9I0yUmZbhk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ТЦК г.Сум.<br>Тип объекта: ППД<br>Дата: 2026.03.18<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/drive/folders/1ZoH9kV31_kY3-GsO0-CtWpbjXb2fzr4f?usp=drive_link<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4V24wloH6CimKE0MpqmjnyU7PmyQtWmH75lEAyKuZ4it7Ghz4CFYZ1AfipMUZj014xlCSnBm88c3BU5xtwjEgNo1xOtqSBaKjpL4gGme_AP0tEqWNvTexL3YPOLcQ2PGlHDhxayVTO3oMY4YxBn3zGXhj4TkP2rnKKz1p0HYXNng7BX8eFtq-I4F51IrRsxjCuDWNt52mpd3BTdv66DWw9FnbxHaElimLikN5qTXqkvm1Iu7k9k0UuCgc?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
       <styleUrl>#icon-1826-FFEA00</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -8206,7 +8172,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://drive.google.com/drive/folders/1ZoH9kV31_kY3-GsO0-CtWpbjXb2fzr4f?usp=drive_link</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ExxJPHpoLeL1aCGvsaMeMlJGpKtk8FZiFoA5u1rVppZNlbi1ZXQDCQE1zNTudgLqoEEE7l2B7XUzGrrlnKaBwPGOtakCjwdEGF1CLS9dl2-CZI7wH898WdjX63ZPGkguuRb3pGDWwTFP7GVsI1mp8Yqa0VvcvvFBoZ0zfgW5zG2AVY1wxV0XiOzttnaI-oa3YlG9JfaAsVrErzPq8jRu6uc-0xntYtgTTXJyfG_HKZxAeJ2JLcmUaABI?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5ZcYCELCWpFWoKtX1H29los_IoiNPnkWI6_r17fHfe5WnjR61lNrpSwQGtJHeqiqDoXqCN59cxMEo5omyT-rC_vOkND9AXZS85aFF7AV64tRqE9Avk8fM7KBsOeUn1HsJG-YmoDPUvFIdZWNal0HwFPAUq3A4IUQOXphtdEcKO18lAKLZ7oFQjFp4zhk6UTuz8bmohVtvsMre4nDshxMDQtW8LOi_NVLrVF9Bn1AtCtpkcvzzmN6mU4_8?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6HLXayvJwrMcLD15QciuDeP6OU2VHH8RGt802Vu57uIbdlx6wB3EJbR1r2wk0mL4E8us6EqgtYDVepuu6WCuNdb1Hz6aBor-B_wxTWiMkgcyDEv8bGN3oXdERIdjKy6ZLVvIswVVJr0-CIhjM59UmtMnpTIg0DUjL20cxoLlAC10f-ilqWvYdcm-IOcNEesyY4scGmG2Met8yGx8kRo4jPMTPbP1gAGqMefJijv63yj9EAR9I0yUmZbhk?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4V24wloH6CimKE0MpqmjnyU7PmyQtWmH75lEAyKuZ4it7Ghz4CFYZ1AfipMUZj014xlCSnBm88c3BU5xtwjEgNo1xOtqSBaKjpL4gGme_AP0tEqWNvTexL3YPOLcQ2PGlHDhxayVTO3oMY4YxBn3zGXhj4TkP2rnKKz1p0HYXNng7BX8eFtq-I4F51IrRsxjCuDWNt52mpd3BTdv66DWw9FnbxHaElimLikN5qTXqkvm1Iu7k9k0UuCgc?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -9358,7 +9324,7 @@ https://t.me/Osintpen/2446</value>
     </Placemark>
     <Placemark>
       <name>1 апреля, Липча, подстанция</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6GG640nzZqNtjaHP2VPd1qbmQEJENL0ly1CAhdbrnYOcgdK6w6m7pjJclhXlbFsnNHK88SbTiAJ2q19rbitlQ8H2flncX-ViX8YVaR80PVhjLxeSGrgeyMTkRmdJnRErT2xebY4EbnaQLcZQzt9SEAKIXeIVkO7Zno5gniIk5fi64fHLwpdUllD9VEwHq8XZNilY7Keyn_eLNnx0OE4kHAoI-g1nX_w5ya8tf1tR2wHEvqI3yg-qao4mc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Попадание БпЛА по подстанции без значимого урона, так же один БпЛА, судя по всему, упал в поле рядом.<br><br>Тип объекта: Подстанция<br>Дата: 2026.04.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/geranium_chronicles/61469<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6dPF7D3jwoCUtcLpDbyH-a1cF17eW23nd7bESsxpy_fp9ljDCyzqE8f_1gsve3Sgfx7__gMeRkS8A27e2UOVN4iMrisy-0jowWJYiB0jpZQnc1DEtPBggScwrz6uv7Kue6eHPemLNKv6KA9Yt5vtvk11aQmLAas5E4ZcYtiuNDJKlwI-rqHmMUYIDB__D6eu3whD5nImEw9kzRPVQ4OZMeQYzPt7-G9Y7-bnuZBKQyKgJsqGXE7AoXNUw?authuser=0&fife=s16383" height="200" width="auto" /><br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6YpCrGQgnqiPlHDKRKK5rgd9Rprr4y7BJYQtgR6ZE4H9Fsb4zTfZj8m17-2B5NKM5QroUlSsSgtFb6-4o47mpD6YFX2yxM8Ja0_9eX0S38KH_Nw1cVUhsZZBCnspnVb1BIkkJSVLsRkUjdQSaE8H1zWVoR1YmAwBMIaIV0F8AK27BlallE74NSYxE_ScU4YJpePY7o-ZTtGmS7YCmvrLag-lbB518zxBxsxa_0z5ZmpXUVsGCKIrZIBX8?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6AHPd7dvtC_owUP4viIbFX7vjqXLQnz422S_MniJSXYjgwMjd0j6G0GBWeTbvtbFVpXI8EOt-x1NE71WlMKXWu0HHM6_zHf3MhymosfdH42KByREUeYha2zYGYfbdYu7Cl9zexeJu52Hj-iaqGmijdvpnPm6YIhMhacIxmiFxxyT85TT3kzXQ-cFCTteuUCdEjn3-Xw3Q7bytBmuclWSjqAQnamRdHjweKTDLV4htCFM6-34d5XoHzRnA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Попадание БпЛА по подстанции без значимого урона, так же один БпЛА, судя по всему, упал в поле рядом.<br><br>Тип объекта: Подстанция<br>Дата: 2026.04.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/geranium_chronicles/61469<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5CKYm0mjQLSiQtEhoHnrEXlTa-0y9BlsCMy2rI1Rfd8AuWwC6-8l_tp9hLSP2Atd5U9CB7capoqQVdcwkVinAeXfmoht4sGHGd__BMvZeyWlmUqyTRbZRzjYDH_d3MSaoVrwFri1IsnNkurqCSTF5rocmjzAZrJv5L0oaU6KyZcAvevTn2QOoDFgQxuwkTuGdhczK8ApUIa4KS362XGqlhL5Mbsjook0vZjeC6M83jofpGZWW7Xg4A5II?authuser=0&fife=s16383" height="200" width="auto" /><br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6xDkZafF8eaLnHMFW1uyu5glJgqtcc62XYEXWB5moaDRS_esf00HjHZp6ni4w3qe1kNZVNpqKBeSml9xDpnMg5-8xo9ReMoZw5CQsa-EOSth8kxySNo3gdCejYJcCZvYJOEx7ca7VS4C11adtJYha8bDMYaxzG-UNufxhqX0pQ9xok4ndUsSe9HDHcwnN7YVfSt8F36FvAaQT1uvjLrRMx_dsQFRp3mAvtNZm9oItk73I3LzYZS0lKsjE?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -9378,7 +9344,7 @@ https://t.me/Osintpen/2446</value>
           <value>https://t.me/geranium_chronicles/61469</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6GG640nzZqNtjaHP2VPd1qbmQEJENL0ly1CAhdbrnYOcgdK6w6m7pjJclhXlbFsnNHK88SbTiAJ2q19rbitlQ8H2flncX-ViX8YVaR80PVhjLxeSGrgeyMTkRmdJnRErT2xebY4EbnaQLcZQzt9SEAKIXeIVkO7Zno5gniIk5fi64fHLwpdUllD9VEwHq8XZNilY7Keyn_eLNnx0OE4kHAoI-g1nX_w5ya8tf1tR2wHEvqI3yg-qao4mc?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6dPF7D3jwoCUtcLpDbyH-a1cF17eW23nd7bESsxpy_fp9ljDCyzqE8f_1gsve3Sgfx7__gMeRkS8A27e2UOVN4iMrisy-0jowWJYiB0jpZQnc1DEtPBggScwrz6uv7Kue6eHPemLNKv6KA9Yt5vtvk11aQmLAas5E4ZcYtiuNDJKlwI-rqHmMUYIDB__D6eu3whD5nImEw9kzRPVQ4OZMeQYzPt7-G9Y7-bnuZBKQyKgJsqGXE7AoXNUw?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6YpCrGQgnqiPlHDKRKK5rgd9Rprr4y7BJYQtgR6ZE4H9Fsb4zTfZj8m17-2B5NKM5QroUlSsSgtFb6-4o47mpD6YFX2yxM8Ja0_9eX0S38KH_Nw1cVUhsZZBCnspnVb1BIkkJSVLsRkUjdQSaE8H1zWVoR1YmAwBMIaIV0F8AK27BlallE74NSYxE_ScU4YJpePY7o-ZTtGmS7YCmvrLag-lbB518zxBxsxa_0z5ZmpXUVsGCKIrZIBX8?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6AHPd7dvtC_owUP4viIbFX7vjqXLQnz422S_MniJSXYjgwMjd0j6G0GBWeTbvtbFVpXI8EOt-x1NE71WlMKXWu0HHM6_zHf3MhymosfdH42KByREUeYha2zYGYfbdYu7Cl9zexeJu52Hj-iaqGmijdvpnPm6YIhMhacIxmiFxxyT85TT3kzXQ-cFCTteuUCdEjn3-Xw3Q7bytBmuclWSjqAQnamRdHjweKTDLV4htCFM6-34d5XoHzRnA?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5CKYm0mjQLSiQtEhoHnrEXlTa-0y9BlsCMy2rI1Rfd8AuWwC6-8l_tp9hLSP2Atd5U9CB7capoqQVdcwkVinAeXfmoht4sGHGd__BMvZeyWlmUqyTRbZRzjYDH_d3MSaoVrwFri1IsnNkurqCSTF5rocmjzAZrJv5L0oaU6KyZcAvevTn2QOoDFgQxuwkTuGdhczK8ApUIa4KS362XGqlhL5Mbsjook0vZjeC6M83jofpGZWW7Xg4A5II?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6xDkZafF8eaLnHMFW1uyu5glJgqtcc62XYEXWB5moaDRS_esf00HjHZp6ni4w3qe1kNZVNpqKBeSml9xDpnMg5-8xo9ReMoZw5CQsa-EOSth8kxySNo3gdCejYJcCZvYJOEx7ca7VS4C11adtJYha8bDMYaxzG-UNufxhqX0pQ9xok4ndUsSe9HDHcwnN7YVfSt8F36FvAaQT1uvjLrRMx_dsQFRp3mAvtNZm9oItk73I3LzYZS0lKsjE?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -10267,7 +10233,7 @@ P.S. как удалось выяснить промаха не было, про
     </Placemark>
     <Placemark>
       <name>4 апреля, н.п.Киряково, IRIS-T</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5LtQ8P5moNjwWp-IsVF7e5aj4XaZfNAFHlLU0xZ7Dk24-eHQuKkG_cqxAFM2Lo4-n_3ZjJqTavP2mlZ-eFdEJX6qU3dhrMvXKQwfXFVG-iM4Yr55vVEOuoQUvsvuiqxfKO43n59FfFonno9xQ49XJmkgXFQ8ImlfkJIirDq_-6pswzegMaqzBLIyfrEYiYaldD9fMO4m1zXWfzcR_ojgTRn3zYSrIAQOS6BJ6LMpl3cET-8HVLQKdBJ38?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ПВО у н.п.Киряково, Полтавской области, предположительно, 4 апреля 2026г.<br><br>Виден определённый артефакт на Сетенеле в виде почернения, возможно, было горение травы рядом с техникой, как минимум попадание точно произошло.<br>Тип объекта: ПВО, РЛС и ракетное вооружение<br>Дата: 2026.04.04<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/The_Wrong_Side/28701<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5k174bmumPxDJw_iTQ_wwx3DmPu3sAGbG6duKrOzV1qDZvQ83JoBKd6F_DfWFb_MIz-UUhB4rhCGW8UgXKH-TUlySvD-DLjSDQNY-XvlxtdkKSXSPsmptAlUBwblnUYq1Fg1U4zTAfLQrh7aXSVW8cG8lpagPUMtTtnqtaR_jG1pj9Xe3o_CLCkWIXQLa4byxByAyOhAq5gFVCm6haoa5Lk5IKsf0AVWIXwGfid-090FOwSKnKG3BczmM?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7002iOJaDqofl1rRhDwGFLdOoHrZfEsabYY7BqqBmQEP0wxwbjeB5QjAd3gR5iouN9VKe-6_OsDQSKK0SkKrUHfVUXhHw0aDp5BW4cFVCfykGjyuFWR2KVWJHc5iAgR7wljwa_Ar0ib3iOwLWNiRnjCUd6AvW96agYNWpe02OQDi6a0DYuqMIBhANx2oyfZicUXYzlev25tJoljuGGqDqq467GosXBkvYcZSCSWY1a8dRBB4H1LIsTTMw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по ПВО у н.п.Киряково, Полтавской области, предположительно, 4 апреля 2026г.<br><br>Виден определённый артефакт на Сетенеле в виде почернения, возможно, было горение травы рядом с техникой, как минимум попадание точно произошло.<br>Тип объекта: ПВО, РЛС и ракетное вооружение<br>Дата: 2026.04.04<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/The_Wrong_Side/28701<br><br><img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5EzwGoKLfSL_zNq3PN1RJpLdZaIZMzOgdd9UYOng8WRqG2Ph5L1ryloDT8eVZgz44P3ClPr9F5ANRcmWtXcPcJUerCVoPr3z0BkjWQ6Cx0qQ1PZFn3GEwCgwLDAf7h5mRm7Js-PF8yhhX7X4T17xq5QnmzNRMiwHhRyxFQsLUd7wpcmIz2vFd6GJp9OHFKNi8VVMbYxoseA7e7RCkXgp33SovibSdcvMJhJoWNBBwqe-12KroX4rkBh1o?authuser=0&fife=s16383" height="200" width="auto" />]]></description>
       <styleUrl>#icon-1856-E65100</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -10288,7 +10254,7 @@ P.S. как удалось выяснить промаха не было, про
           <value>https://t.me/The_Wrong_Side/28701</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5LtQ8P5moNjwWp-IsVF7e5aj4XaZfNAFHlLU0xZ7Dk24-eHQuKkG_cqxAFM2Lo4-n_3ZjJqTavP2mlZ-eFdEJX6qU3dhrMvXKQwfXFVG-iM4Yr55vVEOuoQUvsvuiqxfKO43n59FfFonno9xQ49XJmkgXFQ8ImlfkJIirDq_-6pswzegMaqzBLIyfrEYiYaldD9fMO4m1zXWfzcR_ojgTRn3zYSrIAQOS6BJ6LMpl3cET-8HVLQKdBJ38?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5k174bmumPxDJw_iTQ_wwx3DmPu3sAGbG6duKrOzV1qDZvQ83JoBKd6F_DfWFb_MIz-UUhB4rhCGW8UgXKH-TUlySvD-DLjSDQNY-XvlxtdkKSXSPsmptAlUBwblnUYq1Fg1U4zTAfLQrh7aXSVW8cG8lpagPUMtTtnqtaR_jG1pj9Xe3o_CLCkWIXQLa4byxByAyOhAq5gFVCm6haoa5Lk5IKsf0AVWIXwGfid-090FOwSKnKG3BczmM?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7002iOJaDqofl1rRhDwGFLdOoHrZfEsabYY7BqqBmQEP0wxwbjeB5QjAd3gR5iouN9VKe-6_OsDQSKK0SkKrUHfVUXhHw0aDp5BW4cFVCfykGjyuFWR2KVWJHc5iAgR7wljwa_Ar0ib3iOwLWNiRnjCUd6AvW96agYNWpe02OQDi6a0DYuqMIBhANx2oyfZicUXYzlev25tJoljuGGqDqq467GosXBkvYcZSCSWY1a8dRBB4H1LIsTTMw?authuser=0&fife=s16383 https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5EzwGoKLfSL_zNq3PN1RJpLdZaIZMzOgdd9UYOng8WRqG2Ph5L1ryloDT8eVZgz44P3ClPr9F5ANRcmWtXcPcJUerCVoPr3z0BkjWQ6Cx0qQ1PZFn3GEwCgwLDAf7h5mRm7Js-PF8yhhX7X4T17xq5QnmzNRMiwHhRyxFQsLUd7wpcmIz2vFd6GJp9OHFKNi8VVMbYxoseA7e7RCkXgp33SovibSdcvMJhJoWNBBwqe-12KroX4rkBh1o?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -10787,7 +10753,7 @@ P.S. как удалось выяснить промаха не было, про
     </Placemark>
     <Placemark>
       <name>20 апреля, г.Тростянец, депо</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4VwEPzHC-OBJ_NF07enzZA5ykTuiTiWAULzhODujegJd0HmhenaGzVnVM6kP5NQXrelsseL__x8sXuGdif3HWIH313CS17S59szjPWyjtGthDK3LBInMtyMg6RVGIkzBMcU5GlSzqRgjAXxqL_wGNuTFUUAJT3qI7LR34mzdqA4R2uCJR6FIAQppMgzP6MRv-1rbu8ihvxJrqz0N8jx4zDfyD0h1DbYa-yDJnjo0HN-tZFmLVZslaaUPI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по одному из зданий депо "Смородино". Определили место по номеру дизельпоезда 2ТЭ116-1474.<br>Не геолоцировано.<br>Тип объекта: ЖД инфраструктура<br>Дата: 2026.04.20<br>Средства поражения: БплА<br>Ссылка: https://drive.google.com/file/d/1KrE3K6bv2KZUaD8zWCtT3P4FTatMDVHN/view?usp=drive_link]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4JrRK4ua4B87yIw-Yu0cSzn9rD5QVK7eLjIpl_GAuB5Q9Zgnzk0xGfTOHeUq-pBznRk550N3p8Aedc98k3CYHZWBxNEOhOWugP86Kpe3Mwei_7XFuNuEeaFPHPauXuI6n9LoCNOcWI_ZPfbd3P9b_7PACEchujOKeNSlcYZCLSaxsBOazGO5hyoXIzL8ZTPo3SCkhGZD36wjb-_ne52EoTkL92V4dhtFFEKSiXVhUm17XAR7IzDWTXSME?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по одному из зданий депо "Смородино". Определили место по номеру дизельпоезда 2ТЭ116-1474.<br>Не геолоцировано.<br>Тип объекта: ЖД инфраструктура<br>Дата: 2026.04.20<br>Средства поражения: БплА<br>Ссылка: https://drive.google.com/file/d/1KrE3K6bv2KZUaD8zWCtT3P4FTatMDVHN/view?usp=drive_link]]></description>
       <styleUrl>#icon-1716-1A237E</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -10807,7 +10773,7 @@ P.S. как удалось выяснить промаха не было, про
           <value>https://drive.google.com/file/d/1KrE3K6bv2KZUaD8zWCtT3P4FTatMDVHN/view?usp=drive_link</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4VwEPzHC-OBJ_NF07enzZA5ykTuiTiWAULzhODujegJd0HmhenaGzVnVM6kP5NQXrelsseL__x8sXuGdif3HWIH313CS17S59szjPWyjtGthDK3LBInMtyMg6RVGIkzBMcU5GlSzqRgjAXxqL_wGNuTFUUAJT3qI7LR34mzdqA4R2uCJR6FIAQppMgzP6MRv-1rbu8ihvxJrqz0N8jx4zDfyD0h1DbYa-yDJnjo0HN-tZFmLVZslaaUPI?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4JrRK4ua4B87yIw-Yu0cSzn9rD5QVK7eLjIpl_GAuB5Q9Zgnzk0xGfTOHeUq-pBznRk550N3p8Aedc98k3CYHZWBxNEOhOWugP86Kpe3Mwei_7XFuNuEeaFPHPauXuI6n9LoCNOcWI_ZPfbd3P9b_7PACEchujOKeNSlcYZCLSaxsBOazGO5hyoXIzL8ZTPo3SCkhGZD36wjb-_ne52EoTkL92V4dhtFFEKSiXVhUm17XAR7IzDWTXSME?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -11534,7 +11500,7 @@ P.S. как удалось выяснить промаха не было, про
     </Placemark>
     <Placemark>
       <name>30 апреля, г.Краматорск, АЗС</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4TS_hcXRtQuLh35IkUfWoC8mgAax_0qECPLYdL_1gQI_HHCOaUv4L2fPKl_ywX2fbRsZdGG_kIr9qezuKqY5cdImo8j2JPAkEKAVF-TmHR-tdtbHjD8qUhPwne0UPUMaAADk2foNS8EpGxS6wcP83jpnO7ZqUY10TThOd-eRGTLVcIr7wbjnn8-fm7t0g07ilsRazhX_rXW2b2-u-vonXcwQdFr5dPm02N-US7xS3EdZrcxL96sQ6hktI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по двум горизонтальным резервуарам на АЗС.<br>Тип объекта: АЗС<br>Дата: 2026.04.30<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/donbass24_7/101025]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6-FwMJJce_Up2LG1ElAOgzPRnJoZJr8yFRK1u8BiveNGoiVI2eCUkkEXzjZaRPgKjR9wUZ5CUOYrkwdXZl3GPweDYQ_bvtdypmOAMyg-hnTIIJE8BWyocLnnVa_zRu2jTWkWpOvkV-G5BiZhma2H1Xq1qPnwZD1-mJ4kEpd0iL3HUXWOq9oqaHc6k1OsVd8nwCJx-u8rvhXV4eBXMpnWH5E1dTU-pj3WrB0J1d2eowG0ywqI1rjcrnl5M?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар БпЛА по двум горизонтальным резервуарам на АЗС.<br>Тип объекта: АЗС<br>Дата: 2026.04.30<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/donbass24_7/101025]]></description>
       <styleUrl>#icon-1581-424242</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -11553,7 +11519,7 @@ P.S. как удалось выяснить промаха не было, про
           <value>https://t.me/donbass24_7/101025</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4TS_hcXRtQuLh35IkUfWoC8mgAax_0qECPLYdL_1gQI_HHCOaUv4L2fPKl_ywX2fbRsZdGG_kIr9qezuKqY5cdImo8j2JPAkEKAVF-TmHR-tdtbHjD8qUhPwne0UPUMaAADk2foNS8EpGxS6wcP83jpnO7ZqUY10TThOd-eRGTLVcIr7wbjnn8-fm7t0g07ilsRazhX_rXW2b2-u-vonXcwQdFr5dPm02N-US7xS3EdZrcxL96sQ6hktI?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6-FwMJJce_Up2LG1ElAOgzPRnJoZJr8yFRK1u8BiveNGoiVI2eCUkkEXzjZaRPgKjR9wUZ5CUOYrkwdXZl3GPweDYQ_bvtdypmOAMyg-hnTIIJE8BWyocLnnVa_zRu2jTWkWpOvkV-G5BiZhma2H1Xq1qPnwZD1-mJ4kEpd0iL3HUXWOq9oqaHc6k1OsVd8nwCJx-u8rvhXV4eBXMpnWH5E1dTU-pj3WrB0J1d2eowG0ywqI1rjcrnl5M?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -11730,7 +11696,7 @@ P.S. как удалось выяснить промаха не было, про
     </Placemark>
     <Placemark>
       <name>3 мая, г.Днепропетровск, общежитие</name>
-      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7bWrmoE-LkOzjp0GUi4h9jngL_SBj1jwqav4NyyZTzya1XvL5NiQLTm-mX11zwHKyGB9TgtN3vKyp5Q5DOzzvXxU5DYRWl9XpnVeKh_2goKAlG7qxntlCKWxJLmieV__UjD0L3qXcFmKO3eMtfAzmH14ykNjjf9b-RnRgJN5cXszmPpztDMLOa3Cwk4xjHAGYnuNGr5o0xIbZd29j4xNRFElwM6WoVF19gS_1OotYyTuw-oUwvvfB1X5U?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар Искандера с воздушным подрывом по общежитию ВУЗа.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.05.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/dnipropetrovskaODA/29208]]></description>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6yMSBdIQPo7_IjI_npg2VTy9jqEAZ7EtL_wwdko3NtbqT5sUsO5fHAKn-mH2ZH1OJ7nTHxv5fyH12vPXuUCVV81mXXEl5b_ISEP0PX0qyV3lv5E31qJ2t1ngzxusaVFo1Bl36N1qAz8h_6MwJy0625RFumW-mpqJPmxlutEf3-MpGj2kncfJV3wEWyInC48Hm9xXe2xZmpmtjdhG0wnFshTBDxZeRxHy5Y3YmVrlc1q7Ci8iXWyzVU9eU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>описание: Удар Искандера с воздушным подрывом по общежитию ВУЗа.<br>Тип объекта: Объект неустановленного назначения<br>Дата: 2026.05.03<br>Средства поражения: Ракеты<br>Ссылка: https://t.me/dnipropetrovskaODA/29208]]></description>
       <styleUrl>#icon-1594-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -11749,7 +11715,7 @@ P.S. как удалось выяснить промаха не было, про
           <value>https://t.me/dnipropetrovskaODA/29208</value>
         </Data>
         <Data name="gx_media_links">
-          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7bWrmoE-LkOzjp0GUi4h9jngL_SBj1jwqav4NyyZTzya1XvL5NiQLTm-mX11zwHKyGB9TgtN3vKyp5Q5DOzzvXxU5DYRWl9XpnVeKh_2goKAlG7qxntlCKWxJLmieV__UjD0L3qXcFmKO3eMtfAzmH14ykNjjf9b-RnRgJN5cXszmPpztDMLOa3Cwk4xjHAGYnuNGr5o0xIbZd29j4xNRFElwM6WoVF19gS_1OotYyTuw-oUwvvfB1X5U?authuser=0&fife=s16383]]></value>
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6yMSBdIQPo7_IjI_npg2VTy9jqEAZ7EtL_wwdko3NtbqT5sUsO5fHAKn-mH2ZH1OJ7nTHxv5fyH12vPXuUCVV81mXXEl5b_ISEP0PX0qyV3lv5E31qJ2t1ngzxusaVFo1Bl36N1qAz8h_6MwJy0625RFumW-mpqJPmxlutEf3-MpGj2kncfJV3wEWyInC48Hm9xXe2xZmpmtjdhG0wnFshTBDxZeRxHy5Y3YmVrlc1q7Ci8iXWyzVU9eU?authuser=0&fife=s16383]]></value>
         </Data>
       </ExtendedData>
       <Point>
@@ -13678,7 +13644,7 @@ P.S. как удалось выяснить промаха не было, про
     <Placemark>
       <name>25 апреля, н.п. Светлое, МОГ</name>
       <description><![CDATA[описание: Удар БпЛА по ПВО у н.п.Светлое, Днепропетровской области, предположительно, в ночь на 25 апреля 2026г.<br><br>Тип объекта: ПВО, РЛС и ракетное вооружение<br>Дата: 2026.04.25<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/2965]]></description>
-      <styleUrl>#icon-1856-F57C00</styleUrl>
+      <styleUrl>#icon-1856-E65100</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>Удар БпЛА по ПВО у н.п.Светлое, Днепропетровской области, предположительно, в ночь на 25 апреля 2026г.
@@ -26328,19 +26294,18 @@ P.S. как удалось выяснить промаха не было, про
       </Point>
     </Placemark>
     <Placemark>
-      <name>5 июня, н.п. Хильчичи, Подстанция</name>
-      <description><![CDATA[описание: Удар БпЛА по энергоинфраструктуре у н.п.Хильчичи, Сумской области между 26 мая и 5 июня 2026г.<br><br>Тип объекта: Подстанция<br>Дата: 2026.06.05<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/4403]]></description>
+      <name>конец мая, н.п. Хильчичи, Подстанция</name>
+      <description><![CDATA[описание: Удар БпЛА по энергоинфраструктуре у н.п.Хильчичи, Сумской области в конце мая.<br>Тип объекта: Подстанция<br>Дата: 2026.05.26<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/4403]]></description>
       <styleUrl>#icon-1619-9C27B0</styleUrl>
       <ExtendedData>
         <Data name="описание">
-          <value>Удар БпЛА по энергоинфраструктуре у н.п.Хильчичи, Сумской области между 26 мая и 5 июня 2026г.
-</value>
+          <value>Удар БпЛА по энергоинфраструктуре у н.п.Хильчичи, Сумской области в конце мая.</value>
         </Data>
         <Data name="Тип объекта">
           <value>Подстанция</value>
         </Data>
         <Data name="Дата">
-          <value>2026.06.05</value>
+          <value>2026.05.26</value>
         </Data>
         <Data name="Средства поражения">
           <value>БпЛА</value>
@@ -28163,7 +28128,7 @@ P.S. как удалось выяснить промаха не было, про
     </Placemark>
     <Placemark>
       <name>13 августа, г.Раздельная, локомотив</name>
-      <description><![CDATA[описание: Атака на ЕДК-500.<br><br>Урон не установлен.<br>Тип объекта: <br>Дата: <br>Средства поражения: <br>Ссылка: ]]></description>
+      <description><![CDATA[описание: Атака на ЕДК-500.<br><br>Урон не установлен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/4747]]></description>
       <styleUrl>#icon-1719-7CB342</styleUrl>
       <ExtendedData>
         <Data name="описание">
@@ -28172,16 +28137,16 @@ P.S. как удалось выяснить промаха не было, про
 Урон не установлен.</value>
         </Data>
         <Data name="Тип объекта">
-          <value/>
+          <value>Поезда и локомотивы</value>
         </Data>
         <Data name="Дата">
-          <value/>
+          <value>2026.09.11</value>
         </Data>
         <Data name="Средства поражения">
-          <value/>
+          <value>БпЛА</value>
         </Data>
         <Data name="Ссылка">
-          <value/>
+          <value>https://t.me/osint_alarm/4747</value>
         </Data>
       </ExtendedData>
       <Point>
@@ -33825,7 +33790,7 @@ P.S. как удалось выяснить промаха не было, про
     <Placemark>
       <name>22 августа, г. Раздельная, ЖД инфраструктура</name>
       <description><![CDATA[описание: Удар БпЛА по ЖД инфраструктуре в г.Раздельная, Одесской области 22 августа 2026г.<br>Тип объекта: ЖД инфраструктура<br>Дата: 2026.08.22<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5297]]></description>
-      <styleUrl>#icon-1716-3949AB</styleUrl>
+      <styleUrl>#icon-1716-1A237E</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>Удар БпЛА по ЖД инфраструктуре в г.Раздельная, Одесской области 22 августа 2026г.</value>
@@ -33933,7 +33898,7 @@ P.S. как удалось выяснить промаха не было, про
     <Placemark>
       <name>5 сентября, г. Павлоград, Автостоянка</name>
       <description><![CDATA[описание: Удар БпЛА по стоянке грузового транспорта в г.Павлоград, 5 сентября 2026г.<br><br>Тип объекта: Стоянка грузового транспорта<br>Дата: 2026.09.05<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5310]]></description>
-      <styleUrl>#icon-1644-3949AB</styleUrl>
+      <styleUrl>#icon-1644-01579B</styleUrl>
       <ExtendedData>
         <Data name="описание">
           <value>Удар БпЛА по стоянке грузового транспорта в г.Павлоград, 5 сентября 2026г.
@@ -33955,6 +33920,64 @@ P.S. как удалось выяснить промаха не было, про
       <Point>
         <coordinates>
           35.8829424,48.5485804,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8 сентября, н.п.Степановка, локомотив</name>
+      <description><![CDATA[описание: Атака на ЧМЭ3-2508.<br><br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотив<br>Дата: 2026.09.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5338]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЧМЭ3-2508.
+
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотив</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.08</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5338</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.6727243,50.9422293,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8 сентября, н.п.Степановка, локомотив</name>
+      <description><![CDATA[описание: Атака на ЧМЭ3-2298.<br><br>Локомотив уничтожен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5338]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЧМЭ3-2298.
+
+Локомотив уничтожен.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.08</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5338</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.6728809,50.9422215,0
         </coordinates>
       </Point>
     </Placemark>
@@ -33984,6 +34007,740 @@ P.S. как удалось выяснить промаха не было, про
       <Point>
         <coordinates>
           36.0199,48.97422,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8 сентября, г.Вольнянск, локомотив</name>
+      <description><![CDATA[описание: Атака на ЭПЛ2Т-027.<br><br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5344]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЭПЛ2Т-027.
+
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.08</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5344</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.439,47.94346,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8 сентября, н.п.Лекарское, локомотив</name>
+      <description><![CDATA[описание: Атака ДР1А-23*.<br><br>Локомотив уничтожен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.08<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5352]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака ДР1А-23*.
+
+Локомотив уничтожен.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.08</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5352</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.52507,50.98662,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>9 сентября, н.п.Искра, локомотив</name>
+      <description><![CDATA[описание: Атака на ЭР2Т-7101.<br><br>Уничтожена секция локомотива.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.09<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5380]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЭР2Т-7101.
+
+Уничтожена секция локомотива.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.09</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5380</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.26862,49.30818,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2 сентября, н.п.Губиниха, локомотив</name>
+      <description><![CDATA[описание: Атака на ТЭП-0047.<br><br>Локомотив повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.02<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5395]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ТЭП-0047.
+
+Локомотив повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5395</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.27325,48.81273,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>июнь, г.Вольнянск, стоянка</name>
+      <description><![CDATA[описание: <br>Тип объекта: Стоянка грузового транспорта<br>Дата: 2026.06.25<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5179]]></description>
+      <styleUrl>#icon-1644-01579B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Стоянка грузового транспорта</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.06.25</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5179</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.46615,47.94543,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>июнь, н.п.Городня, стоянка</name>
+      <description><![CDATA[описание: <br>Тип объекта: Стоянка грузового транспорта<br>Дата: 2026.06.25<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5179]]></description>
+      <styleUrl>#icon-1644-01579B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Стоянка грузового транспорта</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.06.25</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5179</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.621467,51.893527,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>июль, н.п.Городня, стоянка</name>
+      <description><![CDATA[описание: <br>Тип объекта: БпЛА<br>Дата: 2026.07.01<br>Средства поражения: Стоянка грузового транспорта<br>Ссылка: https://t.me/osint_alarm/5179]]></description>
+      <styleUrl>#icon-1644-01579B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.07.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>Стоянка грузового транспорта</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5179</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.57692,51.89351,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>июль, г.Сновск, стоянка</name>
+      <description><![CDATA[описание: <br>Тип объекта: Стоянка грузового транспорта<br>Дата: 2026.07.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5179]]></description>
+      <styleUrl>#icon-1644-01579B</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Стоянка грузового транспорта</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.07.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5179</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.96143,51.798105,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10 сентября, г.Киев</name>
+      <description><![CDATA[описание: Атака на АЗС "Укрнафта".<br>Тип объекта: АЗС<br>Дата: 2026.09.10<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5410]]></description>
+      <styleUrl>#icon-1581-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Атака на АЗС "Укрнафта".]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>АЗС</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.10</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5410</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.45121,50.37481,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10 сентября, г.Вольнянск, локомотив</name>
+      <description><![CDATA[описание: Атака на ВЛ8-1376.<br><br>Уничтожена секция локомотива.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.10<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5416]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ВЛ8-1376.
+
+Уничтожена секция локомотива.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.10</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5416</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.4342,47.94287,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>9 сентября, Каменский район, локомотив</name>
+      <description><![CDATA[описание: Атака на Вл11М-151.<br>Локация не установлена.<br>Локомотив повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.09<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/drive/folders/1ybEfAbkye14Kpxqj_ln30f_9oCh9K7Fq?usp=drive_link]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на Вл11М-151.
+Локация не установлена.
+Локомотив повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.09</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://drive.google.com/drive/folders/1ybEfAbkye14Kpxqj_ln30f_9oCh9K7Fq?usp=drive_link</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.2664293,48.525497,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>10 сентября, Каменский район, локомотив</name>
+      <description><![CDATA[описание: Атака на ВЛ8.<br>Локация не установлена.<br>Уничтожена секция локомотива.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.10<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/drive/folders/1sqtxXmTPP0Y1evkyX8_3AP_9MVz2p-Gd?usp=drive_link]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ВЛ8.
+Локация не установлена.
+Уничтожена секция локомотива.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.10</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://drive.google.com/drive/folders/1sqtxXmTPP0Y1evkyX8_3AP_9MVz2p-Gd?usp=drive_link</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.2688647,48.5275414,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2 апреля, Днепропетровская область, локомотив</name>
+      <description><![CDATA[описание: Атака на ЧС2-426.<br>Локация не установлена. Фото с депо.<br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.04.02<br>Средства поражения: БпЛА<br>Ссылка: https://drive.google.com/drive/folders/1e1MP7l4vbU_j-qBFyC44Z9ZAiGHLzo7c?usp=drive_link]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЧС2-426.
+Локация не установлена. Фото с депо.
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.04.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://drive.google.com/drive/folders/1e1MP7l4vbU_j-qBFyC44Z9ZAiGHLzo7c?usp=drive_link</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.1273075,48.4807547,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>29 июля, г.Никополь, локомотив</name>
+      <description><![CDATA[описание: Атака на ЕЛ21.<br><br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.07.29<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5418]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЕЛ21.
+
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.07.29</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5418</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.35238,47.6323,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>30 июня, г.Марганец, локомотив</name>
+      <description><![CDATA[описание: Атака на ТГМ23В.<br>Локация не установлена.<br>Локомотив повреждён.<br>Тип объекта: БпЛА<br>Дата: 2026.06.30<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5418]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ТГМ23В.
+Локация не установлена.
+Локомотив повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.06.30</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5418</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.7115231,47.6480105,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2 августа, г.Марганец, труп</name>
+      <description><![CDATA[описание: <br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.08.02<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5421]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.08.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5421</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.69409,47.648,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>5 августа, г.Марганец, труп</name>
+      <description><![CDATA[описание: <br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.08.05<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5423]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value/>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.08.05</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5423</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.68673,47.64723,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 сентября, г.Вольнянск, локомотив</name>
+      <description><![CDATA[описание: Атака на ДЭ1-025.<br><br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5434]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ДЭ1-025.
+
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5434</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          34.01372,48.46485,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 сентября, г.Киев</name>
+      <description><![CDATA[описание: Атака на АЗС "Укранафта".<br>Тип объекта: АЗС<br>Дата: 2026.09.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5460]]></description>
+      <styleUrl>#icon-1581-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Атака на АЗС "Укранафта".]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>АЗС</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5460</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.49845,50.48981,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 сентября, г.Киев</name>
+      <description><![CDATA[описание: Атака на АЗС "Укранафта"<br>Тип объекта: АЗС<br>Дата: 2026.09.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5460?single]]></description>
+      <styleUrl>#icon-1581-757575</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value><![CDATA[Атака на АЗС "Укранафта"]]></value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>АЗС</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5460?single</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          30.60456,50.49556,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11 сентября, г.Барвенково, локомотив</name>
+      <description><![CDATA[описание: Атака на ТГК2-6122.<br><br>Локомотив уничтожен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.11<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5457]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ТГК2-6122.
+
+Локомотив уничтожен.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.11</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5457</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.025,48.89648,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>сентябрь, г.Запорожье, локомотив</name>
+      <description><![CDATA[описание: Атака на ТЭМ2.<br><br>Локомотив повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5454]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ТЭМ2.
+
+Локомотив повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5454</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.1900129,47.87152,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>сентябрь, г.Запорожье, локомотив</name>
+      <description><![CDATA[описание: Атака на ТЭМ2.<br><br>Локомотив уничтожен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5454]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ТЭМ2.
+
+Локомотив уничтожен.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5454</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.19033,47.87136,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2 сентября, н.п.Самойловка, локомотив</name>
+      <description><![CDATA[описание: Атака на МПТ-4\6.<br><br>Локомотив уничтожен.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.02<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5452]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на МПТ-4\6.
+
+Локомотив уничтожен.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.02</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5452</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          36.22931,48.77106,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>сентябрь, н.п.Варваровка, локомотив</name>
+      <description><![CDATA[описание: Атака на ЧМЭ3.<br><br>Локомотив сильно повреждён.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5450]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака на ЧМЭ3.
+
+Локомотив сильно повреждён.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5450</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          35.98274,48.70206,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>сентябрь, н.п.Доброе, вагон</name>
+      <description><![CDATA[описание: Атака, предположительно, на вагон.<br>Тип объекта: Поезда и локомотивы<br>Дата: 2026.09.01<br>Средства поражения: БпЛА<br>Ссылка: https://t.me/osint_alarm/5448]]></description>
+      <styleUrl>#icon-1719-7CB342</styleUrl>
+      <ExtendedData>
+        <Data name="описание">
+          <value>Атака, предположительно, на вагон.</value>
+        </Data>
+        <Data name="Тип объекта">
+          <value>Поезда и локомотивы</value>
+        </Data>
+        <Data name="Дата">
+          <value>2026.09.01</value>
+        </Data>
+        <Data name="Средства поражения">
+          <value>БпЛА</value>
+        </Data>
+        <Data name="Ссылка">
+          <value>https://t.me/osint_alarm/5448</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.47015,47.31895,0
         </coordinates>
       </Point>
     </Placemark>
