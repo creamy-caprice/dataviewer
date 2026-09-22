@@ -832,21 +832,34 @@ function getProfileIdsBySearchDigits(digits) {
 
     const reBr = /#Бр_(\d+)/g;
     const rePk = /#Пк_(\d+)/g;
-
+    const reBt = /#Бт_(\d+)/g;
+    const reGw = /#ГВ_(\d+)/g;
+	
     for (const msg of window.unitsUaData.messages) {
         const text = getMessageText(msg);
         let found = false;
 
-        // Проверяем все вхождения #Бр_ (не прерываем)
+        // Проверяем все вхождения #Бр_
         let match;
         while ((match = reBr.exec(text)) !== null) {
             if (match[1] === digits) {
                 found = true;
-                // Можно продолжать, но break не ставим, чтобы не прерывать
             }
         }
-        // Проверяем все вхождения #Пк_ (всегда, даже если уже found)
+        // Проверяем все вхождения #Пк_
         while ((match = rePk.exec(text)) !== null) {
+            if (match[1] === digits) {
+                found = true;
+            }
+        }
+        // Проверяем все вхождения #Бт_
+        while ((match = reBt.exec(text)) !== null) {
+            if (match[1] === digits) {
+                found = true;
+            }
+        }
+        // Проверяем все вхождения #ГВ_
+        while ((match = reGw.exec(text)) !== null) {
             if (match[1] === digits) {
                 found = true;
             }
