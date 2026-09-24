@@ -296,10 +296,11 @@
 }
 
 #units-search-input {
-    width: 60px;
+    min-width: 60px;
+    width: 120px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    padding: 2px 20px 2px 4px;  /* правый отступ для крестика */
+    padding: 2px 20px 2px 4px;
     font-size: 14px;
 }
 

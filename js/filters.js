@@ -834,39 +834,69 @@ function getProfileIdsBySearchDigits(digits) {
     const rePk = /#Пк_(\d+)/g;
     const reBt = /#Бт_(\d+)/g;
     const reGw = /#ГВ_(\d+)/g;
-	
+
     for (const msg of window.unitsUaData.messages) {
         const text = getMessageText(msg);
         let found = false;
 
-        // Проверяем все вхождения #Бр_
         let match;
         while ((match = reBr.exec(text)) !== null) {
-            if (match[1] === digits) {
-                found = true;
-            }
+            if (match[1] === digits) found = true;
         }
-        // Проверяем все вхождения #Пк_
         while ((match = rePk.exec(text)) !== null) {
-            if (match[1] === digits) {
-                found = true;
-            }
+            if (match[1] === digits) found = true;
         }
-        // Проверяем все вхождения #Бт_
         while ((match = reBt.exec(text)) !== null) {
-            if (match[1] === digits) {
-                found = true;
-            }
+            if (match[1] === digits) found = true;
         }
-        // Проверяем все вхождения #ГВ_
         while ((match = reGw.exec(text)) !== null) {
-            if (match[1] === digits) {
-                found = true;
-            }
+            if (match[1] === digits) found = true;
         }
 
         if (found) {
             const idMatch = text.match(/^ID\s*:\s*(\d+)/m);
+            if (idMatch) result.add(idMatch[1]);
+        }
+    }
+    return result;
+}
+
+// Функция поиска профилей по буквенному названию
+// точное совпадение названия для всех тегов: Пк_, Бр_, Бт_, ГВ_, АК_
+function getProfileIdsBySearchText(text) {
+    const result = new Set();
+    if (!window.unitsUaData || !window.unitsUaData.messages) return result;
+
+    // Ищем по всем тегам, точное совпадение названия после подчеркивания
+    const reBr = /#Бр_([А-Яа-яA-Za-z]+)/g;
+    const rePk = /#Пк_([А-Яа-яA-Za-z]+)/g;
+    const reBt = /#Бт_([А-Яа-яA-Za-z]+)/g;
+    const reGw = /#ГВ_([А-Яа-яA-Za-z]+)/g;
+    const reAk = /#АК_([А-Яа-яA-Za-z]+)/g;
+
+    for (const msg of window.unitsUaData.messages) {
+        const fullText = getMessageText(msg);
+        let found = false;
+
+        let match;
+        while ((match = reBr.exec(fullText)) !== null) {
+            if (match[1] === text) found = true;
+        }
+        while ((match = rePk.exec(fullText)) !== null) {
+            if (match[1] === text) found = true;
+        }
+        while ((match = reBt.exec(fullText)) !== null) {
+            if (match[1] === text) found = true;
+        }
+        while ((match = reGw.exec(fullText)) !== null) {
+            if (match[1] === text) found = true;
+        }
+        while ((match = reAk.exec(fullText)) !== null) {
+            if (match[1] === text) found = true;
+        }
+
+        if (found) {
+            const idMatch = fullText.match(/^ID\s*:\s*(\d+)/m);
             if (idMatch) result.add(idMatch[1]);
         }
     }
@@ -1203,8 +1233,10 @@ function reloadUnitsUaLayer() {
         let filterSet = null;
         if (window.unitsSearchDigits) {
             filterSet = window.getProfileIdsBySearchDigits(window.unitsSearchDigits);
-            if (filterSet.size === 0) filterSet = new Set();
+        } else if (window.unitsSearchText) {
+            filterSet = window.getProfileIdsBySearchText(window.unitsSearchText);
         }
+        if (filterSet && filterSet.size === 0) filterSet = new Set();
         loadUnitsUaWithDateFilter(currentDate, filterSet).then(() => {
             // Убедимся, что слой существует (защита от null)
             if (!window.unitsUaLayer) {
@@ -1223,8 +1255,13 @@ function applyUnitsSearch() {
     const raw = input.value.trim();
     if (raw && /^\d{1,3}$/.test(raw)) {
         window.unitsSearchDigits = raw;
+        window.unitsSearchText = null;
+    } else if (raw && raw.length > 0) {
+        window.unitsSearchText = raw;
+        window.unitsSearchDigits = null;
     } else {
         window.unitsSearchDigits = null;
+        window.unitsSearchText = null;
         input.value = '';
     }
     reloadUnitsUaLayer();
@@ -1244,8 +1281,10 @@ async function toggleUnitsUa() {
         let filterSet = null;
         if (window.unitsSearchDigits) {
             filterSet = window.getProfileIdsBySearchDigits(window.unitsSearchDigits);
-            if (filterSet.size === 0) filterSet = new Set();
+        } else if (window.unitsSearchText) {
+            filterSet = window.getProfileIdsBySearchText(window.unitsSearchText);
         }
+        if (filterSet && filterSet.size === 0) filterSet = new Set();
         try {
             await loadUnitsUaWithDateFilter(currentDate, filterSet);
         } catch (err) {
@@ -1283,6 +1322,7 @@ async function toggleUnitsUa() {
             const input = document.getElementById('units-search-input');
             if (input) input.value = '';
             window.unitsSearchDigits = null;
+            window.unitsSearchText = null;
         }
         window.isUnitsUaVisible = false;
         btn.classList.remove('active');
@@ -1316,8 +1356,7 @@ function initUnitsUaButton() {
     searchPanel.style.display = 'none';
     searchPanel.innerHTML = `
         <span class="units-search-input-wrap">
-            <input type="text" id="units-search-input" placeholder="123" maxlength="3"
-                   inputmode="numeric" pattern="[0-9]*">
+            <input type="text" id="units-search-input" placeholder="Номер/Название">
             <button id="units-search-clear" class="units-search-clear-inside" title="Очистить">✕</button>
         </span>
         <button id="units-search-btn" title="Поиск">🔍</button>
@@ -1338,7 +1377,7 @@ function initUnitsUaButton() {
     searchClearBtn.addEventListener('click', () => {
         searchInput.value = '';
         window.unitsSearchDigits = null;
-        // input event автоматически скроет крестик
+        window.unitsSearchText = null;
         reloadUnitsUaLayer();
     });
     searchInput.addEventListener('keypress', (e) => {
