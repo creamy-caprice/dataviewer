@@ -139,6 +139,9 @@ function initDatePicker() {
             // Перезагружаем точки с новым фильтром
             reloadPointsWithCurrentFilter();
             
+            // Перезагружаем архивную линию ЛБС для новой даты
+            loadArchiveFrontLine();
+            
             // Ищем ближайшую доступную дату (раньше или равную)
             const nearestDate = findNearestEarlierDate(dateStr);
             const index = kmlFiles.findIndex(file => file.name === nearestDate);
@@ -1454,11 +1457,136 @@ async function loadPermanentKmlLayers() {
     }
 }
 
+// ===== Динамическая загрузка линий ЛБС =====
+
+// Находит ближайшую доступную дату FrontLine (<= заданной дате)
+function findClosestFrontLineDate(selectedDateStr) {
+    const frontLineStart = parseCustomDate("01.02.25");
+    const selectedDate = parseCustomDate(selectedDateStr);
+    
+    if (selectedDate < frontLineStart) return null;
+    
+    for (let i = window.dateList.length - 1; i >= 0; i--) {
+        const d = parseCustomDate(window.dateList[i]);
+        if (d <= selectedDate && d >= frontLineStart) {
+            return window.dateList[i];
+        }
+    }
+    return null;
+}
+
+// Возвращает последнюю доступную дату FrontLine
+function getLatestFrontLineDate() {
+    const frontLineStart = parseCustomDate("01.02.25");
+    for (let i = window.dateList.length - 1; i >= 0; i--) {
+        const d = parseCustomDate(window.dateList[i]);
+        if (d >= frontLineStart) {
+            return window.dateList[i];
+        }
+    }
+    return null;
+}
+
+// Применяет множитель непрозрачности ко всем слоям в layerGroup
+function applyLayerGroupOpacity(layerGroup, factor) {
+    layerGroup.getLayers().forEach(layer => {
+        const opts = layer.options || {};
+        const newOpts = {};
+        let changed = false;
+        if (opts.opacity !== undefined) { newOpts.opacity = opts.opacity * factor; changed = true; }
+        if (opts.fillOpacity !== undefined) { newOpts.fillOpacity = opts.fillOpacity * factor; changed = true; }
+        if (changed) layer.setStyle(newOpts);
+    });
+}
+
+// Загружает текущую (последнюю) линию ЛБС — всегда видна, полная непрозрачность
+let frontLineCurrentToken = 0;
+
+async function loadCurrentFrontLine() {
+    const token = ++frontLineCurrentToken;
+    
+    const latestDate = getLatestFrontLineDate();
+    if (!latestDate) {
+        if (window.frontLineCurrentGroup) {
+            if (map.hasLayer(window.frontLineCurrentGroup)) map.removeLayer(window.frontLineCurrentGroup);
+            window.frontLineCurrentGroup = null;
+        }
+        return;
+    }
+    
+    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(latestDate)}.kml`;
+    console.log("Загрузка текущей FrontLine:", path);
+    
+    try {
+        const layerGroup = L.layerGroup();
+        await loadKmlToLayer(path, layerGroup, {
+            isPermanent: true,
+            preserveZoom: true,
+            fitBounds: false
+        });
+        if (token !== frontLineCurrentToken) return;
+        layerGroup.addTo(map);
+        if (window.frontLineCurrentGroup) {
+            if (map.hasLayer(window.frontLineCurrentGroup)) map.removeLayer(window.frontLineCurrentGroup);
+            window.frontLineCurrentGroup = null;
+        }
+        window.frontLineCurrentGroup = layerGroup;
+    } catch (error) {
+        console.error("Ошибка загрузки текущей FrontLine:", error);
+    }
+}
+
+// Загружает архивную линию ЛБС для выбранной даты — 50% непрозрачности
+let frontLineArchiveToken = 0;
+
+async function loadArchiveFrontLine() {
+    const token = ++frontLineArchiveToken;
+    
+    const dateStr = window.selectedDate || getCurrentDateFormatted();
+    const latestDate = getLatestFrontLineDate();
+    const flDate = findClosestFrontLineDate(dateStr);
+    
+    // Если выбранная дата = последней или архив недоступен — убираем архивную линию
+    if (!flDate || flDate === latestDate) {
+        if (window.frontLineArchiveGroup) {
+            if (map.hasLayer(window.frontLineArchiveGroup)) map.removeLayer(window.frontLineArchiveGroup);
+            window.frontLineArchiveGroup = null;
+        }
+        return;
+    }
+    
+    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(flDate)}.kml`;
+    console.log("Загрузка архивной FrontLine:", path);
+    
+    try {
+        const layerGroup = L.layerGroup();
+        await loadKmlToLayer(path, layerGroup, {
+            isPermanent: true,
+            preserveZoom: true,
+            fitBounds: false
+        });
+        if (token !== frontLineArchiveToken) return;
+        // Фиксированный стиль архивной линии: 70% непрозрачности + пунктир
+        layerGroup.getLayers().forEach(layer => {
+            layer.setStyle({ opacity: 0.7, dashArray: '3 3' });
+        });
+        layerGroup.addTo(map);
+        if (window.frontLineArchiveGroup) {
+            if (map.hasLayer(window.frontLineArchiveGroup)) map.removeLayer(window.frontLineArchiveGroup);
+            window.frontLineArchiveGroup = null;
+        }
+        window.frontLineArchiveGroup = layerGroup;
+    } catch (error) {
+        console.error("Ошибка загрузки архивной FrontLine:", error);
+    }
+}
 
 
 
 async function reloadKmlForCRS(center, zoom) {
     await loadPermanentKmlLayers();
+    await loadCurrentFrontLine();
+    await loadArchiveFrontLine();
     if (currentLayer){        
         const file = kmlFiles[currentIndex];
         try {
@@ -2124,6 +2252,8 @@ async function navigateTo(index) {
         if (window.reloadUnitsUaLayer) {
             window.reloadUnitsUaLayer();
         }
+        // Перезагружаем архивную линию ЛБС для новой даты
+        loadArchiveFrontLine();
     }
 }
 
@@ -2283,6 +2413,9 @@ document.getElementById('next-btn').addEventListener('click', async () => {
         // Обновляем фильтр точек
         updatePointsDateFilterForSelectedDate();
         await reloadPointsWithCurrentFilter();
+        
+        // Перезагружаем архивную линию ЛБС
+        loadArchiveFrontLine();
     }
     
     // Обновляем состояние кнопок
@@ -2317,6 +2450,9 @@ document.getElementById('last-btn').addEventListener('click', async () => {
         
         // Перезагружаем точки с новым фильтром
         await reloadPointsWithCurrentFilter();
+        
+        // Перезагружаем архивную линию ЛБС
+        loadArchiveFrontLine();
         
         // Обновляем состояние кнопок
         updateButtons();
@@ -2571,6 +2707,10 @@ async function init() {
     } else {
         console.log('Не найдено доступных KML файлов для загрузки');
     }
+
+    // Шаг 8.1: Загружаем линии ЛБС (текущую и архивную)
+    await loadCurrentFrontLine();
+    await loadArchiveFrontLine();
 	
 	// Маркер при загрузке координат из url
     const urlCoords = getUrlCoords();

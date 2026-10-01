@@ -51,7 +51,13 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
         switch(type) {
             case "ControlZones":
                 return `kml/ControlZones/Control_${formattedDate}.kml`;
-                        case "Progress":
+           // case "FrontLine":
+            //    return `kml/FrontLine/FrontLine_${formattedDate}.kml`;
+            //case "ProgressRuAF":
+            //    return `kml/Progress/RuAF/ProgressRuAF_${formattedDate}.kml`;
+            //case "ProgressAFU":
+            //    return `kml/Progress/AFU/ProgressAFU_${formattedDate}.kml`;
+            case "Progress":
                 return `kml/Progress/Progress_${formattedDate}.kml`;
             default:
                 return null;
@@ -72,8 +78,8 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 
 // Постоянные слои
 window.permanentLayers = [
-    // Текущая ЛБС
-    { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_09_30.kml" },
+    // Текущая ЛБС (загружается динамически по дате)
+    // { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_09_30.kml" },
       // Граница ЛДНР без Ростовской области
     { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
     //Конституционная граница РФ
@@ -119,9 +125,8 @@ window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
     start: null,
     end: null
  };
-
+ 
 window.milequipKmlPaths = ["kml/Geolocations/Military_equipment.kml"];
-window.milequipLayers = [];
 
 
 window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
@@ -129,7 +134,6 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 							  "kml/Geolocations/osint_alarm_2024.kml",
 							  "kml/Geolocations/osint_alarm_2025.kml",
                               "kml/Geolocations/osint_alarm_2026.kml"];
-window.attacksOnUaLayers = [];
 
 
 window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson",
@@ -200,94 +204,5 @@ window.ICON_MAPS = {
     }
 };
 window.ICON_SIZES = { points: [20, 14], equipment: [28, 28], attacks: [28, 28] };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
