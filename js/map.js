@@ -112,11 +112,27 @@ const initialCenter = urlCoords ? [urlCoords.lat, urlCoords.lng] : defaultCoords
 const initialZoom = urlCoords ? urlCoords.zoom : defaultZoom;
 
 // === Создание карты с правильным центром ===
-const map = L.map('map', { preferCanvas: true }).setView(initialCenter, initialZoom);
-// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    // attribution: '© OpenStreetMap'
-// }).addTo(map);
+const map = L.map('map', { preferCanvas: true, zoomControl: false }).setView(initialCenter, initialZoom);
 window.osm.addTo(map);
+
+// === Кнопки масштаба: правый нижний угол на десктопе, левый верхний на мобильных ===
+let zoomControlInstance = null;
+function positionZoomControl() {
+    const isMobile = window.innerWidth <= 768;
+    const pos = isMobile ? 'topleft' : 'bottomright';
+    if (zoomControlInstance) {
+        map.removeControl(zoomControlInstance);
+        zoomControlInstance = null;
+    }
+    zoomControlInstance = L.control.zoom({ position: pos });
+    zoomControlInstance.addTo(map);
+}
+positionZoomControl();
+let _zoomResizeTimer = null;
+window.addEventListener('resize', () => {
+    clearTimeout(_zoomResizeTimer);
+    _zoomResizeTimer = setTimeout(positionZoomControl, 150);
+});
 
 
 // Добавляем обработчик изменения масштаба
