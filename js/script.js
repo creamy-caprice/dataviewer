@@ -796,8 +796,8 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 	        this.setStyle(this._originalStyle);
 	    });
 	    
-	    // Если есть имя – добавляем тултип
-	    if (name && name.trim() !== '' && !name.includes('Control_')) {
+	    // Если есть имя – добавляем тултип (на мобильных отключён)
+	    if (!isMobileDevice() && name && name.trim() !== '' && !name.includes('Control_')) {
 	        let tooltipText = name.replace(/<[^>]*>/g, '');
 	        layer.bindTooltip(tooltipText, {
 	            sticky: true,
