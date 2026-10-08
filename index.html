@@ -32,7 +32,7 @@
             <div class="view-menu-container mobile">
                 <button class="view-menu-btn">☰</button>
                 <div class="view-dropdown">
-                    <button id="map-btn" class="view-btn active">Карта</button> 
+                    <button id="map-btn" class="view-btn active">Карта</button>
                 <!-- <button id="stats1-btn" class="view-btn">Статистика</button> -->
                 <!-- <button id="stats2-btn" class="view-btn">Потери ВСУ</button> -->
                     
@@ -61,7 +61,7 @@
             <div class="view-dropdown">
                 <button id="map-btn-desktop" class="view-btn active">Карта</button>
                 <!-- <button id="stats1-btn-desktop" class="view-btn">Статистика</button> -->
-            	<!-- <button id="stats2-btn-desktop" class="view-btn">Потери ВСУ</button> -->
+                <!-- <button id="stats2-btn-desktop" class="view-btn">Потери ВСУ</button> -->
                 
                 <button id="tlg-btn-desktop" class="view-btn tlg-btn">Гугл-карта</button>
                 <button id="donate-btn-desktop" class="view-btn donate-btn">Сбор на СВО</button>
@@ -167,9 +167,15 @@
 						</button>
 
                         <div class="city-coord-group hideable-nav-item">
+                            <!-- Кнопка быстрого перемещения по городам отключена:
+                                 чтобы вернуть — раскомментируйте select ниже,
+                                 а также вызовы populateCitiesDropdown() в js/script.js и js/language.js
+                                 и 'cities-dropdown' в elementsToClone (js/script.js, initDartMenu) -->
+                            <!--
                             <select id="cities-dropdown">
                                 <option value="" selected disabled id="select-city-default">🏘</option>
                             </select>
+                            -->
                             <div class="current-center">
                                 <label id="currentCenter-label" data-translate="currentCenter">Текущий центр:</label>
                                 <span id="current-center-coords" class="current-coords-display"></span>

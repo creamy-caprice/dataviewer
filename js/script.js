@@ -2511,40 +2511,44 @@ function findNextAvailableDate(targetDateStr) {
 
 
 // Заполнение выпадающего списка городов
-// Обработчик выбора города
+// Обработчики выбора города отключены вместе со списком городов (чтобы вернуть —
+// раскомментируйте select #cities-dropdown в index.html и блоки ниже)
+/*
 document.getElementById('cities-dropdown').addEventListener('change', async function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
-    
+
     const city = cities.find(c => c.name.ru === selectedCityName);
     if (city) {
         // Обновляем все поля ввода
         const coordsInput = document.getElementById('coords-input');
         const coordsClone = document.getElementById('coords-input-clone');
-        
+
         if (coordsInput) coordsInput.value = `${city.lat}, ${city.lng}`;
         if (coordsClone) coordsClone.value = `${city.lat}, ${city.lng}`;
-        
+
         centerMap(city.lat, city.lng);
         this.value = "";
     }
 });
+*/
 
-// Обработчик выбора города
+/*
 citiesDropdown.addEventListener('change', function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
-    
+
     const city = cities.find(c => c.name === selectedCityName);
     if (city) {
         // Заполняем поле координат
         coordsInput.value = `${city.lat}, ${city.lng}`;
         centerMap(city.lat, city.lng);
-        
+
         // Сбрасываем выбор
         this.value = "";
     }
 });
+*/
 
 // обработчик перемещения карты
 map.on('moveend', function() {
@@ -2687,7 +2691,7 @@ async function init() {
     initFullscreenControl();
 
     // Шаг 6: Инициализируем другие UI компоненты
-    populateCitiesDropdown();
+    // populateCitiesDropdown(); // отключено: список городов убран из панели (функция сохранена)
     document.querySelector('.date-navigator-wrapper').style.display = 'block';
 
     // Шаг 7: Ждем когда все элементы интерфейса будут доступны
@@ -3279,10 +3283,10 @@ function initDartMenu() {
     
     // Клонируем только необходимые элементы
     const elementsToClone = [
-        'centerOn-label',
+        // 'centerOn-label',   // надпись «Центрировать на» убрана из мобильной панели (можно вернуть)
         'coords-input',
         'copy-coords-external-btn',
-        'cities-dropdown',
+        // 'cities-dropdown',  // быстрый переход по городам убран (функции populateCitiesDropdown сохранены)
         'currentCenter-label',
         'current-center-coords',
         'copy-coords-btn'
@@ -3312,6 +3316,24 @@ function initDartMenu() {
     
     navDropdown.appendChild(container);
     console.log(`[initDartMenu] В nav-dropdown добавлено ${clonedItems.length} элементов`);
+
+    // Мобильный компактный ряд: [строка поиска + крестик][лупа][копирование]
+    // Ряд строится синхронно; обёртка .input-with-clear (крестик) и лупа
+    // добавляются позже автоматически, порядок задаётся CSS order
+    const inputCloneEl = document.getElementById('coords-input-clone');
+    const copyCloneEl = document.getElementById('copy-coords-external-btn-clone');
+    if (inputCloneEl && copyCloneEl) {
+        copyCloneEl.classList.remove('dropdown-item'); // иначе кнопка растягивается на 100% ширины
+        let rowEl = inputCloneEl.parentElement;
+        if (!(rowEl && rowEl.classList.contains('input-search-row'))) {
+            const newRow = document.createElement('div');
+            newRow.className = 'input-search-row';
+            inputCloneEl.parentNode.insertBefore(newRow, inputCloneEl);
+            newRow.appendChild(inputCloneEl);
+            rowEl = newRow;
+        }
+        rowEl.appendChild(copyCloneEl); // переносим кнопку копирования в ряд
+    }
 
     setupCopyCoordsButton(); // Повторная инициализация обработчиков копирования
 

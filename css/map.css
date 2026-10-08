@@ -173,7 +173,6 @@
     background: white;
     border: 1px solid #ddd;
     border-radius: 4px;
-    padding: 15px;
     z-index: 3000;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     min-width: 250px;
@@ -218,7 +217,7 @@
     padding: 10px;
 }
 
-/* Для мобильной адаптации */
+/* Для мобильной адаптации: лупа открывает поле с компактным рядом [поиск + крестик][лупа][копировать] */
 @media (max-width: 1200px) { /* Когда схлопываем в дартс-меню (лупа) */
     #nav-menu-toggle {
         display: flex !important;
@@ -235,22 +234,57 @@
     .hideable-nav-item {
         display: none !important;
     }
-    
+
+    /* Надпись «Центрировать на» и блок быстрого перехода по городам убраны из мобильной панели */
+    #centerOn-label,
+    .city-coord-group {
+        display: none !important;
+    }
+
     .nav-dropdown {
         min-width: 300px;
         width: auto;
-	    z-index: 3001 !important;
+ 	    z-index: 3001 !important;
     }
-    
-    .coord-input,
-    #cities-dropdown {
+
+    /* Компактный ряд поиска в открываемом поле: [поле + крестик][лупа][копирование] */
+    .nav-dropdown .input-search-row {
+        display: flex;
+        align-items: center;
+        gap: 4px;
         width: 100%;
-        max-width: 200px;
-        height: 22px;
     }
-	
+
+    .nav-dropdown .input-search-row > .input-with-clear {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: auto;
+        order: 1;
+    }
+
+    .nav-dropdown .input-search-row > .input-with-clear > input {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: 100%;
+        height: 28px;
+    }
+
+    .nav-dropdown .input-search-row .search-input-btn {
+        flex: 0 0 auto;
+        margin: 0;
+        order: 2;
+    }
+
+    .nav-dropdown .input-search-row .copy-input-btn.external {
+        flex: 0 0 auto;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        order: 3;
+    }
+
     .leaflet-top.leaflet-right {
-	    z-index: 1000 !important;
+ 	    z-index: 1000 !important;
     }
     
     
@@ -267,6 +301,7 @@
     #centerOn-label {
         display: none !important;
     }
+
     .leaflet-control-zoom{ 
         display: block;
     }
@@ -335,8 +370,12 @@
 	text-align: center;
 }
 
-.nav-dropdown #copy-coords-external-btn-clone{
-	width:100%;
+/* Старое правило (кнопка копирования отдельной строкой) отключено:
+   теперь кнопка находится в поисковом ряду .input-search-row с фиксированной шириной */
+/* .nav-dropdown #copy-coords-external-btn-clone{ width:100%; } */
+.nav-dropdown .input-search-row #copy-coords-external-btn-clone {
+    width: 30px;
+    flex: 0 0 auto;
 }
 
 .nav-dropdown .current-center {
