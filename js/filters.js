@@ -1370,7 +1370,7 @@ function initUnitsUaButton() {
     searchPanel.style.display = 'none';
     searchPanel.innerHTML = `
         <span class="units-search-input-wrap">
-            <input type="text" id="units-search-input" placeholder="Номер/Название">
+            <input type="text" id="units-search-input" placeholder="Номер/Название" enterkeyhint="search">
             <button id="units-search-clear" class="units-search-clear-inside" title="Очистить">✕</button>
         </span>
         <button id="units-search-btn" title="Поиск">🔍</button>
@@ -1394,7 +1394,8 @@ function initUnitsUaButton() {
         window.unitsSearchText = null;
         reloadUnitsUaLayer();
     });
-    searchInput.addEventListener('keypress', (e) => {
+    // keydown (а не устаревший keypress): надёжно срабатывает и с виртуальной клавиатурой (Gboard)
+    searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') applyUnitsSearch();
     });
 
