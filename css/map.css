@@ -418,6 +418,12 @@
     background: #fff;
     border-radius: 5px;
     padding: 10px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.leaflet-control-layers label,
+.leaflet-control-layers legend {
+    font-family: 'Roboto', Arial, sans-serif;
 }
 .leaflet-control-layers:not(.leaflet-control-layers-expanded) {
     display: none !important;

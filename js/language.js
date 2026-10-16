@@ -24,6 +24,7 @@ const translations = {
         range3Months: "3 месяца",
         rangeYear: "1 год",
         rangeAll: "Все",
+        customDaysPlaceholder: "Дней",
 		
         showEquipment: 'Техника',
         // hideEquipment: 'Скрыть технику',
@@ -68,7 +69,16 @@ const translations = {
         
         viewSwitchTlg:  "Гугл-карта",
         viewSwitchDon:  "Сбор на СВО",
-        viewSwitchInfo: "Инфо"
+        viewSwitchInfo: "Инфо",
+        
+        dateRangeFilter: "Фильтр по дате",
+        showPoints: "Показать боевые действия",
+        hidePoints: "Скрыть боевые действия",
+        unitsSearchPlaceholder: "Номер/Название",
+        clearSearch: "Очистить",
+        searchBtn: "Поиск",
+        addMarkerTitle: "Маркер",
+        fullscreenTitle: "Полноэкранный режим"
     },
     en: {
         title: "Creamy caprice dataviewer",
@@ -94,6 +104,7 @@ const translations = {
         range3Months: "3 months",
         rangeYear: "1 year",
         rangeAll: "All",
+        customDaysPlaceholder: "Days",
 		
         showEquipment: 'Equipment',
         // hideEquipment: 'Hide equipment',
@@ -138,7 +149,16 @@ const translations = {
         
         viewSwitchTlg:  "Google-map",
         viewSwitchDon:  "Donate",
-        viewSwitchInfo: "Info"
+        viewSwitchInfo: "Info",
+        
+        dateRangeFilter: "Date filter",
+        showPoints: "Show combat actions",
+        hidePoints: "Hide combat actions",
+        unitsSearchPlaceholder: "Number/Name",
+        clearSearch: "Clear",
+        searchBtn: "Search",
+        addMarkerTitle: "Marker",
+        fullscreenTitle: "Fullscreen mode"
     }
 };
 
@@ -198,6 +218,30 @@ function updateMeasureControlLanguage(lang) {
     }
 }
 
+// Безопасное обновление элементов (не падаем, если элемента нет в DOM)
+function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+}
+
+function setTitle(id, title) {
+    const el = document.getElementById(id);
+    if (el) el.title = title;
+}
+
+// Обновляем кнопку-переключатель языка: показываем флаг того языка,
+// на который можно переключиться
+function updateLangToggle() {
+    const isRu = currentLang === 'ru';
+    ['lang-toggle', 'lang-toggle-desktop'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.classList.toggle('show-ru', !isRu);
+        btn.classList.toggle('show-en', isRu);
+        btn.title = isRu ? "Переключить на Английский" : "Switch to Russian";
+    });
+}
+
 // Функция переключения языка
 function setLanguage(lang) {
     currentLang = lang;
@@ -205,54 +249,59 @@ function setLanguage(lang) {
     
     // Сохраняем текущие координаты перед обновлением текста
     const coordsElement = document.getElementById('current-center-coords');
-    const currentText = coordsElement.textContent;
+    const currentText = coordsElement ? coordsElement.textContent : '';
     const coordsRegex = /[-]?\d+\.\d+,\s*[-]?\d+\.\d+/;
     const match = currentText.match(coordsRegex);
     const savedCoords = match ? match[0] : null;
     
-    // Обновляем title кнопок
-    document.getElementById('lang-ru').title = 
-        lang === 'ru' ? "Текущий язык: Русский" : "Переключить на Русский";
-    
-    document.getElementById('lang-en').title = 
-        lang === 'en' ? "Current language: English" : "Switch to English";
+    updateLangToggle();
     
     // Обновляем текст элементов
-    document.getElementById('page-title').textContent = t.title;
-    //document.getElementById('site-logo').alt = t.logoAlt;
-    // document.getElementById('main-title').textContent = t.title;
-    document.getElementById('centerOn-label').textContent = t.centerLabel;
-    document.getElementById('coords-input').placeholder = t.coordsPlaceholder;
-    // document.getElementById('select-city-default').textContent = t.selectCity;
+    setText('page-title', t.title);
+    setText('centerOn-label', t.centerLabel);
+    const coordsInput = document.getElementById('coords-input');
+    if (coordsInput) coordsInput.placeholder = t.coordsPlaceholder;
     
-    document.getElementById('currentCenter-label').textContent = t.currentCenter;
+    setText('currentCenter-label', t.currentCenter);
     // Восстанавливаем координаты после обновления префикса
-    if (savedCoords) {
-        coordsElement.textContent = savedCoords;
-    } else {
-        coordsElement.textContent = t.undefinedCoords;
+    if (coordsElement) {
+        coordsElement.textContent = savedCoords || t.undefinedCoords;
     }
     
-    document.getElementById('copy-coords-btn').title = t.copyTooltip;
-	
-    document.getElementById('map-btn'   ).textContent = t.viewSwitchMap;
-    document.getElementById('stats1-btn').textContent = t.viewSwitchSt1;
-    document.getElementById('stats2-btn').textContent = t.viewSwitchSt2;
-    document.getElementById('tlg-btn'   ).textContent = t.viewSwitchTlg;
-    document.getElementById('donate-btn').textContent = t.viewSwitchDon;
-    document.getElementById('info-btn'  ).textContent = t.viewSwitchInfo;
-    document.getElementById('map-btn-desktop'   ).textContent = t.viewSwitchMap;
-    document.getElementById('stats1-btn-desktop').textContent = t.viewSwitchSt1;
-    document.getElementById('stats2-btn-desktop').textContent = t.viewSwitchSt2;
-    document.getElementById('tlg-btn-desktop'   ).textContent = t.viewSwitchTlg;
-    document.getElementById('donate-btn-desktop').textContent = t.viewSwitchDon;
-    document.getElementById('info-btn-desktop'  ).textContent = t.viewSwitchInfo;
+    setTitle('copy-coords-btn', t.copyTooltip);
+    
+    // Панель поиска подразделений
+    const unitsSearchInput = document.getElementById('units-search-input');
+    if (unitsSearchInput) unitsSearchInput.placeholder = t.unitsSearchPlaceholder;
+    setTitle('units-search-clear', t.clearSearch);
+    setTitle('units-search-btn', t.searchBtn);
+    
+    // Кнопка добавления маркера
+    setTitle('add-marker-btn', t.addMarkerTitle);
+    setTitle('add-marker-btn-clone', t.addMarkerTitle);
+    
+    // Кнопка полноэкранного режима
+    const fullscreenBtn = document.querySelector('.leaflet-control-fullscreen-toggle-btn');
+    if (fullscreenBtn) fullscreenBtn.title = t.fullscreenTitle;
+ 	
+    setText('map-btn'   , t.viewSwitchMap);
+    setText('stats1-btn', t.viewSwitchSt1);
+    setText('stats2-btn', t.viewSwitchSt2);
+    setText('tlg-btn'   , t.viewSwitchTlg);
+    setText('donate-btn', t.viewSwitchDon);
+    setText('info-btn'  , t.viewSwitchInfo);
+    setText('map-btn-desktop'   , t.viewSwitchMap);
+    setText('stats1-btn-desktop', t.viewSwitchSt1);
+    setText('stats2-btn-desktop', t.viewSwitchSt2);
+    setText('tlg-btn-desktop'   , t.viewSwitchTlg);
+    setText('donate-btn-desktop', t.viewSwitchDon);
+    setText('info-btn-desktop'  , t.viewSwitchInfo);
     
     // Обновляем кнопки навигации
-    document.getElementById('first-btn').title = t.firstBtnTitle;
-    document.getElementById('prev-btn').title = t.prevBtnTitle;
-    document.getElementById('next-btn').title = t.nextBtnTitle;
-    document.getElementById('last-btn').title = t.lastBtnTitle;
+    setTitle('first-btn', t.firstBtnTitle);
+    setTitle('prev-btn', t.prevBtnTitle);
+    setTitle('next-btn', t.nextBtnTitle);
+    setTitle('last-btn', t.lastBtnTitle);
 	
 	// Обновление текста в выпадающем списке диапазонов дат
     const rangeOptions = document.querySelectorAll('#date-range-dropdown .range-option');
@@ -264,6 +313,10 @@ function setLanguage(lang) {
 		else if (range === 'year') option.textContent = t.rangeYear;
 		else if (range === 'all') option.textContent = t.rangeAll;
 	});
+	
+	// Плейсхолдер поля "N дней"
+	const customDaysInput = document.getElementById('custom-days-input');
+	if (customDaysInput) customDaysInput.placeholder = t.customDaysPlaceholder;
 	
 	// Обновляем заголовок кнопки фильтра дат
 	if (typeof updateDateRangeButtonTitle === 'function') {
@@ -284,18 +337,6 @@ function setLanguage(lang) {
     
     updateMeasureControlLanguage(lang); // Обновляем тексты линейки
     
-    // Обновляем кнопки языка
-    document.getElementById('lang-ru').title = lang === 'ru' ? "Уже Русский" : "Переключить на Русский";
-    document.getElementById('lang-en').title = lang === 'en' ? "Already English" : "Switch to English";
-    document.getElementById('lang-ru-desktop').title = lang === 'ru' ? "Уже Русский" : "Переключить на Русский";
-    document.getElementById('lang-en-desktop').title = lang === 'en' ? "Already English" : "Switch to English";
-        
-    // Обновляем классы активности
-    document.getElementById('lang-ru').classList.toggle('active', lang === 'ru');
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-    document.getElementById('lang-ru-desktop').classList.toggle('active', lang === 'ru');
-    document.getElementById('lang-en-desktop').classList.toggle('active', lang === 'en');
-    
     // Обновляем список городов
     // populateCitiesDropdown(); // отключено: список городов убран из панели (функция сохранена)
     
@@ -304,12 +345,6 @@ function setLanguage(lang) {
         datePicker.destroy();
     }
     initDatePicker(); // Передаем сохраненную дату
-    
-    // Если координаты не определены, обновляем текст
-    if (document.getElementById('current-center-coords').textContent === 'не определен' || 
-        document.getElementById('current-center-coords').textContent === 'undefined') {
-        document.getElementById('current-center-coords').textContent = t.undefinedCoords;
-    }
     
     // Обновляем текст чекбокса "Все" в фильтре техники
     const equipSelectAll = document.getElementById('equip-select-all');
@@ -386,15 +421,15 @@ document.addEventListener('languageChanged', function(event) {
     initDartMenu(); // Перестраиваем дартс-меню	
 	
 	// фильтр техники
-	initEquipmentFilter();
-    if (window.isMilEquipVisible) {
-        applyEquipmentFilter();
+    if (typeof initEquipmentFilter === 'function') {
+        initEquipmentFilter();
+        if (window.isMilEquipVisible) applyEquipmentFilter();
     }
     
     // фильтр атак
-    initAttacksFilter();
-    if (window.isAttacksVisible) {
-        applyAttacksFilter();
+    if (typeof initAttacksFilter === 'function') {
+        initAttacksFilter();
+        if (window.isAttacksVisible) applyAttacksFilter();
     }
 	
 	// фильтр фортификаций
@@ -405,75 +440,18 @@ document.addEventListener('languageChanged', function(event) {
 	
 });
 
-// Обработчики кнопок переключения языка
-// мобильный
-document.getElementById('lang-ru').addEventListener('click', () => {
-    if (currentLang !== 'ru') setLanguage('ru');
-});
-
-document.getElementById('lang-en').addEventListener('click', () => {
-    if (currentLang !== 'en') setLanguage('en');
-});
-
-document.getElementById('lang-ru').addEventListener('click', function() {
-    if (currentLang !== 'ru') {
-        setLanguage('ru');
-    } else {
-        // Обновляем title для текущего языка
-        const t = translations[currentLang];
-        this.title = t.ruBtnTitle;
-    }
-});
-
-document.getElementById('lang-en').addEventListener('click', function() {
-    if (currentLang !== 'en') {
-        setLanguage('en');
-    } else {
-        // Обновляем title для текущего языка
-        const t = translations[currentLang];
-        this.title = t.enBtnTitle;
-    }
-});
-// десктопный
-document.getElementById('lang-ru-desktop').addEventListener('click', () => {
-    if (currentLang !== 'ru') setLanguage('ru');
-});
-
-document.getElementById('lang-en-desktop').addEventListener('click', () => {
-    if (currentLang !== 'en') setLanguage('en');
-});
-
-document.getElementById('lang-ru-desktop').addEventListener('click', function() {
-    if (currentLang !== 'ru') {
-        setLanguage('ru');
-    } else {
-        // Обновляем title для текущего языка
-        const t = translations[currentLang];
-        this.title = t.ruBtnTitle;
-    }
-});
-
-document.getElementById('lang-en-desktop').addEventListener('click', function() {
-    if (currentLang !== 'en') {
-        setLanguage('en');
-    } else {
-        // Обновляем title для текущего языка
-        const t = translations[currentLang];
-        this.title = t.enBtnTitle;
+// Обработчик кнопки-переключателя языка: каждый клик меняет язык
+['lang-toggle', 'lang-toggle-desktop'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+        btn.addEventListener('click', () => {
+            setLanguage(currentLang === 'ru' ? 'en' : 'ru');
+        });
     }
 });
 
 // Инициализация языка при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     setLanguage(currentLang);
-    
-    // Обработчики кнопок переключения языка
-    document.getElementById('lang-ru').addEventListener('click', () => {
-        if (currentLang !== 'ru') setLanguage('ru');
-    });
-
-    document.getElementById('lang-en').addEventListener('click', () => {
-        if (currentLang !== 'en') setLanguage('en');
-    });
 });
 

@@ -6,7 +6,7 @@
 <!--    <meta property="og:image" content="img/logo.png">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Wallpoet&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Creamy caprice dataviewer</title>
@@ -48,10 +48,12 @@
 			</div>
 
             <!-- Переключатель языка -->
-			<div class="language-switcher mobile">
-				<button id="lang-ru" class="lang-btn" title="Переключить на Русский"><img src="img/flags/ru.svg" alt="RU" class="flag-icon"></button>
-				<button id="lang-en" class="lang-btn" title="Switch to English"><img src="img/flags/en.svg" alt="EN" class="flag-icon"></button>
-			</div>
+ 			<div class="language-switcher mobile">
+ 				<button id="lang-toggle" class="lang-btn" title="Switch to English">
+ 					<img src="img/flags/ru.svg" alt="RU" class="flag-icon flag-ru">
+ 					<img src="img/flags/en.svg" alt="EN" class="flag-icon flag-en">
+ 				</button>
+ 			</div>
             
         </div> <!-- mobile-top-row -->
 			
@@ -96,8 +98,11 @@
                                        <div class="range-option" data-range="week">1 неделя</div>
                                        <div class="range-option" data-range="month">1 месяц</div>
                                        <div class="range-option" data-range="3months">3 месяца</div>
-                                       <div class="range-option" data-range="year">1 год</div>
-                                       <div class="range-option" data-range="all">Все</div>
+                                        <div class="range-option" data-range="year">1 год</div>
+                                        <div class="custom-days-row">
+                                            <input type="number" id="custom-days-input" min="1" step="1" placeholder="Дней" class="custom-days-input">
+                                        </div>
+                                        <div class="range-option" data-range="all">Все</div>
                                    </div>
                                </div>
 
@@ -106,7 +111,7 @@
                                        <img src="img/Кнопка2.png" alt="📍" class="filter-icon">
                                    </button>
 
-                                   <button id="mil-equip-btn" class="filter-btn" title="Техника ВСУ">
+                                   <button id="mil-equip-btn" class="filter-btn" title="Техника ВФУ">
                                     <img src="img/military equipment/Артиллерия.png" alt="🚓" class="filter-icon">
                                 </button>
                                 <div id="equipment-filter-menu" class="equipment-filter-menu">
@@ -147,7 +152,7 @@
                                     </div>
                                 </div>
                             <!-- Кнопка для подразделений ВСУ -->
-                            <button id="units-ua-btn" class="filter-btn" title="Подразделения ВСУ">
+                            <button id="units-ua-btn" class="filter-btn" title="Подразделения ВФУ">
                                 <img src="img/UnitsUA.png" alt="💥" class="filter-icon">
                             </button>
                             </div> <!-- <div class="filter-buttons"> -->
@@ -211,8 +216,10 @@
 			</div>
 			
         <div class="language-switcher desktop-visible">
-            <button id="lang-ru-desktop" class="lang-btn" title="Переключить на Русский"><img src="img/flags/ru.svg" alt="RU" class="flag-icon"></button>
-            <button id="lang-en-desktop" class="lang-btn" title="Switch to English"><img src="img/flags/en.svg" alt="EN" class="flag-icon"></button>
+            <button id="lang-toggle-desktop" class="lang-btn" title="Switch to English">
+                <img src="img/flags/ru.svg" alt="RU" class="flag-icon flag-ru">
+                <img src="img/flags/en.svg" alt="EN" class="flag-icon flag-en">
+            </button>
         </div>
             
 			

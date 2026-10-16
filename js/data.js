@@ -78,23 +78,34 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 
 // Постоянные слои
 window.permanentLayers = [
+	// Области
+		{ name: "Области",        path: "kml/PermanentObjects/Области.kml" },
+	
     // Текущая ЛБС (загружается динамически по дате)
     // { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_09_30.kml" },
-      // Граница ЛДНР без Ростовской области
-    { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
+	
+    // Граница ЛДНР без Ростовской области
+    // { name: "LDPR",                   path: "kml/PermanentObjects/LDPR_line3.kml" },
+	{ name: "LDPR",                   path: "kml/PermanentObjects/LDPR_Border.kml" },
+	
     //Конституционная граница РФ
     { name: "RuUaBorder",             path: "kml/PermanentObjects/RuUaBorder.kml" },
+	
         //Единая линия на 10.10.23
     { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/OffensiveLine_2023_10_10.kml" },
+	//{ name: "Offensive_23_10_10",     path: "kml/PermanentObjects/ЛБС 10102023 СК.kml" },
+	
+	// { name: "Offensive_23_10_10",     path: "kml/PermanentObjects/FrontLine_2023_10_10.kml" },
     //Линия максимального продвижения ВСУ в Курской области.
     { name: "AFU_advance_Kursk2024",  path: "kml/PermanentObjects/AFU_advance_Kursk2024.kml" },
-	//Граница уверенного контроля ВС РФ в зоне ответственности ГВ Восток
-	{ name: "Восток",  path: "kml/PermanentObjects/Восток.kml" },
+	
     // Контур максимального продвижения в Доброполье
-    //{ name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
-	//Границы городов
-	{ name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
-
+     { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
+	{ name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" },
+	
+	// Мультиполигон
+    { name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
+		
 ];
 
 // Список городов с координатами
@@ -118,8 +129,12 @@ window.cities = [
 
 // Управление точками
 // Путь к файлу с точками
-window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
-						  "kml/Geolocations/oldesPoint.kml"];
+// window.pointsKmlPaths = ["kml/Geolocations/2026 год январь.kml",
+//						  "kml/Geolocations/2023-2025.kml"];
+ window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
+                          "kml/Geolocations/oldesPoint.kml"];
+// window.pointsKmlPaths = ["kml/Geolocations/exportToKML.kml"];
+// window.pointsKmlPaths = [];
  window.pointLayers = [];
  window.pointsDateRange = {
     start: null,
@@ -204,5 +219,94 @@ window.ICON_MAPS = {
     }
 };
 window.ICON_SIZES = { points: [20, 14], equipment: [28, 28], attacks: [28, 28] };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

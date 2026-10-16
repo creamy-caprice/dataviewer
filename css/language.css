@@ -8,11 +8,13 @@
     align-items: center; /* Центрируем флаги */
 }
 
-.lang-btn.active {
-  font-weight: bold;
-  background: rgba(0, 0, 0, 0.1);
-  border: 1px solid #999;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.lang-btn .flag-icon {
+  display: none;
+}
+
+.lang-btn.show-ru .flag-ru,
+.lang-btn.show-en .flag-en {
+  display: block;
 }
 
 .lang-btn {

@@ -64,9 +64,10 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    /* min-width: 150px; */
+     min-width: 110px;
 	width: auto;
     margin-top: 5px;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 #date-range-dropdown.show {
@@ -79,6 +80,8 @@
     transition: background 0.2s;
     border-bottom: 1px solid #f0f0f0;
     white-space: nowrap;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1rem;
 }
 
 .range-option:last-child {
@@ -90,8 +93,40 @@
 }
 
 .range-option.active {
-    background: #007bff;
-    color: white;
+    background: #3bc93580;
+    color: #1b5e20;
+}
+
+/* Строка "N дней" в фильтре по времени: поле ввода, применение по Enter */
+.custom-days-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.custom-days-row:last-child {
+    border-bottom: none;
+}
+
+.custom-days-row.active {
+    background: #3bc93580;
+    color: #1b5e20;
+}
+
+.custom-days-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.custom-days-input:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
 /* Для мобильных устройств */
@@ -99,6 +134,16 @@
     .filter-buttons {
         margin-left: 5px;
         gap: 3px;
+    }
+
+    /* На мобильных стрелочки в поле "N дней" не нужны */
+    .custom-days-input::-webkit-outer-spin-button,
+    .custom-days-input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .custom-days-input {
+        -moz-appearance: textfield;
     }
 }
 
@@ -238,7 +283,7 @@
 }
 
 .filter-btn.active {
-    background-color: #4CAF50 !important;
+    background-color: #3bc93580 !important; /* зелёненький */
     color: white !important;
     border-color: #45a049 !important;
 }
@@ -257,7 +302,7 @@
 }
 
 
-/* Стили меню фильтра техники */
+/* Стили меню фильтра техники (также используются для меню ударов и фортификаций) */
 .equipment-filter-menu {
     display: none;
     position: absolute;
@@ -269,6 +314,11 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     max-height: 300px;
     overflow-y: auto;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.equipment-filter-menu label {
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 
@@ -373,3 +423,9 @@
     background: #2563eb;
 }
 
+
+
+/* Все чекбоксы сайта — с зелёной галочкой */
+input[type="checkbox"] {
+    accent-color: #4CAF50;
+}

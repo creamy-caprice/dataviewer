@@ -1365,15 +1365,16 @@ function initUnitsUaButton() {
     if (!btn) return;
 
     // Создаём панель поиска
+    const t = translations[currentLang];
     const searchPanel = document.createElement('div');
     searchPanel.id = 'units-search-panel';
     searchPanel.style.display = 'none';
     searchPanel.innerHTML = `
         <span class="units-search-input-wrap">
-            <input type="text" id="units-search-input" placeholder="Номер/Название" enterkeyhint="search">
-            <button id="units-search-clear" class="units-search-clear-inside" title="Очистить">✕</button>
+            <input type="text" id="units-search-input" placeholder="${t.unitsSearchPlaceholder}" enterkeyhint="search">
+            <button id="units-search-clear" class="units-search-clear-inside" title="${t.clearSearch}">✕</button>
         </span>
-        <button id="units-search-btn" title="Поиск">🔍</button>
+        <button id="units-search-btn" title="${t.searchBtn}">🔍</button>
     `;
     // btn.parentNode.insertBefore(searchPanel, btn.nextSibling);
     document.body.appendChild(searchPanel);
@@ -1404,7 +1405,6 @@ function initUnitsUaButton() {
 
     window.isUnitsUaVisible = false;
     btn.classList.remove('active');
-    const t = translations[currentLang];
     btn.title = t.showUnitsUa || 'Показать подразделения ВСУ';
 }
 
