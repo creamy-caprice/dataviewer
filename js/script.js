@@ -193,28 +193,6 @@ async function loadKmlForNearestDate(index) {
     }
 }
 
-// ===== Загрузка старых точек (oldesPoint.kml) по требованию =====
-let oldPointsLoaded = false;
-
-// Нужен ли файл старых точек для начала диапазона
-function pointsRangeNeedsOldFile(rangeStart) {
-    const cutoff = window.pointsOldCutoff ? parseCustomDate(window.pointsOldCutoff) : null;
-    return !!(cutoff && rangeStart && rangeStart < cutoff);
-}
-
-// Идемпотентно загружает старые точки (докидывает в модель, без перезагрузки)
-async function ensureOldPointsLoaded() {
-    if (oldPointsLoaded) return;
-    oldPointsLoaded = true;
-    const paths = window.pointsKmlPathsOld || [];
-    if (!paths.length) return;
-    const throwawayGroup = L.layerGroup();
-    for (const path of paths) {
-        await loadPointsFromKml(path, throwawayGroup);
-    }
-    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
-}
-
 // Новая функция для перезагрузки точек с текущим фильтром
 async function reloadPointsWithCurrentFilter() {
     // Перезагрузка не нужна — переприменяем фильтр по диапазону дат
@@ -233,10 +211,6 @@ function updatePointsDateFilterForSelectedDate() {
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
     if (window.pointsCanvas) window.pointsCanvas.setDateRange(startDate, currentDate);
-    // Если диапазон ушёл в старые даты — догружаем файл старых точек
-    if (pointsRangeNeedsOldFile(startDate)) {
-        ensureOldPointsLoaded();
-    }
     // Если слой подразделений активен, обновляем его с новой датой
     if (window.reloadUnitsUaLayer) {
         window.reloadUnitsUaLayer();
@@ -554,7 +528,7 @@ function parseLineStyle(style) {
     
     return {
         rawColor: rawColor,
-        color: rawColor ? parseColor(rawColor) : THEME.colors.layerDefault,
+        color: rawColor ? parseColor(rawColor) : '#3388ff',
         weight: width,
         opacity: rawColor ? parseOpacity(rawColor) : 1
     };
@@ -569,7 +543,7 @@ function parsePolyStyle(style) {
 
     return {
         rawColor: rawColor,
-        fillColor: rawColor ? parseColor(rawColor) : THEME.colors.layerDefault,
+        fillColor: rawColor ? parseColor(rawColor) : '#3388ff',
         fillOpacity: rawColor ? parseOpacity(rawColor) : 0.5
     };
 }
@@ -608,7 +582,7 @@ function parseCoordinates(element, crs) {
 }
 
 function parseColor(kmlColor) {
-    if (!kmlColor) return THEME.colors.layerDefault;
+    if (!kmlColor) return '#3388ff';
     const a = kmlColor.substr(0, 2);
     const b = kmlColor.substr(2, 2);
     const g = kmlColor.substr(4, 2);
@@ -641,14 +615,14 @@ window.kmlStyleModes = {
 window.kmlStyles = {
     [window.kmlStyleModes.STYLE_MG]: {
         polygon: {
-            color: THEME.colors.layerMG,      // Обводка для видимости
+            color: '#ffffff', // Обводка для видимости
             weight: 5, // Толщина линии
-            fillColor: THEME.colors.layerCity, //Заливка
+            fillColor: '#999999', //Заливка
             fillOpacity: 0.25, //  Непрозрачность
             interactive: INTERACTIVE
         },
         polyline: {
-            color: THEME.colors.layerMG,     // Цвет линии
+            color: '#ffffff', // Цвет линии
             weight: 5, // Толщина линии
             opacity: 1,
             interactive: INTERACTIVE
@@ -656,14 +630,14 @@ window.kmlStyles = {
     },
     [window.kmlStyleModes.STYLE_RUAF]: {
         polygon: {
-            color: THEME.colors.layerRuAF,
+            color: '#ff0000',
             weight: 0.1,
-            fillColor: THEME.colors.layerRuAF,
+            fillColor: '#ff0000',
             fillOpacity: 0.2,
             interactive: INTERACTIVE
         },
         polyline: {
-            color: THEME.colors.layerRuAF,
+            color: '#ff0000',
             weight: 4,
             opacity: 0.8,
             interactive: INTERACTIVE
@@ -671,14 +645,14 @@ window.kmlStyles = {
     },
     [window.kmlStyleModes.STYLE_AFU]: {
         polygon: {
-            color: THEME.colors.layerAFU,
+            color: '#0000ff',
             weight: 0.1,
-            fillColor: THEME.colors.layerAFU,
+            fillColor: '#0000ff',
             fillOpacity: 0.2,
             interactive: INTERACTIVE
         },
         polyline: {
-            color: THEME.colors.layerAFU,
+            color: '#0000ff',
             weight: 4,
             opacity: 0.8,
             interactive: INTERACTIVE
@@ -686,14 +660,14 @@ window.kmlStyles = {
     },
     [window.kmlStyleModes.STYLE_CITIES]: {
         polygon: {
-            color: THEME.colors.layerMG,      // цвет обводки
+            color: '#ffffff',      // цвет обводки
             weight: 1,             // толщина обводки
-            fillColor: THEME.colors.layerCity,   // цвет заливки
+            fillColor: '#999999',   // цвет заливки
             fillOpacity: 0.25,      // прозрачность заливки
             interactive: INTERACTIVE
         },
         polyline: {
-            color: THEME.colors.layerMG,
+            color: '#ffffff',
             weight: 1,
             opacity: 1,
             interactive: INTERACTIVE
@@ -799,7 +773,7 @@ function parseStyleMapFromKmlDoc(kmlDoc)
 }
 
 // Обработка Placemarks
-function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleMode = window.kmlStyleModes.DEFAULT, iconGetter = getPointIcon, isInteractive = true, pane = null) {
+function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleMode = window.kmlStyleModes.DEFAULT, iconGetter = getPointIcon, isInteractive = true) {
     let bounds = L.latLngBounds(); // Инициализация пустыми границами
     let elementCount = 0;
     
@@ -812,8 +786,8 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 	    layer.on('mouseover', function() {
 	        this.setStyle({
 	            weight: (this._originalStyle.weight || 0) + 3,
-	            color: THEME.colors.hoverHighlight,
-	            fillColor: THEME.colors.hoverHighlight,
+	            color: '#ff0000',
+	            fillColor: '#ff0000',
 				opacity: 0.15,        // для линий
 				fillOpacity: 0.15     // для полигонов
 	        });
@@ -913,9 +887,9 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             if (useStyleMode === window.kmlStyleModes.DEFAULT) {
                 // Для DEFAULT используем стили из KML или базовые
                 polyStyle = {
-                    color: style.line.color || THEME.colors.layerDefault,
+                    color: style.line.color || '#3388ff',
                     weight: style.line.weight || 0,
-                    fillColor: style.poly.fillColor || THEME.colors.layerDefault,
+                    fillColor: style.poly.fillColor || '#3388ff',
                     fillOpacity: style.poly.fillOpacity || 0.5,
                     interactive: INTERACTIVE
                 };
@@ -926,9 +900,9 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     polyStyle = styleConfig.polygon;
                 } else {
                     polyStyle = {
-                        color: THEME.colors.layerDefault,
+                        color: '#3388ff',
                         weight: 0,
-                        fillColor: THEME.colors.layerDefault,
+                        fillColor: '#3388ff',
                         fillOpacity: 0.5,
                         interactive: INTERACTIVE
                     };
@@ -937,7 +911,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 
 			const finalInteractive = isInteractive && INTERACTIVE;
 			polyStyle.interactive = finalInteractive;
-			polyStyle.pane = pane || (isInteractive ? 'interactive' : 'nonInteractive');
+			polyStyle.pane = isInteractive ? 'interactive' : 'nonInteractive';
 
             // Создаем полигон
             const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
@@ -971,7 +945,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             
             if (useStyleMode === window.kmlStyleModes.DEFAULT) {
                 lineStyle = {
-                    color: style.line.color || THEME.colors.layerDefault,
+                    color: style.line.color || '#3388ff',
                     weight: style.line.weight || 3,
                     opacity: style.line.opacity || 1,
                     interactive: INTERACTIVE
@@ -982,7 +956,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     lineStyle = styleConfig.polyline;
                 } else {
                     lineStyle = {
-                        color: THEME.colors.layerDefault,
+                        color: '#3388ff',
                         weight: 3,
                         opacity: 1,
                         interactive: INTERACTIVE
@@ -993,7 +967,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 			
 			const finalInteractive = isInteractive && INTERACTIVE;
 			lineStyle.interactive = finalInteractive;
-			lineStyle.pane = pane || (isInteractive ? 'interactive' : 'nonInteractive');
+			lineStyle.pane = isInteractive ? 'interactive' : 'nonInteractive';
 
             const polyline = L.polyline(coords, lineStyle).addTo(layerGroup);
 
@@ -1038,20 +1012,21 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                 const link = extendedData['Ссылка'] || extendedData['link'] || '';
                 
                 return `
-                    ${formattedName ? `<div class="popup-title">${formattedName}</div>` : ''}
-                    ${description ? `<div class="popup-description">${description}</div>` : ''}
-                    <div class="popup-details">
+                    ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
+                    ${description ? `<div class="popup-description" style="margin-bottom: 8px; white-space: pre-wrap;">${description}</div>` : ''}
+                    <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
                         ${objectType ? `<div><strong>Тип объекта:</strong> ${objectType}</div>` : ''}
                         ${attackDate ? `<div><strong>Дата:</strong> ${attackDate}</div>` : ''}
                         ${weaponType ? `<div><strong>Средство поражения:</strong> ${weaponType}</div>` : ''}
-                        <div class="popup-row">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
                             <strong>Координаты:</strong> 
-                            <span class="popup-mono">${coordsString}</span>
-                            <button class="copy-coords-popup-btn" data-coords="${coordsString}">
+                            <span style="font-family: monospace;">${coordsString}</span>
+                            <button class="copy-coords-popup-btn" data-coords="${coordsString}" 
+                                    style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px;">
                                 ⎘
                             </button>
                         </div>
-                        ${link ? `<div class="popup-link-row"><a href="${link}" target="_blank" class="popup-link popup-link-bold">📝 Подробная информация</a></div>` : ''}
+                        ${link ? `<div style="margin-top: 6px;"><a href="${link}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">📝 Подробная информация</a></div>` : ''}
                     </div>
                 `;
             }
@@ -1074,10 +1049,11 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                     // Для поля "Координаты" добавляем кнопку копирования
                     if (key === 'Координаты' || key === 'coordinates') {
                         extendedInfoHTML += `
-                            <div class="popup-item">
+                            <div style="margin-top: 4px;">
                                 <strong>${key}:</strong> 
-                                <span class="popup-mono">${value}</span>
-                                <button class="copy-coords-popup-btn popup-btn-offset" data-coords="${value}">
+                                <span style="font-family: monospace;">${value}</span>
+                                <button class="copy-coords-popup-btn" data-coords="${value}" 
+                                        style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px; margin-left: 8px;">
                                     ⎘
                                 </button>
                             </div>`;
@@ -1088,25 +1064,25 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
                         const url = new URL(value);
                         const domain = url.hostname;
                         extendedInfoHTML += `
-                            <div class="popup-item">
+                            <div style="margin-top: 4px;">
                                 <strong>${key}:</strong> 
-                                <a href="${value}" target="_blank" class="popup-link">
+                                <a href="${value}" target="_blank" style="color: #007bff; text-decoration: none;">
                                     ${domain}
                                 </a>
                             </div>`;
                     }
                     // Для остальных полей просто текст
                     else {
-                        extendedInfoHTML += `<div class="popup-item"><strong>${key}:</strong> ${value}</div>`;
+                        extendedInfoHTML += `<div style="margin-top: 4px;"><strong>${key}:</strong> ${value}</div>`;
                     }
                 }
                 
                 return `
-                    ${formattedName ? `<div class="popup-title">${formattedName}</div>` : ''}
-                    <div class="popup-details">
+                    ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
+                    <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
                         ${date ? `<div><strong>Датировано:</strong> ${date}</div>` : ''}
                         ${equipmentType ? `<div><strong>Тип техники:</strong> ${equipmentType}</div>` : ''}
-                        ${descriptionUrl ? `<div class="popup-item"><strong>Описание:</strong> ${descriptionUrl}</div>` : ''}
+                        ${descriptionUrl ? `<div style="margin-top: 4px;"><strong>Описание:</strong> ${descriptionUrl}</div>` : ''}
                         ${extendedInfoHTML}
                     </div>
                 `;
@@ -1115,18 +1091,19 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             else {                
                 const position = equipmentType;
                 return `
-                ${formattedName ? `<div class="popup-title">${formattedName}</div>` : ''}
-                <div class="popup-details">
+                ${formattedName ? `<div class="popup-title" style="white-space: pre-wrap; font-weight: bold; margin-bottom: 8px;">${formattedName}</div>` : ''}
+                <div class="popup-details" style="font-size: 14px; line-height: 1.4;">
                     ${date ? `<div><strong>Дата:</strong> ${date}</div>` : ''}
                     ${position ? `<div><strong>Позиция:</strong> ${position}</div>` : ''}
-                    <div class="popup-row">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
                         <strong>Координаты:</strong> 
-                        <span class="popup-mono">${coordsString}</span>
-                        <button class="copy-coords-popup-btn" data-coords="${coordsString}">
+                        <span style="font-family: monospace;">${coordsString}</span>
+                        <button class="copy-coords-popup-btn" data-coords="${coordsString}" 
+                                style="cursor: pointer; background: #007bff; color: white; border: none; border-radius: 3px; padding: 2px 6px; font-size: 12px;">
                             ⎘
                         </button>
                     </div>
-                    ${descriptionUrl ? `<div class="popup-link-row"><a href="${descriptionUrl}" target="_blank" class="popup-link popup-link-bold">📝 Подробная информация</a></div>` : ''}
+                    ${descriptionUrl ? `<div style="margin-top: 6px;"><a href="${descriptionUrl}" target="_blank" style="color: #007bff; text-decoration: none; font-weight: bold;">📝 Подробная информация</a></div>` : ''}
                 </div>
             `;
             }
@@ -1226,19 +1203,19 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
             
             // Заменяем "Источник url" на "Источник" (только слово "Источник" становится ссылкой)
             formatted = formatted.replace(/Источник\s+(https?:\/\/[^\s]+)/g, 
-                '<a href="$1" target="_blank" class="popup-link">Источник</a>');
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник</a>');
             
             // Заменяем "Источник 21+ url" на "Источник 21+" (только слова "Источник 21+" становятся ссылкой)
             formatted = formatted.replace(/Источник\s+21\+\s+(https?:\/\/[^\s]+)/g, 
-                '<a href="$1" target="_blank" class="popup-link">Источник 21+</a>');
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Источник 21+</a>');
             
             // Заменяем "Геопривязка url" на "Геопривязка" (только слово "Геопривязка" становится ссылкой)
             formatted = formatted.replace(/Геопривязка\s+(https?:\/\/[^\s]+)/g, 
-                '<a href="$1" target="_blank" class="popup-link">Геопривязка</a>');
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Геопривязка</a>');
             
             // Заменяем "Согласно url" на "Согласно..." (только слово "Согласно" становится ссылкой)
             formatted = formatted.replace(/Согласно\s+(https?:\/\/[^\s]+)/g, 
-                '<a href="$1" target="_blank" class="popup-link">Согласно...</a>');
+                '<a href="$1" target="_blank" style="color: #007bff; text-decoration: none;">Согласно...</a>');
             
             return formatted;
         }
@@ -1317,8 +1294,7 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
         preserveZoom = true,
         fitBounds = false,
         styleMode = null,
- 		interactive = null,
-        pane = null
+		interactive = null
     } = options;
 
     try {
@@ -1354,7 +1330,7 @@ async function loadKmlToLayer(filePath, layerGroup, options = {}) {
             console.log('Found styleMaps:', styleMaps);
         }
 
-        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode, getPointIcon, useInteractive, pane);
+        const bounds = parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, finalStyleMode, getPointIcon, useInteractive);
         
         if (LOG_STYLES) console.groupEnd();
         
@@ -1401,8 +1377,7 @@ async function loadKmlFile(file, targetCRS) {
             loadKmlToLayer(path, newLayer, {
                 isPermanent: false,
                 preserveZoom: preserveZoom,
-                fitBounds: false,
-                pane: path.includes('Control') ? 'vectorControl' : 'vectorLines'
+                fitBounds: false
             })
         );
 
@@ -1430,29 +1405,16 @@ async function loadKmlFile(file, targetCRS) {
 }
 
 
-// Сборка слоя в offscreen-группу (без добавления на карту)
-async function buildLayerForPath(filePath, pane, options = {}) {
-    const layerGroup = L.layerGroup();
-    // Не передаем styleMode - будет определен автоматически
-    await loadKmlToLayer(filePath, layerGroup, {
-        isPermanent: options.isPermanent !== undefined ? options.isPermanent : false,
-        preserveZoom: true,
-        fitBounds: false,
-        pane: pane
-    });
-    return layerGroup;
-}
-
-// Функция загрузки постоянных KML-слоев (параллельный fetch, пакетное добавление)
+// Функция загрузки постоянных KML-слоев
 async function loadPermanentKmlLayers() {
     try {
         console.log("Начало загрузки постоянных слоев");
-
+        
         if (!window.permanentLayers || !Array.isArray(window.permanentLayers)) {
             console.error("window.permanentLayers не определен или не является массивом");
             return;
         }
-
+        
         console.log("Найдено постоянных слоев:", window.permanentLayers.length);
 
         // Удаляем старые постоянные слои
@@ -1461,24 +1423,35 @@ async function loadPermanentKmlLayers() {
             window.permanentLayerGroups = [];
         }
 
-        // Параллельная сборка всех постоянных слоев в offscreen-группы
-        const results = await Promise.allSettled(
-            window.permanentLayers
-                .filter(layerData => layerData.path)
-                .map(layerData => {
-                    console.log("Загрузка постоянного слоя:", layerData.path);
-                    return buildLayerForPath(layerData.path, 'vectorPoly', { isPermanent: true });
-                })
-        );
+        // Последовательная загрузка постоянных слоев (чтобы избежать параллельных запросов)
+        window.permanentLayerGroups = [];
+        
+        for (const layerData of window.permanentLayers) {
+            if (!layerData.path) {
+                console.error("Отсутствует путь для постоянного слоя:", layerData);
+                continue;
+            }
+            
+            console.log("Загрузка постоянного слоя:", layerData.path);
+            
+            try {
+                const layerGroup = L.layerGroup();
+                // Не передаем styleMode - будет определен автоматически
+                const result = await loadKmlToLayer(layerData.path, layerGroup, {
+                    isPermanent: true,
+                    preserveZoom: true,
+                    fitBounds: false
+                });
 
-        const groups = results
-            .map((r, i) => r.status === 'fulfilled' ? r.value : null)
-            .filter(g => g !== null);
-
-        // Пакетное добавление на карту
-        groups.forEach(layerGroup => layerGroup.addTo(map));
-        window.permanentLayerGroups = groups;
-
+                // Добавляем слой на карту после успешной загрузки
+                layerGroup.addTo(map);
+                window.permanentLayerGroups.push(layerGroup);
+                
+            } catch (error) {
+                console.error(`Ошибка обработки слоя ${layerData.path}:`, error);
+            }
+        }
+        
     } catch (error) {
         console.error("Ошибка загрузки постоянных KML слоев:", error);
     }
@@ -1529,104 +1502,82 @@ function applyLayerGroupOpacity(layerGroup, factor) {
 // Загружает текущую (последнюю) линию ЛБС — всегда видна, полная непрозрачность
 let frontLineCurrentToken = 0;
 
-// Сборка группы текущей линии БЕЗ добавления на карту (для пакетного вывода).
-// Возвращает { group, error }: group = null, если дата недоступна или токен устарел;
-// error = true при сбое загрузки (старая линия в этом случае остаётся, как раньше).
-async function buildCurrentFrontLineGroup() {
-    const token = ++frontLineCurrentToken;
-
-    const latestDate = getLatestFrontLineDate();
-    if (!latestDate) return { group: null };
-
-    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(latestDate)}.kml`;
-    console.log("Загрузка текущей FrontLine:", path);
-
-    try {
-        const layerGroup = L.layerGroup();
-        await loadKmlToLayer(path, layerGroup, {
-            isPermanent: true,
-            preserveZoom: true,
-            fitBounds: false,
-            pane: 'vectorLines'
-        });
-        if (token !== frontLineCurrentToken) return { group: null };
-        return { group: layerGroup };
-    } catch (error) {
-        console.error("Ошибка загрузки текущей FrontLine:", error);
-        return { group: null, error: true };
-    }
-}
-
 async function loadCurrentFrontLine() {
-    const { group, error } = await buildCurrentFrontLineGroup();
-    if (error) return;
-    if (group) {
-        if (window.frontLineCurrentGroup && map.hasLayer(window.frontLineCurrentGroup)) {
-            map.removeLayer(window.frontLineCurrentGroup);
-        }
-        group.addTo(map);
-        window.frontLineCurrentGroup = group;
-    } else {
+    const token = ++frontLineCurrentToken;
+    
+    const latestDate = getLatestFrontLineDate();
+    if (!latestDate) {
         if (window.frontLineCurrentGroup) {
             if (map.hasLayer(window.frontLineCurrentGroup)) map.removeLayer(window.frontLineCurrentGroup);
             window.frontLineCurrentGroup = null;
         }
+        return;
     }
-}
-
-// Загружает архивную линию ЛБС для выбранной даты — 70% непрозрачности + пунктир
-let frontLineArchiveToken = 0;
-
-// Сборка группы архивной линии БЕЗ добавления на карту (для пакетного вывода).
-// Возвращает { group, error }: group = null, если архив недоступен,
-// дата = последней или токен устарел; error = true при сбое загрузки.
-async function buildArchiveFrontLineGroup() {
-    const token = ++frontLineArchiveToken;
-
-    const dateStr = window.selectedDate || getCurrentDateFormatted();
-    const latestDate = getLatestFrontLineDate();
-    const flDate = findClosestFrontLineDate(dateStr);
-
-    // Если выбранная дата = последней или архив недоступен — линии нет
-    if (!flDate || flDate === latestDate) return { group: null };
-
-    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(flDate)}.kml`;
-    console.log("Загрузка архивной FrontLine:", path);
-
+    
+    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(latestDate)}.kml`;
+    console.log("Загрузка текущей FrontLine:", path);
+    
     try {
         const layerGroup = L.layerGroup();
         await loadKmlToLayer(path, layerGroup, {
             isPermanent: true,
             preserveZoom: true,
-            fitBounds: false,
-            pane: 'vectorLines'
+            fitBounds: false
         });
-        if (token !== frontLineArchiveToken) return { group: null };
-        // Фиксированный стиль архивной линии: 70% непрозрачности + пунктир
-        layerGroup.getLayers().forEach(layer => {
-            layer.setStyle({ opacity: 0.7, dashArray: '3 3' });
-        });
-        return { group: layerGroup };
+        if (token !== frontLineCurrentToken) return;
+        layerGroup.addTo(map);
+        if (window.frontLineCurrentGroup) {
+            if (map.hasLayer(window.frontLineCurrentGroup)) map.removeLayer(window.frontLineCurrentGroup);
+            window.frontLineCurrentGroup = null;
+        }
+        window.frontLineCurrentGroup = layerGroup;
     } catch (error) {
-        console.error("Ошибка загрузки архивной FrontLine:", error);
-        return { group: null, error: true };
+        console.error("Ошибка загрузки текущей FrontLine:", error);
     }
 }
 
+// Загружает архивную линию ЛБС для выбранной даты — 50% непрозрачности
+let frontLineArchiveToken = 0;
+
 async function loadArchiveFrontLine() {
-    const { group, error } = await buildArchiveFrontLineGroup();
-    if (error) return;
-    if (group) {
-        if (window.frontLineArchiveGroup && map.hasLayer(window.frontLineArchiveGroup)) {
-            map.removeLayer(window.frontLineArchiveGroup);
-        }
-        group.addTo(map);
-        window.frontLineArchiveGroup = group;
-    } else {
+    const token = ++frontLineArchiveToken;
+    
+    const dateStr = window.selectedDate || getCurrentDateFormatted();
+    const latestDate = getLatestFrontLineDate();
+    const flDate = findClosestFrontLineDate(dateStr);
+    
+    // Если выбранная дата = последней или архив недоступен — убираем архивную линию
+    if (!flDate || flDate === latestDate) {
         if (window.frontLineArchiveGroup) {
             if (map.hasLayer(window.frontLineArchiveGroup)) map.removeLayer(window.frontLineArchiveGroup);
             window.frontLineArchiveGroup = null;
         }
+        return;
+    }
+    
+    const path = `kml/FrontLine/FrontLine_${formatDateForFilename(flDate)}.kml`;
+    console.log("Загрузка архивной FrontLine:", path);
+    
+    try {
+        const layerGroup = L.layerGroup();
+        await loadKmlToLayer(path, layerGroup, {
+            isPermanent: true,
+            preserveZoom: true,
+            fitBounds: false
+        });
+        if (token !== frontLineArchiveToken) return;
+        // Фиксированный стиль архивной линии: 70% непрозрачности + пунктир
+        layerGroup.getLayers().forEach(layer => {
+            layer.setStyle({ opacity: 0.7, dashArray: '3 3' });
+        });
+        layerGroup.addTo(map);
+        if (window.frontLineArchiveGroup) {
+            if (map.hasLayer(window.frontLineArchiveGroup)) map.removeLayer(window.frontLineArchiveGroup);
+            window.frontLineArchiveGroup = null;
+        }
+        window.frontLineArchiveGroup = layerGroup;
+    } catch (error) {
+        console.error("Ошибка загрузки архивной FrontLine:", error);
     }
 }
 
@@ -1898,7 +1849,7 @@ async function initFortificationLayer(kmlFilePaths) {
                     style: function(feature) {
                         // Используем свойства из файла, если есть
                         return {
-                            color: feature.properties?.stroke || THEME.colors.layerRuAF,
+                            color: feature.properties?.stroke || '#ff0000',
                             weight: feature.properties?.['stroke-width'] || 2,
                             opacity: feature.properties?.['stroke-opacity'] || 1,
                             // можно добавить другие параметры
@@ -2258,7 +2209,7 @@ function initMobileFilterMenu() {
     // Обработчик изменения размера окна
     window.addEventListener('resize', function() {
         // На широких экранах убеждаемся, что всё закрыто
-        if (!isMobileViewport()) {
+        if (window.innerWidth > 768) {
             if (mobileFilterToggle.classList.contains('active')) {
                 toggleMobileFilterMenu();
             }
@@ -2322,10 +2273,6 @@ async function updatePointsDateFilter() {
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
     if (window.pointsCanvas) window.pointsCanvas.setDateRange(startDate, currentDate);
-    // Если диапазон ушёл в старые даты — догружаем файл старых точек
-    if (pointsRangeNeedsOldFile(startDate)) {
-        ensureOldPointsLoaded();
-    }
 }
 
 // Навигация к определенному индексу (для кнопок навигации по KML файлам)
@@ -2618,7 +2565,9 @@ function findNextAvailableDate(targetDateStr) {
 
 
 // Заполнение выпадающего списка городов
-// Обработчик выбора города
+// Обработчики выбора города отключены вместе со списком городов (чтобы вернуть —
+// раскомментируйте select #cities-dropdown в index.html и блоки ниже)
+/*
 document.getElementById('cities-dropdown').addEventListener('change', async function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
@@ -2636,8 +2585,9 @@ document.getElementById('cities-dropdown').addEventListener('change', async func
         this.value = "";
     }
 });
+*/
 
-// Обработчик выбора города
+/*
 citiesDropdown.addEventListener('change', function() {
     const selectedCityName = this.value;
     if (!selectedCityName) return;
@@ -2647,11 +2597,12 @@ citiesDropdown.addEventListener('change', function() {
         // Заполняем поле координат
         coordsInput.value = `${city.lat}, ${city.lng}`;
         centerMap(city.lat, city.lng);
-        
+
         // Сбрасываем выбор
         this.value = "";
     }
 });
+*/
 
 // обработчик перемещения карты
 map.on('moveend', function() {
@@ -2758,147 +2709,80 @@ async function init() {
   // const deepLink = getDeepLinkViewFromUrl();
 
   try {
-    // Шаг 1: Дата и CRS — ДО парсинга данных:
-    // фильтр видимости точек считается при сборке модели (pointsDateRange),
-    // координаты из KML парсятся через map.options.crs
+    // Шаг 1: Загружаем постоянные слои
+    await loadPermanentKmlLayers();
+
+    // Проверяем, что kmlFiles сгенерирован правильно
+    console.log('KML файлов загружено:', window.kmlFiles.length);
+
+    // Шаг 2: Инициализируем selectedDate текущей датой
     window.selectedDate = getCurrentDateFormatted();
     console.log('Установлена текущая дата:', window.selectedDate);
-    map.options.crs = L.CRS.EPSG3857;
 
-    // Диапазон дат для точек (1 неделя) на основе текущей даты
+    // Шаг 3: Инициализируем календарь с текущей датой
+    initDatePicker();
+
+    // Шаг 4: Инициализируем точки
+    // Инициализируем диапазон дат для точек
     window.pointsDateRange = window.pointsDateRange || { start: null, end: null };
+    // Устанавливаем начальный диапазон (1 неделя) на основе текущей даты
     const currentDate = parseCustomDate(window.selectedDate);
     const startDate = getStartDateByRange('week', currentDate);
 
     window.pointsDateRange.start = startDate;
     window.pointsDateRange.end = currentDate;
 
-    // Шаг 2: UI-компоненты
-    initDatePicker();
+    // Загружаем точки с фильтром по дате
+    await initPointsLayer(window.pointsKmlPaths);
+
+    // Шаг 5: Инициализация кнопок фильтров
     initFilterButtons();
     initMobileFilterMenu();
+
     initUnitsUaButton();
+
+    // Кнопка полноэкранного режима
     initFullscreenControl();
-    populateCitiesDropdown();
+
+    // Шаг 6: Инициализируем другие UI компоненты
+    // populateCitiesDropdown(); // отключено: список городов убран из панели (функция сохранена)
     document.querySelector('.date-navigator-wrapper').style.display = 'block';
+
+    // Шаг 7: Ждем когда все элементы интерфейса будут доступны
     await waitForUIElements();
 
-    // Шаг 3: Определяем KML для ближайшей доступной даты
+    // Шаг 8: Находим и загружаем ближайший доступный KML к текущей дате
     const nearestDate = findNearestAvailableDate(window.selectedDate);
     const nearestIndex = kmlFiles.findIndex(file => file.name === nearestDate);
 
-    let dateFile = null;
     if (nearestIndex !== -1) {
         currentIndex = nearestIndex;
-        dateFile = kmlFiles[currentIndex];
         console.log(`Загружаем KML для ближайшей доступной даты: ${nearestDate} (индекс: ${nearestIndex})`);
+
+        // Загружаем данные карты
+        preserveZoom = true;
+        await loadKmlForNearestDate(nearestIndex);
     } else {
         console.log('Не найдено доступных KML файлов для загрузки');
     }
 
-    // Шаг 4: Параллельный fetch всех слоёв (offscreen-группы, без добавления на карту)
-    // Точки — крупнейший файл; канвас добавляется на карту только после завершения
-    // блока (единый бёрст), чтобы не было постепенной отрисовки флагов.
-    // Старые точки (oldesPoint.kml) грузятся только если начальное окно их требует
-    const pointsPromise = (async () => {
-        if (!window.pointsCanvas && window.CanvasPointsLayer) {
-            window.pointsCanvas = new window.CanvasPointsLayer(window.POINTS_CANVAS_OPTIONS || {});
-        }
-        window.pointsModel.points = [];
-        const throwawayGroup = L.layerGroup();
-        for (const path of window.pointsKmlPaths) {
-            await loadPointsFromKml(path, throwawayGroup);
-        }
-        if (pointsRangeNeedsOldFile(window.pointsDateRange.start)) {
-            await ensureOldPointsLoaded();
-        }
-    })();
-
-    // Полигоны: Control-зоны выбранной даты + постоянные объекты
-    const polyPromise = (async () => {
-        const controlPaths = dateFile ? dateFile.paths.filter(p => p.includes('Control')) : [];
-        const progressPaths = dateFile ? dateFile.paths.filter(p => !p.includes('Control')) : [];
-        const dateCount = controlPaths.length + progressPaths.length;
-        const results = await Promise.allSettled([
-            ...controlPaths.map(p => buildLayerForPath(p, 'vectorControl')),
-            ...progressPaths.map(p => buildLayerForPath(p, 'vectorLines')),
-            ...window.permanentLayers
-                .filter(l => l.path)
-                .map(l => buildLayerForPath(l.path, 'vectorPoly', { isPermanent: true }))
-        ]);
-        return {
-            dateGroups: results.slice(0, dateCount)
-                .filter(r => r.status === 'fulfilled').map(r => r.value),
-            permanentGroups: results.slice(dateCount)
-                .filter(r => r.status === 'fulfilled').map(r => r.value)
-        };
-    })();
-
-    // Шаг 5: Единый блок: полигоны + границы + линии ЛБС + точки (гео/флаги).
-    // Все файлы грузятся параллельно; на карту всё добавляется разом
-    // после завершения самого медленного (обычно — точек).
-    const [polyResult, flCurrent, flArchive] = await Promise.all([
-        polyPromise,
-        buildCurrentFrontLineGroup(),
-        buildArchiveFrontLineGroup(),
-        pointsPromise
-    ]);
-
-    // Полигоны: слои выбранной даты + постоянные объекты
-    const { dateGroups, permanentGroups } = polyResult;
-    if (currentLayer) {
-        map.removeLayer(currentLayer);
-    }
-    const currentGroup = L.layerGroup();
-    dateGroups.forEach(g => currentGroup.addLayer(g));
-    currentGroup.addTo(map);
-    currentLayer = currentGroup;
-
-    if (window.permanentLayerGroups && window.permanentLayerGroups.length) {
-        window.permanentLayerGroups.forEach(layer => map.removeLayer(layer));
-    }
-    window.permanentLayerGroups = permanentGroups;
-    permanentGroups.forEach(g => g.addTo(map));
-
-    // Линии ЛБС: текущая + архивная (group = null, если дата сменилась во время загрузки)
-    if (flCurrent.group) {
-        if (window.frontLineCurrentGroup && map.hasLayer(window.frontLineCurrentGroup)) {
-            map.removeLayer(window.frontLineCurrentGroup);
-        }
-        flCurrent.group.addTo(map);
-        window.frontLineCurrentGroup = flCurrent.group;
-    }
-    if (flArchive.group) {
-        if (window.frontLineArchiveGroup && map.hasLayer(window.frontLineArchiveGroup)) {
-            map.removeLayer(window.frontLineArchiveGroup);
-        }
-        flArchive.group.addTo(map);
-        window.frontLineArchiveGroup = flArchive.group;
-    }
-
-    // Точки (гео/флаги): канвас на карту одним кадром
-    if (window.pointsCanvas && !map.hasLayer(window.pointsCanvas)) {
-        window.pointsCanvas.addTo(map);
-    }
-    if (window.pointsCanvas) window.pointsCanvas.applyFilter();
-
-    updateButtons();
-
-    
-
-    
-
+    // Шаг 8.1: Загружаем линии ЛБС (текущую и архивную)
+    await loadCurrentFrontLine();
+    await loadArchiveFrontLine();
+	
 	// Маркер при загрузке координат из url
     const urlCoords = getUrlCoords();
     if (urlCoords) {
       centerMap(urlCoords.lat, urlCoords.lng, urlCoords.zoom);
     }
 
-    // Шаг 6: Финализируем инициализацию карты
+    // Шаг 9: Финализируем инициализацию карты
     setTimeout(() => {
       if (map) map.invalidateSize();
       updateCurrentCenterDisplay();
     }, 50);
+
+    map.options.crs = L.CRS.EPSG3857;
 
     const flagInterval = setInterval(() => {
     if (document.querySelector('.leaflet-control-attribution')) {
@@ -3215,7 +3099,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Закрываем меню при клике на карту
 document.getElementById('map').addEventListener('click', function() {
-    if (isMobileViewport()) {
+    if (window.innerWidth <= 768) {
         document.querySelector('.nav-wrapper').classList.remove('active');
     }
 });
@@ -3371,7 +3255,8 @@ document.addEventListener('keydown', function(e) {
     updateCopyButtonsVisibility();
     // Enter нажат в мобильном меню поиска — закрываем его
     if (t.id === 'coords-input-clone') {
-        setNavDropdownActive(false);
+        const dd = document.getElementById('nav-dropdown');
+        if (dd) dd.classList.remove('active');
     }
 });
 
@@ -3453,17 +3338,6 @@ const navDropdown = document.getElementById('nav-dropdown');
 const navMenuToggle = document.getElementById('nav-menu-toggle');
 const hideableItems = document.querySelectorAll('.hideable-nav-item');
 clonedItems = [];
-
-// Единая точка изменения состояния дартс-меню:
-// синхронизирует класс .active на кнопке-лупе и на самом меню
-function setNavDropdownActive(state) {
-    if (!navDropdown) return;
-    navDropdown.classList.toggle('active', state);
-    if (navMenuToggle) {
-        navMenuToggle.classList.toggle('active', state);
-        navMenuToggle.setAttribute('aria-expanded', state ? 'true' : 'false');
-    }
-}
 // Дартс (Лупа)
 function initDartMenu() {
     console.log("[initDartMenu] Инициализация дартс-меню...");
@@ -3482,7 +3356,7 @@ function initDartMenu() {
         // 'centerOn-label',   // надпись «Центрировать на» убрана из мобильной панели (можно вернуть)
         'coords-input',
         'copy-coords-external-btn',
-        'cities-dropdown',
+        // 'cities-dropdown',  // быстрый переход по городам убран (функции populateCitiesDropdown сохранены)
         'currentCenter-label',
         'current-center-coords',
         'copy-coords-btn'
@@ -3538,13 +3412,13 @@ function initDartMenu() {
     
     // Обработчик изменения размера окна
     function handleResize() {
-        if (!isDesktopViewport()) {
+        if (window.innerWidth < 1201) {
             hideableItems.forEach(item => item.style.display = 'none');
             navMenuToggle.style.display = 'flex';
         } else {
             hideableItems.forEach(item => item.style.display = 'flex');
             navMenuToggle.style.display = 'none';
-            setNavDropdownActive(false);
+            navDropdown.classList.remove('active');
         }
     }
     
@@ -3645,7 +3519,7 @@ navDropdown.querySelectorAll('.copy-coords-btn').forEach(btn => {
 // Закрытие меню при клике вне его
 document.addEventListener('click', function(e) {
     if (!navDropdown.contains(e.target) && e.target !== navMenuToggle) {
-        setNavDropdownActive(false);
+        navDropdown.classList.remove('active');
     }
 });
 
@@ -3657,7 +3531,7 @@ navMenuToggle.addEventListener('click', function(e) {
     // Синхронизируем состояние перед открытием
     syncDropdownState();
     // Открываем/закрываем меню
-    setNavDropdownActive(!navDropdown.classList.contains('active'));
+    navDropdown.classList.toggle('active');
 });
 
 
@@ -3764,7 +3638,7 @@ function setupDropdownListeners() {
                 
                 centerMap(city.lat, city.lng);
                 // Закрываем меню после выбора города
-                setNavDropdownActive(false);
+                navDropdown.classList.remove('active');
                 this.value = "";
             }
         });
@@ -3863,10 +3737,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// === Inline error bubble for coords input (стили — в css/layout.css) ===
+// === Inline error bubble for coords input ===
 (function(){
+  function ensureCoordsErrorStyle() {
+    if (document.getElementById('coords-error-style')) return;
+    const style = document.createElement('style');
+    style.id = 'coords-error-style';
+    style.textContent = `
+      .coords-error-bubble{
+        position:absolute;
+        left:0;
+        top:calc(100% + 4px);
+        padding:4px 8px;
+        background:#ffeaea;
+        color:#b00020;
+        border:1px solid #f3b2b2;
+        border-radius:4px;
+        font-size:12px;
+        line-height:1.2;
+        white-space:nowrap;
+        pointer-events:none;
+        box-shadow:0 1px 2px rgba(0,0,0,.05);
+        z-index:10;
+      }
+    `;
+    document.head.appendChild(style);
+  }
   window._coordsError = {
     show(input, message){
+      ensureCoordsErrorStyle();
       if (!input) return;
       let wrapper = input.closest('.input-with-clear');
       if (!wrapper) {
@@ -3971,7 +3870,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const coords = normalizeToTuple(parseCoordinates(val));
         if (coords) {
           centerMapFromInput(input, true);
-          setNavDropdownActive(false);
+          const dd = document.getElementById('nav-dropdown');
+          if (dd) dd.classList.remove('active');
         } else if (typeof window.performPlaceSearch === 'function') {
           window.performPlaceSearch(val);
         }

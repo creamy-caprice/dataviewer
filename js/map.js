@@ -118,7 +118,7 @@ window.osm.addTo(map);
 // === Кнопки масштаба: правый нижний угол на десктопе, левый верхний на мобильных ===
 let zoomControlInstance = null;
 function positionZoomControl() {
-    const isMobile = isMobileViewport();
+    const isMobile = window.innerWidth <= 768;
     const pos = isMobile ? 'topleft' : 'bottomright';
     if (zoomControlInstance) {
         map.removeControl(zoomControlInstance);
@@ -528,9 +528,9 @@ function initMeasureControl() {
     const options = {
         position: 'topright',
         unit: 'kilometres',
-        clearMeasurementsOnStop: false,  // линии не стираются при disable
+        clearMeasurementsOnStop: false,
         showUnitControl: true,
-        backgroundColor: THEME.colors.rulerBg,
+        backgroundColor: '#f8f8f8',
         cursor: 'crosshair',
         showClearControl: true,
         clearControlLabel: '&times;',
@@ -543,15 +543,23 @@ function initMeasureControl() {
         units: t.units,
 		
 		tempLine: {                     // Styling settings for the temporary dashed line
-			color: THEME.colors.rulerLine, // Dashed line color
-			weight: 2                  // Dashed line weight
-		},
-		fixedLine: {                    // Styling settings for the solid line
-			color: THEME.colors.rulerLine, // Solid line color
-			weight: 2                  // Solid line weight
-        }
+			color: '#f0f',              // Dashed line color
+			weight: 2                   // Dashed line weight
+		},          
+		fixedLine: {                    // Styling for the solid line
+			color: '#F0F',              // Solid line color
+			weight: 2                   // Solid line weight
+		}
     };
 
+
+    // Удаляем старый контрол если существует
+    //if (window.measureControl) {
+        //window.measureControl.remove();
+        //window.measureControl = null;
+    //}
+
+    // Создаем контрол только если его еще нет
     if (!window.measureControl) {
         window.measureControl = L.control.polylineMeasure(options);
         window.measureControl.addTo(map);
@@ -582,7 +590,7 @@ function initFullscreenControl() {
         link.href = '#';
         link.title = translations[currentLang].fullscreenTitle || 'Полноэкранный режим';
         link.innerHTML = '⛶'; // начальный символ
-
+		
 		// Функция обновления символа в зависимости от состояния fullscreen
 		function updateFullscreenIcon() {
 			const isFullscreen = document.fullscreenElement ||
@@ -689,16 +697,6 @@ interactivePane.style.zIndex = 500;  // выше стандартной overlay-
 const nonInteractivePane = map.createPane('nonInteractive');
 nonInteractivePane.style.zIndex = 400; // ниже интерактивной
 
-// Панели KML-векторов (детерминированный порядок, не зависит от момента добавления):
-// Control-зоны < рисование < постоянные полигоны < линии < точки (pointsPane, 500)
-const vectorControlPane = map.createPane('vectorControl');
-vectorControlPane.style.zIndex = 405;
-//const drawPane = map.createPane('drawPane');
-//drawPane.style.zIndex = 407;
-//const vectorPolyPane = map.createPane('vectorPoly');
-//vectorPolyPane.style.zIndex = 410;
-//const vectorLinesPane = map.createPane('vectorLines');
-//vectorLinesPane.style.zIndex = 420;
 
 
 

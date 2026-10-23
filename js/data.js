@@ -128,14 +128,11 @@ window.cities = [
 
 
 // Управление точками
-// Путь к файлу с точками (свежие — грузятся всегда при старте)
- window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml"];
-// Старые точки (2022.07–...) — грузятся по требованию,
-// когда выбранный диапазон дат на них попадает (см. pointsOldCutoff)
- window.pointsKmlPathsOld = ["kml/Geolocations/oldesPoint.kml"];
-// Граница: старый файл нужен, если начало диапазона раньше этой даты
-// (lastPoint.kml покрывает с 01.09.26; формат DD.MM.YY, как во всём приложении)
- window.pointsOldCutoff = "01.09.26";
+// Путь к файлу с точками
+// window.pointsKmlPaths = ["kml/Geolocations/2026 год январь.kml",
+//						  "kml/Geolocations/2023-2025.kml"];
+ window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
+                          "kml/Geolocations/oldesPoint.kml"];
 // window.pointsKmlPaths = ["kml/Geolocations/exportToKML.kml"];
 // window.pointsKmlPaths = [];
  window.pointLayers = [];

@@ -1,7 +1,7 @@
 #info-modal {
   display: none;
   position: fixed;
-  z-index: var(--z-modal);
+  z-index: 3000;
   left: 0;
   top: 0;
   width: 100%;
@@ -10,26 +10,26 @@
 }
 
 .modal-content {
-  background-color: var(--surface-alt);
+  background-color: #fefefe;
   margin: 10% auto;
   padding: 25px;
-  border: 1px solid var(--gray-525);
-  border-radius: var(--radius-xl);
+  border: 1px solid #888;
+  border-radius: 10px;
   width: 80%;
   max-width: 700px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
 .close-modal {
-  color: var(--text-disabled);
+  color: #aaa;
   position: absolute;
   top: 15px;
   right: 20px;
   font-size: 32px;
   font-weight: bold;
   cursor: pointer;
-  transition: color var(--transition-fast);
+  transition: color 0.2s;
 }
 .modal-content .close-modal {
     position: absolute;
@@ -38,27 +38,27 @@
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    z-index: var(--z-topbar); /* Убедимся, что крестик поверх контента */
+    z-index: 1001; /* Убедимся, что крестик поверх контента */
 }
 
 .close-modal:hover {
-  color: var(--gray-700);
+  color: #333;
 }
 
 #info-content h2 {
-  color: var(--cal-blue);
+  color: #1976d2;
   margin-top: 0;
-  border-bottom: 2px solid var(--gray-250);
+  border-bottom: 2px solid #e0e0e0;
   padding-bottom: 10px;
 }
 
 #info-content h3 {
-  color: var(--gray-700);
-  margin-top: var(--space-5);
+  color: #333;
+  margin-top: 20px;
 }
 
 .contact-info {
   margin-top: 25px;
   padding-top: 15px;
-  border-top: 1px dashed var(--gray-400);
+  border-top: 1px dashed #ccc;
 }

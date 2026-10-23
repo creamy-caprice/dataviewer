@@ -513,12 +513,12 @@
             const pt = map.latLngToContainerPoint([p.lat, p.lng]);
             ctx.beginPath();
             ctx.arc(pt.x, pt.y, 14, 0, Math.PI * 2);
-            ctx.strokeStyle = THEME.colors.layerRuAF;
+            ctx.strokeStyle = '#ff0000';
             ctx.lineWidth = 3;
             ctx.stroke();
             ctx.beginPath();
             ctx.arc(pt.x, pt.y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = THEME.colors.layerRuAF;
+            ctx.fillStyle = '#ff0000';
             ctx.fill();
         },
 
