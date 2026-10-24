@@ -338,7 +338,7 @@ function setLanguage(lang) {
     updateMeasureControlLanguage(lang); // Обновляем тексты линейки
     
     // Обновляем список городов
-    // populateCitiesDropdown(); // отключено: список городов убран из панели (функция сохранена)
+    populateCitiesDropdown();
     
     // Пересоздаем календарь с новым языком
     if (datePicker) {
@@ -417,7 +417,7 @@ document.addEventListener('languageChanged', function(event) {
     }
         initDatePicker();
     
-    // populateCitiesDropdown(); // отключено: список городов убран из панели (функция сохранена)
+    populateCitiesDropdown(); // Обновляем основной список
     initDartMenu(); // Перестраиваем дартс-меню	
 	
 	// фильтр техники

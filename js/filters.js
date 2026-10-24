@@ -274,7 +274,7 @@ function toggleEquipmentMenu() {
     if (!isVisible) {
         const btn = document.getElementById('mil-equip-btn');
         const rect = btn.getBoundingClientRect();
-        if (window.innerWidth <= 901) {
+        if (isCompactViewport()) {
             menu.style.bottom = '0px';
             menu.style.top = 'auto';
             menu.style.left = '0px';
@@ -399,7 +399,7 @@ function toggleAttacksMenu() {
     if (!isVisible) {
         const btn = document.getElementById('attacks-on-ua-btn');
         const rect = btn.getBoundingClientRect();
-        if (window.innerWidth <= 901) {
+        if (isCompactViewport()) {
             menu.style.bottom = '0px';
             menu.style.top = 'auto';
             menu.style.left = '0px';
@@ -591,7 +591,7 @@ function toggleFortificationMenu() {
     if (!isVisible) {
         const btn = document.getElementById('fortification-btn');
         const rect = btn.getBoundingClientRect();
-        if (window.innerWidth <= 901) {
+        if (isCompactViewport()) {
             menu.style.bottom = '0px';
             menu.style.top = 'auto';
             menu.style.left = '0px';
@@ -649,9 +649,10 @@ async function initFortificationLayerWithFilter(kmlFilePaths) {
                 const geoJsonLayer = L.geoJSON(geojsonData, {
                     style: function(feature) {
                         return {
-                            color: feature.properties?.stroke || '#ff0000',
+                            color: feature.properties?.stroke || THEME.colors.layerRuAF,
                             weight: feature.properties?.['stroke-width'] || 2,
                             opacity: feature.properties?.['stroke-opacity'] || 1,
+                            pane: 'vectorLines',
                         };
                     },
                     onEachFeature: function(feature, layer) {
@@ -666,7 +667,8 @@ async function initFortificationLayerWithFilter(kmlFilePaths) {
                 await loadKmlToLayer(path, layerGroup, {
                     isPermanent: false,
                     preserveZoom: true,
-                    fitBounds: false
+                    fitBounds: false,
+                    pane: 'vectorLines'
                 });
             }
             window.allFortificationLayers.push({
@@ -826,7 +828,7 @@ function getMessageText(msg) {
 
 // Мобильное устройство (hover-тултипы на сенсорном экране не работают)
 function isMobileDevice() {
-    return window.innerWidth <= 768;
+    return isMobileViewport();
 }
 
 // Функция поиска профилей по цифрам
@@ -1193,7 +1195,7 @@ async function showUnitDetailsForProfileId(profileId) {
                 bdPopup += `</div>`;
                 bdMarker.bindPopup(bdPopup, { className: 'units-ua-popup' });
                 if (!isMobileDevice()) {
-                    bdMarker.bindTooltip('Боевые действия', { direction: 'top', offset: [0, -16], className: 'map-hover-tooltip' });
+                    bdMarker.bindTooltip(escapeHtml(data.date), { direction: 'top', offset: [0, -16], className: 'map-hover-tooltip' });
                 }
                 bdMarker.addTo(window.unitsUaLayer);
                 window.unitsUaDetailMarkers.push(bdMarker);
@@ -1308,7 +1310,7 @@ async function toggleUnitsUa() {
         
         // Позиционирование панели
         if (panel && btn) {
-            if (window.innerWidth <= 768) {
+            if (isMobileViewport()) {
                 // мобильные: фиксированный левый верхний угол
                 panel.style.position = 'fixed';
                 panel.style.top = '0px';

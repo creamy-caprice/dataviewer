@@ -100,7 +100,6 @@
             this._canvas = null;
             this._ctx = null;
             this._pointsOn = true;
-            this._drawingActive = false;
             this._highlightId = null;
             this._center = null; // вид на момент последней полной отрисовки (для zoom-анимации)
             this._zoom = null;
@@ -513,12 +512,12 @@
             const pt = map.latLngToContainerPoint([p.lat, p.lng]);
             ctx.beginPath();
             ctx.arc(pt.x, pt.y, 14, 0, Math.PI * 2);
-            ctx.strokeStyle = '#ff0000';
+            ctx.strokeStyle = THEME.colors.layerRuAF;
             ctx.lineWidth = 3;
             ctx.stroke();
             ctx.beginPath();
             ctx.arc(pt.x, pt.y, 3, 0, Math.PI * 2);
-            ctx.fillStyle = '#ff0000';
+            ctx.fillStyle = THEME.colors.layerRuAF;
             ctx.fill();
         },
 
@@ -536,11 +535,6 @@
         // ===== Tooltip при наведении: «Боевые действия»/«Удары» — дата, «Техника» — название =====
 
         _onMapMouseMove(e) {
-            const dp = window.drawPanel;
-            if (dp && (dp.isDrawing || dp.currentTool === 'icon' || dp.isEraserActive)) {
-                this._hideHoverTooltip();
-                return;
-            }
             this._lastHoverEvent = e;
             if (this._hoverRafId) return;
             this._hoverRafId = requestAnimationFrame(() => {
@@ -606,12 +600,6 @@
         },
 
         _onMapClick(e) {
-            if (this._drawingActive) return;
-
-            // Рисование/ластик активны — точки не перехватывают клик
-            const dp = window.drawPanel;
-            if (dp && (dp.isDrawing || dp.currentTool === 'icon' || dp.isEraserActive)) return;
-
             const containerPoint = e.containerPoint || (this._map && this._map.latLngToContainerPoint(e.latlng));
             if (!containerPoint) return;
             const p = this.getPointAt(containerPoint);

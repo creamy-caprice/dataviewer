@@ -125,11 +125,14 @@ window.cities = [
 
 
 // Управление точками
-// Путь к файлу с точками
-// window.pointsKmlPaths = ["kml/Geolocations/2026 год январь.kml",
-//						  "kml/Geolocations/2023-2025.kml"];
- window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml",
-                          "kml/Geolocations/oldesPoint.kml"];
+// Путь к файлу с точками (свежие — грузятся всегда при старте)
+ window.pointsKmlPaths = ["kml/Geolocations/lastPoint.kml"];
+// Старые точки (2022.07–2026.08, 9.4 MB) — грузятся по требованию,
+// когда выбранный диапазон дат на них попадает (см. pointsOldCutoff)
+ window.pointsKmlPathsOld = ["kml/Geolocations/oldesPoint.kml"];
+// Граница: старый файл нужен, если начало диапазона раньше этой даты
+// (lastPoint.kml покрывает с 01.09.26; формат DD.MM.YY, как во всём приложении)
+ window.pointsOldCutoff = "01.09.26";
 // window.pointsKmlPaths = ["kml/Geolocations/exportToKML.kml"];
 // window.pointsKmlPaths = [];
  window.pointLayers = [];
@@ -149,10 +152,10 @@ window.attacksOnUaKmlPaths = ["kml/Geolocations/osint_alarm_2022.kml",
 
 
 window.fortificationKmlPaths = ["kml/Fortifications/Geojson/CK_Trenches.geojson",
+								"kml/Fortifications/Geojson/CK_Teeth.geojson",
 								"kml/Fortifications/Geojson/CK_Ditches.geojson",
 								"kml/Fortifications/Geojson/CK_Wire.geojson",
-								"kml/Fortifications/Geojson/CK_Teeth.geojson"
-							   ];
+								];
 window.fortificationLayers = [];
 
 // CSV с данными о подразделениях ВСУ
