@@ -681,3 +681,9 @@ const vectorPolyPane = map.createPane('vectorPoly');
 vectorPolyPane.style.zIndex = 410;
 const vectorLinesPane = map.createPane('vectorLines');
 vectorLinesPane.style.zIndex = 420;
+// canvas'ы векторных панелей не перехватывают pointer-события: иначе верхний canvas
+// (vectorLines) забирает все hover'ы и слои ниже не получают mouseover.
+// Обработка hover/click по всем трём панелям — в js/vector-hover.js.
+vectorControlPane.style.pointerEvents = 'none';
+vectorPolyPane.style.pointerEvents = 'none';
+vectorLinesPane.style.pointerEvents = 'none';
