@@ -702,6 +702,11 @@ window.unitsUaDetailProfileId = null; // ID подразделения в реж
 window.unitsUaSavedMarkers = [];     // сохранённые маркеры ПВД для восстановления
 window.unitsUaDetailMarkers = [];    // маркеры БД в режиме деталей
 window.unitsUaDetailPvdMarkers = []; // маркеры ПВД в режиме деталей
+window.unitsUaMainDivisions = null;   // Set ID головных (родительских) подразделений
+window.unitsUaSubDivisions = null;    // массив { id, name, parentId, date, coords }
+window.unitsUaCompositionMode = false;
+window.unitsUaCompositionParentId = null;
+window.unitsUaCompositionMarkers = [];
 
 // Функция парсинга текста сообщения для извлечения состава, вооружения и меток
 function parseUnitsUaDetails(text) {
@@ -819,6 +824,57 @@ async function loadUnitsUaIcons() {
     }
 }
 
+// Загрузка головных/дочерних подразделений из CSV
+async function loadUnitsUaDivisions() {
+    if (window.unitsUaMainDivisions && window.unitsUaSubDivisions) return;
+
+    const mainSet = new Set();
+    const subList = [];
+
+    if (window.unitsUaMainDivisionCsvPath) {
+        try {
+            const response = await fetch(window.unitsUaMainDivisionCsvPath);
+            if (response.ok) {
+                const text = await response.text();
+                const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
+                for (const line of lines.slice(1)) {
+                    const parts = line.split(',');
+                    const id = parts[1] ? parts[1].trim() : '';
+                    if (id) mainSet.add(id);
+                }
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки Main_Division_UA.csv:', error);
+        }
+    }
+
+    if (window.unitsUaSubDivisionCsvPath) {
+        try {
+            const response = await fetch(window.unitsUaSubDivisionCsvPath);
+            if (response.ok) {
+                const text = await response.text();
+                const lines = text.split(/\r?\n/).filter(line => line.trim().length > 0);
+                for (const line of lines.slice(1)) {
+                    const parts = line.split(',');
+                    if (parts.length < 4) continue;
+                    subList.push({
+                        id: parts[1].trim(),
+                        name: parts[2].trim(),
+                        parentId: parts[3].trim(),
+                        date: parts.length > 4 ? parts[4].trim() : '',
+                        coords: parts.length > 5 ? parts.slice(5).join(',') : ''
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Ошибка загрузки Sub_Division_UA.csv:', error);
+        }
+    }
+
+    window.unitsUaMainDivisions = mainSet;
+    window.unitsUaSubDivisions = subList;
+}
+
 function getMessageText(msg) {
     if (typeof msg.text === 'string') return msg.text;
     if (Array.isArray(msg.text))
@@ -921,6 +977,17 @@ function parseCsvDate(dateStr) {
     return new Date(year, month, day);
 }
 
+// Парсинг строки с координатами ("48.12,37.45", "48.12 37.45", "48.12;37.45")
+function parseCoordsString(str) {
+    if (!str) return null;
+    const m = String(str).trim().match(/(-?\d{1,3}(?:\.\d+)?)\s*[,;\s]\s*(-?\d{1,3}(?:\.\d+)?)/);
+    if (!m) return null;
+    const lat = parseFloat(m[1]);
+    const lng = parseFloat(m[2]);
+    if (isNaN(lat) || isNaN(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return null;
+    return { lat: lat, lng: lng };
+}
+
 // Парсинг строки CSV
 function parseUnitsCsvRow(row) {
     const parts = row.split(',');
@@ -987,6 +1054,7 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
         }
 
         await loadUnitsUaIcons(); // гарантируем, что детали загружены
+        await loadUnitsUaDivisions(); // гарантируем, что списки головных/дочерних загружены
 
         if (window.unitsUaLayer) {
             window.unitsUaLayer.clearLayers();
@@ -1064,7 +1132,11 @@ async function loadUnitsUaWithDateFilter(targetDateStr, allowedProfileIds = null
 			popupHtml += `<div style="margin-top:4px;"><strong>Дата:</strong> ${escapeHtml(row.date)}</div>`;
 
 			//
-			popupHtml += `<div class="units-ua-details-btn-wrap"><button class="units-ua-details-btn" onclick="window.showUnitDetailsForProfileId('${row.profileId}'); map.closePopup();">Геоданные</button></div>`;
+			let unitBtnsHtml = `<button class="units-ua-details-btn" onclick="window.showUnitDetailsForProfileId('${row.profileId}'); map.closePopup();">Геоданные</button>`;
+			if (window.unitsUaMainDivisions && window.unitsUaMainDivisions.has(row.profileId)) {
+				unitBtnsHtml += `<button class="units-ua-details-btn" onclick="window.showUnitCompositionForProfileId('${row.profileId}'); map.closePopup();">Состав</button>`;
+			}
+			popupHtml += `<div class="units-ua-details-btn-wrap">${unitBtnsHtml}</div>`;
 			popupHtml += `</div>`;
 
             marker.bindPopup(popupHtml, { className: 'units-ua-popup' });
@@ -1091,6 +1163,9 @@ async function showUnitDetailsForProfileId(profileId) {
     // Сбрасываем предыдущий режим деталей, если он был
     if (window.unitsUaDetailMode) {
         resetUnitDetails();
+    }
+    if (window.unitsUaCompositionMode) {
+        resetUnitComposition();
     }
 
     window.unitsUaDetailMode = true;
@@ -1230,6 +1305,170 @@ function resetUnitDetails() {
     window.unitsUaSavedMarkers = [];
 }
 
+// Показывает дочерние подразделения головного подразделения (режим "Состав")
+async function showUnitCompositionForProfileId(parentId) {
+    if (window.unitsUaCompositionMode && window.unitsUaCompositionParentId === parentId) {
+        resetUnitComposition();
+        return;
+    }
+
+    // Сбрасываем предыдущие режимы, если они были
+    if (window.unitsUaDetailMode) {
+        resetUnitDetails();
+    }
+    if (window.unitsUaCompositionMode) {
+        resetUnitComposition();
+    }
+
+    window.unitsUaCompositionMode = true;
+    window.unitsUaCompositionParentId = parentId;
+
+    // Сохраняем текущие маркеры ПВД для восстановления
+    window.unitsUaSavedMarkers = [...window.unitsUaMarkers];
+
+    // Очищаем слой: остаётся только маркер головного подразделения
+    if (window.unitsUaLayer) {
+        window.unitsUaLayer.clearLayers();
+    }
+    window.unitsUaMarkers = [];
+    window.unitsUaCompositionMarkers = [];
+
+    const currentMarker = window.unitsUaSavedMarkers.find(function(m) {
+        return m && m.options && m.options._profileId === parentId;
+    });
+    if (currentMarker) {
+        currentMarker.addTo(window.unitsUaLayer);
+        window.unitsUaMarkers.push(currentMarker);
+    }
+
+    try {
+        await loadUnitsUaDivisions();
+        await loadUnitsUaIcons();
+
+        const children = window.unitsUaSubDivisions.filter(function(c) {
+            return c.parentId === parentId;
+        });
+
+        // Запасные координаты: ПВД из UnitsUA.csv, самая поздняя дата на каждый ID
+        let pvdByProfile = {};
+        if (window.unitsUaCsvPath) {
+            try {
+                const response = await fetch(window.unitsUaCsvPath);
+                if (response.ok) {
+                    const csvText = await response.text();
+                    const lines = csvText.split(/\r?\n/).filter(line => line.trim().length > 0);
+                    for (const line of lines.slice(1)) {
+                        const data = parseUnitsCsvRow(line);
+                        if (!data) continue;
+                        if (isNaN(data.lat) || isNaN(data.lng)) continue;
+                        if (data.characteristic !== 'ПВД') continue;
+                        const prev = pvdByProfile[data.profileId];
+                        if (!prev || parseCsvDate(data.date) > parseCsvDate(prev.date)) {
+                            pvdByProfile[data.profileId] = data;
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки UnitsUA.csv для "Состав":', error);
+            }
+        }
+
+        for (const child of children) {
+            let lat = null;
+            let lng = null;
+            let date = '';
+
+            // 1) Координаты из Sub_Division_UA.csv по самой поздней дате
+            const subRows = window.unitsUaSubDivisions.filter(function(c) {
+                return c.id === child.id && c.coords;
+            });
+            if (subRows.length > 0) {
+                const latest = subRows.reduce(function(a, b) {
+                    const da = parseCsvDate(a.date);
+                    const db = parseCsvDate(b.date);
+                    if (!da) return db ? b : a;
+                    if (!db) return a;
+                    return db > da ? b : a;
+                });
+                const coords = parseCoordsString(latest.coords);
+                if (coords) {
+                    lat = coords.lat;
+                    lng = coords.lng;
+                    date = latest.date;
+                }
+            }
+
+            // 2) Если в файле дочерних координат/даты нет — ПВД из UnitsUA.csv, самая поздняя дата
+            if (lat === null) {
+                const pvdRow = pvdByProfile[child.id];
+                if (pvdRow) {
+                    lat = pvdRow.lat;
+                    lng = pvdRow.lng;
+                    date = pvdRow.date;
+                }
+            }
+
+            if (lat === null) continue;
+
+            const iconInfo = window.unitsUaIconsMap[child.id];
+            const unitTitle = child.name || (iconInfo && iconInfo.title) || `ID:${child.id}`;
+            const icon = iconInfo
+                ? L.icon({
+                    iconUrl: `units/ua/${iconInfo.photo}`,
+                    iconSize: [28, 32],
+                    iconAnchor: [14, 16],
+                    popupAnchor: [0, -16]
+                })
+                : L.icon({
+                    iconUrl: 'img/attack types/Взрывчик.png',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14],
+                    popupAnchor: [0, 0]
+                });
+
+            const marker = L.marker([lat, lng], { icon: icon, _profileId: child.id });
+
+            let popupHtml = `<div style="font-size:14px;"><strong>${escapeHtml(unitTitle)}</strong>`;
+            if (date) {
+                popupHtml += `<div style="margin-top:4px;"><strong>Дата:</strong> ${escapeHtml(date)}</div>`;
+            }
+            popupHtml += `</div>`;
+
+            marker.bindPopup(popupHtml, { className: 'units-ua-popup' });
+            if (!isMobileDevice()) {
+                marker.bindTooltip(unitTitle, { direction: 'top', offset: [0, -16], className: 'map-hover-tooltip' });
+            }
+            marker.addTo(window.unitsUaLayer);
+            window.unitsUaCompositionMarkers.push(marker);
+        }
+    } catch (error) {
+        console.error('Ошибка загрузки "Состав" подразделения:', error);
+    }
+}
+
+// Восстанавливает все маркеры ПВД и убирает маркеры дочерних подразделений
+function resetUnitComposition() {
+    if (!window.unitsUaCompositionMode) return;
+
+    window.unitsUaCompositionMode = false;
+    window.unitsUaCompositionParentId = null;
+
+    if (window.unitsUaLayer) {
+        window.unitsUaLayer.clearLayers();
+    }
+
+    window.unitsUaMarkers = [];
+    window.unitsUaCompositionMarkers = [];
+
+    window.unitsUaSavedMarkers.forEach(function(m) {
+        if (m) {
+            m.addTo(window.unitsUaLayer);
+            window.unitsUaMarkers.push(m);
+        }
+    });
+    window.unitsUaSavedMarkers = [];
+}
+
 // Простая функция экранирования HTML (чтобы избежать XSS)
 function escapeHtml(str) {
     if (!str) return '';
@@ -1245,6 +1484,7 @@ function escapeHtml(str) {
 function reloadUnitsUaLayer() {
     if (window.isUnitsUaVisible) {
         resetUnitDetails();
+        resetUnitComposition();
         const currentDate = window.selectedDate || getCurrentDateFormatted();
         let filterSet = null;
         if (window.unitsSearchDigits) {
@@ -1330,6 +1570,7 @@ async function toggleUnitsUa() {
     } else {
         // ===== Выключение слоя =====
         resetUnitDetails();
+        resetUnitComposition();
         if (window.unitsUaLayer && map.hasLayer(window.unitsUaLayer)) {
             map.removeLayer(window.unitsUaLayer);
         }
@@ -1447,6 +1688,7 @@ window.hideAllFortificationLayers = hideAllFortificationLayers;
 
 window.reloadUnitsUaLayer = reloadUnitsUaLayer;
 window.showUnitDetailsForProfileId = showUnitDetailsForProfileId;
+window.showUnitCompositionForProfileId = showUnitCompositionForProfileId;
 
 
 //

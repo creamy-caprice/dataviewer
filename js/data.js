@@ -161,6 +161,8 @@ window.fortificationLayers = [];
 // CSV с данными о подразделениях ВСУ
 window.unitsUaCsvPath  = "kml/Geolocations/UnitsUA.csv";
 window.unitsUaJsonPath = "units/ua/UnitsUA.json";
+window.unitsUaMainDivisionCsvPath = "units/ua/Main_Division_UA.csv";
+window.unitsUaSubDivisionCsvPath  = "units/ua/Sub_Division_UA.csv";
 
 // ===== Canvas-слой точек =====
 window.POINTS_CANVAS_OPTIONS = {

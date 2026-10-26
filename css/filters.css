@@ -369,8 +369,8 @@
     font-size: var(--font-size-sm);
     cursor: pointer;
     font-weight: bold;
-    width: 50%;
-    margin: 0 auto;
+    width: 45%;
+    margin: 0 5px;
 }
 
 .units-ua-details-btn:hover {
