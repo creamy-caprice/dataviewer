@@ -7886,8 +7886,8 @@
    "type": "message",
    "date": "2026-03-16T16:52:58",
    "date_unixtime": "1773669178",
-   "edited": "2026-10-08T00:03:18",
-   "edited_unixtime": "1791406998",
+   "edited": "2026-10-29T00:21:06",
+   "edited_unixtime": "1793222466",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/60.png",
@@ -7928,6 +7928,11 @@
     {
      "type": "link",
      "text": "https://www.facebook.com/61592061352399"
+    },
+    "\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/people/1-мотопіхотний-батальйон-58-ОМПБр/61594217316825/"
     },
     "\nИнст ",
     {
@@ -8004,6 +8009,14 @@
     {
      "type": "link",
      "text": "https://www.facebook.com/61592061352399"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/people/1-мотопіхотний-батальйон-58-ОМПБр/61594217316825/"
     },
     {
      "type": "plain",
@@ -35249,6 +35262,59 @@
     {
      "type": "hashtag",
      "text": "#Бр_93"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 332,
+   "type": "message",
+   "date": "2026-10-29T00:25:52",
+   "date_unixtime": "1793222752",
+   "edited": "2026-10-29T00:25:55",
+   "edited_unixtime": "1793222755",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/332.png",
+   "file_name": "332.png",
+   "file_size": 101891,
+   "thumbnail": "files/332.png_thumb.jpg",
+   "thumbnail_file_size": 20848,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:332\n\n58-я отдельная мотопехотная бригада.1-й мотопехотный батальон \n\nОписание:\n1 мотопіхотний батальйон.\n\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/people/1-мотопіхотний-батальйон-58-ОМПБр/61594217316825/"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_58"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:332\n\n58-я отдельная мотопехотная бригада.1-й мотопехотный батальон \n\nОписание:\n1 мотопіхотний батальйон.\n\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/people/1-мотопіхотний-батальйон-58-ОМПБр/61594217316825/"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_58"
     },
     {
      "type": "plain",
