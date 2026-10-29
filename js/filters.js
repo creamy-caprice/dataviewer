@@ -1338,7 +1338,7 @@ async function showUnitDetailsForProfileId(profileId) {
         }
         if (allDetailPoints.length > 0) {
             const detailBounds = L.latLngBounds(allDetailPoints.map(function(m) { return m.getLatLng(); }));
-            map.fitBounds(detailBounds, { padding: [20, 20] });
+            map.fitBounds(detailBounds, { padding: [20, 20], maxZoom: 12 });
         }
     } catch (error) {
         console.error('Ошибка загрузки CSV для деталей:', error);
