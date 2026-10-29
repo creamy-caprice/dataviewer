@@ -1217,23 +1217,70 @@ async function showUnitDetailsForProfileId(profileId) {
         if (lines.length === 0) return;
 
         const dataLines = lines.slice(1);
+        const detailRows = [];
+        let currentMarkerRow = null;
         for (const line of dataLines) {
             const data = parseUnitsCsvRow(line);
             if (!data) continue;
             if (isNaN(data.lat) || isNaN(data.lng)) continue;
             if (data.profileId !== profileId) continue;
 
-            // Пропускаем запись, которая уже отображена актуальным маркером
+            // Запись, которая уже отображена актуальным маркером
             if (currentMarker) {
                 const curLatLng = currentMarker.getLatLng();
                 if (Math.abs(data.lat - curLatLng.lat) < 0.0001 && Math.abs(data.lng - curLatLng.lng) < 0.0001) {
+                    currentMarkerRow = data;
                     continue;
                 }
             }
 
+            detailRows.push(data);
+        }
+
+        // Среди точек с иконкой "Взрывчик" (все БД и ПВД, если у подразделения нет иконки)
+        // находим самую свежую дату — она будет подсвечена
+        const explosionRows = detailRows.filter(function(d) {
+            return d.characteristic === 'БД' || (d.characteristic === 'ПВД' && !unitIconInfo);
+        });
+        if (currentMarkerRow && !unitIconInfo && currentMarkerRow.characteristic === 'ПВД') {
+            explosionRows.push(currentMarkerRow);
+        }
+        let latestExplosionDate = null;
+        for (const d of explosionRows) {
+            const t = parseCsvDate(d.date);
+            if (!t) continue;
+            if (latestExplosionDate === null || t.getTime() > latestExplosionDate) {
+                latestExplosionDate = t.getTime();
+            }
+        }
+
+        // Актуальный маркер тоже подсвечиваем, если он самый свежий среди "взрывчиков"
+        if (currentMarker && currentMarkerRow && !unitIconInfo && latestExplosionDate !== null) {
+            const t = parseCsvDate(currentMarkerRow.date);
+            if (t && t.getTime() === latestExplosionDate) {
+                if (!currentMarker._originalIcon) {
+                    currentMarker._originalIcon = currentMarker.getIcon();
+                }
+                currentMarker.setIcon(L.icon({
+                    iconUrl: 'img/attack types/Combat_operations_Highlight.png',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 14],
+                    popupAnchor: [0, 0]
+                }));
+            }
+        }
+
+        for (const data of detailRows) {
             if (data.characteristic === 'ПВД') {
+                let pvdIconUrl = unitIconInfo ? `units/ua/${unitIconInfo.photo}` : 'img/attack types/Combat_operations.png';
+                if (!unitIconInfo && latestExplosionDate !== null) {
+                    const t = parseCsvDate(data.date);
+                    if (t && t.getTime() === latestExplosionDate) {
+                        pvdIconUrl = 'img/attack types/Combat_operations_Highlight.png';
+                    }
+                }
                 const oldPvdIcon = L.icon({
-                    iconUrl: unitIconInfo ? `units/ua/${unitIconInfo.photo}` : 'img/attack types/Взрывчик.png',
+                    iconUrl: pvdIconUrl,
                     iconSize: [24, 28],
                     iconAnchor: [10, 12],
                     popupAnchor: [0, -12]
@@ -1252,8 +1299,15 @@ async function showUnitDetailsForProfileId(profileId) {
                 pvdMarker.addTo(window.unitsUaLayer);
                 window.unitsUaDetailPvdMarkers.push(pvdMarker);
             } else if (data.characteristic === 'БД') {
+                let bdIconUrl = 'img/attack types/Combat_operations.png';
+                if (latestExplosionDate !== null) {
+                    const t = parseCsvDate(data.date);
+                    if (t && t.getTime() === latestExplosionDate) {
+                        bdIconUrl = 'img/attack types/Combat_operations_Highlight.png';
+                    }
+                }
                 const bdIcon = L.icon({
-                    iconUrl: 'img/attack types/Взрывчик.png',
+                    iconUrl: bdIconUrl,
                     iconSize: [32, 32],
                     iconAnchor: [16, 24],
                     popupAnchor: [0, -24]
@@ -1275,6 +1329,16 @@ async function showUnitDetailsForProfileId(profileId) {
                 bdMarker.addTo(window.unitsUaLayer);
                 window.unitsUaDetailMarkers.push(bdMarker);
             }
+        }
+
+        // Подстраиваем карту под все найденные точки с небольшими отступами
+        const allDetailPoints = [...window.unitsUaDetailMarkers, ...window.unitsUaDetailPvdMarkers];
+        if (currentMarker) {
+            allDetailPoints.push(currentMarker);
+        }
+        if (allDetailPoints.length > 0) {
+            const detailBounds = L.latLngBounds(allDetailPoints.map(function(m) { return m.getLatLng(); }));
+            map.fitBounds(detailBounds, { padding: [20, 20] });
         }
     } catch (error) {
         console.error('Ошибка загрузки CSV для деталей:', error);
@@ -1298,6 +1362,10 @@ function resetUnitDetails() {
 
     window.unitsUaSavedMarkers.forEach(function(m) {
         if (m) {
+            if (m._originalIcon) {
+                m.setIcon(m._originalIcon);
+                delete m._originalIcon;
+            }
             m.addTo(window.unitsUaLayer);
             window.unitsUaMarkers.push(m);
         }
