@@ -23881,8 +23881,8 @@
    "type": "message",
    "date": "2026-04-13T18:13:20",
    "date_unixtime": "1776093200",
-   "edited": "2026-09-29T12:54:05",
-   "edited_unixtime": "1790675645",
+   "edited": "2026-11-03T23:40:00",
+   "edited_unixtime": "1793738400",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/184.png",
@@ -23898,6 +23898,11 @@
     {
      "type": "link",
      "text": "https://t.me/strix_kh_ua"
+    },
+    "\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61592651570478"
     },
     "\n\nСостав\n1-я пограничная комендатура быстрого реагирования\nРота беспилотных систем «СТРIКС»\n\nВооружение\n?\n\n",
     {
@@ -23929,6 +23934,14 @@
     {
      "type": "link",
      "text": "https://t.me/strix_kh_ua"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61592651570478"
     },
     {
      "type": "plain",
@@ -36203,6 +36216,205 @@
     {
      "type": "hashtag",
      "text": "#Бр_11"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 352,
+   "type": "message",
+   "date": "2026-11-03T23:57:00",
+   "date_unixtime": "1793739420",
+   "edited": "2026-11-04T00:02:58",
+   "edited_unixtime": "1793739778",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/352.png",
+   "file_name": "352.png",
+   "file_size": 4250,
+   "thumbnail": "files/352.png_thumb.jpg",
+   "thumbnail_file_size": 7296,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:352\n\n5-я отдельная штурмовая бригада. 1 батальон беспилотных систем\n\nОписание\n1-й батальйон безпілотних систем\n\n",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1C6joAPdVR/"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_5"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:352\n\n5-я отдельная штурмовая бригада. 1 батальон беспилотных систем\n\nОписание\n1-й батальйон безпілотних систем\n\n"
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1C6joAPdVR/"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_5"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 353,
+   "type": "message",
+   "date": "2026-11-04T08:32:17",
+   "date_unixtime": "1793770337",
+   "edited": "2026-11-04T08:33:13",
+   "edited_unixtime": "1793770393",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/353.png",
+   "file_name": "353.png",
+   "file_size": 4529,
+   "thumbnail": "files/353.png_thumb.jpg",
+   "thumbnail_file_size": 8608,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:353\n\nЦентр специального назначения НГУ «Омега». 1 отдельный отряд специального назначения\n\nОписание\n1-й окремий загін спеціального призначення\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Пк_Омега"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:353\n\nЦентр специального назначения НГУ «Омега». 1 отдельный отряд специального назначения\n\nОписание\n1-й окремий загін спеціального призначення\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Пк_Омега"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 354,
+   "type": "message",
+   "date": "2026-11-04T09:58:28",
+   "date_unixtime": "1793775508",
+   "edited": "2026-11-04T22:13:49",
+   "edited_unixtime": "1793819629",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/354.png",
+   "file_name": "354.png",
+   "file_size": 83206,
+   "thumbnail": "files/354.png_thumb.jpg",
+   "thumbnail_file_size": 24329,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:354 \n\n65-я отдельная механизированная бригада. Батальон беспилотных систем «РОНІНИ»\n\nОписание\nБатальйон безпілотних систем «РОНІНИ»\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/Ronins_65"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_65"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:354 \n\n65-я отдельная механизированная бригада. Батальон беспилотных систем «РОНІНИ»\n\nОписание\nБатальйон безпілотних систем «РОНІНИ»\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/Ronins_65"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_65"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 355,
+   "type": "message",
+   "date": "2026-11-04T12:04:16",
+   "date_unixtime": "1793783056",
+   "edited": "2026-11-04T12:04:34",
+   "edited_unixtime": "1793783074",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/355.png",
+   "file_name": "355.png",
+   "file_size": 108125,
+   "thumbnail": "files/355.png_thumb.jpg",
+   "thumbnail_file_size": 15334,
+   "mime_type": "image/png",
+   "width": 352,
+   "height": 400,
+   "text": [
+    "ID:355\n\n33-й отдельный штурмовой полк. Стрелковый батальон\n\nОписание\nСтрілецький батальйон\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/stribat33oshp"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Пк_33"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:355\n\n33-й отдельный штурмовой полк. Стрелковый батальон\n\nОписание\nСтрілецький батальйон\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/stribat33oshp"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Пк_33"
     },
     {
      "type": "plain",
