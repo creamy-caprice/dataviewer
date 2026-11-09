@@ -1079,8 +1079,8 @@
    "type": "message",
    "date": "2026-03-11T15:47:47",
    "date_unixtime": "1773233267",
-   "edited": "2026-10-13T11:22:23",
-   "edited_unixtime": "1791879743",
+   "edited": "2026-11-08T12:29:51",
+   "edited_unixtime": "1794130191",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/12.png",
@@ -1131,6 +1131,11 @@
     {
      "type": "link",
      "text": "https://facebook.com/profile.php?id=61567654379412"
+    },
+    "\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61581298441514"
     },
     "\n\nСостав\n1-й механизированный батальон \n2-й механизированный батальон\nСтрелковый батальон «Привиди Каспера»\nСамоходный артиллерийский дивизион\n1-й танковый батальон\n2-й танковый батальон\nЗенитный ракетно-артиллерийский дивизион\nБатальон беспилотных систем «Чорна стріла»\n\nВооружение\n\nББМ\nBV-206\nПРП-3 с боевым модулем «Парус»\nHMMWV\n\nСАУ\n155-мм САУ AS-90\n\nТяжёлая бронетехника\nLeopard 1A5DK\n\n",
     {
@@ -1218,6 +1223,14 @@
     {
      "type": "link",
      "text": "https://facebook.com/profile.php?id=61567654379412"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61581298441514"
     },
     {
      "type": "plain",
@@ -23195,15 +23208,116 @@
    "type": "message",
    "date": "2026-04-13T00:35:32",
    "date_unixtime": "1776029732",
-   "edited": "2026-04-13T00:35:35",
-   "edited_unixtime": "1776029735",
+   "edited": "2026-11-09T02:27:14",
+   "edited_unixtime": "1794180434",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
-   "text": "ID:177\n\nРезерв",
+   "file": "files/177.png",
+   "file_name": "177.png",
+   "file_size": 34056,
+   "thumbnail": "files/177.png_thumb.jpg",
+   "thumbnail_file_size": 18511,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:177\n\n5-й «Сумской» пограничный отряд\n\nОписание\n5-й «Сумський» прикордонний загін\n\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/Waryaz_we_are"
+    },
+    "\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/destruction_team"
+    },
+    "\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/profile.php?id=61573917787874"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#ГПСУ"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_5"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    "?"
+   ],
    "text_entities": [
     {
      "type": "plain",
-     "text": "ID:177\n\nРезерв"
+     "text": "ID:177\n\n5-й «Сумской» пограничный отряд\n\nОписание\n5-й «Сумський» прикордонний загін\n\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/Waryaz_we_are"
+    },
+    {
+     "type": "plain",
+     "text": "\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/destruction_team"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/profile.php?id=61573917787874"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#ГПСУ"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_5"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    {
+     "type": "plain",
+     "text": "?"
     }
    ]
   },
@@ -23317,8 +23431,8 @@
    "type": "message",
    "date": "2026-04-13T12:32:43",
    "date_unixtime": "1776072763",
-   "edited": "2026-10-04T21:44:25",
-   "edited_unixtime": "1791139465",
+   "edited": "2026-11-08T01:05:25",
+   "edited_unixtime": "1794089125",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/179.png",
@@ -23334,6 +23448,11 @@
     {
      "type": "link",
      "text": "https://t.me/liut_npu"
+    },
+    "\nИнст ",
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/polk_luhansk.npu"
     },
     "\n\nСостав \n1-й штурмовой полк «Сафарі»\n2-й штурмовой полк «Цунамі»\n3-й штурмовой полк «Луганськ»\n4-й штурмовой полк «Дніпро-1»\nСамоходный артиллерийский дивизион \nАртиллерийский дивизион \nТанковый батальон \nЗенитный ракетно-артиллерийский дивизион \nБатальон беспилотных систем «Крук»\n\nВооружение\n\nББМ\nМ113\nSisu XA-180\nKirpi\nСБА «Новатор»\nRoshel Senator \nOncilla\nBMR M-600\nКозак-7 (?)\nHMMWV (?)\n\nСАУ и буксируемая артиллерия \n122-мм гаубица Д-30\n152-мм гаубица 2А65 «Мста-Б»\n105-мм гаубица L119\n105-мм гаубица M101\n122-мм САУ 2С1 «Гвоздика»\n155-мм САУ 2С22 «Богдана»\n\nТяжёлая бронетехника\nТ-64БВ\n\n",
     {
@@ -23365,6 +23484,14 @@
     {
      "type": "link",
      "text": "https://t.me/liut_npu"
+    },
+    {
+     "type": "plain",
+     "text": "\nИнст "
+    },
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/polk_luhansk.npu"
     },
     {
      "type": "plain",
@@ -24275,15 +24402,90 @@
    "type": "message",
    "date": "2026-04-14T01:18:30",
    "date_unixtime": "1776118710",
-   "edited": "2026-04-14T01:18:33",
-   "edited_unixtime": "1776118713",
+   "edited": "2026-11-09T01:16:42",
+   "edited_unixtime": "1794176202",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
-   "text": "ID:188\n\nРезерв",
+   "file": "files/188.png",
+   "file_name": "188.png",
+   "file_size": 59637,
+   "thumbnail": "files/188.png_thumb.jpg",
+   "thumbnail_file_size": 20042,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:188\n\n31-й «Черновицкий» пограничный отряд имени генерал-хорунжего Александра Пилькевича\n\nОписание\n31-й Чернівецький прикордонний загін імені генерал-хорунжого Олександра Пилькевича\n\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1DjJmZ12F5/"
+    },
+    "\n\nСостав\n?\n\nВооружение\n?\n\n",
+    {
+     "type": "hashtag",
+     "text": "#ГПСУ"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_31"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    "?"
+   ],
    "text_entities": [
     {
      "type": "plain",
-     "text": "ID:188\n\nРезерв"
+     "text": "ID:188\n\n31-й «Черновицкий» пограничный отряд имени генерал-хорунжего Александра Пилькевича\n\nОписание\n31-й Чернівецький прикордонний загін імені генерал-хорунжого Олександра Пилькевича\n\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/share/1DjJmZ12F5/"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n?\n\nВооружение\n?\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#ГПСУ"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_31"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    {
+     "type": "plain",
+     "text": "?"
     }
    ]
   },
@@ -37024,6 +37226,165 @@
     {
      "type": "hashtag",
      "text": "#Бр_31"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 367,
+   "type": "message",
+   "date": "2026-11-08T01:14:22",
+   "date_unixtime": "1794089662",
+   "edited": "2026-11-09T01:41:45",
+   "edited_unixtime": "1794177705",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/367.png",
+   "file_name": "367.png",
+   "file_size": 37837,
+   "thumbnail": "files/367.png_thumb.jpg",
+   "thumbnail_file_size": 15751,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:367\n\n38-я отдельная бригада морской пехоты. 503 отдельный батальон морской пехоты \n\nОписание\n503-й окремий батальйон морської піхоти\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/Borsuky_503"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_38"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:367\n\n38-я отдельная бригада морской пехоты. 503 отдельный батальон морской пехоты \n\nОписание\n503-й окремий батальйон морської піхоти\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/Borsuky_503"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_38"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 368,
+   "type": "message",
+   "date": "2026-11-08T01:28:11",
+   "date_unixtime": "1794090491",
+   "edited": "2026-11-09T01:42:11",
+   "edited_unixtime": "1794177731",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/368.png",
+   "file_name": "368.png",
+   "file_size": 97055,
+   "thumbnail": "files/368.png_thumb.jpg",
+   "thumbnail_file_size": 26781,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:368\n\nОбъединенная штурмовая бригада Нацполиции «Ярость». 3 штурмовой полк «Луганськ»\n\nОписание\n3-й штурмовий полк \n\nИнст ",
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/polk_luhansk.npu"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_Лють"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:368\n\nОбъединенная штурмовая бригада Нацполиции «Ярость». 3 штурмовой полк «Луганськ»\n\nОписание\n3-й штурмовий полк \n\nИнст "
+    },
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/polk_luhansk.npu"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_Лють"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 369,
+   "type": "message",
+   "date": "2026-11-08T18:03:11",
+   "date_unixtime": "1794150191",
+   "edited": "2026-11-09T01:38:22",
+   "edited_unixtime": "1794177502",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/369.png",
+   "file_name": "369.png",
+   "file_size": 56862,
+   "thumbnail": "files/369.png_thumb.jpg",
+   "thumbnail_file_size": 16633,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:369\n\n142-я отдельная механизированная бригада. Батальон беспилотных систем «Гарпiï»\n\nОписание\nБатальйон безпілотних систем\n\nФБ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61574856155256/"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_142"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:369\n\n142-я отдельная механизированная бригада. Батальон беспилотных систем «Гарпiï»\n\nОписание\nБатальйон безпілотних систем\n\nФБ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/61574856155256/"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_142"
     },
     {
      "type": "plain",
