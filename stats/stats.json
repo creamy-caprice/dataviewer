@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-14T14:39:03.285Z",
+  "generatedAt": "2026-11-14T14:49:05.302Z",
   "generator": "post_helper",
   "source": {
     "dataset": "ControlZones",
@@ -8,7 +8,18 @@
     "minusSide": "UA",
     "method": "difference of consecutive monthly snapshots",
     "thresholdKm2": 0,
-    "excludedAreas": [],
+    "excludedAreas": [
+      {
+        "id": "direction-1",
+        "name": "Дельта Днепра от Каховского вдхр.",
+        "areaKm2": 1840.85
+      },
+      {
+        "id": "direction-1",
+        "name": "Каховское водохранилище",
+        "areaKm2": 2018.36
+      }
+    ],
     "minDate": "2023-10-01",
     "note": "Плюс — продвижение ВС РФ. Порог отключён: учитываются все компоненты разности.",
     "directions": {
@@ -33,12 +44,12 @@
       "days": 26,
       "daysCount": 26,
       "partial": false,
-      "rate": -1.03,
-      "areaFrom": 504898.64,
-      "areaTo": 504871.88,
-      "gain": 89.97,
-      "loss": 116.73,
-      "net": -26.76,
+      "rate": 1.04,
+      "areaFrom": 503034.8,
+      "areaTo": 503061.95,
+      "gain": 48.93,
+      "loss": 21.79,
+      "net": 27.14,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -46,13 +57,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 85,
-        "loss": 91
+        "gain": 45,
+        "loss": 57
       },
       "raw": {
-        "gain": 89.97,
-        "loss": 116.73,
-        "net": -26.76
+        "gain": 48.93,
+        "loss": 21.79,
+        "net": 27.14
       },
       "directions": [
         {
@@ -135,9 +146,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 41.2,
-          "loss": 98.16,
-          "net": -56.96
+          "gain": 0.17,
+          "loss": 3.22,
+          "net": -3.05
         },
         {
           "id": "kursk",
@@ -164,12 +175,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 0.43,
-      "areaFrom": 504871.88,
-      "areaTo": 504884.83,
-      "gain": 36.81,
-      "loss": 23.86,
-      "net": 12.95,
+      "rate": 0.44,
+      "areaFrom": 503061.95,
+      "areaTo": 503075.03,
+      "gain": 33.52,
+      "loss": 20.43,
+      "net": 13.09,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -177,13 +188,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 54,
-        "loss": 57
+        "gain": 51,
+        "loss": 55
       },
       "raw": {
-        "gain": 36.81,
-        "loss": 23.86,
-        "net": 12.95
+        "gain": 33.52,
+        "loss": 20.43,
+        "net": 13.09
       },
       "directions": [
         {
@@ -266,9 +277,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 6.31,
-          "loss": 4.2,
-          "net": 2.11
+          "gain": 3.03,
+          "loss": 0.78,
+          "net": 2.25
         },
         {
           "id": "kursk",
@@ -295,12 +306,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 1.28,
-      "areaFrom": 504884.83,
-      "areaTo": 504924.62,
-      "gain": 53.4,
-      "loss": 13.61,
-      "net": 39.79,
+      "rate": 1.34,
+      "areaFrom": 503075.03,
+      "areaTo": 503116.56,
+      "gain": 52.81,
+      "loss": 11.29,
+      "net": 41.52,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -308,13 +319,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 66,
-        "loss": 72
+        "gain": 63,
+        "loss": 68
       },
       "raw": {
-        "gain": 53.4,
-        "loss": 13.61,
-        "net": 39.79
+        "gain": 52.81,
+        "loss": 11.29,
+        "net": 41.52
       },
       "directions": [
         {
@@ -397,9 +408,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.62,
-          "loss": 2.36,
-          "net": -1.74
+          "gain": 0.04,
+          "loss": 0.04,
+          "net": 0
         },
         {
           "id": "kursk",
@@ -427,8 +438,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 0.97,
-      "areaFrom": 504924.62,
-      "areaTo": 504954.76,
+      "areaFrom": 503116.56,
+      "areaTo": 503146.7,
       "gain": 33.27,
       "loss": 3.13,
       "net": 30.14,
@@ -557,12 +568,12 @@
       "days": 29,
       "daysCount": 29,
       "partial": false,
-      "rate": 4.86,
-      "areaFrom": 504954.76,
-      "areaTo": 505095.77,
-      "gain": 145.32,
-      "loss": 4.31,
-      "net": 141.01,
+      "rate": 4.88,
+      "areaFrom": 503146.7,
+      "areaTo": 503288.17,
+      "gain": 145.2,
+      "loss": 3.73,
+      "net": 141.47,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -570,13 +581,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 52,
-        "loss": 68
+        "gain": 50,
+        "loss": 66
       },
       "raw": {
-        "gain": 145.32,
-        "loss": 4.31,
-        "net": 141.01
+        "gain": 145.2,
+        "loss": 3.73,
+        "net": 141.47
       },
       "directions": [
         {
@@ -659,9 +670,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.19,
-          "loss": 0.69,
-          "net": -0.5
+          "gain": 0.07,
+          "loss": 0.11,
+          "net": -0.04
         },
         {
           "id": "kursk",
@@ -689,8 +700,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 2.66,
-      "areaFrom": 505095.77,
-      "areaTo": 505178.26,
+      "areaFrom": 503288.17,
+      "areaTo": 503370.66,
       "gain": 84.7,
       "loss": 2.21,
       "net": 82.49,
@@ -819,12 +830,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 2.86,
-      "areaFrom": 505178.26,
-      "areaTo": 505263.94,
-      "gain": 95.41,
-      "loss": 9.73,
-      "net": 85.68,
+      "rate": 2.94,
+      "areaFrom": 503370.66,
+      "areaTo": 503459,
+      "gain": 92.32,
+      "loss": 3.98,
+      "net": 88.34,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -832,13 +843,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 41,
-        "loss": 54
+        "gain": 42,
+        "loss": 55
       },
       "raw": {
-        "gain": 95.41,
-        "loss": 9.73,
-        "net": 85.68
+        "gain": 92.32,
+        "loss": 3.98,
+        "net": 88.34
       },
       "directions": [
         {
@@ -921,9 +932,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 3.11,
-          "loss": 5.81,
-          "net": -2.7
+          "gain": 0.02,
+          "loss": 0.06,
+          "net": -0.04
         },
         {
           "id": "kursk",
@@ -951,11 +962,11 @@
       "daysCount": 31,
       "partial": false,
       "rate": 10.09,
-      "areaFrom": 505263.94,
-      "areaTo": 505576.85,
-      "gain": 319.35,
-      "loss": 6.44,
-      "net": 312.91,
+      "areaFrom": 503459,
+      "areaTo": 503771.9,
+      "gain": 319.33,
+      "loss": 6.43,
+      "net": 312.9,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -967,9 +978,9 @@
         "loss": 57
       },
       "raw": {
-        "gain": 319.35,
-        "loss": 6.44,
-        "net": 312.91
+        "gain": 319.33,
+        "loss": 6.43,
+        "net": 312.9
       },
       "directions": [
         {
@@ -1052,9 +1063,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.03,
+          "gain": 0.01,
           "loss": 0.02,
-          "net": 0.01
+          "net": -0.01
         },
         {
           "id": "kursk",
@@ -1082,8 +1093,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 3.32,
-      "areaFrom": 505576.85,
-      "areaTo": 505676.3,
+      "areaFrom": 503771.9,
+      "areaTo": 503871.34,
       "gain": 109.67,
       "loss": 10.22,
       "net": 99.45,
@@ -1212,12 +1223,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 5.1,
-      "areaFrom": 505676.3,
-      "areaTo": 505834.37,
-      "gain": 169.98,
-      "loss": 11.91,
-      "net": 158.07,
+      "rate": 5.09,
+      "areaFrom": 503871.34,
+      "areaTo": 504029.16,
+      "gain": 167.98,
+      "loss": 10.16,
+      "net": 157.82,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -1225,13 +1236,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 678,
-        "loss": 679
+        "gain": 634,
+        "loss": 637
       },
       "raw": {
-        "gain": 169.98,
-        "loss": 11.91,
-        "net": 158.07
+        "gain": 167.98,
+        "loss": 10.16,
+        "net": 157.82
       },
       "directions": [
         {
@@ -1314,9 +1325,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 2.01,
-          "loss": 1.83,
-          "net": 0.18
+          "gain": 0.02,
+          "loss": 0.08,
+          "net": -0.06
         },
         {
           "id": "kursk",
@@ -1344,8 +1355,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": -18.85,
-      "areaFrom": 505834.37,
-      "areaTo": 505250.01,
+      "areaFrom": 504029.16,
+      "areaTo": 503444.81,
       "gain": 374.77,
       "loss": 959.13,
       "net": -584.35,
@@ -1474,12 +1485,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 17.3,
-      "areaFrom": 505250.01,
-      "areaTo": 505769.1,
-      "gain": 631.43,
-      "loss": 112.35,
-      "net": 519.08,
+      "rate": 17.33,
+      "areaFrom": 503444.81,
+      "areaTo": 503964.72,
+      "gain": 630.86,
+      "loss": 110.96,
+      "net": 519.9,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -1487,13 +1498,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 60,
-        "loss": 70
+        "gain": 58,
+        "loss": 69
       },
       "raw": {
-        "gain": 631.43,
-        "loss": 112.35,
-        "net": 519.08
+        "gain": 630.86,
+        "loss": 110.96,
+        "net": 519.9
       },
       "directions": [
         {
@@ -1576,9 +1587,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.57,
-          "loss": 1.39,
-          "net": -0.82
+          "gain": 0,
+          "loss": 0,
+          "net": 0
         },
         {
           "id": "kursk",
@@ -1605,12 +1616,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 26.23,
-      "areaFrom": 505769.1,
-      "areaTo": 506582.37,
-      "gain": 1025.18,
-      "loss": 211.91,
-      "net": 813.27,
+      "rate": 24.12,
+      "areaFrom": 503964.72,
+      "areaTo": 504712.49,
+      "gain": 785.8,
+      "loss": 38.02,
+      "net": 747.78,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -1618,13 +1629,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 63,
-        "loss": 69
+        "gain": 56,
+        "loss": 62
       },
       "raw": {
-        "gain": 1025.18,
-        "loss": 211.91,
-        "net": 813.27
+        "gain": 785.8,
+        "loss": 38.02,
+        "net": 747.78
       },
       "directions": [
         {
@@ -1693,9 +1704,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 104.86,
+          "gain": 0.94,
           "loss": 0.12,
-          "net": 104.74
+          "net": 0.82
         },
         {
           "id": "chernihiv",
@@ -1707,9 +1718,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 135.52,
-          "loss": 173.92,
-          "net": -38.4
+          "gain": 0.06,
+          "loss": 0.03,
+          "net": 0.03
         },
         {
           "id": "kursk",
@@ -1737,8 +1748,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 22.47,
-      "areaFrom": 506582.37,
-      "areaTo": 507256.34,
+      "areaFrom": 504712.49,
+      "areaTo": 505386.47,
       "gain": 699.02,
       "loss": 25.05,
       "net": 673.98,
@@ -1868,8 +1879,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 17.09,
-      "areaFrom": 507256.34,
-      "areaTo": 507785.99,
+      "areaFrom": 505386.47,
+      "areaTo": 505916.12,
       "gain": 555.31,
       "loss": 25.67,
       "net": 529.64,
@@ -1999,8 +2010,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 14.22,
-      "areaFrom": 507785.99,
-      "areaTo": 508226.69,
+      "areaFrom": 505916.12,
+      "areaTo": 506356.82,
       "gain": 465.96,
       "loss": 25.27,
       "net": 440.7,
@@ -2130,11 +2141,11 @@
       "daysCount": 28,
       "partial": false,
       "rate": 8.23,
-      "areaFrom": 508226.69,
-      "areaTo": 508457.03,
-      "gain": 253.66,
-      "loss": 23.31,
-      "net": 230.34,
+      "areaFrom": 506356.82,
+      "areaTo": 506587.32,
+      "gain": 252.14,
+      "loss": 21.63,
+      "net": 230.51,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -2142,13 +2153,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 63,
-        "loss": 74
+        "gain": 60,
+        "loss": 71
       },
       "raw": {
-        "gain": 253.66,
-        "loss": 23.31,
-        "net": 230.34
+        "gain": 252.14,
+        "loss": 21.63,
+        "net": 230.51
       },
       "directions": [
         {
@@ -2231,9 +2242,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 1.54,
-          "loss": 1.68,
-          "net": -0.14
+          "gain": 0.02,
+          "loss": 0,
+          "net": 0.02
         },
         {
           "id": "kursk",
@@ -2261,8 +2272,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 22.82,
-      "areaFrom": 508457.03,
-      "areaTo": 509164.32,
+      "areaFrom": 506587.32,
+      "areaTo": 507294.61,
       "gain": 723.9,
       "loss": 16.62,
       "net": 707.28,
@@ -2392,8 +2403,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 11.04,
-      "areaFrom": 509164.32,
-      "areaTo": 509495.37,
+      "areaFrom": 507294.61,
+      "areaTo": 507625.66,
       "gain": 339.22,
       "loss": 8.17,
       "net": 331.05,
@@ -2523,8 +2534,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 18.3,
-      "areaFrom": 509495.37,
-      "areaTo": 510062.69,
+      "areaFrom": 507625.66,
+      "areaTo": 508192.98,
       "gain": 579.34,
       "loss": 12.02,
       "net": 567.32,
@@ -2654,8 +2665,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 15.06,
-      "areaFrom": 510062.69,
-      "areaTo": 510514.5,
+      "areaFrom": 508192.98,
+      "areaTo": 508644.79,
       "gain": 473.77,
       "loss": 21.97,
       "net": 451.81,
@@ -2784,12 +2795,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 13.95,
-      "areaFrom": 510514.5,
-      "areaTo": 510947.05,
-      "gain": 472.09,
+      "rate": 13.52,
+      "areaFrom": 508644.79,
+      "areaTo": 509063.76,
+      "gain": 458.51,
       "loss": 39.54,
-      "net": 432.56,
+      "net": 418.98,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -2801,9 +2812,9 @@
         "loss": 67
       },
       "raw": {
-        "gain": 472.09,
+        "gain": 458.51,
         "loss": 39.54,
-        "net": 432.56
+        "net": 418.98
       },
       "directions": [
         {
@@ -2872,9 +2883,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 23.01,
+          "gain": 9.42,
           "loss": 0.16,
-          "net": 22.85
+          "net": 9.26
         },
         {
           "id": "chernihiv",
@@ -2915,12 +2926,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 14.66,
-      "areaFrom": 510947.05,
-      "areaTo": 511401.64,
-      "gain": 504.14,
-      "loss": 49.55,
-      "net": 454.58,
+      "rate": 12.45,
+      "areaFrom": 509063.76,
+      "areaTo": 509449.7,
+      "gain": 407.73,
+      "loss": 21.79,
+      "net": 385.94,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -2928,13 +2939,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 62,
-        "loss": 80
+        "gain": 58,
+        "loss": 75
       },
       "raw": {
-        "gain": 504.14,
-        "loss": 49.55,
-        "net": 454.58
+        "gain": 407.73,
+        "loss": 21.79,
+        "net": 385.94
       },
       "directions": [
         {
@@ -3003,9 +3014,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 48.47,
+          "gain": 5.57,
           "loss": 0.99,
-          "net": 47.48
+          "net": 4.58
         },
         {
           "id": "chernihiv",
@@ -3017,9 +3028,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 53.83,
-          "loss": 27.76,
-          "net": 26.07
+          "gain": 0.33,
+          "loss": 0,
+          "net": 0.33
         },
         {
           "id": "kursk",
@@ -3047,8 +3058,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 16.7,
-      "areaFrom": 511401.64,
-      "areaTo": 511902.77,
+      "areaFrom": 509449.7,
+      "areaTo": 509950.84,
       "gain": 522.34,
       "loss": 21.21,
       "net": 501.13,
@@ -3177,12 +3188,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 19.77,
-      "areaFrom": 511902.77,
-      "areaTo": 512515.52,
-      "gain": 643.27,
+      "rate": 18.8,
+      "areaFrom": 509950.84,
+      "areaTo": 510533.52,
+      "gain": 613.2,
       "loss": 30.52,
-      "net": 612.75,
+      "net": 582.68,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -3194,9 +3205,9 @@
         "loss": 83
       },
       "raw": {
-        "gain": 643.27,
+        "gain": 613.2,
         "loss": 30.52,
-        "net": 612.75
+        "net": 582.68
       },
       "directions": [
         {
@@ -3265,9 +3276,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 70.28,
+          "gain": 40.21,
           "loss": 1.62,
-          "net": 68.66
+          "net": 38.59
         },
         {
           "id": "chernihiv",
@@ -3308,12 +3319,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 16.43,
-      "areaFrom": 512515.52,
-      "areaTo": 513008.5,
+      "rate": 17.57,
+      "areaFrom": 510533.52,
+      "areaTo": 511060.75,
       "gain": 552.11,
-      "loss": 59.12,
-      "net": 492.99,
+      "loss": 24.88,
+      "net": 527.23,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -3326,8 +3337,8 @@
       },
       "raw": {
         "gain": 552.11,
-        "loss": 59.12,
-        "net": 492.99
+        "loss": 24.88,
+        "net": 527.23
       },
       "directions": [
         {
@@ -3397,8 +3408,8 @@
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
           "gain": 14.1,
-          "loss": 34.58,
-          "net": -20.48
+          "loss": 0.33,
+          "net": 13.77
         },
         {
           "id": "chernihiv",
@@ -3440,8 +3451,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 17.52,
-      "areaFrom": 513008.5,
-      "areaTo": 513551.54,
+      "areaFrom": 511060.75,
+      "areaTo": 511603.78,
       "gain": 566.74,
       "loss": 23.71,
       "net": 543.03,
@@ -3570,12 +3581,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 17.77,
-      "areaFrom": 513551.54,
-      "areaTo": 514102.32,
-      "gain": 577.08,
-      "loss": 26.29,
-      "net": 550.79,
+      "rate": 17.8,
+      "areaFrom": 511603.78,
+      "areaTo": 512155.46,
+      "gain": 575.45,
+      "loss": 23.77,
+      "net": 551.69,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -3584,12 +3595,12 @@
       },
       "components": {
         "gain": 68,
-        "loss": 83
+        "loss": 82
       },
       "raw": {
-        "gain": 577.08,
-        "loss": 26.29,
-        "net": 550.79
+        "gain": 575.45,
+        "loss": 23.77,
+        "net": 551.69
       },
       "directions": [
         {
@@ -3658,9 +3669,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 107,
-          "loss": 4.42,
-          "net": 102.58
+          "gain": 105.38,
+          "loss": 1.9,
+          "net": 103.48
         },
         {
           "id": "chernihiv",
@@ -3702,8 +3713,8 @@
       "daysCount": 28,
       "partial": false,
       "rate": 9.18,
-      "areaFrom": 514102.32,
-      "areaTo": 514359.3,
+      "areaFrom": 512155.46,
+      "areaTo": 512412.44,
       "gain": 325.09,
       "loss": 68.11,
       "net": 256.98,
@@ -3832,12 +3843,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 5.27,
-      "areaFrom": 514359.3,
-      "areaTo": 514522.81,
-      "gain": 274.74,
-      "loss": 111.22,
-      "net": 163.51,
+      "rate": 5.3,
+      "areaFrom": 512412.44,
+      "areaTo": 512576.76,
+      "gain": 271.6,
+      "loss": 107.29,
+      "net": 164.32,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -3846,12 +3857,12 @@
       },
       "components": {
         "gain": 48,
-        "loss": 62
+        "loss": 61
       },
       "raw": {
-        "gain": 274.74,
-        "loss": 111.22,
-        "net": 163.51
+        "gain": 271.6,
+        "loss": 107.29,
+        "net": 164.32
       },
       "directions": [
         {
@@ -3920,9 +3931,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 27.58,
-          "loss": 10.97,
-          "net": 16.61
+          "gain": 24.44,
+          "loss": 7.03,
+          "net": 17.41
         },
         {
           "id": "chernihiv",
@@ -3963,12 +3974,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 10.8,
-      "areaFrom": 514522.81,
-      "areaTo": 514846.86,
-      "gain": 354.22,
-      "loss": 30.17,
-      "net": 324.05,
+      "rate": 10.79,
+      "areaFrom": 512576.76,
+      "areaTo": 512900.46,
+      "gain": 348.73,
+      "loss": 25.03,
+      "net": 323.7,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -3976,13 +3987,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 61,
+        "gain": 60,
         "loss": 66
       },
       "raw": {
-        "gain": 354.22,
-        "loss": 30.17,
-        "net": 324.05
+        "gain": 348.73,
+        "loss": 25.03,
+        "net": 323.7
       },
       "directions": [
         {
@@ -4051,9 +4062,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 6.26,
-          "loss": 9.97,
-          "net": -3.71
+          "gain": 0.77,
+          "loss": 4.83,
+          "net": -4.06
         },
         {
           "id": "chernihiv",
@@ -4095,8 +4106,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 6.68,
-      "areaFrom": 514846.86,
-      "areaTo": 515053.96,
+      "areaFrom": 512900.46,
+      "areaTo": 513107.56,
       "gain": 253.31,
       "loss": 46.21,
       "net": 207.1,
@@ -4225,12 +4236,12 @@
       "days": 30,
       "daysCount": 30,
       "partial": false,
-      "rate": 3.22,
-      "areaFrom": 515053.96,
-      "areaTo": 515150.62,
-      "gain": 248.61,
-      "loss": 151.95,
-      "net": 96.66,
+      "rate": 3.45,
+      "areaFrom": 513107.56,
+      "areaTo": 513211.04,
+      "gain": 239.93,
+      "loss": 136.44,
+      "net": 103.49,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -4238,13 +4249,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 82,
+        "gain": 81,
         "loss": 95
       },
       "raw": {
-        "gain": 248.61,
-        "loss": 151.95,
-        "net": 96.66
+        "gain": 239.93,
+        "loss": 136.44,
+        "net": 103.49
       },
       "directions": [
         {
@@ -4313,9 +4324,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 9.33,
-          "loss": 65.15,
-          "net": -55.82
+          "gain": 0.65,
+          "loss": 49.64,
+          "net": -48.99
         },
         {
           "id": "chernihiv",
@@ -4356,12 +4367,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 5.15,
-      "areaFrom": 515150.62,
-      "areaTo": 515310.29,
-      "gain": 222.91,
+      "rate": 5.13,
+      "areaFrom": 513211.04,
+      "areaTo": 513370.04,
+      "gain": 222.23,
       "loss": 63.24,
-      "net": 159.67,
+      "net": 159,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -4373,9 +4384,9 @@
         "loss": 80
       },
       "raw": {
-        "gain": 222.91,
+        "gain": 222.23,
         "loss": 63.24,
-        "net": 159.67
+        "net": 159
       },
       "directions": [
         {
@@ -4444,9 +4455,9 @@
         {
           "id": "orekhiv",
           "name": "Днепровско-Запорожское",
-          "gain": 1.51,
+          "gain": 0.83,
           "loss": 4.07,
-          "net": -2.56
+          "net": -3.24
         },
         {
           "id": "chernihiv",
@@ -4488,8 +4499,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 7.1,
-      "areaFrom": 515310.29,
-      "areaTo": 515530.41,
+      "areaFrom": 513370.04,
+      "areaTo": 513590.16,
       "gain": 329.98,
       "loss": 109.87,
       "net": 220.12,
@@ -4619,8 +4630,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 5.95,
-      "areaFrom": 515530.41,
-      "areaTo": 515708.96,
+      "areaFrom": 513590.16,
+      "areaTo": 513768.7,
       "gain": 338.34,
       "loss": 159.79,
       "net": 178.55,
@@ -4750,8 +4761,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 0.11,
-      "areaFrom": 515708.96,
-      "areaTo": 515712.34,
+      "areaFrom": 513768.7,
+      "areaTo": 513772.09,
       "gain": 263.82,
       "loss": 260.44,
       "net": 3.38,
@@ -4881,8 +4892,8 @@
       "daysCount": 12,
       "partial": true,
       "rate": 3.42,
-      "areaFrom": 515712.34,
-      "areaTo": 515753.35,
+      "areaFrom": 513772.09,
+      "areaTo": 513813.1,
       "gain": 62.83,
       "loss": 21.81,
       "net": 41.01,
@@ -5002,14 +5013,14 @@
     }
   ],
   "totals": {
-    "gain": 13771.06,
-    "loss": 2916.37,
-    "net": 10854.71
+    "gain": 13319.76,
+    "loss": 2541.53,
+    "net": 10778.31
   },
   "fullTotals": {
-    "gain": 13708.23,
-    "loss": 2894.56,
-    "net": 10813.7
+    "gain": 13256.93,
+    "loss": 2519.72,
+    "net": 10737.3
   },
   "directions": [
     {
@@ -9425,10 +9436,10 @@
           "to": "2024-11-01",
           "days": 31,
           "partial": false,
-          "gain": 104.86,
+          "gain": 0.94,
           "loss": 0.12,
-          "net": 104.74,
-          "rate": 3.38
+          "net": 0.82,
+          "rate": 0.03
         },
         {
           "month": "2024-11",
@@ -9533,10 +9544,10 @@
           "to": "2025-08-01",
           "days": 31,
           "partial": false,
-          "gain": 23.01,
+          "gain": 9.42,
           "loss": 0.16,
-          "net": 22.85,
-          "rate": 0.74
+          "net": 9.26,
+          "rate": 0.3
         },
         {
           "month": "2025-08",
@@ -9545,10 +9556,10 @@
           "to": "2025-09-01",
           "days": 31,
           "partial": false,
-          "gain": 48.47,
+          "gain": 5.57,
           "loss": 0.99,
-          "net": 47.48,
-          "rate": 1.53
+          "net": 4.58,
+          "rate": 0.15
         },
         {
           "month": "2025-09",
@@ -9569,10 +9580,10 @@
           "to": "2025-11-01",
           "days": 31,
           "partial": false,
-          "gain": 70.28,
+          "gain": 40.21,
           "loss": 1.62,
-          "net": 68.66,
-          "rate": 2.21
+          "net": 38.59,
+          "rate": 1.24
         },
         {
           "month": "2025-11",
@@ -9582,9 +9593,9 @@
           "days": 30,
           "partial": false,
           "gain": 14.1,
-          "loss": 34.58,
-          "net": -20.48,
-          "rate": -0.68
+          "loss": 0.33,
+          "net": 13.77,
+          "rate": 0.46
         },
         {
           "month": "2025-12",
@@ -9605,10 +9616,10 @@
           "to": "2026-02-01",
           "days": 31,
           "partial": false,
-          "gain": 107,
-          "loss": 4.42,
-          "net": 102.58,
-          "rate": 3.31
+          "gain": 105.38,
+          "loss": 1.9,
+          "net": 103.48,
+          "rate": 3.34
         },
         {
           "month": "2026-02",
@@ -9629,10 +9640,10 @@
           "to": "2026-04-01",
           "days": 31,
           "partial": false,
-          "gain": 27.58,
-          "loss": 10.97,
-          "net": 16.61,
-          "rate": 0.54
+          "gain": 24.44,
+          "loss": 7.03,
+          "net": 17.41,
+          "rate": 0.56
         },
         {
           "month": "2026-04",
@@ -9641,10 +9652,10 @@
           "to": "2026-05-01",
           "days": 30,
           "partial": false,
-          "gain": 6.26,
-          "loss": 9.97,
-          "net": -3.71,
-          "rate": -0.12
+          "gain": 0.77,
+          "loss": 4.83,
+          "net": -4.06,
+          "rate": -0.14
         },
         {
           "month": "2026-05",
@@ -9665,10 +9676,10 @@
           "to": "2026-07-01",
           "days": 30,
           "partial": false,
-          "gain": 9.33,
-          "loss": 65.15,
-          "net": -55.82,
-          "rate": -1.86
+          "gain": 0.65,
+          "loss": 49.64,
+          "net": -48.99,
+          "rate": -1.63
         },
         {
           "month": "2026-07",
@@ -9677,10 +9688,10 @@
           "to": "2026-08-01",
           "days": 31,
           "partial": false,
-          "gain": 1.51,
+          "gain": 0.83,
           "loss": 4.07,
-          "net": -2.56,
-          "rate": -0.08
+          "net": -3.24,
+          "rate": -0.1
         },
         {
           "month": "2026-08",
@@ -9732,14 +9743,14 @@
         }
       ],
       "totals": {
-        "gain": 635.91,
-        "loss": 199.73,
-        "net": 436.18
+        "gain": 425.82,
+        "loss": 138.37,
+        "net": 287.45
       },
       "fullTotals": {
-        "gain": 633.26,
-        "loss": 192.33,
-        "net": 440.93
+        "gain": 423.17,
+        "loss": 130.97,
+        "net": 292.2
       }
     },
     {
@@ -10227,10 +10238,10 @@
           "to": "2023-11-01",
           "days": 26,
           "partial": false,
-          "gain": 41.2,
-          "loss": 98.16,
-          "net": -56.96,
-          "rate": -2.19
+          "gain": 0.17,
+          "loss": 3.22,
+          "net": -3.05,
+          "rate": -0.12
         },
         {
           "month": "2023-11",
@@ -10239,10 +10250,10 @@
           "to": "2023-12-01",
           "days": 30,
           "partial": false,
-          "gain": 6.31,
-          "loss": 4.2,
-          "net": 2.11,
-          "rate": 0.07
+          "gain": 3.03,
+          "loss": 0.78,
+          "net": 2.25,
+          "rate": 0.08
         },
         {
           "month": "2023-12",
@@ -10251,10 +10262,10 @@
           "to": "2024-01-01",
           "days": 31,
           "partial": false,
-          "gain": 0.62,
-          "loss": 2.36,
-          "net": -1.74,
-          "rate": -0.06
+          "gain": 0.04,
+          "loss": 0.04,
+          "net": 0,
+          "rate": 0
         },
         {
           "month": "2024-01",
@@ -10275,10 +10286,10 @@
           "to": "2024-03-01",
           "days": 29,
           "partial": false,
-          "gain": 0.19,
-          "loss": 0.69,
-          "net": -0.5,
-          "rate": -0.02
+          "gain": 0.07,
+          "loss": 0.11,
+          "net": -0.04,
+          "rate": 0
         },
         {
           "month": "2024-03",
@@ -10299,10 +10310,10 @@
           "to": "2024-05-01",
           "days": 30,
           "partial": false,
-          "gain": 3.11,
-          "loss": 5.81,
-          "net": -2.7,
-          "rate": -0.09
+          "gain": 0.02,
+          "loss": 0.06,
+          "net": -0.04,
+          "rate": 0
         },
         {
           "month": "2024-05",
@@ -10311,9 +10322,9 @@
           "to": "2024-06-01",
           "days": 31,
           "partial": false,
-          "gain": 0.03,
+          "gain": 0.01,
           "loss": 0.02,
-          "net": 0.01,
+          "net": -0.01,
           "rate": 0
         },
         {
@@ -10335,10 +10346,10 @@
           "to": "2024-08-01",
           "days": 31,
           "partial": false,
-          "gain": 2.01,
-          "loss": 1.83,
-          "net": 0.18,
-          "rate": 0.01
+          "gain": 0.02,
+          "loss": 0.08,
+          "net": -0.06,
+          "rate": 0
         },
         {
           "month": "2024-08",
@@ -10359,10 +10370,10 @@
           "to": "2024-10-01",
           "days": 30,
           "partial": false,
-          "gain": 0.57,
-          "loss": 1.39,
-          "net": -0.82,
-          "rate": -0.03
+          "gain": 0,
+          "loss": 0,
+          "net": 0,
+          "rate": 0
         },
         {
           "month": "2024-10",
@@ -10371,10 +10382,10 @@
           "to": "2024-11-01",
           "days": 31,
           "partial": false,
-          "gain": 135.52,
-          "loss": 173.92,
-          "net": -38.4,
-          "rate": -1.24
+          "gain": 0.06,
+          "loss": 0.03,
+          "net": 0.03,
+          "rate": 0
         },
         {
           "month": "2024-11",
@@ -10419,9 +10430,9 @@
           "to": "2025-03-01",
           "days": 28,
           "partial": false,
-          "gain": 1.54,
-          "loss": 1.68,
-          "net": -0.14,
+          "gain": 0.02,
+          "loss": 0,
+          "net": 0.02,
           "rate": 0
         },
         {
@@ -10491,10 +10502,10 @@
           "to": "2025-09-01",
           "days": 31,
           "partial": false,
-          "gain": 53.83,
-          "loss": 27.76,
-          "net": 26.07,
-          "rate": 0.84
+          "gain": 0.33,
+          "loss": 0,
+          "net": 0.33,
+          "rate": 0.01
         },
         {
           "month": "2025-09",
@@ -10678,14 +10689,14 @@
         }
       ],
       "totals": {
-        "gain": 244.93,
-        "loss": 317.82,
-        "net": -72.89
+        "gain": 3.77,
+        "loss": 4.34,
+        "net": -0.57
       },
       "fullTotals": {
-        "gain": 244.93,
-        "loss": 317.82,
-        "net": -72.89
+        "gain": 3.77,
+        "loss": 4.34,
+        "net": -0.57
       }
     },
     {
