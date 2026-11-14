@@ -79,7 +79,7 @@ window.kmlFiles = (window.dateList || []).map(dateStr => {
 // Постоянные слои
 window.permanentLayers = [
 	// Области
-		{ name: "Области",        path: "kml/PermanentObjects/Области.kml" },
+		// { name: "Области",        path: "kml/PermanentObjects/Области.kml" },
 	
     // Текущая ЛБС (загружается динамически по дате)
     // { name: "Current_frontline",      path: "kml/FrontLine/FrontLine_26_09_30.kml" },
