@@ -144,7 +144,11 @@
                 map.on(ev, this._handlers[ev], this);
             }
 
-            map.on('click', this._onMapClick, this);
+            // DOM-клик по контейнеру карты: в отличие от map.on('click'), срабатывает
+            // и при клике по интерактивным слоям (полигоны), поверх которых лежит точка
+            this._containerEl = map.getContainer();
+            this._onContainerClick = (e) => this._onDomClick(e);
+            this._containerEl.addEventListener('click', this._onContainerClick);
             map.on('mousemove', this._onMapMouseMove, this);
             map.on('dragstart', this._hideHoverTooltip, this);
             map.on('movestart', this._hideHoverTooltip, this);
@@ -160,7 +164,11 @@
             for (const ev in this._handlers) {
                 map.off(ev, this._handlers[ev], this);
             }
-            map.off('click', this._onMapClick, this);
+            if (this._containerEl && this._onContainerClick) {
+                this._containerEl.removeEventListener('click', this._onContainerClick);
+            }
+            this._containerEl = null;
+            this._onContainerClick = null;
             map.off('mousemove', this._onMapMouseMove, this);
             map.off('dragstart', this._hideHoverTooltip, this);
             map.off('movestart', this._hideHoverTooltip, this);
@@ -599,8 +607,15 @@
             }
         },
 
-        _onMapClick(e) {
-            const containerPoint = e.containerPoint || (this._map && this._map.latLngToContainerPoint(e.latlng));
+        _onDomClick(e) {
+            const map = this._map;
+            if (!map) return;
+            // Игнорируем клики по маркерам, попапам, тултипам и контролам карты
+            const t = e.target;
+            if (t.closest && t.closest('.leaflet-marker-icon, .leaflet-popup-pane, .leaflet-tooltip-pane, .leaflet-control')) {
+                return;
+            }
+            const containerPoint = map.mouseEventToContainerPoint(e);
             if (!containerPoint) return;
             const p = this.getPointAt(containerPoint);
             if (!p) return;
@@ -608,7 +623,7 @@
             L.popup()
                 .setLatLng([p.lat, p.lng])
                 .setContent(p.popupHtml || '')
-                .openOn(this._map);
+                .openOn(map);
         }
     });
 
