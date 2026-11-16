@@ -38830,6 +38830,59 @@
      "text": ""
     }
    ]
+  },
+  {
+   "id": 395,
+   "type": "message",
+   "date": "2026-11-16T18:18:33",
+   "date_unixtime": "1794842313",
+   "edited": "2026-11-16T18:18:38",
+   "edited_unixtime": "1794842318",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/395.png",
+   "file_name": "395.png",
+   "file_size": 108287,
+   "thumbnail": "files/395.png_thumb.jpg",
+   "thumbnail_file_size": 23912,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:395\n\n253-й отдельный штурмовой полк. Разведывательный батальон.\n\nОписание\nРозвiдбат.\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/alligator253arey"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Пк_253"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:395\n\n253-й отдельный штурмовой полк. Разведывательный батальон.\n\nОписание\nРозвiдбат.\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/alligator253arey"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Пк_253"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
   }
  ]
 }
