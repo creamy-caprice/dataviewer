@@ -5883,8 +5883,8 @@
    "type": "message",
    "date": "2026-03-12T14:42:33",
    "date_unixtime": "1773315753",
-   "edited": "2026-08-17T00:29:25",
-   "edited_unixtime": "1786915765",
+   "edited": "2026-11-19T02:17:48",
+   "edited_unixtime": "1795043868",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/45.png",
@@ -18674,8 +18674,8 @@
    "type": "message",
    "date": "2026-04-06T14:45:18",
    "date_unixtime": "1775475918",
-   "edited": "2026-08-25T19:50:19",
-   "edited_unixtime": "1787676619",
+   "edited": "2026-11-18T00:21:08",
+   "edited_unixtime": "1794950468",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/136.png",
@@ -25618,8 +25618,8 @@
    "type": "message",
    "date": "2026-04-26T16:32:59",
    "date_unixtime": "1777210379",
-   "edited": "2026-10-04T22:02:24",
-   "edited_unixtime": "1791140544",
+   "edited": "2026-11-18T01:14:19",
+   "edited_unixtime": "1794953659",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
    "file": "files/196.png",
@@ -25631,7 +25631,12 @@
    "width": 700,
    "height": 800,
    "text": [
-    "ID:196\n\n253-й отдельный штурмовой полк «Арей»\n\nОписание:\n(253-й окремий штурмовий полк «Арей»)\nКомандир подполковник Александр Грищук\n\nФБ ",
+    "ID:196\n\n253-й отдельный штурмовой полк «Арей»\n\nОписание:\n(253-й окремий штурмовий полк «Арей»)\nКомандир подполковник Александр Грищук\n\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/alligator253arey"
+    },
+    "\nФБ ",
     {
      "type": "link",
      "text": "https://www.facebook.com/share/18fu2GXSiM"
@@ -25666,7 +25671,15 @@
    "text_entities": [
     {
      "type": "plain",
-     "text": "ID:196\n\n253-й отдельный штурмовой полк «Арей»\n\nОписание:\n(253-й окремий штурмовий полк «Арей»)\nКомандир подполковник Александр Грищук\n\nФБ "
+     "text": "ID:196\n\n253-й отдельный штурмовой полк «Арей»\n\nОписание:\n(253-й окремий штурмовий полк «Арей»)\nКомандир подполковник Александр Грищук\n\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/alligator253arey"
+    },
+    {
+     "type": "plain",
+     "text": "\nФБ "
     },
     {
      "type": "link",
@@ -38877,6 +38890,59 @@
     {
      "type": "hashtag",
      "text": "#Пк_253"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 396,
+   "type": "message",
+   "date": "2026-11-18T18:38:48",
+   "date_unixtime": "1795016328",
+   "edited": "2026-11-19T01:50:12",
+   "edited_unixtime": "1795042212",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/396.png",
+   "file_name": "396.png",
+   "file_size": 50257,
+   "thumbnail": "files/396.png_thumb.jpg",
+   "thumbnail_file_size": 26427,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:396 \n\n101-я отдельная бригада охраны генерального штаба. 2 батальон охраны.\n\nОписание\n2-й батальйон охорони\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://t.me/batallionnnn"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_101"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:396 \n\n101-я отдельная бригада охраны генерального штаба. 2 батальон охраны.\n\nОписание\n2-й батальйон охорони\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://t.me/batallionnnn"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_101"
     },
     {
      "type": "plain",
