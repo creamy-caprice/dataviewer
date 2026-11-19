@@ -34666,15 +34666,77 @@
    "type": "message",
    "date": "2026-10-25T22:56:14",
    "date_unixtime": "1792958174",
-   "edited": "2026-10-25T22:56:18",
-   "edited_unixtime": "1792958178",
+   "edited": "2026-11-19T23:47:46",
+   "edited_unixtime": "1795121266",
    "from": "Вооруженные формирования Украины",
    "from_id": "channel3718425800",
-   "text": "ID:291\n\nРезерв",
+   "file": "files/291.png",
+   "file_name": "291.png",
+   "file_size": 33620,
+   "thumbnail": "files/291.png_thumb.jpg",
+   "thumbnail_file_size": 19640,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:291\n\n54-й отдельный разведывательный батальон\n\nОписание\n(54-й окремий розвідувальний батальйон, сокр. 54 ОРБ)\n\nСостав\n?\n\nВооружение\n?\n\n",
+    {
+     "type": "hashtag",
+     "text": "#ВСУ"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#Бт_54"
+    },
+    "\n",
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    "?"
+   ],
    "text_entities": [
     {
      "type": "plain",
-     "text": "ID:291\n\nРезерв"
+     "text": "ID:291\n\n54-й отдельный разведывательный батальон\n\nОписание\n(54-й окремий розвідувальний батальйон, сокр. 54 ОРБ)\n\nСостав\n?\n\nВооружение\n?\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#ВСУ"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Шт"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бт_54"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#АК_"
+    },
+    {
+     "type": "plain",
+     "text": "?"
     }
    ]
   },
@@ -38943,6 +39005,59 @@
     {
      "type": "hashtag",
      "text": "#Бр_101"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 397,
+   "type": "message",
+   "date": "2026-11-19T09:12:26",
+   "date_unixtime": "1795068746",
+   "edited": "2026-11-20T00:15:34",
+   "edited_unixtime": "1795122934",
+   "from": "Вооруженные формирования Украины",
+   "from_id": "channel3718425800",
+   "file": "files/397.png",
+   "file_name": "397.png",
+   "file_size": 61575,
+   "thumbnail": "files/397.png_thumb.jpg",
+   "thumbnail_file_size": 17544,
+   "mime_type": "image/png",
+   "width": 700,
+   "height": 800,
+   "text": [
+    "ID:397\n\nОтдельная президентская бригада. 2 механизированный батальон \n\nОписание\n2-й механізований батальйон\n\nТГ ",
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/profile.php?id=61557692834186"
+    },
+    "\n\nСостав\n\n",
+    {
+     "type": "hashtag",
+     "text": "#Бр_Президентская"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "ID:397\n\nОтдельная президентская бригада. 2 механизированный батальон \n\nОписание\n2-й механізований батальйон\n\nТГ "
+    },
+    {
+     "type": "link",
+     "text": "https://www.facebook.com/profile.php?id=61557692834186"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nСостав\n\n"
+    },
+    {
+     "type": "hashtag",
+     "text": "#Бр_Президентская"
     },
     {
      "type": "plain",
