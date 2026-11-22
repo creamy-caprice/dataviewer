@@ -104,7 +104,7 @@ window.permanentLayers = [
 	// { name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" }
 	
 	// Мультиполигон
-    // { name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
+     { name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
 		
 ];
 
