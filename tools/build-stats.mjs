@@ -33,11 +33,68 @@ const thresholdKm2 = Number(arg('--threshold', '0'));
 const minDate = arg('--min-date', '2023-10-01');
 const includePartial = !process.argv.includes('--no-partial');
 const directionsPath = path.resolve(ROOT, arg('--directions', 'kml/PermanentObjects/Directions.kml'));
+const regionsPath = path.resolve(ROOT, arg('--regions', 'kml/PermanentObjects/Области.kml'));
 const exclusionsPath = path.resolve(ROOT, arg('--exclude', 'kml/PermanentObjects/Exclusions'));
+const waterPath = path.resolve(ROOT, arg('--water', 'kml/PermanentObjects/Exclusions/Seas.kml'));
+
+// Имена областей в KML -> устойчивые id для stats.json и страницы.
+const REGION_IDS = {
+    'ЛНР': 'lnr',
+    'ДНР': 'dnr',
+    'Запорожская область': 'zaporizhzhia',
+    'Херсонская область': 'kherson',
+    'Сумская область': 'sumy',
+    'Харьковская область': 'kharkiv',
+    'Днепропетровская область': 'dnipropetrovsk',
+    'Черниговская область': 'chernihiv'
+};
+
+// Группы областей: строки таблицы областей на странице статистики и цвета
+// границ на карте. Направления и группировки не делятся по группам.
+// colors — оттенки границ и линий областей по порядку области в группе.
+// total: true — в таблице областей выводится итоговая взвешенная доля группы.
+const REGION_GROUPS = [
+    {
+        id: 'g1',
+        name: 'Конституционные',
+        nameEn: 'Constitutional',
+        color: '#c81e0f',
+        colors: ['#c81e0f', '#a4161a', '#e5383b', '#7f1010'],
+        total: true,
+        regions: ['lnr', 'dnr', 'zaporizhzhia', 'kherson']
+    },
+    {
+        id: 'g2',
+        name: 'Зоны безопасности',
+        nameEn: 'Security zones',
+        color: '#2f63b8',
+        colors: ['#2f63b8', '#1d4e89', '#3a86ff', '#4a6fa5'],
+        total: false,
+        regions: ['kharkiv', 'sumy', 'dnipropetrovsk', 'chernihiv']
+    }
+];
 
 function fail(message) {
     console.error('Ошибка: ' + message);
     process.exit(1);
+}
+
+// Предупреждает, если группа забыла область или id повторяется:
+// такая область не попадёт в сгруппированную таблицу.
+function checkGroups(stats) {
+    const seen = new Map();
+    for (const group of REGION_GROUPS) {
+        for (const id of group.regions || []) {
+            if (seen.has(id)) console.warn('Область ' + id + ' в двух группах: ' + seen.get(id) + ', ' + group.id);
+            seen.set(id, group.id);
+        }
+    }
+    for (const region of stats.regions || []) {
+        if (!seen.has(region.id)) console.warn('Область ' + region.id + ' не входит ни в одну группу');
+    }
+    console.log('\nГруппы областей: ' + REGION_GROUPS.map(group =>
+        group.id + ' (' + (group.regions || []).length + ' обл.)'
+    ).join(', '));
 }
 
 if (!fs.existsSync(controlDir)) fail('не найдена папка ' + controlDir);
@@ -84,8 +141,36 @@ if (fs.existsSync(directionsPath)) {
     console.warn('Нет файла границ направлений: ' + directionsPath + ' — считаю только общий итог');
 }
 
-let excludeGeometry = [];
-let excludeInfo = [];
+let regions = [];
+if (fs.existsSync(regionsPath)) {
+    const parsed = StatsEngine.parseKmlRings(fs.readFileSync(regionsPath, 'utf8'));
+    regions = parsed.map(item => {
+        const id = REGION_IDS[item.name];
+        if (!id) {
+            console.warn('\nНеизвестная область в KML: ' + item.name + ' — пропущена');
+            return null;
+        }
+        return { id, name: item.name, polygon: item.polygon };
+    }).filter(Boolean);
+    console.log('\nОбластей: ' + regions.length + ' (' + path.relative(ROOT, regionsPath) + ')');
+} else {
+    console.warn('\nНет файла границ областей: ' + regionsPath + ' — раздел областей не будет заполнен');
+}
+
+// Акватория (Чёрное и Азовское моря): доля области считается от площади суши,
+// вода вычитается и из числителя, и из знаменателя.
+let regionsWater = [];
+if (fs.existsSync(waterPath)) {
+    regionsWater = StatsEngine.parseKmlPolygons(fs.readFileSync(waterPath, 'utf8'))
+        .map(item => item.polygon);
+    const waterArea = regionsWater.reduce((sum, ring) => sum + StatsEngine.ringAreaKm2(ring), 0);
+    console.log('\nАкватория в долях областей: ' + regionsWater.length + ' полигон(ов), '
+        + waterArea.toFixed(0) + ' км² (' + path.relative(ROOT, waterPath) + ')');
+} else {
+    console.warn('\nНет файла акватории: ' + waterPath + ' — доли областей считаются с водой');
+}
+
+let excludeGeometry = [];let excludeInfo = [];
 let exclusionFiles = [];
 if (fs.existsSync(exclusionsPath)) {
     const stat = fs.statSync(exclusionsPath);
@@ -124,11 +209,18 @@ const result = StatsEngine.buildStats(snapshots, rings, clip, {
     directions,
     directionsVersion: '1',
     directionsNote: 'Границы направлений: области и секторы; компонент относится к направлению по центроиду.',
+    regions,
+    regionsVersion: '1',
+    regionsNote: 'Границы областей: замкнутые контуры; доля контроля — от площади суши (акватория вычтена), изменения — пересечение дельт с областью.',
+    regionsWater,
     excludeGeometry,
     excludeAreas: excludeInfo,
     generator: 'tools/build-stats.mjs',
     generatedAt: new Date().toISOString()
 });
+
+result.regionGroups = REGION_GROUPS;
+checkGroups(result);
 
 fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 fs.writeFileSync(outputPath, JSON.stringify(result, null, 2) + '\n');
@@ -160,6 +252,17 @@ if (result.directions.length) {
         console.log('  [вне направлений]: +' + fmt.format(u.gain)
             + ' / −' + fmt.format(u.loss) + ' = ' + (u.net >= 0 ? '+' : '−')
             + fmt.format(Math.abs(u.net)) + ' км²');
+    }
+}
+if (result.regions.length) {
+    console.log('');
+    console.log('По областям (контроль на последний срез):');
+    for (const region of result.regions) {
+        const last = region.periods[region.periods.length - 1];
+        const totals = region.fullTotals;
+        console.log('  ' + region.name + ': контроль ' + (last ? last.share : '—') + '%, +'
+            + fmt.format(totals.gain) + ' / −' + fmt.format(totals.loss) + ' = '
+            + (totals.net >= 0 ? '+' : '−') + fmt.format(Math.abs(totals.net)) + ' км²');
     }
 }
 if (result.warnings.length) {

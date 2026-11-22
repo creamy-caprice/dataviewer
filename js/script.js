@@ -941,6 +941,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 
             // Создаем полигон
             const poly = L.polygon(coords, polyStyle).addTo(layerGroup);
+            poly.kmlName = name;
                         
             // Обновляем границы                
             if (poly.getBounds().isValid()) {
@@ -996,6 +997,7 @@ function parsePlacemarksFromKmlDoc(kmlDoc, styles, styleMaps, layerGroup, styleM
 			lineStyle.pane = pane || (isInteractive ? 'interactive' : 'nonInteractive');
 
             const polyline = L.polyline(coords, lineStyle).addTo(layerGroup);
+            polyline.kmlName = name;
 
             // Обновляем границы    
             if (polyline.getBounds().isValid()) {
@@ -1462,22 +1464,25 @@ async function loadPermanentKmlLayers() {
         }
 
         // Параллельная сборка всех постоянных слоев в offscreen-группы
+        const layerDataList = window.permanentLayers.filter(layerData => layerData.path);
         const results = await Promise.allSettled(
-            window.permanentLayers
-                .filter(layerData => layerData.path)
-                .map(layerData => {
-                    console.log("Загрузка постоянного слоя:", layerData.path);
-                    return buildLayerForPath(layerData.path, 'vectorPoly', { isPermanent: true });
-                })
+            layerDataList.map(layerData => {
+                console.log("Загрузка постоянного слоя:", layerData.path);
+                return buildLayerForPath(layerData.path, 'vectorPoly', { isPermanent: true });
+            })
         );
 
-        const groups = results
-            .map((r, i) => r.status === 'fulfilled' ? r.value : null)
-            .filter(g => g !== null);
+        const groups = [];
+        results.forEach((result, index) => {
+            if (result.status !== 'fulfilled' || !result.value) return;
+            result.value.layerName = layerDataList[index].name;
+            groups.push(result.value);
+        });
 
         // Пакетное добавление на карту
         groups.forEach(layerGroup => layerGroup.addTo(map));
         window.permanentLayerGroups = groups;
+        window.dispatchEvent(new CustomEvent('permanent-layers-ready'));
 
     } catch (error) {
         console.error("Ошибка загрузки постоянных KML слоев:", error);
@@ -2818,19 +2823,23 @@ async function init() {
     const polyPromise = (async () => {
         const controlPaths = dateFile ? dateFile.paths.filter(p => p.includes('Control')) : [];
         const progressPaths = dateFile ? dateFile.paths.filter(p => !p.includes('Control')) : [];
+        const permanentData = window.permanentLayers.filter(l => l.path);
         const dateCount = controlPaths.length + progressPaths.length;
         const results = await Promise.allSettled([
             ...controlPaths.map(p => buildLayerForPath(p, 'vectorControl')),
             ...progressPaths.map(p => buildLayerForPath(p, 'vectorLines')),
-            ...window.permanentLayers
-                .filter(l => l.path)
-                .map(l => buildLayerForPath(l.path, 'vectorPoly', { isPermanent: true }))
+            ...permanentData.map(l => buildLayerForPath(l.path, 'vectorPoly', { isPermanent: true }))
         ]);
+        const permanentGroups = [];
+        results.slice(dateCount).forEach((result, index) => {
+            if (result.status !== 'fulfilled' || !result.value) return;
+            result.value.layerName = permanentData[index].name;
+            permanentGroups.push(result.value);
+        });
         return {
             dateGroups: results.slice(0, dateCount)
                 .filter(r => r.status === 'fulfilled').map(r => r.value),
-            permanentGroups: results.slice(dateCount)
-                .filter(r => r.status === 'fulfilled').map(r => r.value)
+            permanentGroups: permanentGroups
         };
     })();
 
@@ -2859,6 +2868,7 @@ async function init() {
     }
     window.permanentLayerGroups = permanentGroups;
     permanentGroups.forEach(g => g.addTo(map));
+    window.dispatchEvent(new CustomEvent('permanent-layers-ready'));
 
     // Линии ЛБС: текущая + архивная (group = null, если дата сменилась во время загрузки)
     if (flCurrent.group) {
@@ -3158,9 +3168,11 @@ function switchMapStatViewByBtn(mapBtn, stats1Btn, stats2Btn)
     const allBtns = [mapBtn, stats1Btn, stats2Btn].filter(Boolean);
     
     function switchView(activeBtn, activeContainer) {
-        // Сбрасываем активное состояние у всех кнопок и контейнеров
+        // Сбрасываем активное состояние у всех кнопок и контейнеров.
+        // Контейнеры статистики могут быть закомментированы в разметке — фильтруем null,
+        // иначе клик по «Карта» прячет карту и падает на следующем контейнере.
         allBtns.forEach(btn => btn.classList.remove('active'));
-        [mapContainer, stats1Container, stats2Container].forEach(container => {
+        [mapContainer, stats1Container, stats2Container].filter(Boolean).forEach(container => {
             container.classList.remove('active');
             container.style.display = 'none';
         });
@@ -3177,10 +3189,8 @@ function switchMapStatViewByBtn(mapBtn, stats1Btn, stats2Btn)
         
         // Показываем/скрываем date-navigator в зависимости от активной вкладки
         const dateNavigatorWrapper = document.querySelector('.date-navigator-wrapper');
-        if (activeContainer === mapContainer) {
-            dateNavigatorWrapper.style.display = 'block';
-        } else {
-            dateNavigatorWrapper.style.display = 'none';
+        if (dateNavigatorWrapper) {
+            dateNavigatorWrapper.style.display = activeContainer === mapContainer ? 'block' : 'none';
         }
         
         // Перерисовываем карту при возвращении на вкладку
@@ -3190,8 +3200,24 @@ function switchMapStatViewByBtn(mapBtn, stats1Btn, stats2Btn)
             }, 100);
         }
     }
+
+    // «Карта» также сбрасывает режимы границ (?regions / ?directions):
+    // возвращаемся к обычной карте без раскрашенных наложений.
+    function resetMapMode() {
+        const params = new URLSearchParams(window.location.search);
+        if (!params.has('regions') && !params.has('directions')) return false;
+        params.delete('regions');
+        params.delete('directions');
+        const query = params.toString();
+        window.location.href = window.location.pathname + (query ? '?' + query : '');
+        return true;
+    }
+
     // Обработчики кнопок
-    mapBtn.addEventListener('click', () => switchView(mapBtn, mapContainer));
+    mapBtn.addEventListener('click', () => {
+        if (resetMapMode()) return;
+        switchView(mapBtn, mapContainer);
+    });
     if (stats1Btn) stats1Btn.addEventListener('click', () => switchView(stats1Btn, stats1Container));
     if (stats2Btn) stats2Btn.addEventListener('click', () => switchView(stats2Btn, stats2Container));
 }

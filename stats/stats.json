@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-21T10:23:12.693Z",
+  "generatedAt": "2026-11-21T10:25:28.724Z",
   "generator": "post_helper",
   "source": {
     "dataset": "ControlZones",
@@ -18,6 +18,11 @@
         "id": "direction-1",
         "name": "Каховское водохранилище",
         "areaKm2": 2018.36
+      },
+      {
+        "id": "direction-1",
+        "name": "Чёрное и Азовское моря",
+        "areaKm2": 461188.89
       }
     ],
     "minDate": "2023-10-01",
@@ -28,7 +33,13 @@
       "method": "centroid",
       "count": 13
     },
-    "regions": null
+    "regions": {
+      "version": "1",
+      "note": "Доля контроля — от площади суши (акватория вычтена), изменения — пересечение месячных дельт с контуром.",
+      "method": "intersection",
+      "waterExcluded": true,
+      "count": 8
+    }
   },
   "snapshotCount": 39,
   "firstSnapshot": "2023-10-06",
@@ -46,11 +57,11 @@
       "daysCount": 26,
       "partial": false,
       "rate": 1.04,
-      "areaFrom": 503034.8,
-      "areaTo": 503061.95,
-      "gain": 48.93,
-      "loss": 21.79,
-      "net": 27.14,
+      "areaFrom": 444168.57,
+      "areaTo": 444195.58,
+      "gain": 48.77,
+      "loss": 21.76,
+      "net": 27.01,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -58,13 +69,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 45,
-        "loss": 57
+        "gain": 44,
+        "loss": 56
       },
       "raw": {
-        "gain": 48.93,
-        "loss": 21.79,
-        "net": 27.14
+        "gain": 48.77,
+        "loss": 21.76,
+        "net": 27.01
       },
       "directions": [
         {
@@ -147,9 +158,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.17,
-          "loss": 3.22,
-          "net": -3.05
+          "gain": 0,
+          "loss": 3.19,
+          "net": -3.19
         },
         {
           "id": "kursk",
@@ -163,7 +174,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.5,
+          "gain": 0.22,
+          "loss": 0.05,
+          "net": 0.17
+        },
+        {
+          "id": "dnr",
+          "share": 57.36,
+          "gain": 28.52,
+          "loss": 7.13,
+          "net": 21.39
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.55,
+          "gain": 2.7,
+          "loss": 10.08,
+          "net": -7.38
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0,
+          "loss": 3.19,
+          "net": -3.19
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.02,
+          "gain": 17.33,
+          "loss": 1.31,
+          "net": 16.02
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2023-11",
@@ -177,8 +246,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 0.44,
-      "areaFrom": 503061.95,
-      "areaTo": 503075.03,
+      "areaFrom": 444195.58,
+      "areaTo": 444208.67,
       "gain": 33.52,
       "loss": 20.43,
       "net": 13.09,
@@ -294,7 +363,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.49,
+          "gain": 0.05,
+          "loss": 1.2,
+          "net": -1.15
+        },
+        {
+          "id": "dnr",
+          "share": 57.38,
+          "gain": 12,
+          "loss": 5.32,
+          "net": 6.69
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.53,
+          "gain": 5.4,
+          "loss": 12.81,
+          "net": -7.41
+        },
+        {
+          "id": "kherson",
+          "share": 72.13,
+          "gain": 3.03,
+          "loss": 0.78,
+          "net": 2.25
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.06,
+          "gain": 13.04,
+          "loss": 0.33,
+          "net": 12.71
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2023-12",
@@ -308,8 +435,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 1.34,
-      "areaFrom": 503075.03,
-      "areaTo": 503116.56,
+      "areaFrom": 444208.67,
+      "areaTo": 444250.2,
       "gain": 52.81,
       "loss": 11.29,
       "net": 41.52,
@@ -425,7 +552,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.51,
+          "gain": 4.5,
+          "loss": 0.97,
+          "net": 3.53
+        },
+        {
+          "id": "dnr",
+          "share": 57.51,
+          "gain": 40.15,
+          "loss": 6.36,
+          "net": 33.79
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.54,
+          "gain": 6.48,
+          "loss": 3.79,
+          "net": 2.69
+        },
+        {
+          "id": "kherson",
+          "share": 72.13,
+          "gain": 0.04,
+          "loss": 0.04,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.07,
+          "gain": 1.64,
+          "loss": 0.13,
+          "net": 1.51
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-01",
@@ -439,8 +624,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 0.97,
-      "areaFrom": 503116.56,
-      "areaTo": 503146.7,
+      "areaFrom": 444250.2,
+      "areaTo": 444280.34,
       "gain": 33.27,
       "loss": 3.13,
       "net": 30.14,
@@ -556,7 +741,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.53,
+          "gain": 7.02,
+          "loss": 0.98,
+          "net": 6.04
+        },
+        {
+          "id": "dnr",
+          "share": 57.58,
+          "gain": 20.99,
+          "loss": 1.91,
+          "net": 19.08
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.55,
+          "gain": 3.51,
+          "loss": 0.18,
+          "net": 3.33
+        },
+        {
+          "id": "kherson",
+          "share": 72.13,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.07,
+          "gain": 1.76,
+          "loss": 0.06,
+          "net": 1.7
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-02",
@@ -570,8 +813,8 @@
       "daysCount": 29,
       "partial": false,
       "rate": 4.88,
-      "areaFrom": 503146.7,
-      "areaTo": 503288.17,
+      "areaFrom": 444280.34,
+      "areaTo": 444421.81,
       "gain": 145.2,
       "loss": 3.73,
       "net": 141.47,
@@ -687,7 +930,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.54,
+          "gain": 4.95,
+          "loss": 0.83,
+          "net": 4.12
+        },
+        {
+          "id": "dnr",
+          "share": 58.04,
+          "gain": 123.68,
+          "loss": 2.36,
+          "net": 121.32
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.57,
+          "gain": 4.94,
+          "loss": 0.2,
+          "net": 4.75
+        },
+        {
+          "id": "kherson",
+          "share": 72.13,
+          "gain": 0.07,
+          "loss": 0.11,
+          "net": -0.04
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.11,
+          "gain": 11.56,
+          "loss": 0.24,
+          "net": 11.32
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-03",
@@ -701,8 +1002,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 2.66,
-      "areaFrom": 503288.17,
-      "areaTo": 503370.66,
+      "areaFrom": 444421.81,
+      "areaTo": 444504.3,
       "gain": 84.7,
       "loss": 2.21,
       "net": 82.49,
@@ -818,7 +1119,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.55,
+          "gain": 0.59,
+          "loss": 0.11,
+          "net": 0.48
+        },
+        {
+          "id": "dnr",
+          "share": 58.28,
+          "gain": 65.54,
+          "loss": 1.64,
+          "net": 63.9
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.63,
+          "gain": 17.52,
+          "loss": 0.41,
+          "net": 17.11
+        },
+        {
+          "id": "kherson",
+          "share": 72.13,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.11,
+          "gain": 1.05,
+          "loss": 0.05,
+          "net": 1
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-04",
@@ -832,8 +1191,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 2.94,
-      "areaFrom": 503370.66,
-      "areaTo": 503459,
+      "areaFrom": 444504.3,
+      "areaTo": 444592.64,
       "gain": 92.32,
       "loss": 3.98,
       "net": 88.34,
@@ -949,7 +1308,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.55,
+          "gain": 1.26,
+          "loss": 0.43,
+          "net": 0.83
+        },
+        {
+          "id": "dnr",
+          "share": 58.58,
+          "gain": 83.28,
+          "loss": 3.02,
+          "net": 80.25
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.65,
+          "gain": 6.75,
+          "loss": 0.39,
+          "net": 6.36
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0.02,
+          "loss": 0.06,
+          "net": -0.05
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.12,
+          "gain": 1.02,
+          "loss": 0.07,
+          "net": 0.95
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-05",
@@ -963,8 +1380,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 10.09,
-      "areaFrom": 503459,
-      "areaTo": 503771.9,
+      "areaFrom": 444592.64,
+      "areaTo": 444905.54,
       "gain": 319.33,
       "loss": 6.43,
       "net": 312.9,
@@ -1080,7 +1497,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.61,
+          "gain": 18.31,
+          "loss": 0.95,
+          "net": 17.36
+        },
+        {
+          "id": "dnr",
+          "share": 58.95,
+          "gain": 102.47,
+          "loss": 3.77,
+          "net": 98.7
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.68,
+          "gain": 6.24,
+          "loss": 0.5,
+          "net": 5.74
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0.01,
+          "loss": 0.02,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.73,
+          "gain": 192.29,
+          "loss": 1.19,
+          "net": 191.1
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-06",
@@ -1094,8 +1569,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 3.32,
-      "areaFrom": 503771.9,
-      "areaTo": 503871.34,
+      "areaFrom": 444905.54,
+      "areaTo": 445004.98,
       "gain": 109.67,
       "loss": 10.22,
       "net": 99.45,
@@ -1211,7 +1686,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.62,
+          "gain": 4.49,
+          "loss": 1.82,
+          "net": 2.68
+        },
+        {
+          "id": "dnr",
+          "share": 59.24,
+          "gain": 80.19,
+          "loss": 5.45,
+          "net": 74.73
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.68,
+          "gain": 1.16,
+          "loss": 0.81,
+          "net": 0.34
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.8,
+          "gain": 23.83,
+          "loss": 2.14,
+          "net": 21.69
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-07",
@@ -1225,11 +1758,11 @@
       "daysCount": 31,
       "partial": false,
       "rate": 5.09,
-      "areaFrom": 503871.34,
-      "areaTo": 504029.16,
-      "gain": 167.98,
+      "areaFrom": 445004.98,
+      "areaTo": 445162.79,
+      "gain": 167.97,
       "loss": 10.16,
-      "net": 157.82,
+      "net": 157.81,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -1237,13 +1770,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 634,
+        "gain": 632,
         "loss": 637
       },
       "raw": {
-        "gain": 167.98,
+        "gain": 167.97,
         "loss": 10.16,
-        "net": 157.82
+        "net": 157.81
       },
       "directions": [
         {
@@ -1326,9 +1859,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.02,
+          "gain": 0,
           "loss": 0.08,
-          "net": -0.06
+          "net": -0.08
         },
         {
           "id": "kursk",
@@ -1342,7 +1875,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.65,
+          "gain": 7.97,
+          "loss": 1.78,
+          "net": 6.19
+        },
+        {
+          "id": "dnr",
+          "share": 59.76,
+          "gain": 143.1,
+          "loss": 3.88,
+          "net": 139.22
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.69,
+          "gain": 4.96,
+          "loss": 0.33,
+          "net": 4.63
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0.08,
+          "net": -0.07
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.82,
+          "gain": 11.94,
+          "loss": 4.1,
+          "net": 7.84
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-08",
@@ -1356,8 +1947,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": -18.85,
-      "areaFrom": 504029.16,
-      "areaTo": 503444.81,
+      "areaFrom": 445162.79,
+      "areaTo": 444578.44,
       "gain": 374.77,
       "loss": 959.13,
       "net": -584.35,
@@ -1473,7 +2064,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.69,
+          "gain": 12.74,
+          "loss": 2.06,
+          "net": 10.68
+        },
+        {
+          "id": "dnr",
+          "share": 60.91,
+          "gain": 305.11,
+          "loss": 1.95,
+          "net": 303.16
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.75,
+          "gain": 14.3,
+          "loss": 0.33,
+          "net": 13.97
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0.04,
+          "net": -0.04
+        },
+        {
+          "id": "kharkiv",
+          "share": 2.95,
+          "gain": 42.63,
+          "loss": 0.92,
+          "net": 41.71
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-09",
@@ -1487,8 +2136,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 17.33,
-      "areaFrom": 503444.81,
-      "areaTo": 503964.72,
+      "areaFrom": 444578.44,
+      "areaTo": 445098.34,
       "gain": 630.86,
       "loss": 110.96,
       "net": 519.9,
@@ -1604,7 +2253,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.79,
+          "gain": 26.85,
+          "loss": 0.19,
+          "net": 26.66
+        },
+        {
+          "id": "dnr",
+          "share": 62.13,
+          "gain": 331.69,
+          "loss": 6.56,
+          "net": 325.13
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 74.75,
+          "gain": 0.76,
+          "loss": 0.06,
+          "net": 0.69
+        },
+        {
+          "id": "kherson",
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.08,
+          "gain": 43.42,
+          "loss": 5.47,
+          "net": 37.95
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-10",
@@ -1618,8 +2325,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 24.12,
-      "areaFrom": 503964.72,
-      "areaTo": 504712.49,
+      "areaFrom": 445098.34,
+      "areaTo": 445846.12,
       "gain": 785.8,
       "loss": 38.02,
       "net": 747.78,
@@ -1735,7 +2442,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 98.92,
+          "gain": 36.96,
+          "loss": 0.68,
+          "net": 36.28
+        },
+        {
+          "id": "dnr",
+          "share": 63.93,
+          "gain": 479.34,
+          "loss": 3.93,
+          "net": 475.4
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.26,
+          "gain": 2.26,
+          "loss": 0.3,
+          "net": 1.97
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0.06,
+          "loss": 0.03,
+          "net": 0.03
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.21,
+          "gain": 42.8,
+          "loss": 1.88,
+          "net": 40.92
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-11",
@@ -1749,8 +2514,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 22.47,
-      "areaFrom": 504712.49,
-      "areaTo": 505386.47,
+      "areaFrom": 445846.12,
+      "areaTo": 446520.1,
       "gain": 699.02,
       "loss": 25.05,
       "net": 673.98,
@@ -1866,7 +2631,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.06,
+          "gain": 40.35,
+          "loss": 3.3,
+          "net": 37.06
+        },
+        {
+          "id": "dnr",
+          "share": 65.79,
+          "gain": 500.06,
+          "loss": 5.62,
+          "net": 494.44
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.36,
+          "gain": 30.16,
+          "loss": 2.21,
+          "net": 27.95
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.34,
+          "gain": 46.2,
+          "loss": 3.55,
+          "net": 42.66
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2024-12",
@@ -1880,8 +2703,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 17.09,
-      "areaFrom": 505386.47,
-      "areaTo": 505916.12,
+      "areaFrom": 446520.1,
+      "areaTo": 447049.74,
       "gain": 555.31,
       "loss": 25.67,
       "net": 529.64,
@@ -1997,7 +2820,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.09,
+          "gain": 6.42,
+          "loss": 0.4,
+          "net": 6.02
+        },
+        {
+          "id": "dnr",
+          "share": 67.55,
+          "gain": 474.27,
+          "loss": 8.26,
+          "net": 466.01
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.37,
+          "gain": 3.7,
+          "loss": 1.38,
+          "net": 2.32
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.47,
+          "gain": 41.16,
+          "loss": 1.51,
+          "net": 39.65
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-01",
@@ -2011,8 +2892,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 14.22,
-      "areaFrom": 505916.12,
-      "areaTo": 506356.82,
+      "areaFrom": 447049.74,
+      "areaTo": 447490.44,
       "gain": 465.96,
       "loss": 25.27,
       "net": 440.7,
@@ -2128,7 +3009,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.21,
+          "gain": 33.97,
+          "loss": 0.14,
+          "net": 33.83
+        },
+        {
+          "id": "dnr",
+          "share": 68.67,
+          "gain": 299.92,
+          "loss": 3.29,
+          "net": 296.62
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.39,
+          "gain": 6.46,
+          "loss": 0.22,
+          "net": 6.24
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.7,
+          "gain": 75.65,
+          "loss": 2.96,
+          "net": 72.69
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-02",
@@ -2142,8 +3081,8 @@
       "daysCount": 28,
       "partial": false,
       "rate": 8.23,
-      "areaFrom": 506356.82,
-      "areaTo": 506587.32,
+      "areaFrom": 447490.44,
+      "areaTo": 447720.95,
       "gain": 252.14,
       "loss": 21.63,
       "net": 230.51,
@@ -2259,7 +3198,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.25,
+          "gain": 9.69,
+          "loss": 0.37,
+          "net": 9.32
+        },
+        {
+          "id": "dnr",
+          "share": 69.38,
+          "gain": 191.72,
+          "loss": 5.03,
+          "net": 186.69
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.38,
+          "gain": 0.83,
+          "loss": 3.18,
+          "net": -2.35
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0.02,
+          "loss": 0,
+          "net": 0.02
+        },
+        {
+          "id": "sumy",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.79,
+          "gain": 29.18,
+          "loss": 0.79,
+          "net": 28.39
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-03",
@@ -2273,8 +3270,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 22.82,
-      "areaFrom": 506587.32,
-      "areaTo": 507294.61,
+      "areaFrom": 447720.95,
+      "areaTo": 448428.23,
       "gain": 723.9,
       "loss": 16.62,
       "net": 707.28,
@@ -2390,7 +3387,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.29,
+          "gain": 12.91,
+          "loss": 0.68,
+          "net": 12.23
+        },
+        {
+          "id": "dnr",
+          "share": 70.01,
+          "gain": 181.04,
+          "loss": 13.42,
+          "net": 167.62
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.51,
+          "gain": 36.35,
+          "loss": 0.86,
+          "net": 35.49
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.2,
+          "gain": 47.13,
+          "loss": 0,
+          "net": 47.13
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.91,
+          "gain": 38.94,
+          "loss": 1.23,
+          "net": 37.71
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-04",
@@ -2404,8 +3459,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 11.04,
-      "areaFrom": 507294.61,
-      "areaTo": 507625.66,
+      "areaFrom": 448428.23,
+      "areaTo": 448759.28,
       "gain": 339.22,
       "loss": 8.17,
       "net": 331.05,
@@ -2521,7 +3576,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.39,
+          "gain": 24.44,
+          "loss": 0.27,
+          "net": 24.17
+        },
+        {
+          "id": "dnr",
+          "share": 70.74,
+          "gain": 197.16,
+          "loss": 4.21,
+          "net": 192.94
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.57,
+          "gain": 16.42,
+          "loss": 1.27,
+          "net": 15.14
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.34,
+          "gain": 33.31,
+          "loss": 0,
+          "net": 33.31
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.95,
+          "gain": 13.75,
+          "loss": 1.1,
+          "net": 12.65
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-05",
@@ -2535,8 +3648,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 18.3,
-      "areaFrom": 507625.66,
-      "areaTo": 508192.98,
+      "areaFrom": 448759.28,
+      "areaTo": 449326.61,
       "gain": 579.34,
       "loss": 12.02,
       "net": 567.32,
@@ -2652,7 +3765,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.45,
+          "gain": 17.47,
+          "loss": 0.54,
+          "net": 16.92
+        },
+        {
+          "id": "dnr",
+          "share": 72.58,
+          "gain": 495.15,
+          "loss": 6.52,
+          "net": 488.64
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.59,
+          "gain": 10.48,
+          "loss": 4.07,
+          "net": 6.41
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.47,
+          "gain": 31.63,
+          "loss": 0.15,
+          "net": 31.48
+        },
+        {
+          "id": "kharkiv",
+          "share": 3.97,
+          "gain": 4.64,
+          "loss": 0.27,
+          "net": 4.37
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-06",
@@ -2666,8 +3837,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 15.06,
-      "areaFrom": 508192.98,
-      "areaTo": 508644.79,
+      "areaFrom": 449326.61,
+      "areaTo": 449778.41,
       "gain": 473.77,
       "loss": 21.97,
       "net": 451.81,
@@ -2783,7 +3954,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.47,
+          "gain": 5.06,
+          "loss": 0.42,
+          "net": 4.64
+        },
+        {
+          "id": "dnr",
+          "share": 73.75,
+          "gain": 319.45,
+          "loss": 9.24,
+          "net": 310.22
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.68,
+          "gain": 23.73,
+          "loss": 1.34,
+          "net": 22.39
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.82,
+          "gain": 83.5,
+          "loss": 0.26,
+          "net": 83.24
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.02,
+          "gain": 27.41,
+          "loss": 10.19,
+          "net": 17.22
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.01,
+          "gain": 3.46,
+          "loss": 0,
+          "net": 3.46
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-07",
@@ -2797,8 +4026,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 13.52,
-      "areaFrom": 508644.79,
-      "areaTo": 509063.76,
+      "areaFrom": 449778.41,
+      "areaTo": 450197.39,
       "gain": 458.51,
       "loss": 39.54,
       "net": 418.98,
@@ -2914,7 +4143,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.56,
+          "gain": 25.07,
+          "loss": 0.44,
+          "net": 24.63
+        },
+        {
+          "id": "dnr",
+          "share": 74.97,
+          "gain": 328.49,
+          "loss": 6.42,
+          "net": 322.07
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.78,
+          "gain": 15.47,
+          "loss": 0.23,
+          "net": 15.24
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.9,
+          "gain": 29.82,
+          "loss": 12.07,
+          "net": 17.75
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.14,
+          "gain": 58.18,
+          "loss": 19.94,
+          "net": 38.23
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.01,
+          "gain": 1.47,
+          "loss": 0.4,
+          "net": 1.07
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-08",
@@ -2927,12 +4214,12 @@
       "days": 31,
       "daysCount": 31,
       "partial": false,
-      "rate": 12.45,
-      "areaFrom": 509063.76,
-      "areaTo": 509449.7,
-      "gain": 407.73,
+      "rate": 12.44,
+      "areaFrom": 450197.39,
+      "areaTo": 450583,
+      "gain": 407.4,
       "loss": 21.79,
-      "net": 385.94,
+      "net": 385.61,
       "micro": {
         "gain": 0,
         "loss": 0,
@@ -2940,13 +4227,13 @@
         "lossCount": 0
       },
       "components": {
-        "gain": 58,
+        "gain": 57,
         "loss": 75
       },
       "raw": {
-        "gain": 407.73,
+        "gain": 407.4,
         "loss": 21.79,
-        "net": 385.94
+        "net": 385.61
       },
       "directions": [
         {
@@ -3029,9 +4316,9 @@
         {
           "id": "herson",
           "name": "Херсонское",
-          "gain": 0.33,
+          "gain": 0,
           "loss": 0,
-          "net": 0.33
+          "net": 0
         },
         {
           "id": "kursk",
@@ -3045,7 +4332,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.56,
+          "gain": 1.28,
+          "loss": 0.52,
+          "net": 0.76
+        },
+        {
+          "id": "dnr",
+          "share": 76.15,
+          "gain": 327.85,
+          "loss": 12.92,
+          "net": 314.93
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 75.99,
+          "gain": 14.47,
+          "loss": 1.04,
+          "net": 13.43
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.91,
+          "gain": 3.66,
+          "loss": 1.59,
+          "net": 2.07
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.2,
+          "gain": 23.07,
+          "loss": 5.57,
+          "net": 17.51
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.13,
+          "gain": 37.07,
+          "loss": 0.15,
+          "net": 36.92
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-09",
@@ -3059,8 +4404,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 16.7,
-      "areaFrom": 509449.7,
-      "areaTo": 509950.84,
+      "areaFrom": 450583,
+      "areaTo": 451084.14,
       "gain": 522.34,
       "loss": 21.21,
       "net": 501.13,
@@ -3176,7 +4521,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.76,
+          "gain": 53.76,
+          "loss": 0,
+          "net": 53.76
+        },
+        {
+          "id": "dnr",
+          "share": 77.21,
+          "gain": 290.48,
+          "loss": 10.05,
+          "net": 280.44
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 76.3,
+          "gain": 84.55,
+          "loss": 1.17,
+          "net": 83.38
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.87,
+          "gain": 0.38,
+          "loss": 8.14,
+          "net": -7.76
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.3,
+          "gain": 34.63,
+          "loss": 1.84,
+          "net": 32.79
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.31,
+          "gain": 58.57,
+          "loss": 0.01,
+          "net": 58.56
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-10",
@@ -3190,8 +4593,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 18.8,
-      "areaFrom": 509950.84,
-      "areaTo": 510533.52,
+      "areaFrom": 451084.14,
+      "areaTo": 451666.82,
       "gain": 613.2,
       "loss": 30.52,
       "net": 582.68,
@@ -3307,7 +4710,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 2.06,
+          "loss": 0,
+          "net": 2.06
+        },
+        {
+          "id": "dnr",
+          "share": 78.22,
+          "gain": 277.85,
+          "loss": 10.71,
+          "net": 267.14
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 76.91,
+          "gain": 139.6,
+          "loss": 5.57,
+          "net": 134.03
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.84,
+          "gain": 0.74,
+          "loss": 8.58,
+          "net": -7.84
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.47,
+          "gain": 56.92,
+          "loss": 5.26,
+          "net": 51.66
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.74,
+          "gain": 136.03,
+          "loss": 0.4,
+          "net": 135.63
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-11",
@@ -3321,8 +4782,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 17.57,
-      "areaFrom": 510533.52,
-      "areaTo": 511060.75,
+      "areaFrom": 451666.82,
+      "areaTo": 452194.05,
       "gain": 552.11,
       "loss": 24.88,
       "net": 527.23,
@@ -3438,7 +4899,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 78.7,
+          "gain": 146.53,
+          "loss": 18.35,
+          "net": 128.18
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 77.43,
+          "gain": 174.71,
+          "loss": 0.67,
+          "net": 174.04
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.84,
+          "gain": 0.12,
+          "loss": 0.65,
+          "net": -0.53
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.75,
+          "gain": 89.39,
+          "loss": 1.86,
+          "net": 87.52
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.17,
+          "gain": 141.38,
+          "loss": 3.35,
+          "net": 138.03
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2025-12",
@@ -3452,8 +4971,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 17.52,
-      "areaFrom": 511060.75,
-      "areaTo": 511603.78,
+      "areaFrom": 452194.05,
+      "areaTo": 452737.08,
       "gain": 566.74,
       "loss": 23.71,
       "net": 543.03,
@@ -3569,7 +5088,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 79.56,
+          "gain": 235.66,
+          "loss": 8.33,
+          "net": 227.34
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 78.25,
+          "gain": 224.08,
+          "loss": 2.74,
+          "net": 221.34
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.85,
+          "gain": 3.07,
+          "loss": 0.17,
+          "net": 2.9
+        },
+        {
+          "id": "kharkiv",
+          "share": 4.94,
+          "gain": 70.12,
+          "loss": 10.4,
+          "net": 59.72
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.27,
+          "gain": 33.81,
+          "loss": 2.07,
+          "net": 31.74
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-01",
@@ -3583,8 +5160,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 17.8,
-      "areaFrom": 511603.78,
-      "areaTo": 512155.46,
+      "areaFrom": 452737.08,
+      "areaTo": 453288.76,
       "gain": 575.45,
       "loss": 23.77,
       "net": 551.69,
@@ -3700,7 +5277,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 80.36,
+          "gain": 218.78,
+          "loss": 6.91,
+          "net": 211.87
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 78.83,
+          "gain": 163.92,
+          "loss": 5.85,
+          "net": 158.07
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.93,
+          "gain": 20.2,
+          "loss": 0.51,
+          "net": 19.68
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.4,
+          "gain": 154.49,
+          "loss": 9.32,
+          "net": 145.17
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.32,
+          "gain": 18.06,
+          "loss": 1.11,
+          "net": 16.95
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-02",
@@ -3714,8 +5349,8 @@
       "daysCount": 28,
       "partial": false,
       "rate": 9.18,
-      "areaFrom": 512155.46,
-      "areaTo": 512412.44,
+      "areaFrom": 453288.76,
+      "areaTo": 453545.74,
       "gain": 325.09,
       "loss": 68.11,
       "net": 256.98,
@@ -3831,7 +5466,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 81.1,
+          "gain": 203.6,
+          "loss": 7.68,
+          "net": 195.92
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.14,
+          "gain": 85.74,
+          "loss": 2.79,
+          "net": 82.95
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.98,
+          "gain": 11.36,
+          "loss": 0.04,
+          "net": 11.32
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.44,
+          "gain": 23.33,
+          "loss": 11.44,
+          "net": 11.89
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.18,
+          "gain": 1.05,
+          "loss": 46.15,
+          "net": -45.1
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-03",
@@ -3845,8 +5538,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 5.3,
-      "areaFrom": 512412.44,
-      "areaTo": 512576.76,
+      "areaFrom": 453545.74,
+      "areaTo": 453710.06,
       "gain": 271.6,
       "loss": 107.29,
       "net": 164.32,
@@ -3962,7 +5655,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 81.77,
+          "gain": 181.71,
+          "loss": 4.44,
+          "net": 177.27
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.34,
+          "gain": 65.41,
+          "loss": 9.13,
+          "net": 56.28
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 0.98,
+          "gain": 1.05,
+          "loss": 0.24,
+          "net": 0.81
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.45,
+          "gain": 3.67,
+          "loss": 0.13,
+          "net": 3.53
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.95,
+          "gain": 19.76,
+          "loss": 93.34,
+          "net": -73.58
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-04",
@@ -3976,8 +5727,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 10.79,
-      "areaFrom": 512576.76,
-      "areaTo": 512900.46,
+      "areaFrom": 453710.06,
+      "areaTo": 454033.76,
       "gain": 348.73,
       "loss": 25.03,
       "net": 323.7,
@@ -4093,7 +5844,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 82.2,
+          "gain": 117.16,
+          "loss": 4.28,
+          "net": 112.88
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.59,
+          "gain": 73.53,
+          "loss": 6.9,
+          "net": 66.63
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.26,
+          "gain": 65.48,
+          "loss": 0.43,
+          "net": 65.05
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.71,
+          "gain": 81.72,
+          "loss": 0.45,
+          "net": 81.27
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 0.95,
+          "gain": 10.83,
+          "loss": 12.98,
+          "net": -2.14
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-05",
@@ -4107,8 +5916,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 6.68,
-      "areaFrom": 512900.46,
-      "areaTo": 513107.56,
+      "areaFrom": 454033.76,
+      "areaTo": 454240.86,
       "gain": 253.31,
       "loss": 46.21,
       "net": 207.1,
@@ -4224,7 +6033,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.79,
+          "gain": 6.69,
+          "loss": 0.78,
+          "net": 5.9
+        },
+        {
+          "id": "dnr",
+          "share": 82.42,
+          "gain": 69.32,
+          "loss": 10.12,
+          "net": 59.2
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.76,
+          "gain": 62,
+          "loss": 15.05,
+          "net": 46.95
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.45,
+          "gain": 47.03,
+          "loss": 0.91,
+          "net": 46.13
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.73,
+          "gain": 12.43,
+          "loss": 5.46,
+          "net": 6.97
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.06,
+          "gain": 48.82,
+          "loss": 13.49,
+          "net": 35.33
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-06",
@@ -4238,8 +6105,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 3.45,
-      "areaFrom": 513107.56,
-      "areaTo": 513211.04,
+      "areaFrom": 454240.86,
+      "areaTo": 454344.35,
       "gain": 239.93,
       "loss": 136.44,
       "net": 103.49,
@@ -4355,7 +6222,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.81,
+          "gain": 7.43,
+          "loss": 2.81,
+          "net": 4.63
+        },
+        {
+          "id": "dnr",
+          "share": 82.63,
+          "gain": 83.26,
+          "loss": 28.05,
+          "net": 55.21
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.61,
+          "gain": 38.74,
+          "loss": 72.49,
+          "net": -33.75
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.47,
+          "gain": 5.34,
+          "loss": 0.6,
+          "net": 4.74
+        },
+        {
+          "id": "kharkiv",
+          "share": 5.91,
+          "gain": 61.49,
+          "loss": 4.92,
+          "net": 56.57
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.11,
+          "gain": 43.66,
+          "loss": 27.57,
+          "net": 16.09
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-07",
@@ -4369,8 +6294,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 5.13,
-      "areaFrom": 513211.04,
-      "areaTo": 513370.04,
+      "areaFrom": 454344.35,
+      "areaTo": 454503.34,
       "gain": 222.23,
       "loss": 63.24,
       "net": 159,
@@ -4486,7 +6411,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.81,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 82.81,
+          "gain": 85.06,
+          "loss": 36.95,
+          "net": 48.12
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.68,
+          "gain": 23.2,
+          "loss": 5.52,
+          "net": 17.68
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.62,
+          "gain": 43.49,
+          "loss": 7.4,
+          "net": 36.09
+        },
+        {
+          "id": "kharkiv",
+          "share": 6.01,
+          "gain": 35.81,
+          "loss": 6.47,
+          "net": 29.34
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.19,
+          "gain": 34.65,
+          "loss": 6.9,
+          "net": 27.75
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-08",
@@ -4500,8 +6483,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 7.1,
-      "areaFrom": 513370.04,
-      "areaTo": 513590.16,
+      "areaFrom": 454503.34,
+      "areaTo": 454723.46,
       "gain": 329.98,
       "loss": 109.87,
       "net": 220.12,
@@ -4617,7 +6600,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.81,
+          "gain": 0,
+          "loss": 1.18,
+          "net": -1.18
+        },
+        {
+          "id": "dnr",
+          "share": 83.06,
+          "gain": 139.59,
+          "loss": 72.74,
+          "net": 66.84
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 79.89,
+          "gain": 77.49,
+          "loss": 20.58,
+          "net": 56.91
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.7,
+          "gain": 17.74,
+          "loss": 0.75,
+          "net": 16.99
+        },
+        {
+          "id": "kharkiv",
+          "share": 6.26,
+          "gain": 80.88,
+          "loss": 1.21,
+          "net": 79.68
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.2,
+          "gain": 14.28,
+          "loss": 13.4,
+          "net": 0.88
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-09",
@@ -4631,8 +6672,8 @@
       "daysCount": 30,
       "partial": false,
       "rate": 5.95,
-      "areaFrom": 513590.16,
-      "areaTo": 513768.7,
+      "areaFrom": 454723.46,
+      "areaTo": 454902,
       "gain": 338.34,
       "loss": 159.79,
       "net": 178.55,
@@ -4748,7 +6789,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.81,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 83.29,
+          "gain": 187.44,
+          "loss": 126.68,
+          "net": 60.76
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 80.16,
+          "gain": 74.83,
+          "loss": 3.27,
+          "net": 71.56
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.74,
+          "gain": 10.82,
+          "loss": 0.41,
+          "net": 10.4
+        },
+        {
+          "id": "kharkiv",
+          "share": 6.42,
+          "gain": 56.17,
+          "loss": 6.33,
+          "net": 49.84
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.15,
+          "gain": 9.07,
+          "loss": 23.09,
+          "net": -14.02
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-10",
@@ -4762,8 +6861,8 @@
       "daysCount": 31,
       "partial": false,
       "rate": 0.11,
-      "areaFrom": 513768.7,
-      "areaTo": 513772.09,
+      "areaFrom": 454902,
+      "areaTo": 454905.39,
       "gain": 263.82,
       "loss": 260.44,
       "net": 3.38,
@@ -4879,7 +6978,65 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.79,
+          "gain": 0,
+          "loss": 3.46,
+          "net": -3.46
+        },
+        {
+          "id": "dnr",
+          "share": 82.96,
+          "gain": 86.31,
+          "loss": 175.27,
+          "net": -88.96
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 80.07,
+          "gain": 35.02,
+          "loss": 58.53,
+          "net": -23.51
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.76,
+          "gain": 6.27,
+          "loss": 0.37,
+          "net": 5.9
+        },
+        {
+          "id": "kharkiv",
+          "share": 6.79,
+          "gain": 134.75,
+          "loss": 19.37,
+          "net": 115.37
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.14,
+          "gain": 0.01,
+          "loss": 3.42,
+          "net": -3.41
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     },
     {
       "id": "2026-11-partial",
@@ -4893,8 +7050,8 @@
       "daysCount": 20,
       "partial": true,
       "rate": 1.33,
-      "areaFrom": 513772.09,
-      "areaTo": 513798.59,
+      "areaFrom": 454905.39,
+      "areaTo": 454931.89,
       "gain": 79.92,
       "loss": 53.42,
       "net": 26.5,
@@ -5010,18 +7167,76 @@
         "gain": 0,
         "loss": 0,
         "net": 0
-      }
+      },
+      "regions": [
+        {
+          "id": "lnr",
+          "share": 99.79,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "dnr",
+          "share": 82.91,
+          "gain": 21.76,
+          "loss": 33.82,
+          "net": -12.06
+        },
+        {
+          "id": "zaporizhzhia",
+          "share": 80.04,
+          "gain": 7.25,
+          "loss": 14.71,
+          "net": -7.47
+        },
+        {
+          "id": "kherson",
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "id": "sumy",
+          "share": 1.77,
+          "gain": 0.75,
+          "loss": 0.1,
+          "net": 0.65
+        },
+        {
+          "id": "kharkiv",
+          "share": 6.94,
+          "gain": 49.92,
+          "loss": 1.92,
+          "net": 48
+        },
+        {
+          "id": "dnipropetrovsk",
+          "share": 1.13,
+          "gain": 0.26,
+          "loss": 2.87,
+          "net": -2.61
+        },
+        {
+          "id": "chernihiv",
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ]
     }
   ],
   "totals": {
-    "gain": 13336.85,
-    "loss": 2573.14,
-    "net": 10763.8
+    "gain": 13336.35,
+    "loss": 2573.11,
+    "net": 10763.33
   },
   "fullTotals": {
-    "gain": 13256.93,
-    "loss": 2519.72,
-    "net": 10737.3
+    "gain": 13256.43,
+    "loss": 2519.69,
+    "net": 10736.83
   },
   "directions": [
     {
@@ -10239,9 +12454,9 @@
           "to": "2023-11-01",
           "days": 26,
           "partial": false,
-          "gain": 0.17,
-          "loss": 3.22,
-          "net": -3.05,
+          "gain": 0,
+          "loss": 3.19,
+          "net": -3.19,
           "rate": -0.12
         },
         {
@@ -10347,9 +12562,9 @@
           "to": "2024-08-01",
           "days": 31,
           "partial": false,
-          "gain": 0.02,
+          "gain": 0,
           "loss": 0.08,
-          "net": -0.06,
+          "net": -0.08,
           "rate": 0
         },
         {
@@ -10503,10 +12718,10 @@
           "to": "2025-09-01",
           "days": 31,
           "partial": false,
-          "gain": 0.33,
+          "gain": 0,
           "loss": 0,
-          "net": 0.33,
-          "rate": 0.01
+          "net": 0,
+          "rate": 0
         },
         {
           "month": "2025-09",
@@ -10690,14 +12905,14 @@
         }
       ],
       "totals": {
-        "gain": 3.77,
-        "loss": 4.34,
-        "net": -0.57
+        "gain": 3.25,
+        "loss": 4.31,
+        "net": -1.06
       },
       "fullTotals": {
-        "gain": 3.77,
-        "loss": 4.34,
-        "net": -0.57
+        "gain": 3.25,
+        "loss": 4.31,
+        "net": -1.06
       }
     },
     {
@@ -11186,7 +13401,3832 @@
       "net": 0
     }
   },
-  "regions": [],
+  "regions": [
+    {
+      "id": "lnr",
+      "name": "ЛНР",
+      "areaKm2": 26597.47,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 98.5,
+          "gain": 0.22,
+          "loss": 0.05,
+          "net": 0.17
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 98.49,
+          "gain": 0.05,
+          "loss": 1.2,
+          "net": -1.15
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.51,
+          "gain": 4.5,
+          "loss": 0.97,
+          "net": 3.53
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.53,
+          "gain": 7.02,
+          "loss": 0.98,
+          "net": 6.04
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 98.54,
+          "gain": 4.95,
+          "loss": 0.83,
+          "net": 4.12
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.55,
+          "gain": 0.59,
+          "loss": 0.11,
+          "net": 0.48
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 98.55,
+          "gain": 1.26,
+          "loss": 0.43,
+          "net": 0.83
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.61,
+          "gain": 18.31,
+          "loss": 0.95,
+          "net": 17.36
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 98.62,
+          "gain": 4.49,
+          "loss": 1.82,
+          "net": 2.68
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.65,
+          "gain": 7.97,
+          "loss": 1.78,
+          "net": 6.19
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.69,
+          "gain": 12.74,
+          "loss": 2.06,
+          "net": 10.68
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 98.79,
+          "gain": 26.85,
+          "loss": 0.19,
+          "net": 26.66
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 98.92,
+          "gain": 36.96,
+          "loss": 0.68,
+          "net": 36.28
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.06,
+          "gain": 40.35,
+          "loss": 3.3,
+          "net": 37.06
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.09,
+          "gain": 6.42,
+          "loss": 0.4,
+          "net": 6.02
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.21,
+          "gain": 33.97,
+          "loss": 0.14,
+          "net": 33.83
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 99.25,
+          "gain": 9.69,
+          "loss": 0.37,
+          "net": 9.32
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.29,
+          "gain": 12.91,
+          "loss": 0.68,
+          "net": 12.23
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.39,
+          "gain": 24.44,
+          "loss": 0.27,
+          "net": 24.17
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.45,
+          "gain": 17.47,
+          "loss": 0.54,
+          "net": 16.92
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.47,
+          "gain": 5.06,
+          "loss": 0.42,
+          "net": 4.64
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.56,
+          "gain": 25.07,
+          "loss": 0.44,
+          "net": 24.63
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.56,
+          "gain": 1.28,
+          "loss": 0.52,
+          "net": 0.76
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.76,
+          "gain": 53.76,
+          "loss": 0,
+          "net": 53.76
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.77,
+          "gain": 2.06,
+          "loss": 0,
+          "net": 2.06
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.77,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.79,
+          "gain": 6.69,
+          "loss": 0.78,
+          "net": 5.9
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.81,
+          "gain": 7.43,
+          "loss": 2.81,
+          "net": 4.63
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.81,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.81,
+          "gain": 0,
+          "loss": 1.18,
+          "net": -1.18
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 99.81,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 99.79,
+          "gain": 0,
+          "loss": 3.46,
+          "net": -3.46
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 99.79,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ],
+      "totals": {
+        "gain": 372.51,
+        "loss": 27.36,
+        "net": 345.16
+      },
+      "fullTotals": {
+        "gain": 372.51,
+        "loss": 27.36,
+        "net": 345.16
+      }
+    },
+    {
+      "id": "dnr",
+      "name": "ДНР",
+      "areaKm2": 26498.23,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 57.36,
+          "gain": 28.52,
+          "loss": 7.13,
+          "net": 21.39
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 57.38,
+          "gain": 12,
+          "loss": 5.32,
+          "net": 6.69
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 57.51,
+          "gain": 40.15,
+          "loss": 6.36,
+          "net": 33.79
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 57.58,
+          "gain": 20.99,
+          "loss": 1.91,
+          "net": 19.08
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 58.04,
+          "gain": 123.68,
+          "loss": 2.36,
+          "net": 121.32
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 58.28,
+          "gain": 65.54,
+          "loss": 1.64,
+          "net": 63.9
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 58.58,
+          "gain": 83.28,
+          "loss": 3.02,
+          "net": 80.25
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 58.95,
+          "gain": 102.47,
+          "loss": 3.77,
+          "net": 98.7
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 59.24,
+          "gain": 80.19,
+          "loss": 5.45,
+          "net": 74.73
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 59.76,
+          "gain": 143.1,
+          "loss": 3.88,
+          "net": 139.22
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 60.91,
+          "gain": 305.11,
+          "loss": 1.95,
+          "net": 303.16
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 62.13,
+          "gain": 331.69,
+          "loss": 6.56,
+          "net": 325.13
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 63.93,
+          "gain": 479.34,
+          "loss": 3.93,
+          "net": 475.4
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 65.79,
+          "gain": 500.06,
+          "loss": 5.62,
+          "net": 494.44
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 67.55,
+          "gain": 474.27,
+          "loss": 8.26,
+          "net": 466.01
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 68.67,
+          "gain": 299.92,
+          "loss": 3.29,
+          "net": 296.62
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 69.38,
+          "gain": 191.72,
+          "loss": 5.03,
+          "net": 186.69
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 70.01,
+          "gain": 181.04,
+          "loss": 13.42,
+          "net": 167.62
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 70.74,
+          "gain": 197.16,
+          "loss": 4.21,
+          "net": 192.94
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.58,
+          "gain": 495.15,
+          "loss": 6.52,
+          "net": 488.64
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 73.75,
+          "gain": 319.45,
+          "loss": 9.24,
+          "net": 310.22
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.97,
+          "gain": 328.49,
+          "loss": 6.42,
+          "net": 322.07
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 76.15,
+          "gain": 327.85,
+          "loss": 12.92,
+          "net": 314.93
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 77.21,
+          "gain": 290.48,
+          "loss": 10.05,
+          "net": 280.44
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 78.22,
+          "gain": 277.85,
+          "loss": 10.71,
+          "net": 267.14
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 78.7,
+          "gain": 146.53,
+          "loss": 18.35,
+          "net": 128.18
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 79.56,
+          "gain": 235.66,
+          "loss": 8.33,
+          "net": 227.34
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 80.36,
+          "gain": 218.78,
+          "loss": 6.91,
+          "net": 211.87
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 81.1,
+          "gain": 203.6,
+          "loss": 7.68,
+          "net": 195.92
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 81.77,
+          "gain": 181.71,
+          "loss": 4.44,
+          "net": 177.27
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 82.2,
+          "gain": 117.16,
+          "loss": 4.28,
+          "net": 112.88
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 82.42,
+          "gain": 69.32,
+          "loss": 10.12,
+          "net": 59.2
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 82.63,
+          "gain": 83.26,
+          "loss": 28.05,
+          "net": 55.21
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 82.81,
+          "gain": 85.06,
+          "loss": 36.95,
+          "net": 48.12
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 83.06,
+          "gain": 139.59,
+          "loss": 72.74,
+          "net": 66.84
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 83.29,
+          "gain": 187.44,
+          "loss": 126.68,
+          "net": 60.76
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 82.96,
+          "gain": 86.31,
+          "loss": 175.27,
+          "net": -88.96
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 82.91,
+          "gain": 21.76,
+          "loss": 33.82,
+          "net": -12.06
+        }
+      ],
+      "totals": {
+        "gain": 7475.68,
+        "loss": 682.59,
+        "net": 6793.09
+      },
+      "fullTotals": {
+        "gain": 7453.92,
+        "loss": 648.77,
+        "net": 6805.15
+      }
+    },
+    {
+      "id": "zaporizhzhia",
+      "name": "Запорожская область",
+      "areaKm2": 27006.88,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 74.55,
+          "gain": 2.7,
+          "loss": 10.08,
+          "net": -7.38
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 74.53,
+          "gain": 5.4,
+          "loss": 12.81,
+          "net": -7.41
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.54,
+          "gain": 6.48,
+          "loss": 3.79,
+          "net": 2.69
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.55,
+          "gain": 3.51,
+          "loss": 0.18,
+          "net": 3.33
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 74.57,
+          "gain": 4.94,
+          "loss": 0.2,
+          "net": 4.75
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.63,
+          "gain": 17.52,
+          "loss": 0.41,
+          "net": 17.11
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 74.65,
+          "gain": 6.75,
+          "loss": 0.39,
+          "net": 6.36
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.68,
+          "gain": 6.24,
+          "loss": 0.5,
+          "net": 5.74
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 74.68,
+          "gain": 1.16,
+          "loss": 0.81,
+          "net": 0.34
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.69,
+          "gain": 4.96,
+          "loss": 0.33,
+          "net": 4.63
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 74.75,
+          "gain": 14.3,
+          "loss": 0.33,
+          "net": 13.97
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 74.75,
+          "gain": 0.76,
+          "loss": 0.06,
+          "net": 0.69
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.26,
+          "gain": 2.26,
+          "loss": 0.3,
+          "net": 1.97
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 75.36,
+          "gain": 30.16,
+          "loss": 2.21,
+          "net": 27.95
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.37,
+          "gain": 3.7,
+          "loss": 1.38,
+          "net": 2.32
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.39,
+          "gain": 6.46,
+          "loss": 0.22,
+          "net": 6.24
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 75.38,
+          "gain": 0.83,
+          "loss": 3.18,
+          "net": -2.35
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.51,
+          "gain": 36.35,
+          "loss": 0.86,
+          "net": 35.49
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 75.57,
+          "gain": 16.42,
+          "loss": 1.27,
+          "net": 15.14
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.59,
+          "gain": 10.48,
+          "loss": 4.07,
+          "net": 6.41
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 75.68,
+          "gain": 23.73,
+          "loss": 1.34,
+          "net": 22.39
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.78,
+          "gain": 15.47,
+          "loss": 0.23,
+          "net": 15.24
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 75.99,
+          "gain": 14.47,
+          "loss": 1.04,
+          "net": 13.43
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 76.3,
+          "gain": 84.55,
+          "loss": 1.17,
+          "net": 83.38
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 76.91,
+          "gain": 139.6,
+          "loss": 5.57,
+          "net": 134.03
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 77.43,
+          "gain": 174.71,
+          "loss": 0.67,
+          "net": 174.04
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 78.25,
+          "gain": 224.08,
+          "loss": 2.74,
+          "net": 221.34
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 78.83,
+          "gain": 163.92,
+          "loss": 5.85,
+          "net": 158.07
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 79.14,
+          "gain": 85.74,
+          "loss": 2.79,
+          "net": 82.95
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 79.34,
+          "gain": 65.41,
+          "loss": 9.13,
+          "net": 56.28
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 79.59,
+          "gain": 73.53,
+          "loss": 6.9,
+          "net": 66.63
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 79.76,
+          "gain": 62,
+          "loss": 15.05,
+          "net": 46.95
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 79.61,
+          "gain": 38.74,
+          "loss": 72.49,
+          "net": -33.75
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 79.68,
+          "gain": 23.2,
+          "loss": 5.52,
+          "net": 17.68
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 79.89,
+          "gain": 77.49,
+          "loss": 20.58,
+          "net": 56.91
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 80.16,
+          "gain": 74.83,
+          "loss": 3.27,
+          "net": 71.56
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 80.07,
+          "gain": 35.02,
+          "loss": 58.53,
+          "net": -23.51
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 80.04,
+          "gain": 7.25,
+          "loss": 14.71,
+          "net": -7.47
+        }
+      ],
+      "totals": {
+        "gain": 1565.12,
+        "loss": 270.96,
+        "net": 1294.14
+      },
+      "fullTotals": {
+        "gain": 1557.87,
+        "loss": 256.25,
+        "net": 1301.61
+      }
+    },
+    {
+      "id": "kherson",
+      "name": "Херсонская область",
+      "areaKm2": 26903.97,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0,
+          "loss": 3.19,
+          "net": -3.19
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.13,
+          "gain": 3.03,
+          "loss": 0.78,
+          "net": 2.25
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.13,
+          "gain": 0.04,
+          "loss": 0.04,
+          "net": 0
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.13,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 72.13,
+          "gain": 0.07,
+          "loss": 0.11,
+          "net": -0.04
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.13,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0.02,
+          "loss": 0.06,
+          "net": -0.05
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0.01,
+          "loss": 0.02,
+          "net": 0
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0.08,
+          "net": -0.07
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.12,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0.06,
+          "loss": 0.03,
+          "net": 0.03
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0.02,
+          "loss": 0,
+          "net": 0.02
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 72.27,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ],
+      "totals": {
+        "gain": 3.25,
+        "loss": 4.31,
+        "net": -1.05
+      },
+      "fullTotals": {
+        "gain": 3.25,
+        "loss": 4.31,
+        "net": -1.05
+      }
+    },
+    {
+      "id": "sumy",
+      "name": "Сумская область",
+      "areaKm2": 23752.96,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0.04,
+          "net": -0.04
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.2,
+          "gain": 47.13,
+          "loss": 0,
+          "net": 47.13
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.34,
+          "gain": 33.31,
+          "loss": 0,
+          "net": 33.31
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.47,
+          "gain": 31.63,
+          "loss": 0.15,
+          "net": 31.48
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.82,
+          "gain": 83.5,
+          "loss": 0.26,
+          "net": 83.24
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.9,
+          "gain": 29.82,
+          "loss": 12.07,
+          "net": 17.75
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.91,
+          "gain": 3.66,
+          "loss": 1.59,
+          "net": 2.07
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.87,
+          "gain": 0.38,
+          "loss": 8.14,
+          "net": -7.76
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.84,
+          "gain": 0.74,
+          "loss": 8.58,
+          "net": -7.84
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.84,
+          "gain": 0.12,
+          "loss": 0.65,
+          "net": -0.53
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.85,
+          "gain": 3.07,
+          "loss": 0.17,
+          "net": 2.9
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.93,
+          "gain": 20.2,
+          "loss": 0.51,
+          "net": 19.68
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 0.98,
+          "gain": 11.36,
+          "loss": 0.04,
+          "net": 11.32
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.98,
+          "gain": 1.05,
+          "loss": 0.24,
+          "net": 0.81
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.26,
+          "gain": 65.48,
+          "loss": 0.43,
+          "net": 65.05
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.45,
+          "gain": 47.03,
+          "loss": 0.91,
+          "net": 46.13
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.47,
+          "gain": 5.34,
+          "loss": 0.6,
+          "net": 4.74
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.62,
+          "gain": 43.49,
+          "loss": 7.4,
+          "net": 36.09
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.7,
+          "gain": 17.74,
+          "loss": 0.75,
+          "net": 16.99
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.74,
+          "gain": 10.82,
+          "loss": 0.41,
+          "net": 10.4
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.76,
+          "gain": 6.27,
+          "loss": 0.37,
+          "net": 5.9
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 1.77,
+          "gain": 0.75,
+          "loss": 0.1,
+          "net": 0.65
+        }
+      ],
+      "totals": {
+        "gain": 462.89,
+        "loss": 43.41,
+        "net": 419.47
+      },
+      "fullTotals": {
+        "gain": 462.14,
+        "loss": 43.31,
+        "net": 418.82
+      }
+    },
+    {
+      "id": "kharkiv",
+      "name": "Харьковская область",
+      "areaKm2": 31332.74,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 2.02,
+          "gain": 17.33,
+          "loss": 1.31,
+          "net": 16.02
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 2.06,
+          "gain": 13.04,
+          "loss": 0.33,
+          "net": 12.71
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.07,
+          "gain": 1.64,
+          "loss": 0.13,
+          "net": 1.51
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.07,
+          "gain": 1.76,
+          "loss": 0.06,
+          "net": 1.7
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 2.11,
+          "gain": 11.56,
+          "loss": 0.24,
+          "net": 11.32
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.11,
+          "gain": 1.05,
+          "loss": 0.05,
+          "net": 1
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 2.12,
+          "gain": 1.02,
+          "loss": 0.07,
+          "net": 0.95
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.73,
+          "gain": 192.29,
+          "loss": 1.19,
+          "net": 191.1
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 2.8,
+          "gain": 23.83,
+          "loss": 2.14,
+          "net": 21.69
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.82,
+          "gain": 11.94,
+          "loss": 4.1,
+          "net": 7.84
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 2.95,
+          "gain": 42.63,
+          "loss": 0.92,
+          "net": 41.71
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 3.08,
+          "gain": 43.42,
+          "loss": 5.47,
+          "net": 37.95
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 3.21,
+          "gain": 42.8,
+          "loss": 1.88,
+          "net": 40.92
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 3.34,
+          "gain": 46.2,
+          "loss": 3.55,
+          "net": 42.66
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 3.47,
+          "gain": 41.16,
+          "loss": 1.51,
+          "net": 39.65
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 3.7,
+          "gain": 75.65,
+          "loss": 2.96,
+          "net": 72.69
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 3.79,
+          "gain": 29.18,
+          "loss": 0.79,
+          "net": 28.39
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 3.91,
+          "gain": 38.94,
+          "loss": 1.23,
+          "net": 37.71
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 3.95,
+          "gain": 13.75,
+          "loss": 1.1,
+          "net": 12.65
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 3.97,
+          "gain": 4.64,
+          "loss": 0.27,
+          "net": 4.37
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 4.02,
+          "gain": 27.41,
+          "loss": 10.19,
+          "net": 17.22
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 4.14,
+          "gain": 58.18,
+          "loss": 19.94,
+          "net": 38.23
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 4.2,
+          "gain": 23.07,
+          "loss": 5.57,
+          "net": 17.51
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 4.3,
+          "gain": 34.63,
+          "loss": 1.84,
+          "net": 32.79
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 4.47,
+          "gain": 56.92,
+          "loss": 5.26,
+          "net": 51.66
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 4.75,
+          "gain": 89.39,
+          "loss": 1.86,
+          "net": 87.52
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 4.94,
+          "gain": 70.12,
+          "loss": 10.4,
+          "net": 59.72
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 5.4,
+          "gain": 154.49,
+          "loss": 9.32,
+          "net": 145.17
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 5.44,
+          "gain": 23.33,
+          "loss": 11.44,
+          "net": 11.89
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 5.45,
+          "gain": 3.67,
+          "loss": 0.13,
+          "net": 3.53
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 5.71,
+          "gain": 81.72,
+          "loss": 0.45,
+          "net": 81.27
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 5.73,
+          "gain": 12.43,
+          "loss": 5.46,
+          "net": 6.97
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 5.91,
+          "gain": 61.49,
+          "loss": 4.92,
+          "net": 56.57
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 6.01,
+          "gain": 35.81,
+          "loss": 6.47,
+          "net": 29.34
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 6.26,
+          "gain": 80.88,
+          "loss": 1.21,
+          "net": 79.68
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 6.42,
+          "gain": 56.17,
+          "loss": 6.33,
+          "net": 49.84
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 6.79,
+          "gain": 134.75,
+          "loss": 19.37,
+          "net": 115.37
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 6.94,
+          "gain": 49.92,
+          "loss": 1.92,
+          "net": 48
+        }
+      ],
+      "totals": {
+        "gain": 1708.21,
+        "loss": 151.38,
+        "net": 1556.82
+      },
+      "fullTotals": {
+        "gain": 1658.29,
+        "loss": 149.46,
+        "net": 1508.82
+      }
+    },
+    {
+      "id": "dnipropetrovsk",
+      "name": "Днепропетровская область",
+      "areaKm2": 31891.22,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.35,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.01,
+          "gain": 3.46,
+          "loss": 0,
+          "net": 3.46
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.01,
+          "gain": 1.47,
+          "loss": 0.4,
+          "net": 1.07
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.13,
+          "gain": 37.07,
+          "loss": 0.15,
+          "net": 36.92
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.31,
+          "gain": 58.57,
+          "loss": 0.01,
+          "net": 58.56
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.74,
+          "gain": 136.03,
+          "loss": 0.4,
+          "net": 135.63
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.17,
+          "gain": 141.38,
+          "loss": 3.35,
+          "net": 138.03
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.27,
+          "gain": 33.81,
+          "loss": 2.07,
+          "net": 31.74
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.32,
+          "gain": 18.06,
+          "loss": 1.11,
+          "net": 16.95
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 1.18,
+          "gain": 1.05,
+          "loss": 46.15,
+          "net": -45.1
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0.95,
+          "gain": 19.76,
+          "loss": 93.34,
+          "net": -73.58
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0.95,
+          "gain": 10.83,
+          "loss": 12.98,
+          "net": -2.14
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.06,
+          "gain": 48.82,
+          "loss": 13.49,
+          "net": 35.33
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.11,
+          "gain": 43.66,
+          "loss": 27.57,
+          "net": 16.09
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.19,
+          "gain": 34.65,
+          "loss": 6.9,
+          "net": 27.75
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.2,
+          "gain": 14.28,
+          "loss": 13.4,
+          "net": 0.88
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 1.15,
+          "gain": 9.07,
+          "loss": 23.09,
+          "net": -14.02
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 1.14,
+          "gain": 0.01,
+          "loss": 3.42,
+          "net": -3.41
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 1.13,
+          "gain": 0.26,
+          "loss": 2.87,
+          "net": -2.61
+        }
+      ],
+      "totals": {
+        "gain": 612.24,
+        "loss": 250.7,
+        "net": 361.55
+      },
+      "fullTotals": {
+        "gain": 611.98,
+        "loss": 247.83,
+        "net": 364.16
+      }
+    },
+    {
+      "id": "chernihiv",
+      "name": "Черниговская область",
+      "areaKm2": 31789.55,
+      "periods": [
+        {
+          "month": "2023-10",
+          "label": "Октябрь 2023",
+          "from": "2023-10-06",
+          "to": "2023-11-01",
+          "days": 26,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-11",
+          "label": "Ноябрь 2023",
+          "from": "2023-11-01",
+          "to": "2023-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2023-12",
+          "label": "Декабрь 2023",
+          "from": "2023-12-01",
+          "to": "2024-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-01",
+          "label": "Январь 2024",
+          "from": "2024-01-01",
+          "to": "2024-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-02",
+          "label": "Февраль 2024",
+          "from": "2024-02-01",
+          "to": "2024-03-01",
+          "days": 29,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-03",
+          "label": "Март 2024",
+          "from": "2024-03-01",
+          "to": "2024-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-04",
+          "label": "Апрель 2024",
+          "from": "2024-04-01",
+          "to": "2024-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-05",
+          "label": "Май 2024",
+          "from": "2024-05-01",
+          "to": "2024-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-06",
+          "label": "Июнь 2024",
+          "from": "2024-06-01",
+          "to": "2024-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-07",
+          "label": "Июль 2024",
+          "from": "2024-07-01",
+          "to": "2024-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-08",
+          "label": "Август 2024",
+          "from": "2024-08-01",
+          "to": "2024-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-09",
+          "label": "Сентябрь 2024",
+          "from": "2024-09-01",
+          "to": "2024-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-10",
+          "label": "Октябрь 2024",
+          "from": "2024-10-01",
+          "to": "2024-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-11",
+          "label": "Ноябрь 2024",
+          "from": "2024-11-01",
+          "to": "2024-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2024-12",
+          "label": "Декабрь 2024",
+          "from": "2024-12-01",
+          "to": "2025-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-01",
+          "label": "Январь 2025",
+          "from": "2025-01-01",
+          "to": "2025-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-02",
+          "label": "Февраль 2025",
+          "from": "2025-02-01",
+          "to": "2025-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-03",
+          "label": "Март 2025",
+          "from": "2025-03-01",
+          "to": "2025-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-04",
+          "label": "Апрель 2025",
+          "from": "2025-04-01",
+          "to": "2025-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-05",
+          "label": "Май 2025",
+          "from": "2025-05-01",
+          "to": "2025-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-06",
+          "label": "Июнь 2025",
+          "from": "2025-06-01",
+          "to": "2025-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-07",
+          "label": "Июль 2025",
+          "from": "2025-07-01",
+          "to": "2025-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-08",
+          "label": "Август 2025",
+          "from": "2025-08-01",
+          "to": "2025-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-09",
+          "label": "Сентябрь 2025",
+          "from": "2025-09-01",
+          "to": "2025-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-10",
+          "label": "Октябрь 2025",
+          "from": "2025-10-01",
+          "to": "2025-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-11",
+          "label": "Ноябрь 2025",
+          "from": "2025-11-01",
+          "to": "2025-12-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2025-12",
+          "label": "Декабрь 2025",
+          "from": "2025-12-01",
+          "to": "2026-01-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-01",
+          "label": "Январь 2026",
+          "from": "2026-01-01",
+          "to": "2026-02-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-02",
+          "label": "Февраль 2026",
+          "from": "2026-02-01",
+          "to": "2026-03-01",
+          "days": 28,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-03",
+          "label": "Март 2026",
+          "from": "2026-03-01",
+          "to": "2026-04-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-04",
+          "label": "Апрель 2026",
+          "from": "2026-04-01",
+          "to": "2026-05-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-05",
+          "label": "Май 2026",
+          "from": "2026-05-01",
+          "to": "2026-06-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-06",
+          "label": "Июнь 2026",
+          "from": "2026-06-01",
+          "to": "2026-07-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-07",
+          "label": "Июль 2026",
+          "from": "2026-07-01",
+          "to": "2026-08-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-08",
+          "label": "Август 2026",
+          "from": "2026-08-01",
+          "to": "2026-09-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-09",
+          "label": "Сентябрь 2026",
+          "from": "2026-09-01",
+          "to": "2026-10-01",
+          "days": 30,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-10",
+          "label": "Октябрь 2026",
+          "from": "2026-10-01",
+          "to": "2026-11-01",
+          "days": 31,
+          "partial": false,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        },
+        {
+          "month": "2026-11",
+          "label": "Ноябрь 2026",
+          "from": "2026-11-01",
+          "to": "2026-11-21",
+          "days": 20,
+          "partial": true,
+          "share": 0,
+          "gain": 0,
+          "loss": 0,
+          "net": 0
+        }
+      ],
+      "totals": {
+        "gain": 0,
+        "loss": 0,
+        "net": 0
+      },
+      "fullTotals": {
+        "gain": 0,
+        "loss": 0,
+        "net": 0
+      }
+    }
+  ],
   "groupings": [],
-  "warnings": []
+  "warnings": [],
+  "regionGroups": [
+    {
+      "id": "g1",
+      "name": "Конституционные",
+      "nameEn": "Constitutional",
+      "color": "#c81e0f",
+      "colors": [
+        "#c81e0f",
+        "#a4161a",
+        "#e5383b",
+        "#7f1010"
+      ],
+      "total": true,
+      "regions": [
+        "lnr",
+        "dnr",
+        "zaporizhzhia",
+        "kherson"
+      ]
+    },
+    {
+      "id": "g2",
+      "name": "Зоны безопасности",
+      "nameEn": "Security zones",
+      "color": "#2f63b8",
+      "colors": [
+        "#2f63b8",
+        "#1d4e89",
+        "#3a86ff",
+        "#4a6fa5"
+      ],
+      "total": false,
+      "regions": [
+        "kharkiv",
+        "sumy",
+        "dnipropetrovsk",
+        "chernihiv"
+      ]
+    }
+  ]
 }

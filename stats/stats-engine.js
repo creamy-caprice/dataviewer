@@ -120,6 +120,46 @@
         return result;
     }
 
+    /**
+     * Разбирает KML с замкнутыми контурами (границы областей нарисованы
+     * LineString). Незамкнутые линии пропускаются: это не площадь.
+     */
+    function parseKmlRings(text) {
+        if (typeof text !== 'string' || !text) return [];
+        var re = /<Placemark\b[^>]*>([\s\S]*?)<\/Placemark>/gi;
+        var result = [];
+        var match;
+        var index = 0;
+        while ((match = re.exec(text)) !== null) {
+            index += 1;
+            var body = match[1];
+            var coords = body.match(/<coordinates>([\s\S]*?)<\/coordinates>/i);
+            if (!coords) continue;
+            var tokens = coords[1].trim().split(/\s+/);
+            if (tokens.length < 4) continue;
+            var firstParts = tokens[0].split(',');
+            var lastParts = tokens[tokens.length - 1].split(',');
+            // Херсонская в файле не сходится на ~15 м — это всё ещё контур.
+            if (Math.abs(Number(firstParts[0]) - Number(lastParts[0])) > 1e-3
+                || Math.abs(Number(firstParts[1]) - Number(lastParts[1])) > 1e-3) continue;
+            var ring = parseCoordinateText(coords[1]);
+            if (!ring) continue;
+            var nameMatch = body.match(/<name[^>]*>([\s\S]*?)<\/name>/i);
+            var idMatch = body.match(/<Data\s+name=["']id["'][^>]*>\s*<value>([\s\S]*?)<\/value>/i);
+            var groupMatch = body.match(/<Data\s+name=["']group["'][^>]*>\s*<value>([\s\S]*?)<\/value>/i);
+            var name = decodeXml(nameMatch ? nameMatch[1] : '');
+            var id = decodeXml(idMatch ? idMatch[1] : '');
+            if (!id) id = 'region-' + index;
+            result.push({
+                id: id,
+                name: name || ('Область ' + index),
+                group: decodeXml(groupMatch ? groupMatch[1] : '') || null,
+                polygon: ring
+            });
+        }
+        return result;
+    }
+
     /** Площадь кольца на сфере, км². */
     function ringAreaKm2(ring) {
         if (!Array.isArray(ring) || ring.length < 3) return 0;
@@ -557,6 +597,20 @@
 
         var directionDefs = normalizeDirections(opts.directions);
         var directionsEnabled = directionDefs.length > 0;
+        var regionDefs = normalizeDirections(opts.regions);
+        var regionsEnabled = regionDefs.length > 0;
+        // Акватория (моря, крупные водоёмы): не входит в площадь области при расчёте долей.
+        var regionWater = regionsEnabled ? normalizeExclusionGeometry(opts.regionsWater) : [];
+        if (regionsEnabled && regionWater.length) {
+            for (var rw = 0; rw < regionDefs.length; rw++) {
+                var waterFree = clip.difference([regionDefs[rw].polygon], regionWater);
+                var waterFreeArea = multiPolygonAreaKm2(waterFree);
+                if (waterFreeArea > 0) {
+                    regionDefs[rw].waterFree = waterFree;
+                    regionDefs[rw].waterFreeArea = waterFreeArea;
+                }
+            }
+        }
         var boundaries = selectMonthlySnapshots(all);
         var periods = [];
         var warnings = [];
@@ -598,6 +652,49 @@
             };
         }
 
+        var regionShareCache = {};
+
+        /** Доля контроля ВС РФ в каждой области на срез, %. */
+        function regionShareValues(snapshot, ring) {
+            if (!regionsEnabled || !ring) return null;
+            if (regionShareCache[snapshot.name]) return regionShareCache[snapshot.name];
+            var values = [];
+            for (var r = 0; r < regionDefs.length; r++) {
+                var def = regionDefs[r];
+                var shape = def.waterFree || [def.polygon];
+                var area = def.waterFreeArea != null ? def.waterFreeArea : def.area;
+                var controlled = multiPolygonAreaKm2(clip.intersection(shape, [[ring]]));
+                values.push({
+                    id: def.id,
+                    share: area > 0 ? round2(controlled / area * 100) : 0
+                });
+            }
+            regionShareCache[snapshot.name] = values;
+            return values;
+        }
+
+        /** Прирост/отход внутри каждой области, км². */
+        function regionDeltaValues(delta) {
+            var values = [];
+            for (var r = 0; r < regionDefs.length; r++) {
+                var def = regionDefs[r];
+                var shape = def.waterFree || [def.polygon];
+                var gain = delta.gain && delta.gain.length
+                    ? multiPolygonAreaKm2(clip.intersection(delta.gain, shape))
+                    : 0;
+                var loss = delta.loss && delta.loss.length
+                    ? multiPolygonAreaKm2(clip.intersection(delta.loss, shape))
+                    : 0;
+                values.push({
+                    id: def.id,
+                    gain: round2(gain),
+                    loss: round2(loss),
+                    net: round2(gain - loss)
+                });
+            }
+            return values;
+        }
+
         function summarizePeriod(from, to, fromRing, toRing, partial) {
             var delta = computeDelta(fromRing, toRing, clip);
             delta = subtractExclusions(delta, exclusionPolygons, clip);
@@ -627,6 +724,23 @@
             if (directionSummary) {
                 period.directions = directionValues(directionSummary);
                 period.unassigned = unassignedValues(directionSummary);
+            }
+            if (regionsEnabled) {
+                var shares = regionShareValues(to, toRing);
+                var deltas = regionDeltaValues(delta);
+                var regionValues = [];
+                for (var rv = 0; rv < regionDefs.length; rv++) {
+                    var shareItem = shares ? shares[rv] : null;
+                    var deltaItem = deltas[rv];
+                    regionValues.push({
+                        id: regionDefs[rv].id,
+                        share: shareItem ? shareItem.share : 0,
+                        gain: deltaItem.gain,
+                        loss: deltaItem.loss,
+                        net: deltaItem.net
+                    });
+                }
+                period.regions = regionValues;
             }
             return period;
         }
@@ -751,6 +865,64 @@
             unassigned.fullTotals.net = round2(unassigned.fullTotals.net);
         }
 
+        var regions = [];
+        if (regionsEnabled) {
+            for (var rg = 0; rg < regionDefs.length; rg++) {
+                var regionDef = regionDefs[rg];
+                var regionPeriods = [];
+                var regionTotals = { gain: 0, loss: 0, net: 0 };
+                var regionFullTotals = { gain: 0, loss: 0, net: 0 };
+                for (var rp = 0; rp < periods.length; rp++) {
+                    var regionPeriod = periods[rp];
+                    var regionValue = { share: 0, gain: 0, loss: 0, net: 0 };
+                    if (regionPeriod.regions) {
+                        for (var rq = 0; rq < regionPeriod.regions.length; rq++) {
+                            if (regionPeriod.regions[rq].id === regionDef.id) {
+                                regionValue = regionPeriod.regions[rq];
+                                break;
+                            }
+                        }
+                    }
+                    regionPeriods.push({
+                        month: regionPeriod.month,
+                        label: regionPeriod.label,
+                        from: regionPeriod.from,
+                        to: regionPeriod.to,
+                        days: regionPeriod.days,
+                        partial: regionPeriod.partial,
+                        share: regionValue.share,
+                        gain: regionValue.gain,
+                        loss: regionValue.loss,
+                        net: regionValue.net
+                    });
+                    regionTotals.gain += regionValue.gain;
+                    regionTotals.loss += regionValue.loss;
+                    regionTotals.net += regionValue.net;
+                    if (!regionPeriod.partial) {
+                        regionFullTotals.gain += regionValue.gain;
+                        regionFullTotals.loss += regionValue.loss;
+                        regionFullTotals.net += regionValue.net;
+                    }
+                }
+                regions.push({
+                    id: regionDef.id,
+                    name: regionDef.name,
+                    areaKm2: round2(regionDef.waterFreeArea != null ? regionDef.waterFreeArea : regionDef.area),
+                    periods: regionPeriods,
+                    totals: {
+                        gain: round2(regionTotals.gain),
+                        loss: round2(regionTotals.loss),
+                        net: round2(regionTotals.net)
+                    },
+                    fullTotals: {
+                        gain: round2(regionFullTotals.gain),
+                        loss: round2(regionFullTotals.loss),
+                        net: round2(regionFullTotals.net)
+                    }
+                });
+            }
+        }
+
         return {
             schemaVersion: 1,
             generatedAt: opts.generatedAt || new Date().toISOString(),
@@ -771,6 +943,13 @@
                     note: opts.directionsNote || null,
                     method: 'centroid',
                     count: directionDefs.length
+                } : null,
+                regions: regionsEnabled ? {
+                    version: opts.regionsVersion || '1',
+                    note: opts.regionsNote || null,
+                    method: 'intersection',
+                    waterExcluded: regionWater.length > 0,
+                    count: regionDefs.length
                 } : null
             },
             snapshotCount: all.length,
@@ -789,6 +968,7 @@
             },
             directions: directions,
             unassigned: unassigned,
+            regions: regions,
             groupings: [],
             warnings: warnings
         };
@@ -799,6 +979,7 @@
         MONTHS_RU: MONTHS_RU,
         parseControlKml: parseControlKml,
         parseKmlPolygons: parseKmlPolygons,
+        parseKmlRings: parseKmlRings,
         parseCoordinateText: parseCoordinateText,
         ringAreaKm2: ringAreaKm2,
         polygonAreaKm2: polygonAreaKm2,

@@ -287,6 +287,52 @@ code {
     color: var(--text-muted);
 }
 
+/* ---------- Каты отдельных блоков ---------- */
+
+.stats-fold > summary {
+    position: relative;
+    padding-right: 26px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.stats-fold > summary::-webkit-details-marker {
+    display: none;
+}
+
+.stats-fold > summary::after {
+    content: '▾';
+    position: absolute;
+    top: 2px;
+    right: 0;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast);
+}
+
+.stats-fold[open] > summary {
+    margin-bottom: 12px;
+}
+
+.stats-fold[open] > summary::after {
+    transform: rotate(180deg);
+}
+
+.stats-fold-summary .stats-panel-sub {
+    display: block;
+}
+
+.stats-fold-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.stats-fold-body.is-folding {
+    overflow: hidden;
+}
+
 .stats-panel-title-row {
     display: flex;
     align-items: center;
@@ -624,11 +670,11 @@ code {
     border-left: 1px solid var(--gray-300);
 }
 
-.stats-table--matrix tbody tr.is-inactive {
+.stats-table tbody tr.is-inactive {
     opacity: 0.55;
 }
 
-.stats-table--matrix tbody tr.is-inactive:hover {
+.stats-table tbody tr.is-inactive:hover {
     opacity: 0.78;
 }
 
@@ -640,6 +686,13 @@ code {
     border-top: 2px solid var(--gray-300);
     border-bottom: none;
     background: var(--gray-50);
+    font-weight: 700;
+}
+
+.stats-table--matrix tr.stats-matrix-group-row td {
+    border-top: 2px solid var(--gray-300);
+    background: var(--gray-50);
+    color: var(--text-secondary);
     font-weight: 700;
 }
 
@@ -941,6 +994,10 @@ code {
     .stats-panel-head {
         flex-direction: column;
         gap: 8px;
+    }
+
+    .stats-panel h2 {
+        white-space: normal;
     }
 
     .stats-chart-wrap {

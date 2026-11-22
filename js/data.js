@@ -101,7 +101,7 @@ window.permanentLayers = [
 	
     // Контур максимального продвижения в Доброполье
      { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" }
-	// { name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" }
+	 { name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" }
 	
 	// Мультиполигон
     // { name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }

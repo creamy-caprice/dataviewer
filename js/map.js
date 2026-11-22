@@ -776,10 +776,14 @@ if (new URLSearchParams(window.location.search).has('directions') && typeof omni
             const current = currentByName[name] || null;
             let html = '<div class="direction-label-inner"><b>' + directionEscape(name) + '</b>';
             if (current && period) {
+                const netClass = current.net > 0 ? 'gain' : current.net < 0 ? 'loss' : '';
                 html += '<span class="direction-label-period">' + directionEscape(period.label) + '</span>'
-                    + '<span class="direction-label-row">+' + directionValue(current.gain)
-                    + ' / −' + directionValue(current.loss) + '</span>'
-                    + '<span class="direction-label-net">' + directionSigned(current.net) + ' км²</span>';
+                    + '<span class="direction-label-row"><span>продвижение</span><b class="gain">+'
+                    + directionValue(current.gain) + '</b></span>'
+                    + '<span class="direction-label-row"><span>отход</span><b class="loss">−'
+                    + directionValue(current.loss) + '</b></span>'
+                    + '<span class="direction-label-net' + (netClass ? ' ' + netClass : '') + '"><span>всего</span><b>'
+                    + directionSigned(current.net) + ' км²</b></span>';
             }
             html += '</div>';
 
@@ -819,3 +823,292 @@ if (new URLSearchParams(window.location.search).has('directions') && typeof omni
             if (directionsReady) decorateDirections();
         });
 }
+
+// Границы областей по ссылке со страницы статистики (?regions=1).
+// Постоянный слой «Области» — это замкнутые LineString; здесь из них делаются
+// залитые полигоны с подписями «контроль N %» и изменением за последний месяц.
+if (new URLSearchParams(window.location.search).has('regions')) {
+    const regionNumber = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
+    const regionLabelMinZoom = 8;
+
+    function regionSigned(value) {
+        const number = Number(value) || 0;
+        if (number > 0) return '+' + regionNumber.format(number);
+        if (number < 0) return '−' + regionNumber.format(Math.abs(number));
+        return regionNumber.format(0);
+    }
+
+    function regionEscape(value) {
+        return String(value == null ? '' : value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    const regionHint = L.control({ position: 'bottomleft' });
+    regionHint.onAdd = function () {
+        const div = L.DomUtil.create('div', 'region-hint');
+        div.textContent = 'Статистика областей: приблизьте карту';
+        return div;
+    };
+    regionHint.addTo(map);
+
+    let regionsStats = null;
+    let regionsLayer = null;
+
+    // Цвет группы областей: все области группы рисуются одним цветом группы.
+    // Палитры приходят из stats.json (regionGroups), чтобы карта и статистика
+    // не разъезжались.
+    function regionGroupOf(id) {
+        const groups = regionsStats && Array.isArray(regionsStats.regionGroups) ? regionsStats.regionGroups : [];
+        for (let g = 0; g < groups.length; g++) {
+            const group = groups[g];
+            const index = Array.isArray(group.regions) ? group.regions.indexOf(id) : -1;
+            if (index === -1) continue;
+            const colors = Array.isArray(group.colors) && group.colors.length ? group.colors : ['#c81e0f'];
+            return { group: group, color: colors[index % colors.length] };
+        }
+        return null;
+    }
+
+    function regionBorderColor(id) {
+        const found = id ? regionGroupOf(id) : null;
+        return found && found.group.color ? found.group.color : '#c81e0f';
+    }
+
+    function applyRegionColors() {
+        if (!regionsLayer || !regionsStats) return;
+        const regionDefs = Array.isArray(regionsStats.regions) ? regionsStats.regions : [];
+        const idByName = {};
+        regionDefs.forEach(function (region) { idByName[region.name] = region.id; });
+        regionsLayer.eachLayer(function (polygon) {
+            const color = regionBorderColor(idByName[polygon.regionName]);
+            polygon.setStyle({ color: color, fillColor: color });
+        });
+    }
+
+    function findPermanentGroup(name) {
+        const groups = Array.isArray(window.permanentLayerGroups) ? window.permanentLayerGroups : [];
+        for (let index = 0; index < groups.length; index++) {
+            if (groups[index].layerName === name) return groups[index];
+        }
+        return null;
+    }
+
+    // В режиме статистики областей обычные границы областей и конституционная
+    // граница РФ дублируют раскрашенные полигоны — убираем их с карты.
+    // Слои пересобираются заново, поэтому скрываем при каждом permanent-layers-ready.
+    function hideDuplicatePermanentLayers() {
+        ['Области', 'RuUaBorder'].forEach(function (name) {
+            const group = findPermanentGroup(name);
+            if (group && map.hasLayer(group)) map.removeLayer(group);
+        });
+    }
+
+    function updateRegionLabels() {
+        if (!regionsLayer) return;
+        const periods = regionsStats && Array.isArray(regionsStats.periods) ? regionsStats.periods : [];
+        const period = periods.length ? periods[periods.length - 1] : null;
+        const byId = {};
+        if (period && Array.isArray(period.regions)) {
+            period.regions.forEach(function (region) { byId[region.id] = region; });
+        }
+        const regionDefs = regionsStats && Array.isArray(regionsStats.regions) ? regionsStats.regions : [];
+        const idByName = {};
+        regionDefs.forEach(function (region) { idByName[region.name] = region.id; });
+
+        const show = map.getZoom() >= regionLabelMinZoom;
+        regionsLayer.eachLayer(function (polygon) {
+            const id = idByName[polygon.regionName];
+            const region = id ? byId[id] : null;
+            const borderColor = regionBorderColor(id);
+            let html = '<div class="direction-label-inner"><b>' + regionEscape(polygon.regionName || 'Область') + '</b>';
+            if (region && period) {
+                const netClass = region.net > 0 ? 'gain' : region.net < 0 ? 'loss' : '';
+                html += '<span class="direction-label-period">' + regionEscape(period.label) + '</span>'
+                    + '<span class="direction-label-row"><span>контроль</span><b>' + regionNumber.format(region.share) + ' %</b></span>'
+                    + '<span class="direction-label-net' + (netClass ? ' ' + netClass : '') + '"><span>всего</span><b>'
+                    + regionSigned(region.net) + ' км²</b></span>';
+            }
+            html += '</div>';
+            if (typeof polygon.bindTooltip === 'function' && (!polygon.getTooltip || !polygon.getTooltip())) {
+                polygon.bindTooltip('', {
+                    permanent: true,
+                    direction: 'center',
+                    className: 'region-label',
+                    opacity: 0.96
+                });
+            }
+            if (typeof polygon.setTooltipContent === 'function') polygon.setTooltipContent(html);
+            const tooltip = polygon.getTooltip && polygon.getTooltip();
+            const element = tooltip && tooltip.getElement && tooltip.getElement();
+            if (element) {
+                element.style.display = show ? '' : 'none';
+                element.style.border = '2px solid ' + borderColor;
+            }
+        });
+
+        const hint = document.querySelector('.region-hint');
+        if (hint) {
+            hint.textContent = (period ? 'Статистика областей за ' + period.label : 'Статистика областей') + ': приблизьте карту';
+            hint.style.display = show ? 'none' : '';
+        }
+    }
+
+    function buildRegionsLayer() {
+        if (!regionsLayer) {
+            const group = findPermanentGroup('Области');
+            if (!group) return;
+
+            const layer = L.featureGroup();
+            group.eachLayer(function (source) {
+                if (typeof source.getLatLngs !== 'function') return;
+                const polygon = L.polygon(source.getLatLngs(), {
+                    color: '#c81e0f',
+                    weight: 2,
+                    opacity: 0.9,
+                    fillColor: '#c81e0f',
+                    fillOpacity: 0.05,
+                    interactive: false,
+                    pane: 'vectorPoly'
+                });
+                polygon.regionName = source.kmlName || '';
+                layer.addLayer(polygon);
+            });
+            if (!layer.getLayers().length) return;
+
+            layer.addTo(map);
+            regionsLayer = layer;
+            map.on('zoomend', updateRegionLabels);
+            applyRegionColors();
+            updateRegionLabels();
+
+            if (typeof urlCoords === 'undefined' || !urlCoords) {
+                const bounds = layer.getBounds();
+                if (bounds && bounds.isValid()) map.fitBounds(bounds, { padding: [20, 20] });
+            }
+        }
+        hideDuplicatePermanentLayers();
+    }
+
+    window.addEventListener('permanent-layers-ready', buildRegionsLayer);
+    buildRegionsLayer();
+
+    fetch('stats/stats.json?ts=' + Date.now(), { cache: 'no-store' })
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (data) {
+            regionsStats = data;
+            if (regionsLayer) {
+                applyRegionColors();
+                updateRegionLabels();
+            }
+        })
+        .catch(function (error) {
+            console.warn('Не удалось загрузить статистику для подписей областей:', error);
+            if (regionsLayer) updateRegionLabels();
+        });
+}
+
+// Полигоны, исключённые из расчёта статистики (водохранилище, дельта и т.п.).
+// Показываем их в обоих режимах границ, чтобы было видно, что не попадает в цифры.
+(function () {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('regions') && !params.has('directions')) return;
+    if (typeof omnivore === 'undefined') return;
+
+    const exclusionNumber = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
+    const exclusionSources = [
+        'kml/PermanentObjects/Exclusions/Kakhovka_reservoir.kml?v=20261117a',
+        'kml/PermanentObjects/Exclusions/Dnipro_delta.kml?v=20261117a'
+    ];
+    let excludedAreas = null;
+    let legendAdded = false;
+
+    function exclusionEscape(value) {
+        return String(value == null ? '' : value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    function exclusionArea(name) {
+        if (!Array.isArray(excludedAreas)) return null;
+        for (let index = 0; index < excludedAreas.length; index++) {
+            if (excludedAreas[index].name === name) return excludedAreas[index].areaKm2;
+        }
+        return null;
+    }
+
+    function exclusionTooltip(name) {
+        const area = exclusionArea(name);
+        let html = '<div class="direction-label-inner"><b>' + exclusionEscape(name || 'Исключённая область') + '</b>'
+            + '<span class="direction-label-row"><span>в расчётах</span><b>не учитывается</b></span>';
+        if (area != null) {
+            html += '<span class="direction-label-net"><span>площадь</span><b>'
+                + exclusionNumber.format(area) + ' км²</b></span>';
+        }
+        html += '</div>';
+        return html;
+    }
+
+    function addExclusionLegend() {
+        if (legendAdded) return;
+        legendAdded = true;
+        const legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function () {
+            const box = L.DomUtil.create('div', 'exclusion-legend');
+            L.DomUtil.create('span', 'exclusion-legend-swatch', box);
+            box.appendChild(document.createTextNode('не учитывается в расчётах'));
+            return box;
+        };
+        legend.addTo(map);
+    }
+
+    if (!map.getPane('exclusionPoly')) {
+        const pane = map.createPane('exclusionPoly');
+        pane.style.zIndex = 415;
+    }
+
+    exclusionSources.forEach(function (path) {
+        const layer = omnivore.kml(path);
+        layer.on('ready', function () {
+            this.eachLayer(function (source) {
+                if (typeof source.getLatLngs !== 'function') return;
+                const properties = source.feature && source.feature.properties ? source.feature.properties : {};
+                const name = properties.name || '';
+                const polygon = L.polygon(source.getLatLngs(), {
+                    pane: 'exclusionPoly',
+                    color: '#495057',
+                    weight: 1.5,
+                    opacity: 0.95,
+                    dashArray: '5 4',
+                    fillColor: '#adb5bd',
+                    fillOpacity: 0.3
+                });
+                if (typeof polygon.bindTooltip === 'function') {
+                    polygon.bindTooltip(function () { return exclusionTooltip(name); }, {
+                        direction: 'center',
+                        className: 'region-label',
+                        opacity: 0.97
+                    });
+                }
+                polygon.addTo(map);
+            });
+            addExclusionLegend();
+        });
+    });
+
+    fetch('stats/stats.json?ts=' + Date.now(), { cache: 'no-store' })
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (data) {
+            excludedAreas = data && data.source && Array.isArray(data.source.excludedAreas)
+                ? data.source.excludedAreas : [];
+        })
+        .catch(function (error) {
+            console.warn('Не удалось загрузить список исключённых областей:', error);
+        });
+})();

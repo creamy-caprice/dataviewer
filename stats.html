@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Статистика территорий — Creamy caprice</title>
-    <meta name="description" content="Продвижение и отход контроля территорий по месячным срезам. Плюс — продвижение ВС РФ.">
+    <meta name="description" content="Территориальные изменения в ходе проведения специальной Специальной военной операции. Плюс — продвижение ВС РФ.">
     <link rel="icon" href="img/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Wallpoet&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/stats.css?v=20261111b">
+    <link rel="stylesheet" href="css/stats.css?v=20261118e">
     <link rel="stylesheet" href="css/language.css">
     <script src="js/vendor/chart.umd.js" defer></script>
     <script src="js/vendor/modern-screenshot.js" defer></script>
-    <script src="js/stats.js?v=20261111b" defer></script>
+    <script src="js/chart-axis.js?v=20261116a" defer></script>
+    <script src="js/stats.js?v=20261118e" defer></script>
 </head>
 <body class="stats-page">
     <header class="stats-header">
@@ -36,7 +37,7 @@
             <div class="stats-title-row">
                 <div>
                     <h1 data-ru="Статистика территорий" data-en="Territory statistics">Статистика территорий</h1>
-                    <p class="stats-subtitle" data-ru="Изменение зон контроля сторон в ходе проведения специальной Специальной военной операции. Плюс(красный) - продвижение ВС РФ" data-en="Territory control advance and withdrawal by monthly snapshots. Positive values show Russian advance.">Продвижение и отход контроля по месячным срезам. Плюс — продвижение ВС РФ.</p>
+                    <p class="stats-subtitle" data-ru="Изменение зон контроля сторон в ходе проведения специальной Специальной военной операции. Плюс(красный) - продвижение ВС РФ." data-en="Territory control advance and withdrawal by monthly snapshots. Positive values show Russian advance.">Продвижение и отход контроля по месячным срезам. Плюс — продвижение ВС РФ.</p>
                 </div>
                 <div id="stats-updated" class="stats-updated" aria-live="polite"></div>
             </div>
@@ -52,7 +53,7 @@
                 <nav class="stats-jump" aria-label="Разделы статистики">
                     <a href="#months" data-ru="Месяцы" data-en="Months">Месяцы</a>
                     <a href="#directions" data-ru="Направления" data-en="Directions">Направления</a>
-                    <a href="#stats-current" data-ru="Месяц" data-en="Month">Месяц</a>
+                    <a href="#regions" data-ru="Области" data-en="Oblasts">Области</a>
                     <a href="#groups" data-ru="Группировки" data-en="Groups">Группировки</a>
                 </nav>
             </div>
@@ -139,22 +140,19 @@
             </section>
             -->
 
-            <section id="directions" class="stats-panel hidden">
+            <details id="directions" class="stats-panel stats-fold hidden">
+                <summary class="stats-fold-summary">
+                    <h2 data-ru="Направления боевых действий" data-en="Directions of combat operations">Направления боевых действий</h2>
+                    <span id="stats-directions-sub" class="stats-panel-sub" data-ru="Нетто по месяцам за выбранный период." data-en="Monthly net for the selected period.">Нетто по месяцам за выбранный период.</span>
+                </summary>
+                <div class="stats-fold-body">
+                <div class="stats-fold-actions">
+                    <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-directions-report" data-file="territory-directions" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <a class="stats-map-link" href="index.html?directions=1" target="_blank" rel="noopener"><span data-ru="Границы на карте" data-en="Borders on map">Границы на карте</span></a>
+                </div>
                 <div id="stats-directions-report">
-                    <div class="stats-panel-head">
-                        <div>
-                            <div class="stats-panel-title-row">
-                                <h2 data-ru="Направления боевых действий" data-en="Directions of combat operations">Направления боевых действий</h2>
-                                <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-directions-report" data-file="territory-directions" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </button>
-                            </div>
-                            <p id="stats-directions-sub" class="stats-panel-sub" data-ru="Нетто по месяцам за выбранный период." data-en="Monthly net for the selected period.">Нетто по месяцам за выбранный период.</p>
-                        </div>
-                        <div class="stats-panel-actions">
-                            <a class="stats-map-link" href="index.html?directions=1" target="_blank" rel="noopener"><span data-ru="Границы на карте" data-en="Borders on map">Границы на карте</span></a>
-                        </div>
-                    </div>
                     <div class="stats-table-wrap stats-matrix-wrap">
                         <table class="stats-table stats-table--matrix">
                             <thead id="stats-matrix-head"></thead>
@@ -185,19 +183,19 @@
                     </div>
                     <p id="direction-chart-fallback" class="stats-note hidden" data-ru="График недоступен: не загрузилась библиотека Chart.js." data-en="Chart unavailable: Chart.js failed to load.">График недоступен: не загрузилась библиотека Chart.js.</p>
                 </div>
-            </section>
+                </div>
+            </details>
 
-            <section id="stats-current" class="stats-panel hidden">
-                <div class="stats-panel-head">
-                    <div>
-                        <div class="stats-panel-title-row">
-                            <h2 data-ru="Текущий месяц по направлениям" data-en="Current month by direction">Текущий месяц по направлениям</h2>
-                            <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-current" data-file="territory-current" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
-                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </button>
-                        </div>
-                        <p id="stats-current-sub" class="stats-panel-sub"></p>
-                    </div>
+            <details id="stats-current" class="stats-panel stats-fold hidden">
+                <summary class="stats-fold-summary">
+                    <h2 data-ru="Текущий месяц по направлениям" data-en="Current month by direction">Текущий месяц по направлениям</h2>
+                    <span id="stats-current-sub" class="stats-panel-sub"></span>
+                </summary>
+                <div class="stats-fold-body">
+                <div class="stats-fold-actions">
+                    <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-current" data-file="territory-current" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
                 </div>
                 <div class="stats-table-wrap">
                     <table class="stats-table stats-table--compact">
@@ -207,26 +205,99 @@
                                 <th class="num" data-ru="Продвижение, км²" data-en="Advance, km²">Продвижение, км²</th>
                                 <th class="num" data-ru="Отход, км²" data-en="Withdrawal, km²">Отход, км²</th>
                                 <th class="num" data-ru="Всего, км²" data-en="Total, km²">Всего, км²</th>
-                                <th class="num" data-ru="Темп, км²/день" data-en="Rate, km²/day">Темп, км²/день</th>
                             </tr>
                         </thead>
                         <tbody id="stats-current-body"></tbody>
                     </table>
                 </div>
                 <p id="stats-current-note" class="stats-note"></p>
-            </section>
+                </div>
+            </details>
 
-            <section id="groups" class="stats-panel hidden">
-                <div class="stats-panel-head">
-                    <div>
-                        <div class="stats-panel-title-row">
-                            <h2 data-ru="По группировкам" data-en="By group">По группировкам</h2>
-                            <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#groups" data-file="territory-groups" title="Скачать PNG" aria-label="Скачать график и таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать график и таблицу в PNG" data-aria-en="Download chart and table as PNG">
-                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </button>
-                        </div>
-                        <p id="stats-groups-sub" class="stats-panel-sub" data-ru="Всего по группам направлений за выбранный период." data-en="Total by direction groups for the selected period.">Всего по группам направлений за выбранный период.</p>
+            <details id="regions" class="stats-panel stats-fold hidden">
+                <summary class="stats-fold-summary">
+                    <h2 data-ru="Области" data-en="Oblasts">Области</h2>
+                    <span id="stats-regions-sub" class="stats-panel-sub" data-ru="Доля контроля по областям на конец месяца, % площади суши." data-en="Control share by oblast at month end, % of land area.">Доля контроля по областям на конец месяца, % площади суши.</span>
+                </summary>
+                <div class="stats-fold-body">
+                <div class="stats-fold-actions">
+                    <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-regions-report" data-file="territory-regions" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <a class="stats-map-link" href="index.html?regions=1" target="_blank" rel="noopener"><span data-ru="Границы на карте" data-en="Borders on map">Границы на карте</span></a>
+                </div>
+                <div id="stats-regions-report">
+                    <div class="stats-table-wrap stats-matrix-wrap">
+                        <table class="stats-table stats-table--matrix">
+                            <thead id="stats-regions-head"></thead>
+                            <tbody id="stats-regions-body"></tbody>
+                            <tfoot id="stats-regions-foot"></tfoot>
+                        </table>
                     </div>
+                    <p id="stats-regions-note" class="stats-note"></p>
+                </div>
+
+                <div id="stats-region-detail" class="stats-direction-detail">
+                    <div class="stats-direction-head">
+                        <div>
+                            <div class="stats-panel-title-row">
+                                <h3 id="stats-region-title"></h3>
+                                <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-region-detail" data-file="territory-region" title="Скачать PNG" aria-label="Скачать график в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать график в PNG" data-aria-en="Download chart as PNG">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+                            </div>
+                            <p id="stats-region-sub" class="stats-panel-sub"></p>
+                        </div>
+                        <div class="stats-direction-tools">
+                            <div id="stats-region-totals" class="stats-direction-totals"></div>
+                        </div>
+                    </div>
+                    <div class="stats-chart-wrap stats-chart-wrap--small">
+                        <canvas id="region-chart" aria-label="График доли контроля по областям" data-aria-ru="График доли контроля по областям" data-aria-en="Oblast control share chart" role="img"></canvas>
+                    </div>
+                    <p id="region-chart-fallback" class="stats-note hidden" data-ru="График недоступен: не загрузилась библиотека Chart.js." data-en="Chart unavailable: Chart.js failed to load.">График недоступен: не загрузилась библиотека Chart.js.</p>
+                </div>
+                </div>
+            </details>
+
+            <details id="stats-current-regions" class="stats-panel stats-fold hidden">
+                <summary class="stats-fold-summary">
+                    <h2 data-ru="Текущий месяц по областям" data-en="Current month by oblast">Текущий месяц по областям</h2>
+                    <span id="stats-current-regions-sub" class="stats-panel-sub"></span>
+                </summary>
+                <div class="stats-fold-body">
+                <div class="stats-fold-actions">
+                    <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#stats-current-regions" data-file="territory-current-regions" title="Скачать PNG" aria-label="Скачать таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать таблицу в PNG" data-aria-en="Download table as PNG">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <div class="stats-table-wrap">
+                    <table class="stats-table stats-table--compact">
+                        <thead>
+                            <tr>
+                                <th data-ru="Область" data-en="Oblast">Область</th>
+                                <th class="num" data-ru="Продвижение, км²" data-en="Advance, km²">Продвижение, км²</th>
+                                <th class="num" data-ru="Отход, км²" data-en="Withdrawal, km²">Отход, км²</th>
+                                <th class="num" data-ru="Всего, км²" data-en="Total, km²">Всего, км²</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stats-current-regions-body"></tbody>
+                    </table>
+                </div>
+                <p id="stats-current-regions-note" class="stats-note"></p>
+                </div>
+            </details>
+
+            <details id="groups" class="stats-panel stats-fold hidden">
+                <summary class="stats-fold-summary">
+                    <h2 data-ru="По группировкам" data-en="By group">По группировкам</h2>
+                    <span id="stats-groups-sub" class="stats-panel-sub" data-ru="Всего по группам направлений за выбранный период." data-en="Total by direction groups for the selected period.">Всего по группам направлений за выбранный период.</span>
+                </summary>
+                <div class="stats-fold-body">
+                <div class="stats-fold-actions">
+                    <button type="button" class="stats-icon-btn stats-png-btn" data-shot="#groups" data-file="territory-groups" title="Скачать PNG" aria-label="Скачать график и таблицу в PNG" data-title-ru="Скачать PNG" data-title-en="Download PNG" data-aria-ru="Скачать график и таблицу в PNG" data-aria-en="Download chart and table as PNG">
+                        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
                 </div>
                 <div class="stats-chart-wrap">
                     <canvas id="groups-chart" aria-label="График всего по группировкам" data-aria-ru="График всего по группировкам" data-aria-en="Chart of totals by groups" role="img"></canvas>
@@ -246,7 +317,8 @@
                     </table>
                 </div>
                 <p id="stats-groups-note" class="stats-note"></p>
-            </section>
+                </div>
+            </details>
         </div>
 
         <div id="stats-empty" class="stats-empty hidden" role="alert">

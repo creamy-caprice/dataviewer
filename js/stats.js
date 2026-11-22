@@ -23,8 +23,9 @@
     var MONTHS_SHORT = MONTHS.ru.short;
     var MONTHS_FULL = MONTHS.ru.full;
     var numberFormat = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
-    var charts = { main: null, total: null, direction: null, groups: null };
-    var state = { data: null, range: 'all', directions: null, detail: false, granularity: 'month', matrixRange: null };
+    var shareFormat = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    var charts = { main: null, total: null, direction: null, groups: null, region: null };
+    var state = { data: null, range: 'all', directions: null, regions: null, detail: false, granularity: 'month' };
     var GROUP_FALLBACK = 'Без группы';
     var GROUP_COLORS = ['#c81e0f', '#2f63b8', '#1f8a4c', '#b8860b', '#7a4fb3', '#6c757d'];
     var DIRECTION_COLORS = ['#c81e0f', '#2f63b8', '#1f8a4c', '#b8860b', '#7a4fb3', '#0f8b8d',
@@ -48,6 +49,21 @@
     ];
     var DIRECTION_LABELS = {};
     DIRECTION_ROWS.forEach(function (row) { DIRECTION_LABELS[row.id] = row; });
+    // Подписи строк таблицы областей. kherson показываем справочно
+    // (вода, дельта Днепра) и в сравнение не пускаем.
+    var REGION_ROWS = [
+        { id: 'chernihiv', ru: 'Черниговская область', en: 'Chernihiv oblast' },
+        { id: 'sumy', ru: 'Сумская область', en: 'Sumy oblast' },
+        { id: 'kharkiv', ru: 'Харьковская область', en: 'Kharkiv oblast' },
+        { id: 'lnr', ru: 'ЛНР', en: 'LPR' },
+        { id: 'dnr', ru: 'ДНР', en: 'DPR' },
+        { id: 'dnipropetrovsk', ru: 'Днепропетровская область', en: 'Dnipropetrovsk oblast' },
+        { id: 'zaporizhzhia', ru: 'Запорожская область', en: 'Zaporizhzhia oblast' },
+        { id: 'kherson', ru: 'Херсонская область', en: 'Kherson oblast', inactive: true }
+    ];
+    var REGION_LABELS = {};
+    REGION_ROWS.forEach(function (row) { REGION_LABELS[row.id] = row; });
+    var REGION_COLORS = ['#6c757d', '#2f63b8', '#1f8a4c', '#c81e0f', '#b8860b', '#7a4fb3', '#0f8b8d', '#8a5a44'];
     var GROUP_EN = {
         'Север': 'North',
         'Запад': 'West',
@@ -71,6 +87,7 @@
         MONTHS_SHORT = MONTHS[lang].short;
         MONTHS_FULL = MONTHS[lang].full;
         numberFormat = new Intl.NumberFormat(isEn() ? 'en-US' : 'ru-RU', { maximumFractionDigits: 1 });
+        shareFormat = new Intl.NumberFormat(isEn() ? 'en-US' : 'ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
     function directionDisplayName(direction) {
@@ -112,6 +129,10 @@
 
     function unitRate() {
         return isEn() ? 'km²/day' : 'км²/день';
+    }
+
+    function unitPp() {
+        return isEn() ? 'pp' : 'п.п.';
     }
 
     function applyStaticLanguage() {
@@ -178,6 +199,20 @@
         if (number > 0) return '+' + numberFormat.format(number);
         if (number < 0) return '−' + numberFormat.format(Math.abs(number));
         return numberFormat.format(0);
+    }
+
+    // Значения таблицы областей — всегда два знака после запятой.
+    function formatShare(value) {
+        var number = Number(value);
+        if (!Number.isFinite(number)) return '—';
+        return shareFormat.format(number);
+    }
+
+    function signedShare(value) {
+        var number = Number(value);
+        if (!Number.isFinite(number)) return '—';
+        if (Math.abs(number) < 0.005) return shareFormat.format(0);
+        return (number > 0 ? '+' : '−') + shareFormat.format(Math.abs(number));
     }
 
     function formatDate(iso) {
@@ -321,6 +356,96 @@
 
     function directionGroup(direction) {
         return direction && direction.group ? direction.group : GROUP_FALLBACK;
+    }
+
+    function findRegion(data, id) {
+        var regions = data && data.regions ? data.regions : [];
+        for (var i = 0; i < regions.length; i++) {
+            if (regions[i].id === id) return regions[i];
+        }
+        return null;
+    }
+
+    function regionLabel(id) {
+        var row = REGION_LABELS[id];
+        if (row) return isEn() ? row.en : row.ru;
+        var region = findRegion(state.data, id);
+        return region ? region.name : id;
+    }
+
+    function regionDisplayName(region) {
+        return region ? regionLabel(region.id) : '';
+    }
+
+    // Группы областей приходят из stats.json (REGION_GROUPS в build-stats.mjs).
+    function regionGroupsList(data) {
+        return data && Array.isArray(data.regionGroups) ? data.regionGroups : [];
+    }
+
+    function regionGroupOf(id) {
+        var groups = regionGroupsList(state.data);
+        for (var i = 0; i < groups.length; i++) {
+            if ((groups[i].regions || []).indexOf(id) !== -1) return groups[i];
+        }
+        return null;
+    }
+
+    function regionGroupName(group) {
+        if (!group) return '';
+        return isEn() ? (group.nameEn || group.name) : group.name;
+    }
+
+    function regionColor(region) {
+        var group = regionGroupOf(region.id);
+        if (group && Array.isArray(group.colors) && group.colors.length) {
+            var index = (group.regions || []).indexOf(region.id);
+            return group.colors[(index < 0 ? 0 : index) % group.colors.length];
+        }
+        var fallback = -1;
+        for (var i = 0; i < REGION_ROWS.length; i++) {
+            if (REGION_ROWS[i].id === region.id) { fallback = i; break; }
+        }
+        if (fallback < 0) fallback = 0;
+        return REGION_COLORS[fallback % REGION_COLORS.length];
+    }
+
+    function regionShareTotals(region, periods) {
+        var byMonth = {};
+        (region && region.periods ? region.periods : []).forEach(function (item) { byMonth[item.month] = item; });
+        var first = null;
+        var last = null;
+        periods.forEach(function (period) {
+            var item = byMonth[period.month];
+            if (!item || !Number.isFinite(Number(item.share))) return;
+            if (first == null) first = Number(item.share);
+            last = Number(item.share);
+        });
+        return { first: first, last: last };
+    }
+
+    // Шкала Y по значениям выбранных линий: диапазон + запас, кратный 5.
+    function regionShareScale(regions, periods) {
+        var months = {};
+        periods.forEach(function (period) { months[period.month] = true; });
+        var min = null;
+        var max = null;
+        regions.forEach(function (region) {
+            (region.periods || []).forEach(function (item) {
+                if (!months[item.month]) return;
+                var value = Number(item.share);
+                if (!Number.isFinite(value)) return;
+                if (min == null || value < min) min = value;
+                if (max == null || value > max) max = value;
+            });
+        });
+        if (min == null || max == null) return { min: 0, max: 100 };
+        var pad = Math.max(2, Math.ceil((max - min) * 0.15));
+        var lo = Math.floor((min - pad) / 5) * 5;
+        var hi = Math.ceil((max + pad) / 5) * 5;
+        return {
+            min: Math.max(0, Math.min(100, lo)),
+            max: Math.max(0, Math.min(100, hi))
+        };
     }
 
     function isYearRange(range) {
@@ -606,13 +731,11 @@
 
         var rows = period.directions.map(function (direction) {
             var net = Number(direction.net) || 0;
-            var rate = period.days > 0 ? net / period.days : 0;
             return '<tr>'
                 + '<td>' + escapeHtml(directionDisplayName(direction)) + '</td>'
                 + '<td class="num gain">' + ((Number(direction.gain) || 0) > 0 ? '+' + formatNumber(direction.gain) : '0') + '</td>'
                 + '<td class="num loss">' + ((Number(direction.loss) || 0) > 0 ? '−' + formatNumber(direction.loss) : '0') + '</td>'
                 + '<td class="num ' + (net > 0 ? 'net-pos' : net < 0 ? 'net-neg' : 'muted') + '">' + signed(net) + '</td>'
-                + '<td class="num">' + signed(rate) + '</td>'
                 + '</tr>';
         });
 
@@ -622,7 +745,6 @@
                 + '<td class="num gain">' + (period.unassigned.gain > 0 ? '+' + formatNumber(period.unassigned.gain) : '0') + '</td>'
                 + '<td class="num loss">' + (period.unassigned.loss > 0 ? '−' + formatNumber(period.unassigned.loss) : '0') + '</td>'
                 + '<td class="num">' + signed(period.unassigned.net) + '</td>'
-                + '<td class="num">' + signed(period.unassigned.net / Math.max(1, period.days)) + '</td>'
                 + '</tr>');
         }
 
@@ -631,14 +753,13 @@
             + '<td class="num gain">+' + formatNumber(period.gain) + '</td>'
             + '<td class="num loss">−' + formatNumber(period.loss) + '</td>'
             + '<td class="num">' + signed(period.net) + '</td>'
-            + '<td class="num">' + signed(period.rate) + '</td>'
             + '</tr>');
 
         body.innerHTML = rows.join('');
         var sub = document.getElementById('stats-current-sub');
         if (sub) {
             sub.textContent = formatDate(period.from) + ' — ' + formatDate(period.to)
-                + ' · ' + unitDays(period.days) + ' · ' + tr('темп ', 'rate ') + signed(period.rate) + ' ' + unitRate() + '.';
+                + ' · ' + unitDays(period.days) + '.';
         }
         var note = document.getElementById('stats-current-note');
         if (note) {
@@ -1713,15 +1834,7 @@
         return list;
     }
 
-    function renderDirectionMatrix(data, periods, selected) {
-        var head = document.getElementById('stats-matrix-head');
-        var body = document.getElementById('stats-directions-body');
-        var foot = document.getElementById('stats-matrix-foot');
-        var sub = document.getElementById('stats-directions-sub');
-        var note = document.getElementById('stats-directions-note');
-        if (!head || !body || !foot) return;
-        var selectedIds = selected.map(function (direction) { return direction.id; });
-
+    function matrixHead(periods, totalTitle, nameTitle) {
         var groups = [];
         for (var i = 0; i < periods.length; i++) {
             var period = periods[i];
@@ -1737,11 +1850,11 @@
             return index === 0 || String(periods[index - 1].month).slice(0, 4) !== String(item.month).slice(0, 4);
         });
 
-        var headHtml = '<tr>'
-            + '<th rowspan="2" class="num stats-matrix-total">' + escapeHtml(tr('Всего', 'Total')) + '</th>';
+        var html = '<tr>'
+            + '<th rowspan="2" class="num stats-matrix-total">' + escapeHtml(totalTitle) + '</th>';
         var monthRow = '<tr>';
         groups.forEach(function (item) {
-            headHtml += '<th colspan="' + item.periods.length + '" class="stats-matrix-year">' + escapeHtml(item.year) + '</th>';
+            html += '<th colspan="' + item.periods.length + '" class="stats-matrix-year">' + escapeHtml(item.year) + '</th>';
             item.periods.forEach(function (month) {
                 var index = Number(String(month.month).slice(5, 7)) - 1;
                 var short = MONTHS_SHORT[index] || month.month;
@@ -1749,9 +1862,31 @@
                     + escapeHtml(short) + (month.partial ? '*' : '') + '</th>';
             });
         });
-        headHtml += '<th rowspan="2" class="stats-matrix-name">' + escapeHtml(tr('Направление', 'Direction')) + '</th>'
+        html += '<th rowspan="2" class="stats-matrix-name">' + escapeHtml(nameTitle) + '</th>'
             + '</tr>' + monthRow + '</tr>';
-        head.innerHTML = headHtml;
+        return { html: html, yearStarts: yearStarts };
+    }
+
+    function scrollMatrixToEnd(sectionSelector) {
+        var section = document.querySelector(sectionSelector);
+        var wrap = section ? section.querySelector('.stats-matrix-wrap') : null;
+        if (!wrap || wrap.getAttribute('data-range') === String(state.range)) return;
+        wrap.setAttribute('data-range', String(state.range));
+        window.requestAnimationFrame(function () { wrap.scrollLeft = wrap.scrollWidth; });
+    }
+
+    function renderDirectionMatrix(data, periods, selected) {
+        var head = document.getElementById('stats-matrix-head');
+        var body = document.getElementById('stats-directions-body');
+        var foot = document.getElementById('stats-matrix-foot');
+        var sub = document.getElementById('stats-directions-sub');
+        var note = document.getElementById('stats-directions-note');
+        if (!head || !body || !foot) return;
+        var selectedIds = selected.map(function (direction) { return direction.id; });
+
+        var headModel = matrixHead(periods, tr('Всего', 'Total'), tr('Направление', 'Direction'));
+        var yearStarts = headModel.yearStarts;
+        head.innerHTML = headModel.html;
 
         var rows = [];
         var missing = 0;
@@ -1819,11 +1954,7 @@
             note.textContent = parts.join(' ');
         }
 
-        var wrap = document.querySelector('.stats-matrix-wrap');
-        if (wrap && state.matrixRange !== state.range) {
-            state.matrixRange = state.range;
-            window.requestAnimationFrame(function () { wrap.scrollLeft = wrap.scrollWidth; });
-        }
+        scrollMatrixToEnd('#directions');
     }
 
     function renderDirections(data, periods) {
@@ -1841,6 +1972,498 @@
 
         section.classList.remove('hidden');
         renderDirectionDetail(data, selected, periods);
+    }
+
+    function defaultRegion(data) {
+        var regions = data && data.regions ? data.regions : [];
+        var best = null;
+        for (var i = 0; i < regions.length; i++) {
+            var region = regions[i];
+            var row = REGION_LABELS[region.id];
+            if (row && row.inactive) continue;
+            var net = region.fullTotals ? Number(region.fullTotals.net) || 0 : 0;
+            if (!best || net > best.net) best = { region: region, net: net };
+        }
+        return best ? best.region : (regions[0] || null);
+    }
+
+    function ensureSelectedRegions(data) {
+        function fallback() {
+            var initial = defaultRegion(data);
+            state.regions = initial ? [initial.id] : [];
+            return initial ? [initial] : [];
+        }
+        if (!Array.isArray(state.regions)) return fallback();
+        var selected = [];
+        var seen = {};
+        for (var i = 0; i < state.regions.length; i++) {
+            var id = state.regions[i];
+            if (seen[id]) continue;
+            var region = findRegion(data, id);
+            var row = REGION_LABELS[id];
+            if (!region || (row && row.inactive)) continue;
+            seen[id] = true;
+            selected.push(region);
+        }
+        if (!selected.length && state.regions.length) return fallback();
+        state.regions = selected.map(function (region) { return region.id; });
+        return selected;
+    }
+
+    function matrixRegions(data) {
+        var list = [];
+        var seen = {};
+        function add(id, region, group) {
+            if (seen[id]) return;
+            seen[id] = true;
+            list.push({
+                id: id,
+                region: region || null,
+                label: region ? regionDisplayName(region) : regionLabel(id),
+                group: group || null
+            });
+        }
+        regionGroupsList(data).forEach(function (group) {
+            (group.regions || []).forEach(function (id) { add(id, findRegion(data, id), group); });
+        });
+        REGION_ROWS.forEach(function (row) { add(row.id, findRegion(data, row.id), null); });
+        (data.regions || []).forEach(function (region) { add(region.id, region, null); });
+        return list;
+    }
+
+    function regionItem(region, month) {
+        var periods = region && region.periods ? region.periods : [];
+        for (var i = 0; i < periods.length; i++) {
+            if (periods[i].month === month) return periods[i];
+        }
+        return null;
+    }
+
+    function signedShareDelta(value) {
+        var number = Number(value);
+        if (!Number.isFinite(number)) return '—';
+        return signedShare(number);
+    }
+
+    function outsideValue(value) {
+        var number = Number(value);
+        if (!Number.isFinite(number)) return 0;
+        return Math.abs(number) < 0.05 ? 0 : Math.round(number * 100) / 100;
+    }
+
+    function renderRegionMatrix(data, periods, selected) {
+        var head = document.getElementById('stats-regions-head');
+        var body = document.getElementById('stats-regions-body');
+        var foot = document.getElementById('stats-regions-foot');
+        var sub = document.getElementById('stats-regions-sub');
+        var note = document.getElementById('stats-regions-note');
+        if (!head || !body || !foot) return;
+        var selectedIds = selected.map(function (region) { return region.id; });
+        var headModel = matrixHead(periods, tr('Δ, п.п.', 'Δ, pp'), tr('Область', 'Oblast'));
+        head.innerHTML = headModel.html;
+        var yearStarts = headModel.yearStarts;
+        var groups = regionGroupsList(data);
+
+        function groupShares(group) {
+            var ids = group.regions || [];
+            return periods.map(function (month) {
+                var sum = 0;
+                var area = 0;
+                ids.forEach(function (id) {
+                    var region = findRegion(data, id);
+                    var item = regionItem(region, month.month);
+                    if (!item || !Number.isFinite(Number(item.share))) return;
+                    var regionArea = Number(region.areaKm2) || 0;
+                    if (regionArea <= 0) return;
+                    sum += Number(item.share) * regionArea;
+                    area += regionArea;
+                });
+                return area ? sum / area : null;
+            });
+        }
+
+        function groupTotalRow(group) {
+            var shares = groupShares(group);
+            var first = null;
+            var last = null;
+            shares.forEach(function (share) {
+                if (share == null) return;
+                if (first == null) first = share;
+                last = share;
+            });
+            var cells = shares.map(function (share, index) {
+                var classes = 'num';
+                if (yearStarts[index]) classes += ' is-year-start';
+                return '<td class="' + classes + '">' + escapeHtml(share == null ? '—' : formatShare(share)) + '</td>';
+            }).join('');
+            return '<tr class="is-total">'
+                + '<td class="num stats-matrix-total">'
+                + escapeHtml(first == null || last == null ? '—' : signedShare(last - first))
+                + '</td>'
+                + cells
+                + '<td class="stats-matrix-name">' + escapeHtml(tr('Итого', 'Total')) + '</td>'
+                + '</tr>';
+        }
+
+        var rows = [];
+        var missing = 0;
+        var pending = null;
+        matrixRegions(data).forEach(function (row) {
+            if (row.group !== pending) {
+                if (pending && pending.total) rows.push(groupTotalRow(pending));
+                pending = row.group;
+                if (pending) {
+                    rows.push('<tr class="stats-matrix-group-row">'
+                        + '<td colspan="' + (periods.length + 1) + '"></td>'
+                        + '<td class="stats-matrix-name">' + escapeHtml(regionGroupName(pending)) + '</td></tr>');
+                }
+            }
+            var region = row.region;
+            var known = REGION_LABELS[row.id];
+            var inactive = !region || (known && known.inactive);
+            if (!region) missing += 1;
+            var shares = regionShareTotals(region, periods);
+            var delta = shares.first != null && shares.last != null ? shares.last - shares.first : null;
+            var cells = periods.map(function (month, index) {
+                var classes = 'num';
+                if (yearStarts[index]) classes += ' is-year-start';
+                var item = region ? regionItem(region, month.month) : null;
+                if (!item) return '<td class="' + classes + ' muted">—</td>';
+                return '<td class="' + classes + '" title="'
+                    + escapeHtml(fullMonthLabel(month.month) + ': ' + formatShare(item.share) + ' %') + '">'
+                    + escapeHtml(formatShare(item.share)) + '</td>';
+            }).join('');
+            var rowClasses = ['stats-matrix-row'];
+            if (region && !inactive) rowClasses.push('is-clickable');
+            if (inactive) rowClasses.push('is-inactive');
+            if (region && selectedIds.indexOf(region.id) !== -1) rowClasses.push('is-selected');
+            rows.push('<tr class="' + rowClasses.join(' ') + '"'
+                + (region && !inactive ? ' data-region="' + escapeHtml(region.id) + '" tabindex="0"' : '')
+                + '>'
+                + '<td class="num stats-matrix-total ' + (delta == null ? 'muted' : delta > 0.005 ? 'net-pos' : delta < -0.005 ? 'net-neg' : 'is-zero') + '">'
+                + escapeHtml(delta == null ? '—' : signedShare(delta)) + '</td>'
+                + cells
+                + '<td class="stats-matrix-name">' + escapeHtml(row.label) + '</td></tr>');
+        });
+        if (pending && pending.total) rows.push(groupTotalRow(pending));
+        body.innerHTML = rows.join('');
+
+        var footerShares = periods.map(function (month) {
+            var sum = 0;
+            var area = 0;
+            (data.regions || []).forEach(function (region) {
+                var item = regionItem(region, month.month);
+                if (!item || !Number.isFinite(Number(item.share))) return;
+                var regionArea = Number(region.areaKm2) || 0;
+                if (regionArea <= 0) return;
+                sum += Number(item.share) * regionArea;
+                area += regionArea;
+            });
+            return area ? sum / area : null;
+        });
+        var firstWeighted = null;
+        var lastWeighted = null;
+        footerShares.forEach(function (share) {
+            if (share == null) return;
+            if (firstWeighted == null) firstWeighted = share;
+            lastWeighted = share;
+        });
+        var footerCells = periods.map(function (month, index) {
+            var classes = 'num';
+            if (yearStarts[index]) classes += ' is-year-start';
+            var share = footerShares[index];
+            return '<td class="' + classes + '">' + escapeHtml(share == null ? '—' : formatShare(share)) + '</td>';
+        }).join('');
+        if (groups.length) {
+            foot.innerHTML = '';
+        } else {
+            foot.innerHTML = '<tr class="is-total">'
+                + '<td class="num stats-matrix-total">'
+                + escapeHtml(firstWeighted == null || lastWeighted == null ? '—' : signedShare(lastWeighted - firstWeighted))
+                + '</td>'
+                + footerCells
+                + '<td class="stats-matrix-name">' + escapeHtml(tr('Итого', 'Total')) + '</td>'
+                + '</tr>';
+        }
+
+        if (sub) {
+            sub.textContent = tr('Показано ', 'Showing ') + periodsCaption(periods)
+                + ' · ' + rangeLabel(state.range) + ' · '
+                + tr('доля контроля, % площади суши области', 'control share, % of oblast land area') + '.';
+        }
+        if (note) {
+            var parts = [tr('Нажмите на область, чтобы вывести её на график (можно несколько).',
+                'Click an oblast to plot it (multiple allowed).')];
+            if (missing) {
+                parts.push(tr('«—» — область ещё не размечена в KML границ.',
+                    '"—" — the oblast is not mapped in the boundary KML yet.'));
+            }
+            parts.push(tr('Бледные строки — справочные, в сравнении не участвуют.',
+                'Faded rows are for reference and are not compared.'));
+            parts.push(tr('Итого — взвешенная доля по площади областей группы с данными.',
+                'Total is the area-weighted share of the group\'s oblasts with data.'));
+            note.textContent = parts.join(' ');
+        }
+
+        scrollMatrixToEnd('#regions');
+    }
+
+    function renderRegionChart(regions, periods) {
+        var canvas = document.getElementById('region-chart');
+        if (!canvas) return;
+        var wrap = canvas.closest('.stats-chart-wrap');
+        var fallback = document.getElementById('region-chart-fallback');
+        if (typeof Chart === 'undefined') {
+            chartUnavailable(wrap, fallback);
+            return;
+        }
+        if (!regions.length) {
+            destroyChart('region');
+            chartUnavailable(wrap, fallback);
+            if (fallback) {
+                fallback.textContent = tr('Выберите области для сравнения.', 'Select oblasts to compare.');
+                fallback.classList.remove('hidden');
+            }
+            return;
+        }
+        if (!periods.length) {
+            destroyChart('region');
+            chartUnavailable(wrap, fallback);
+            if (fallback) {
+                fallback.textContent = tr('За выбранный период данных по областям нет.', 'No oblast data for the selected period.');
+                fallback.classList.remove('hidden');
+            }
+            return;
+        }
+        chartAvailable(wrap, fallback);
+
+        var labels = periods.map(function (period) {
+            return shortMonth(period.month) + (period.partial ? '*' : '');
+        });
+        var aligned = regions.map(function (region) {
+            var byMonth = {};
+            (region.periods || []).forEach(function (item) { byMonth[item.month] = item; });
+            return periods.map(function (period) { return byMonth[period.month] || null; });
+        });
+        var multiple = regions.length > 1;
+        var datasets = regions.map(function (region, index) {
+            var color = regionColor(region);
+            return {
+                label: regionDisplayName(region),
+                data: aligned[index].map(function (item) { return item ? Number(item.share) : null; }),
+                borderColor: color,
+                backgroundColor: multiple ? color : hexToRgba(color, 0.12),
+                borderWidth: 2,
+                pointRadius: 2.5,
+                pointHoverRadius: 4,
+                fill: !multiple,
+                tension: 0.25,
+                spanGaps: false
+            };
+        });
+
+        var yScale = regionShareScale(regions, periods);
+
+        destroyChart('region');
+        charts.region = new Chart(canvas.getContext('2d'), {
+            type: 'line',
+            data: { labels: labels, datasets: datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                animation: false,
+                plugins: {
+                    legend: {
+                        display: multiple,
+                        position: 'top',
+                        labels: {
+                            color: '#1f2328',
+                            boxWidth: 10,
+                            boxHeight: 10,
+                            usePointStyle: true,
+                            padding: 10,
+                            font: { family: 'Roboto, Arial, sans-serif', size: 11 }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(31, 35, 40, 0.94)',
+                        titleFont: { family: 'Roboto, Arial, sans-serif', size: 13 },
+                        bodyFont: { family: 'Roboto, Arial, sans-serif', size: 12 },
+                        padding: 10,
+                        callbacks: {
+                            title: function (items) {
+                                var period = periods[items[0].dataIndex];
+                                return period ? fullMonthLabel(period.month) : '';
+                            },
+                            label: function (context) {
+                                var prefix = multiple ? context.dataset.label + ': ' : '';
+                                return prefix + formatShare(context.parsed.y) + ' %';
+                            },
+                            afterBody: multiple ? undefined : function (items) {
+                                var item = aligned[0][items[0].dataIndex];
+                                if (!item) return '';
+                                return [
+                                    tr('Продвижение: +', 'Advance: +') + formatNumber(item.gain) + ' ' + unitKm2(),
+                                    tr('Отход: −', 'Withdrawal: −') + formatNumber(item.loss) + ' ' + unitKm2(),
+                                    tr('Всего: ', 'Total: ') + signed(item.net) + ' ' + unitKm2()
+                                ];
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            color: '#6c757d',
+                            maxRotation: 0,
+                            autoSkip: true,
+                            maxTicksLimit: 12,
+                            font: { family: 'Roboto, Arial, sans-serif', size: 11 }
+                        }
+                    },
+                    y: {
+                        min: yScale.min,
+                        max: yScale.max,
+                        beginAtZero: false,
+                        grid: { color: 'rgba(0, 0, 0, 0.07)' },
+                        ticks: {
+                            color: '#6c757d',
+                            callback: function (value) { return formatNumber(value) + ' %'; },
+                            font: { family: 'Roboto, Arial, sans-serif', size: 11 }
+                        },
+                        title: {
+                            display: true,
+                            text: tr('Доля контроля, %', 'Control share, %'),
+                            color: '#6c757d',
+                            font: { family: 'Roboto, Arial, sans-serif', size: 11 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function renderRegionDetail(data, selected, periods) {
+        var title = document.getElementById('stats-region-title');
+        var sub = document.getElementById('stats-region-sub');
+        var totalsBox = document.getElementById('stats-region-totals');
+        if (!selected.length) {
+            if (title) title.textContent = tr('Выберите области', 'Select oblasts');
+            if (sub) sub.textContent = tr('Отметьте строки в таблице, чтобы сравнить доли контроля на графике.',
+                'Select rows in the table to compare control shares on the chart.');
+            if (totalsBox) totalsBox.innerHTML = '';
+            renderRegionChart([], periods);
+            return;
+        }
+        if (selected.length > 1) {
+            if (title) title.textContent = tr('Сравнение областей', 'Oblasts comparison');
+            if (sub) {
+                sub.textContent = tr('Выбрано ', 'Selected ') + selected.length + ' · '
+                    + periodsCaption(periods) + ' · ' + rangeLabel(state.range) + ' · ' + tr('* — неполный месяц.', '* — incomplete month.');
+            }
+            if (totalsBox) totalsBox.innerHTML = '';
+            renderRegionChart(selected, periods);
+            return;
+        }
+        var region = selected[0];
+        var shares = regionShareTotals(region, periods);
+        var delta = shares.first != null && shares.last != null ? shares.last - shares.first : null;
+        if (title) title.textContent = regionDisplayName(region);
+        if (sub) {
+            sub.textContent = tr('Доля контроля по области (без акватории)', 'Control share of the oblast (land only)') + ' · '
+                + periodsCaption(periods) + ' · ' + rangeLabel(state.range) + ' · ' + tr('* — неполный месяц.', '* — incomplete month.');
+        }
+        if (totalsBox) {
+            totalsBox.innerHTML = (shares.last == null ? '' : '<span class="net">' + formatShare(shares.last) + ' %</span>')
+                + (delta == null ? '' : '<span class="' + (delta > 0.05 ? 'gain' : delta < -0.05 ? 'loss' : 'net') + '">'
+                    + signedShareDelta(delta) + ' ' + unitPp() + '</span>');
+        }
+        renderRegionChart(selected, periods);
+    }
+
+    function renderRegions(data, periods) {
+        var section = document.getElementById('regions');
+        var body = document.getElementById('stats-regions-body');
+        if (!section || !body) return;
+        var regions = data.regions || [];
+        if (!regions.length || !periods.length) {
+            section.classList.add('hidden');
+            return;
+        }
+
+        var selected = ensureSelectedRegions(data);
+        renderRegionMatrix(data, periods, selected);
+
+        section.classList.remove('hidden');
+        renderRegionDetail(data, selected, periods);
+    }
+
+    function renderCurrentRegions(data) {
+        var section = document.getElementById('stats-current-regions');
+        var body = document.getElementById('stats-current-regions-body');
+        var period = latestPeriod(data);
+        var regions = data && data.regions ? data.regions : [];
+        if (!section || !body || !period || !regions.length) {
+            if (section) section.classList.add('hidden');
+            return;
+        }
+
+        var sumGain = 0;
+        var sumLoss = 0;
+        var sumNet = 0;
+        var rows = [];
+        matrixRegions(data).forEach(function (row) {
+            var region = row.region;
+            var known = REGION_LABELS[row.id];
+            var inactive = !region || (known && known.inactive);
+            var item = region ? regionItem(region, period.month) : null;
+            if (item) {
+                sumGain += Number(item.gain) || 0;
+                sumLoss += Number(item.loss) || 0;
+                sumNet += Number(item.net) || 0;
+            }
+            var cells = item
+                ? '<td class="num gain">' + ((Number(item.gain) || 0) > 0 ? '+' + formatNumber(item.gain) : '0') + '</td>'
+                    + '<td class="num loss">' + ((Number(item.loss) || 0) > 0 ? '−' + formatNumber(item.loss) : '0') + '</td>'
+                    + '<td class="num ' + (item.net > 0 ? 'net-pos' : item.net < 0 ? 'net-neg' : 'muted') + '">' + signed(item.net) + '</td>'
+                : '<td class="num muted">—</td><td class="num muted">—</td><td class="num muted">—</td>';
+            rows.push('<tr' + (inactive ? ' class="is-inactive"' : '') + '>'
+                + '<td>' + escapeHtml(row.label) + '</td>' + cells + '</tr>');
+        });
+
+        var outsideGain = outsideValue(period.gain - sumGain);
+        var outsideLoss = outsideValue(period.loss - sumLoss);
+        var outsideNet = outsideValue(period.net - sumNet);
+        rows.push('<tr class="is-unassigned">'
+            + '<td>' + tr('Вне областей', 'Outside oblasts') + '</td>'
+            + '<td class="num gain">' + (outsideGain > 0 ? '+' + formatNumber(outsideGain) : '0') + '</td>'
+            + '<td class="num loss">' + (outsideLoss > 0 ? '−' + formatNumber(outsideLoss) : '0') + '</td>'
+            + '<td class="num ' + (outsideNet > 0 ? 'net-pos' : outsideNet < 0 ? 'net-neg' : 'muted') + '">' + signed(outsideNet) + '</td>'
+            + '</tr>');
+
+        rows.push('<tr class="is-total">'
+            + '<td>' + tr('Итого', 'Total') + '</td>'
+            + '<td class="num gain">+' + formatNumber(period.gain) + '</td>'
+            + '<td class="num loss">−' + formatNumber(period.loss) + '</td>'
+            + '<td class="num">' + signed(period.net) + '</td>'
+            + '</tr>');
+
+        body.innerHTML = rows.join('');
+        var sub = document.getElementById('stats-current-regions-sub');
+        if (sub) {
+            sub.textContent = formatDate(period.from) + ' — ' + formatDate(period.to)
+                + ' · ' + unitDays(period.days) + '.';
+        }
+        var note = document.getElementById('stats-current-regions-note');
+        if (note) {
+            note.textContent = tr(
+                'Текущий период: ' + fullMonthLabel(period.month) + '. Значения по областям и «вне областей» в сумме дают итог периода.',
+                'Current period: ' + fullMonthLabel(period.month) + '. Oblast and outside-oblast values add up to the period total.'
+            );
+        }
+        section.classList.remove('hidden');
     }
 
     function updateRangeLabel(data, periods) {
@@ -1931,10 +2554,12 @@
         var periods = filterPeriods(data.periods, state.range);
         renderCards(data);
         renderCurrentDirections(data);
+        renderCurrentRegions(data);
         if (document.getElementById('stats-table-body')) renderTable(periods);
         renderMainChart(periods);
         renderTotalChart(data, periods);
         renderDirections(data, periods);
+        renderRegions(data, periods);
         renderGroups(data, periods);
         updateRangeLabel(data, periods);
         updateRangeControls();
@@ -1947,6 +2572,8 @@
         else params.set('range', state.range);
         if (Array.isArray(state.directions) && state.directions.length) params.set('direction', state.directions.join(','));
         else params.delete('direction');
+        if (Array.isArray(state.regions) && state.regions.length) params.set('region', state.regions.join(','));
+        else params.delete('region');
         var query = params.toString();
         var next = window.location.pathname + (query ? '?' + query : '');
         window.history.replaceState(null, '', next);
@@ -1957,6 +2584,8 @@
         state.range = params.get('range') || 'all';
         var rawDirection = params.get('direction');
         state.directions = rawDirection === null ? null : rawDirection.split(',').filter(Boolean);
+        var rawRegion = params.get('region');
+        state.regions = rawRegion === null ? null : rawRegion.split(',').filter(Boolean);
     }
 
     function selectMonth(month) {
@@ -1974,6 +2603,18 @@
         else list.push(id);
         state.directions = list;
         renderDirections(state.data, filterPeriods(state.data.periods, state.range));
+        syncUrl();
+    }
+
+    function toggleRegion(id) {
+        var row = REGION_LABELS[id];
+        if (!state.data || !findRegion(state.data, id) || (row && row.inactive)) return;
+        var list = Array.isArray(state.regions) ? state.regions.slice() : [];
+        var index = list.indexOf(id);
+        if (index >= 0) list.splice(index, 1);
+        else list.push(id);
+        state.regions = list;
+        renderRegions(state.data, filterPeriods(state.data.periods, state.range));
         syncUrl();
     }
 
@@ -2058,6 +2699,74 @@
         });
     }
 
+    function foldBody(details) {
+        return details ? details.querySelector('.stats-fold-body') : null;
+    }
+
+    function stopFoldAnimation(details) {
+        var anim = details && details._foldAnim;
+        if (!anim) return;
+        details._foldAnim = null;
+        anim.cancel();
+        var body = foldBody(details);
+        if (body) {
+            body.style.height = '';
+            body.classList.remove('is-folding');
+        }
+    }
+
+    // Плавная высота: details раскрывается мгновенно (иначе контент не измерить),
+    // высота обёртки анимируется от 0 до реальной и наоборот.
+    function setFoldOpen(details, open) {
+        if (!details || details.open === open) return;
+        var body = foldBody(details);
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!body || reduced || typeof body.animate !== 'function') {
+            details.open = open;
+            return;
+        }
+        if (details._foldAnim) return;
+        var start = details.open ? body.offsetHeight : 0;
+        if (open) details.open = true;
+        body.style.height = start + 'px';
+        body.classList.add('is-folding');
+        var target = 0;
+        if (open) {
+            body.style.height = 'auto';
+            target = body.offsetHeight;
+            body.style.height = start + 'px';
+        }
+        var anim = body.animate(
+            [{ height: start + 'px' }, { height: target + 'px' }],
+            { duration: 200, easing: 'ease-out' }
+        );
+        details._foldAnim = anim;
+        anim.onfinish = function () {
+            details._foldAnim = null;
+            body.style.height = '';
+            body.classList.remove('is-folding');
+            if (!open) details.open = false;
+            anim.cancel();
+        };
+    }
+
+    function openMoreFor(target) {
+        if (!target) return;
+        var id = String(target).replace(/^#/, '');
+        var element = document.getElementById(id);
+        var details = element && element.closest ? element.closest('details') : null;
+        if (!details) return;
+        stopFoldAnimation(details);
+        setFoldOpen(details, true);
+    }
+
+    function resizeCharts() {
+        Object.keys(charts).forEach(function (key) {
+            var chart = charts[key];
+            if (chart && typeof chart.resize === 'function') chart.resize();
+        });
+    }
+
     function bindEvents() {
         var granularityButtons = document.querySelectorAll('[data-granularity]');
         granularityButtons.forEach(function (button) {
@@ -2079,6 +2788,30 @@
                 syncUrl();
             });
         }
+
+        document.querySelectorAll('.stats-fold').forEach(function (fold) {
+            var summary = fold.querySelector('summary');
+            if (summary) {
+                summary.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    setFoldOpen(fold, !fold.open);
+                });
+            }
+            fold.addEventListener('toggle', function () {
+                if (fold.open) window.requestAnimationFrame(resizeCharts);
+            });
+        });
+
+        document.querySelectorAll('.stats-jump a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                openMoreFor(link.getAttribute('href'));
+            });
+        });
+
+        if (window.location.hash) openMoreFor(window.location.hash);
+        window.addEventListener('hashchange', function () {
+            openMoreFor(window.location.hash);
+        });
 
         var monthReset = document.getElementById('stats-month-reset');
         if (monthReset) {
@@ -2135,6 +2868,21 @@
                 toggleDirection(row.getAttribute('data-direction'));
             });
         }
+
+        var regionBody = document.getElementById('stats-regions-body');
+        if (regionBody) {
+            regionBody.addEventListener('click', function (event) {
+                var row = event.target.closest ? event.target.closest('tr[data-region]') : null;
+                if (row) toggleRegion(row.getAttribute('data-region'));
+            });
+            regionBody.addEventListener('keydown', function (event) {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                var row = event.target.closest ? event.target.closest('tr[data-region]') : null;
+                if (!row) return;
+                event.preventDefault();
+                toggleRegion(row.getAttribute('data-region'));
+            });
+        }
     }
 
     function render(data) {
@@ -2157,6 +2905,16 @@
         var empty = document.getElementById('stats-empty');
         if (content) content.classList.remove('hidden');
         if (empty) empty.classList.add('hidden');
+
+        if (window.location.hash) {
+            openMoreFor(window.location.hash);
+            var target = document.getElementById(String(window.location.hash).replace(/^#/, ''));
+            if (target) {
+                window.requestAnimationFrame(function () {
+                    target.scrollIntoView({ block: 'start' });
+                });
+            }
+        }
     }
 
     function showEmpty(error) {
@@ -2183,6 +2941,12 @@
     document.addEventListener('DOMContentLoaded', function () {
         initLanguage();
         bindEvents();
+        if (typeof Chart !== 'undefined' && window.ChartAxis) {
+            Chart.register(window.ChartAxis.anchorLastTick);
+            if (Chart.defaults.layout && Chart.defaults.layout.padding) {
+                Chart.defaults.layout.padding.right = 20;
+            }
+        }
         loadStats()
             .then(function (data) { render(data); })
             .catch(function (error) {
