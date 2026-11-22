@@ -100,8 +100,8 @@ window.permanentLayers = [
     { name: "AFU_advance_Kursk2024",  path: "kml/PermanentObjects/AFU_advance_Kursk2024.kml" },
 	
     // Контур максимального продвижения в Доброполье
-     { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" }
-	 { name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" }
+   //  { name: "Добропольский прорыв",  path: "kml/PermanentObjects/Доброполье.kml" },
+	// { name: "Уверенный контроль Востока",  path: "kml/PermanentObjects/Восток2.kml" }
 	
 	// Мультиполигон
     // { name: "Мультиполигон",         path: "kml/PermanentObjects/CitiesBorders.kml" }
